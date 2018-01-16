@@ -1,0 +1,19 @@
+// bootstrap relies on rem, but wet sets the root font to 10px, with body copy at 16px, so need to switch fonts to em
+.b-dropdown {
+    .dropdown-toggle {
+        border-radius: 0;
+
+        font-size: 1em;
+        float: none;
+    }
+
+    .dropdown-header {
+        font-size: 0.875em;
+    }
+
+    .dropdown-menu {
+        border-radius: 0;
+        font-size: 1em;
+        right: auto;
+    }
+}

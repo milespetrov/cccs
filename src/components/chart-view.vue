@@ -1,5 +1,16 @@
 <template>
     <div>
+        <div>
+            <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2">
+                <b-dropdown-item>First Action</b-dropdown-item>
+                <b-dropdown-item>Second Action</b-dropdown-item>
+                <b-dropdown-item>Third Action</b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item>Something else here...</b-dropdown-item>
+                <b-dropdown-item disabled>Disabled action</b-dropdown-item>
+            </b-dropdown>
+        </div>
+        
         <div id="mount-point"></div>
     </div>
 </template>
@@ -126,11 +137,11 @@ export default class ChartView extends Vue {
             },
 
             title: {
-                text: `Mean Temperature at ${stationData
-                    .station_name_nom[0]}, ${stationData
-                    .Year_Annee[0]} - ${stationData.Year_Annee[
-                    stationData.Year_Annee.length - 1
-                ]}`
+                text: `Mean Temperature at ${
+                    stationData.station_name_nom[0]
+                }, ${stationData.Year_Annee[0]} - ${
+                    stationData.Year_Annee[stationData.Year_Annee.length - 1]
+                }`
             },
             subtitle: {
                 text: 'ccpid.ca'
@@ -188,5 +199,3 @@ export default class ChartView extends Vue {
 <style lang="scss" scoped>
 
 </style>
-
-
