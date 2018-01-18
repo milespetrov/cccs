@@ -31,6 +31,8 @@ export default class ChartView extends Vue {
 
     private data: any[];
 
+    private userTrendValue: SVGElement;
+
     async mounted(): Promise<void> {
         console.log('aaa---');
         if (!this.data) {
@@ -95,8 +97,8 @@ export default class ChartView extends Vue {
                     step: 1
                 },
                 events: {
-                    load: function() {
-                        const ren = (<any>this).renderer;
+                    load: (event: any) => {
+                        const ren = event.target.renderer; //(<any>this).renderer;
 
                         // const point = chart.series[0].points[0];
                         ren
@@ -114,7 +116,7 @@ export default class ChartView extends Vue {
                                 zIndex: 6
                             })
                             .add();
-                        ren
+                        this.userTrendValue = ren
                             .label(
                                 `Trend value: <b>${stationTrendValue}</b>`,
                                 80,
@@ -152,7 +154,19 @@ export default class ChartView extends Vue {
                     text: 'Year'
                 },
                 minRange: 20,
-                crosshair: true
+                crosshair: true,
+                events: {
+                    setExtremes: (event: any) => {
+                        console.log(event, event.target);
+
+                        (<any>this.userTrendValue).textSetter(
+                            `Trend value: <b>${(Math.random() * 5).toFixed(
+                                2
+                            )}</b>`
+                        );
+                        api.DQV.charts['dvChart1'];
+                    }
+                }
             },
             yAxis: {
                 title: {
