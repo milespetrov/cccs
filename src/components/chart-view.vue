@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2">
+            <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2" right>
                 <b-dropdown-item>First Action</b-dropdown-item>
                 <b-dropdown-item>Second Action</b-dropdown-item>
                 <b-dropdown-item>Third Action</b-dropdown-item>
@@ -73,6 +73,9 @@ export default class ChartView extends Vue {
             data
         });
         dvsection1.mount(document.getElementById('mount-point'));
+
+        (<any>window).wb.add('summary');
+        (<any>window).wb.add('table');
     }
 
     updateDQV(): void {
@@ -80,6 +83,9 @@ export default class ChartView extends Vue {
 
         const dvChart = api.DQV.charts['dvChart1'];
         dvChart.config = config;
+
+        (<any>window).wb.add('summary');
+        (<any>window).wb.add('table');
     }
 
     makeConfig(

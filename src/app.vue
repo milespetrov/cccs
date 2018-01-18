@@ -221,7 +221,7 @@ import './../node_modules/bootstrap/scss/bootstrap.scss';
         padding: 0.25rem 1.5rem;
 
         span {
-            flex: 1;
+            flex: 1 0 auto;
             white-space: nowrap;
             margin-right: 4rem;
         }
@@ -233,7 +233,8 @@ import './../node_modules/bootstrap/scss/bootstrap.scss';
             width: 14rem;
 
             .dropdown-item {
-                flex-basis: 50%;
+                // flex-basis: 50%;
+                width: 50%;
                 text-align: center;
             }
         }

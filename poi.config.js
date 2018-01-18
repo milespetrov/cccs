@@ -15,6 +15,7 @@ module.exports = {
     filename: {
         js: `cpi-sandbox${minimize ? '.min' : ''}.js`
     },
+    homepage: './',
     minimize: minimize,
     presets: [
         // there is problem with using babel-minify for now: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
