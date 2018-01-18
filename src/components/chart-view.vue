@@ -145,7 +145,9 @@ export default class ChartView extends Vue {
             credits: {
                 enabled: false
             },
-
+            exporting: {
+                enabled: false
+            },
             title: {
                 text: `Mean Temperature at ${
                     stationData.station_name_nom[0]

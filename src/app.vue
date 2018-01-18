@@ -83,9 +83,9 @@
                                     
                                     <div class="dropdown-item-mutli-options">
                                         <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
-                                        <b-dropdown-item-button>.jpeg</b-dropdown-item-button>
-                                        <b-dropdown-item-button>.pdf</b-dropdown-item-button>
-                                        <b-dropdown-item-button>.svg</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadImage('pdf')">.pdf</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadImage('svg')">.svg</b-dropdown-item-button>
                                     </div>
                                 </div>
                             </div>
