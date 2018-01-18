@@ -61,16 +61,16 @@
                                     <span>Full Time Range</span>
                                     
                                     <div class="dropdown-item-mutli-options">
-                                        <b-dropdown-item-button>.csv</b-dropdown-item-button>
-                                        <b-dropdown-item-button>.xsl</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
                                     </div>
                                 </div>
                                 <div class="dropdown-item-mutli">
                                     <span>Visible Time Range Only</span>
                                     
                                     <div class="dropdown-item-mutli-options">
-                                        <b-dropdown-item-button>.csv</b-dropdown-item-button>
-                                        <b-dropdown-item-button>.xsl</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
+                                        <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +158,36 @@ export default class App extends Vue {
         (<any>window).DQV.charts.dvChart1.highchart.exportChart({
             type
         });
+    }
+
+    downloadData(type: 'csv' | 'xls', fullRange: boolean = false): void {
+        // get highchart instance
+        const chart = (<any>window).DQV.charts.dvChart1.highchart;
+
+        // cache current extremes
+        let extremes = chart.xAxis[0].getExtremes();
+
+        // if need full range, adjust quickly reset chart to the full range
+        if (fullRange) {
+            chart.xAxis[0].setExtremes(
+                extremes.dataMin,
+                extremes.dataMax,
+                true,
+                false
+            );
+        }
+
+        const downloadMap: { [name: string]: () => void } = {
+            csv: chart.downloadCSV,
+            xls: chart.downloadXLS
+        };
+
+        downloadMap[type].call(chart);
+
+        // reset chart to the previously selected range if a full-range download was requested
+        if (fullRange) {
+            chart.xAxis[0].setExtremes(extremes.min, extremes.max, true, false);
+        }
     }
 }
 
