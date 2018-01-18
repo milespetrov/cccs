@@ -160,6 +160,12 @@ export default class App extends Vue {
         });
     }
 }
+
+// FIXME: this is a hack, this file should be manually changed to be scoped under `.cip-scope`; see the proper way below
+// for some reason, the proper way works find in a prod build, but during dev, bootstrap styles are getting lost if any styles are modified through the dev tools
+// this is very annoying for development
+// TODO: decide which hack should be used permanently
+import './../node_modules/bootstrap/scss/bootstrap.scss';
 </script>
 
 <style lang="scss">
@@ -167,7 +173,7 @@ export default class App extends Vue {
     // import the main bootstrap .scss file so it will be scoped under `.cip-scope`
     // if not scope, bootstrap rules interfere with WET's modified bootstrap version
     // TODO: for building performance, we might want to precompile bootstrap already scoped to `.cip-scope`
-    @import './../node_modules/bootstrap/scss/bootstrap.scss';
+    // @import './../node_modules/bootstrap/scss/bootstrap.scss';
 
     // import vue-bootstrap under the scope as well just in case; it doesn't seem to be interfering with WET styles though
     @import './../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
