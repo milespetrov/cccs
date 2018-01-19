@@ -1,6 +1,8 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope">
 
+        <span class="fake-location-search-map" v-if="currentView === 'chart-view'"></span>
+
         <nav class="top-level-menu container">
             <h2 class="title">
                 <i class="fas fa-globe fa-lg"></i>
@@ -276,15 +278,13 @@ export default class App extends Vue {
 }
 
 // TODO: remove demo hack
-main#wb-cont:after {
-    content: '';
+.fake-location-search-map {
     position: absolute;
     background-image: url(https://i.imgur.com/BdnP4yF.png);
     top: 0;
     left: 0;
     right: 0;
-    height: 167px;
-    z-index: -1;
+    height: 175px;
 }
 
 .top-level-menu {
@@ -292,6 +292,7 @@ main#wb-cont:after {
     align-items: center;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
 
     .title {
         margin: 0 0 0 1rem;
