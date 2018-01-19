@@ -36,7 +36,7 @@ export default class ChartView extends Vue {
     async mounted(): Promise<void> {
         console.log('aaa---');
         if (!this.data) {
-            this.data = await api.getData();
+            this.data = await api.getData(this.selectedTimePeriod);
 
             const config = this.makeConfig(this.data, this.selectedTimePeriod);
             this.initDQV(config);
@@ -79,28 +79,30 @@ export default class ChartView extends Vue {
     }
 
     updateDQV(): void {
-        const config = this.makeConfig(this.data, this.selectedTimePeriod);
+        api.getData(this.selectedTimePeriod).then((data: object) => {
+            const config = this.makeConfig(data, this.selectedTimePeriod);
+            
+            const dvChart = api.DQV.charts['dvChart1'];
+            dvChart.config = config;
 
-        const dvChart = api.DQV.charts['dvChart1'];
-        dvChart.config = config;
-
-        (<any>window).wb.add('summary');
-        (<any>window).wb.add('table');
+            (<any>window).wb.add('summary');
+            (<any>window).wb.add('table');
+        });
     }
 
     makeConfig(
-        data: string[],
+        data: any,
         period: string,
         stnid: number = 1171393
     ): object {
-        const stationData = api.JSONGroupBy(
+        const stationData = data; /**api.JSONGroupBy(
             data,
             ['stnid'],
             [period, 'Year_Annee', 'station_name_nom']
-        )[stnid];
+        )[stnid];*/
         const stationTrendValue = 2.35;
 
-        const seriesData = stationData[period].map(
+        const seriesData = stationData.absolute_values.map(
             (value: number) => (value > -9999 ? value : null)
         );
 
@@ -155,11 +157,8 @@ export default class ChartView extends Vue {
                 enabled: false
             },
             title: {
-                text: `Mean Temperature at ${
-                    stationData.station_name_nom[0]
-                }, ${stationData.Year_Annee[0]} - ${
-                    stationData.Year_Annee[stationData.Year_Annee.length - 1]
-                }`
+                text: `Mean Temperature at ${stationData.station_name},
+                 ${stationData.start_year} - ${stationData.end_year}`
             },
             subtitle: {
                 text: 'ccpid.ca'
@@ -189,7 +188,7 @@ export default class ChartView extends Vue {
                     text: 'Mean Temperature, °C'
                 },
                 min: Math.min(0, ...seriesData),
-                max: Math.max(...seriesData)
+                max: Math.max(0, ...seriesData)
             },
             tooltip: {
                 shared: true,
@@ -206,7 +205,7 @@ export default class ChartView extends Vue {
                     label: {
                         connectorAllowed: false
                     },
-                    pointStart: stationData.Year_Annee[0]
+                    pointStart: stationData.start_year
                 }
             },
 
