@@ -1,6 +1,8 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope">
 
+        <span class="fake-location-search-map" v-if="currentView === 'chart-view'"></span>
+
         <nav class="top-level-menu container">
             <h2 class="title">
                 <i class="fas fa-globe fa-lg"></i>
@@ -38,10 +40,10 @@
         <section class="container main">
 
             <variable-selector class="variable-selector"></variable-selector>
-            
+
             <section class="content">
                 <div class="visualization-menu container">
-                                
+
                     <div class="menu-option">
                         <select v-model="selectedTimePeriod">
                             <option v-for="timePeriod in timePeriods" :key="timePeriod">{{ timePeriod }}</option>
@@ -59,7 +61,7 @@
                                 <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
                                 <div class="dropdown-item-mutli">
                                     <span>Full Time Range</span>
-                                    
+
                                     <div class="dropdown-item-mutli-options">
                                         <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
                                         <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
@@ -67,7 +69,7 @@
                                 </div>
                                 <div class="dropdown-item-mutli">
                                     <span>Visible Time Range Only</span>
-                                    
+
                                     <div class="dropdown-item-mutli-options">
                                         <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
                                         <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
@@ -80,7 +82,7 @@
                                 <b-dropdown-header id="chart-download-image">Image</b-dropdown-header>
                                 <div class="dropdown-item-mutli">
                                     <span>Chart</span>
-                                    
+
                                     <div class="dropdown-item-mutli-options">
                                         <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
                                         <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
@@ -90,7 +92,7 @@
                                 </div>
                             </div>
                             <b-dropdown-divider></b-dropdown-divider>
-                            
+
                             <b-dropdown-item-button>Print Chart</b-dropdown-item-button>
                             <b-dropdown-divider></b-dropdown-divider>
 
@@ -103,9 +105,9 @@
                 <keep-alive>
                     <component :is="currentView" :selectedTimePeriod="selectedTimePeriod" class="visualization"></component>
                 </keep-alive>
-            
+
             </section>
-            
+
         </section>
     </main>
 </template>
@@ -190,20 +192,54 @@ export default class App extends Vue {
         }
     }
 }
-
-// FIXME: this is a hack, this file should be manually changed to be scoped under `.cip-scope`; see the proper way below
-// for some reason, the proper way works find in a prod build, but during dev, bootstrap styles are getting lost if any styles are modified through the dev tools
-// this is very annoying for development
-// TODO: decide which hack should be used permanently
-import './../node_modules/bootstrap/scss/bootstrap.scss';
 </script>
 
 <style lang="scss">
 .cip-scope {
-    // import the main bootstrap .scss file so it will be scoped under `.cip-scope`
-    // if not scope, bootstrap rules interfere with WET's modified bootstrap version
-    // TODO: for building performance, we might want to precompile bootstrap already scoped to `.cip-scope`
+    // import the bootstrap .scss files to be scoped under `.cip-scope`
+    // if not scoped, bootstrap rules interfere with WET's modified bootstrap version
+    // importing everything from the bootstrap is wasteful and propbaly not needed
+    // especially the grid system which will still interfere with WET version of bootstrap on elements inside the scope
+
+    // this import is left her for reference (if bootstrap styles are broken, try importing evething to check if something is missing from the list below)
     // @import './../node_modules/bootstrap/scss/bootstrap.scss';
+
+    // the following is the full list of bootstrap modules with a minimum set of required elements imported
+    @import './../node_modules/bootstrap/scss/functions';
+    @import './../node_modules/bootstrap/scss/variables';
+    @import './../node_modules/bootstrap/scss/mixins';
+    // @import './../node_modules/bootstrap/scss/root';
+    // @import './../node_modules/bootstrap/scss/print';
+    // @import './../node_modules/bootstrap/scss/reboot';
+    // @import './../node_modules/bootstrap/scss/type';
+    // @import './../node_modules/bootstrap/scss/images';
+    // @import './../node_modules/bootstrap/scss/code';
+    // @import './../node_modules/bootstrap/scss/grid';
+    // @import './../node_modules/bootstrap/scss/tables';
+    // @import './../node_modules/bootstrap/scss/forms';
+    @import './../node_modules/bootstrap/scss/buttons';
+    // @import './../node_modules/bootstrap/scss/transitions';
+    @import './../node_modules/bootstrap/scss/dropdown';
+    // @import './../node_modules/bootstrap/scss/button-group';
+    // @import './../node_modules/bootstrap/scss/input-group';
+    // @import './../node_modules/bootstrap/scss/custom-forms';
+    // @import './../node_modules/bootstrap/scss/nav';
+    // @import './../node_modules/bootstrap/scss/navbar';
+    // @import './../node_modules/bootstrap/scss/card';
+    // @import './../node_modules/bootstrap/scss/breadcrumb';
+    // @import './../node_modules/bootstrap/scss/pagination';
+    // @import './../node_modules/bootstrap/scss/badge';
+    // @import './../node_modules/bootstrap/scss/jumbotron';
+    // @import './../node_modules/bootstrap/scss/alert';
+    // @import './../node_modules/bootstrap/scss/progress';
+    // @import './../node_modules/bootstrap/scss/media';
+    // @import './../node_modules/bootstrap/scss/list-group';
+    // @import './../node_modules/bootstrap/scss/close';
+    // @import './../node_modules/bootstrap/scss/modal';
+    // @import './../node_modules/bootstrap/scss/tooltip';
+    // @import './../node_modules/bootstrap/scss/popover';
+    // @import './../node_modules/bootstrap/scss/carousel';
+    @import './../node_modules/bootstrap/scss/utilities';
 
     // import vue-bootstrap under the scope as well just in case; it doesn't seem to be interfering with WET styles though
     @import './../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
@@ -242,15 +278,13 @@ import './../node_modules/bootstrap/scss/bootstrap.scss';
 }
 
 // TODO: remove demo hack
-main#wb-cont:after {
-    content: '';
+.fake-location-search-map {
     position: absolute;
     background-image: url(https://i.imgur.com/BdnP4yF.png);
     top: 0;
     left: 0;
     right: 0;
-    height: 167px;
-    z-index: -1;
+    height: 175px;
 }
 
 .top-level-menu {
@@ -258,6 +292,7 @@ main#wb-cont:after {
     align-items: center;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
 
     .title {
         margin: 0 0 0 1rem;
