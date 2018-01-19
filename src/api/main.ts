@@ -4,10 +4,10 @@ interface EnhancedWindow extends Window {
     JSONGroupBy: any;
 }
 
-function getData(): Promise<any[]> {
+function getData(timePeriod: string): Promise<any[]> {
     const promise = new Promise<any[]>((resolve, reject) => {
         $.getJSON(
-            'https://ramp-pcar.github.io/dqvue/samples/AHCCD_Mean_Temp.json',
+            `http://ahccd-dev.azurewebsites.net/station/variable/${timePeriod}`,
             (data: any[]) => resolve(data)
         );
     });
