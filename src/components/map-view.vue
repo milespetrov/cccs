@@ -8,12 +8,10 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import api from './../api/main';
-import { EventEmitter } from 'events';
-import { ExtendedAPIPlugin } from 'webpack';
 
 @Component
 export default class MapView extends Vue {
-    async mounted(): Promise<void>{
+    mounted(): void{
         let RZ = (<any>window).RZ;
         if (RZ) {
             new RZ.Map(document.getElementById('map-anchor'), '../static/configs/config-ahccd-demo.en-CA.json');
