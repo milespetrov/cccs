@@ -1,7 +1,7 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope">
-
-        <span class="fake-location-search-map" v-if="currentView === 'chart-view'"></span>
+        
+        <router-view name="locationMap"></router-view>
 
         <nav class="top-level-menu container">
             <h2 class="title">
@@ -45,13 +45,13 @@
                 <div class="visualization-menu container">
 
                     <div class="menu-option">
-                        <select v-model="selectedTimePeriod">
+                        <select v-model="selectedTimePeriod" @change="changeTimePeriod(selectedTimePeriod)">
                             <option v-for="timePeriod in timePeriods" :key="timePeriod">{{ timePeriod }}</option>
                         </select>
                     </div>
 
-                    <button @click="currentView = 'map-view'">map</button>
-                    <button @click="currentView = 'chart-view'">chart</button>
+                    <button @click="changeView('map-view')">map</button>
+                    <button @click="changeView('chart-view')">chart</button>
 
                     <span class="separator"></span>
 
@@ -101,29 +101,29 @@
                     </div>
                 </div>
 
-
+                <span>isVariableSelectorOpen {{ isVariableSelectorOpen }}</span>
+                
                 <keep-alive>
-                    <component :is="currentView" :selectedTimePeriod="selectedTimePeriod" class="visualization"></component>
+                    <router-view class="visualization" name="visualization"></router-view>
                 </keep-alive>
-
+                
             </section>
 
         </section>
     </main>
 </template>
 
-
 <script lang="ts">
 import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
+
+import Dropdown from 'bootstrap-vue/es/components/dropdown';
+Vue.use(Dropdown);
 
 import ChartView from './components/chart-view.vue';
 import MapView from './components/map-view.vue';
 import VariableSelector from './components/variable-selector.vue';
 
-import store from './store';
-
-import Dropdown from 'bootstrap-vue/es/components/dropdown';
-Vue.use(Dropdown);
+import { rIsVariableSelectorOpen } from './store/modules/app';
 
 @Component({
     components: {
@@ -133,8 +133,6 @@ Vue.use(Dropdown);
     }
 })
 export default class App extends Vue {
-    currentView: string = 'chart-view';
-
     timePeriods: string[] = [
         'Jan_Janv',
         'Feb_Fev',
@@ -155,6 +153,28 @@ export default class App extends Vue {
         'Autumn_Autome'
     ];
     selectedTimePeriod: string = this.timePeriods[0];
+
+    mounted(): void {
+        this.changeTimePeriod(this.selectedTimePeriod);
+    }
+
+    changeTimePeriod(value: string): void {
+        this.$router.push({
+            name: 'chart-view',
+            query: { t: value, v: 'temperature' }
+        });
+    }
+
+    get isVariableSelectorOpen(): boolean {
+        return rIsVariableSelectorOpen(this.$store);
+    }
+
+    changeView(viewName: string): void {
+        this.$router.push({
+            name: viewName,
+            query: { t: this.selectedTimePeriod, v: 'temperature' }
+        });
+    }
 
     downloadImage(type: string): void {
         (<any>window).DQV.charts.dvChart1.highchart.exportChart({
@@ -195,61 +215,22 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
-.cip-scope {
-    // import the bootstrap .scss files to be scoped under `.cip-scope`
-    // if not scoped, bootstrap rules interfere with WET's modified bootstrap version
-    // importing everything from the bootstrap is wasteful and propbaly not needed
-    // especially the grid system which will still interfere with WET version of bootstrap on elements inside the scope
-
-    // this import is left her for reference (if bootstrap styles are broken, try importing evething to check if something is missing from the list below)
-    // @import './../node_modules/bootstrap/scss/bootstrap.scss';
-
-    // the following is the full list of bootstrap modules with a minimum set of required elements imported
-    @import './../node_modules/bootstrap/scss/functions';
-    @import './../node_modules/bootstrap/scss/variables';
-    @import './../node_modules/bootstrap/scss/mixins';
-    // @import './../node_modules/bootstrap/scss/root';
-    // @import './../node_modules/bootstrap/scss/print';
-    // @import './../node_modules/bootstrap/scss/reboot';
-    // @import './../node_modules/bootstrap/scss/type';
-    // @import './../node_modules/bootstrap/scss/images';
-    // @import './../node_modules/bootstrap/scss/code';
-    // @import './../node_modules/bootstrap/scss/grid';
-    // @import './../node_modules/bootstrap/scss/tables';
-    // @import './../node_modules/bootstrap/scss/forms';
-    @import './../node_modules/bootstrap/scss/buttons';
-    // @import './../node_modules/bootstrap/scss/transitions';
-    @import './../node_modules/bootstrap/scss/dropdown';
-    // @import './../node_modules/bootstrap/scss/button-group';
-    // @import './../node_modules/bootstrap/scss/input-group';
-    // @import './../node_modules/bootstrap/scss/custom-forms';
-    // @import './../node_modules/bootstrap/scss/nav';
-    // @import './../node_modules/bootstrap/scss/navbar';
-    // @import './../node_modules/bootstrap/scss/card';
-    // @import './../node_modules/bootstrap/scss/breadcrumb';
-    // @import './../node_modules/bootstrap/scss/pagination';
-    // @import './../node_modules/bootstrap/scss/badge';
-    // @import './../node_modules/bootstrap/scss/jumbotron';
-    // @import './../node_modules/bootstrap/scss/alert';
-    // @import './../node_modules/bootstrap/scss/progress';
-    // @import './../node_modules/bootstrap/scss/media';
-    // @import './../node_modules/bootstrap/scss/list-group';
-    // @import './../node_modules/bootstrap/scss/close';
-    // @import './../node_modules/bootstrap/scss/modal';
-    // @import './../node_modules/bootstrap/scss/tooltip';
-    // @import './../node_modules/bootstrap/scss/popover';
-    // @import './../node_modules/bootstrap/scss/carousel';
-    @import './../node_modules/bootstrap/scss/utilities';
-
-    // import vue-bootstrap under the scope as well just in case; it doesn't seem to be interfering with WET styles though
-    @import './../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
-
-    // global changes on top of bootstrap default stylings
-    @import './styles/vendor.scss';
-}
+// global changes on top of bootstrap default stylings
+@import './styles/vendor.scss';
 </style>
 
 <style lang="scss" scoped>
+// TODO: remove demo hack
+// this just adds a fake map image in the header for the chart-view
+/deep/ .fake-location-search-map {
+    position: absolute;
+    background-image: url(https://i.imgur.com/BdnP4yF.png);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 175px;
+}
+
 .b-dropdown {
     .dropdown-item-mutli {
         display: flex;
@@ -275,16 +256,6 @@ export default class App extends Vue {
             }
         }
     }
-}
-
-// TODO: remove demo hack
-.fake-location-search-map {
-    position: absolute;
-    background-image: url(https://i.imgur.com/BdnP4yF.png);
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 175px;
 }
 
 .top-level-menu {

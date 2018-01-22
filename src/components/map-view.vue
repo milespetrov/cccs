@@ -13,7 +13,8 @@ import api from './../api/main';
 @Component
 export default class MapView extends Vue {
     mounted(): void {
-        let RZ = (<any>window).RZ;
+        // TODO: map disabled until the jquery collisions are fixed
+        /* let RZ = (<any>window).RZ;
 
         if (!RZ) {
             return;
@@ -44,7 +45,7 @@ export default class MapView extends Vue {
                     );
                 });
             });
-        });
+        }); */
     }
 }
 </script>
