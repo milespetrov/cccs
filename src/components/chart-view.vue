@@ -2,7 +2,9 @@
     <div>
         variable: {{ variable }} <br>
         time: {{ timePeriod }}<br>
-        
+
+        <button @click="toggleVariableSelector()">toggle vs</button>
+
         <div>
             <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2" right>
                 <b-dropdown-item>First Action</b-dropdown-item>
@@ -23,14 +25,17 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import api from './../api/main';
 
+import {
+    rIsVariableSelectorOpen,
+    cToggleVariableSelector
+} from './../store/modules/app';
+
 @Component
 export default class ChartView extends Vue {
-    /* @Watch('selectedTimePeriod')
-    onSelectedTimePeriodChanged(): void {
-        this.updateDQV();
+    toggleVariableSelector(): void {
+        const currentState = rIsVariableSelectorOpen(this.$store);
+        cToggleVariableSelector(this.$store, !currentState);
     }
-
-    @Prop() selectedTimePeriod: string; */
 
     @Prop() timePeriod: string;
 

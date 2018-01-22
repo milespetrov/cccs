@@ -101,6 +101,8 @@
                     </div>
                 </div>
 
+                <span>isVariableSelectorOpen {{ isVariableSelectorOpen }}</span>
+                
                 <keep-alive>
                     <router-view class="visualization" name="visualization"></router-view>
                 </keep-alive>
@@ -114,14 +116,14 @@
 <script lang="ts">
 import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
 
+import Dropdown from 'bootstrap-vue/es/components/dropdown';
+Vue.use(Dropdown);
+
 import ChartView from './components/chart-view.vue';
 import MapView from './components/map-view.vue';
 import VariableSelector from './components/variable-selector.vue';
 
-import store from './store';
-
-import Dropdown from 'bootstrap-vue/es/components/dropdown';
-Vue.use(Dropdown);
+import { rIsVariableSelectorOpen } from './store/modules/app';
 
 @Component({
     components: {
@@ -161,6 +163,10 @@ export default class App extends Vue {
             name: 'chart-view',
             query: { t: value, v: 'temperature' }
         });
+    }
+
+    get isVariableSelectorOpen(): boolean {
+        return rIsVariableSelectorOpen(this.$store);
     }
 
     changeView(viewName: string): void {
