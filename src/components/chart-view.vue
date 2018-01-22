@@ -1,5 +1,8 @@
 <template>
     <div>
+        variable: {{ variable }} <br>
+        time: {{ timePeriod }}<br>
+        
         <div>
             <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2" right>
                 <b-dropdown-item>First Action</b-dropdown-item>
@@ -22,12 +25,23 @@ import api from './../api/main';
 
 @Component
 export default class ChartView extends Vue {
-    @Watch('selectedTimePeriod')
+    /* @Watch('selectedTimePeriod')
     onSelectedTimePeriodChanged(): void {
         this.updateDQV();
     }
 
-    @Prop() selectedTimePeriod: string;
+    @Prop() selectedTimePeriod: string; */
+
+    @Prop() timePeriod: string;
+
+    @Prop({ default: 'Temperature' })
+    variable: string;
+
+    @Watch('timePeriod')
+    onTimePeriodChanged(): void {
+        console.log('onTimePeriodChange', this.timePeriod);
+        this.updateDQV();
+    }
 
     private data: any[];
 
@@ -35,10 +49,11 @@ export default class ChartView extends Vue {
 
     async mounted(): Promise<void> {
         console.log('aaa---');
-        if (!this.data) {
-            this.data = await api.getData(this.selectedTimePeriod);
 
-            const config = this.makeConfig(this.data, this.selectedTimePeriod);
+        if (!this.data) {
+            this.data = await api.getData(this.timePeriod);
+
+            const config = this.makeConfig(this.data, this.timePeriod);
             this.initDQV(config);
             return;
         }
@@ -79,9 +94,9 @@ export default class ChartView extends Vue {
     }
 
     updateDQV(): void {
-        api.getData(this.selectedTimePeriod).then((data: object) => {
-            const config = this.makeConfig(data, this.selectedTimePeriod);
-            
+        api.getData(this.timePeriod).then((data: object) => {
+            const config = this.makeConfig(data, this.timePeriod);
+
             const dvChart = api.DQV.charts['dvChart1'];
             dvChart.config = config;
 
@@ -90,11 +105,7 @@ export default class ChartView extends Vue {
         });
     }
 
-    makeConfig(
-        data: any,
-        period: string,
-        stnid: number = 1171393
-    ): object {
+    makeConfig(data: any, period: string, stnid: number = 1171393): object {
         const stationData = data; /**api.JSONGroupBy(
             data,
             ['stnid'],
