@@ -1,4 +1,5 @@
 import chartView from './components/chart-view.vue';
+import chartViewControls from './components/chart-view-controls.vue';
 import mapView from './components/map-view.vue';
 
 import { Route, RouteConfig } from 'vue-router';
@@ -14,7 +15,8 @@ const routes: RouteConfig[] = [
         path: '/chart',
         components: {
             visualization: chartView,
-            locationMap: fake_map
+            'visualization-menu': chartViewControls,
+            'location-map': fake_map
         },
         name: 'chart-view',
         props: {

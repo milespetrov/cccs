@@ -69,6 +69,10 @@
 
     .form-control {
         font-size: 1em;
+    }
+
+    // select for is default to height: calc(2.25rem + 2px); by wet
+    select.form-control:not([size]):not([multiple]) {
         height: calc(2.25em + 2px);
     }
 }
