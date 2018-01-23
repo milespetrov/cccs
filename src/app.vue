@@ -43,9 +43,8 @@
                     <div class="visualization-menu container">
                                     
                         <div class="menu-option">
-                            <select v-model="selectedTimePeriod" @change="changeTimePeriod(selectedTimePeriod)">
-                                <option v-for="timePeriod in timePeriods" :key="timePeriod">{{ timePeriod }}</option>
-                            </select>
+                            <b-form-select v-model="selectedTimePeriod" :options="timePeriods"
+                            @change="changeTimePeriod(selectedTimePeriod)"></b-form-select>
                         </div>
 
                         <button @click="changeView('map-view')">map</button>
@@ -116,7 +115,9 @@
 import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
+import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
+Vue.use(FormSelect);
 
 import ChartView from './components/chart-view.vue';
 import MapView from './components/map-view.vue';
@@ -151,7 +152,7 @@ export default class App extends Vue {
         'Summer_Ete',
         'Autumn_Autome'
     ];
-    selectedTimePeriod: string = this.timePeriods[0];    
+    selectedTimePeriod: string = this.timePeriods[0];
 
     mounted(): void {
         this.changeTimePeriod(this.selectedTimePeriod);
@@ -352,5 +353,4 @@ export default class App extends Vue {
         }
     }
 }
-
 </style>
