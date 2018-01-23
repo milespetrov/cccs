@@ -3,8 +3,6 @@
         variable: {{ variable }} <br>
         time: {{ timePeriod }}<br>
 
-        <button @click="toggleVariableSelector()">toggle vs</button>
-
         <div>
             <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2" right>
                 <b-dropdown-item>First Action</b-dropdown-item>
@@ -27,7 +25,8 @@ import api from './../api/main';
 
 import {
     rIsVariableSelectorOpen,
-    cToggleVariableSelector
+    cToggleVariableSelector,
+    rGetCurrentVariable
 } from './../store/modules/app';
 
 @Component
@@ -41,6 +40,10 @@ export default class ChartView extends Vue {
 
     @Prop({ default: 'Temperature' })
     variable: string;
+
+    get currentVariable(): string {
+        return rGetCurrentVariable(this.$store);
+    }
 
     @Watch('timePeriod')
     onTimePeriodChanged(): void {
