@@ -1,10 +1,15 @@
 {
   "ui": {
+    "appBar": {
+      "sideMenu": true,
+      "basemap": false,
+      "layers": false,
+      "geoSearch": false
+    },
     "navBar": {
       "zoom": "buttons",
       "extra": [
         "fullscreen",
-        "geoLocator",
         "home",
         "help"
       ]
@@ -13,19 +18,10 @@
       "logo": true,
       "items": [
         [
-          "layers",
-          "basemap"
-        ],
-        [
           "fullscreen",
-          "export",
-          "share",
           "touch",
           "help",
           "about"
-        ],
-        [
-          "language"
         ]
       ]
     },
@@ -35,8 +31,8 @@
     "legend": {
       "allowImport": false,
       "isOpen": {
-        "large": true,
-        "medium": true,
+        "large": false,
+        "medium": false,
         "small": false
       }
     }
@@ -67,8 +63,8 @@
     "components": {
       "geoSearch": {
         "enabled": true,
-        "showGraphic": true,
-        "showInfo": true
+        "showGraphic": false,
+        "showInfo": false
       },
       "mouseInfo": {
         "enabled": true,
@@ -190,7 +186,7 @@
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
         "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/0",
-        "controls": [ "opacity", "visibility", "query", "snapshot", "metadata", "boundaryZoom", "refresh", "reload", "settings", "data", "styles" ]
+        "controls": []
       }
     ],
     "baseMaps": [

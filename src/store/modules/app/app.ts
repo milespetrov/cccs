@@ -7,14 +7,22 @@ import { State as RootState } from './../../state';
 type AppContext = ActionContext<AppState, RootState>;
 
 const state: AppState = {
-    isVariableSelectorOpen: true
+    isVariableSelectorOpen: true,
+    currentVariable: "",
+    currentDataset: ""
 };
 
 // getters
 // retuns Word collection from the WordsState store
 const getters = {
     isVariableSelectorOpen: (state: AppState): boolean =>
-        state.isVariableSelectorOpen
+        state.isVariableSelectorOpen,
+    
+    getCurrentVariable: (state: AppState): string =>
+        state.currentVariable,
+
+    getCurrentDataset: (state: AppState): string =>
+        state.currentDataset
 };
 
 // actions
@@ -24,6 +32,12 @@ const actions = {};
 const mutations = {
     toggleVariableSelector(state: AppState, value: boolean): void {
         state.isVariableSelectorOpen = value;
+    },
+    setCurrentVariable(state: AppState, value: string): void {
+        state.currentVariable = value;
+    },
+    setCurrentDataset(state: AppState, value: string): void {
+        state.currentDataset = value;
     }
 };
 
@@ -102,9 +116,13 @@ const { commit, read, dispatch } = getStoreAccessors<AppState, RootState>(
 
 // getters
 export const rIsVariableSelectorOpen = read(getters.isVariableSelectorOpen);
+export const rGetCurrentVariable = read(getters.getCurrentVariable);
+export const rGetCurrentDataset = read(getters.getCurrentDataset);
 
 // actions
 // export const dActionName = dispatch(actions.actionName);
 
 //mutations
 export const cToggleVariableSelector = commit(mutations.toggleVariableSelector);
+export const cSetCurrentVariable = commit(mutations.setCurrentVariable);
+export const cSetCurrentDataset = commit(mutations.setCurrentDataset);

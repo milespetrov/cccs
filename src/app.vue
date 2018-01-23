@@ -38,76 +38,75 @@
         </nav>
 
         <section class="container main">
+            <div class="row">
+                <section class="content col-md-9 col-md-push-3">
+                    <div class="visualization-menu container">
+                                    
+                        <div class="menu-option">
+                            <select v-model="selectedTimePeriod" @change="changeTimePeriod(selectedTimePeriod)">
+                                <option v-for="timePeriod in timePeriods" :key="timePeriod">{{ timePeriod }}</option>
+                            </select>
+                        </div>
 
-            <variable-selector class="variable-selector"></variable-selector>
+                        <button @click="changeView('map-view')">map</button>
+                        <button @click="changeView('chart-view')">chart</button>
 
-            <section class="content">
-                <div class="visualization-menu container">
+                        <span class="separator"></span>
 
-                    <div class="menu-option">
-                        <select v-model="selectedTimePeriod" @change="changeTimePeriod(selectedTimePeriod)">
-                            <option v-for="timePeriod in timePeriods" :key="timePeriod">{{ timePeriod }}</option>
-                        </select>
+                        <div class="menu-option">
+                            <b-dropdown text="Download" variant="light" class="m-md-2" right>
+                                <div role="group" aria-lableledby="chart-download-data">
+                                    <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
+                                    <div class="dropdown-item-mutli">
+                                        <span>Full Time Range</span>
+
+                                        <div class="dropdown-item-mutli-options">
+                                            <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
+                                            <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item-mutli">
+                                        <span>Visible Time Range Only</span>
+
+                                        <div class="dropdown-item-mutli-options">
+                                            <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
+                                            <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b-dropdown-divider></b-dropdown-divider>
+
+                                <div role="group" aria-lableledby="chart-download-image">
+                                    <b-dropdown-header id="chart-download-image">Image</b-dropdown-header>
+                                    <div class="dropdown-item-mutli">
+                                        <span>Chart</span>
+
+                                        <div class="dropdown-item-mutli-options">
+                                            <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
+                                            <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
+                                            <b-dropdown-item-button @click="downloadImage('pdf')">.pdf</b-dropdown-item-button>
+                                            <b-dropdown-item-button @click="downloadImage('svg')">.svg</b-dropdown-item-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <b-dropdown-divider></b-dropdown-divider>
+
+                                <b-dropdown-item-button>Print Chart</b-dropdown-item-button>
+                                <b-dropdown-divider></b-dropdown-divider>
+
+                                <b-dropdown-item>Access full dataset in Catalogue</b-dropdown-item>
+                            </b-dropdown>
+                        </div>
                     </div>
+                    
+                    <keep-alive>
+                        <router-view class="visualization" name="visualization"></router-view>
+                    </keep-alive>
+                    
+                </section>
 
-                    <button @click="changeView('map-view')">map</button>
-                    <button @click="changeView('chart-view')">chart</button>
-
-                    <span class="separator"></span>
-
-                    <div class="menu-option">
-                        <b-dropdown text="Download" variant="light" class="m-md-2" right>
-                            <div role="group" aria-lableledby="chart-download-data">
-                                <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
-                                <div class="dropdown-item-mutli">
-                                    <span>Full Time Range</span>
-
-                                    <div class="dropdown-item-mutli-options">
-                                        <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
-                                        <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item-mutli">
-                                    <span>Visible Time Range Only</span>
-
-                                    <div class="dropdown-item-mutli-options">
-                                        <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
-                                        <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
-                                    </div>
-                                </div>
-                            </div>
-                            <b-dropdown-divider></b-dropdown-divider>
-
-                            <div role="group" aria-lableledby="chart-download-image">
-                                <b-dropdown-header id="chart-download-image">Image</b-dropdown-header>
-                                <div class="dropdown-item-mutli">
-                                    <span>Chart</span>
-
-                                    <div class="dropdown-item-mutli-options">
-                                        <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
-                                        <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
-                                        <b-dropdown-item-button @click="downloadImage('pdf')">.pdf</b-dropdown-item-button>
-                                        <b-dropdown-item-button @click="downloadImage('svg')">.svg</b-dropdown-item-button>
-                                    </div>
-                                </div>
-                            </div>
-                            <b-dropdown-divider></b-dropdown-divider>
-
-                            <b-dropdown-item-button>Print Chart</b-dropdown-item-button>
-                            <b-dropdown-divider></b-dropdown-divider>
-
-                            <b-dropdown-item>Access full dataset in Catalogue</b-dropdown-item>
-                        </b-dropdown>
-                    </div>
-                </div>
-
-                <span>isVariableSelectorOpen {{ isVariableSelectorOpen }}</span>
-                
-                <keep-alive>
-                    <router-view class="visualization" name="visualization"></router-view>
-                </keep-alive>
-                
-            </section>
+                <variable-selector class="variable-selector"></variable-selector>
+            </div>
 
         </section>
     </main>
@@ -152,7 +151,7 @@ export default class App extends Vue {
         'Summer_Ete',
         'Autumn_Autome'
     ];
-    selectedTimePeriod: string = this.timePeriods[0];
+    selectedTimePeriod: string = this.timePeriods[0];    
 
     mounted(): void {
         this.changeTimePeriod(this.selectedTimePeriod);
@@ -300,6 +299,7 @@ export default class App extends Vue {
     display: flex;
     align-items: center;
     padding: 1rem;
+    padding-left: 0;
     background-color: lightgray;
 
     .separator {
@@ -353,16 +353,4 @@ export default class App extends Vue {
     }
 }
 
-.container.main {
-    display: flex;
-}
-
-.content {
-    flex: 1;
-}
-
-.variable-selector {
-    // border: 1px solid red;
-    width: 20%;
-}
 </style>
