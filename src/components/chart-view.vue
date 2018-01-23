@@ -1,6 +1,7 @@
 <template>
     <div>
-        variable: {{ variable }} <br>
+        Selected variable: {{ currentVariable }} <br>
+        Selected dataset: {{ currentDataset }} <br>
         time: {{ timePeriod }}<br>
 
         <div>
@@ -26,7 +27,8 @@ import api from './../api/main';
 import {
     rIsVariableSelectorOpen,
     cToggleVariableSelector,
-    rGetCurrentVariable
+    rGetCurrentVariable,
+    rGetCurrentDataset
 } from './../store/modules/app';
 
 @Component
@@ -43,6 +45,10 @@ export default class ChartView extends Vue {
 
     get currentVariable(): string {
         return rGetCurrentVariable(this.$store);
+    }
+
+    get currentDataset(): string {
+        return rGetCurrentDataset(this.$store);
     }
 
     @Watch('timePeriod')
