@@ -3,7 +3,7 @@ const pkg = require('./package.json');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin;
 
-const minimize = true;
+const minimize = false;
 
 module.exports = {
     vendor: false,
@@ -17,8 +17,11 @@ module.exports = {
     },
     homepage: './',
     minimize: minimize,
+    sourceMap: false,
     presets: [
-        // there is problem with using babel-minify for now: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
+        // there is problem with using babel-minify if you want to have source maps as well: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
+        // TODO: cannot uglify with babel without the EI hack in vuex store
+        // see IE11 issue here for details https://github.com/istrib/vuex-typescript/issues/13
         // require('poi-preset-babel-minify')({}, { comments: false }),
         require('poi-preset-typescript')(),
         require('poi-preset-karma')({
