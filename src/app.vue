@@ -1,7 +1,7 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope">
         
-        <router-view name="locationMap"></router-view>
+        <router-view name="location-map"></router-view>
 
         <nav class="top-level-menu container">
             <h2 class="title">
@@ -40,65 +40,10 @@
         <section class="container main">
             <div class="row">
                 <section class="content col-md-9 col-md-push-3">
-                    <div class="visualization-menu container">
-                                    
-                        <div class="menu-option">
-                            <select v-model="selectedTimePeriod" @change="changeTimePeriod(selectedTimePeriod)">
-                                <option v-for="timePeriod in timePeriods" :key="timePeriod">{{ timePeriod }}</option>
-                            </select>
-                        </div>
+                    <keep-alive>
+                        <router-view class="visualization-menu" name="visualization-menu"></router-view>
+                    </keep-alive>
 
-                        <button @click="changeView('map-view')">map</button>
-                        <button @click="changeView('chart-view')">chart</button>
-
-                        <span class="separator"></span>
-
-                        <div class="menu-option">
-                            <b-dropdown text="Download" variant="light" class="m-md-2" right>
-                                <div role="group" aria-lableledby="chart-download-data">
-                                    <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
-                                    <div class="dropdown-item-mutli">
-                                        <span>Full Time Range</span>
-
-                                        <div class="dropdown-item-mutli-options">
-                                            <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
-                                            <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item-mutli">
-                                        <span>Visible Time Range Only</span>
-
-                                        <div class="dropdown-item-mutli-options">
-                                            <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
-                                            <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <b-dropdown-divider></b-dropdown-divider>
-
-                                <div role="group" aria-lableledby="chart-download-image">
-                                    <b-dropdown-header id="chart-download-image">Image</b-dropdown-header>
-                                    <div class="dropdown-item-mutli">
-                                        <span>Chart</span>
-
-                                        <div class="dropdown-item-mutli-options">
-                                            <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
-                                            <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
-                                            <b-dropdown-item-button @click="downloadImage('pdf')">.pdf</b-dropdown-item-button>
-                                            <b-dropdown-item-button @click="downloadImage('svg')">.svg</b-dropdown-item-button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <b-dropdown-divider></b-dropdown-divider>
-
-                                <b-dropdown-item-button>Print Chart</b-dropdown-item-button>
-                                <b-dropdown-divider></b-dropdown-divider>
-
-                                <b-dropdown-item>Access full dataset in Catalogue</b-dropdown-item>
-                            </b-dropdown>
-                        </div>
-                    </div>
-                    
                     <keep-alive>
                         <router-view class="visualization" name="visualization"></router-view>
                     </keep-alive>
@@ -116,99 +61,26 @@
 import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
+import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
+Vue.use(FormSelect);
 
 import ChartView from './components/chart-view.vue';
 import MapView from './components/map-view.vue';
 import VariableSelector from './components/variable-selector.vue';
 
-import { rIsVariableSelectorOpen } from './store/modules/app';
-
 @Component({
     components: {
-        'chart-view': ChartView,
-        'map-view': MapView,
         'variable-selector': VariableSelector
     }
 })
 export default class App extends Vue {
-    timePeriods: string[] = [
-        'Jan_Janv',
-        'Feb_Fev',
-        'Mar_March',
-        'Apr_Avr',
-        'May_Mai',
-        'June_Juin',
-        'July_Juil',
-        'Aug_Aout',
-        'Sept_Sept',
-        'Oct_Oct',
-        'Nov_Nov',
-        'Dec_Dec',
-        'Annual_Annuel',
-        'Winter_Hiver',
-        'Spring_Printemp',
-        'Summer_Ete',
-        'Autumn_Autome'
-    ];
-    selectedTimePeriod: string = this.timePeriods[0];    
-
     mounted(): void {
-        this.changeTimePeriod(this.selectedTimePeriod);
-    }
-
-    changeTimePeriod(value: string): void {
+        // DEMO: push to the chart view on mount, so something will show up
         this.$router.push({
             name: 'chart-view',
-            query: { t: value, v: 'temperature' }
+            query: { t: 'Jan_Janv', v: 'temperature' }
         });
-    }
-
-    get isVariableSelectorOpen(): boolean {
-        return rIsVariableSelectorOpen(this.$store);
-    }
-
-    changeView(viewName: string): void {
-        this.$router.push({
-            name: viewName,
-            query: { t: this.selectedTimePeriod, v: 'temperature' }
-        });
-    }
-
-    downloadImage(type: string): void {
-        (<any>window).DQV.charts.dvChart1.highchart.exportChart({
-            type
-        });
-    }
-
-    downloadData(type: 'csv' | 'xls', fullRange: boolean = false): void {
-        // get highchart instance
-        const chart = (<any>window).DQV.charts.dvChart1.highchart;
-
-        // cache current extremes
-        let extremes = chart.xAxis[0].getExtremes();
-
-        // if need full range, adjust quickly reset chart to the full range
-        if (fullRange) {
-            chart.xAxis[0].setExtremes(
-                extremes.dataMin,
-                extremes.dataMax,
-                true,
-                false
-            );
-        }
-
-        const downloadMap: { [name: string]: () => void } = {
-            csv: chart.downloadCSV,
-            xls: chart.downloadXLS
-        };
-
-        downloadMap[type].call(chart);
-
-        // reset chart to the previously selected range if a full-range download was requested
-        if (fullRange) {
-            chart.xAxis[0].setExtremes(extremes.min, extremes.max, true, false);
-        }
     }
 }
 </script>
@@ -228,33 +100,6 @@ export default class App extends Vue {
     left: 0;
     right: 0;
     height: 175px;
-}
-
-.b-dropdown {
-    .dropdown-item-mutli {
-        display: flex;
-        align-items: center;
-        padding: 0.25rem 1.5rem;
-
-        span {
-            flex: 1 0 auto;
-            white-space: nowrap;
-            margin-right: 4rem;
-        }
-
-        &-options {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            width: 14rem;
-
-            .dropdown-item {
-                // flex-basis: 50%;
-                width: 50%;
-                text-align: center;
-            }
-        }
-    }
 }
 
 .top-level-menu {
@@ -293,32 +138,6 @@ export default class App extends Vue {
     }
 }
 
-.visualization-menu {
-    height: 3rem * 1.6;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    padding-left: 0;
-    background-color: lightgray;
-
-    .separator {
-        flex: 1;
-    }
-
-    .menu-option {
-        margin: 0 2rem;
-        // font-weight: bold;
-
-        > svg {
-            margin: auto;
-        }
-    }
-
-    .variable-selector {
-    }
-}
-
 .location-search {
     display: flex;
     align-items: center;
@@ -352,5 +171,4 @@ export default class App extends Vue {
         }
     }
 }
-
 </style>

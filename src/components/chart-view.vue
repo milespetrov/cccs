@@ -1,10 +1,6 @@
 <template>
     <div>
-        Selected variable: {{ currentVariable }} <br>
-        Selected dataset: {{ currentDataset }} <br>
-        time: {{ timePeriod }}<br>
-
-        <div>
+        <div v-if="false">
             <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2" right>
                 <b-dropdown-item>First Action</b-dropdown-item>
                 <b-dropdown-item>Second Action</b-dropdown-item>
@@ -16,6 +12,11 @@
         </div>
         
         <div id="mount-point"></div>
+
+        Selected variable: {{ currentVariable }} <br>
+        Selected dataset: {{ currentDataset }} <br>
+        Selected time period: {{ timePeriod }}<br>
+
     </div>
 </template>
 
@@ -23,6 +24,7 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import api from './../api/main';
+import ahccdTemp from './../configs/chart/ahccd-temp';
 
 import {
     rIsVariableSelectorOpen,
@@ -62,8 +64,6 @@ export default class ChartView extends Vue {
     private userTrendValue: SVGElement;
 
     async mounted(): Promise<void> {
-        console.log('aaa---');
-
         if (!this.data) {
             this.data = await api.getData(this.timePeriod);
 
@@ -80,6 +80,7 @@ export default class ChartView extends Vue {
 
         const template = `
             <dv-section>
+                
                 <dv-chart id="dvChart1" dv-auto-generate-table>
                     <details>
                         <summary>View data for this chart</summary>
@@ -107,145 +108,20 @@ export default class ChartView extends Vue {
         (<any>window).wb.add('table');
     }
 
-    updateDQV(): void {
-        api.getData(this.timePeriod).then((data: object) => {
-            const config = this.makeConfig(data, this.timePeriod);
+    async updateDQV(): Promise<void> {
+        this.data = await api.getData(this.timePeriod);
 
-            const dvChart = api.DQV.charts['dvChart1'];
-            dvChart.config = config;
+        const config = this.makeConfig(this.data, this.timePeriod);
 
-            (<any>window).wb.add('summary');
-            (<any>window).wb.add('table');
-        });
+        const dvChart = api.DQV.charts['dvChart1'];
+        dvChart.config = config;
+
+        (<any>window).wb.add('summary');
+        (<any>window).wb.add('table');
     }
 
     makeConfig(data: any, period: string, stnid: number = 1171393): object {
-        const stationData = data; /**api.JSONGroupBy(
-            data,
-            ['stnid'],
-            [period, 'Year_Annee', 'station_name_nom']
-        )[stnid];*/
-        const stationTrendValue = 2.35;
-
-        const seriesData = stationData.absolute_values.map(
-            (value: number) => (value > -9999 ? value : null)
-        );
-
-        const config = {
-            chart: {
-                zoomType: 'x',
-                zoomSlider: {
-                    step: 1
-                },
-                events: {
-                    load: (event: any) => {
-                        const ren = event.target.renderer; //(<any>this).renderer;
-
-                        // const point = chart.series[0].points[0];
-                        ren
-                            .label(
-                                `Trend value: <b>${stationTrendValue}</b>`,
-                                80,
-                                50
-                            )
-                            .css({
-                                color: '#ecf0f1'
-                            })
-                            .attr({
-                                fill: '#2c3e50',
-                                padding: 8,
-                                zIndex: 6
-                            })
-                            .add();
-                        this.userTrendValue = ren
-                            .label(
-                                `Trend value: <b>${stationTrendValue}</b>`,
-                                80,
-                                90
-                            )
-                            .css({
-                                color: '#ecf0f1'
-                            })
-                            .attr({
-                                fill: '#2c3e50',
-                                padding: 8,
-                                zIndex: 6
-                            })
-                            .add();
-                    }
-                }
-            },
-            credits: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            title: {
-                text: `Mean Temperature at ${stationData.station_name},
-                 ${stationData.start_year} - ${stationData.end_year}`
-            },
-            subtitle: {
-                text: 'ccpid.ca'
-            },
-            xAxis: {
-                // categories: stationData.Year_Annee,
-                title: {
-                    text: 'Year'
-                },
-                minRange: 20,
-                crosshair: true,
-                events: {
-                    setExtremes: (event: any) => {
-                        console.log(event, event.target);
-
-                        (<any>this.userTrendValue).textSetter(
-                            `Trend value: <b>${(Math.random() * 5).toFixed(
-                                2
-                            )}</b>`
-                        );
-                        api.DQV.charts['dvChart1'];
-                    }
-                }
-            },
-            yAxis: {
-                title: {
-                    text: 'Mean Temperature, °C'
-                },
-                min: Math.min(0, ...seriesData),
-                max: Math.max(0, ...seriesData)
-            },
-            tooltip: {
-                shared: true,
-                valueSuffix: '°C'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-            },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    pointStart: stationData.start_year
-                }
-            },
-
-            series: [
-                {
-                    name: period,
-                    data: seriesData,
-                    type: 'column',
-                    pointPadding: 0.1,
-                    groupPadding: 0.1
-                }
-            ]
-        };
-
-        return config;
+        return ahccdTemp(data, period, stnid);
     }
 }
 </script>
