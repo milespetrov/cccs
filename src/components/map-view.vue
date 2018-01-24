@@ -1,6 +1,23 @@
 <template>
     <aside class="root">
         <div id="map-anchor"></div>
+        <details>
+            <summary>View map data</summary>
+            <div class="summary">
+                <table id="map-table" class="wb-tables table table-striped" data-wb-tables='{ "scrollX": true }' :config="config">
+                    <thead>
+                        <tr>
+                            <th v-for="col in config.columns" :key="col.name">{{col.name}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(feature, index) in config.data" :key="`${index}-feature`">
+                            <td v-for="(col,index) in config.columns" :key="`${index}-data`">{{feature[col.data] || '-'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
     </aside>
 </template>
 
@@ -12,40 +29,36 @@ import api from './../api/main';
 
 @Component
 export default class MapView extends Vue {
-    mounted(): void {
-        // TODO: map disabled until the jquery collisions are fixed
-        /* let RZ = (<any>window).RZ;
+    data: any;
+    config:any = {};
 
-        if (!RZ) {
-            return;
+    async mounted(): Promise<void> {
+        if (!this.data) {
+            this.data = await $.getJSON('http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json', (data) => {return data});
+
+            this.updateTable(this.data);
         }
+    }
 
-        console.log('what??');
+    updateTable(data:any): void {
+        const columns: object[] = [];
+        let tableData: string[];
 
-        new RZ.Map(
-            document.getElementById('map-anchor'),
-            '../static/configs/config-ahccd-demo.en-CA.json'
-        );
+        Object.keys(data.features[0].attributes).forEach(column => {
+           columns.push({
+               name: column,
+               data: column
+           });
+        });
 
-        let tooltip;
-        RZ.mapAdded.subscribe(() => {
-            RZ.mapInstances[
-                RZ.mapInstances.length - 1
-            ].ui.tooltip.mouseOver.subscribe((z: any) => {
-                z.event.preventDefault();
-                z.attribs.then((a: any) => {
-                    let name = a.station_name_nom;
-                    let value = a.Annual_Annuel;
-                    let currentTemplate = `<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend Value: %(value)s</span></div>`;
-                    let tooltip = z.add(
-                        sprintf(currentTemplate, {
-                            name,
-                            value
-                        })
-                    );
-                });
-            });
-        }); */
+        tableData = (<object[]>data.features).map(feature => {
+            return (<any>feature).attributes;
+        });
+
+        this.config = {
+            data: tableData,
+            columns: columns
+        };
     }
 }
 </script>
