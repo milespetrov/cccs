@@ -2,8 +2,7 @@
     <div class="visualization-menu container">
                                     
         <div class="menu-option">
-            <b-form-select v-model="selectedTimePeriod" :options="timePeriods"
-                @change="changeTimePeriod(selectedTimePeriod)"></b-form-select>
+            <b-form-select v-model="selectedTimePeriod" :options="timePeriods"></b-form-select>
         </div>
 
         <button @click="changeView('map-view')">map</button>
@@ -88,13 +87,14 @@ export default class ChartViewControls extends Vue {
     selectedTimePeriod: string = this.timePeriods[0];
 
     mounted(): void {
-        this.changeTimePeriod(this.selectedTimePeriod);
+        this.changeTimePeriod();
     }
 
-    changeTimePeriod(value: string): void {
+    @Watch('selectedTimePeriod')
+    changeTimePeriod(): void {
         this.$router.push({
             name: 'chart-view',
-            query: { t: value, v: 'temperature' }
+            query: { t: this.selectedTimePeriod, v: 'temperature' }
         });
     }
 
@@ -164,9 +164,6 @@ export default class ChartViewControls extends Vue {
         > svg {
             margin: auto;
         }
-    }
-
-    .variable-selector {
     }
 }
 
