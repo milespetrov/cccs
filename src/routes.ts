@@ -28,7 +28,10 @@ const routes: RouteConfig[] = [
     },
     {
         path: '/map',
-        components: { visualization: mapView },
+        components: {
+            visualization: mapView,
+            'visualization-menu': chartViewControls
+        },
         name: 'map-view',
         props: {
             visualization: (route: Route) => ({

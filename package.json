@@ -28,8 +28,12 @@
     "scripts": {
         "test": "poi test",
         "dev": "poi --port 3001 src/index.ts",
-        "build": "poi build src/index.ts"
+        "build": "poi build src/index.ts",
+        "serve": "http-server ./dist -p 3002"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "http-server": "^0.11.1"
+    }
 }

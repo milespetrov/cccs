@@ -80,7 +80,6 @@ export default class ChartView extends Vue {
 
         const template = `
             <dv-section>
-                
                 <dv-chart id="dvChart1" dv-auto-generate-table>
                     <details>
                         <summary>View data for this chart</summary>
@@ -89,7 +88,6 @@ export default class ChartView extends Vue {
                         </div>
                     </details>
                 </dv-chart>
-                
             </dv-section>
         `;
 
@@ -102,10 +100,13 @@ export default class ChartView extends Vue {
             template,
             data
         });
+
+        //window.setTimeout(() => {
         dvsection1.mount(document.getElementById('mount-point'));
+        //}, 2000);
 
         (<any>window).wb.add('summary');
-        (<any>window).wb.add('table');
+        /* (<any>window).wb.add('table'); */
     }
 
     async updateDQV(): Promise<void> {
@@ -127,5 +128,8 @@ export default class ChartView extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+/deep/ #dvChart1 [dv-chart-container] {
+    margin: auto;
+    height: 500px;
+}
 </style>

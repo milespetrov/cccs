@@ -15,7 +15,12 @@ const router = new VueRouter({ routes });
 // initialize a new app-wide store
 const store: Store<State> = createStore();
 
-Vue.config.ignoredElements = ['dv-section', 'dv-chart', 'dv-chart-table'];
+Vue.config.ignoredElements = [
+    'dv-section',
+    'dv-chart',
+    'dv-chart-table',
+    'rv-map'
+];
 
 new Vue({
     el: '#app',
