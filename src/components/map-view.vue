@@ -2,6 +2,10 @@
     <aside class="root">
         <div id="map-anchor"></div>
         <map-table :key="currentVariable" :config="config"></map-table>
+
+       <!--  <rv-map class="myMap" id="mobile-map" is="rv-map"
+            rv-config="http://fgpv.cloudapp.net/demo/develop/dev/samples/config/config-sample-01-structured-visibility-sets.json"
+            rv-langs='["en-CA", "fr-CA"]'></rv-map> -->
     </aside>
 </template>
 
@@ -23,9 +27,20 @@ export default class MapView extends Vue {
 
     mounted(): void {
         this.onVariableChange();
+        /* const stopHandle = window.setInterval(() => {
+            if (!(<any>window).jQuery) {
+                console.log('waiting for jquery');
+            } else {
+                console.log('jquery', (<any>window).jQuery);
+
+                window.clearInterval(stopHandle);
+
+                $.getScript('http://fgpv.cloudapp.net/demo/v3/dev/rv-main.js');
+            }
+        }, 100); */
 
         // TODO: map disabled until the jquery collisions are fixed
-        /* let RZ = (<any>window).RZ;
+        let RZ = (<any>window).RZ;
 
         if (!RZ) {
             return;
@@ -35,7 +50,7 @@ export default class MapView extends Vue {
 
         new RZ.Map(
             document.getElementById('map-anchor'),
-            '../static/configs/config-ahccd-demo.en-CA.json'
+            'http://fgpv.cloudapp.net/demo/develop/dev/samples/config/config-sample-01-structured-visibility-sets.json'
         );
 
         let tooltip;
@@ -56,7 +71,7 @@ export default class MapView extends Vue {
                     );
                 });
             });
-        }); */
+        });
     }
 
     get currentVariable(){

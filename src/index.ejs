@@ -5,6 +5,13 @@
 <!--<![endif]-->
 
 <head>
+    <script>
+/* 
+        var dojoConfig = {
+            isDebug: true
+        }; */
+
+    </script>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
             wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
@@ -36,7 +43,8 @@
     <script>dataLayer1 = [];</script>
     <!-- End Google Tag Manager -->
 
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Object.entries"></script>
+    <script src="http://fgpv.cloudapp.net/demo/develop/dev/ie-polyfills.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Object.entries"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -167,6 +175,10 @@
             </div>
         </nav>
     </header>
+
+    <!-- <div class="myMap" id="theme-map" is="rv-map" rv-config="../station/configs/configs/config-ahccd-demo.en-CA.json" rv-langs='["en-CA", "fr-CA"]'>
+    </div> -->
+
     <div id="app"></div>
     <!--aside class="gc-nttvs container">
         <h2>Government of Canada activities and initiatives</h2>
@@ -401,8 +413,8 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://ramp-pcar.github.io/dqvue/samples/dqvue.js"></script>
     <!-- TODO: enable when the jquery collisions are fixed -->
-    <!-- <script src="http://fgpv.cloudapp.net/demo/users/james-rae/api/prod/rv-main.js"></script> -->
 
+    <script src="http://fgpv.cloudapp.net/demo/v3.1/dev/rv-main.js"></script>
 </body>
 
 </html>
