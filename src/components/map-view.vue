@@ -20,12 +20,6 @@ import MapTable from './map-table.vue';
 import MapInstance from './map-instance.vue';
 import sprintf from 'sprintf-js';
 
-interface tooltips {
-    'en-CA': { [key: string]: { [key: string]: string } };
-    'fr-CA': { [key: string]: { [key: string]: string } };
-    [key: string]: { [key: string]: { [key: string]: string } };
-}
-
 @Component({
     components: {
         'map-instance': MapInstance,
@@ -33,85 +27,10 @@ interface tooltips {
     }
 })
 export default class MapView extends Vue {
-    updates: number = 0;
     config: any = {};
-
-    tooltipTemplates: tooltips = {
-        'en-CA': {
-            ahccd: {
-                'Mean Temperature':
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                'Minimum Temperature':
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                'Maximum Temperature':
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                Precipitation:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>"
-            }
-        },
-        'fr-CA': {
-            ahccd: {
-                'Mean Temperature':
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                'Minimum Temperature':
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                'Maximum Temperature':
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                Precipitation:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>"
-            }
-        }
-    };
 
     mounted(): void {
         this.onVariableChange();
-        /* const stopHandle = window.setInterval(() => {
-            if (!(<any>window).jQuery) {
-                console.log('waiting for jquery');
-            } else {
-                console.log('jquery', (<any>window).jQuery);
-
-                window.clearInterval(stopHandle);
-
-                $.getScript('http://fgpv.cloudapp.net/demo/v3/dev/rv-main.js');
-            }
-        }, 100); */
-
-        let RZ = (<any>window).RZ;
-        // TODO: link to a language choice; property, or stored value, or button
-        let lang = 'en-CA';
-        // TODO: link once dataSet selector is finalized
-        let dataSet = 'ahccd';
-
-        if (!RZ) {
-            return;
-        }
-
-        new RZ.Map(
-            document.getElementById('map-anchor'),
-            './static/configs/config-ahccd-mean.en-CA.json'
-        );
-
-        let tooltip;
-        RZ.mapAdded.subscribe(() => {
-            RZ.mapInstances[
-                RZ.mapInstances.length - 1
-            ].ui.tooltip.mouseOver.subscribe((z: any) => {
-                z.event.preventDefault();
-                z.attribs.then((a: any) => {
-                    const name = a.station_name_nom;
-                    const value = Intl.NumberFormat(lang).format(
-                        a.Annual_Annuel
-                    );
-                    const currentTemplate = this.tooltipTemplates[lang][
-                        dataSet
-                    ][this.currentVariable];
-                    tooltip = z.add(
-                        sprintf.sprintf(currentTemplate, <any>{ name, value })
-                    );
-                });
-            });
-        });
     }
 
     get currentVariable() {

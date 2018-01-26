@@ -74,7 +74,11 @@ export default class ChartView extends Vue {
                 this.currentDataset
             );
 
-            const config = this.makeConfig(this.data, this.currentTimePeriod);
+            const config = this.makeConfig(
+                this.data,
+                this.currentTimePeriod,
+                this.currentVariable
+            );
             this.initDQV(config);
             return;
         }
@@ -123,7 +127,11 @@ export default class ChartView extends Vue {
             this.currentDataset
         );
 
-        const config = this.makeConfig(this.data, this.currentTimePeriod);
+        const config = this.makeConfig(
+            this.data,
+            this.currentTimePeriod,
+            this.currentVariable
+        );
 
         const dvChart = api.DQV.charts['dvChart1'];
         dvChart.config = config;
@@ -132,8 +140,13 @@ export default class ChartView extends Vue {
         (<any>window).wb.add('table');
     }
 
-    makeConfig(data: any, period: string, stnid: number = 1171393): object {
-        return ahccdTemp(data, period, stnid);
+    makeConfig(
+        data: any,
+        period: string,
+        variable: string,
+        stnid: number = 1171393
+    ): object {
+        return ahccdTemp(data, period, variable, stnid);
     }
 }
 </script>

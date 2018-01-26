@@ -9,8 +9,41 @@ import sprintf from 'sprintf-js';
 
 import { rVariableId, rDatasetId } from '../store/modules/app/index';
 
+interface tooltips {
+    'en-CA': { [key: string]: { [key: string]: string } };
+    'fr-CA': { [key: string]: { [key: string]: string } };
+    [key: string]: { [key: string]: { [key: string]: string } };
+}
+
 @Component
-export default class MapTable extends Vue {
+export default class MapInstance extends Vue {
+    tooltipTemplates: tooltips = {
+        'en-CA': {
+            ahccd: {
+                'mean-temp':
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                'min-temp':
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                'max-temp':
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                precip:
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>"
+            }
+        },
+        'fr-CA': {
+            ahccd: {
+                'mean-temp':
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                'min-temp':
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                'max-temp':
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                precip:
+                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>"
+            }
+        }
+    };
+
     get anchor(): HTMLElement {
         return document.getElementById('map-anchor')!;
     }
@@ -25,9 +58,12 @@ export default class MapTable extends Vue {
 
     mounted(): void {
         let RZ = (<any>window).RZ;
+        // TODO: link to a language choice; property, or stored value, or button
+        let lang = 'en-CA';
+        // TODO: link once dataSet selector is finalized
+        let dataSet = 'ahccd';
 
         if (!RZ) {
-            // TODO: if we implementing JIT RAMP loading, it should happen here
             return;
         }
 
@@ -49,11 +85,15 @@ export default class MapTable extends Vue {
             ].ui.tooltip.mouseOver.subscribe((z: any) => {
                 z.event.preventDefault();
                 z.attribs.then((a: any) => {
-                    let name = a.station_name_nom;
-                    let value = a.Annual_Annuel;
-                    let currentTemplate = `<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend Value: %(value)s</span></div>`;
-                    let tooltip = z.add(
-                        sprintf.sprintf(currentTemplate, { name, value })
+                    const name = a.station_name_nom;
+                    const value = Intl.NumberFormat(lang).format(
+                        a.Annual_Annuel
+                    );
+                    const currentTemplate = this.tooltipTemplates[lang][
+                        dataSet
+                    ][this.currentVariable!];
+                    tooltip = z.add(
+                        sprintf.sprintf(currentTemplate, <any>{ name, value })
                     );
                 });
             });

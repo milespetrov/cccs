@@ -1,4 +1,9 @@
-function makeConfig(stationData: any, period: string, stnid: number = 1171393) {
+function makeConfig(
+    stationData: any,
+    period: string,
+    variable: string,
+    stnid: number = 1171393
+) {
     const stationTrendValue = 2.35;
 
     const seriesData = stationData.absolute_values.map(
@@ -6,6 +11,30 @@ function makeConfig(stationData: any, period: string, stnid: number = 1171393) {
     );
 
     let secondTrendValueLabel: HTMLElement;
+
+    // HACK: get a proper variable name
+    // should be retrieved from the store
+    const variables: object[] = [
+        {
+            name: 'Mean Temperature',
+            id: 'mean-temp'
+        },
+        {
+            name: 'Minimum Temperature',
+            id: 'min-temp'
+        },
+        {
+            name: 'Maximum Temperature',
+            id: 'max-temp'
+        },
+        {
+            name: 'Precipitation',
+            id: 'precip'
+        }
+    ];
+
+    const item = variables.find((v: { id: string }) => v.id === variable);
+    variable = item ? (<any>item).name : variable;
 
     const config = {
         chart: {
@@ -60,7 +89,7 @@ function makeConfig(stationData: any, period: string, stnid: number = 1171393) {
             enabled: false
         },
         title: {
-            text: `Mean Temperature at ${stationData.station_name},
+            text: `${variable} at ${stationData.station_name},
              ${stationData.start_year} - ${stationData.end_year}`
         },
         subtitle: {
