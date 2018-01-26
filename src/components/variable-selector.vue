@@ -73,13 +73,13 @@ export default class VariableSelector extends Vue {
     sets: setSet = {
         Historic: {
             variables: [
-                "Average Temperature",
+                "Mean Temperature",
                 "Minimum Temperature",
                 "Maximum Temperature",
                 "Precipitation"
             ],
-            opened: false
-        },
+            opened: true
+        }/*,
         Projected: {
             variables: [
                 "var1",
@@ -87,7 +87,7 @@ export default class VariableSelector extends Vue {
                 "var3"
             ],
             opened: false
-        }
+        }*/
     };
 
     datagroups: setSet = {
@@ -117,6 +117,10 @@ export default class VariableSelector extends Vue {
     selectedSet:string = "";
     datasetSelectorOpen:boolean = false;
     currentDatagroup:string = "";
+
+    mounted() {
+        this.selectVariable("Mean Temperature", "Historic");
+    }
 
     toggleSet(set:string) {
         this.selectedSet = ((this.sets[set].opened || rGetCurrentVariable(this.$store) !== "") ? this.selectedSet : set);
