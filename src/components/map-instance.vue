@@ -7,7 +7,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import sprintf from 'sprintf-js';
 
-import { rGetCurrentVariable } from '../store/modules/app/index';
+import { rVariableId, rDatasetId } from '../store/modules/app/index';
 
 @Component
 export default class MapTable extends Vue {
@@ -15,8 +15,12 @@ export default class MapTable extends Vue {
         return document.getElementById('map-anchor')!;
     }
 
-    get currentVariable(): string {
-        return rGetCurrentVariable(this.$store);
+    get currentVariable(): string | null {
+        return rVariableId(this.$store);
+    }
+
+    get currentDataset(): string | null {
+        return rDatasetId(this.$store);
     }
 
     mounted(): void {
@@ -27,16 +31,15 @@ export default class MapTable extends Vue {
             return;
         }
 
-        if (this.currentVariable === '') {
+        if (this.currentVariable === null || this.currentDataset === null) {
             return;
         }
 
         new RZ.Map(
             this.anchor,
-            `./static/configs/config-${this.currentVariable.replace(
-                /_/g,
-                '-'
-            )}.en-CA.json`
+            `./static/configs/config-${
+                this.currentDataset
+            }-${this.currentVariable.replace(/_/g, '-')}.en-CA.json`
         );
 
         let tooltip;

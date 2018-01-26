@@ -21,7 +21,8 @@
                             :class="{ 'wb-navcurr': selectedSetId === set.id, 'rotate': set.opened }">{{ set.name }} <i class="fas fa-chevron-down"></i></a>
                     </li>
                     <ul class="list-group list-unstyled" v-show="set.opened">
-                        <li v-for="(variable, index) in set.variables" :key="`${index}-variable`" @click="selectVariable(variable, set)">
+                        <li v-for="(variable, index) in set.variables" :key="`${index}-variable`"
+                            @click="selectVariable(variable, set)">
                             <a role="button" href="javascript:" class="list-group-item"
                                 :class="{ 'wb-navcurr': currentVariable === variable.id }" >{{ variable.name }}</a>
                         </li>
@@ -45,13 +46,13 @@
                 <div v-for="(group, index) in datagroups" :key="`${index}-group`">
                     <li @click="toggleDatagroup(group)">
                         <a role="button" href="javascript:" class="list-group-item"
-                            :class="{ 'wb-navcurr': currentDatagroup === group, 'rotate': group.opened}">{{ group.name }} <i class="fas fa-chevron-down"></i></a>
+                            :class="{ 'wb-navcurr': currentDatagroup === group.id, 'rotate': group.opened }">{{ group.name }} <i class="fas fa-chevron-down"></i></a>
                     </li>
                     <ul class="list-group list-unstyled dataset-list" v-show="group.opened">
                         <li v-for="(dataset, index) in group.variables" :key="`${index}-dataset`"
                             @click="selectDataset(dataset, group)">
                             <a role="button" href="javascript:" class="list-group-item"
-                                :class="{ 'wb-navcurr': currentDataset === dataset}" >{{ dataset.name }}</a>
+                                :class="{ 'wb-navcurr': currentDataset === dataset.id }" >{{ dataset.name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -65,10 +66,11 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import api from './../api/main';
 import {
-    rGetCurrentVariable,
-    cSetCurrentVariable,
-    rGetCurrentDataset,
-    cSetCurrentDataset
+    rVariableId,
+    rDatasetId,
+    cVariableId,
+    cDatasetId,
+    rGetQuery
 } from './../store/modules/app';
 
 interface VariableSet {
@@ -81,6 +83,9 @@ interface VariableSet {
 interface VariableItem {
     name: string;
     id: string;
+    // TODO: hack;
+    // the dataset selector will likely move to the visualization controls menu
+    datasetId?: string;
 }
 
 @Component
@@ -90,10 +95,26 @@ export default class VariableSelector extends Vue {
             name: 'Historic',
             id: 'historic',
             variables: [
-                { name: 'Mean Temperature', id: 'ahccd_mean_temp' },
-                { name: 'Minimum Temperature', id: 'ahccd_min_temp' },
-                { name: 'Maximum Temperature', id: 'ahccd_max_temp' },
-                { name: 'Precipitation', id: 'ahccd_precip' }
+                {
+                    name: 'Mean Temperature',
+                    id: 'mean-temp',
+                    datasetId: 'ahccd'
+                },
+                {
+                    name: 'Minimum Temperature',
+                    id: 'min-temp',
+                    datasetId: 'ahccd'
+                },
+                {
+                    name: 'Maximum Temperature',
+                    id: 'max-temp',
+                    datasetId: 'ahccd'
+                },
+                {
+                    name: 'Precipitation',
+                    id: 'precip',
+                    datasetId: 'ahccd'
+                }
             ],
             opened: true
         },
@@ -101,9 +122,9 @@ export default class VariableSelector extends Vue {
             name: 'Projected',
             id: 'projected',
             variables: [
-                { name: 'var1', id: 'var1' },
-                { name: 'var2', id: 'va2' },
-                { name: 'var3', id: 'va3' }
+                { name: 'var1', id: 'var1', datasetId: 'other' },
+                { name: 'var2', id: 'va2', datasetId: 'other' },
+                { name: 'var3', id: 'va3', datasetId: 'other' }
             ],
             opened: true
         }
@@ -111,11 +132,11 @@ export default class VariableSelector extends Vue {
 
     datagroups: VariableSet[] = [
         {
-            name: 'AHCCD',
-            id: 'ahccd',
+            name: 'Blha',
+            id: 'blah',
             variables: [
-                { name: 'AHCCD 1', id: 'ahccd1' },
-                { name: 'AHCCD 2', id: 'ahccd2' }
+                { name: 'CIMP3', id: 'CIMP3' },
+                { name: 'AHCCD', id: 'ahccd' }
             ],
             opened: false
         },
@@ -139,17 +160,32 @@ export default class VariableSelector extends Vue {
         }
     ];
 
-    selectedSetId: string = '';
-    datasetSelectorOpen: boolean = false;
+    get selectedSetId(): string {
+        if (!this.currentVariable) {
+            return '';
+        }
+
+        // find a variable set with the current variable
+        const set = this.sets.find(
+            set =>
+                set.variables.find(
+                    variable => variable.id === this.currentVariable
+                ) !== undefined
+        )!;
+
+        return set.id;
+    }
     currentDatagroup: string = '';
 
+    datasetSelectorOpen: boolean = false;
+
     mounted(): void {
-        const set = this.sets.find(set => set.id === 'historic')!;
+        /* const set = this.sets.find(set => set.id === 'historic')!;
         const variable = set.variables.find(
             variable => variable.id === 'ahccd_min_temp'
         )!;
 
-        this.selectVariable(variable, set);
+        this.selectVariable(variable, set); */
     }
 
     toggleSet(variableSet: VariableSet) {
@@ -161,21 +197,32 @@ export default class VariableSelector extends Vue {
     }
 
     selectVariable(variable: VariableItem, set: VariableSet) {
-        this.selectedSetId = set.id;
-        cSetCurrentVariable(this.$store, variable.id);
+        cVariableId(this.$store, variable.id);
+        cDatasetId(this.$store, variable.datasetId!);
+
+        this.updateRoute();
     }
 
-    selectDataset(dataset: string, datagroup: string) {
-        this.currentDatagroup = datagroup;
-        cSetCurrentDataset(this.$store, dataset);
+    selectDataset(dataset: VariableItem, datagroup: VariableSet) {
+        this.currentDatagroup = datagroup.id;
+        cDatasetId(this.$store, dataset.id);
+
+        this.updateRoute();
     }
 
     get currentVariable(): string {
-        return rGetCurrentVariable(this.$store);
+        return rVariableId(this.$store);
     }
 
     get currentDataset(): string {
-        return rGetCurrentDataset(this.$store);
+        return rDatasetId(this.$store);
+    }
+
+    updateRoute(): void {
+        this.$router.push({
+            name: this.$router.currentRoute.name,
+            query: rGetQuery(this.$store)
+        });
     }
 }
 </script>

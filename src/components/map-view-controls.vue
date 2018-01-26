@@ -31,6 +31,8 @@ import { sprintf } from 'sprintf-js';
 
 import api from './../api/main';
 
+import { rGetQuery } from './../store/modules/app';
+
 @Component
 export default class MapViewControls extends Vue {
     downloadImage(type: string): void {
@@ -40,7 +42,7 @@ export default class MapViewControls extends Vue {
     changeView(viewName: string): void {
         this.$router.push({
             name: viewName,
-            query: { t: this.$router.currentRoute.query.t, v: 'temperature' }
+            query: rGetQuery(this.$store)
         });
     }
 }

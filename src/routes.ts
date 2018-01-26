@@ -19,13 +19,13 @@ const routes: RouteConfig[] = [
             'visualization-menu': chartViewControls,
             'location-map': fake_map
         },
-        name: 'chart-view',
-        props: {
+        name: 'chart-view'
+        /* props: {
             visualization: (route: Route) => ({
                 variable: route.query.v,
                 timePeriod: route.query.t
             })
-        }
+        } */
     },
     {
         path: '/map',
@@ -33,13 +33,13 @@ const routes: RouteConfig[] = [
             visualization: mapView,
             'visualization-menu': mapViewControls
         },
-        name: 'map-view',
-        props: {
+        name: 'map-view'
+        /* props: {
             visualization: (route: Route) => ({
                 variable: route.query.v,
                 timePeriod: route.query.t
             })
-        }
+        } */
     }
 ];
 

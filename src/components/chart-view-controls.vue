@@ -2,7 +2,7 @@
     <div class="visualization-menu container">
 
         <div class="menu-option">
-            <b-form-select v-model="selectedTimePeriod" :options="timePeriods"></b-form-select>
+            <b-form-select v-model="timePeriod" :options="timePeriods"></b-form-select>
         </div>
 
         <span class="separator"></span>
@@ -64,6 +64,12 @@ import { sprintf } from 'sprintf-js';
 
 import api from './../api/main';
 
+import {
+    rTimePeriodId,
+    cTimePeriodId,
+    rGetQuery
+} from './../store/modules/app';
+
 @Component
 export default class ChartViewControls extends Vue {
     timePeriods: string[] = [
@@ -85,24 +91,24 @@ export default class ChartViewControls extends Vue {
         'Summer_Ete',
         'Autumn_Autome'
     ];
-    selectedTimePeriod: string = this.timePeriods[0];
 
-    mounted(): void {
-        this.changeTimePeriod();
+    get timePeriod(): string {
+        return rTimePeriodId(this.$store);
     }
 
-    @Watch('selectedTimePeriod')
-    changeTimePeriod(): void {
+    set timePeriod(value: string) {
+        cTimePeriodId(this.$store, value);
+
         this.$router.push({
             name: 'chart-view',
-            query: { t: this.selectedTimePeriod, v: 'temperature' }
+            query: rGetQuery(this.$store)
         });
     }
 
     changeView(viewName: string): void {
         this.$router.push({
             name: viewName,
-            query: { t: this.selectedTimePeriod, v: 'temperature' }
+            query: rGetQuery(this.$store)
         });
     }
 

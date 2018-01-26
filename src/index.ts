@@ -29,3 +29,11 @@ new Vue({
     template: '<app/>',
     components: { app }
 });
+
+import { cTimePeriodId, cVariableId, cDatasetId } from './store/modules/app';
+
+router.afterEach((to, from) => {
+    cTimePeriodId(store, to.query.t);
+    cVariableId(store, to.query.v);
+    cDatasetId(store, to.query.d);
+});

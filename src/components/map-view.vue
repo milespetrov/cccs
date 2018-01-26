@@ -15,7 +15,7 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import api from './../api/main';
-import { rGetCurrentVariable } from '../store/modules/app/index';
+import { rVariableId } from '../store/modules/app/index';
 import MapTable from './map-table.vue';
 import MapInstance from './map-instance.vue';
 import sprintf from 'sprintf-js';
@@ -115,7 +115,7 @@ export default class MapView extends Vue {
     }
 
     get currentVariable() {
-        return rGetCurrentVariable(this.$store);
+        return rVariableId(this.$store);
     }
 
     @Watch('currentVariable')
