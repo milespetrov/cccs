@@ -1,6 +1,6 @@
 <template>
     <details>
-        <summary>View map data</summary>
+        <summary @click="wb.add('table')">View map data</summary>
             <div class="summary">
                 <table id="map-table" class="wb-tables table table-striped" data-wb-tables='{ "scrollX": true }' v-if="config">
                     <thead>
@@ -24,6 +24,8 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 @Component
 export default class MapTable extends Vue {
     @Prop() config: any;
+
+    wb = (<any>window).wb;
 }
 </script>
 

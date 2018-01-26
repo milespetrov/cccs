@@ -82,7 +82,7 @@ export default class ChartView extends Vue {
             <dv-section>
                 <dv-chart id="dvChart1" dv-auto-generate-table>
                     <details>
-                        <summary>View data for this chart</summary>
+                        <summary @click="window.wb.add('table')">View data for this chart</summary>
                         <div class="summary">
                             <dv-chart-table dv-auto-render dv-table-class="wb-tables table table-striped"></dv-chart-table>
                         </div>

@@ -15,6 +15,13 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import api from './../api/main';
 import { rGetCurrentVariable } from '../store/modules/app/index';
 import MapTable from './map-table.vue';
+import sprintf from 'sprintf-js';
+
+interface tooltips {
+    "en-CA": {[key:string]: {[key:string]:string}};
+    "fr-CA": {[key:string]: {[key:string]:string}};
+    [key:string]: {[key:string]: {[key:string]:string}};
+}
 
 @Component({
     components: {
@@ -24,6 +31,25 @@ import MapTable from './map-table.vue';
 export default class MapView extends Vue {
     updates:number = 0;
     config:any = {};
+
+    tooltipTemplates:tooltips = {
+        "en-CA": {
+            "ahccd" : {
+                "Mean Temperature" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                "Minimum Temperature" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                "Maximum Temperature" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                "Precipitation" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>"
+            } 
+        },
+        "fr-CA": {
+            "ahccd" : {
+                "Mean Temperature" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                "Minimum Temperature" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                "Maximum Temperature" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                "Precipitation" : "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>"
+            }
+        }
+    }
 
     mounted(): void {
         this.onVariableChange();
@@ -39,36 +65,30 @@ export default class MapView extends Vue {
             }
         }, 100); */
 
-        // TODO: map disabled until the jquery collisions are fixed
         let RZ = (<any>window).RZ;
+        // TODO: link to a language choice; property, or stored value, or button
+        let lang = "en-CA";
+        // TODO: link once dataSet selector is finalized
+        let dataSet = "ahccd";
 
         if (!RZ) {
             return;
         }
 
-        console.log('what??');
-
         new RZ.Map(
             document.getElementById('map-anchor'),
-            'http://fgpv.cloudapp.net/demo/develop/dev/samples/config/config-sample-01-structured-visibility-sets.json'
+            './static/configs/config-ahccd-mean.en-CA.json'
         );
 
         let tooltip;
         RZ.mapAdded.subscribe(() => {
-            RZ.mapInstances[
-                RZ.mapInstances.length - 1
-            ].ui.tooltip.mouseOver.subscribe((z: any) => {
+            RZ.mapInstances[RZ.mapInstances.length - 1].ui.tooltip.mouseOver.subscribe((z: any) => {
                 z.event.preventDefault();
                 z.attribs.then((a: any) => {
-                    let name = a.station_name_nom;
-                    let value = a.Annual_Annuel;
-                    let currentTemplate = `<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend Value: %(value)s</span></div>`;
-                    let tooltip = z.add(
-                        sprintf(currentTemplate, {
-                            name,
-                            value
-                        })
-                    );
+                    const name = a.station_name_nom;
+                    const value = Intl.NumberFormat(lang).format(a.Annual_Annuel);
+                    const currentTemplate = this.tooltipTemplates[lang][dataSet][this.currentVariable];
+                    tooltip = z.add(sprintf.sprintf(currentTemplate, <any>{name,value}));
                 });
             });
         });
@@ -80,20 +100,20 @@ export default class MapView extends Vue {
 
     @Watch("currentVariable")
     async onVariableChange() {
-        console.log('CHANGED');
-        let tempData: any = await $.getJSON('http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json', (data) => {return data});
+        const tempData: any = await $.getJSON('http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json', (data) => {return data});
         const columns: object[] = [];
         let tableData: string[];
 
         Object.keys(tempData.features[0].attributes).forEach(column => {
-           columns.push({
-               name: column,
-               dataKey: column
-           });
+            columns.push({
+                // the name to display
+                name: column,
+                // the key to access the data in the feature
+                dataKey: column
+            });
         });
 
         tableData = (<object[]>tempData.features).map(feature => {
-            
             return (<any>feature).attributes;
         });
 
