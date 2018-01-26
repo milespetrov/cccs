@@ -15,6 +15,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import api from './../api/main';
 import { rGetCurrentVariable } from '../store/modules/app/index';
 import MapTable from './map-table.vue';
+import sprintf from 'sprintf-js';
 
 @Component({
     components: {
@@ -39,7 +40,6 @@ export default class MapView extends Vue {
             }
         }, 100); */
 
-        // TODO: map disabled until the jquery collisions are fixed
         let RZ = (<any>window).RZ;
 
         if (!RZ) {
@@ -50,7 +50,7 @@ export default class MapView extends Vue {
 
         new RZ.Map(
             document.getElementById('map-anchor'),
-            'http://fgpv.cloudapp.net/demo/develop/dev/samples/config/config-sample-01-structured-visibility-sets.json'
+            './static/configs/config-ahccd-mean.en-CA.json'
         );
 
         let tooltip;
@@ -64,10 +64,7 @@ export default class MapView extends Vue {
                     let value = a.Annual_Annuel;
                     let currentTemplate = `<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend Value: %(value)s</span></div>`;
                     let tooltip = z.add(
-                        sprintf(currentTemplate, {
-                            name,
-                            value
-                        })
+                        sprintf.sprintf(currentTemplate, <any>{name,value})
                     );
                 });
             });
