@@ -27,9 +27,16 @@ export default class MapTable extends Vue {
             return;
         }
 
+        if (this.currentVariable === '') {
+            return;
+        }
+
         new RZ.Map(
             this.anchor,
-            `./static/configs/config-ahccd-${this.currentVariable}.en-CA.json`
+            `./static/configs/config-${this.currentVariable.replace(
+                /_/g,
+                '-'
+            )}.en-CA.json`
         );
 
         let tooltip;

@@ -1,11 +1,9 @@
 <template>
     <aside class="root">
 
-        <!-- <div id="map-anchor"></div> -->
+        <map-instance :key="`instance-${currentVariable}`"></map-instance>
 
-        <map-instance :key="currentVariable"></map-instance>
-
-        <map-table :key="currentVariable" :config="config"></map-table>
+        <map-table :key="`table-${currentVariable}`" :config="config"></map-table>
 
        <!--  <rv-map class="myMap" id="mobile-map" is="rv-map"
             rv-config="http://fgpv.cloudapp.net/demo/develop/dev/samples/config/config-sample-01-structured-visibility-sets.json"
