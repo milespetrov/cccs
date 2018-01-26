@@ -1,6 +1,6 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope">
-        
+
         <router-view name="location-map"></router-view>
 
         <nav class="top-level-menu container">
@@ -47,7 +47,7 @@
                     <keep-alive>
                         <router-view class="visualization" name="visualization"></router-view>
                     </keep-alive>
-                    
+
                 </section>
 
                 <variable-selector class="variable-selector"></variable-selector>
@@ -76,7 +76,12 @@ import VariableSelector from './components/variable-selector.vue';
 })
 export default class App extends Vue {
     mounted(): void {
-        // DEMO: push to the chart view on mount, so something will show up
+        if (this.$router.currentRoute.name) {
+            // the route is set already
+            return;
+        }
+
+        // DEMO: push to the chart view on mount by default, so something will show up
         this.$router.push({
             name: 'chart-view',
             query: { t: 'Jan_Janv', v: 'temperature' }

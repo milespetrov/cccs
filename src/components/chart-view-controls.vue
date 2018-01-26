@@ -1,14 +1,15 @@
 <template>
     <div class="visualization-menu container">
-                                    
+
         <div class="menu-option">
             <b-form-select v-model="selectedTimePeriod" :options="timePeriods"></b-form-select>
         </div>
 
-        <button @click="changeView('map-view')">map</button>
-        <button @click="changeView('chart-view')">chart</button>
-
         <span class="separator"></span>
+
+        <div class="menu-option">
+            <button @click="changeView('map-view')">map</button>
+        </div>
 
         <div class="menu-option">
             <b-dropdown text="Download" variant="light" class="m-md-2" right>
