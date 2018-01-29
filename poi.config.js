@@ -1,5 +1,6 @@
 const pkg = require('./package.json');
 
+const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin;
 
@@ -22,8 +23,8 @@ module.exports = {
     // copy the `static` folder itself into `dist`
     copy: [
         {
-            from: 'static',
-            to: 'static',
+            from: path.resolve(__dirname, 'static'),
+            to: path.resolve(__dirname, 'dist/static'),
             ignore: ['.*']
         }
     ],
