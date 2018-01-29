@@ -60,15 +60,12 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State, Getter, Action } from 'vuex-class';
+
 import { sprintf } from 'sprintf-js';
 
 import api from './../api/main';
-
-import {
-    rTimePeriodId,
-    cTimePeriodId,
-    rGetQuery
-} from './../store/modules/app';
+import { Dictionary } from 'vue-router/types/router';
 
 @Component
 export default class ChartViewControls extends Vue {
@@ -92,23 +89,27 @@ export default class ChartViewControls extends Vue {
         'Autumn_Autome'
     ];
 
+    @State timePeriodId: string;
+    @Getter getQuery: Dictionary<string>;
+    @Action setTimePeriodId: (id: string) => void;
+
     get timePeriod(): string {
-        return rTimePeriodId(this.$store);
+        return this.timePeriodId;
     }
 
     set timePeriod(value: string) {
-        cTimePeriodId(this.$store, value);
+        this.setTimePeriodId(value);
 
         this.$router.push({
             name: 'chart-view',
-            query: rGetQuery(this.$store)
+            query: this.getQuery
         });
     }
 
     changeView(viewName: string): void {
         this.$router.push({
             name: viewName,
-            query: rGetQuery(this.$store)
+            query: this.getQuery
         });
     }
 

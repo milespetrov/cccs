@@ -22,23 +22,14 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State } from 'vuex-class';
 
 import api from './../api/main';
 import ahccdTemp from './../configs/chart/ahccd-temp';
 
-import {
-    rIsVariableSelectorOpen,
-    cToggleVariableSelector,
-    rVariableId,
-    rDatasetId,
-    rTimePeriodId
-} from './../store/modules/app';
-
 @Component
 export default class ChartView extends Vue {
-    get currentTimePeriod(): string {
-        return rTimePeriodId(this.$store);
-    }
+    @State('timePeriodId') currentTimePeriod: string;
 
     @Watch('currentTimePeriod')
     onTimePeriodChanged(): void {
@@ -47,9 +38,7 @@ export default class ChartView extends Vue {
         this.updateDQV();
     }
 
-    get currentVariable(): string {
-        return rVariableId(this.$store);
-    }
+    @State('variableId') currentVariable: string;
 
     @Watch('currentVariable')
     onCurrentVariableChanged(): void {
@@ -58,9 +47,7 @@ export default class ChartView extends Vue {
         this.updateDQV();
     }
 
-    get currentDataset(): string {
-        return rDatasetId(this.$store);
-    }
+    @State('datasetId') currentDataset: string;
 
     private data: any[];
 

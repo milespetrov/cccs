@@ -13,9 +13,9 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State } from 'vuex-class';
 
 import api from './../api/main';
-import { rVariableId } from '../store/modules/app/index';
 import MapTable from './map-table.vue';
 import MapInstance from './map-instance.vue';
 import sprintf from 'sprintf-js';
@@ -66,9 +66,7 @@ export default class MapView extends Vue {
         this.onVariableChange();
     }
 
-    get currentVariable() {
-        return rVariableId(this.$store);
-    }
+    @State('variableId') currentVariable: string;
 
     @Watch('currentVariable')
     async onVariableChange() {
