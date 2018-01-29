@@ -10,12 +10,12 @@
                 <b-dropdown-item disabled>Disabled action</b-dropdown-item>
             </b-dropdown>
         </div>
-        
+
         <div id="mount-point"></div>
 
         Selected variable: {{ currentVariable }} <br>
         Selected dataset: {{ currentDataset }} <br>
-        Selected time period: {{ timePeriod }}<br>
+        Selected time period: {{ currentTimePeriod }}<br>
 
     </div>
 </template>
@@ -29,34 +29,37 @@ import ahccdTemp from './../configs/chart/ahccd-temp';
 import {
     rIsVariableSelectorOpen,
     cToggleVariableSelector,
-    rGetCurrentVariable,
-    rGetCurrentDataset
+    rVariableId,
+    rDatasetId,
+    rTimePeriodId
 } from './../store/modules/app';
 
 @Component
 export default class ChartView extends Vue {
-    toggleVariableSelector(): void {
-        const currentState = rIsVariableSelectorOpen(this.$store);
-        cToggleVariableSelector(this.$store, !currentState);
+    get currentTimePeriod(): string {
+        return rTimePeriodId(this.$store);
     }
 
-    @Prop() timePeriod: string;
+    @Watch('currentTimePeriod')
+    onTimePeriodChanged(): void {
+        console.log('onTimePeriodChange', this.currentTimePeriod);
 
-    @Prop({ default: 'Temperature' })
-    variable: string;
+        this.updateDQV();
+    }
 
     get currentVariable(): string {
-        return rGetCurrentVariable(this.$store);
+        return rVariableId(this.$store);
+    }
+
+    @Watch('currentVariable')
+    onCurrentVariableChanged(): void {
+        console.log('onTimePeriodChange', this.currentVariable);
+
+        this.updateDQV();
     }
 
     get currentDataset(): string {
-        return rGetCurrentDataset(this.$store);
-    }
-
-    @Watch('timePeriod')
-    onTimePeriodChanged(): void {
-        console.log('onTimePeriodChange', this.timePeriod);
-        this.updateDQV();
+        return rDatasetId(this.$store);
     }
 
     private data: any[];
@@ -65,9 +68,17 @@ export default class ChartView extends Vue {
 
     async mounted(): Promise<void> {
         if (!this.data) {
-            this.data = await api.getData(this.timePeriod);
+            this.data = await api.getData(
+                this.currentTimePeriod,
+                this.currentVariable,
+                this.currentDataset
+            );
 
-            const config = this.makeConfig(this.data, this.timePeriod);
+            const config = this.makeConfig(
+                this.data,
+                this.currentTimePeriod,
+                this.currentVariable
+            );
             this.initDQV(config);
             return;
         }
@@ -110,9 +121,17 @@ export default class ChartView extends Vue {
     }
 
     async updateDQV(): Promise<void> {
-        this.data = await api.getData(this.timePeriod);
+        this.data = await api.getData(
+            this.currentTimePeriod,
+            this.currentVariable,
+            this.currentDataset
+        );
 
-        const config = this.makeConfig(this.data, this.timePeriod);
+        const config = this.makeConfig(
+            this.data,
+            this.currentTimePeriod,
+            this.currentVariable
+        );
 
         const dvChart = api.DQV.charts['dvChart1'];
         dvChart.config = config;
@@ -121,8 +140,13 @@ export default class ChartView extends Vue {
         (<any>window).wb.add('table');
     }
 
-    makeConfig(data: any, period: string, stnid: number = 1171393): object {
-        return ahccdTemp(data, period, stnid);
+    makeConfig(
+        data: any,
+        period: string,
+        variable: string,
+        stnid: number = 1171393
+    ): object {
+        return ahccdTemp(data, period, variable, stnid);
     }
 }
 </script>

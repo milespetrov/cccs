@@ -8,21 +8,39 @@ type AppContext = ActionContext<AppState, RootState>;
 
 const state: AppState = {
     isVariableSelectorOpen: true,
-    currentVariable: "",
-    currentDataset: ""
+
+    timePeriodId: null,
+    variableId: null,
+    datasetId: null
 };
 
 // getters
 // retuns Word collection from the WordsState store
-const getters = {
+const getters: { [name: string]: (a: any) => any } = {
     isVariableSelectorOpen: (state: AppState): boolean =>
         state.isVariableSelectorOpen,
-    
-    getCurrentVariable: (state: AppState): string =>
-        state.currentVariable,
 
-    getCurrentDataset: (state: AppState): string =>
-        state.currentDataset
+    getTimePeriodId: (state: AppState): string | null => state.timePeriodId,
+
+    getVariableId: (state: AppState): string | null => state.variableId,
+
+    getDatasetId: (state: AppState): string | null => state.datasetId,
+
+    // TODO: type the query object
+    getQuery: (state: AppState): object => {
+        const queryObject: { [name: string]: string } = {
+            t: getters.getTimePeriodId(state),
+            v: getters.getVariableId(state),
+            d: getters.getDatasetId(state)
+        };
+
+        // remove null values from the query object
+        Object.keys(queryObject).forEach(
+            key => queryObject[key] == null && delete queryObject[key]
+        );
+
+        return queryObject;
+    }
 };
 
 // actions
@@ -33,11 +51,17 @@ const mutations = {
     toggleVariableSelector(state: AppState, value: boolean): void {
         state.isVariableSelectorOpen = value;
     },
-    setCurrentVariable(state: AppState, value: string): void {
-        state.currentVariable = value;
+
+    setTimePeriodId(state: AppState, value: string): void {
+        state.timePeriodId = value;
     },
-    setCurrentDataset(state: AppState, value: string): void {
-        state.currentDataset = value;
+
+    setVariableId(state: AppState, value: string): void {
+        state.variableId = value;
+    },
+
+    setDatasetId(state: AppState, value: string): void {
+        state.datasetId = value;
     }
 };
 
@@ -72,7 +96,7 @@ const obj = {
 };
 ```
 
-When transpiled by Typescript, it gives you 
+When transpiled by Typescript, it gives you
 ```js
 const obj = {
     foo: function() { // not named
@@ -81,7 +105,7 @@ const obj = {
 };
 ```
 
-When transpiled by Babel with `es2015` preseetn, it gives you 
+When transpiled by Babel with `es2015` preseetn, it gives you
 ```js
 const obj = {
     foo: function foo() { // named
@@ -91,7 +115,7 @@ const obj = {
 ```
 
 Noticed that in Babel output the function is named, so the IE Function.name polyfill will properly set their names.
-The current build process uses typescript to transpile code, hence the execrable hack below to set vuex keys. 
+The current build process uses typescript to transpile code, hence the execrable hack below to set vuex keys.
 */
 
 [getters, actions, mutations].forEach(dictionary =>
@@ -116,13 +140,18 @@ const { commit, read, dispatch } = getStoreAccessors<AppState, RootState>(
 
 // getters
 export const rIsVariableSelectorOpen = read(getters.isVariableSelectorOpen);
-export const rGetCurrentVariable = read(getters.getCurrentVariable);
-export const rGetCurrentDataset = read(getters.getCurrentDataset);
+
+export const rGetQuery = read(getters.getQuery);
+export const rTimePeriodId = read(getters.getTimePeriodId);
+export const rVariableId = read(getters.getVariableId);
+export const rDatasetId = read(getters.getDatasetId);
 
 // actions
 // export const dActionName = dispatch(actions.actionName);
 
 //mutations
 export const cToggleVariableSelector = commit(mutations.toggleVariableSelector);
-export const cSetCurrentVariable = commit(mutations.setCurrentVariable);
-export const cSetCurrentDataset = commit(mutations.setCurrentDataset);
+
+export const cTimePeriodId = commit(mutations.setTimePeriodId);
+export const cVariableId = commit(mutations.setVariableId);
+export const cDatasetId = commit(mutations.setDatasetId);
