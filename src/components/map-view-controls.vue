@@ -28,13 +28,15 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { sprintf } from 'sprintf-js';
+import { Getter } from 'vuex-class';
 
 import api from './../api/main';
-
-import { rGetQuery } from './../store/modules/app';
+import { Dictionary } from 'vue-router/types/router';
 
 @Component
 export default class MapViewControls extends Vue {
+    @Getter getQuery: Dictionary<string>;
+
     downloadImage(type: string): void {
         // TODO: trigger ramp export map image through API
     }
@@ -42,7 +44,7 @@ export default class MapViewControls extends Vue {
     changeView(viewName: string): void {
         this.$router.push({
             name: viewName,
-            query: rGetQuery(this.$store)
+            query: this.getQuery
         });
     }
 }

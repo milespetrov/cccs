@@ -18,6 +18,15 @@ module.exports = {
     homepage: './',
     minimize: minimize,
     sourceMap: false,
+    staticFolder: '_static', // the content of the default static folder is __always__ copied into the dist; point it to a fake folder
+    // copy the `static` folder itself into `dist`
+    copy: [
+        {
+            from: 'static',
+            to: 'static',
+            ignore: ['.*']
+        }
+    ],
     presets: [
         // there is problem with using babel-minify if you want to have source maps as well: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
         // TODO: cannot uglify with babel without the EI hack in vuex store

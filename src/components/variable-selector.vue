@@ -63,15 +63,10 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State, Getter, Action } from 'vuex-class';
 
 import api from './../api/main';
-import {
-    rVariableId,
-    rDatasetId,
-    cVariableId,
-    cDatasetId,
-    rGetQuery
-} from './../store/modules/app';
+import { Dictionary } from 'vue-router/types/router';
 
 interface VariableSet {
     name: string;
@@ -160,6 +155,15 @@ export default class VariableSelector extends Vue {
         }
     ];
 
+    @Action setTimePeriodId: (value: string) => void;
+    @Action setVariableId: (value: string) => void;
+    @Action setDatasetId: (value: string) => void;
+
+    @State('variableId') currentVariable: string;
+    @State('datasetId') currentDataset: string;
+
+    @Getter getQuery: Dictionary<string>;
+
     get selectedSetId(): string {
         if (!this.currentVariable) {
             return '';
@@ -197,31 +201,23 @@ export default class VariableSelector extends Vue {
     }
 
     selectVariable(variable: VariableItem, set: VariableSet) {
-        cVariableId(this.$store, variable.id);
-        cDatasetId(this.$store, variable.datasetId!);
+        this.setVariableId(variable.id);
+        this.setDatasetId(variable.datasetId!);
 
         this.updateRoute();
     }
 
     selectDataset(dataset: VariableItem, datagroup: VariableSet) {
         this.currentDatagroup = datagroup.id;
-        cDatasetId(this.$store, dataset.id);
+        this.setDatasetId(dataset.id);
 
         this.updateRoute();
-    }
-
-    get currentVariable(): string {
-        return rVariableId(this.$store);
-    }
-
-    get currentDataset(): string {
-        return rDatasetId(this.$store);
     }
 
     updateRoute(): void {
         this.$router.push({
             name: this.$router.currentRoute.name,
-            query: rGetQuery(this.$store)
+            query: this.getQuery
         });
     }
 }

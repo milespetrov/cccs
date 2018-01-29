@@ -1,5 +1,7 @@
-import { AppState } from './modules/app';
+export interface AppState {
+    isVariableSelectorOpen: boolean;
 
-export interface State {
-    app: AppState;
+    timePeriodId: string | null;
+    variableId: string | null;
+    datasetId: string | null;
 }

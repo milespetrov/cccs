@@ -59,6 +59,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
+import { Getter, Action } from 'vuex-class';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
 import FormSelect from 'bootstrap-vue/es/components/form-select';
@@ -66,13 +67,7 @@ Vue.use(Dropdown);
 Vue.use(FormSelect);
 
 import VariableSelector from './components/variable-selector.vue';
-
-import {
-    cTimePeriodId,
-    cVariableId,
-    cDatasetId,
-    rGetQuery
-} from './store/modules/app';
+import { Dictionary } from 'vue-router/types/router';
 
 @Component({
     components: {
@@ -80,25 +75,45 @@ import {
     }
 })
 export default class App extends Vue {
+    @Action setTimePeriodId: (value: string) => void;
+    @Action setVariableId: (value: string) => void;
+    @Action setDatasetId: (value: string) => void;
+
+    @Getter getQuery: Dictionary<string>;
+
     mounted(): void {
+        this.$router.afterEach((to, from) => {
+            this.updateStore(to.query.t, to.query.v, to.query.d);
+        });
+
         if (this.$router.currentRoute.name) {
             // the route is set already
 
-            cTimePeriodId(this.$store, this.$router.currentRoute.query.t);
-            cVariableId(this.$store, this.$router.currentRoute.query.v);
-            cDatasetId(this.$store, this.$router.currentRoute.query.d);
+            this.updateStore(
+                this.$router.currentRoute.query.t,
+                this.$router.currentRoute.query.v,
+                this.$router.currentRoute.query.d
+            );
             return;
         }
 
-        cTimePeriodId(this.$store, 'Jan_Janv');
-        cVariableId(this.$store, 'max-temp');
-        cDatasetId(this.$store, 'ahccd');
+        this.updateStore('Jan_Janv', 'max-temp', 'ahccd');
 
         // DEMO: push to the chart view on mount by default, so something will show up
         this.$router.push({
             name: 'chart-view',
-            query: rGetQuery(this.$store)
+            query: this.getQuery
         });
+    }
+
+    updateStore(
+        timePeriodId: string,
+        variableId: string,
+        datasetId: string
+    ): void {
+        this.setTimePeriodId(timePeriodId);
+        this.setVariableId(variableId);
+        this.setDatasetId(datasetId);
     }
 }
 </script>

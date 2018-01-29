@@ -4,10 +4,9 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State } from 'vuex-class';
 
 import sprintf from 'sprintf-js';
-
-import { rVariableId, rDatasetId } from '../store/modules/app/index';
 
 interface tooltips {
     'en-CA': { [key: string]: { [key: string]: string } };
@@ -48,13 +47,8 @@ export default class MapInstance extends Vue {
         return document.getElementById('map-anchor')!;
     }
 
-    get currentVariable(): string | null {
-        return rVariableId(this.$store);
-    }
-
-    get currentDataset(): string | null {
-        return rDatasetId(this.$store);
-    }
+    @State('variableId') currentVariable: string;
+    @State('datasetId') currentDataset: string;
 
     mounted(): void {
         let RZ = (<any>window).RZ;

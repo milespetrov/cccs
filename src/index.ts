@@ -5,7 +5,7 @@ import Vuex, { Store } from 'vuex';
 import app from './app.vue';
 import routes from './routes';
 import { createStore } from './store';
-import { State } from './store/state';
+import { AppState } from './store';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -13,7 +13,7 @@ Vue.use(Vuex);
 const router = new VueRouter({ routes });
 
 // initialize a new app-wide store
-const store: Store<State> = createStore();
+const store: Store<AppState> = createStore();
 
 Vue.config.ignoredElements = [
     'dv-section',
@@ -22,7 +22,7 @@ Vue.config.ignoredElements = [
     'rv-map'
 ];
 
-new Vue({
+const v = new Vue({
     el: '#app',
     router,
     store,
@@ -30,10 +30,13 @@ new Vue({
     components: { app }
 });
 
-import { cTimePeriodId, cVariableId, cDatasetId } from './store/modules/app';
+/* import { cTimePeriodId, cVariableId, cDatasetId } from './store/modules/app';
+
+
 
 router.afterEach((to, from) => {
     cTimePeriodId(store, to.query.t);
     cVariableId(store, to.query.v);
     cDatasetId(store, to.query.d);
 });
+ */
