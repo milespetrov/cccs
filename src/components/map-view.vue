@@ -30,6 +30,20 @@ import { log } from 'util';
 export default class MapView extends Vue {
     config: any = {};
 
+    aliases: object = {
+        "station_name_nom": "Station Name",
+        "stnid": "Station ID",
+        "beg_yr_annee_dev": "Beginning Year",
+        "beg_mon_mois_deb": "Beginning Month",
+        "end_yr_annee_fin": "Ending Year",
+        "end_mon_mois_fin": "Ending Month",
+        "Annual_Annuel": "Annual",
+        "Winter_Hiver": "Winter",
+        "Spring_Printemp": "Spring",
+        "Summer_Ete": "Summer",
+        "Autumn_Autome": "Autumn"
+    }
+
     /**
      * The map and table components will be force-reloaded on the `reloadKey` change.
      */
@@ -89,12 +103,14 @@ export default class MapView extends Vue {
         let tableData: string[];
 
         Object.keys(tempData.features[0].attributes).forEach(column => {
-            columns.push({
-                // the name to display
-                name: column,
-                // the key to access the data in the feature
-                dataKey: column
-            });
+            if (column in this.aliases) {
+                columns.push({
+                    // the name to display
+                    name: (<any>this.aliases)[column],
+                    // the key to access the data in the feature
+                    dataKey: column
+                });
+            }
         });
 
         tableData = (<object[]>tempData.features).map(feature => {

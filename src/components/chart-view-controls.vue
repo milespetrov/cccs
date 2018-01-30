@@ -49,9 +49,6 @@
                 </div>
                 <b-dropdown-divider></b-dropdown-divider>
 
-                <b-dropdown-item-button>Print Chart</b-dropdown-item-button>
-                <b-dropdown-divider></b-dropdown-divider>
-
                 <b-dropdown-item>Access full dataset in Catalogue</b-dropdown-item>
             </b-dropdown>
         </div>
