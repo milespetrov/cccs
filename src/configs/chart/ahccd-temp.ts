@@ -106,9 +106,13 @@ function makeConfig(
                 setExtremes: (event: any) => {
                     console.log(event, event.target);
 
-                    (<any>secondTrendValueLabel).textSetter(
-                        `Trend value: <b>${(Math.random() * 5).toFixed(2)}</b>`
-                    );
+                    $.getJSON(`http://ahccd-dev.azurewebsites.net/${stnid}/${variable}/${period}/trend/${event.min}/${event.max}`, (data) => { 
+                        console.log(data);
+                        (<any>secondTrendValueLabel).textSetter(
+                            `Trend value: <b>${(<any>data).trend.value}</b>`
+                        );
+                    });
+                    
                 }
             }
         },
