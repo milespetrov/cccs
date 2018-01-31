@@ -150,7 +150,7 @@
         "name": "Mean Temperature",
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/0",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
         "controls": []
       }
     ],
