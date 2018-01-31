@@ -171,7 +171,7 @@ function makeConfig(
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'center',
+            verticalAlign: 'middle',
             title: {text: 'Legend'},
             margin: 60,
             labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
