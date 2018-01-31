@@ -150,7 +150,7 @@
         "name": "Max Temperature",
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/2",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
         "controls": []
       }
     ],

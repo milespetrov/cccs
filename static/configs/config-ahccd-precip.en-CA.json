@@ -150,7 +150,7 @@
         "name": "Precipitation",
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/3",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/3",
         "controls": []
       }
     ],
