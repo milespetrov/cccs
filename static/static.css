@@ -36,11 +36,10 @@
 .location-search {
   display: flex;
   align-items: center;
-  height: 120px;
+  padding-left:0;
 }
 .location-search .search-box {
   width: 30%;
-  margin-left: 1rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -61,6 +60,11 @@
   right: 1rem;
   height: 37px;
   top: 0;
+}
+.nav-box .divider{
+  color: #AAAAAA;
+  border-bottom: 1px solid #333333;
+  padding-bottom:1rem;
 }
 
 .page-title {
@@ -113,6 +117,8 @@
 }
 .feature-box-text {
   margin-left: 2rem;
+  margin-top:3rem;
+  float:left;
 }
 .feature-box-text h1{
   border-bottom: none;
@@ -120,7 +126,6 @@
   margin-bottom: 3rem;
 }
 .feature-box-text h3{
-  margin-top: 0;
   color: #AAAAAA;
   font-weight: lighter;
 }
@@ -129,4 +134,18 @@
 }
 .feature-box-text button{
   margin-bottom: 3rem;
+  background-color: #E4E4E4;
+  border: 1px solid #CDCDCD;
+  font-weight: bold;
+  padding: 0.8rem;
+}
+
+.feature-box-image{
+  width:150px;
+  height:280px;
+  float:left;
+}
+
+.nav-box h3{
+  margin-top:0;
 }

@@ -172,14 +172,14 @@
                 <span class="separator"></span>
                 <div>
                     <span class="menu-option">
-                        <a href="climate-basics.html">Climate Basics</a>
+                        <a href="./climate-basics.html">Climate Basics</a>
                         <i class="fas fa-chevron-down"></i>
                     </span>
 
-                    <span class="menu-option">
-                        <span>Data</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </span>
+                <span class="menu-option">
+                    <a href="./explore-data.html">Data</a>
+                    <i class="fas fa-chevron-down"></i>
+                </span>
 
                     <span class="menu-option">
                         <span>Catalogue</span>
@@ -195,17 +195,32 @@
     </div>
     <main role="main" property="mainContentOfPage" class="container">
         <div class="row">
-            <div class="col-md-12 pull-left">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at lobortis elit, id mattis nulla. Cras vel
-                    ante ac odio venenatis pulvinar. Maecenas nulla ipsum, porta vitae sem non, commodo euismod nibh. Praesent
-                    purus sapien, finibus vitae viverra accumsan, fermentum tincidunt sapien. Morbi maximus ultrices ornare.</p>
+            <div class="col-md-8 pull-left">
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at lobortis elit, id mattis nulla. Cras vel ante ac odio
+                    venenatis pulvinar. Maecenas nulla ipsum, porta vitae sem non, commodo euismod nibh. Praesent purus sapien, finibus
+                    vitae viverra accumsan, fermentum tincidunt sapien. Morbi maximus ultrices ornare.</p>
+            </div>
+            <div class="col-md-4 pull-right nav-box">
+                <h3>Search location</h3>
+                <nav class="location-search container">
+                    <div class="search-box">
+                        <i class="fas fa-map-marker-alt fa-lg"></i>
+                        <input type="text" class="form-control" placeholder="enter location" />
+                        <i class="fas fa-search"></i>
+                    </div>
+                </nav>
+                <p class="divider">Province, Region, City, Postal Code</p>
+                <h3>View maps</h3>
+                <a>Temperature</a>
+                <a>Precipitation</a>
+                <a>Wind Speed</a>
             </div>
         </div>
         <div class="row landing-buttons">
             <section class="col-md-12 pull-left">
                 <h2>Services and information</h2>
                 <div class="wb-eqht row wb-init wb-eqht-inited" id="wb-auto-4">
-                    <a role="button" href="climate-basics.html" class="landing-button">
+                    <a role="button" href="./climate-basics.html" class="landing-button">
                         <div class="col-md-4" style="vertical-align: top; min-height: 156px;">
                             <section>
                                 <span class="fa-layers fa-fw fa-3x">
@@ -220,7 +235,7 @@
                             </section>
                         </div>
                     </a>
-                    <a role="button" href="climate-basics.html" class="landing-button">
+                    <a role="button" href="./explore-data.html" class="landing-button">
                         <div class="col-md-4" style="vertical-align: top; min-height: 156px;">
                             <section>
                                 <span class="fa-layers fa-fw fa-3x">
@@ -235,7 +250,7 @@
                             </section>
                         </div>
                     </a>
-                    <a role="button" href="climate-basics.html" class="landing-button">
+                    <a role="button" href="./climate-basics.html" class="landing-button">
                         <div class="col-md-4" style="vertical-align: top; min-height: 156px;">
                             <section>
                                 <span class="fa-layers fa-fw fa-3x">
@@ -251,43 +266,62 @@
                         </div>
                     </a>
             </section>
-            </div>
-            <section class="gc-prtts">
-                <h2>Features</h2>
-                <div class="row">
-                    <section class="col-md-12 mrgn-bttm-lg feature-box">
-                        <img>
-                        <div class="feature-box-text">
-                            <h3>Concepts</h3>
-                            <h1>What causes Climate Change?</h1>
-                            <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                                dolor sit amet.</p>
-                            <button>READ MORE</button>
-                        </div>
-                    </section>
-                    <section class="col-md-12 mrgn-bttm-lg feature-box">
+        </div>
+        <section class="gc-prtts">
+            <h2>Features</h2>
+            <div class="row">
+                <section class="col-md-12 mrgn-bttm-lg feature-box">
+                    <div class="feature-box-image">
+        
+                    </div>
+                    <div class="feature-box-text">
+                        <h3>Concepts</h3>
+                        <h1>What causes Climate Change?</h1>
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                            amet.
+                        </p>
+                        <button>READ MORE</button>
+                    </div>
+                </section>
+                <section class="col-md-12 mrgn-bttm-lg feature-box">
+                    <div class="feature-box-text">
                         <h3>Calendar</h3>
                         <h1>Year-end Events</h1>
-                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                            sit amet.</p>
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                            amet.
+                        </p>
                         <button>VIEW CALENDAR</button>
-                    </section>
-                    <section class="col-md-12 mrgn-bttm-lg feature-box">
+                    </div>
+                    <div class="feature-box-image">
+        
+                    </div>
+                </section>
+                <section class="col-md-12 mrgn-bttm-lg feature-box">
+                    <div class="feature-box-image">
+        
+                    </div>
+                    <div class="feature-box-text">
                         <h3>Announcements</h3>
                         <h1>Lorem ipsum dolor</h1>
-                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                            sit amet.</p>
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                            amet.
+                        </p>
                         <button>READ MORE</button>
-                    </section>
-                    <section class="col-md-12 mrgn-bttm-lg feature-box">
+                    </div>
+                </section>
+                <section class="col-md-12 mrgn-bttm-lg feature-box">
+                    <div class="feature-box-text">
                         <h3>Data</h3>
                         <h1>Coupled Model Intercomparison Project</h1>
-                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                            sit amet.</p>
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                            amet.
+                        </p>
                         <button>READ MORE</button>
-                    </section>
-                </div>
-            </section>
+                    </div>
+                    <div class="feature-box-image">
+        
+                    </div>
+                </section>
             <div class="pagedetails">
                 <dl id="wb-dtmd">
                     <dt>Date modified: </dt>
