@@ -67,7 +67,7 @@ export default class MapInstance extends Vue {
 
         new RZ.Map(
             this.anchor,
-            `./static/configs/config-${
+            `./assets/configs/config-${
                 this.currentDataset
             }-${this.currentVariable.replace(/_/g, '-')}.en-CA.json`
         );
