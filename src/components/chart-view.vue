@@ -124,7 +124,7 @@ export default class ChartView extends Vue {
         dvChart.config = config;
 
         (<any>window).wb.add('summary');
-        (<any>window).wb.add('table');
+        //(<any>window).wb.add('table');
     }
 
     makeConfig(
@@ -142,5 +142,12 @@ export default class ChartView extends Vue {
 /deep/ #dvChart1 [dv-chart-container] {
     margin: auto;
     height: 500px;
+}
+/deep/ .noUi-connect {
+    background: #003D79 !important;
+}
+
+/deep/ .highcharts-legend-item-hidden .fa-check {
+    color:inherit !important;
 }
 </style>
