@@ -12,12 +12,15 @@
   display: flex;
   align-items: center;
   float:left;
+  font-weight:800;
+
+}
+.top-level-menu a{
+  text-decoration: none;
+  color:inherit;
 }
 .top-level-menu .container > div {
     float:right;  
-}
-.top-level-menu .title > svg {
-  margin-right: 1rem;
 }
 .top-level-menu .title > span {
   font-size: 2rem;
@@ -39,7 +42,7 @@
   padding-left:0;
 }
 .location-search .search-box {
-  width: 30%;
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
@@ -78,7 +81,9 @@
     padding-right:15%;
 }
 .header-image {
-    background-image: url(https://i.imgur.com/BdnP4yF.png);
+    background-image: url("./assets/images/iceberg.png");
+    background-size: cover;
+    background-position: center;
     padding-bottom:5rem;
     border-bottom:2px solid #555555;
     margin-bottom:3rem;
@@ -141,11 +146,25 @@
 }
 
 .feature-box-image{
-  width:150px;
-  height:280px;
-  float:left;
+  height:100%;
+  position:absolute;
+  padding: 0 !important;
+}
+.feature-box-image.pull-right{
+  right:0;
+}
+.feature-box-image.pull-left{
+  left:0;
 }
 
 .nav-box h3{
   margin-top:0;
+}
+.nav-box a{
+  margin-right:1rem;
+}
+.nav-box .link-divider{
+  height: 5px;
+  border-left: 1px solid #333333;
+  margin-right:1.2rem;
 }
