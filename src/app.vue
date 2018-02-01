@@ -51,12 +51,27 @@
 
         <section class="container main">
                                 
-            <h2>Mean Temperature</h2>
-            <h3>Adjusted and homogenized Canadian climate data</h3>
+            <!-- <h2>Mean Temperature</h2>
+            <h3>Adjusted and homogenized Canadian climate data</h3> -->
+
+            <p>A Climate Data Record (CDR) is a specific definition of a climate data series, developed by the Committee on Climate Data Records from NOAA Operational Satellites of the National Research Council at the request of NOAA in the context of satellite records.[1] It is defined as "a time series of measurements of sufficient length, consistency, and continuity to determine climate variability and change.".[2]</p>
 
             <keep-alive>
                 <router-view class="visualization" name="visualization"></router-view>
             </keep-alive>
+
+            <div class="pagedetails">
+                <dl id="wb-dtmd">
+                <dt>Date modified: </dt>
+                <dd><time property="dateModified">2017-02-02</time></dd>
+
+                </dl>
+                <!-- <div class="row">
+                    <div class="col-sm-6 col-md-5 col-lg-4">
+                        <a href="https://www.canada.ca/en/report-problem.html" class="btn btn-default btn-block">Report a problem on this page</a>
+                    </div>
+                </div> -->
+            </div>
 
         </section>
     </main>
@@ -157,7 +172,9 @@ export default class App extends Vue {
 
     &.cip-page-header {
         // TODO: backdrop-blur?
-        background-color: rgba(255, 255, 255, 0.5);
+        .map-view & {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
     }
 
     &.cip-view-controls {
@@ -166,10 +183,12 @@ export default class App extends Vue {
 }
 
 .container.main {
+    margin-top: 1rem;
+
     .map-view & {
         margin-top: calc(
             #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} -
-                #{$view-controls-height}
+                #{$view-controls-height} + 1rem
         );
     }
 }

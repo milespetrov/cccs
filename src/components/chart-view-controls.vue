@@ -12,7 +12,7 @@
         </div>
 
         <div class="menu-option">
-            <b-dropdown text="Download" variant="light" class="m-md-2" right>
+            <b-dropdown text="Download" variant="light" right>
                 <div role="group" aria-lableledby="chart-download-data">
                     <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
                     <div class="dropdown-item-mutli">
