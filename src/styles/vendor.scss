@@ -45,6 +45,7 @@
     @import './../node_modules/bootstrap/scss/utilities';
 
     // import vue-bootstrap under the scope as well just in case; it doesn't seem to be interfering with WET styles though
+    // TODO: check if we need to import everything from there
     @import './../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
 
     // bootstrap relies on rem, but wet sets the root font to 10px, with body copy at 16px, so need to switch fonts to em
@@ -71,7 +72,7 @@
         font-size: 1em;
     }
 
-    // select for is default to height: calc(2.25rem + 2px); by wet
+    // select form defaults to height by wet: calc(2.25rem + 2px);
     select.form-control:not([size]):not([multiple]) {
         height: calc(2.25em + 2px);
     }

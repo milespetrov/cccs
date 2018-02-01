@@ -1,5 +1,9 @@
 <template>
-    <div id="map-anchor"></div>
+    <div id="map-anchor">
+
+        <span></span>
+
+    </div>
 </template>
 
 <script lang="ts">
@@ -58,10 +62,15 @@ export default class MapInstance extends Vue {
         let dataSet = 'ahccd';
 
         if (!RZ) {
+            console.log('nope');
+
+            window.setTimeout(() => this.mounted(), 2000);
+
             return;
         }
 
         if (this.currentVariable === null || this.currentDataset === null) {
+            console.log('nope2');
             return;
         }
 
@@ -97,5 +106,13 @@ export default class MapInstance extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import './../styles/variables.scss';
 
+#map-anchor {
+    /* right: 0;
+    left: 0;
+    width: 100%; */
+    height: $backdrop-map-height;
+    // position: absolute;
+}
 </style>

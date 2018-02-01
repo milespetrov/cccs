@@ -1,57 +1,62 @@
 <template>
-    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope">
+    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="viewName">
+        
+        <div class="cip-strip cip-backdrop-map">
+            <map-instance></map-instance>
+        </div>
 
-        <router-view name="location-map"></router-view>
+        <div class="cip-strip cip-top-navigation">
+            <!-- TODO: move top-navigatoin into a separate component -->
+            <nav class="cip-navigation container">
+                <div class="search-box">
+                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                    <input type="text" class="form-control" placeholder="enter location" />
+                    <i class="fas fa-search"></i>
+                </div>
+                
 
-        <nav class="top-level-menu container">
-            <h2 class="title">
-                <i class="fas fa-globe fa-lg"></i>
-                <span>Canadian Climate Portal Services</span>
-            </h2>
+                <span class="separator"></span>
 
-            <span class="separator"></span>
+                <span class="menu-option">
+                    <span>Climate Basics</span>
+                    <i class="fas fa-chevron-down"></i>
+                </span>
 
-            <span class="menu-option">
-                <span>Climate Basics</span>
-                <i class="fas fa-chevron-down"></i>
-            </span>
+                <span class="menu-option">
+                    <span>Data</span>
+                    <i class="fas fa-chevron-down"></i>
+                </span>
 
-            <span class="menu-option">
-                <span>Data</span>
-                <i class="fas fa-chevron-down"></i>
-            </span>
+                <span class="menu-option">
+                    <span>Catalogue</span>
+                    <i class="fas fa-chevron-down"></i>
+                </span>
 
-            <span class="menu-option">
-                <span>Catalogue</span>
-                <i class="fas fa-chevron-down"></i>
-            </span>
+            </nav>
+        </div> 
 
-        </nav>
-
-        <nav class="location-search container">
-
-            <div class="search-box">
-                <i class="fas fa-map-marker-alt fa-lg"></i>
-                <input type="text" class="form-control" placeholder="enter location" />
-                <i class="fas fa-search"></i>
+        <div class="cip-strip cip-page-header">
+            <!-- TODO: move header into a separate component -->
+            <div class="cip-header container">
+                <h1>Explore Climate Data</h1>
             </div>
-        </nav>
+
+        </div>
+
+        <div class="cip-strip cip-view-controls">
+            <keep-alive>
+                <router-view class="container" name="view-controls"></router-view>
+            </keep-alive>            
+        </div>
 
         <section class="container main">
-            <div class="row">
-                <section class="content col-md-9 col-md-push-3">
-                    <keep-alive>
-                        <router-view class="visualization-menu" name="visualization-menu"></router-view>
-                    </keep-alive>
+                                
+            <h2>Mean Temperature</h2>
+            <h3>Adjusted and homogenized Canadian climate data</h3>
 
-                    <keep-alive>
-                        <router-view class="visualization" name="visualization"></router-view>
-                    </keep-alive>
-
-                </section>
-
-                <variable-selector class="variable-selector"></variable-selector>
-            </div>
+            <keep-alive>
+                <router-view class="visualization" name="visualization"></router-view>
+            </keep-alive>
 
         </section>
     </main>
@@ -60,6 +65,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
 import { Getter, Action } from 'vuex-class';
+import { Dictionary } from 'vue-router/types/router';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
 import FormSelect from 'bootstrap-vue/es/components/form-select';
@@ -67,11 +73,12 @@ Vue.use(Dropdown);
 Vue.use(FormSelect);
 
 import VariableSelector from './components/variable-selector.vue';
-import { Dictionary } from 'vue-router/types/router';
+import MapInstance from './components/map-instance.vue';
 
 @Component({
     components: {
-        'variable-selector': VariableSelector
+        'variable-selector': VariableSelector,
+        'map-instance': MapInstance
     }
 })
 export default class App extends Vue {
@@ -81,7 +88,9 @@ export default class App extends Vue {
 
     @Getter getQuery: Dictionary<string>;
 
-    mounted(): void {
+    viewName: string = '';
+
+    created(): void {
         this.$router.afterEach((to, from) => {
             this.updateStore(to.query.t, to.query.v, to.query.d);
         });
@@ -111,6 +120,7 @@ export default class App extends Vue {
         variableId: string,
         datasetId: string
     ): void {
+        this.viewName = this.$router.currentRoute.name!;
         this.setTimePeriodId(timePeriodId);
         this.setVariableId(variableId);
         this.setDatasetId(datasetId);
@@ -124,84 +134,122 @@ export default class App extends Vue {
 </style>
 
 <style lang="scss" scoped>
-// TODO: remove demo hack
-// this just adds a fake map image in the header for the chart-view
-/deep/ .fake-location-search-map {
-    position: absolute;
-    background-image: url(https://i.imgur.com/BdnP4yF.png);
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 175px;
-}
+@import './styles/variables.scss';
 
-.top-level-menu {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.7);
+// cip-strips go across the full width page
+.cip-strip {
     position: relative;
 
+    &.cip-backdrop-map {
+        position: absolute;
+        width: 100%;
+
+        .chart-view & {
+            height: $top-navigation-height + $page-header-height +
+                $view-controls-height;
+            overflow: hidden;
+        }
+    }
+
+    &.cip-top-navigation {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    &.cip-page-header {
+        // TODO: backdrop-blur?
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &.cip-view-controls {
+        background-color: #ecf0f1;
+    }
+}
+
+.container.main {
+    .map-view & {
+        margin-top: calc(
+            #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} -
+                #{$view-controls-height}
+        );
+    }
+}
+.cip-header {
+    height: $page-header-height;
+    display: flex;
+    align-items: center;
+    h1 {
+        color: white;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 11px;
+        display: inline-block;
+        font-size: 2.5rem;
+        margin: 0;
+    }
+}
+.main {
+    position: relative; // background-color: white;
+}
+.cip-navigation {
+    display: flex;
+    align-items: center;
+    height: $top-navigation-height; // padding: 1rem; // background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
     .title {
         margin: 0 0 0 1rem;
         padding: 0;
         display: flex;
         align-items: center;
-
         > svg {
             margin-right: 1rem;
         }
-
         > span {
             font-size: 2rem;
         }
     }
-
     .menu-option {
         margin: 0 2rem;
-        font-weight: bold;
-
+        // font-weight: bold;
         > svg {
             margin: auto;
         }
     }
-
     .separator {
         flex: 1;
     }
 }
-
+.search-box {
+    width: 25%; // margin-left: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    input {
+        // hide the default styles
+        border: none;
+        box-shadow: none;
+        border-bottom: 1px solid grey;
+        border-radius: 0;
+        margin-right: 3rem;
+        padding: 0 3rem 0 3.5rem;
+        width: 100%;
+    }
+    > .fa-map-marker-alt {
+        color: grey;
+        position: absolute;
+        left: 1rem;
+        height: 37px;
+        top: 0;
+    }
+    /* > .fa-search {
+        position: absolute;
+        right: 1rem;
+        height: 37px;
+        top: 0;
+    } */
+}
 .location-search {
     display: flex;
     align-items: center;
     height: 120px;
-
-    .search-box {
-        width: 30%;
-        margin-left: 1rem;
-        position: relative;
-        display: flex;
-        align-items: center;
-
-        input {
-            padding: 0 3rem 0 3.5rem;
-            width: 100%;
-        }
-
-        > .fa-map-marker-alt {
-            color: grey;
-            position: absolute;
-            left: 1rem;
-            height: 37px;
-            top: 0;
-        }
-
-        > .fa-search {
-            position: absolute;
-            right: 1rem;
-            height: 37px;
-            top: 0;
-        }
-    }
 }
 </style>

@@ -1,0 +1,51 @@
+@import './variables.scss';
+
+.cip-view-controls {
+    height: $view-controls-height;
+    // width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 0;
+    // background-color: lightgray;
+
+    .separator {
+        flex: 1;
+    }
+
+    .menu-option {
+        margin: 0 2rem;
+        // font-weight: bold;
+
+        > svg {
+            margin: auto;
+        }
+    }
+
+    .b-dropdown {
+        .dropdown-item-mutli {
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 1.5rem;
+
+            span {
+                flex: 1 0 auto;
+                white-space: nowrap;
+                margin-right: 4rem;
+            }
+
+            &-options {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                width: 14rem;
+
+                .dropdown-item {
+                    // flex-basis: 50%;
+                    width: 50%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

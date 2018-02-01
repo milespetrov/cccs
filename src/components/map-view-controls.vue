@@ -1,5 +1,5 @@
 <template>
-    <div class="visualization-menu container">
+    <div class="view-controls container">
 
         <span class="separator"></span>
 
@@ -51,14 +51,14 @@ export default class MapViewControls extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.visualization-menu {
+.view-controls {
     height: 3rem * 1.6;
-    width: 100%;
+    // width: 100%;
     display: flex;
     align-items: center;
     padding: 1rem;
     padding-left: 0;
-    background-color: lightgray;
+    // background-color: lightgray;
 
     .separator {
         flex: 1;
