@@ -1,5 +1,5 @@
 <template>
-    <div class="visualization-menu container">
+    <div class="cip-view-controls container">
 
         <div class="menu-option">
             <b-form-select v-model="timePeriod" :options="timePeriods"></b-form-select>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="menu-option">
-            <b-dropdown text="Download" variant="light" class="m-md-2" right>
+            <b-dropdown text="Download" variant="light" right>
                 <div role="group" aria-lableledby="chart-download-data">
                     <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
                     <div class="dropdown-item-mutli">
@@ -149,53 +149,6 @@ export default class ChartViewControls extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.visualization-menu {
-    height: 3rem * 1.6;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    padding-left: 0;
-    background-color: lightgray;
-
-    .separator {
-        flex: 1;
-    }
-
-    .menu-option {
-        margin: 0 2rem;
-        // font-weight: bold;
-
-        > svg {
-            margin: auto;
-        }
-    }
-}
-
-.b-dropdown {
-    .dropdown-item-mutli {
-        display: flex;
-        align-items: center;
-        padding: 0.25rem 1.5rem;
-
-        span {
-            flex: 1 0 auto;
-            white-space: nowrap;
-            margin-right: 4rem;
-        }
-
-        &-options {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            width: 14rem;
-
-            .dropdown-item {
-                // flex-basis: 50%;
-                width: 50%;
-                text-align: center;
-            }
-        }
-    }
-}
+@import './../styles/variables.scss';
+@import './../styles/view-controls.scss';
 </style>

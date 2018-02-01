@@ -1,7 +1,7 @@
 <template>
     <aside class="root">
 
-        <map-instance :key="`instance-${reloadKey}`"></map-instance>
+        <!-- <map-instance :key="`instance-${reloadKey}`"></map-instance> -->
 
         <map-table :key="`table-${reloadKey}`" :config="config"></map-table>
 
@@ -31,18 +31,18 @@ export default class MapView extends Vue {
     config: any = {};
 
     aliases: object = {
-        "station_name_nom": "Station Name",
-        "stnid": "Station ID",
-        "beg_yr_annee_dev": "Beginning Year",
-        "beg_mon_mois_deb": "Beginning Month",
-        "end_yr_annee_fin": "Ending Year",
-        "end_mon_mois_fin": "Ending Month",
-        "Annual_Annuel": "Annual",
-        "Winter_Hiver": "Winter",
-        "Spring_Printemp": "Spring",
-        "Summer_Ete": "Summer",
-        "Autumn_Autome": "Autumn"
-    }
+        station_name_nom: 'Station Name',
+        stnid: 'Station ID',
+        beg_yr_annee_dev: 'Beginning Year',
+        beg_mon_mois_deb: 'Beginning Month',
+        end_yr_annee_fin: 'Ending Year',
+        end_mon_mois_fin: 'Ending Month',
+        Annual_Annuel: 'Annual',
+        Winter_Hiver: 'Winter',
+        Spring_Printemp: 'Spring',
+        Summer_Ete: 'Summer',
+        Autumn_Autome: 'Autumn'
+    };
 
     /**
      * The map and table components will be force-reloaded on the `reloadKey` change.
