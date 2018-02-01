@@ -11,6 +11,7 @@ module.exports = {
     html: {
         title: pkg.productName || pkg.name,
         description: pkg.description,
+        filename: 'explore-data.html', // the name of the output file; the actual landing page will be named `index.html`
         template: 'src/index.ejs'
     },
     filename: {
@@ -19,15 +20,18 @@ module.exports = {
     homepage: './',
     minimize: minimize,
     sourceMap: false,
-    staticFolder: '_static', // the content of the default static folder is __always__ copied into the dist; point it to a fake folder
-    // copy the `static` folder itself into `dist`
+    // copy the `assets` folder into `dist`
     copy: [
         {
-            from: path.resolve(__dirname, 'static'),
-            to: path.resolve(__dirname, 'dist/static'),
+            from: path.resolve(__dirname, 'assets'),
+            to: path.resolve(__dirname, 'dist/assets'),
             ignore: ['.*']
         }
     ],
+    // open the exploer data page on localhost:3001 by default when running `npm run dev`
+    devServer: {
+        index: 'explore-data.html'
+    },
     presets: [
         // there is problem with using babel-minify if you want to have source maps as well: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
         // TODO: cannot uglify with babel without the EI hack in vuex store
