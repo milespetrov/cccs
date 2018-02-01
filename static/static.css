@@ -81,7 +81,7 @@
     padding-right:15%;
 }
 .header-image {
-    background-image: url(".././assets/images/iceberg.png");
+    background-image: url("./assets/images/iceberg.png");
     background-size: cover;
     background-position: center;
     padding-bottom:5rem;
