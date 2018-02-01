@@ -1,0 +1,132 @@
+.top-level-menu {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  
+}
+.top-level-menu .title {
+  margin: 0 0 0 1rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  float:left;
+}
+.top-level-menu .container > div {
+    float:right;  
+}
+.top-level-menu .title > svg {
+  margin-right: 1rem;
+}
+.top-level-menu .title > span {
+  font-size: 2rem;
+}
+.top-level-menu .menu-option {
+  margin: 0 2rem;
+  font-weight: bold;
+}
+.top-level-menu .menu-option > svg {
+  margin: auto;
+}
+.top-level-menu .separator {
+  flex: 1;
+}
+
+.location-search {
+  display: flex;
+  align-items: center;
+  height: 120px;
+}
+.location-search .search-box {
+  width: 30%;
+  margin-left: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.location-search .search-box input {
+  padding: 0 3rem 0 3.5rem;
+  width: 100%;
+}
+.location-search .search-box > .fa-map-marker-alt {
+  color: grey;
+  position: absolute;
+  left: 1rem;
+  height: 37px;
+  top: 0;
+}
+.location-search .search-box > .fa-search {
+  position: absolute;
+  right: 1rem;
+  height: 37px;
+  top: 0;
+}
+
+.page-title {
+    border:none !important;
+    background-color: rgba(70,70,70,0.7);
+    padding:1rem;
+    padding-left:1.5rem;
+    color:white;
+    min-width:40%;
+    width:fit-content;
+    padding-right:15%;
+}
+.header-image {
+    background-image: url(https://i.imgur.com/BdnP4yF.png);
+    padding-bottom:5rem;
+    border-bottom:2px solid #555555;
+    margin-bottom:3rem;
+}
+
+.landing-button {
+  color: black !important;
+  text-decoration: none !important;
+}
+.landing-button .landing-button-text {
+  position: relative;
+  float: left;
+  left: 5rem;
+}
+.landing-button .landing-button-text h3 {
+  position: inherit;
+  top: 1.5rem;
+  color: #AAAAAA;
+  font-weight: lighter;
+}
+.landing-button .landing-button-text h2 {
+  position: inherit;
+  top: -1.5rem;
+}
+.landing-button span {
+  position: relative;
+  top: 5rem;
+  float: left;
+  left:2rem;
+}
+.landing-buttons {
+  border-bottom: 1px solid #333333;
+}
+.feature-box {
+  background-color: #F1F1F1;
+}
+.feature-box-text {
+  margin-left: 2rem;
+}
+.feature-box-text h1{
+  border-bottom: none;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.feature-box-text h3{
+  margin-top: 0;
+  color: #AAAAAA;
+  font-weight: lighter;
+}
+.feature-box-text p{
+  margin-bottom: 3rem;
+}
+.feature-box-text button{
+  margin-bottom: 3rem;
+}
