@@ -14,7 +14,7 @@
     }
 
     .menu-option {
-        margin: 0 2rem;
+        margin: 0 1rem;
 
         &:first-child {
             margin-left: 0;
@@ -38,7 +38,7 @@
 
             &:hover,
             &:focus {
-                font-weight: bold;
+                // font-weight: bold;
                 background-color: #e2e6ea;
             }
         }
@@ -57,13 +57,38 @@
             &-options {
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: flex-end;
                 align-items: center;
                 width: 14rem;
 
                 .dropdown-item {
-                    // flex-basis: 50%;
-                    width: 50%;
+                    background-color: #ccc;
+                    color: #444;
+
                     text-align: center;
+
+                    width: auto;
+
+                    &:first-child:nth-last-child(1) {
+                        width: 100%;
+                        // margin: 0;
+                    }
+
+                    margin: 0.5rem;
+                    width: calc(50% - 1rem);
+
+                    &:hover,
+                    &:focus,
+                    &.cip-selected {
+                        background-color: #243850;
+                        color: white;
+                    }
+
+                    // if you need to specify custom width based on the number of elements, it can be done this way
+                    /* &:first-child:nth-last-child(2),
+                    &:first-child:nth-last-child(2) ~ .dropdown-item {
+                        width: 50%;
+                    } */
                 }
             }
         }

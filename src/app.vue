@@ -173,7 +173,8 @@ export default class App extends Vue {
     &.cip-page-header {
         // TODO: backdrop-blur?
         .map-view & {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
         }
     }
 
