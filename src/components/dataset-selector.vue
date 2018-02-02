@@ -1,0 +1,93 @@
+<template>
+    <b-dropdown :text="selectedDatasetShortName" variant="light" class="cip-dataset-selector">
+        
+        <b-dropdown-item-button v-for="dataset in datasetItems" 
+            @click="selectDataset(dataset)"
+            :key="`dataset-${ dataset.id }`">
+                <span class="cip-name">{{ dataset.name }}</span>
+                <span class="cip-short-name">{{ dataset.shortName }}</span></b-dropdown-item-button>
+
+    </b-dropdown>
+    
+</template>
+
+<script lang="ts">
+import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State, Getter, Action } from 'vuex-class';
+
+import api from './../api/main';
+import { Dictionary } from 'vue-router/types/router';
+
+interface DatasetItem {
+    name: string;
+    shortName: string;
+    id: string;
+}
+
+@Component
+export default class DatasetSelector extends Vue {
+    datasetItems: DatasetItem[] = [
+        {
+            name: 'Coupled Model Intercomparison Project Phase 5',
+            shortName: 'CIMP5',
+            id: 'cimp5'
+        },
+        {
+            name: 'Adjusted and homogenized Canadian Climate Data',
+            shortName: 'AHCCD',
+            id: 'ahccd'
+        },
+        {
+            name: 'Canadian Gridded Temperature and Precipitation Anomalies',
+            shortName: 'CANGRD',
+            id: 'cangrd'
+        }
+    ];
+
+    @Action setDatasetId: (value: string) => void;
+
+    @State datasetId: string;
+
+    @Getter getQuery: Dictionary<string>;
+
+    get selectedDatasetShortName(): string {
+        return this.datasetItems.find(dataset => dataset.id === this.datasetId)!
+            .shortName;
+    }
+
+    selectDataset(dataset: DatasetItem) {
+        this.setDatasetId(dataset.id);
+
+        this.updateRoute();
+    }
+
+    updateRoute(): void {
+        this.$router.push({
+            name: this.$router.currentRoute.name,
+            query: this.getQuery
+        });
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import './../styles/variables.scss';
+@import './../styles/view-controls.scss';
+
+.cip-dataset-selector {
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .cip-name {
+        flex: 1;
+        margin-right: 3rem;
+    }
+
+    .cip-short-name {
+        font-size: 0.7em;
+        font-weight: 100;
+    }
+}
+</style>

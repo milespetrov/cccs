@@ -2,7 +2,15 @@
     <div class="cip-view-controls container">
 
         <div class="menu-option">
-            <b-form-select v-model="timePeriod" :options="timePeriods"></b-form-select>
+            <variable-selector></variable-selector>
+        </div>
+
+        <div class="menu-option">
+            <dataset-selector></dataset-selector>
+        </div>
+
+        <div class="menu-option">
+            <time-period-selector></time-period-selector>
         </div>
 
         <span class="separator"></span>
@@ -49,59 +57,34 @@
                 </div>
                 <b-dropdown-divider></b-dropdown-divider>
 
-                <b-dropdown-item>Access full dataset in Catalogue</b-dropdown-item>
+                <b-dropdown-item-button>Access full dataset in Catalogue</b-dropdown-item-button>
             </b-dropdown>
         </div>
     </div>
 </template>
 
 <script lang="ts">
+import { Dictionary } from 'vue-router/types/router';
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
+
+import VariableSelector from './variable-selector.vue';
+import DatasetSelector from './dataset-selector.vue';
+import TimePeriodSelector from './time-period-selector.vue';
 
 import { sprintf } from 'sprintf-js';
 
 import api from './../api/main';
-import { Dictionary } from 'vue-router/types/router';
 
-@Component
+@Component({
+    components: {
+        VariableSelector,
+        DatasetSelector,
+        TimePeriodSelector
+    }
+})
 export default class ChartViewControls extends Vue {
-    timePeriods: string[] = [
-        'Jan_Janv',
-        'Feb_Fev',
-        'Mar_March',
-        'Apr_Avr',
-        'May_Mai',
-        'June_Juin',
-        'July_Juil',
-        'Aug_Aout',
-        'Sept_Sept',
-        'Oct_Oct',
-        'Nov_Nov',
-        'Dec_Dec',
-        'Annual_Annuel',
-        'Winter_Hiver',
-        'Spring_Printemp',
-        'Summer_Ete',
-        'Autumn_Autome'
-    ];
-
-    @State timePeriodId: string;
     @Getter getQuery: Dictionary<string>;
-    @Action setTimePeriodId: (id: string) => void;
-
-    get timePeriod(): string {
-        return this.timePeriodId;
-    }
-
-    set timePeriod(value: string) {
-        this.setTimePeriodId(value);
-
-        this.$router.push({
-            name: 'chart-view',
-            query: this.getQuery
-        });
-    }
 
     changeView(viewName: string): void {
         this.$router.push({
