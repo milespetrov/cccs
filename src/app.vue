@@ -114,9 +114,9 @@ export default class App extends Vue {
             // the route is set already
 
             this.updateStore(
-                this.$router.currentRoute.query.t,
-                this.$router.currentRoute.query.v,
-                this.$router.currentRoute.query.d
+                this.$router.currentRoute.query.t || 'Jan_Janv',
+                this.$router.currentRoute.query.v || 'tmax',
+                this.$router.currentRoute.query.d || 'ahccd'
             );
             return;
         }
