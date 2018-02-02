@@ -59,7 +59,7 @@ export default class VariableSelector extends Vue {
             items: [
                 {
                     name: 'Mean Temperature',
-                    id: 'mean-temp',
+                    id: 'tmean',
                     options: [
                         {
                             name: 'Historic',
@@ -73,7 +73,7 @@ export default class VariableSelector extends Vue {
                 },
                 {
                     name: 'Minimum Temperature',
-                    id: 'min-temp',
+                    id: 'tmin',
                     options: [
                         {
                             name: 'Historic',
@@ -87,7 +87,7 @@ export default class VariableSelector extends Vue {
                 },
                 {
                     name: 'Maximum Temperature',
-                    id: 'max-temp',
+                    id: 'tmax',
                     options: [
                         {
                             name: 'Historic',

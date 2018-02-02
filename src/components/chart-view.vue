@@ -131,7 +131,7 @@ export default class ChartView extends Vue {
         data: any,
         period: string,
         variable: string,
-        stnid: number = 1171393
+        stnid: number = 1021830
     ): object {
         return ahccdTemp(data, period, variable, stnid);
     }

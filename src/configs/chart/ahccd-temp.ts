@@ -1,8 +1,12 @@
+interface period_mappings{
+    [key:string]:number
+}
+
 function makeConfig(
     stationData: any,
     period: string,
     variable: string,
-    stnid: number = 1171393
+    stnid: number = 1021830
 ) {
     const stationTrendValue = 2.35;
 
@@ -17,15 +21,15 @@ function makeConfig(
     const variables: object[] = [
         {
             name: 'Mean Temperature',
-            id: 'mean-temp'
+            id: 'tmean'
         },
         {
             name: 'Minimum Temperature',
-            id: 'min-temp'
+            id: 'tmin'
         },
         {
             name: 'Maximum Temperature',
-            id: 'max-temp'
+            id: 'tmax'
         },
         {
             name: 'Precipitation',
@@ -36,41 +40,25 @@ function makeConfig(
     const item = variables.find((v: { id: string }) => v.id === variable);
     variable = item ? (<any>item).name : variable;
 
-    const gradients = {
-        precip: { linearGradient: [0, 0, 0, 400],
-            stops: [
-                [0, 'rgb(36, 100, 164)'],
-                [0.1, 'rgb(55, 119, 183)'],
-                [0.2, 'rgb(75, 139, 203)'],
-                [0.3, 'rgb(95, 159, 223)'],
-                [0.4, 'rgb(115, 179, 243)'],
-                [0.5, 'rgb(135, 199, 199)'],
-                [0.6, 'rgb(155, 219, 219)'],
-                [0.7, 'rgb(175, 239, 239)'],
-                [0.8, 'rgb(195, 195, 195)'],
-                [0.9, 'rgb(215, 215, 215)'],
-                [1, 'rgb(235, 235, 235)']
-        ]},
-        temp: { linearGradient: [0, 400, 0, 0],
-            stops: [
-                [0, 'rgba(0, 0, 127, 0.5)'],
-                [0.1, 'rgba(0, 0, 197, 0.5)'],
-                [0.2, 'rgba(0, 20, 255, 0.5)'],
-                [0.3, 'rgba(0, 126, 255, 0.5)'],
-                [0.4, 'rgba(0, 233, 255, 0.5)'],
-                [0.5, 'rgba(67, 255, 186, 0.5)'],
-                [0.6, 'rgba(152, 255, 101, 0.5)'],
-                [0.7, 'rgba(237, 255, 16, 0.5)'],
-                [0.8, 'rgba(255, 186, 0, 0.5)'],
-                [0.9, 'rgba(255, 59, 0, 0.5)'],
-                [1, 'rgba(197, 0, 0, 0.5)']
-        ]},
-        test: { linearGradient: [0, 0, 0, 300],
-        stops: [
-            [0, '#003D79' ],
-            [1, 'rgba(255,255,255,0)']
-        ]}
-    };
+    const period_mappings: period_mappings = {
+        'Jan_Janv': 1,
+        'Feb_Fev': 2,
+        'Mar_March': 3,
+        'Apr_Avr': 4,
+        'May_Mai': 5, 
+        'June_Juin': 6,
+        'July_Juil': 7,
+        'Aug_Aout': 8,
+        'Sept_Sept': 9,
+        'Oct_Oct': 10,
+        'Nov_Nov': 11,
+        'Dec_Dec': 12,
+        'Winter_Hiver': 13,
+        'Spring_Printemp': 14,
+        'Summer_Ete': 15,
+        'Autumn_Autome': 16,
+        'Annual_Annuel': 17
+    }
 
     const config = {
         chart: {
@@ -146,10 +134,10 @@ function makeConfig(
                 setExtremes: (event: any) => {
                     console.log(event, event.target);
 
-                    $.getJSON(`http://ahccd-dev.azurewebsites.net/${stnid}/${variable}/${period}/trend/${event.min}/${event.max}`, (data) => { 
+                    $.getJSON(`http://ahccd-dev.azurewebsites.net/${stnid}/${(<any>item!).id}/${period_mappings[period]}/trend/${event.min}/${event.max}`, (data) => { 
                         console.log(data);
                         (<any>secondTrendValueLabel).textSetter(
-                            `User range (${event.min}-${event.max}): <b>${(<any>data).trend.value}</b>`
+                            `User range (${event.min}-${event.max}): <b>${(<any>data).value}</b>`
                         );
                     });
                     
@@ -161,8 +149,8 @@ function makeConfig(
                 text: `${variable}, °C`
             },
             labels:{style:{color:'black'}},
-            min: Math.min(0, ...seriesData),
-            max: Math.max(0, ...seriesData)
+            min: Math.min(0, ...seriesData) * 1.5,
+            max: Math.max(0, ...seriesData) * 1.5
         },
         tooltip: {
             shared: true,
