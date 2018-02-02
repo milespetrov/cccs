@@ -121,7 +121,7 @@ export default class App extends Vue {
             return;
         }
 
-        this.updateStore('Jan_Janv', 'max-temp', 'ahccd');
+        this.updateStore('Jan_Janv', 'tmax', 'ahccd');
 
         // DEMO: push to the chart view on mount by default, so something will show up
         this.$router.push({
@@ -173,8 +173,12 @@ export default class App extends Vue {
     &.cip-page-header {
         // TODO: backdrop-blur?
         .map-view & {
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.7);
+
+            @supports (backdrop-filter: blur(5px)) {
+                background-color: rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(5px);
+            }
         }
     }
 
