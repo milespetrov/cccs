@@ -12,7 +12,7 @@ function getData(
     timePeriod: string,
     variable: string,
     dataset: string,
-    stnid: number = 1021830
+    stnid: string
 ): Promise<any[]> {
     const period_mappings: period_mappings = {
         Jan_Janv: 1,

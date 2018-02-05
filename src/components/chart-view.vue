@@ -33,8 +33,6 @@ export default class ChartView extends Vue {
 
     @Watch('currentTimePeriod')
     onTimePeriodChanged(): void {
-        console.log('onTimePeriodChange', this.currentTimePeriod);
-
         this.updateDQV();
     }
 
@@ -42,23 +40,53 @@ export default class ChartView extends Vue {
 
     @Watch('currentVariable')
     onCurrentVariableChanged(): void {
-        console.log('onTimePeriodChange', this.currentVariable);
-
         this.updateDQV();
     }
 
     @State('datasetId') currentDataset: string;
 
+    @State('stationId') currentStation: string;
+
+    @Watch('currentStation')
+    onCurrentStationChanged(): void {
+        this.updateDQV();
+    }
+
     private data: any[];
 
     private userTrendValue: SVGElement;
+
+    /**
+     * Keeps track of the internal state of the view. When `false`, no update should be initiated inside the component.
+     */
+    isActive: boolean = false;
+
+    /**
+     * `Activated` lifecycle hook.
+     * https://vuejs.org/v2/api/#Options-Lifecycle-Hooks
+     */
+    activated(): void {
+        this.isActive = true;
+
+        // trigger data update change
+        this.updateDQV();
+    }
+
+    /**
+     * `Activated` lifecycle hook.
+     * https://vuejs.org/v2/api/#Options-Lifecycle-Hooks
+     */
+    deactivated(): void {
+        this.isActive = false;
+    }
 
     async mounted(): Promise<void> {
         if (!this.data) {
             this.data = await api.getData(
                 this.currentTimePeriod,
                 this.currentVariable,
-                this.currentDataset
+                this.currentDataset,
+                this.currentStation
             );
 
             const config = this.makeConfig(
@@ -108,10 +136,15 @@ export default class ChartView extends Vue {
     }
 
     async updateDQV(): Promise<void> {
+        if (!this.isActive) {
+            return;
+        }
+
         this.data = await api.getData(
             this.currentTimePeriod,
             this.currentVariable,
-            this.currentDataset
+            this.currentDataset,
+            this.currentStation
         );
 
         const config = this.makeConfig(
@@ -144,10 +177,10 @@ export default class ChartView extends Vue {
     height: 500px;
 }
 /deep/ .noUi-connect {
-    background: #003D79 !important;
+    background: #003d79 !important;
 }
 
 /deep/ .highcharts-legend-item-hidden .fa-check {
-    color:inherit !important;
+    color: inherit !important;
 }
 </style>

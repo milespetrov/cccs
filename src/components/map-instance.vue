@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter } from 'vuex-class';
+import { State, Getter, Action } from 'vuex-class';
 
 import sprintf from 'sprintf-js';
 
@@ -60,6 +60,8 @@ export default class MapInstance extends Vue {
     @State('timePeriodId') currentTimePeriod: string;
 
     @Getter getQuery: Dictionary<string>;
+
+    @Action setStationId: (value: string) => void;
 
     mapInstance: any = null;
 
@@ -115,7 +117,7 @@ export default class MapInstance extends Vue {
                     );
                 });
             });
-            console.log('amp insta');
+            console.log('map instance added');
 
             this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
                 <div class="mApiOverViewMap">
@@ -130,6 +132,10 @@ export default class MapInstance extends Vue {
     }
 
     async displayMiniChart(features: any): Promise<void> {
+        console.log('display mini chart');
+
+        this.setStationId(features.data[2].value);
+
         // TODO: abstrack data retrieval to a single place
         const data = await api.getData(
             this.currentTimePeriod,

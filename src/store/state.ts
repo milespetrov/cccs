@@ -4,4 +4,5 @@ export interface AppState {
     timePeriodId: string | null;
     variableId: string | null;
     datasetId: string | null;
+    stationId: string | null;
 }

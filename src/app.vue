@@ -99,6 +99,7 @@ export default class App extends Vue {
     @Action setTimePeriodId: (value: string) => void;
     @Action setVariableId: (value: string) => void;
     @Action setDatasetId: (value: string) => void;
+    @Action setStationId: (value: string) => void;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -114,7 +115,7 @@ export default class App extends Vue {
 
     created(): void {
         this.$router.afterEach((to, from) => {
-            this.updateStore(to.query.t, to.query.v, to.query.d);
+            this.updateStore(to.query.t, to.query.v, to.query.d, to.query.s);
         });
 
         if (this.$router.currentRoute.name) {
@@ -123,12 +124,13 @@ export default class App extends Vue {
             this.updateStore(
                 this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
-                this.$router.currentRoute.query.d || 'ahccd'
+                this.$router.currentRoute.query.d || 'ahccd',
+                this.$router.currentRoute.query.s || '1021830'
             );
             return;
         }
 
-        this.updateStore('Jan_Janv', 'tmax', 'ahccd');
+        this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830');
 
         // DEMO: push to the chart view on mount by default, so something will show up
         this.$router.push({
@@ -140,12 +142,14 @@ export default class App extends Vue {
     updateStore(
         timePeriodId: string,
         variableId: string,
-        datasetId: string
+        datasetId: string,
+        stationId: string
     ): void {
         this.viewName = this.$router.currentRoute.name!;
         this.setTimePeriodId(timePeriodId);
         this.setVariableId(variableId);
         this.setDatasetId(datasetId);
+        this.setStationId(stationId);
     }
 
     changeViewToMap() {
