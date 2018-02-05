@@ -37,11 +37,7 @@ export default class MapView extends Vue {
         beg_mon_mois_deb: 'Beginning Month',
         end_yr_annee_fin: 'Ending Year',
         end_mon_mois_fin: 'Ending Month',
-        Annual_Annuel: 'Annual',
-        Winter_Hiver: 'Winter',
-        Spring_Printemp: 'Spring',
-        Summer_Ete: 'Summer',
-        Autumn_Autome: 'Autumn'
+        Annual_Annuel: 'Annual'
     };
 
     /**
