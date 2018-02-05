@@ -23,11 +23,11 @@ export default class MapInstance extends Vue {
     tooltipTemplates: tooltips = {
         'en-CA': {
             ahccd: {
-                'mean-temp':
+                tmean:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                'min-temp':
+                tmin:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                'max-temp':
+                tmax:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
                 precip:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>"
@@ -35,11 +35,11 @@ export default class MapInstance extends Vue {
         },
         'fr-CA': {
             ahccd: {
-                'mean-temp':
+                tmean:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                'min-temp':
+                tmin:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                'max-temp':
+                tmax:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
                 precip:
                     "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>"
