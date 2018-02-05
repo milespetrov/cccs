@@ -37,11 +37,7 @@ export default class MapView extends Vue {
         beg_mon_mois_deb: 'Beginning Month',
         end_yr_annee_fin: 'Ending Year',
         end_mon_mois_fin: 'Ending Month',
-        Annual_Annuel: 'Annual',
-        Winter_Hiver: 'Winter',
-        Spring_Printemp: 'Spring',
-        Summer_Ete: 'Summer',
-        Autumn_Autome: 'Autumn'
+        Annual_Annuel: 'Annual'
     };
 
     /**
@@ -93,8 +89,15 @@ export default class MapView extends Vue {
         // update the reload keys to force-reload the map and table components
         this.reloadKey = this.currentVariable;
 
+        const varArray: any = {
+            precip: 3,
+            tmean: 0,
+            tmax: 2,
+            tmin: 1
+        }
+
         const tempData: any = await $.getJSON(
-            'http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD_Denorm/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json',
+            `http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${varArray[this.currentVariable]}/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
             data => {
                 return data;
             }

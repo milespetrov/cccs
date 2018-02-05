@@ -1,5 +1,12 @@
 <template>
     <div class="cip-view-controls container">
+        <div class="menu-option">
+            <variable-selector></variable-selector>
+        </div>
+
+        <div class="menu-option">
+            <dataset-selector></dataset-selector>
+        </div>
 
         <span class="separator"></span>
 
@@ -30,10 +37,18 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { sprintf } from 'sprintf-js';
 import { Getter } from 'vuex-class';
 
+import VariableSelector from './variable-selector.vue';
+import DatasetSelector from './dataset-selector.vue';
+
 import api from './../api/main';
 import { Dictionary } from 'vue-router/types/router';
 
-@Component
+@Component({
+    components: {
+        VariableSelector,
+        DatasetSelector
+    }
+})
 export default class MapViewControls extends Vue {
     @Getter getQuery: Dictionary<string>;
 
