@@ -17,9 +17,15 @@ import ahccdTemp from '../configs/chart/ahccd-temp';
 import { Dictionary } from 'vue-router/types/router';
 
 interface tooltips {
-    'en-CA': { [key: string]: { [key: string]: string } };
-    'fr-CA': { [key: string]: { [key: string]: string } };
-    [key: string]: { [key: string]: { [key: string]: string } };
+    'en-CA': { 
+        [key: string]: { 
+            [key: string]: {
+                [key: string]: string
+            }
+        } 
+    };
+    'fr-CA': { [key: string]: { [key: string]: { [key:string]: string } } };
+    [key: string]: { [key: string]: { [key: string]: { [key:string]: string } } };
 }
 
 @Component
@@ -27,26 +33,42 @@ export default class MapInstance extends Vue {
     tooltipTemplates: tooltips = {
         'en-CA': {
             ahccd: {
-                tmean:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                tmin:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                tmax:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                precip:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>"
+                tmean: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: "Annual_Mean"
+                },
+                tmin: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: "Annual_Min"
+                },
+                tmax: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: "Annual_Max"
+                },
+                precip: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: "Annual_Annuel"
+                }
             }
         },
         'fr-CA': {
             ahccd: {
-                tmean:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                tmin:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                tmax:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                precip:
-                    "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>"
+                tmean: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: "Annual_Mean"
+                },
+                tmin:{
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: "Annual_Mean"
+                },
+                tmax: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: "Annual_Mean"
+                },
+                precip: {
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: "Annual_Mean"
+                }
             }
         }
     };
@@ -105,15 +127,15 @@ export default class MapInstance extends Vue {
             this.mapInstance.ui.tooltip.mouseOver.subscribe((z: any) => {
                 z.event.preventDefault();
                 z.attribs.then((a: any) => {
-                    const name = a.station_name_nom;
-                    const value = Intl.NumberFormat(lang).format(
-                        a.Annual_Annuel
-                    );
                     const currentTemplate = this.tooltipTemplates[lang][
                         dataSet
                     ][this.currentVariable!];
+                    const name = a.station_name_nom;
+                    const value = Intl.NumberFormat(lang).format(
+                        a[currentTemplate.value_key]
+                    );
                     tooltip = z.add(
-                        sprintf.sprintf(currentTemplate, <any>{ name, value })
+                        sprintf.sprintf(currentTemplate.template, <any>{ name, value })
                     );
                 });
             });

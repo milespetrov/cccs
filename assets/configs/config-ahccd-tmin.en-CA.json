@@ -150,7 +150,7 @@
         "name": "Min Temperature",
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/1",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_3Cheese/MapServer/1",
         "controls": []
       }
     ],
