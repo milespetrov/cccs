@@ -15,7 +15,7 @@ module.exports = {
         template: 'src/index.ejs'
     },
     filename: {
-        js: `cpi-sandbox${minimize ? '.min' : ''}.js`
+        js: `cip-sandbox${minimize ? '.min' : ''}.js`
     },
     homepage: './',
     minimize: minimize,
