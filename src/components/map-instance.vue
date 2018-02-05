@@ -12,6 +12,9 @@ import { State } from 'vuex-class';
 
 import sprintf from 'sprintf-js';
 
+import api from './../api/main';
+import ahccdTemp from '../configs/chart/ahccd-temp';
+
 interface tooltips {
     'en-CA': { [key: string]: { [key: string]: string } };
     'fr-CA': { [key: string]: { [key: string]: string } };
@@ -53,6 +56,9 @@ export default class MapInstance extends Vue {
 
     @State('variableId') currentVariable: string;
     @State('datasetId') currentDataset: string;
+    @State('timePeriodId') currentTimePeriod: string;
+
+    mapInstance: any = null;
 
     mounted(): void {
         let RZ = (<any>window).RZ;
@@ -83,9 +89,11 @@ export default class MapInstance extends Vue {
 
         let tooltip;
         RZ.mapAdded.subscribe(() => {
-            RZ.mapInstances[
-                RZ.mapInstances.length - 1
-            ].ui.tooltip.mouseOver.subscribe((z: any) => {
+            this.mapInstance = RZ.mapInstances[RZ.mapInstances.length - 1];
+
+            this.mapInstance.identify = false;
+
+            this.mapInstance.ui.tooltip.mouseOver.subscribe((z: any) => {
                 z.event.preventDefault();
                 z.attribs.then((a: any) => {
                     const name = a.station_name_nom;
@@ -100,7 +108,65 @@ export default class MapInstance extends Vue {
                     );
                 });
             });
+            console.log('amp insta');
+
+            this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
+                <div class="mApiOverViewMap">
+                    <div id="dvMountPoint1"></div>
+                </div>
+            `);
+
+            this.mapInstance.click.subscribe((event: any) => {
+                event.features.subscribe(this.displayMiniChart);
+            });
         });
+    }
+
+    async displayMiniChart(features: any): Promise<void> {
+        // TODO: abstrack data retrieval to a single place
+        const data = await api.getData(
+            this.currentTimePeriod,
+            this.currentVariable,
+            this.currentDataset,
+            features.data[2].value
+        );
+
+        const config = ahccdTemp(
+            data,
+            this.currentTimePeriod,
+            this.currentVariable,
+            features.data[2].value,
+            true
+        );
+
+        console.log(config);
+
+        if (api.DQV.charts['dvChart5_1']) {
+            api.DQV.charts['dvChart5_1'].config = config;
+            return;
+        }
+
+        const template = `
+            <dv-section id="dv5">
+            <dv-chart id="dvChart5_1"></dv-chart>
+            </dv-section>
+        `;
+
+        const dvchart1 = new api.DQV.Chart({
+            id: 'dvChart5_1',
+            config
+        });
+        const dvsection = new api.DQV.Section({ id: 'dv5', template });
+
+        this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
+            <div class="mApiOverViewMap">
+                <div id="dvMountPoint1"></div>
+            </div>
+        `);
+
+        dvsection.mount(document.getElementById('dvMountPoint1'));
+
+        console.log(features);
     }
 }
 </script>
