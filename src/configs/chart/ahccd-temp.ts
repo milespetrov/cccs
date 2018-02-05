@@ -1,5 +1,5 @@
-interface period_mappings{
-    [key:string]:number
+interface period_mappings {
+    [key: string]: number;
 }
 
 function makeConfig(
@@ -41,24 +41,24 @@ function makeConfig(
     variable = item ? (<any>item).name : variable;
 
     const period_mappings: period_mappings = {
-        'Jan_Janv': 1,
-        'Feb_Fev': 2,
-        'Mar_March': 3,
-        'Apr_Avr': 4,
-        'May_Mai': 5, 
-        'June_Juin': 6,
-        'July_Juil': 7,
-        'Aug_Aout': 8,
-        'Sept_Sept': 9,
-        'Oct_Oct': 10,
-        'Nov_Nov': 11,
-        'Dec_Dec': 12,
-        'Winter_Hiver': 13,
-        'Spring_Printemp': 14,
-        'Summer_Ete': 15,
-        'Autumn_Autome': 16,
-        'Annual_Annuel': 17
-    }
+        Jan_Janv: 1,
+        Feb_Fev: 2,
+        Mar_March: 3,
+        Apr_Avr: 4,
+        May_Mai: 5,
+        June_Juin: 6,
+        July_Juil: 7,
+        Aug_Aout: 8,
+        Sept_Sept: 9,
+        Oct_Oct: 10,
+        Nov_Nov: 11,
+        Dec_Dec: 12,
+        Winter_Hiver: 13,
+        Spring_Printemp: 14,
+        Summer_Ete: 15,
+        Autumn_Autome: 16,
+        Annual_Annuel: 17
+    };
 
     const config = {
         chart: {
@@ -75,11 +75,11 @@ function makeConfig(
                     ren
                         .label(
                             `Trend value: <b>${stationTrendValue}</b>`,
-                           650,
+                            650,
                             50
                         )
                         .css({
-                            color: 'black'//'#ecf0f1'
+                            color: 'black' //'#ecf0f1'
                         })
                         .attr({
                             //fill: '#222222',
@@ -90,13 +90,9 @@ function makeConfig(
 
                     // draw the second trend value
                     secondTrendValueLabel = ren
-                        .label(
-                            ``,
-                            650,
-                            85
-                        )
+                        .label(``, 650, 85)
                         .css({
-                            color: 'black'//'#ecf0f1'
+                            color: 'black' //'#ecf0f1'
                         })
                         .attr({
                             //fill: '#222222',
@@ -125,22 +121,29 @@ function makeConfig(
             title: {
                 text: 'Year'
             },
-            labels:{style:{color:'black'}},
+            labels: { style: { color: 'black' } },
             minRange: 20,
-            minPadding: 20,
             crosshair: true,
             gridLineWidth: 1,
             events: {
                 setExtremes: (event: any) => {
                     console.log(event, event.target);
 
-                    $.getJSON(`http://ahccd-dev.azurewebsites.net/${stnid}/${(<any>item!).id}/${period_mappings[period]}/trend/${event.min}/${event.max}`, (data) => { 
-                        console.log(data);
-                        (<any>secondTrendValueLabel).textSetter(
-                            `User range (${event.min}-${event.max}): <b>${(<any>data).value}</b>`
-                        );
-                    });
-                    
+                    $.getJSON(
+                        `http://ahccd-dev.azurewebsites.net/${stnid}/${
+                            (<any>item!).id
+                        }/${period_mappings[period]}/trend/${event.min}/${
+                            event.max
+                        }`,
+                        data => {
+                            console.log(data);
+                            (<any>secondTrendValueLabel).textSetter(
+                                `User range (${event.min}-${event.max}): <b>${
+                                    (<any>data).value
+                                }</b>`
+                            );
+                        }
+                    );
                 }
             }
         },
@@ -148,7 +151,7 @@ function makeConfig(
             title: {
                 text: `${variable}, °C`
             },
-            labels:{style:{color:'black'}},
+            labels: { style: { color: 'black' } },
             min: Math.min(0, ...seriesData) * 1.5,
             max: Math.max(0, ...seriesData) * 1.5
         },
@@ -160,9 +163,10 @@ function makeConfig(
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle',
-            title: {text: 'Legend'},
+            title: { text: 'Legend' },
             margin: 60,
-            labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
+            labelFormat:
+                '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
             symbolHeight: 0.1,
             symbolWidth: 0.1,
@@ -186,7 +190,7 @@ function makeConfig(
                 pointPadding: 0.1,
                 groupPadding: 0.1,
                 color: '#666666',
-                marker: {enabled: true}
+                marker: { enabled: true }
             }
         ]
     };
