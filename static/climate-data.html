@@ -164,7 +164,7 @@
                             <a href="./data.html">Data</a>
                         </li>
                         <li>
-                            Data Sources
+                            Climate Data
                         </li>
                     </ol>
                 </div>
@@ -198,8 +198,7 @@
                         <i class="fas fa-chevron-down"></i>
                         <span class="menu-option-dropdown">
                             <a href="./location-search.html">Location Search</a>
-                            <a href="./explore-data.html">Climate Maps</a>
-                            <a href="./data-sources.html">Data Sources</a>
+                            <a href="./climate-data.html">Climate Data</a>
                         </span>
                     </span>
 
@@ -217,7 +216,7 @@
             </div>
         </nav>
         <div class="container">
-            <h1 property="name" id="wb-cont" class="page-title">Data Sources</h1>
+            <h1 property="name" id="wb-cont" class="page-title">Climate Data</h1>
         </div>
     </div>
     <main role="main" property="mainContentOfPage" class="container">
@@ -234,8 +233,8 @@
                     <h3>On This Page</h3>
                     <ul>
                         <li>
-                            <a href="#ahccd">
-                                AHCCD
+                            <a href="#temp">
+                                Temperature
                             </a>
                         </li>
                         <ul>
@@ -254,19 +253,46 @@
                                     Minimum Temperature
                                 </a>
                             </li>
+                        </ul>
+                        <li>
+                            <a href="#wind">
+                                Wind Speed
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#precip">
+                                Precipitation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ice">
+                                Ice
+                            </a>
+                        </li>
+                        <ul>
                             <li>
-                                <a href="#precip">
-                                    Precipitation
+                                <a href="#ice-thickness">
+                                    Sea Ice Thickness
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#ice-fraction">
+                                    Sea Ice Fraction
                                 </a>
                             </li>
                         </ul>
+                        <li>
+                            <a href="#snow">
+                                Snow Depth
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row">
             <section class="col-md-12 pull-left">
-                <h2 id="ahccd">AHCCD</h2>
+                <h2 id="temp">Temperature</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae porta lorem. Aenean blandit eleifend
                     placerat. Duis risus est, blandit vitae nulla et, semper dignissim odio. Phasellus at blandit tortor,
                     non tincidunt velit. Sed efficitur est id neque facilisis interdum. Curabitur velit arcu, tincidunt non
@@ -279,29 +305,95 @@
                         quis varius ac, tincidunt a dui. Sed a tortor eget odio iaculis tincidunt eget a felis. Ut cursus
                         quam sapien, non porttitor enim porta in. Aliquam placerat aliquam dolor vehicula facilisis. Aliquam
                         vel porttitor odio.</p>
-                    <a href="./explore-data.html#/map?v=tmean">See a map</a>
+                    <p>See a map:
+                        <a href="./explore-data.html#/map?v=tmean&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
                 </section>
                 <section class="col-md-12">
-                    <h4 id="max-temp">Maximum Temperature</h4>
+                    <h4 id="max-temp">Minimum Temperature</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non magna eget mi ornare sagittis. Ut dignissim
                         eu ligula a aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="./explore-data.html#/map?v=tmax">See a map</a>
+                    <p>See a map:
+                        <a href="./explore-data.html#/map?v=tmin&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
                 </section>
                 <section class="col-md-12">
-                    <h4 id="min-temp">Minimum Temperature</h4>
+                    <h4 id="min-temp">Maximum Temperature</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada
                         fames ac ante ipsum primis in faucibus. Praesent pretium consequat eros, non convallis magna luctus
                         eu. Nullam vehicula interdum magna non tempor. Quisque semper ex rutrum, facilisis ex in, malesuada
                         neque.
                     </p>
-                    <a href="./explore-data.html#/map?v=tmin">See a map</a>
+                    <p>See a map:
+                        <a href="./explore-data.html#/map?v=tmax&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
                 </section>
-                <section class="col-md-12">
-                    <h4 id="precip">Precipitation</h4>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="wind">Wind Speed</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada fames
+                    ac ante ipsum primis in faucibus. Praesent pretium consequat eros, non convallis magna luctus eu.
+                </p>
+                <p>See a Map:
+                    <a href=#>Future</a>
+                </p>
+            </section>
+        </div>
+        <div class="row">
+                <section class="col-md-12 pull-left">
+                    <h2 id="precip">Precipitation</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis enim sit amet tempor ullamcorper.
                         Donec laoreet malesuada rutrum.</p>
-                    <a href="./explore-data.html#/map?v=precip">See a map</a>
+                    <p>See a Map:
+                        <a href="./explore-data.html#/map?v=precip&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
                 </section>
+            </div>
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="ice">Ice</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut diam odio. Nam dui nisi, pellentesque
+                    quis varius ac, tincidunt a dui.</p>
+                <section class="col-md-12">
+                    <h4 id="ice-thickness">Sea Ice Thickness</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada
+                        fames ac ante ipsum primis in faucibus. Praesent pretium consequat eros, non convallis magna luctus
+                        eu. Nullam vehicula interdum magna non tempor. Quisque semper ex rutrum, facilisis ex in, malesuada
+                        neque.
+                    </p>
+                    <p>See a map:
+                        <a href=#>Future</a>
+                    </p>
+                </section>
+                <section class="col-md-12">
+                    <h4 id="ice-fraction">Sea Ice Fraction</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non magna eget mi ornare sagittis. Ut dignissim
+                        eu ligula a aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <p>See a map:
+                        <a href=#>Future</a>
+                    </p>
+                </section>
+            </section>
+        </div>
+
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="snow">Snow Depth</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada fames
+                    ac ante ipsum primis in faucibus. In non magna eget mi ornare sagittis. Ut dignissim eu ligula a aliquet.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <p>See a Map:
+                    <a href=#>Future</a>
+                </p>
+
             </section>
         </div>
         <div class="pagedetails">

@@ -106,26 +106,12 @@ export default class VariableSelector extends Vue {
             id: 'wind-speed-group',
             items: [
                 {
-                    name: 'Wind Shear',
-                    id: 'wind-shear',
-                    options: [
-                        {
-                            name: 'Historic',
-                            datasetId: 'ahccd'
-                        },
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                },
-                {
                     name: 'Surface Wind Speed',
                     id: 'surface-wind-speed',
                     options: [
                         {
-                            name: 'Historic',
-                            datasetId: 'ahccd'
+                            name: 'Future',
+                            datasetId: 'cmip5'
                         }
                     ]
                 }
@@ -156,8 +142,34 @@ export default class VariableSelector extends Vue {
             id: 'ice-group',
             items: [
                 {
-                    name: 'Ice Thickness',
+                    name: 'Sea Ice Thickness',
                     id: 'ice-thickness',
+                    options: [
+                        {
+                            name: 'Future',
+                            datasetId: 'cmip5'
+                        }
+                    ]
+                },
+                {
+                    name: 'Sea Ice Fraction',
+                    id: 'ice-fraction',
+                    options: [
+                        {
+                            name: 'Future',
+                            datasetId: 'cmip5'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'Snow Depth',
+            id: 'snow-group',
+            items: [
+                {
+                    name: 'Snow Depth',
+                    id: 'snow-depth',
                     options: [
                         {
                             name: 'Future',
