@@ -2,7 +2,7 @@
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="viewName">
         
         <div class="cip-strip cip-backdrop-map">
-            <map-instance></map-instance>
+            <map-instance :key="`instance-${reloadKey}`"></map-instance>
         </div>
 
         <div class="cip-strip cip-top-navigation">
@@ -78,9 +78,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Inject } from 'vue-property-decorator';
+import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
 import { Getter, Action } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
+import { State } from 'vuex-class';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
 import FormSelect from 'bootstrap-vue/es/components/form-select';
@@ -104,6 +105,14 @@ export default class App extends Vue {
     @Getter getQuery: Dictionary<string>;
 
     viewName: string = '';
+    reloadKey: string = '';
+
+    @State('variableId') currentVariable: string;
+
+    @Watch('currentVariable')
+    async onVariableChange() {
+        this.reloadKey = this.currentVariable;
+    }
 
     created(): void {
         this.$router.afterEach((to, from) => {

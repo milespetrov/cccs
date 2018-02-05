@@ -29,8 +29,8 @@ export default class DatasetSelector extends Vue {
     datasetItems: DatasetItem[] = [
         {
             name: 'Coupled Model Intercomparison Project Phase 5',
-            shortName: 'CIMP5',
-            id: 'cimp5'
+            shortName: 'CMIP5',
+            id: 'cmip5'
         },
         {
             name: 'Adjusted and homogenized Canadian Climate Data',

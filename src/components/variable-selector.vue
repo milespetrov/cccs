@@ -67,7 +67,7 @@ export default class VariableSelector extends Vue {
                         },
                         {
                             name: 'Future',
-                            datasetId: 'cimp5'
+                            datasetId: 'cmip5'
                         }
                     ]
                 },
@@ -81,7 +81,7 @@ export default class VariableSelector extends Vue {
                         },
                         {
                             name: 'Future',
-                            datasetId: 'cimp5'
+                            datasetId: 'cmip5'
                         }
                     ]
                 },
@@ -95,7 +95,7 @@ export default class VariableSelector extends Vue {
                         },
                         {
                             name: 'Future',
-                            datasetId: 'cimp5'
+                            datasetId: 'cmip5'
                         }
                     ]
                 }
@@ -115,7 +115,7 @@ export default class VariableSelector extends Vue {
                         },
                         {
                             name: 'Future',
-                            datasetId: 'cimp5'
+                            datasetId: 'cmip5'
                         }
                     ]
                 },
@@ -145,7 +145,7 @@ export default class VariableSelector extends Vue {
                         },
                         {
                             name: 'Future',
-                            datasetId: 'cimp5'
+                            datasetId: 'cmip5'
                         }
                     ]
                 }
@@ -161,7 +161,7 @@ export default class VariableSelector extends Vue {
                     options: [
                         {
                             name: 'Future',
-                            datasetId: 'cimp5'
+                            datasetId: 'cmip5'
                         }
                     ]
                 }
