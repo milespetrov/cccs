@@ -8,12 +8,13 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State } from 'vuex-class';
+import { State, Getter } from 'vuex-class';
 
 import sprintf from 'sprintf-js';
 
 import api from './../api/main';
 import ahccdTemp from '../configs/chart/ahccd-temp';
+import { Dictionary } from 'vue-router/types/router';
 
 interface tooltips {
     'en-CA': { [key: string]: { [key: string]: string } };
@@ -58,9 +59,15 @@ export default class MapInstance extends Vue {
     @State('datasetId') currentDataset: string;
     @State('timePeriodId') currentTimePeriod: string;
 
+    @Getter getQuery: Dictionary<string>;
+
     mapInstance: any = null;
 
     mounted(): void {
+        if (api.DQV.sections['dv5']) {
+            api.DQV.sections['dv5'].destroy();
+        }
+
         let RZ = (<any>window).RZ;
         // TODO: link to a language choice; property, or stored value, or button
         let lang = 'en-CA';
@@ -164,9 +171,22 @@ export default class MapInstance extends Vue {
             </div>
         `);
 
+        // seems that you need to subscribe every time after setting the gust of the context map node
+        this.mapInstance.ui.anchors.CONTEXT_MAP.on(
+            'click',
+            this.changeViewToChart
+        );
+
         dvsection.mount(document.getElementById('dvMountPoint1'));
 
         console.log(features);
+    }
+
+    changeViewToChart(): void {
+        this.$router.push({
+            name: 'chart-view',
+            query: this.getQuery
+        });
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="viewName">
-        
+
         <div class="cip-strip cip-backdrop-map">
             <map-instance :key="`instance-${reloadKey}`"></map-instance>
         </div>
@@ -13,7 +13,7 @@
                     <input type="text" class="form-control" placeholder="enter location" />
                     <i class="fas fa-search"></i>
                 </div>
-                
+
 
                 <span class="separator"></span>
 
@@ -33,9 +33,10 @@
                 </span>
 
             </nav>
-        </div> 
+        </div>
 
-        <div class="cip-strip cip-page-header">
+        <div class="cip-strip cip-page-header" @click="changeViewToMap">
+            <!-- TODO: create two separate headers for map and chart views -->
             <!-- TODO: move header into a separate component -->
             <div class="cip-header container">
                 <h1>Explore Climate Data</h1>
@@ -46,13 +47,10 @@
         <div class="cip-strip cip-view-controls">
             <keep-alive>
                 <router-view class="container" name="view-controls"></router-view>
-            </keep-alive>            
+            </keep-alive>
         </div>
 
         <section class="container main">
-                                
-            <!-- <h2>Mean Temperature</h2>
-            <h3>Adjusted and homogenized Canadian climate data</h3> -->
 
             <p>A Climate Data Record (CDR) is a specific definition of a climate data series, developed by the Committee on Climate Data Records from NOAA Operational Satellites of the National Research Council at the request of NOAA in the context of satellite records.[1] It is defined as "a time series of measurements of sufficient length, consistency, and continuity to determine climate variability and change.".[2]</p>
 
@@ -149,6 +147,17 @@ export default class App extends Vue {
         this.setVariableId(variableId);
         this.setDatasetId(datasetId);
     }
+
+    changeViewToMap() {
+        if (this.viewName === 'map-view') {
+            return;
+        }
+
+        this.$router.push({
+            name: 'map-view',
+            query: this.getQuery
+        });
+    }
 }
 </script>
 
@@ -187,6 +196,33 @@ export default class App extends Vue {
             @supports (backdrop-filter: blur(5px)) {
                 background-color: rgba(255, 255, 255, 0.3);
                 backdrop-filter: blur(5px);
+            }
+        }
+
+        .chart-view & {
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.5);
+
+                @supports (backdrop-filter: blur(5px)) {
+                    background-color: rgba(0, 0, 0, 0.3);
+                    backdrop-filter: blur(5px);
+                }
+
+                &:after {
+                    content: 'click to see full map';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 2rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
     }
