@@ -16,10 +16,6 @@
         <span class="separator"></span>
 
         <div class="menu-option">
-            <button @click="changeView('map-view')">map</button>
-        </div>
-
-        <div class="menu-option">
             <b-dropdown text="Download" variant="light" right>
                 <div role="group" aria-lableledby="chart-download-data">
                     <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>

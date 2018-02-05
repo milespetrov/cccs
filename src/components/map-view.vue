@@ -48,7 +48,6 @@ export default class MapView extends Vue {
     /**
      * Keeps track of the internal state of the view. When `false`, no update should be initiated inside the component.
      */
-
     isActive: boolean = false;
 
     /**
@@ -94,10 +93,12 @@ export default class MapView extends Vue {
             tmean: 0,
             tmax: 2,
             tmin: 1
-        }
+        };
 
         const tempData: any = await $.getJSON(
-            `http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${varArray[this.currentVariable]}/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
+            `http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${
+                varArray[this.currentVariable]
+            }/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
             data => {
                 return data;
             }

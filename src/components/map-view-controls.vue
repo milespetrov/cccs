@@ -11,10 +11,6 @@
         <span class="separator"></span>
 
         <div class="menu-option">
-            <button @click="changeView('chart-view')">chart</button>
-        </div>
-
-        <div class="menu-option">
             <b-dropdown text="Download" variant="light" right>
                 <div class="dropdown-item-mutli">
                     <span>Export Map Image</span>
@@ -34,14 +30,11 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { sprintf } from 'sprintf-js';
-import { Getter } from 'vuex-class';
 
 import VariableSelector from './variable-selector.vue';
 import DatasetSelector from './dataset-selector.vue';
 
 import api from './../api/main';
-import { Dictionary } from 'vue-router/types/router';
 
 @Component({
     components: {
@@ -50,17 +43,8 @@ import { Dictionary } from 'vue-router/types/router';
     }
 })
 export default class MapViewControls extends Vue {
-    @Getter getQuery: Dictionary<string>;
-
     downloadImage(type: string): void {
         // TODO: trigger ramp export map image through API
-    }
-
-    changeView(viewName: string): void {
-        this.$router.push({
-            name: viewName,
-            query: this.getQuery
-        });
     }
 }
 </script>

@@ -9,7 +9,8 @@ const state: AppState = {
 
     timePeriodId: null,
     variableId: null,
-    datasetId: null
+    datasetId: null,
+    stationId: null
 };
 
 // getters
@@ -19,7 +20,8 @@ const getters = {
         const queryObject: { [name: string]: string | null } = {
             t: state.timePeriodId,
             v: state.variableId,
-            d: state.datasetId
+            d: state.datasetId,
+            s: state.stationId
         };
 
         // remove null values from the query object
@@ -36,14 +38,21 @@ const actions = {
     toggleVariableSelector(context: AppContext, value: boolean) {
         context.commit('TOGGLE_VARIABLE_SELECTOR', value);
     },
+
     setTimePeriodId(context: AppContext, value: string) {
         context.commit('SET_TIME_PERIOD_ID', value);
     },
+
     setVariableId(context: AppContext, value: string) {
         context.commit('SET_VARIABLE_ID', value);
     },
+
     setDatasetId(context: AppContext, value: string) {
         context.commit('SET_DATASET_ID', value);
+    },
+
+    setStationId(context: AppContext, value: string) {
+        context.commit('SET_STATION_ID', value);
     }
 };
 
@@ -63,6 +72,10 @@ const mutations = {
 
     SET_DATASET_ID(state: AppState, value: string): void {
         state.datasetId = value;
+    },
+
+    SET_STATION_ID(state: AppState, value: string): void {
+        state.stationId = value;
     }
 };
 

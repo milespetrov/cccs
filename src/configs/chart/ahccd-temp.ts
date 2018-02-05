@@ -173,7 +173,6 @@ function makeConfig(
             symbolWidth: 0.1,
             symbolPadding: 0
         },
-
         plotOptions: {
             series: {
                 label: {
@@ -182,7 +181,6 @@ function makeConfig(
                 pointStart: stationData.start_year
             }
         },
-
         series: [
             {
                 name: period,
@@ -244,6 +242,14 @@ function makeConfig(
             series: {
                 pointStart: stationData.start_year
             }
+        },
+        tooltip: {
+            positioner: function() {
+                return { x: 0, y: 0 };
+            },
+            shadow: false,
+            borderWidth: 0,
+            backgroundColor: 'rgba(255,255,255,0.8)'
         },
         series: [
             {
