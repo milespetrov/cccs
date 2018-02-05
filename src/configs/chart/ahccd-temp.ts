@@ -6,7 +6,8 @@ function makeConfig(
     stationData: any,
     period: string,
     variable: string,
-    stnid: number = 1021830
+    stnid: number = 1021830,
+    mini: boolean = false
 ) {
     const stationTrendValue = 2.35;
 
@@ -195,7 +196,70 @@ function makeConfig(
         ]
     };
 
-    return config;
+    const miniConfig = {
+        chart: {
+            height: 130,
+            width: 250,
+            zoomSlider: null,
+            spacingBottom: 5,
+            spacingLeft: 5,
+            spacingTop: 5,
+            spacingRight: 5
+        },
+        legend: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        xAxis: {
+            lineWidth: 0,
+            crosshair: true,
+            tickLength: 0,
+            labels: {
+                style: {
+                    fontSize: '10px'
+                }
+            }
+        },
+        yAxis: {
+            gridLineWidth: 0,
+            labels: {
+                enabled: false
+            },
+            title: {
+                text: ''
+            }
+        },
+        title: {
+            text: `${variable} at ${stationData.station_name}, ${
+                stationData.start_year
+            } - ${stationData.end_year}`,
+            style: { fontSize: '10px' }
+        },
+        plotOptions: {
+            series: {
+                pointStart: stationData.start_year
+            }
+        },
+        series: [
+            {
+                name: period,
+                data: seriesData,
+                color: '#666666',
+                type: 'line',
+                lineWidth: 1,
+                marker: {
+                    radius: 2
+                }
+            }
+        ]
+    };
+
+    return mini ? miniConfig : config;
 }
 
 export default makeConfig;
