@@ -44,8 +44,6 @@ module.exports = {
         })
     ],
     extendWebpack(config) {
-        config.resolve.alias.set('vue$', 'vue/dist/vue.esm.js'); // vue.esm include template compiler; without it all templates need to be pre-compiled
-
         // enable to see the bundle structure
         // config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin);
     },

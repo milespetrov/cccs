@@ -17,15 +17,17 @@ import ahccdTemp from '../configs/chart/ahccd-temp';
 import { Dictionary } from 'vue-router/types/router';
 
 interface tooltips {
-    'en-CA': { 
-        [key: string]: { 
+    'en-CA': {
+        [key: string]: {
             [key: string]: {
-                [key: string]: string
-            }
-        } 
+                [key: string]: string;
+            };
+        };
     };
-    'fr-CA': { [key: string]: { [key: string]: { [key:string]: string } } };
-    [key: string]: { [key: string]: { [key: string]: { [key:string]: string } } };
+    'fr-CA': { [key: string]: { [key: string]: { [key: string]: string } } };
+    [key: string]: {
+        [key: string]: { [key: string]: { [key: string]: string } };
+    };
 }
 
 @Component
@@ -34,40 +36,48 @@ export default class MapInstance extends Vue {
         'en-CA': {
             ahccd: {
                 tmean: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: "Annual_Mean"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: 'Annual_Mean'
                 },
                 tmin: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: "Annual_Min"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: 'Annual_Min'
                 },
                 tmax: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: "Annual_Max"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: 'Annual_Max'
                 },
                 precip: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: "Annual_Annuel"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                    value_key: 'Annual_Annuel'
                 }
             }
         },
         'fr-CA': {
             ahccd: {
                 tmean: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: "Annual_Mean"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: 'Annual_Mean'
                 },
-                tmin:{
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: "Annual_Mean"
+                tmin: {
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: 'Annual_Mean'
                 },
                 tmax: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: "Annual_Mean"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: 'Annual_Mean'
                 },
                 precip: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: "Annual_Mean"
+                    template:
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                    value_key: 'Annual_Mean'
                 }
             }
         }
@@ -135,7 +145,10 @@ export default class MapInstance extends Vue {
                         a[currentTemplate.value_key]
                     );
                     tooltip = z.add(
-                        sprintf.sprintf(currentTemplate.template, <any>{ name, value })
+                        sprintf.sprintf(currentTemplate.template, <any>{
+                            name,
+                            value
+                        })
                     );
                 });
             });
@@ -153,11 +166,22 @@ export default class MapInstance extends Vue {
         });
     }
 
+    private miniChartSectionId: string = 'cip-mini-chart-section';
+    private miniChartChartId: string = 'cip-mini-chart-chart';
+
+    beforeDestroy(): void {
+        // destroy the mini-chart DV section when the map component is reloaded
+        const miniChartSection = api.DQV.sections[this.miniChartSectionId];
+        if (miniChartSection) {
+            miniChartSection.destroy();
+        }
+    }
+
     async displayMiniChart(features: any): Promise<void> {
         console.log('display mini chart');
-        let station_id:string = '';
+        let station_id: string = '';
 
-        features.data.forEach((attrib:any) => {
+        features.data.forEach((attrib: any) => {
             if (attrib.key == 'stnid' || attrib.key == 'Station ID') {
                 station_id = attrib.value;
                 return;
@@ -165,7 +189,7 @@ export default class MapInstance extends Vue {
         });
         this.setStationId(station_id);
 
-        // TODO: abstrack data retrieval to a single place
+        // TODO: abstract data retrieval to a single place
         const data = await api.getData(
             this.currentTimePeriod,
             this.currentVariable,
@@ -183,26 +207,23 @@ export default class MapInstance extends Vue {
 
         console.log(config);
 
-        if (api.DQV.charts['dvChart5_1']) {
-            api.DQV.charts['dvChart5_1'].config = config;
+        // if the mini-chart is already loaded, update its config
+        const miniChartChart = api.DQV.charts[this.miniChartChartId];
+        if (miniChartChart) {
+            miniChartChart.config = config;
             return;
         }
 
-        const template = `
-            <dv-section id="dv5">
-            <dv-chart id="dvChart5_1"></dv-chart>
-            </dv-section>
-        `;
-
-        const dvchart1 = new api.DQV.Chart({
-            id: 'dvChart5_1',
-            config
+        // create the mini-chart
+        new api.DQV.Chart({ id: 'cip-mini-chart-chart', config });
+        const dvsection = new api.DQV.Section({
+            id: 'cip-mini-chart-section',
+            template: `<dv-section><dv-chart id="cip-mini-chart-chart"></dv-chart></dv-section>`
         });
-        const dvsection = new api.DQV.Section({ id: 'dv5', template });
 
         this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
             <div class="mApiOverViewMap">
-                <div id="dvMountPoint1"></div>
+                <div id="cip-mini-chart-mount"></div>
             </div>
         `);
 
@@ -212,9 +233,9 @@ export default class MapInstance extends Vue {
             this.changeViewToChart
         );
 
-        dvsection.mount(document.getElementById('dvMountPoint1'));
+        dvsection.mount(document.getElementById('cip-mini-chart-mount'));
 
-        console.log(features);
+        // console.log(features);
     }
 
     changeViewToChart(): void {
