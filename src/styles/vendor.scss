@@ -117,13 +117,10 @@ rv-mapnav {
     right: calc(#{$rv-left-offset} + 155px) !important;
 }
 
-.esriOverviewMap.ovwTR {
+#cip-mini-chart-section {
+    position: absolute;
     top: calc(#{$rv-top-offset} + 10px) !important;
     right: $rv-left-offset !important;
-
-    .ovwContainer {
-        display: none !important;
-    }
 
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
         0px 2px 2px 0px rgba(0, 0, 0, 0.14),
@@ -134,4 +131,23 @@ rv-mapnav {
             display: none;
         }
     }
+}
+
+.esriOverviewMap.ovwTR {
+    /* top: calc(#{$rv-top-offset} + 10px) !important;
+    right: $rv-left-offset !important; */
+
+    .ovwContainer {
+        display: none !important;
+    }
+
+    /* box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+        .highcharts-title {
+            display: none;
+        }
+    } */
 }

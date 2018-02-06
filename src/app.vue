@@ -2,7 +2,7 @@
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="viewName">
 
         <div class="cip-strip cip-backdrop-map">
-            <map-instance :key="`instance-${reloadKey}`"></map-instance>
+            <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
         </div>
 
         <div class="cip-strip cip-top-navigation">
@@ -40,6 +40,8 @@
             <!-- TODO: move header into a separate component -->
             <div class="cip-header container">
                 <h1>Explore Climate Data</h1>
+
+                <span class="cip-view-toggle-label">click to see the full map</span>
             </div>
 
         </div>
@@ -193,7 +195,10 @@ export default class App extends Vue {
     }
 
     &.cip-page-header {
-        // TODO: backdrop-blur?
+        .cip-view-toggle-label {
+            display: none;
+        }
+
         .map-view & {
             background-color: rgba(255, 255, 255, 0.7);
 
@@ -213,19 +218,21 @@ export default class App extends Vue {
                     backdrop-filter: blur(5px);
                 }
 
-                &:after {
-                    content: 'click to see full map';
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    top: 0;
-                    bottom: 0;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 2rem;
-                    display: flex;
-                    align-items: center;
+                .cip-header {
                     justify-content: center;
+                    h1 {
+                        display: none;
+                    }
+
+                    .cip-view-toggle-label {
+                        color: white;
+                        border: none;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        padding: 11px;
+                        display: inline-block;
+                        font-size: 2.5rem;
+                        margin: 0;
+                    }
                 }
             }
         }

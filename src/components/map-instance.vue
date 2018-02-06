@@ -90,6 +90,7 @@ export default class MapInstance extends Vue {
     @State('variableId') currentVariable: string;
     @State('datasetId') currentDataset: string;
     @State('timePeriodId') currentTimePeriod: string;
+    @State('stationId') currentStation: string;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -98,10 +99,6 @@ export default class MapInstance extends Vue {
     mapInstance: any = null;
 
     mounted(): void {
-        if (api.DQV.sections['dv5']) {
-            api.DQV.sections['dv5'].destroy();
-        }
-
         let RZ = (<any>window).RZ;
         // TODO: link to a language choice; property, or stored value, or button
         let lang = 'en-CA';
@@ -121,6 +118,8 @@ export default class MapInstance extends Vue {
             return;
         }
 
+        console.log('map mounted once');
+
         new RZ.Map(
             this.anchor,
             `./assets/configs/config-${
@@ -129,7 +128,7 @@ export default class MapInstance extends Vue {
         );
 
         let tooltip;
-        RZ.mapAdded.subscribe(() => {
+        RZ.mapAdded.subscribe((mapi: any) => {
             this.mapInstance = RZ.mapInstances[RZ.mapInstances.length - 1];
 
             this.mapInstance.identify = false;
@@ -154,15 +153,31 @@ export default class MapInstance extends Vue {
             });
             console.log('map instance added');
 
-            this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
-                <div class="mApiOverViewMap">
-                    <div id="dvMountPoint1"></div>
-                </div>
+            this.mapInstance.ui.anchors.CONTEXT_MAP.after(`
+                <div id="cip-mini-chart-mount"></div>
             `);
 
             this.mapInstance.click.subscribe((event: any) => {
-                event.features.subscribe(this.displayMiniChart);
+                event.features.subscribe((features: any) => {
+                    let station_id: string = '';
+
+                    features.data.forEach((attrib: any) => {
+                        if (
+                            attrib.key == 'stnid' ||
+                            attrib.key == 'Station ID'
+                        ) {
+                            station_id = attrib.value;
+                            return;
+                        }
+                    });
+
+                    this.displayMiniChart(station_id);
+                });
             });
+
+            if (this.currentStation) {
+                this.displayMiniChart(this.currentStation);
+            }
         });
     }
 
@@ -177,17 +192,11 @@ export default class MapInstance extends Vue {
         }
     }
 
-    async displayMiniChart(features: any): Promise<void> {
+    async displayMiniChart(station_id: string): Promise<void> {
         console.log('display mini chart');
-        let station_id: string = '';
 
-        features.data.forEach((attrib: any) => {
-            if (attrib.key == 'stnid' || attrib.key == 'Station ID') {
-                station_id = attrib.value;
-                return;
-            }
-        });
         this.setStationId(station_id);
+        this.updateRoute();
 
         // TODO: abstract data retrieval to a single place
         const data = await api.getData(
@@ -215,32 +224,46 @@ export default class MapInstance extends Vue {
         }
 
         // create the mini-chart
-        new api.DQV.Chart({ id: 'cip-mini-chart-chart', config });
+        new api.DQV.Chart({ id: this.miniChartChartId, config });
         const dvsection = new api.DQV.Section({
-            id: 'cip-mini-chart-section',
-            template: `<dv-section><dv-chart id="cip-mini-chart-chart"></dv-chart></dv-section>`
+            id: this.miniChartSectionId,
+            template: `<dv-section><dv-chart id="${
+                this.miniChartChartId
+            }"></dv-chart></dv-section>`
         });
 
-        this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
+        /* this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
             <div class="mApiOverViewMap">
                 <div id="cip-mini-chart-mount"></div>
             </div>
-        `);
+        `); */
 
-        // seems that you need to subscribe every time after setting the gust of the context map node
-        this.mapInstance.ui.anchors.CONTEXT_MAP.on(
+        const chartMount = document.getElementById('cip-mini-chart-mount');
+        dvsection.mount(chartMount);
+
+        // TODO: fix, this is likely accumulating click listeners
+        const chartSection = document.getElementById('cip-mini-chart-section')!;
+        chartSection.setAttribute('tabIndex', '-1');
+        chartSection.addEventListener('click', this.changeViewToChart);
+
+        // seems that you need to subscribe every time after setting the guts of the context map node
+        // TODO: fix; since we not using the mini map container, the subsscription won't work
+        /* this.mapInstance.ui.anchors.CONTEXT_MAP.on(
             'click',
             this.changeViewToChart
-        );
-
-        dvsection.mount(document.getElementById('cip-mini-chart-mount'));
-
-        // console.log(features);
+        ); */
     }
 
     changeViewToChart(): void {
         this.$router.push({
             name: 'chart-view',
+            query: this.getQuery
+        });
+    }
+
+    updateRoute(): void {
+        this.$router.push({
+            name: this.$router.currentRoute.name,
             query: this.getQuery
         });
     }
