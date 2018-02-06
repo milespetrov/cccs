@@ -155,22 +155,29 @@ export default class MapInstance extends Vue {
 
     async displayMiniChart(features: any): Promise<void> {
         console.log('display mini chart');
+        let station_id:string = '';
 
-        this.setStationId(features.data[2].value);
+        features.data.forEach((attrib:any) => {
+            if (attrib.key == 'stnid' || attrib.key == 'Station ID') {
+                station_id = attrib.value;
+                return;
+            }
+        });
+        this.setStationId(station_id);
 
         // TODO: abstrack data retrieval to a single place
         const data = await api.getData(
             this.currentTimePeriod,
             this.currentVariable,
             this.currentDataset,
-            features.data[2].value
+            station_id
         );
 
         const config = ahccdTemp(
             data,
             this.currentTimePeriod,
             this.currentVariable,
-            features.data[2].value,
+            <any>station_id,
             true
         );
 
