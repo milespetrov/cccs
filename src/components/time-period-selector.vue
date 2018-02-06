@@ -68,22 +68,22 @@ export default class TimePeriodSelector extends Vue {
                 {
                     name: 'Winter',
                     id: 'Winter_Hiver',
-                    description: 'December - February'
+                    description: 'Dec - Feb'
                 },
                 {
                     name: 'Spring',
                     id: 'Spring_Printemp',
-                    description: 'March - May'
+                    description: 'Mar - May'
                 },
                 {
                     name: 'Summer',
                     id: 'Summer_Ete',
-                    description: 'June - August'
+                    description: 'Jun - Aug'
                 },
                 {
                     name: 'Autumn',
                     id: 'Autumn_Autome',
-                    description: 'September - November'
+                    description: 'Sep - Nov'
                 }
             ]
         },

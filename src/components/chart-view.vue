@@ -13,9 +13,9 @@
 
         <div id="mount-point"></div>
 
-        Selected variable: {{ currentVariable }} <br>
+        <!-- Selected variable: {{ currentVariable }} <br>
         Selected dataset: {{ currentDataset }} <br>
-        Selected time period: {{ currentTimePeriod }}<br>
+        Selected time period: {{ currentTimePeriod }}<br> -->
 
     </div>
 </template>
