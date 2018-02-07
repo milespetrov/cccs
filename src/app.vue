@@ -117,6 +117,9 @@ export default class App extends Vue {
 
     created(): void {
         this.$router.afterEach((to, from) => {
+            if (this.$router.currentRoute.name == 'map-view') {
+                this.updateStore('Annual_Annuel', to.query.v, to.query.d, to.query.s);
+            }
             this.updateStore(to.query.t, to.query.v, to.query.d, to.query.s);
         });
 
@@ -133,6 +136,11 @@ export default class App extends Vue {
                 this.$router.currentRoute.query.d || 'ahccd',
                 this.$router.currentRoute.query.s || '1021830'
             );
+
+            this.$router.push({
+                name: this.$router.currentRoute.name,
+                query: this.getQuery
+            });
             return;
         }
 
@@ -163,9 +171,11 @@ export default class App extends Vue {
             return;
         }
 
+        let query = this.getQuery;
+        query.t = "Annual_Annuel";
         this.$router.push({
             name: 'map-view',
-            query: this.getQuery
+            query: query
         });
     }
 }
