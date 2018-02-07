@@ -11,6 +11,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 
 import sprintf from 'sprintf-js';
+import { Subject } from 'rxjs/Subject';
 
 import api from './../api/main';
 import ahccdTemp from '../configs/chart/ahccd-temp';
@@ -98,27 +99,33 @@ export default class MapInstance extends Vue {
 
     mapInstance: any = null;
 
+    deactivate: Subject<boolean> = new Subject<boolean>();
+
+    // id selectors for mini chart
+    private miniChartSectionId: string = 'cip-mini-chart-section';
+    private miniChartChartId: string = 'cip-mini-chart-chart';
+
+    // TODO: link to a language choice; property, or stored value, or button
+    lang: string = 'en-CA';
+
+    // TODO: link once dataSet selector is finalized
+    dataSet: string = 'ahccd';
+
     mounted(): void {
         let RZ = (<any>window).RZ;
-        // TODO: link to a language choice; property, or stored value, or button
-        let lang = 'en-CA';
-        // TODO: link once dataSet selector is finalized
-        let dataSet = 'ahccd';
 
+        // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RZ) {
-            console.log('nope');
-
-            window.setTimeout(() => this.mounted(), 2000);
-
+            window.setTimeout(() => this.mounted(), 500);
             return;
         }
 
         if (this.currentVariable === null || this.currentDataset === null) {
-            console.log('nope2');
+            console.log(
+                'cannot create the map - either variable or dataset is not set'
+            );
             return;
         }
-
-        console.log('map mounted once');
 
         new RZ.Map(
             this.anchor,
@@ -128,68 +135,69 @@ export default class MapInstance extends Vue {
         );
 
         let tooltip;
-        RZ.mapAdded.subscribe((mapi: any) => {
+        RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
             this.mapInstance = RZ.mapInstances[RZ.mapInstances.length - 1];
 
+            // turn off default identify behaviour
             this.mapInstance.identify = false;
 
-            this.mapInstance.ui.tooltip.mouseOver.subscribe((z: any) => {
-                z.event.preventDefault();
-                z.attribs.then((a: any) => {
-                    const currentTemplate = this.tooltipTemplates[lang][
-                        dataSet
-                    ][this.currentVariable!];
-                    const name = a.station_name_nom;
-                    const value = Intl.NumberFormat(lang).format(
-                        a[currentTemplate.value_key]
-                    );
-                    tooltip = z.add(
-                        sprintf.sprintf(currentTemplate.template, <any>{
-                            name,
-                            value
-                        })
-                    );
-                });
-            });
-            console.log('map instance added');
+            // subscribe to tooltips events
+            this.mapInstance.ui.tooltip.mouseOver
+                .takeUntil(this.deactivate)
+                .subscribe(this.tooltipMouseOverHandler);
 
             this.mapInstance.ui.anchors.CONTEXT_MAP.after(`
                 <div id="cip-mini-chart-mount"></div>
             `);
 
-            this.mapInstance.click.subscribe((event: any) => {
-                event.features.subscribe((features: any) => {
-                    let station_id: string = '';
+            // subscribe to map click events to track clicks on features
+            // TODO: this will change when API allows listening on individual layers
+            this.mapInstance.click
+                .takeUntil(this.deactivate)
+                .subscribe(this.mapInstanceClickHandler);
 
-                    features.data.forEach((attrib: any) => {
-                        if (
-                            attrib.key == 'stnid' ||
-                            attrib.key == 'Station ID'
-                        ) {
-                            station_id = attrib.value;
-                            return;
-                        }
-                    });
-
-                    this.displayMiniChart(station_id);
-                });
-            });
-
+            // if the current station is already set, open the mini chart
             if (this.currentStation) {
                 this.displayMiniChart(this.currentStation);
             }
         });
     }
 
-    private miniChartSectionId: string = 'cip-mini-chart-section';
-    private miniChartChartId: string = 'cip-mini-chart-chart';
+    tooltipMouseOverHandler(z: any) {
+        let tooltip;
 
-    beforeDestroy(): void {
-        // destroy the mini-chart DV section when the map component is reloaded
-        const miniChartSection = api.DQV.sections[this.miniChartSectionId];
-        if (miniChartSection) {
-            miniChartSection.destroy();
-        }
+        z.event.preventDefault();
+        z.attribs.then((a: any) => {
+            const currentTemplate = this.tooltipTemplates[this.lang][
+                this.dataSet
+            ][this.currentVariable!];
+
+            const name = a.station_name_nom;
+            const value = Intl.NumberFormat(this.lang).format(
+                a[currentTemplate.value_key]
+            );
+
+            tooltip = z.add(
+                sprintf.sprintf(currentTemplate.template, <any>{
+                    name,
+                    value
+                })
+            );
+        });
+    }
+
+    mapInstanceClickHandler(event: any): void {
+        event.features
+            .debounceTime(20)
+            .takeUntil(this.deactivate)
+            .subscribe((features: any) => {
+                const station_id = features.data.find(
+                    (attrib: any) =>
+                        attrib.key === 'stnid' || attrib.key === 'Station ID'
+                )!.value;
+
+                this.displayMiniChart(station_id);
+            });
     }
 
     async displayMiniChart(station_id: string): Promise<void> {
@@ -266,6 +274,18 @@ export default class MapInstance extends Vue {
             name: this.$router.currentRoute.name,
             query: this.getQuery
         });
+    }
+
+    beforeDestroy(): void {
+        // destroy the mini-chart DV section when the map component is reloaded
+        const miniChartSection = api.DQV.sections[this.miniChartSectionId];
+        if (miniChartSection) {
+            miniChartSection.destroy();
+        }
+
+        // deactivate all subscriptions when the component is being destroyed
+        this.deactivate.next(true);
+        this.deactivate.unsubscribe();
     }
 }
 </script>
