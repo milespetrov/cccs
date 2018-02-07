@@ -126,7 +126,7 @@ function makeConfig(
                     // draw the first trend value
                     ren
                         .label(
-                        `Overall: <b>${+stationTrendValue.toFixed(4)}</b>`,
+                        `Overall: <b>${(stationTrendValue == 'N/A' ? 'N/A' : +stationTrendValue.toFixed(4))}</b>`,
                         event.target.plotWidth + event.target.plotLeft + 55,
                         130
                         )
@@ -178,6 +178,7 @@ function makeConfig(
                         event.target.plotWidth + event.target.plotLeft + 55,
                         240)
                         .css({
+                            'pointer-events': 'none',
                             width: 200,
                             color: 'black' //'#ecf0f1'
                         })
