@@ -16,22 +16,41 @@
 
 
                 <span class="separator"></span>
+                <div>
+                    <span class="menu-option">
+                        <a href="./climate-basics.html">Climate Basics</a>
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="menu-option-dropdown">
+                            <a href="./climate-basics.html">Concepts</a>
+                            <a href="./climate-basics.html">Impacts</a>
+                            <a href="./climate-basics.html">Adaptations</a>
+                            <a href="./climate-basics.html">Calendar</a>
+                            <a href="./climate-basics.html">Notifications</a>
+                            <a href="./climate-basics.html">Reports</a>
+                            <a href="./climate-basics.html">Resources</a>
+                        </span>
+                    </span>
 
-                <span class="menu-option">
-                    <span>Climate Basics</span>
-                    <i class="fas fa-chevron-down"></i>
-                </span>
+                    <span class="menu-option">
+                        <a href="./data.html">Data</a>
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="menu-option-dropdown">
+                            <a href="./location-search.html">Location Search</a>
+                            <a href="./climate-data.html">Climate Data</a>
+                        </span>
+                    </span>
 
-                <span class="menu-option">
-                    <span>Data</span>
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-
-                <span class="menu-option">
-                    <span>Catalogue</span>
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-
+                    <span class="menu-option">
+                        <a href="#">Catalogue</a>
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="menu-option-dropdown">
+                            <a href=#>Catalogue section 1</a>
+                            <a href=#>Catalogue section 2</a>
+                            <a href=#>Catalogue section 3</a>
+                            <a href=#>Catalogue section 4</a>
+                        </span>
+                    </span>
+                </div>
             </nav>
         </div>
 
@@ -171,11 +190,10 @@ export default class App extends Vue {
             return;
         }
 
-        let query = this.getQuery;
-        query.t = "Annual_Annuel";
+        this.setTimePeriodId('Annual_Annuel');
         this.$router.push({
             name: 'map-view',
-            query: query
+            query: this.getQuery
         });
     }
 }
@@ -295,22 +313,51 @@ export default class App extends Vue {
         display: flex;
         align-items: center;
         > svg {
-            margin-right: 1rem;
+        margin-right: 1rem;
         }
         > span {
-            font-size: 2rem;
+        font-size: 2rem;
         }
     }
-    .menu-option {
-        margin: 0 2rem;
-        // font-weight: bold;
+    > div {
+        > .menu-option {
+        margin: 0 2rem; // font-weight: bold;
+        font-weight: bold;
+        display: block;
+        float: left;
         > svg {
             margin: auto;
         }
-    }
+            }
+            float: right;
+        }
     .separator {
         flex: 1;
     }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+.menu-option:hover .menu-option-dropdown {
+    display: block;
+}
+.menu-option-dropdown {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    min-width: 185px;
+    z-index: 1;
+    a {
+        float: none;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+}
+.menu-option-dropdown > a:hover {
+    background-color: #aaaaaa;
 }
 .search-box {
     width: 25%; // margin-left: 1rem;
