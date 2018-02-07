@@ -68,6 +68,13 @@
             border-radius: 0;
             font-size: 1em;
             right: auto;
+            box-shadow: none;
+            padding: 0.5em 0;
+            margin: 0.125em 0 0;
+        }
+
+        .dropdown-item {
+            padding: 0.25em 1.5em;
         }
     }
 

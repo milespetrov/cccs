@@ -8,12 +8,7 @@
         <div class="cip-strip cip-top-navigation">
             <!-- TODO: move top-navigatoin into a separate component -->
             <nav class="cip-navigation container">
-                <div class="search-box">
-                    <i class="fas fa-map-marker-alt fa-lg"></i>
-                    <input type="text" class="form-control" placeholder="enter location" />
-                    <i class="fas fa-search"></i>
-                </div>
-
+                <geo-search></geo-search>
 
                 <span class="separator"></span>
                 <div>
@@ -109,11 +104,13 @@ Vue.use(FormSelect);
 
 import VariableSelector from './components/variable-selector.vue';
 import MapInstance from './components/map-instance.vue';
+import GeoSearch from './components/geo-search.vue';
 
 @Component({
     components: {
-        'variable-selector': VariableSelector,
-        'map-instance': MapInstance
+        VariableSelector,
+        MapInstance,
+        GeoSearch
     }
 })
 export default class App extends Vue {
@@ -223,7 +220,7 @@ export default class App extends Vue {
     }
 
     &.cip-top-navigation {
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgba(255, 255, 255, 0.95);
     }
 
     &.cip-page-header {
@@ -358,39 +355,5 @@ export default class App extends Vue {
 }
 .menu-option-dropdown > a:hover {
     background-color: #aaaaaa;
-}
-.search-box {
-    width: 25%; // margin-left: 1rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    input {
-        // hide the default styles
-        border: none;
-        box-shadow: none;
-        border-bottom: 1px solid grey;
-        border-radius: 0;
-        margin-right: 3rem;
-        padding: 0 3rem 0 3.5rem;
-        width: 100%;
-    }
-    > .fa-map-marker-alt {
-        color: grey;
-        position: absolute;
-        left: 1rem;
-        height: 37px;
-        top: 0;
-    }
-    /* > .fa-search {
-        position: absolute;
-        right: 1rem;
-        height: 37px;
-        top: 0;
-    } */
-}
-.location-search {
-    display: flex;
-    align-items: center;
-    height: 120px;
 }
 </style>

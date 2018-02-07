@@ -9,7 +9,9 @@ function makeConfig(
     stnid: number = 1021830,
     mini: boolean = false
 ) {
-    const stationTrendValue = (stationData.trend.value ? stationData.trend.value : 'N/A');
+    const stationTrendValue = stationData.trend.value
+        ? stationData.trend.value
+        : 'N/A';
 
     const seriesData = stationData.absolute_values.map(
         (value: number) => (value > -9999 ? value : null)
@@ -24,7 +26,6 @@ function makeConfig(
             name: 'Mean Temperature',
             id: 'tmean',
             unit: '°C'
-
         },
         {
             name: 'Minimum Temperature',
@@ -61,7 +62,7 @@ function makeConfig(
         Summer_Ete: 'Summer',
         Autumn_Autome: 'Autumn',
         Annual_Annuel: 'Annual'
-    }
+    };
 
     const item = variables.find((v: { id: string }) => v.id === variable);
     variable = item ? (<any>item).name : variable;
@@ -98,9 +99,15 @@ function makeConfig(
                 load: (event: any) => {
                     const ren = event.target.renderer;
 
-                    ren.path(
-                        ['M', event.target.plotWidth + event.target.plotLeft + 35, 0, 'L', event.target.plotWidth + event.target.plotLeft + 35, event.target.plotTop + event.target.plotHeight + 100]
-                    )
+                    ren
+                        .path([
+                            'M',
+                            event.target.plotWidth + event.target.plotLeft + 35,
+                            0,
+                            'L',
+                            event.target.plotWidth + event.target.plotLeft + 35,
+                            event.target.plotTop + event.target.plotHeight + 100
+                        ])
                         .attr({
                             'stroke-width': 0.5,
                             stroke: '#AAAAAA',
@@ -108,9 +115,12 @@ function makeConfig(
                         })
                         .add();
 
-                    ren.label('<b>Trend values</b>',
-                        event.target.plotWidth + event.target.plotLeft + 55,
-                        105)
+                    ren
+                        .label(
+                            '<b>Trend values</b>',
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            105
+                        )
                         .css({
                             'font-size': '16px',
                             color: 'black' //'#ecf0f1'
@@ -122,13 +132,16 @@ function makeConfig(
                         })
                         .add();
 
-
                     // draw the first trend value
                     ren
                         .label(
-                        `Overall: <b>${(stationTrendValue == 'N/A' ? 'N/A' : +stationTrendValue.toFixed(4))}</b>`,
-                        event.target.plotWidth + event.target.plotLeft + 55,
-                        130
+                            `Overall: <b>${
+                                stationTrendValue == 'N/A'
+                                    ? 'N/A'
+                                    : +stationTrendValue.toFixed(4)
+                            }</b>`,
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            130
                         )
                         .css({
                             color: 'black' //'#ecf0f1'
@@ -142,9 +155,11 @@ function makeConfig(
 
                     // draw the second trend value
                     secondTrendValueLabel = ren
-                        .label(``,
-                        event.target.plotWidth + event.target.plotLeft + 55,
-                        150)
+                        .label(
+                            ``,
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            150
+                        )
                         .css({
                             color: 'black' //'#ecf0f1'
                         })
@@ -157,9 +172,9 @@ function makeConfig(
 
                     ren
                         .label(
-                        `<b>Key Information</b>`,
-                        event.target.plotWidth + event.target.plotLeft + 55,
-                        215
+                            `<b>Key Information</b>`,
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            215
                         )
                         .css({
                             'font-size': '16px',
@@ -170,13 +185,14 @@ function makeConfig(
                             padding: 7,
                             zIndex: 6
                         })
-                        .add()
+                        .add();
 
                     ren
                         .label(
-                        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
-                        event.target.plotWidth + event.target.plotLeft + 55,
-                        240)
+                            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            240
+                        )
                         .css({
                             'pointer-events': 'none',
                             width: 200,
@@ -221,21 +237,23 @@ function makeConfig(
 
                     $.getJSON(
                         `http://ahccd-dev.azurewebsites.net/${stnid}/${
-                        (<any>item!).id
+                            (<any>item!).id
                         }/${period_mappings[period]}/trend/${event.min}/${
-                        event.max
+                            event.max
                         }`,
                         data => {
                             console.log(data);
                             if (!data.value) {
                                 (<any>secondTrendValueLabel).textSetter(
-                                    `User range (${event.min}-${event.max}): <b>N/A</b>`
+                                    `User range (${event.min}-${
+                                        event.max
+                                    }): <b>N/A</b>`
                                 );
                             }
                             (<any>secondTrendValueLabel).textSetter(
-                                `User range (${event.min}-${event.max}): <b>${
-                                +(<any>data).value.toFixed(4)
-                                }</b>`
+                                `User range (${event.min}-${
+                                    event.max
+                                }): <b>${+(<any>data).value.toFixed(4)}</b>`
                             );
                         }
                     );
@@ -259,8 +277,9 @@ function makeConfig(
             align: 'right',
             verticalAlign: 'top',
             title: {
-                text: 'Legend', style: {
-                    'fontSize': '16px'
+                text: 'Legend',
+                style: {
+                    fontSize: '16px'
                 }
             },
             x: -128,
@@ -286,7 +305,8 @@ function makeConfig(
                 type: 'spline',
                 pointPadding: 0.1,
                 groupPadding: 0.1,
-                color: '#666666',
+                lineWidth: 2,
+                color: '#34495e',
                 marker: { enabled: true }
             }
         ]
@@ -333,7 +353,7 @@ function makeConfig(
         title: {
             text: `${variable} at ${stationData.station_name}, ${
                 stationData.start_year
-                } - ${stationData.end_year}`,
+            } - ${stationData.end_year}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -342,7 +362,7 @@ function makeConfig(
             }
         },
         tooltip: {
-            positioner: function () {
+            positioner: function() {
                 return { x: 0, y: 0 };
             },
             shadow: false,

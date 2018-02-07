@@ -2,6 +2,7 @@ interface EnhancedWindow extends Window {
     $: typeof $;
     DQV: any;
     JSONGroupBy: any;
+    RZ: any;
 }
 
 interface period_mappings {
@@ -48,5 +49,6 @@ function getData(
 
 const DQV: any = (<EnhancedWindow>window).DQV;
 const $: any = (<EnhancedWindow>window).$;
+const RZ: any = (<EnhancedWindow>window).RZ;
 
-export default { getData, DQV, $ };
+export default { getData, DQV, $, RZ };

@@ -9,13 +9,14 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
+import { Dictionary } from 'vue-router/types/router';
 
 import sprintf from 'sprintf-js';
 import { Subject } from 'rxjs/Subject';
 
 import api from './../api/main';
 import ahccdTemp from '../configs/chart/ahccd-temp';
-import { Dictionary } from 'vue-router/types/router';
+import { CenterPoint } from './../store';
 
 interface tooltips {
     'en-CA': {
@@ -92,10 +93,36 @@ export default class MapInstance extends Vue {
     @State('datasetId') currentDataset: string;
     @State('timePeriodId') currentTimePeriod: string;
     @State('stationId') currentStation: string;
+    @State centerPoint: CenterPoint;
 
     @Getter getQuery: Dictionary<string>;
 
     @Action setStationId: (value: string) => void;
+    @Action setCenterPoint: (value: { x: number; y: number }) => void;
+
+    @Watch('centerPoint')
+    onCenterPointChanged(
+        newValue: CenterPoint | null,
+        oldValue: CenterPoint | null
+    ): void {
+        if (!this.mapInstance) {
+            return;
+        }
+
+        if (this.localCenterPointUpdate) {
+            return;
+        }
+
+        const XYcenter = new api.RZ.GEO.XY(
+            this.centerPoint.x,
+            this.centerPoint.y
+        );
+        this.mapInstance.setCenter(XYcenter);
+
+        this.localCenterPointUpdate = false;
+    }
+
+    localCenterPointUpdate: boolean = false;
 
     mapInstance: any = null;
 
@@ -146,6 +173,19 @@ export default class MapInstance extends Vue {
                 .takeUntil(this.deactivate)
                 .subscribe(this.tooltipMouseOverHandler);
 
+            // TODO: there is a bug with accessing `centerChanged` endpoint right after `mapAdded` event
+            // https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2575
+            /* this.mapInstance.centerChanged.subscribe(
+                this.mapInstanceCenterChangedHanlder
+            ); */
+            window.setTimeout(
+                () =>
+                    this.mapInstance.centerChanged.subscribe(
+                        this.mapInstanceCenterChangedHanlder
+                    ),
+                500
+            );
+
             this.mapInstance.ui.anchors.CONTEXT_MAP.after(`
                 <div id="cip-mini-chart-mount"></div>
             `);
@@ -160,10 +200,21 @@ export default class MapInstance extends Vue {
             if (this.currentStation) {
                 this.displayMiniChart(this.currentStation);
             }
+
+            if (this.centerPoint) {
+                this.mapInstance.setCenter(this.centerPoint);
+            }
         });
     }
 
-    tooltipMouseOverHandler(z: any) {
+    mapInstanceCenterChangedHanlder(event: any): void {
+        this.localCenterPointUpdate = true;
+
+        this.setCenterPoint(event);
+        this.updateRoute();
+    }
+
+    tooltipMouseOverHandler(z: any): void {
         let tooltip;
 
         z.event.preventDefault();
