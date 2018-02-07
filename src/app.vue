@@ -121,10 +121,14 @@ export default class App extends Vue {
         });
 
         if (this.$router.currentRoute.name) {
-            // the route is set already
+            let defaultTime = null;
 
+            // the route is set already
+            if (this.$router.currentRoute.name == 'map-view') {
+                defaultTime = "Annual_Annuel";
+            }
             this.updateStore(
-                this.$router.currentRoute.query.t || 'Jan_Janv',
+                defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
                 this.$router.currentRoute.query.d || 'ahccd',
                 this.$router.currentRoute.query.s || '1021830'
