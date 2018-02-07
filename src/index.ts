@@ -6,6 +6,7 @@ import app from './app.vue';
 import routes from './routes';
 import { createStore } from './store';
 import { AppState } from './store';
+import api from './api/main';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -29,3 +30,6 @@ const v = new Vue({
     render: h => h('app'),
     components: { app }
 });
+
+// supresses all DQV logs except errors
+api.DQV.loglevel.setLevel(4);
