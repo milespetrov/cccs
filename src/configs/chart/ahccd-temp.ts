@@ -9,7 +9,7 @@ function makeConfig(
     stnid: number = 1021830,
     mini: boolean = false
 ) {
-    const stationTrendValue = 2.35;
+    const stationTrendValue = (stationData.trend.value ? stationData.trend.value : 'N/A');
 
     const seriesData = stationData.absolute_values.map(
         (value: number) => (value > -9999 ? value : null)
@@ -22,21 +22,46 @@ function makeConfig(
     const variables: object[] = [
         {
             name: 'Mean Temperature',
-            id: 'tmean'
+            id: 'tmean',
+            unit: '°C'
+
         },
         {
             name: 'Minimum Temperature',
-            id: 'tmin'
+            id: 'tmin',
+            unit: '°C'
         },
         {
             name: 'Maximum Temperature',
-            id: 'tmax'
+            id: 'tmax',
+            unit: '°C'
         },
         {
             name: 'Precipitation',
-            id: 'precip'
+            id: 'precip',
+            unit: 'mm'
         }
     ];
+
+    const fancyNames: object = {
+        Jan_Janv: 'January',
+        Feb_Fev: 'February',
+        Mar_March: 'March',
+        Apr_Avr: 'April',
+        May_Mai: 'May',
+        June_Juin: 'June',
+        July_Juil: 'July',
+        Aug_Aout: 'August',
+        Sept_Sept: 'September',
+        Oct_Oct: 'October',
+        Nov_Nov: 'November',
+        Dec_Dec: 'December',
+        Winter_Hiver: 'Winter',
+        Spring_Printemp: 'Spring',
+        Summer_Ete: 'Summer',
+        Autumn_Autome: 'Autumn',
+        Annual_Annuel: 'Annual'
+    }
 
     const item = variables.find((v: { id: string }) => v.id === variable);
     variable = item ? (<any>item).name : variable;
@@ -68,16 +93,42 @@ function makeConfig(
             zoomSlider: {
                 step: 1
             },
+            marginRight: 265,
             events: {
                 load: (event: any) => {
                     const ren = event.target.renderer;
 
+                    ren.path(
+                        ['M', event.target.plotWidth + event.target.plotLeft + 35, 0, 'L', event.target.plotWidth + event.target.plotLeft + 35, event.target.plotTop + event.target.plotHeight + 100]
+                    )
+                    .attr({
+                        'stroke-width': 0.5,
+                        stroke: '#AAAAAA',
+                        padding: 15
+                    })
+                    .add();
+
+                    ren.label('<b>Trend values</b>',
+                        event.target.plotWidth + event.target.plotLeft + 55,
+                        105)
+                        .css({
+                            'font-size': '16px',
+                            color: 'black' //'#ecf0f1'
+                        })
+                        .attr({
+                            //fill: '#222222',
+                            padding: 7,
+                            zIndex: 6
+                        })
+                        .add();
+
+
                     // draw the first trend value
                     ren
                         .label(
-                            `Trend value: <b>${stationTrendValue}</b>`,
-                            650,
-                            50
+                            `Overall: <b>${+stationTrendValue.toFixed(4)}</b>`,
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            130
                         )
                         .css({
                             color: 'black' //'#ecf0f1'
@@ -91,8 +142,43 @@ function makeConfig(
 
                     // draw the second trend value
                     secondTrendValueLabel = ren
-                        .label(``, 650, 85)
+                        .label(``, 
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            150)
                         .css({
+                            color: 'black' //'#ecf0f1'
+                        })
+                        .attr({
+                            //fill: '#222222',
+                            padding: 7,
+                            zIndex: 6
+                        })
+                        .add();
+
+                    ren
+                        .label(
+                            `<b>Key Information</b>`,
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            215
+                        )
+                        .css({
+                            'font-size': '16px',
+                            color: 'black' //'#ecf0f1'
+                        })
+                        .attr({
+                            //fill: '#222222',
+                            padding: 7,
+                            zIndex: 6
+                        })
+                        .add()
+
+                    ren
+                        .label(`<span>Lorem ipsum dolor sit amet,</br> consectetur adipiscing elit. Sed quis neque metus. 
+                            \nNunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.</span>`, 
+                            event.target.plotWidth + event.target.plotLeft + 55,
+                            240)
+                        .css({
+                            width: 200,
                             color: 'black' //'#ecf0f1'
                         })
                         .attr({
@@ -138,9 +224,14 @@ function makeConfig(
                         }`,
                         data => {
                             console.log(data);
+                            if (!data.value) {
+                                (<any>secondTrendValueLabel).textSetter(
+                                    `User range (${event.min}-${event.max}): <b>N/A</b>`
+                                );
+                            }
                             (<any>secondTrendValueLabel).textSetter(
                                 `User range (${event.min}-${event.max}): <b>${
-                                    (<any>data).value
+                                    +(<any>data).value.toFixed(4)
                                 }</b>`
                             );
                         }
@@ -150,7 +241,7 @@ function makeConfig(
         },
         yAxis: {
             title: {
-                text: `${variable}, °C`
+                text: `${variable}, ${(<any>item!).unit}`
             },
             labels: { style: { color: 'black' } },
             min: Math.min(0, ...seriesData) * 1.5,
@@ -158,14 +249,16 @@ function makeConfig(
         },
         tooltip: {
             shared: true,
-            valueSuffix: '°C'
+            valueSuffix: `${(<any>item!).unit}`
         },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
-            title: { text: 'Legend' },
-            margin: 60,
+            verticalAlign: 'top',
+            title: { text: 'Legend', style: {
+                'fontSize': '16px'
+            } },
+            x: -128,
             labelFormat:
                 '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
@@ -183,7 +276,7 @@ function makeConfig(
         },
         series: [
             {
-                name: period,
+                name: (<any>fancyNames)[period],
                 data: seriesData,
                 type: 'spline',
                 pointPadding: 0.1,
@@ -253,7 +346,7 @@ function makeConfig(
         },
         series: [
             {
-                name: period,
+                name: (<any>fancyNames)[period],
                 data: seriesData,
                 color: '#666666',
                 type: 'line',
