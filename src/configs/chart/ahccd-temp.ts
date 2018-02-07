@@ -101,12 +101,12 @@ function makeConfig(
                     ren.path(
                         ['M', event.target.plotWidth + event.target.plotLeft + 35, 0, 'L', event.target.plotWidth + event.target.plotLeft + 35, event.target.plotTop + event.target.plotHeight + 100]
                     )
-                    .attr({
-                        'stroke-width': 0.5,
-                        stroke: '#AAAAAA',
-                        padding: 15
-                    })
-                    .add();
+                        .attr({
+                            'stroke-width': 0.5,
+                            stroke: '#AAAAAA',
+                            padding: 15
+                        })
+                        .add();
 
                     ren.label('<b>Trend values</b>',
                         event.target.plotWidth + event.target.plotLeft + 55,
@@ -126,9 +126,9 @@ function makeConfig(
                     // draw the first trend value
                     ren
                         .label(
-                            `Overall: <b>${+stationTrendValue.toFixed(4)}</b>`,
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            130
+                        `Overall: <b>${(stationTrendValue == 'N/A' ? 'N/A' : +stationTrendValue.toFixed(4))}</b>`,
+                        event.target.plotWidth + event.target.plotLeft + 55,
+                        130
                         )
                         .css({
                             color: 'black' //'#ecf0f1'
@@ -142,9 +142,9 @@ function makeConfig(
 
                     // draw the second trend value
                     secondTrendValueLabel = ren
-                        .label(``, 
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            150)
+                        .label(``,
+                        event.target.plotWidth + event.target.plotLeft + 55,
+                        150)
                         .css({
                             color: 'black' //'#ecf0f1'
                         })
@@ -157,9 +157,9 @@ function makeConfig(
 
                     ren
                         .label(
-                            `<b>Key Information</b>`,
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            215
+                        `<b>Key Information</b>`,
+                        event.target.plotWidth + event.target.plotLeft + 55,
+                        215
                         )
                         .css({
                             'font-size': '16px',
@@ -173,11 +173,12 @@ function makeConfig(
                         .add()
 
                     ren
-                        .label(`<span>Lorem ipsum dolor sit amet,</br> consectetur adipiscing elit. Sed quis neque metus. 
-                            \nNunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.</span>`, 
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            240)
+                        .label(
+                        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
+                        event.target.plotWidth + event.target.plotLeft + 55,
+                        240)
                         .css({
+                            'pointer-events': 'none',
                             width: 200,
                             color: 'black' //'#ecf0f1'
                         })
@@ -198,10 +199,12 @@ function makeConfig(
         },
         title: {
             text: `${variable} at ${stationData.station_name},
-             ${stationData.start_year} - ${stationData.end_year}`
+             ${stationData.start_year} - ${stationData.end_year}`,
+            x: -110
         },
         subtitle: {
-            text: 'ccpid.ca'
+            text: 'ccpid.ca',
+            x: -110
         },
         xAxis: {
             // categories: stationData.Year_Annee,
@@ -218,9 +221,9 @@ function makeConfig(
 
                     $.getJSON(
                         `http://ahccd-dev.azurewebsites.net/${stnid}/${
-                            (<any>item!).id
+                        (<any>item!).id
                         }/${period_mappings[period]}/trend/${event.min}/${
-                            event.max
+                        event.max
                         }`,
                         data => {
                             console.log(data);
@@ -231,7 +234,7 @@ function makeConfig(
                             }
                             (<any>secondTrendValueLabel).textSetter(
                                 `User range (${event.min}-${event.max}): <b>${
-                                    +(<any>data).value.toFixed(4)
+                                +(<any>data).value.toFixed(4)
                                 }</b>`
                             );
                         }
@@ -255,9 +258,11 @@ function makeConfig(
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'top',
-            title: { text: 'Legend', style: {
-                'fontSize': '16px'
-            } },
+            title: {
+                text: 'Legend', style: {
+                    'fontSize': '16px'
+                }
+            },
             x: -128,
             labelFormat:
                 '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
@@ -328,7 +333,7 @@ function makeConfig(
         title: {
             text: `${variable} at ${stationData.station_name}, ${
                 stationData.start_year
-            } - ${stationData.end_year}`,
+                } - ${stationData.end_year}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -337,7 +342,7 @@ function makeConfig(
             }
         },
         tooltip: {
-            positioner: function() {
+            positioner: function () {
                 return { x: 0, y: 0 };
             },
             shadow: false,
