@@ -190,11 +190,10 @@ export default class App extends Vue {
             return;
         }
 
-        let query = this.getQuery;
-        query.t = "Annual_Annuel";
+        this.setTimePeriodId('Annual_Annuel');
         this.$router.push({
             name: 'map-view',
-            query: query
+            query: this.getQuery
         });
     }
 }
