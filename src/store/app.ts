@@ -1,6 +1,6 @@
 import { ActionContext, Store, StoreOptions, Module } from 'vuex';
 
-import { AppState } from './state';
+import { AppState, CenterPoint } from './index';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -10,7 +10,8 @@ const state: AppState = {
     timePeriodId: null,
     variableId: null,
     datasetId: null,
-    stationId: null
+    stationId: null,
+    centerPoint: null
 };
 
 // getters
@@ -21,7 +22,8 @@ const getters = {
             t: state.timePeriodId,
             v: state.variableId,
             d: state.datasetId,
-            s: state.stationId
+            s: state.stationId,
+            c: state.centerPoint ? state.centerPoint.safeString : null
         };
 
         // remove null values from the query object
@@ -53,6 +55,24 @@ const actions = {
 
     setStationId(context: AppContext, value: string) {
         context.commit('SET_STATION_ID', value);
+    },
+
+    setCenterPoint(
+        context: AppContext,
+        value: { x: number; y: number } | string | null
+    ) {
+        let point;
+
+        if (value === null) {
+            point = null;
+        } else if (typeof value !== 'string') {
+            point = new CenterPoint(value.x, value.y);
+        } else {
+            let [x, y] = value.split.apply(',');
+            point = new CenterPoint(parseFloat(x), parseFloat(y));
+        }
+
+        context.commit('SET_CENTER_POINT', point);
     }
 };
 
@@ -76,6 +96,10 @@ const mutations = {
 
     SET_STATION_ID(state: AppState, value: string): void {
         state.stationId = value;
+    },
+
+    SET_CENTER_POINT(state: AppState, value: CenterPoint | null): void {
+        state.centerPoint = value;
     }
 };
 
