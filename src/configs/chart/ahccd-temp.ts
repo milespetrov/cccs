@@ -256,9 +256,9 @@ function makeConfig(
             align: 'right',
             verticalAlign: 'top',
             title: { text: 'Legend', style: {
-                'fontSize': '16px',
-                'marginBottom': '5px'
+                'fontSize': '16px'
             } },
+            x: -128,
             labelFormat:
                 '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,

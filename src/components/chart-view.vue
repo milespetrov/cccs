@@ -183,11 +183,6 @@ export default class ChartView extends Vue {
 /deep/ .highcharts-legend-item-hidden .fa-check {
     color: inherit !important;
 }
-/deep/ .highcharts-legend {
-    left:auto !important;
-    top: 20px !important;
-    right:210px;
-}
 /deep/ [dv-chart-slider-container] {
     width:77%;
 }
