@@ -110,6 +110,7 @@ export default class MapInstance extends Vue {
         }
 
         if (this.localCenterPointUpdate) {
+            this.localCenterPointUpdate = false;
             return;
         }
 
@@ -119,7 +120,6 @@ export default class MapInstance extends Vue {
         );
         this.mapInstance.setCenter(XYcenter);
 
-        this.localCenterPointUpdate = false;
     }
 
     localCenterPointUpdate: boolean = false;
