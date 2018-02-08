@@ -107,6 +107,13 @@ rv-panel[type='main'] {
     left: $rv-left-offset !important;
 }
 
+rv-panel[type='table'] {
+    top: calc(#{$rv-top-offset} + 10px) !important;
+    left: calc((100vw - 1170px) / 2 + 410px) !important;
+    right: $rv-left-offset !important;
+    bottom: calc((#{$backdrop-map-height} - #{$rv-top-offset}) / 2) !important;
+}
+
 .md-sidenav-left {
     top: $rv-top-offset !important;
     left: $rv-left-offset !important;
