@@ -202,8 +202,9 @@ export default class VariableSelector extends Vue {
             []
         );
 
-        return variables.find(variable => variable.id === this.variableId)!
-            .name;
+        return `Variable: ${
+            variables.find(variable => variable.id === this.variableId)!.name
+        }`;
     }
 
     selectVariable(variable: VariableItem, option: VariableOption) {

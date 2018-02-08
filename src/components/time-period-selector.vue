@@ -115,9 +115,10 @@ export default class TimePeriodSelector extends Vue {
             []
         );
 
-        return timePeriods.find(
-            timePeriod => timePeriod.id === this.timePeriodId
-        )!.name;
+        return `Time period: ${
+            timePeriods.find(timePeriod => timePeriod.id === this.timePeriodId)!
+                .name
+        }`;
     }
 
     selectTimePeriod(timePeriod: TimePeriodItem) {

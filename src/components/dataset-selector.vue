@@ -58,8 +58,10 @@ export default class DatasetSelector extends Vue {
     @Getter getQuery: Dictionary<string>;
 
     get selectedDatasetShortName(): string {
-        return this.datasetItems.find(dataset => dataset.id === this.datasetId)!
-            .shortName;
+        return `Dataset: ${
+            this.datasetItems.find(dataset => dataset.id === this.datasetId)!
+                .shortName
+        }`;
     }
 
     selectDataset(dataset: DatasetItem) {
