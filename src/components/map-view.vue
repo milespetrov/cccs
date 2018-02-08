@@ -33,7 +33,7 @@ export default class MapView extends Vue {
     aliases: object = {
         station_name_nom: 'Station Name',
         stnid: 'Station ID',
-        beg_yr_annee_dev: 'Beginning Year',
+        beg_yr_annee_deb: 'Beginning Year',
         beg_mon_mois_deb: 'Beginning Month',
         end_yr_annee_fin: 'Ending Year',
         end_mon_mois_fin: 'Ending Month',
