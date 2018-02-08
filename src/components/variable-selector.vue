@@ -1,16 +1,23 @@
 <template>
     <b-dropdown :text="selectedVariableName" variant="light" class="cip-variable-selector">
         
+        <div class="cip-dropdown-info">
+            <h6 class="dropdown-header">Climate Data</h6>
+            <div class="cip-dropdown-description">Convallis euismod dictumst sodales iaculis imperdiet integer porttitor ut neque venenatis, habitant turpis leo cras sed ante facilisis class augue nisl, commodo magna ante sed posuere fringilla cursus nulla aliquet.</div>
+        </div>
+        
+        <b-dropdown-divider></b-dropdown-divider>
+
         <template v-for="(variableGroup, index) in variableGroups">
             <b-dropdown-divider :key="`divider-${ variableGroup.id }`" v-if="index !== 0"></b-dropdown-divider>
             
             <div role="group" :aria-lableledby="variableGroup.id" :key="`group-${ variableGroup.id }`">
                 <b-dropdown-header :id="variableGroup.id" v-if="variableGroup.items.length > 1">{{ variableGroup.name }}</b-dropdown-header>
                 
-                <div class="dropdown-item-mutli" v-for="variableItem in variableGroup.items" :key="`item-${ variableItem.id }`">
+                <div class="cip-dropdown-multi-item" v-for="variableItem in variableGroup.items" :key="`item-${ variableItem.id }`">
                     <span>{{ variableItem.name }}</span>
 
-                    <div class="dropdown-item-mutli-options">
+                    <div class="cip-dropdown-multi-item-options">
                         <!-- :class="{'cip-selected': variableItem.id === variableId && option.id === datasetId }" -->
                         <b-dropdown-item-button 
                             :aria-describedby="variableGroup.id"
@@ -219,7 +226,7 @@ export default class VariableSelector extends Vue {
 @import './../styles/variables.scss';
 @import './../styles/view-controls.scss';
 
-.b-dropdown .dropdown-item-mutli-options {
+.b-dropdown .cip-dropdown-multi-item-options {
     width: 16em !important;
 }
 </style>

@@ -1,6 +1,13 @@
 <template>
     <b-dropdown :text="selectedDatasetShortName" variant="light" class="cip-dataset-selector">
+
+        <div class="cip-dropdown-info">
+            <h6 class="dropdown-header">Datasets</h6>
+            <div class="cip-dropdown-description">Sed elit fermentum leo eget habitant ipsum pulvinar, magna odio praesent magna semper aenean, fringilla nostra sollicitudin himenaeos consectetur sit.</div>
+        </div>
         
+        <b-dropdown-divider></b-dropdown-divider>
+
         <b-dropdown-item-button v-for="dataset in datasetItems" 
             @click="selectDataset(dataset)"
             :key="`dataset-${ dataset.id }`">

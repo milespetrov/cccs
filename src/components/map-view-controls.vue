@@ -12,10 +12,10 @@
 
         <div class="menu-option">
             <b-dropdown text="Download" variant="light" right>
-                <div class="dropdown-item-mutli">
+                <div class="cip-dropdown-multi-item">
                     <span>Export Map Image</span>
 
-                    <div class="dropdown-item-mutli-options">
+                    <div class="cip-dropdown-multi-item-options">
                         <b-dropdown-item-button @click="downloadImage('png', true)">.png</b-dropdown-item-button>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ import { Subject } from 'rxjs/Subject';
 
 import api from './../api/main';
 import ahccdTemp from '../configs/chart/ahccd-temp';
-import { CenterPoint } from './../store';
+import { CenterPoint } from './../store/';
 
 interface tooltips {
     'en-CA': {
@@ -119,7 +119,6 @@ export default class MapInstance extends Vue {
             this.centerPoint.y
         );
         this.mapInstance.setCenter(XYcenter);
-
     }
 
     localCenterPointUpdate: boolean = false;
@@ -173,17 +172,9 @@ export default class MapInstance extends Vue {
                 .takeUntil(this.deactivate)
                 .subscribe(this.tooltipMouseOverHandler);
 
-            // TODO: there is a bug with accessing `centerChanged` endpoint right after `mapAdded` event
-            // https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2575
-            /* this.mapInstance.centerChanged.subscribe(
+            // subscribe to the center change stream to update the url and store with the current center point
+            this.mapInstance.centerChanged.subscribe(
                 this.mapInstanceCenterChangedHanlder
-            ); */
-            window.setTimeout(
-                () =>
-                    this.mapInstance.centerChanged.subscribe(
-                        this.mapInstanceCenterChangedHanlder
-                    ),
-                500
             );
 
             this.mapInstance.ui.anchors.CONTEXT_MAP.after(`

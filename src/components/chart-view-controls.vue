@@ -18,32 +18,41 @@
         <div class="menu-option">
             <b-dropdown text="Download" variant="light" right>
                 <div role="group" aria-lableledby="chart-download-data">
+                    
+                    <div class="cip-dropdown-info">
+                        <h6 class="dropdown-header">Download</h6>
+                        <div class="cip-dropdown-description">Dictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.</div>
+                    </div>
+
+                    <b-dropdown-divider></b-dropdown-divider>
+                    
                     <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
-                    <div class="dropdown-item-mutli">
+                    <div class="cip-dropdown-multi-item">
                         <span>Full Time Range</span>
 
-                        <div class="dropdown-item-mutli-options">
+                        <div class="cip-dropdown-multi-item-options">
                             <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
                             <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
                         </div>
                     </div>
-                    <div class="dropdown-item-mutli">
+                    <div class="cip-dropdown-multi-item">
                         <span>Visible Time Range Only</span>
 
-                        <div class="dropdown-item-mutli-options">
+                        <div class="cip-dropdown-multi-item-options">
                             <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
                             <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
                         </div>
                     </div>
                 </div>
+                
                 <b-dropdown-divider></b-dropdown-divider>
 
                 <div role="group" aria-lableledby="chart-download-image">
                     <b-dropdown-header id="chart-download-image">Image</b-dropdown-header>
-                    <div class="dropdown-item-mutli">
+                    <div class="cip-dropdown-multi-item">
                         <span>Chart</span>
 
-                        <div class="dropdown-item-mutli-options">
+                        <div class="cip-dropdown-multi-item-options">
                             <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
                             <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
                             <b-dropdown-item-button @click="downloadImage('pdf')">.pdf</b-dropdown-item-button>
