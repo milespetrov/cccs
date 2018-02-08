@@ -219,9 +219,9 @@ function makeConfig(
             width: 250,
             zoomSlider: null,
             spacingBottom: 5,
-            spacingLeft: 5,
-            spacingTop: 5,
-            spacingRight: 5
+            spacingLeft: 10,
+            spacingTop: 10,
+            spacingRight: 10
         },
         legend: {
             enabled: false

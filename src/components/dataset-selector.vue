@@ -1,6 +1,13 @@
 <template>
     <b-dropdown :text="selectedDatasetShortName" variant="light" class="cip-dataset-selector">
+
+        <div class="cip-dropdown-info">
+            <h6 class="dropdown-header">Datasets</h6>
+            <div class="cip-dropdown-description">Climate models use quantitative methods to simulate the interactions of the important drivers of climate, including atmosphere, oceans, land surface and ice. They are used for a variety of purposes from study of the dynamics of the climate system to projections of future climate.</div>
+        </div>
         
+        <b-dropdown-divider></b-dropdown-divider>
+
         <b-dropdown-item-button v-for="dataset in datasetItems" 
             @click="selectDataset(dataset)"
             :key="`dataset-${ dataset.id }`">
@@ -51,8 +58,10 @@ export default class DatasetSelector extends Vue {
     @Getter getQuery: Dictionary<string>;
 
     get selectedDatasetShortName(): string {
-        return this.datasetItems.find(dataset => dataset.id === this.datasetId)!
-            .shortName;
+        return `Dataset: ${
+            this.datasetItems.find(dataset => dataset.id === this.datasetId)!
+                .shortName
+        }`;
     }
 
     selectDataset(dataset: DatasetItem) {

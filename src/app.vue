@@ -68,7 +68,7 @@
 
         <section class="container main">
 
-            <p>A Climate Data Record (CDR) is a specific definition of a climate data series, developed by the Committee on Climate Data Records from NOAA Operational Satellites of the National Research Council at the request of NOAA in the context of satellite records.[1] It is defined as "a time series of measurements of sufficient length, consistency, and continuity to determine climate variability and change.".[2]</p>
+            <p>The data consist of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment.</p>
 
             <keep-alive>
                 <router-view class="visualization" name="visualization"></router-view>
@@ -114,10 +114,10 @@ import GeoSearch from './components/geo-search.vue';
     }
 })
 export default class App extends Vue {
-    @Action setTimePeriodId: (value: string) => void;
-    @Action setVariableId: (value: string) => void;
-    @Action setDatasetId: (value: string) => void;
-    @Action setStationId: (value: string) => void;
+    @Action setTimePeriodId: (value: string | null) => void;
+    @Action setVariableId: (value: string | null) => void;
+    @Action setDatasetId: (value: string | null) => void;
+    @Action setStationId: (value: string | null) => void;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -134,23 +134,37 @@ export default class App extends Vue {
     created(): void {
         this.$router.afterEach((to, from) => {
             if (this.$router.currentRoute.name == 'map-view') {
-                this.updateStore('Annual_Annuel', to.query.v, to.query.d, to.query.s);
+                this.updateStore(
+                    'Annual_Annuel',
+                    to.query.v,
+                    to.query.d,
+                    to.query.s
+                );
+            } else {
+                this.updateStore(
+                    to.query.t,
+                    to.query.v,
+                    to.query.d,
+                    to.query.s
+                );
             }
-            this.updateStore(to.query.t, to.query.v, to.query.d, to.query.s);
         });
 
         if (this.$router.currentRoute.name) {
             let defaultTime = null;
+            let defaultStation: string | null =
+                this.$router.currentRoute.query.s || '1021830';
 
             // the route is set already
             if (this.$router.currentRoute.name == 'map-view') {
-                defaultTime = "Annual_Annuel";
+                defaultTime = 'Annual_Annuel';
+                defaultStation = null;
             }
             this.updateStore(
                 defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
                 this.$router.currentRoute.query.d || 'ahccd',
-                this.$router.currentRoute.query.s || '1021830'
+                defaultStation
             );
 
             this.$router.push({
@@ -173,7 +187,7 @@ export default class App extends Vue {
         timePeriodId: string,
         variableId: string,
         datasetId: string,
-        stationId: string
+        stationId: string | null
     ): void {
         this.viewName = this.$router.currentRoute.name!;
         this.setTimePeriodId(timePeriodId);
@@ -278,7 +292,7 @@ export default class App extends Vue {
     .map-view & {
         margin-top: calc(
             #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} -
-                #{$view-controls-height} + 1rem
+                #{$view-controls-height} + 3rem
         );
     }
 }
@@ -310,24 +324,25 @@ export default class App extends Vue {
         display: flex;
         align-items: center;
         > svg {
-        margin-right: 1rem;
+            margin-right: 1rem;
         }
         > span {
-        font-size: 2rem;
+            font-size: 2rem;
         }
     }
     > div {
         > .menu-option {
-        margin: 0 2rem; // font-weight: bold;
-        font-weight: bold;
-        display: block;
-        float: left;
-        > svg {
-            margin: auto;
-        }
+            margin: 0 2rem;
+            // font-weight: bold;
+            font-weight: bold;
+            display: block;
+            float: left;
+            > svg {
+                margin: auto;
             }
-            float: right;
         }
+        float: right;
+    }
     .separator {
         flex: 1;
     }

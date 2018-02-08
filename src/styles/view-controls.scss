@@ -43,10 +43,10 @@
             }
         }
 
-        .dropdown-item-mutli {
+        .cip-dropdown-multi-item {
             display: flex;
             align-items: center;
-            padding: 0.25rem 1.5rem;
+            padding: 0 1.5em;
 
             span {
                 flex: 1 0 auto;
@@ -92,6 +92,14 @@
                     } */
                 }
             }
+        }
+
+        .cip-dropdown-info {
+        }
+
+        .cip-dropdown-description {
+            padding: 0.25rem * 1.6 1.5rem * 1.6;
+            font-size: 0.8em;
         }
     }
 }

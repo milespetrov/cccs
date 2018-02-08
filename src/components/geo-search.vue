@@ -194,7 +194,7 @@ export default class GeoSearch extends Vue {
     position: absolute;
     width: 100%;
     z-index: 1000;
-
+    left: 0;
     top: $top-navigation-height;
 
     padding: 0.5em 0;

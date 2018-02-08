@@ -1,21 +1,30 @@
 <template>
     <b-dropdown :text="selectedTimePeriodName" variant="light" class="cip-time-period-selector">
         
-        <template v-for="(timePeriodGroup, index) in timePeriodGroups">
-            <b-dropdown-divider :key="`divider-${ timePeriodGroup.id }`" v-if="index !== 0"></b-dropdown-divider>
-            
-            <div role="group" :aria-lableledby="timePeriodGroup.id" :key="`group-${ timePeriodGroup.id }`">
-                <b-dropdown-header :id="timePeriodGroup.id" v-if="timePeriodGroup.items.length > 1">{{ timePeriodGroup.name }}</b-dropdown-header>
-                
-                <b-dropdown-item-button
-                    :aria-describedby="timePeriodGroup.id" 
-                    @click="selectTimePeriod(timePeriod)"
-                    v-for="timePeriod in timePeriodGroup.items" :key="`time-period-${ timePeriod.id }`">
-                        <span class="cip-name">{{ timePeriod.name }}</span><span class="cip-description">{{ timePeriod.description }} </span>
-                    </b-dropdown-item-button>
-            </div>
+        <div class="cip-dropdown-info">
+            <h6 class="dropdown-header">Climate Data</h6>
+            <div class="cip-dropdown-description">Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere "behaves" over relatively long periods of time.</div>
+        </div>
 
-        </template>
+        <b-dropdown-divider></b-dropdown-divider>
+
+        <div class="cip-dropdown-horizontal">
+            <template v-for="(timePeriodGroup, index) in timePeriodGroups">
+                <b-dropdown-divider :key="`divider-${ timePeriodGroup.id }`" v-if="index !== 0"></b-dropdown-divider>
+                
+                <div role="group" :aria-lableledby="timePeriodGroup.id" :key="`group-${ timePeriodGroup.id }`">
+                    <b-dropdown-header :id="timePeriodGroup.id" v-if="timePeriodGroup.items.length > 0">{{ timePeriodGroup.name }}</b-dropdown-header>
+                    
+                    <b-dropdown-item-button
+                        :aria-describedby="timePeriodGroup.id" 
+                        @click="selectTimePeriod(timePeriod)"
+                        v-for="timePeriod in timePeriodGroup.items" :key="`time-period-${ timePeriod.id }`">
+                            <span class="cip-name">{{ timePeriod.name }}</span><span class="cip-qualifier">{{ timePeriod.description }} </span>
+                        </b-dropdown-item-button>
+                </div>
+
+            </template>
+        </div>        
 
     </b-dropdown>
     
@@ -106,9 +115,10 @@ export default class TimePeriodSelector extends Vue {
             []
         );
 
-        return timePeriods.find(
-            timePeriod => timePeriod.id === this.timePeriodId
-        )!.name;
+        return `Time period: ${
+            timePeriods.find(timePeriod => timePeriod.id === this.timePeriodId)!
+                .name
+        }`;
     }
 
     selectTimePeriod(timePeriod: TimePeriodItem) {
@@ -131,9 +141,18 @@ export default class TimePeriodSelector extends Vue {
 @import './../styles/view-controls.scss';
 
 .cip-time-period-selector {
+    .cip-dropdown-horizontal {
+        display: flex;
+    }
+
     .dropdown-item {
         display: flex;
         align-items: center;
+    }
+
+    .dropdown-divider {
+        border-right: 1px solid #e9ecef;
+        height: auto;
     }
 
     .cip-name {
@@ -141,7 +160,7 @@ export default class TimePeriodSelector extends Vue {
         margin-right: 3rem;
     }
 
-    .cip-description {
+    .cip-qualifier {
         font-size: 0.7em;
         font-weight: 100;
     }
