@@ -9,15 +9,13 @@ function makeConfig(
     stnid: number = 1021830,
     mini: boolean = false
 ) {
-    const stationTrendValue = stationData.trend.value
-        ? stationData.trend.value
-        : 'N/A';
-
     const seriesData = stationData.absolute_values.map(
         (value: number) => (value > -9999 ? value : null)
     );
 
     let secondTrendValueLabel: HTMLElement;
+    let trendRangeLabel: SVGElement;
+    let yAdjust: number;
 
     // HACK: get a proper variable name
     // should be retrieved from the store
@@ -96,115 +94,7 @@ function makeConfig(
             },
             marginRight: 265,
             events: {
-                load: (event: any) => {
-                    const ren = event.target.renderer;
-
-                    ren
-                        .path([
-                            'M',
-                            event.target.plotWidth + event.target.plotLeft + 35,
-                            0,
-                            'L',
-                            event.target.plotWidth + event.target.plotLeft + 35,
-                            event.target.plotTop + event.target.plotHeight + 100
-                        ])
-                        .attr({
-                            'stroke-width': 0.5,
-                            stroke: '#AAAAAA',
-                            padding: 15
-                        })
-                        .add();
-
-                    ren
-                        .label(
-                            '<b>Trend values</b>',
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            105
-                        )
-                        .css({
-                            'font-size': '16px',
-                            color: 'black' //'#ecf0f1'
-                        })
-                        .attr({
-                            //fill: '#222222',
-                            padding: 7,
-                            zIndex: 6
-                        })
-                        .add();
-
-                    // draw the first trend value
-                    ren
-                        .label(
-                            `Overall: <b>${
-                                stationTrendValue == 'N/A'
-                                    ? 'N/A'
-                                    : +stationTrendValue.toFixed(4)
-                            }</b>`,
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            130
-                        )
-                        .css({
-                            color: 'black' //'#ecf0f1'
-                        })
-                        .attr({
-                            //fill: '#222222',
-                            padding: 7,
-                            zIndex: 6
-                        })
-                        .add();
-
-                    // draw the second trend value
-                    secondTrendValueLabel = ren
-                        .label(
-                            ``,
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            150
-                        )
-                        .css({
-                            color: 'black' //'#ecf0f1'
-                        })
-                        .attr({
-                            //fill: '#222222',
-                            padding: 7,
-                            zIndex: 6
-                        })
-                        .add();
-
-                    ren
-                        .label(
-                            `<b>Key Information</b>`,
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            215
-                        )
-                        .css({
-                            'font-size': '16px',
-                            color: 'black' //'#ecf0f1'
-                        })
-                        .attr({
-                            //fill: '#222222',
-                            padding: 7,
-                            zIndex: 6
-                        })
-                        .add();
-
-                    ren
-                        .label(
-                            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
-                            event.target.plotWidth + event.target.plotLeft + 55,
-                            240
-                        )
-                        .css({
-                            'pointer-events': 'none',
-                            width: 200,
-                            color: 'black' //'#ecf0f1'
-                        })
-                        .attr({
-                            //fill: '#222222',
-                            padding: 7,
-                            zIndex: 6
-                        })
-                        .add();
-                }
+                load: (event: any) => { [trendRangeLabel, secondTrendValueLabel, yAdjust] = makeLabels(event, stationData)}
             }
         },
         credits: {
@@ -243,18 +133,28 @@ function makeConfig(
                         }`,
                         data => {
                             console.log(data);
+                            (<any>trendRangeLabel).textSetter(
+                                `Selection (${event.min}-${event.max}):`
+                            );
                             if (!data.value) {
                                 (<any>secondTrendValueLabel).textSetter(
-                                    `User range (${event.min}-${
-                                        event.max
-                                    }): <b>N/A</b>`
+                                    `<b>Not Available</b>`
                                 );
+                                (<any>secondTrendValueLabel).attr({
+                                    y: 214 + yAdjust
+                                });
+                            } else {
+                                (<any>secondTrendValueLabel).textSetter(
+                                    //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
+                                    `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
+                                );
+                                (<any>secondTrendValueLabel).attr({
+                                    y: 199 + yAdjust
+                                });
                             }
-                            (<any>secondTrendValueLabel).textSetter(
-                                `User range (${event.min}-${
-                                    event.max
-                                }): <b>${+(<any>data).value.toFixed(4)}</b>`
-                            );
+                            (<any>secondTrendValueLabel).attr({
+                                x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width
+                            });
                         }
                     );
                 }
@@ -282,6 +182,7 @@ function makeConfig(
                     fontSize: '16px'
                 }
             },
+            y: 49,
             x: -128,
             labelFormat:
                 '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
@@ -384,6 +285,140 @@ function makeConfig(
     };
 
     return mini ? miniConfig : config;
+}
+
+function makeLabels(event:any, stationData:any){
+    const firstLabelY = 154;
+    const stationTrendValue = (stationData.trend.value ? stationData.trend.value : 'N/A');
+    const ren = event.target.renderer;
+
+    const firstTrend = (stationTrendValue == 'N/A' ? 'Not Available' : 
+        (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4));
+    const yAdjust = (stationTrendValue == 'N/A' ? 15 : 0);
+
+    ren.path(
+        ['M', event.target.plotWidth + event.target.plotLeft + 35, 0, 'L', event.target.plotWidth + event.target.plotLeft + 35, event.target.plotTop + event.target.plotHeight + 100]
+    )
+        .attr({
+            'stroke-width': 0.5,
+            stroke: '#AAAAAA',
+            padding: 15
+        })
+        .add();
+
+    ren.label('<b>Trends</b>',
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY)
+        .css({
+            'font-size': '16px',
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add();
+
+
+    // draw the first trend value
+    ren
+        .label(
+        `Overall (${stationData.start_year}-${stationData.end_year}):`,
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY + 25
+        )
+        .css({
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add();
+    let current = ren.label(
+        `<b>${firstTrend}</b>`,
+        null,
+        firstLabelY + yAdjust + 25
+    )
+    .css({
+        color: 'black' //'#ecf0f1'
+    })
+    .attr({
+        //fill: '#222222',
+        padding: 7,
+        zIndex: 6
+    })
+    .add();
+    (<any>current).attr({
+        x: event.target.chartWidth - (<any>current).width
+    });
+    let trendRangeLabel = ren
+        .label(
+        ``,
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY + yAdjust + 45
+        )
+        .css({
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add();
+    // draw the second trend value
+    let secondTrendValueLabel = ren
+        .label(``,
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY + yAdjust + 45)
+        .css({
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add();
+
+    ren
+        .label(
+        `<b>Key Information</b>`,
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY + yAdjust + 110
+        )
+        .css({
+            'font-size': '16px',
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add()
+
+    ren
+        .label(
+        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY + yAdjust + 135)
+        .css({
+            'pointer-events': 'none',
+            width: 200,
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add();
+
+    return [trendRangeLabel, secondTrendValueLabel, yAdjust];
 }
 
 export default makeConfig;
