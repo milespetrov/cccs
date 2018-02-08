@@ -9,8 +9,6 @@
     "navBar": {
       "zoom": "buttons",
       "extra": [
-        "fullscreen",
-        "basemap",
         "home",
         "help"
       ]
@@ -150,8 +148,8 @@
         "name": "Mean Temperature",
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_3Cheese/MapServer/0",
-        "controls": []
+        "url": "hhttp://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
+        "controls": ["data"]
       }
     ],
     "baseMaps": [
