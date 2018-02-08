@@ -39,22 +39,22 @@ export default class MapInstance extends Vue {
             ahccd: {
                 tmean: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmin: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmax: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 precip: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 }
             }
@@ -63,22 +63,22 @@ export default class MapInstance extends Vue {
             ahccd: {
                 tmean: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmin: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmax: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 precip: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 }
             }
@@ -231,6 +231,9 @@ export default class MapInstance extends Vue {
                 a[currentTemplate.value_key]
             );
 
+            const start_year = a.beg_yr_annee_deb;
+            const end_year = a.end_yr_annee_fin;
+
             if (parseFloat(value) > 0) {
                 value = '+' + value;
             }
@@ -238,7 +241,9 @@ export default class MapInstance extends Vue {
             tooltip = z.add(
                 sprintf.sprintf(currentTemplate.template, <any>{
                     name,
-                    value
+                    value,
+                    start_year,
+                    end_year
                 })
             );
         });
