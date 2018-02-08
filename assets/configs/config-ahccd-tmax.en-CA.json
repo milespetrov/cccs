@@ -9,8 +9,6 @@
     "navBar": {
       "zoom": "buttons",
       "extra": [
-        "fullscreen",
-        "basemap",
         "home",
         "help"
       ]
@@ -150,8 +148,8 @@
         "name": "Max Temperature",
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_3Cheese/MapServer/2",
-        "controls": []
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
+        "controls": ["data"]
       }
     ],
     "baseMaps": [

@@ -9,8 +9,6 @@
     "navBar": {
       "zoom": "buttons",
       "extra": [
-        "fullscreen",
-        "basemap",
         "home",
         "help"
       ]
@@ -64,7 +62,7 @@
     }
   },
   "map": {
-    "initialBasemapId": "baseNrCan",
+    "initialBasemapId": "baseSimple",
     "components": {
       "geoSearch": {
         "enabled": true,
@@ -151,7 +149,7 @@
         "nameField": "station_name_nom",
         "layerType": "esriFeature",
         "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/3",
-        "controls": []
+        "controls": ["data"]
       }
     ],
     "baseMaps": [
