@@ -40,17 +40,17 @@ export default class MapInstance extends Vue {
                 tmean: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel_Num'
+                    value_key: 'Annual_Annuel'
                 },
                 tmin: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel_Num'
+                    value_key: 'Annual_Annuel'
                 },
                 tmax: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend value (annual): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel_Num'
+                    value_key: 'Annual_Annuel'
                 },
                 precip: {
                     template:
@@ -64,22 +64,22 @@ export default class MapInstance extends Vue {
                 tmean: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel_Num'
+                    value_key: 'Annual_Annuel'
                 },
                 tmin: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel_Num'
+                    value_key: 'Annual_Annuel'
                 },
                 tmax: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel_Num'
+                    value_key: 'Annual_Annuel'
                 },
                 precip: {
                     template:
                         "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (annuel): %(value)s</span></div>",
-                    value_key: 'Annual_Mean'
+                    value_key: 'Annual_Annuel'
                 }
             }
         }
