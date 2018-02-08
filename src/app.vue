@@ -114,10 +114,10 @@ import GeoSearch from './components/geo-search.vue';
     }
 })
 export default class App extends Vue {
-    @Action setTimePeriodId: (value: string) => void;
-    @Action setVariableId: (value: string) => void;
-    @Action setDatasetId: (value: string) => void;
-    @Action setStationId: (value: string) => void;
+    @Action setTimePeriodId: (value: string | null) => void;
+    @Action setVariableId: (value: string | null) => void;
+    @Action setDatasetId: (value: string | null) => void;
+    @Action setStationId: (value: string | null) => void;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -140,22 +140,31 @@ export default class App extends Vue {
                     to.query.d,
                     to.query.s
                 );
+            } else {
+                this.updateStore(
+                    to.query.t,
+                    to.query.v,
+                    to.query.d,
+                    to.query.s
+                );
             }
-            this.updateStore(to.query.t, to.query.v, to.query.d, to.query.s);
         });
 
         if (this.$router.currentRoute.name) {
             let defaultTime = null;
+            let defaultStation: string | null =
+                this.$router.currentRoute.query.s || '1021830';
 
             // the route is set already
             if (this.$router.currentRoute.name == 'map-view') {
                 defaultTime = 'Annual_Annuel';
+                defaultStation = null;
             }
             this.updateStore(
                 defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
                 this.$router.currentRoute.query.d || 'ahccd',
-                this.$router.currentRoute.query.s || '1021830'
+                defaultStation
             );
 
             this.$router.push({
@@ -178,7 +187,7 @@ export default class App extends Vue {
         timePeriodId: string,
         variableId: string,
         datasetId: string,
-        stationId: string
+        stationId: string | null
     ): void {
         this.viewName = this.$router.currentRoute.name!;
         this.setTimePeriodId(timePeriodId);

@@ -41,19 +41,19 @@ const actions = {
         context.commit('TOGGLE_VARIABLE_SELECTOR', value);
     },
 
-    setTimePeriodId(context: AppContext, value: string) {
+    setTimePeriodId(context: AppContext, value: string | null) {
         context.commit('SET_TIME_PERIOD_ID', value);
     },
 
-    setVariableId(context: AppContext, value: string) {
+    setVariableId(context: AppContext, value: string | null) {
         context.commit('SET_VARIABLE_ID', value);
     },
 
-    setDatasetId(context: AppContext, value: string) {
+    setDatasetId(context: AppContext, value: string | null) {
         context.commit('SET_DATASET_ID', value);
     },
 
-    setStationId(context: AppContext, value: string) {
+    setStationId(context: AppContext, value: string | null) {
         context.commit('SET_STATION_ID', value);
     },
 
