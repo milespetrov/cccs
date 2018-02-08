@@ -3,7 +3,7 @@
         
         <div class="cip-dropdown-info">
             <h6 class="dropdown-header">Climate Data</h6>
-            <div class="cip-dropdown-description">Convallis euismod dictumst sodales iaculis imperdiet integer porttitor ut neque venenatis, habitant turpis leo cras sed ante facilisis class augue nisl, commodo magna ante sed posuere fringilla cursus nulla aliquet.</div>
+            <div class="cip-dropdown-description">An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate.</div>
         </div>
         
         <b-dropdown-divider></b-dropdown-divider>

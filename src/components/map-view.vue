@@ -1,5 +1,5 @@
 <template>
-    <aside class="root">
+    <aside class="cip-map-view">
 
         <!-- <map-instance :key="`instance-${reloadKey}`"></map-instance> -->
 

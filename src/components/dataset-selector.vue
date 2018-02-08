@@ -3,7 +3,7 @@
 
         <div class="cip-dropdown-info">
             <h6 class="dropdown-header">Datasets</h6>
-            <div class="cip-dropdown-description">Sed elit fermentum leo eget habitant ipsum pulvinar, magna odio praesent magna semper aenean, fringilla nostra sollicitudin himenaeos consectetur sit.</div>
+            <div class="cip-dropdown-description">Climate models use quantitative methods to simulate the interactions of the important drivers of climate, including atmosphere, oceans, land surface and ice. They are used for a variety of purposes from study of the dynamics of the climate system to projections of future climate.</div>
         </div>
         
         <b-dropdown-divider></b-dropdown-divider>

@@ -3,7 +3,7 @@
         
         <div class="cip-dropdown-info">
             <h6 class="dropdown-header">Climate Data</h6>
-            <div class="cip-dropdown-description">Purus auctor tincidunt rhoncus lectus aenean risus mollis risus elit, nisl eu consequat posuere consectetur nisi et mi, congue venenatis lacinia condimentum eleifend adipiscing auctor integer donec urna quisque mauris litora faucibus lobortis dictum.</div>
+            <div class="cip-dropdown-description">Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere "behaves" over relatively long periods of time.</div>
         </div>
 
         <b-dropdown-divider></b-dropdown-divider>

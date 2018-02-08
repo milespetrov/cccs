@@ -173,6 +173,8 @@ export default class ChartView extends Vue {
 
 <style lang="scss" scoped>
 .cip-chart-view /deep/ {
+    margin: 3rem 0;
+
     #dvChart1 [dv-chart-container] {
         margin: auto;
         height: 500px;

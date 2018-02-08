@@ -68,7 +68,7 @@
 
         <section class="container main">
 
-            <p>A Climate Data Record (CDR) is a specific definition of a climate data series, developed by the Committee on Climate Data Records from NOAA Operational Satellites of the National Research Council at the request of NOAA in the context of satellite records.[1] It is defined as "a time series of measurements of sufficient length, consistency, and continuity to determine climate variability and change.".[2]</p>
+            <p>The data consist of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment.</p>
 
             <keep-alive>
                 <router-view class="visualization" name="visualization"></router-view>
@@ -283,7 +283,7 @@ export default class App extends Vue {
     .map-view & {
         margin-top: calc(
             #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} -
-                #{$view-controls-height} + 1rem
+                #{$view-controls-height} + 3rem
         );
     }
 }
