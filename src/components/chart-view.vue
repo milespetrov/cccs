@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cip-chart-view">
         <div v-if="false">
             <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2" right>
                 <b-dropdown-item>First Action</b-dropdown-item>
@@ -172,21 +172,90 @@ export default class ChartView extends Vue {
 </script>
 
 <style lang="scss" scoped>
-/deep/ #dvChart1 [dv-chart-container] {
-    margin: auto;
-    height: 500px;
-}
-/deep/ .noUi-connect {
-    background: #003d79 !important;
-}
+.cip-chart-view /deep/ {
+    #dvChart1 [dv-chart-container] {
+        margin: auto;
+        height: 500px;
+    }
 
-/deep/ .highcharts-legend-item-hidden .fa-check {
-    color: inherit !important;
-}
-/deep/ [dv-chart-slider-container] {
-    width:77%;
-}
-/deep/ #dvChart1 > details {
-    width: 77%;
+    .highcharts-legend-item-hidden .fa-check {
+        color: inherit !important;
+    }
+
+    #dvChart1 > details {
+        margin-left: 67px;
+        margin-right: 265px;
+    }
+
+    [dv-chart-slider-container] {
+        margin-left: 67px;
+        margin-right: 265px;
+
+        margin-top: 0;
+        margin-bottom: 20px;
+
+        .noUi-target {
+            background-image: linear-gradient(
+                to right,
+                #333 20%,
+                rgba(255, 255, 255, 0) 0%
+            );
+            background-position-y: 7px;
+            background-size: 10px 2px;
+            background-repeat: repeat-x;
+            border: none;
+            box-shadow: none;
+        }
+
+        .noUi-connect {
+            background-image: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0) 20%,
+                #003d79 20%,
+                #003d79 80%,
+                rgba(255, 255, 255, 0) 80%,
+                rgba(255, 255, 255, 0) 100%
+            ) !important;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .noUi-horizontal .noUi-handle {
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            top: -3px;
+            left: -11px;
+            cursor: pointer;
+
+            &:after,
+            &:before {
+                display: none;
+            }
+
+            &:hover,
+            &:focus {
+                transform: scale(1.2, 1.2);
+            }
+
+            transition: transform 200ms ease-in;
+        }
+
+        .dv-slider-input {
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-bottom-color: #d9d9d9;
+            width: 6rem;
+
+            &:hover,
+            &:focus {
+                background-color: white;
+                border-color: #d9d9d9;
+            }
+        }
+    }
 }
 </style>

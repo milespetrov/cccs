@@ -134,7 +134,12 @@ export default class App extends Vue {
     created(): void {
         this.$router.afterEach((to, from) => {
             if (this.$router.currentRoute.name == 'map-view') {
-                this.updateStore('Annual_Annuel', to.query.v, to.query.d, to.query.s);
+                this.updateStore(
+                    'Annual_Annuel',
+                    to.query.v,
+                    to.query.d,
+                    to.query.s
+                );
             }
             this.updateStore(to.query.t, to.query.v, to.query.d, to.query.s);
         });
@@ -144,7 +149,7 @@ export default class App extends Vue {
 
             // the route is set already
             if (this.$router.currentRoute.name == 'map-view') {
-                defaultTime = "Annual_Annuel";
+                defaultTime = 'Annual_Annuel';
             }
             this.updateStore(
                 defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
@@ -310,24 +315,25 @@ export default class App extends Vue {
         display: flex;
         align-items: center;
         > svg {
-        margin-right: 1rem;
+            margin-right: 1rem;
         }
         > span {
-        font-size: 2rem;
+            font-size: 2rem;
         }
     }
     > div {
         > .menu-option {
-        margin: 0 2rem; // font-weight: bold;
-        font-weight: bold;
-        display: block;
-        float: left;
-        > svg {
-            margin: auto;
-        }
+            margin: 0 2rem;
+            // font-weight: bold;
+            font-weight: bold;
+            display: block;
+            float: left;
+            > svg {
+                margin: auto;
             }
-            float: right;
         }
+        float: right;
+    }
     .separator {
         flex: 1;
     }
