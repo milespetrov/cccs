@@ -74,6 +74,11 @@
                 <router-view class="visualization" name="visualization"></router-view>
             </keep-alive>
 
+            <br>
+            <div class="row col-md-12">
+                <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’ leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
+            </div>
+
             <div class="pagedetails">
                 <dl id="wb-dtmd">
                 <dt>Date modified: </dt>
