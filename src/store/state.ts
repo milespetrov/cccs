@@ -6,6 +6,7 @@ export interface AppState {
     datasetId: string | null;
     stationId: string | null;
     centerPoint: CenterPoint | null;
+    zoomLevel: string | null;
 }
 
 export class CenterPoint {

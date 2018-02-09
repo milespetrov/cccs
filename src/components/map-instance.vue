@@ -96,6 +96,7 @@ export default class MapInstance extends Vue {
     @State('timePeriodId') currentTimePeriod: string;
     @State('stationId') currentStation: string;
     @State centerPoint: CenterPoint;
+    @State zoomLevel: number;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -121,6 +122,14 @@ export default class MapInstance extends Vue {
             this.centerPoint.y
         );
         this.mapInstance.setCenter(XYcenter);
+    }
+
+    @Watch('zoomLevel')
+    onZoomLevelChanged(
+        newValue: number,
+        oldValue: number
+    ): void {
+        this.mapInstance.zoom = this.zoomLevel;
     }
 
     localCenterPointUpdate: boolean = false;
@@ -184,7 +193,7 @@ export default class MapInstance extends Vue {
 
             // subscribe to the center change stream to update the url and store with the current center point
             this.mapInstance.centerChanged.subscribe(
-                this.mapInstanceCenterChangedHanlder
+                this.mapInstanceCenterChangedHandler
             );
 
             this.mapInstance.ui.anchors.CONTEXT_MAP.after(`
@@ -216,7 +225,7 @@ export default class MapInstance extends Vue {
         });
     }
 
-    mapInstanceCenterChangedHanlder(event: any): void {
+    mapInstanceCenterChangedHandler(event: any): void {
         this.localCenterPointUpdate = true;
 
         this.setCenterPoint(event);
