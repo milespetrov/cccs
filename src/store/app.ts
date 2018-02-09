@@ -70,7 +70,7 @@ const actions = {
         } else if (typeof value !== 'string') {
             point = new CenterPoint(value.x, value.y);
         } else {
-            let [x, y] = value.split.apply(',');
+            let [x, y] = value.split(',');
             point = new CenterPoint(parseFloat(x), parseFloat(y));
         }
 
