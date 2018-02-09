@@ -3,7 +3,7 @@
     "appBar": {
       "sideMenu": true,
       "basemap": false,
-      "layers": true,
+      "layers": false,
       "geoSearch": false
     },
     "navBar": {
@@ -16,10 +16,6 @@
     "sideMenu": {
       "logo": true,
       "items": [
-        [
-          "basemap",
-          "layers"
-        ],
         [
           "touch",
           "help",
@@ -81,7 +77,7 @@
         "enabled": true
       },
       "overviewMap": {
-        "enabled": true,
+        "enabled": false,
         "layerType": "imagery"
       },
       "scaleBar": {
@@ -127,9 +123,6 @@
       "root": {
         "name": "root",
         "children": [
-          {
-            "layerId": "ahccd_mean"
-          }
         ]
       }
     },
@@ -142,14 +135,6 @@
       }
     ],
     "layers": [
-      {
-        "id": "ahccd_mean",
-        "name": "Mean Temperature",
-        "nameField": "station_name_nom",
-        "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
-        "controls": ["data"]
-      }
     ],
     "baseMaps": [
       {
@@ -162,48 +147,6 @@
             "id": "CBMT",
             "layerType": "esriFeature",
             "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer"
-          }
-        ],
-        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
-      },
-      {
-        "id": "baseSimple",
-        "name": "Canada Base Map - Simple",
-        "description": "Canada Base Map - Simple",
-        "altText": "altText - Canada base map - Simple",
-        "layers": [
-          {
-            "id": "SMR",
-            "layerType": "esriFeature",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer"
-          }
-        ],
-        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
-      },
-      {
-        "id": "baseCBME_CBCE_HS_RO_3978",
-        "name": "Canada Base Map - Elevation (CBME)",
-        "description": "The Canada Base Map - Elevation (CBME) web mapping services of the Earth Sciences Sector at Natural Resources Canada, is intended primarily for online mapping application users and developers.",
-        "altText": "altText - Canada Base Map - Elevation (CBME)",
-        "layers": [
-          {
-            "id": "CBME_CBCE_HS_RO_3978",
-            "layerType": "esriFeature",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
-          }
-        ],
-        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
-      },
-      {
-        "id": "baseCBMT_CBCT_GEOM_3978",
-        "name": "Canada Base Map - Transportation (CBMT)",
-        "description": " The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
-        "altText": "altText - Canada Base Map - Transportation (CBMT)",
-        "layers": [
-          {
-            "id": "CBMT_CBCT_GEOM_3978",
-            "layerType": "esriFeature",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
           }
         ],
         "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"

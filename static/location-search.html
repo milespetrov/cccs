@@ -16,6 +16,7 @@
     <!--[if gte IE 9 | !IE ]><!-->
     <link href="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
+    <link href="http://fgpv.cloudapp.net/demo/v2.1.0/prod/rv-styles.css" rel="stylesheet">
     <link rel="stylesheet" href="./static.css">
     <!--<![endif]-->
     <!--[if lt IE 9]>
@@ -161,7 +162,7 @@
                             <a href="./index.html">Climate Information Portal</a>
                         </li>
                         <li>
-                            <a href="./data.html">Data</a>
+                            <a href="./climate-data">Climate Data</a>
                         </li>
                     </ol>
                 </div>
@@ -191,11 +192,11 @@
                     </span>
 
                     <span class="menu-option">
-                        <a href="./data.html">Data</a>
+                        <a href="./climate-data">Climate Data</a>
                         <i class="fas fa-chevron-down"></i>
                         <span class="menu-option-dropdown">
                             <a href="./location-search.html">Location Search</a>
-                            <a href="./climate-data.html">Climate Data</a>
+                            <a href="./climate-variables.html">Climate Variables</a>
                         </span>
                     </span>
 
@@ -245,6 +246,11 @@
             <section class="col-md-12 pull-left">
                 <details>
                     <summary>Search by map</summary>
+                    <div class="map-container">
+                        <rv-map class="myMap col-md-12" id="mobile-map" is="rv-map"
+                            rv-config="./assets/configs/location-search-map.en-CA.json"
+                            rv-langs='["en-CA", "fr-CA"]'></rv-map>
+                    </div>
                 </details>
             </section>
         </div>
@@ -368,6 +374,7 @@
 
     <!-- TODO: cook only used icons into the build instead of just loading everything all the time -->
     <script src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+    <script src="http://fgpv.cloudapp.net/demo/v3.1/prod/rv-main.js"></script>
 </body>
 
 </html>

@@ -209,3 +209,15 @@ details > div p {
 .menu-option:hover .menu-option-dropdown {
   display: block;
 }
+
+rv-map {
+    width: 100%;
+    height: 500px;
+}
+rv-shell {
+    width:100%;
+    height:500px;
+}
+.map-container {
+    height:510px;
+}
