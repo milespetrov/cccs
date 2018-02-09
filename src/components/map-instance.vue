@@ -125,10 +125,7 @@ export default class MapInstance extends Vue {
     }
 
     @Watch('zoomLevel')
-    onZoomLevelChanged(
-        newValue: number,
-        oldValue: number
-    ): void {
+    onZoomLevelChanged(newValue: number, oldValue: number): void {
         this.mapInstance.zoom = this.zoomLevel;
     }
 
@@ -221,6 +218,9 @@ export default class MapInstance extends Vue {
 
             if (this.centerPoint) {
                 this.mapInstance.setCenter(this.centerPoint);
+            } else {
+                const center = this.mapInstance.center;
+                this.mapInstanceCenterChangedHandler(center);
             }
         });
     }
