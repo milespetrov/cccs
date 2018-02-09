@@ -6,7 +6,7 @@ function makeConfig(
     stationData: any,
     period: string,
     variable: string,
-    stnid: number = 1021830,
+    stnid: string,
     mini: boolean = false
 ) {
     const seriesData = stationData.absolute_values.map(
@@ -95,6 +95,9 @@ function makeConfig(
             marginRight: 265,
             events: {
                 load: (event: any) => { [trendRangeLabel, secondTrendValueLabel, yAdjust] = makeLabels(event, stationData)}
+            },
+            style: {
+                fontFamily: 'inherit'
             }
         },
         credits: {
@@ -141,7 +144,7 @@ function makeConfig(
                                     `<b>Not Available</b>`
                                 );
                                 (<any>secondTrendValueLabel).attr({
-                                    y: 214 + yAdjust
+                                    y: 205 + yAdjust
                                 });
                             } else {
                                 (<any>secondTrendValueLabel).textSetter(
@@ -149,7 +152,7 @@ function makeConfig(
                                     `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
                                 );
                                 (<any>secondTrendValueLabel).attr({
-                                    y: 199 + yAdjust
+                                    y: 190 + yAdjust
                                 });
                             }
                             (<any>secondTrendValueLabel).attr({
@@ -182,7 +185,7 @@ function makeConfig(
                     fontSize: '16px'
                 }
             },
-            y: 49,
+            y: 40,
             x: -128,
             labelFormat:
                 '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
@@ -288,7 +291,7 @@ function makeConfig(
 }
 
 function makeLabels(event:any, stationData:any){
-    const firstLabelY = 154;
+    const firstLabelY = 145;
     const stationTrendValue = (stationData.trend.value ? stationData.trend.value : 'N/A');
     const ren = event.target.renderer;
 
