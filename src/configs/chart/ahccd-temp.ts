@@ -15,7 +15,6 @@ function makeConfig(
 
     let secondTrendValueLabel: HTMLElement;
     let trendRangeLabel: SVGElement;
-    let yAdjust: number;
 
     // HACK: get a proper variable name
     // should be retrieved from the store
@@ -94,7 +93,7 @@ function makeConfig(
             },
             marginRight: 265,
             events: {
-                load: (event: any) => { [trendRangeLabel, secondTrendValueLabel, yAdjust] = makeLabels(event, stationData)}
+                load: (event: any) => { [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, stationData)}
             },
             style: {
                 fontFamily: 'inherit'
@@ -143,20 +142,14 @@ function makeConfig(
                                 (<any>secondTrendValueLabel).textSetter(
                                     `<b>Not Available</b>`
                                 );
-                                (<any>secondTrendValueLabel).attr({
-                                    y: 205 + yAdjust
-                                });
                             } else {
                                 (<any>secondTrendValueLabel).textSetter(
                                     //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
                                     `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
                                 );
-                                (<any>secondTrendValueLabel).attr({
-                                    y: 190 + yAdjust
-                                });
                             }
                             (<any>secondTrendValueLabel).attr({
-                                x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width
+                                x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
                             });
                         }
                     );
@@ -297,7 +290,6 @@ function makeLabels(event:any, stationData:any){
 
     const firstTrend = (stationTrendValue == 'N/A' ? 'Not Available' : 
         (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4));
-    const yAdjust = (stationTrendValue == 'N/A' ? 15 : 0);
 
     ren.path(
         ['M', event.target.plotWidth + event.target.plotLeft + 35, 0, 'L', event.target.plotWidth + event.target.plotLeft + 35, event.target.plotTop + event.target.plotHeight + 100]
@@ -343,7 +335,7 @@ function makeLabels(event:any, stationData:any){
     let current = ren.label(
         `<b>${firstTrend}</b>`,
         null,
-        firstLabelY + yAdjust + 25
+        firstLabelY + 25
     )
     .css({
         color: 'black' //'#ecf0f1'
@@ -355,13 +347,13 @@ function makeLabels(event:any, stationData:any){
     })
     .add();
     (<any>current).attr({
-        x: event.target.chartWidth - (<any>current).width
+        x: event.target.chartWidth - (<any>current).width + 6
     });
     let trendRangeLabel = ren
         .label(
         ``,
         event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + yAdjust + 45
+        firstLabelY + 45
         )
         .css({
             color: 'black' //'#ecf0f1'
@@ -376,7 +368,7 @@ function makeLabels(event:any, stationData:any){
     let secondTrendValueLabel = ren
         .label(``,
         event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + yAdjust + 45)
+        firstLabelY + 45)
         .css({
             color: 'black' //'#ecf0f1'
         })
@@ -391,7 +383,7 @@ function makeLabels(event:any, stationData:any){
         .label(
         `<b>Key Information</b>`,
         event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + yAdjust + 110
+        firstLabelY + 110
         )
         .css({
             'font-size': '16px',
@@ -408,7 +400,7 @@ function makeLabels(event:any, stationData:any){
         .label(
         `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
         event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + yAdjust + 135)
+        firstLabelY + 135)
         .css({
             'pointer-events': 'none',
             width: 200,
@@ -421,7 +413,7 @@ function makeLabels(event:any, stationData:any){
         })
         .add();
 
-    return [trendRangeLabel, secondTrendValueLabel, yAdjust];
+    return [trendRangeLabel, secondTrendValueLabel];
 }
 
 export default makeConfig;
