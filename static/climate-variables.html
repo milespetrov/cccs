@@ -160,6 +160,9 @@
                         <li>
                             <a href="./index.html">Climate Information Portal</a>
                         </li>
+                        <li>
+                            <a href="./climate-data.html">Climate Data</a>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -188,11 +191,11 @@
                     </span>
 
                     <span class="menu-option">
-                        <a href="./data.html">Data</a>
+                        <a href="./climate-data.html">Climate Data</a>
                         <i class="fas fa-chevron-down"></i>
                         <span class="menu-option-dropdown">
                             <a href="./location-search.html">Location Search</a>
-                            <a href="./climate-data.html">Climate Data</a>
+                            <a href="./climate-variables.html">Climate Variables</a>
                         </span>
                     </span>
 
@@ -210,7 +213,7 @@
             </div>
         </nav>
         <div class="container">
-            <h1 property="name" id="wb-cont" class="page-title">Data</h1>
+            <h1 property="name" id="wb-cont" class="page-title">Climate Variables</h1>
         </div>
     </div>
     <main role="main" property="mainContentOfPage" class="container">
@@ -222,89 +225,182 @@
             </div>
         </div>
         <div class="row">
-            <section class="col-md-8 pull-left">
-                <h2>Services and information</h2>
-                <div class="wb-eqht row wb-init wb-eqht-inited" id="wb-auto-4">
-                    <div class="col-md-6" style="vertical-align: top; min-height: 156px;">
-                        <section>
-                            <h3 class="h5">
-                                <a href="./location-search.html">
-                                    Location Search
+            <div class="col-md-12 pull-left">
+                <div class="col-md-6">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li>
+                            <a href="#temp">
+                                Temperature
+                            </a>
+                        </li>
+                        <ul>
+                            <li>
+                                <a href="#mean-temp">
+                                    Mean Temperature
                                 </a>
-                            </h3>
-                            <p>
-                                Summary of the information or tasks that can be accomplished on the sub-topic page. Remove prose or promotional messaging.
-                                Use action verbs.
-                            </p>
-                        </section>
-                    </div>
-                    <div class="col-md-6" style="vertical-align: top; min-height: 156px;">
-                        <section>
-                            <h3 class="h5">
-                                <a href="./climate-data.html">
-                                    Climate Data
+                            </li>
+                            <li>
+                                <a href="#max-temp">
+                                    Maximum Temperature
                                 </a>
-                            </h3>
-                            <p>
-                                Summary of the information or tasks that can be accomplished on the sub-topic page. Remove prose or promotional messaging.
-                                Use action verbs.
-                            </p>
-                        </section>
-                    </div>
+                            </li>
+                            <li>
+                                <a href="#min-temp">
+                                    Minimum Temperature
+                                </a>
+                            </li>
+                        </ul>
+                        <li>
+                            <a href="#wind">
+                                Wind Speed
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#precip">
+                                Precipitation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ice">
+                                Ice
+                            </a>
+                        </li>
+                        <ul>
+                            <li>
+                                <a href="#ice-thickness">
+                                    Sea Ice Thickness
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#ice-fraction">
+                                    Sea Ice Fraction
+                                </a>
+                            </li>
+                        </ul>
+                        <li>
+                            <a href="#snow">
+                                Snow Depth
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </section>
-            <section class="col-md-4 pull-right well">
-                <h3 class="most-requested">Most Requested</h3>
-                <ul>
-                    <li>
-                        <a href="./explore-data.html#/map?v=tmean">Mean Temperature</a>
-                    </li>
-                    <li>
-                        <a href="./explore-data.html#/map?v=tmax">Maximum Temperature</a>
-                    </li>
-                    <li>
-                        <a href="./explore-data.html#/map?v=tmin">Minimum Temperature</a>
-                    </li>
-                    <li>
-                        <a href="./explore-data.html#/map?v=precip">Precipitation</a>
-                    </li>
-                </ul>
-            </section>
             </div>
-            <section class="gc-prtts">
-                <h2>Features</h2>
-                <div class="row">
-                    <section class="col-lg-4 col-md-6 mrgn-bttm-md">
-                        <a href="#">
-                            <h3 class="h5">Lorem</h3>
-                            <img src=".././assets/images/lake.png" alt="" class="img-responsive thumbnail mrgn-bttm-sm">
-                        </a>
-                        <p>Praesent purus sapien, finibus vitae viverra accumsan, fermentum tincidunt sapien.</p>
-                    </section>
-                    <section class="col-lg-4 col-md-6 mrgn-bttm-md">
-                        <a href="#">
-                            <h3 class="h5">Ipsum</h3>
-                            <img src=".././assets/images/dock.png" alt="" class="img-responsive thumbnail mrgn-bttm-sm">
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </section>
-                    <section class="col-lg-4 col-md-6 mrgn-bttm-md">
-                        <a href="#">
-                            <h3 class="h5">Dolorem</h3>
-                            <img src=".././assets/images/shore.png" alt="" class="img-responsive thumbnail mrgn-bttm-sm">
-                        </a>
-                        <p>Morbi maximus ultrices ornare.</p>
-                    </section>
-                </div>
+        </div>
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="temp">Temperature</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae porta lorem. Aenean blandit eleifend
+                    placerat. Duis risus est, blandit vitae nulla et, semper dignissim odio. Phasellus at blandit tortor,
+                    non tincidunt velit. Sed efficitur est id neque facilisis interdum. Curabitur velit arcu, tincidunt non
+                    placerat blandit, sagittis eu metus. Nam nec nibh tellus. Interdum et malesuada fames ac ante ipsum primis
+                    in faucibus. Duis facilisis dui eget neque imperdiet faucibus. In aliquam eleifend vulputate. Fusce sed
+                    erat arcu.</p>
+                <section class="col-md-12">
+                    <h4 id="mean-temp">Mean Temperature</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut diam odio. Nam dui nisi, pellentesque
+                        quis varius ac, tincidunt a dui. Sed a tortor eget odio iaculis tincidunt eget a felis. Ut cursus
+                        quam sapien, non porttitor enim porta in. Aliquam placerat aliquam dolor vehicula facilisis. Aliquam
+                        vel porttitor odio.</p>
+                    <p>See a map:
+                        <a href="./explore-data.html#/map?v=tmean&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
+                </section>
+                <section class="col-md-12">
+                    <h4 id="max-temp">Minimum Temperature</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non magna eget mi ornare sagittis. Ut dignissim
+                        eu ligula a aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>See a map:
+                        <a href="./explore-data.html#/map?v=tmin&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
+                </section>
+                <section class="col-md-12">
+                    <h4 id="min-temp">Maximum Temperature</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada
+                        fames ac ante ipsum primis in faucibus. Praesent pretium consequat eros, non convallis magna luctus
+                        eu. Nullam vehicula interdum magna non tempor. Quisque semper ex rutrum, facilisis ex in, malesuada
+                        neque.
+                    </p>
+                    <p>See a map:
+                        <a href="./explore-data.html#/map?v=tmax&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
+                </section>
             </section>
-            <div class="pagedetails">
-                <dl id="wb-dtmd">
-                    <dt>Date modified: </dt>
-                    <dd>
-                        <time property="dateModified">2017-12-05</time>
-                    </dd>
-                </dl>
+        </div>
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="wind">Wind Speed</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada fames
+                    ac ante ipsum primis in faucibus. Praesent pretium consequat eros, non convallis magna luctus eu.
+                </p>
+                <p>See a Map:
+                    <a href=#>Future</a>
+                </p>
+            </section>
+        </div>
+        <div class="row">
+                <section class="col-md-12 pull-left">
+                    <h2 id="precip">Precipitation</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis enim sit amet tempor ullamcorper.
+                        Donec laoreet malesuada rutrum.</p>
+                    <p>See a Map:
+                        <a href="./explore-data.html#/map?v=precip&d=ahccd">Historic</a> |
+                        <a href=#>Future</a>
+                    </p>
+                </section>
             </div>
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="ice">Ice</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut diam odio. Nam dui nisi, pellentesque
+                    quis varius ac, tincidunt a dui.</p>
+                <section class="col-md-12">
+                    <h4 id="ice-thickness">Sea Ice Thickness</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada
+                        fames ac ante ipsum primis in faucibus. Praesent pretium consequat eros, non convallis magna luctus
+                        eu. Nullam vehicula interdum magna non tempor. Quisque semper ex rutrum, facilisis ex in, malesuada
+                        neque.
+                    </p>
+                    <p>See a map:
+                        <a href=#>Future</a>
+                    </p>
+                </section>
+                <section class="col-md-12">
+                    <h4 id="ice-fraction">Sea Ice Fraction</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non magna eget mi ornare sagittis. Ut dignissim
+                        eu ligula a aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <p>See a map:
+                        <a href=#>Future</a>
+                    </p>
+                </section>
+            </section>
+        </div>
+
+        <div class="row">
+            <section class="col-md-12 pull-left">
+                <h2 id="snow">Snow Depth</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at feugiat odio. Interdum et malesuada fames
+                    ac ante ipsum primis in faucibus. In non magna eget mi ornare sagittis. Ut dignissim eu ligula a aliquet.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <p>See a Map:
+                    <a href=#>Future</a>
+                </p>
+
+            </section>
+        </div>
+        <div class="pagedetails">
+            <dl id="wb-dtmd">
+                <dt>Date modified: </dt>
+                <dd>
+                    <time property="dateModified">2017-12-05</time>
+                </dd>
+            </dl>
+        </div>
     </main>
 
     <!--aside class="gc-nttvs container">
