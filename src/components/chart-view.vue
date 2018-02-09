@@ -187,12 +187,12 @@ export default class ChartView extends Vue {
     }
 
     #dvChart1 > details {
-        margin-left: 67px;
+        margin-left: 61px;
         margin-right: 265px;
     }
 
     [dv-chart-slider-container] {
-        margin-left: 67px;
+        margin-left: 61px;
         margin-right: 265px;
 
         margin-top: 0;

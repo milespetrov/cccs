@@ -68,6 +68,10 @@
 
         <section class="container main">
 
+            <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
+                <img :src="`http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/7/${tileCoordinates.y}/${tileCoordinates.x}`" alt="">
+            </div>
+            
             <p>The data consist of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment.</p>
 
             <keep-alive>
@@ -138,6 +142,31 @@ export default class App extends Vue {
     async onVariableChange() {
         this.reloadKey = this.currentVariable;
     }
+
+    @State centerPoint: CenterPoint;
+
+    @Watch('centerPoint')
+    onCenterPointChanged(): void {
+        // TODO: make map button prettier
+        const RZ = (<any>window).RZ;
+        const mapInstance = RZ.mapInstances[RZ.mapInstances.length - 1];
+        if (!mapInstance) {
+            return;
+        }
+        const centerExtent = mapInstance._fgpMap.extent.getCenter();
+
+        // let res = 529.1677250021168; // 8
+        let res = 926.0435187537042; // 7
+        let xorigin = -34655800;
+        let yorigin = 39310000;
+
+        let tx = (centerExtent.x - xorigin) / 256 / res;
+        let ty = (-centerExtent.y + yorigin) / 256 / res;
+
+        this.tileCoordinates = { x: tx.toFixed(0), y: ty.toFixed(0) };
+    }
+
+    tileCoordinates: { x: string; y: string } | null = null;
 
     created(): void {
         this.$router.afterEach((to, from) => {
@@ -313,6 +342,11 @@ export default class App extends Vue {
                 #{$view-controls-height} + 3rem
         );
     }
+    .chart-view & {
+        .cip-view-toggle {
+            display: block;
+        }
+    }
 }
 .cip-header {
     height: $page-header-height;
@@ -330,6 +364,21 @@ export default class App extends Vue {
 }
 .main {
     position: relative; // background-color: white;
+}
+$rv-left-offset: calc((100vw - 1170px) / 2);
+.cip-view-toggle {
+    overflow: hidden;
+    display: none;
+    width: 250px;
+    height: 130px;
+    position: relative;
+    right: -6px;
+    float: right;
+    margin: 0 0 0 2rem;
+    cursor: pointer;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
 .cip-navigation {
     display: flex;
