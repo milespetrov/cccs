@@ -1,7 +1,9 @@
 <template>
-    <div id="map-anchor">
+    <div id="cip-map-anchor">
 
-        <span></span>
+        <div ref="scrollGuard" class="cip-scroll-guard">
+            <p class="cip-label">Use ctrl + scroll to zoom the map</p>
+        </div>
 
     </div>
 </template>
@@ -86,7 +88,7 @@ export default class MapInstance extends Vue {
     };
 
     get anchor(): HTMLElement {
-        return document.getElementById('map-anchor')!;
+        return document.getElementById('cip-map-anchor')!;
     }
 
     @State('variableId') currentVariable: string;
@@ -136,6 +138,10 @@ export default class MapInstance extends Vue {
 
     // TODO: link once dataSet selector is finalized
     dataSet: string = 'ahccd';
+
+    get scrollGuardNode(): HTMLElement {
+        return this.$refs.scrollGuard as HTMLElement;
+    }
 
     mounted(): void {
         let RZ = (<any>window).RZ;
@@ -190,6 +196,14 @@ export default class MapInstance extends Vue {
             this.mapInstance.click
                 .takeUntil(this.deactivate)
                 .subscribe(this.mapInstanceClickHandler);
+
+            document.querySelector('.rv-esri-map')!.addEventListener(
+                'wheel',
+                this.scrollGuardHandler,
+                {
+                    capture: true
+                }
+            );
 
             // if the current station is already set, open the mini chart
             if (this.currentStation) {
@@ -329,6 +343,39 @@ export default class MapInstance extends Vue {
         ); */
     }
 
+    scrollGuardHandler(event: WheelEvent): void {
+        if (!this.mapInstance) {
+            return;
+        }
+
+        const scrollGuardClassList = this.scrollGuardNode.classList;
+
+        // prevent scroll unless ctrlKey is depressed
+        if (!event.ctrlKey) {
+            // this seems to be the only way to cancel wheel scroll in IE
+            // it's enough to `stopPropagation` in other browsers, but in IE, the esri listener fires before this one
+            // I couldn't find why this is happening, or how to stop it properly
+            // using this esri function seems to be the simplest solution
+            // TODO: use a proper API endpoint when it's created
+            this.mapInstance._fgpMap._map.disableScrollWheelZoom();
+
+            scrollGuardClassList.remove('cip-scrolling');
+            scrollGuardClassList.add('cip-active');
+
+            // proper use of timeout
+            // remove scroll guard notification after two seconds
+            window.setTimeout(
+                () => scrollGuardClassList.remove('cip-active'),
+                2000
+            );
+        } else {
+            scrollGuardClassList.remove('cip-active');
+            scrollGuardClassList.add('cip-scrolling');
+
+            this.mapInstance._fgpMap._map.enableScrollWheelZoom();
+        }
+    }
+
     changeViewToChart(): void {
         this.$router.push({
             name: 'chart-view',
@@ -360,11 +407,53 @@ export default class MapInstance extends Vue {
 <style lang="scss" scoped>
 @import './../styles/variables.scss';
 
-#map-anchor {
+#cip-map-anchor /deep/ {
     /* right: 0;
     left: 0;
     width: 100%; */
     height: $backdrop-map-height;
     // position: absolute;
+
+    .cip-scroll-guard {
+        transition: opacity ease-in-out;
+        background-color: rgba(0, 0, 0, 0.45);
+        text-align: center;
+
+        // z-index: 2;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+        border-width: 0px;
+        margin: 0px;
+        left: 0px;
+        top: 0px;
+        opacity: 0;
+        transition-duration: 0.8s;
+        pointer-events: none;
+
+        &.cip-active {
+            opacity: 1;
+            transition-duration: 0.3s;
+        }
+
+        &.cip-scrolling {
+            transition-duration: 0.3s;
+        }
+
+        $rv-top-offset: $top-navigation-height + $page-header-height +
+            $view-controls-height;
+
+        .cip-label {
+            font-size: 1em * 1.5;
+            color: white;
+            position: relative;
+            margin: 0;
+            top: calc(
+                 (100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}
+            ) !important;
+            transform: translateY(-50%);
+        }
+    }
 }
 </style>
