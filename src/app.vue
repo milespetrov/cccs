@@ -27,11 +27,11 @@
                     </span>
 
                     <span class="menu-option">
-                        <a href="./data.html">Data</a>
+                        <a href="./climate-data.html">Climate Data</a>
                         <i class="fas fa-chevron-down"></i>
                         <span class="menu-option-dropdown">
                             <a href="./location-search.html">Location Search</a>
-                            <a href="./climate-data.html">Climate Data</a>
+                            <a href="./climate-variables.html">Climate Variables</a>
                         </span>
                     </span>
 
