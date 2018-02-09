@@ -11,7 +11,8 @@ const state: AppState = {
     variableId: null,
     datasetId: null,
     stationId: null,
-    centerPoint: null
+    centerPoint: null,
+    zoomLevel: null
 };
 
 // getters
@@ -23,7 +24,8 @@ const getters = {
             v: state.variableId,
             d: state.datasetId,
             s: state.stationId,
-            c: state.centerPoint ? state.centerPoint.safeString : null
+            c: state.centerPoint ? state.centerPoint.safeString : null,
+            z: state.zoomLevel
         };
 
         // remove null values from the query object
@@ -63,16 +65,20 @@ const actions = {
     ) {
         let point;
 
-        if (value === null) {
+        if (value === null || typeof value == 'undefined') {
             point = null;
         } else if (typeof value !== 'string') {
             point = new CenterPoint(value.x, value.y);
         } else {
-            let [x, y] = value.split.apply(',');
+            let [x, y] = value.split(',');
             point = new CenterPoint(parseFloat(x), parseFloat(y));
         }
 
         context.commit('SET_CENTER_POINT', point);
+    },
+
+    setZoomLevel(context: AppContext, value: string | null) {
+        context.commit('SET_ZOOM_LEVEL', value);
     }
 };
 
@@ -100,6 +106,10 @@ const mutations = {
 
     SET_CENTER_POINT(state: AppState, value: CenterPoint | null): void {
         state.centerPoint = value;
+    },
+
+    SET_ZOOM_LEVEL(state: AppState, value: string | null): void {
+        state.zoomLevel = value;
     }
 };
 

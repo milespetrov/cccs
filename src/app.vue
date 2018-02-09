@@ -110,6 +110,7 @@ Vue.use(FormSelect);
 import VariableSelector from './components/variable-selector.vue';
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
+import { CenterPoint } from './store/index';
 
 @Component({
     components: {
@@ -123,6 +124,8 @@ export default class App extends Vue {
     @Action setVariableId: (value: string | null) => void;
     @Action setDatasetId: (value: string | null) => void;
     @Action setStationId: (value: string | null) => void;
+    @Action setCenterPoint: (value: string | null) => void;
+    @Action setZoomLevel: (value: string | null) => void;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -143,14 +146,18 @@ export default class App extends Vue {
                     'Annual_Annuel',
                     to.query.v,
                     to.query.d,
-                    to.query.s
+                    to.query.s,
+                    to.query.c,
+                    to.query.z
                 );
             } else {
                 this.updateStore(
                     to.query.t,
                     to.query.v,
                     to.query.d,
-                    to.query.s
+                    to.query.s,
+                    to.query.c,
+                    to.query.z
                 );
             }
         });
@@ -169,7 +176,9 @@ export default class App extends Vue {
                 defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
                 this.$router.currentRoute.query.d || 'ahccd',
-                defaultStation
+                defaultStation,
+                this.$router.currentRoute.query.c,
+                this.$router.currentRoute.query.z
             );
 
             this.$router.push({
@@ -179,7 +188,7 @@ export default class App extends Vue {
             return;
         }
 
-        this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830');
+        this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830', null, null);
 
         // DEMO: push to the chart view on mount by default, so something will show up
         this.$router.push({
@@ -192,13 +201,17 @@ export default class App extends Vue {
         timePeriodId: string,
         variableId: string,
         datasetId: string,
-        stationId: string | null
+        stationId: string | null,
+        centerPoint: string | null,
+        zoomLevel: string | null
     ): void {
         this.viewName = this.$router.currentRoute.name!;
         this.setTimePeriodId(timePeriodId);
         this.setVariableId(variableId);
         this.setDatasetId(datasetId);
         this.setStationId(stationId);
+        this.setCenterPoint(centerPoint);
+        this.setZoomLevel(zoomLevel);
     }
 
     changeViewToMap() {

@@ -40,6 +40,7 @@ export default class GeoSearch extends Vue {
     @Getter getQuery: Dictionary<string>;
 
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
+    @Action setZoomLevel: (value: number) => void;
 
     query: string = '';
 
@@ -110,6 +111,8 @@ export default class GeoSearch extends Vue {
             x: result.geometry.coordinates[0],
             y: result.geometry.coordinates[1]
         });
+
+        this.setZoomLevel(8);
 
         this.updateRoute();
     }
