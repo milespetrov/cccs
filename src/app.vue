@@ -72,15 +72,13 @@
                 <img :src="`http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/7/${tileCoordinates.y}/${tileCoordinates.x}`" alt="">
             </div>
             
-            <p>The data consist of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment.</p>
-
             <keep-alive>
                 <router-view class="visualization" name="visualization"></router-view>
             </keep-alive>
-
-            <br>
-            <div class="row col-md-12">
-                <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’ leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
+            
+            <div class="well mrgn-tp-lg">
+                <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
+                <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’s leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
             </div>
 
             <div class="pagedetails">
