@@ -21,6 +21,8 @@
                         <!-- :class="{'cip-selected': variableItem.id === variableId && option.id === datasetId }" -->
                         <b-dropdown-item-button 
                             :aria-describedby="variableGroup.id"
+                            :disabled="variableItem.id === variableId && option.datasetId === datasetId"
+                            :class="{ 'cip-selected': variableItem.id === variableId && option.datasetId === datasetId }"
                             @click="selectVariable(variableItem, option)"
                             v-for="option in variableItem.options" :key="`option-${ option.datasetId }`">{{ option.name }}</b-dropdown-item-button>
                     </div>
@@ -55,6 +57,7 @@ interface VariableItem {
 interface VariableOption {
     name: string;
     datasetId: string;
+    // datasetOptions: string[];
 }
 
 @Component

@@ -8,9 +8,12 @@
         
         <b-dropdown-divider></b-dropdown-divider>
 
-        <b-dropdown-item-button v-for="dataset in datasetItems" 
+        <b-dropdown-item-button 
+            v-for="dataset in datasetItems" 
+            :key="`dataset-${ dataset.id }`"
             @click="selectDataset(dataset)"
-            :key="`dataset-${ dataset.id }`">
+            :disabled="dataset.id === datasetId"
+            :class="{ 'cip-selected': dataset.id === datasetId }">
                 <span class="cip-name">{{ dataset.name }}</span>
                 <span class="cip-short-name">{{ dataset.shortName }}</span></b-dropdown-item-button>
 
