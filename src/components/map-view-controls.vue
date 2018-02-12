@@ -44,7 +44,7 @@ import api from './../api/main';
 })
 export default class MapViewControls extends Vue {
     downloadImage(type: string): void {
-        // TODO: trigger ramp export map image through API
+        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].export();
     }
 }
 </script>

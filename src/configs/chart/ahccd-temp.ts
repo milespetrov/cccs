@@ -111,7 +111,7 @@ function makeConfig(
             x: -110
         },
         subtitle: {
-            text: 'ccpid.ca',
+            text: 'climate-adaptation.canada.ca',
             x: -110
         },
         xAxis: {
@@ -217,7 +217,10 @@ function makeConfig(
             spacingBottom: 5,
             spacingLeft: 10,
             spacingTop: 10,
-            spacingRight: 10
+            spacingRight: 10,
+            style: {
+                fontFamily: 'Helvetica,Arial,sans-serif'
+            }
         },
         legend: {
             enabled: false
