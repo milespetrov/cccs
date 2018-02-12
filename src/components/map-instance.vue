@@ -5,7 +5,11 @@
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
         </div>
 
+        <svg ref="fakeHghlight" class="cip-fake-highlight"></svg>
+
     </div>
+
+    
 </template>
 
 <script lang="ts">
@@ -149,6 +153,68 @@ export default class MapInstance extends Vue {
         return this.$refs.scrollGuard as HTMLElement;
     }
 
+    // #region HACKS
+
+    realLayer: JQuery<HTMLElement>;
+    fhDownS: any;
+    fhMoveS: any;
+
+    setFakeHighlight(event: MouseEvent): void {
+        if ((<HTMLElement>event.target).tagName !== 'image') {
+            this.clearFakeHighlight();
+            return;
+        }
+
+        if (!this.realLayer) {
+            this.realLayer = $('.esriMapLayers > svg').first();
+        }
+
+        this.clearFakeHighlight();
+
+        const transform = this.realLayer.css('transform');
+        this.realLayer.find('> g').css('opacity', 0.25);
+
+        const fg = <HTMLElement>this.$refs.fakeHghlight;
+        fg.style.transform = transform;
+
+        const clone = (<HTMLElement>event.target).cloneNode() as HTMLElement;
+        fg.appendChild(clone);
+
+        this.fhDownS = this.mapInstance.mouseDown.subscribe(
+            (eventDown: MouseEvent) =>
+                (this.fhMoveS = this.mapInstance.mouseMove.subscribe(
+                    (eventMove: MouseEvent) => {
+                        if (
+                            eventDown.screenX !== eventMove.screenX ||
+                            eventDown.screenY !== eventMove.screenY
+                        ) {
+                            this.clearFakeHighlight();
+                        }
+                    }
+                ))
+        );
+    }
+
+    clearFakeHighlight(): void {
+        if (this.fhDownS) {
+            this.fhDownS.unsubscribe();
+        }
+        if (this.fhMoveS) {
+            this.fhMoveS.unsubscribe();
+        }
+        if (this.realLayer) {
+            this.realLayer.find('> g').css('opacity', 1);
+        }
+
+        const fh = this.$refs.fakeHghlight as HTMLElement;
+
+        while (fh.firstChild) {
+            fh.removeChild(fh.firstChild);
+        }
+    }
+
+    // #endregion HACKS
+
     mounted(): void {
         let RZ = (<any>window).RZ;
 
@@ -164,6 +230,11 @@ export default class MapInstance extends Vue {
             );
             return;
         }
+
+        // TODO: remove HACKS
+        // temporary click feature highlight
+        this.$el.addEventListener('click', this.setFakeHighlight);
+        // end TODO: remove HACKS
 
         new RZ.Map(
             this.anchor,
@@ -225,7 +296,21 @@ export default class MapInstance extends Vue {
         });
     }
 
+    // HACKS
+    mapCenter: any = { x: -1, y: -1 };
+
     mapInstanceCenterChangedHandler(event: any): void {
+        // TODO: remove HACKS
+        // centerChange seems to fire
+        if (this.mapCenter.x !== event.x || this.mapCenter.y !== event.y) {
+            this.mapCenter = event;
+        } else {
+            return;
+        }
+
+        this.clearFakeHighlight();
+        // end TODO: remove HACKS
+
         this.localCenterPointUpdate = true;
 
         this.setCenterPoint(event);
@@ -422,6 +507,12 @@ export default class MapInstance extends Vue {
     width: 100%; */
     height: $backdrop-map-height;
     // position: absolute;
+
+    .cip-fake-highlight {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
 
     .cip-scroll-guard {
         transition: opacity ease-in-out;
