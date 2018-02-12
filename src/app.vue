@@ -69,7 +69,7 @@
         <section class="container main">
 
             <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
-                <img :src="`http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/7/${tileCoordinates.y}/${tileCoordinates.x}`" alt="">
+                <img :src="`http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/3/${tileCoordinates.y}/${tileCoordinates.x}`" alt="">
             </div>
             
             <keep-alive>
@@ -154,7 +154,8 @@ export default class App extends Vue {
         const centerExtent = mapInstance._fgpMap.extent.getCenter();
 
         // let res = 529.1677250021168; // 8
-        let res = 926.0435187537042; // 7
+        // let res = 926.0435187537042; // 7
+        let res = 7937.5158750317505; // 3
         let xorigin = -34655800;
         let yorigin = 39310000;
 

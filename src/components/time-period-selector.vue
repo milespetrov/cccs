@@ -17,14 +17,17 @@
                     
                     <b-dropdown-item-button
                         :aria-describedby="timePeriodGroup.id" 
+                        :disabled="timePeriod.id === timePeriodId"
+                        :class="{ 'cip-selected': timePeriod.id === timePeriodId }"
                         @click="selectTimePeriod(timePeriod)"
-                        v-for="timePeriod in timePeriodGroup.items" :key="`time-period-${ timePeriod.id }`">
+                        v-for="timePeriod in timePeriodGroup.items" 
+                        :key="`time-period-${ timePeriod.id }`">
                             <span class="cip-name">{{ timePeriod.name }}</span><span class="cip-qualifier">{{ timePeriod.description }} </span>
                         </b-dropdown-item-button>
                 </div>
 
             </template>
-        </div>        
+        </div>
 
     </b-dropdown>
     
@@ -143,6 +146,7 @@ export default class TimePeriodSelector extends Vue {
 .cip-time-period-selector {
     .cip-dropdown-horizontal {
         display: flex;
+        margin: 0 0.5rem;
     }
 
     .dropdown-item {
@@ -153,6 +157,7 @@ export default class TimePeriodSelector extends Vue {
     .dropdown-divider {
         border-right: 1px solid #e9ecef;
         height: auto;
+        margin: 0.5rem;
     }
 
     .cip-name {
