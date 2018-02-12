@@ -132,6 +132,12 @@ rv-mapnav {
     right: calc(#{$rv-left-offset} + 155px) !important;
 }
 
+.rv-export {
+    max-height: calc(100% - #{$rv-top-offset} - 2rem) !important;
+    top: $rv-top-offset;
+    width: $container-width;
+}
+
 #cip-mini-chart-section {
     position: absolute;
     top: calc(#{$rv-top-offset} + 10px) !important;
