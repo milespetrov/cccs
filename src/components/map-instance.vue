@@ -305,7 +305,10 @@ export default class MapInstance extends Vue {
                 this.mapInstance.setCenter(this.centerPoint);
             } else {
                 const center = this.mapInstance.center;
-                this.mapInstanceCenterChangedHandler(center);
+
+                const XYcenter = new api.RZ.GEO.XY(center.x, center.y);
+
+                this.mapInstanceCenterChangedHandler(XYcenter);
             }
         });
     }
