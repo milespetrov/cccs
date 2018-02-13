@@ -5,7 +5,7 @@
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
         </div>
 
-        <svg ref="fakeHghlight" class="cip-fake-highlight"></svg>
+        <svg ref="fakeHighlight" class="cip-fake-highlight"></svg>
 
     </div>
 
@@ -174,7 +174,7 @@ export default class MapInstance extends Vue {
         const transform = this.realLayer.css('transform');
         this.realLayer.find('> g').css('opacity', 0.25);
 
-        const fg = <HTMLElement>this.$refs.fakeHghlight;
+        const fg = <HTMLElement>this.$refs.fakeHighlight;
         fg.style.transform = transform;
 
         const clone = (<HTMLElement>event.target).cloneNode() as HTMLElement;
@@ -206,7 +206,7 @@ export default class MapInstance extends Vue {
             this.realLayer.find('> g').css('opacity', 1);
         }
 
-        const fh = this.$refs.fakeHghlight as HTMLElement;
+        const fh = this.$refs.fakeHighlight as HTMLElement;
 
         while (fh.firstChild) {
             fh.removeChild(fh.firstChild);
