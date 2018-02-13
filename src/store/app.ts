@@ -5,14 +5,14 @@ import { AppState, CenterPoint } from './index';
 type AppContext = ActionContext<AppState, AppState>;
 
 const state: AppState = {
-    isVariableSelectorOpen: true,
-
     timePeriodId: null,
     variableId: null,
     datasetId: null,
     stationId: null,
     centerPoint: null,
-    zoomLevel: null
+    zoomLevel: null,
+
+    mapPin: null
 };
 
 // getters
@@ -39,10 +39,6 @@ const getters = {
 
 // actions
 const actions = {
-    toggleVariableSelector(context: AppContext, value: boolean) {
-        context.commit('TOGGLE_VARIABLE_SELECTOR', value);
-    },
-
     setTimePeriodId(context: AppContext, value: string | null) {
         context.commit('SET_TIME_PERIOD_ID', value);
     },
@@ -62,7 +58,7 @@ const actions = {
     setCenterPoint(
         context: AppContext,
         value: { x: number; y: number } | string | null
-    ) {
+    ): void {
         let point;
 
         if (value === null || typeof value == 'undefined') {
@@ -79,15 +75,29 @@ const actions = {
 
     setZoomLevel(context: AppContext, value: string | null) {
         context.commit('SET_ZOOM_LEVEL', value);
+    },
+
+    setMapPin(
+        context: AppContext,
+        value: { x: number; y: number } | string | null
+    ): void {
+        let point;
+
+        if (value === null || typeof value == 'undefined') {
+            point = null;
+        } else if (typeof value !== 'string') {
+            point = new CenterPoint(value.x, value.y);
+        } else {
+            let [x, y] = value.split(',');
+            point = new CenterPoint(parseFloat(x), parseFloat(y));
+        }
+
+        context.commit('SET_MAP_PIN', value);
     }
 };
 
 // mutations
 const mutations = {
-    TOGGLE_VARIABLE_SELECTOR(state: AppState, value: boolean): void {
-        state.isVariableSelectorOpen = value;
-    },
-
     SET_TIME_PERIOD_ID(state: AppState, value: string): void {
         state.timePeriodId = value;
     },
@@ -110,6 +120,10 @@ const mutations = {
 
     SET_ZOOM_LEVEL(state: AppState, value: string | null): void {
         state.zoomLevel = value;
+    },
+
+    SET_MAP_PIN(state: AppState, value: CenterPoint): void {
+        state.mapPin = value;
     }
 };
 
