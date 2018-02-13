@@ -7,6 +7,7 @@
 
         <div class="cip-strip cip-top-navigation">
             <!-- TODO: move top-navigatoin into a separate component -->
+            
             <nav class="cip-navigation container">
                 <geo-search></geo-search>
 
@@ -69,7 +70,15 @@
         <section class="container main">
 
             <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
-                <img :src="`http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile/3/${tileCoordinates.y}/${tileCoordinates.x}`" alt="">
+                <div class="cip-map-button" ref="mapButton"
+                    v-bind:style="tileStyle">
+                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x }`" alt="">
+                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x + 1 }`" alt="">
+                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y + 1 }/${ tileCoordinates.x }`" alt="">
+                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y + 1 }/${ tileCoordinates.x + 1 }`" alt="">
+                </div>
+
+                <span class="cip-view-toggle-label">click to see the full map</span>
             </div>
             
             <keep-alive>
@@ -113,6 +122,7 @@ import VariableSelector from './components/variable-selector.vue';
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
 import { CenterPoint } from './store/index';
+import api from './api/main';
 
 @Component({
     components: {
@@ -145,9 +155,7 @@ export default class App extends Vue {
 
     @Watch('centerPoint')
     onCenterPointChanged(): void {
-        // TODO: make map button prettier
-        const RZ = (<any>window).RZ;
-        const mapInstance = RZ.mapInstances[RZ.mapInstances.length - 1];
+        const mapInstance = api.RZ.mapInstances[api.RZ.mapInstances.length - 1];
         if (!mapInstance) {
             return;
         }
@@ -159,13 +167,30 @@ export default class App extends Vue {
         let xorigin = -34655800;
         let yorigin = 39310000;
 
+        // TODO: clean up magic numbers
+
         let tx = (centerExtent.x - xorigin) / 256 / res;
         let ty = (-centerExtent.y + yorigin) / 256 / res;
 
-        this.tileCoordinates = { x: tx.toFixed(0), y: ty.toFixed(0) };
+        let dx = (tx % 1) * 256 + (tx % 1 > 0.5 ? 0 : 256) - 250 / 2;
+        let dy = (ty % 1) * 256 + (ty % 1 > 0.5 ? 0 : 256) - 130 / 2;
+
+        this.tileStyle = {
+            transform: `translate(${-dx + 'px'}, ${-dy + 'px'})`
+        };
+
+        tx += tx % 1 > 0.5 ? 0 : -1;
+        ty += ty % 1 > 0.5 ? 0 : -1;
+
+        this.tileCoordinates = {
+            x: Math.floor(tx),
+            y: Math.floor(ty)
+        };
     }
 
-    tileCoordinates: { x: string; y: string } | null = null;
+    tileUrl: string = 'http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile';
+    tileCoordinates: { x: number; y: number } | null = null;
+    tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
         this.$router.afterEach((to, from) => {
@@ -378,6 +403,33 @@ $rv-left-offset: calc((100vw - 1170px) / 2);
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
         0px 2px 2px 0px rgba(0, 0, 0, 0.14),
         0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    .cip-map-button {
+        display: flex;
+        flex-wrap: wrap;
+        width: 256px * 2;
+        height: 256px * 2;
+    }
+    .cip-view-toggle-label {
+        color: white;
+        font-size: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: darkblue;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: opacity 200ms ease-in;
+    }
+    &:hover {
+        .cip-view-toggle-label {
+            opacity: 1;
+        }
+    }
 }
 .cip-navigation {
     display: flex;
