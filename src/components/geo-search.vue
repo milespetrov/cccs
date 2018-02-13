@@ -35,9 +35,11 @@ import { Dictionary } from 'vue-router/types/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 
-Vue.filter('truncate', (str:string) => {
+import { CenterPoint } from '../store/index';
+
+Vue.filter('truncate', (str: string) => {
     if (str && str.length > 15) {
-        return str.substring(0,15) + '...';
+        return str.substring(0, 15) + '...';
     }
     return str;
 });
@@ -48,24 +50,25 @@ export default class GeoSearch extends Vue {
 
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
     @Action setZoomLevel: (value: number) => void;
+    @Action setMapPin: (value: { x: number; y: number }) => void;
 
     query: string = '';
 
     abbreviations = {
-        'Alberta' : 'AB',
+        Alberta: 'AB',
         'British Columbia': 'BC',
-        'Manitoba': 'MB',
+        Manitoba: 'MB',
         'New Brunswick': 'NB',
         'Newfoundland and Labrador': 'NL',
         'Nova Scotia': 'NS',
-        'Ontario': 'ON',
+        Ontario: 'ON',
         'Prince Edward Island': 'PE',
-        'Quebec': 'QC',
-        'Saskatchewan': 'SK',
-        'Yukon': 'YT',
-        'Nunavut': 'NU',
+        Quebec: 'QC',
+        Saskatchewan: 'SK',
+        Yukon: 'YT',
+        Nunavut: 'NU',
         'Northwest Territories': 'NT'
-    }
+    };
 
     @Watch('query')
     onQueryChanged(): void {
@@ -130,14 +133,18 @@ export default class GeoSearch extends Vue {
 
     zoomToResult(result: any): void {
         console.log(result.geometry);
-        this.setCenterPoint({
+
+        const centerPoint = {
             x: result.pointCoords[0],
             y: result.pointCoords[1]
-        });
+        };
+
+        this.setCenterPoint(centerPoint);
 
         this.setZoomLevel(8);
-
         this.updateRoute();
+
+        this.setMapPin(centerPoint);
     }
 
     clickOutListener(e: MouseEvent): void {
