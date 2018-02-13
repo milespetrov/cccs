@@ -89,11 +89,11 @@ export default class GeoSearch extends Vue {
     isVisible: boolean = false;
 
     get hasResults(): boolean {
-        return this.queryResults.length > 0 && this.query.length > 3;
+        return this.queryResults.length > 0 && this.query.length >= 3;
     }
 
     get hasNoResults(): boolean {
-        return this.queryResults.length === 0 && this.query.length > 3;
+        return this.queryResults.length === 0 && this.query.length >= 3;
     }
 
     /*gConfig: any = {
