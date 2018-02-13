@@ -220,6 +220,22 @@ function makeConfig(
             spacingRight: 10,
             style: {
                 fontFamily: 'Helvetica,Arial,sans-serif'
+            },
+            events: {
+                load: (event: any) => {
+                    const ren = event.target.renderer;
+
+                    ren.label(
+                        'Click to see chart',
+                        event.target.chartWidth - 120,
+                        5
+                    )
+                    .css({
+                        display: 'none'
+                    })
+                    .addClass('click-hint')
+                    .add();
+                }
             }
         },
         legend: {
