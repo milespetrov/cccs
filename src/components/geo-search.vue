@@ -17,7 +17,7 @@
                 v-for="(result, index) in queryResults.slice(0, 10)"
                 :key="index"
                 @click="zoomToResult(result)">
-                <span class="cip-name">{{ result.name }}</span> <span class="cip-type">{{ result.type.name }}</span>
+                <span class="cip-name">{{ result.name }},<span class="cip-details"> {{ result.location | truncate }}, {{abbreviations[result.province]}}</span></span><span class="cip-type">{{ result.type | truncate }}</span>
             </button>
         </div>
 
@@ -35,6 +35,13 @@ import { Dictionary } from 'vue-router/types/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 
+Vue.filter('truncate', (str:string) => {
+    if (str.length > 15) {
+        return str.substring(0,15) + '...';
+    }
+    return str;
+});
+
 @Component
 export default class GeoSearch extends Vue {
     @Getter getQuery: Dictionary<string>;
@@ -43,6 +50,22 @@ export default class GeoSearch extends Vue {
     @Action setZoomLevel: (value: number) => void;
 
     query: string = '';
+
+    abbreviations = {
+        'Alberta' : 'AB',
+        'British Columbia': 'BC',
+        'Manitoba': 'MB',
+        'New Brunswick': 'NB',
+        'Newfoundland and Labrador': 'NL',
+        'Nova Scotia': 'NS',
+        'Ontario': 'ON',
+        'Prince Edward Island': 'PE',
+        'Quebec': 'QC',
+        'Saskatchewan': 'SK',
+        'Yukon': 'YT',
+        'Nunavut': 'NU',
+        'Northwest Territories': 'NT'
+    }
 
     @Watch('query')
     onQueryChanged(): void {
@@ -108,8 +131,8 @@ export default class GeoSearch extends Vue {
     zoomToResult(result: any): void {
         console.log(result.geometry);
         this.setCenterPoint({
-            x: result.geometry.coordinates[0],
-            y: result.geometry.coordinates[1]
+            x: result.pointCoords[0],
+            y: result.pointCoords[1]
         });
 
         this.setZoomLevel(8);
@@ -151,7 +174,7 @@ export default class GeoSearch extends Vue {
 @import './../styles/variables.scss';
 
 .cip-geo-search {
-    width: 30rem;
+    width: 40rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -227,9 +250,13 @@ export default class GeoSearch extends Vue {
     .cip-name {
         flex: 1;
     }
+    .cip-details {
+        font-size: 0.7em;
+        color: grey;
+    }
 
     .cip-type {
-        font-size: 0.7em;
+        font-size: 0.8em;
         font-weight: 100;
     }
 }
