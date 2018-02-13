@@ -36,7 +36,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 
 Vue.filter('truncate', (str:string) => {
-    if (str.length > 15) {
+    if (str && str.length > 15) {
         return str.substring(0,15) + '...';
     }
     return str;
