@@ -118,9 +118,9 @@
     border-bottom: 1px solid #333333;
 }
 .feature-box-text {
-    margin-left: 2rem;
-    margin-top: 3rem;
-    float: left;
+  margin-left: 2rem;
+  margin-top: 3rem;
+  padding-right: 2.5rem;
 }
 .feature-box-text h1 {
     border-bottom: none;
@@ -134,7 +134,7 @@
 .feature-box-text p {
     margin-bottom: 3rem;
 }
-.feature-box-text button {
+.feature-box-text div a h4{
     margin-bottom: 3rem;
 }
 
@@ -162,14 +162,11 @@
     margin-right: 1.2rem;
 }
 
-details .location-search .search-box {
-    width: auto;
-}
 .search-confirm {
     min-width: auto;
 }
-details .search-subtitle {
-    color: #aaaaaa;
+.search-subtitle {
+  color: #AAAAAA;
 }
 details > div {
     padding: 1rem;
@@ -180,6 +177,7 @@ details > div p {
 
 .feature-box.well {
     padding: 0;
+    min-height: 295px;
 }
 .most-requested {
     margin-top: 0;

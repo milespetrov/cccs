@@ -219,43 +219,42 @@
     <main role="main" property="mainContentOfPage" class="container">
         <div class="row">
             <div class="col-md-12 pull-left">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at lobortis elit, id mattis nulla. Cras vel
-                    ante ac odio venenatis pulvinar. Maecenas nulla ipsum, porta vitae sem non, commodo euismod nibh. Praesent
-                    purus sapien, finibus vitae viverra accumsan, fermentum tincidunt sapien. Morbi maximus ultrices ornare.</p>
+                <p> Search for climate information based on a specific location in Canada. Just enter the name of your city,
+                    town, or favorite lake, or even your postal code to see climate information specific to you.</p>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <h5>Search by location</h5>
+            <div>
+                <p> Start typing to search for the location you are interested in. Alternatively, use “Search by map” available
+                    below to select a location based on a specific point on the map.</p>
+                <nav class="location-search">
+                    <div class="search-box">
+                        <i class="fas fa-map-marker-alt fa-lg"></i>
+                        <input type="text" class="form-control" placeholder="Example: Lindsay" />
+                        <button class="btn btn-default search-confirm" type="submit">Search</button>
+                    </div>
+                </nav>
+                <p class="search-subtitle">Province, Region, City, Postal Code</p>
             </div>
         </div>
         <div class="row">
-            <section class="col-md-12 pull-left">
-                <details open="open">
-                    <summary>Search by keywords</summary>
-                    <div>
-                        <p> Maecenas nulla ipsum, porta vitae sem non, commodo euismod nibh. Praesent purus sapien, finibus vitae
-                            viverra accumsan, fermentum tincidunt sapien. Morbi maximus ultrices ornare.</p>
-                        <nav class="location-search">
-                            <div class="search-box">
-                                <i class="fas fa-map-marker-alt fa-lg"></i>
-                                <input type="text" class="form-control" placeholder="Example: Lindsay" />
-                                <button class="btn btn-default search-confirm" type="submit">Search</button>
-                            </div>
-                        </nav>
-                        <p class="search-subtitle">Province, Region, City, Postal Code</p>
-                    </div>
-                </details>
-            </section>
-            <section class="col-md-12 pull-left">
+            <section class="mrgn-tp-md col-md-12 pull-left">
                 <details>
                     <summary>Search by map</summary>
                     <div class="map-container">
-                        <rv-map class="myMap col-md-12" id="mobile-map" is="rv-map"
-                            rv-config="./assets/configs/location-search-map.en-CA.json"
-                            rv-langs='["en-CA", "fr-CA"]'></rv-map>
+                        <rv-map class="myMap col-md-12" id="mobile-map" is="rv-map" rv-config="./assets/configs/location-search-map.en-CA.json" rv-langs='["en-CA", "fr-CA"]'></rv-map>
                     </div>
                 </details>
             </section>
         </div>
         <div class="well mrgn-tp-lg">
             <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
-            <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’s leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
+            <p> Making decisions based on climate change and climate data is challenging. CCCS’s Help Desk is here to help by
+                providing access to the country’s leading climate science experts and resources to help support you in your
+                decision making and research. Contact us at
+                <a href=#>climate-helpdesk@canada.ca</a>
+            </p>
         </div>
         <div class="pagedetails">
             <dl id="wb-dtmd">
