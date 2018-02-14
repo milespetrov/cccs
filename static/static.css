@@ -1,190 +1,188 @@
 .top-level-menu {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.7);
-  position: relative;
-  
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
 }
 .top-level-menu .title {
-  margin: 0 0 0 1rem;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  float:left;
-  font-weight:800;
-
+    margin: 0 0 0 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    float: left;
+    font-weight: 800;
 }
-.top-level-menu a{
-  text-decoration: none;
-  color:inherit;
+.top-level-menu a {
+    text-decoration: none;
+    color: inherit;
 }
 .top-level-menu .container > div {
-    float:right;  
+    float: right;
 }
 .top-level-menu .title > span {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 .top-level-menu .menu-option {
-  margin: 0 2rem;
-  font-weight: bold;
-  display:block;
-  float:left;
+    margin: 0 2rem;
+    font-weight: bold;
+    display: block;
+    float: left;
 }
 .top-level-menu .menu-option > svg {
-  margin: auto;
+    margin: auto;
 }
 .top-level-menu .separator {
-  flex: 1;
+    flex: 1;
 }
 
 .location-search {
-  display: flex;
-  align-items: center;
-  padding-left:0;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
 }
 .location-search .search-box {
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 .location-search .search-box input {
-  padding: 0 3rem 0 3.5rem;
-  width: 100%;
+    padding: 0 3rem 0 3.5rem;
+    width: 100%;
 }
 .location-search .search-box > .fa-map-marker-alt {
-  color: grey;
-  position: absolute;
-  left: 1rem;
-  height: 37px;
-  top: 0;
+    color: grey;
+    position: absolute;
+    left: 1rem;
+    height: 37px;
+    top: 0;
 }
 .location-search .search-box > .fa-search {
-  position: absolute;
-  right: 1rem;
-  height: 37px;
-  top: 0;
+    position: absolute;
+    right: 1rem;
+    height: 37px;
+    top: 0;
 }
-.nav-box .divider{
-  color: #AAAAAA;
-  border-bottom: 1px solid #333333;
-  padding-bottom:1rem;
+.nav-box .divider {
+    color: #aaaaaa;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 1rem;
 }
 
 .page-title {
-    border:none !important;
-    background-color: rgba(70,70,70,0.7);
-    padding:1rem;
-    padding-left:1.5rem;
-    color:white;
-    min-width:40%;
-    width:fit-content;
-    padding-right:15%;
+    border: none !important;
+    background-color: rgba(70, 70, 70, 0.7);
+    padding: 1rem;
+    padding-left: 1.5rem;
+    color: white;
+    min-width: 40%;
+    width: fit-content;
+    padding-right: 15%;
 }
 .header-image {
-    background-image: url("./assets/images/iceberg.png");
+    background-image: url('./assets/images/iceberg.png');
     background-size: cover;
     background-position: center;
-    padding-bottom:5rem;
-    border-bottom:2px solid #555555;
-    margin-bottom:3rem;
+    padding-bottom: 5rem;
+    border-bottom: 2px solid #555555;
+    margin-bottom: 3rem;
 }
 
 .landing-button {
-  color: black !important;
-  text-decoration: none !important;
+    color: black !important;
+    text-decoration: none !important;
 }
 .landing-button .landing-button-text {
-  position: relative;
-  float: left;
-  left: 5rem;
+    position: relative;
+    float: left;
+    left: 5rem;
 }
 .landing-button .landing-button-text h3 {
-  position: inherit;
-  top: 1.5rem;
-  color: #AAAAAA;
-  font-weight: lighter;
+    position: inherit;
+    top: 1.5rem;
+    color: #aaaaaa;
+    font-weight: lighter;
 }
 .landing-button .landing-button-text h2 {
-  position: inherit;
-  top: -1.5rem;
+    position: inherit;
+    top: -1.5rem;
 }
 .landing-button span {
-  position: relative;
-  top: 5rem;
-  float: left;
-  left:2rem;
+    position: relative;
+    top: 5rem;
+    float: left;
+    left: 2rem;
 }
 .landing-buttons {
-  border-bottom: 1px solid #333333;
+    border-bottom: 1px solid #333333;
 }
 .feature-box-text {
-  margin-left: 2rem;
-  margin-top:3rem;
-  float:left;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    float: left;
 }
-.feature-box-text h1{
-  border-bottom: none;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+.feature-box-text h1 {
+    border-bottom: none;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
-.feature-box-text h3{
-  color: #AAAAAA;
-  font-weight: lighter;
+.feature-box-text h3 {
+    color: #aaaaaa;
+    font-weight: lighter;
 }
-.feature-box-text p{
-  margin-bottom: 3rem;
+.feature-box-text p {
+    margin-bottom: 3rem;
 }
-.feature-box-text button{
-  margin-bottom: 3rem;
-}
-
-.feature-box-image{
-  height:100%;
-  position:absolute;
-  padding: 0 !important;
-}
-.feature-box-image.pull-right{
-  right:0;
-}
-.feature-box-image.pull-left{
-  left:0;
+.feature-box-text button {
+    margin-bottom: 3rem;
 }
 
-.nav-box h3{
-  margin-top:0;
+.feature-box-image {
+    height: 100%;
+    position: absolute;
+    padding: 0 !important;
 }
-.nav-box a{
-  margin-right:1rem;
+.feature-box-image.pull-right {
+    right: 0;
 }
-.nav-box .link-divider{
-  height: 5px;
-  border-left: 1px solid #333333;
-  margin-right:1.2rem;
+.feature-box-image.pull-left {
+    left: 0;
+}
+
+.nav-box h3 {
+    margin-top: 0;
+}
+.nav-box a {
+    margin-right: 1rem;
+}
+.nav-box .link-divider {
+    height: 5px;
+    border-left: 1px solid #333333;
+    margin-right: 1.2rem;
 }
 
 details .location-search .search-box {
-  width:auto;
+    width: auto;
 }
 .search-confirm {
-  min-width: auto;
+    min-width: auto;
 }
 details .search-subtitle {
-  color: #AAAAAA;
+    color: #aaaaaa;
 }
 details > div {
-  padding: 1rem;
+    padding: 1rem;
 }
 details > div p {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .feature-box.well {
-  padding:0;
+    padding: 0;
 }
 .most-requested {
-  margin-top:0;
+    margin-top: 0;
 }
 
 .menu-option-dropdown {
@@ -195,19 +193,19 @@ details > div p {
     z-index: 1;
 }
 .menu-option-dropdown a {
-  float: none;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+    float: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
 }
 
 .menu-option-dropdown a:hover {
-  background-color: #AAAAAA;
+    background-color: #aaaaaa;
 }
 
 .menu-option:hover .menu-option-dropdown {
-  display: block;
+    display: block;
 }
 
 rv-map {
@@ -215,9 +213,22 @@ rv-map {
     height: 500px;
 }
 rv-shell {
-    width:100%;
-    height:500px;
+    width: 100%;
+    height: 500px;
 }
 .map-container {
-    height:510px;
+    height: 510px;
+}
+
+#calendar1 {
+    width: 25%;
+    padding: 0;
+    position: absolute;
+}
+
+/* hide calendar descriptions by default */
+.cip-hide {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
 }
