@@ -107,7 +107,7 @@ function makeConfig(
         },
         title: {
             text: `${variable} at ${stationData.station_name},
-             ${stationData.start_year} - ${stationData.end_year}`,
+             ${stationData.data_years.start} - ${stationData.data_years.end}`,
             x: -110
         },
         subtitle: {
@@ -192,7 +192,7 @@ function makeConfig(
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: stationData.start_year
+                pointStart: stationData.data_years.start
             }
         },
         series: [
@@ -268,13 +268,13 @@ function makeConfig(
         },
         title: {
             text: `${variable} at ${stationData.station_name}, ${
-                stationData.start_year
-            } - ${stationData.end_year}`,
+                stationData.data_years.start
+            } - ${stationData.data_years.end}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
             series: {
-                pointStart: stationData.start_year
+                pointStart: stationData.data_years.start
             }
         },
         tooltip: {
@@ -338,7 +338,7 @@ function makeLabels(event:any, stationData:any){
     // draw the first trend value
     ren
         .label(
-        `Overall (${stationData.start_year}-${stationData.end_year}):`,
+        `Overall (${stationData.data_years.start}-${stationData.data_years.end}):`,
         event.target.plotWidth + event.target.plotLeft + 55,
         firstLabelY + 25
         )
