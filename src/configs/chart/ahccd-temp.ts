@@ -196,8 +196,8 @@ function makeConfig(
                 },
                 pointStart: stationData.data_years.start,
                 events: {
-                    hide: function () {
-                        if (!(<any>this).dvchart.highchart.series.some((series: any) => series.visible)){
+                    hide: () => {
+                        if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)){
                             api.DQV.sections.dvSection1.data.isTable = false;
                         }
                     },
