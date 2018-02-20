@@ -28,7 +28,7 @@ module.exports = {
             ignore: ['.*']
         }
     ],
-    // open the exploer data page on localhost:3001 by default when running `npm run dev`
+    // open the explore data page on localhost:3001 by default when running `npm run dev`
     devServer: {
         index: 'explore-data.html'
     },
