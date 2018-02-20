@@ -132,6 +132,7 @@ import api from './api/main';
     }
 })
 export default class App extends Vue {
+    @Action setCurrentView: (value: string) => void;
     @Action setTimePeriodId: (value: string | null) => void;
     @Action setVariableId: (value: string | null) => void;
     @Action setDatasetId: (value: string | null) => void;
@@ -140,6 +141,8 @@ export default class App extends Vue {
     @Action setZoomLevel: (value: string | null) => void;
 
     @Getter getQuery: Dictionary<string>;
+
+    @State ('currentView') currentView: string;
 
     viewName: string = '';
     reloadKey: string = '';
@@ -225,6 +228,8 @@ export default class App extends Vue {
                 defaultTime = 'Annual_Annuel';
                 defaultStation = null;
             }
+
+            this.setCurrentView(this.$router.currentRoute.name);
             this.updateStore(
                 defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
@@ -235,17 +240,18 @@ export default class App extends Vue {
             );
 
             this.$router.push({
-                name: this.$router.currentRoute.name,
+                name: this.currentView,
                 query: this.getQuery
             });
             return;
         }
 
+        this.setCurrentView('chart-view');
         this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830', null, null);
 
         // DEMO: push to the chart view on mount by default, so something will show up
         this.$router.push({
-            name: 'chart-view',
+            name: this.currentView,
             query: this.getQuery
         });
     }
@@ -273,8 +279,9 @@ export default class App extends Vue {
         }
 
         this.setTimePeriodId('Annual_Annuel');
+        this.setCurrentView('map-view');
         this.$router.push({
-            name: 'map-view',
+            name: this.currentView,
             query: this.getQuery
         });
     }

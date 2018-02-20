@@ -196,6 +196,7 @@ export default class VariableSelector extends Vue {
 
     @State variableId: string;
     @State datasetId: string;
+    @State currentView: string;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -219,7 +220,7 @@ export default class VariableSelector extends Vue {
 
     updateRoute(): void {
         this.$router.push({
-            name: this.$router.currentRoute.name,
+            name: this.currentView,
             query: this.getQuery
         });
     }

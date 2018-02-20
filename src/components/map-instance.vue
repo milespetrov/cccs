@@ -104,12 +104,14 @@ export default class MapInstance extends Vue {
     @State centerPoint: CenterPoint;
     @State zoomLevel: number;
     @State mapPin: CenterPoint;
+    @State currentView: string;
 
     @Getter getQuery: Dictionary<string>;
 
     @Action setStationId: (value: string) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
     @Action setMapPin: (value?: CenterPoint) => void;
+    @Action setCurrentView: (value: string) => void;
 
     @Watch('mapPin')
     onMapPinChanged(newValue: CenterPoint): void {
@@ -488,15 +490,13 @@ export default class MapInstance extends Vue {
     }
 
     changeViewToChart(): void {
-        this.$router.push({
-            name: 'chart-view',
-            query: this.getQuery
-        });
+        this.setCurrentView('chart-view');
+        this.updateRoute();
     }
 
     updateRoute(): void {
         this.$router.push({
-            name: this.$router.currentRoute.name,
+            name: this.currentView,
             query: this.getQuery
         });
     }

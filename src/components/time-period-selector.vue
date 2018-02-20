@@ -109,6 +109,7 @@ export default class TimePeriodSelector extends Vue {
     @Action setTimePeriodId: (value: string) => void;
 
     @State timePeriodId: string;
+    @State currentView: string;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -126,13 +127,12 @@ export default class TimePeriodSelector extends Vue {
 
     selectTimePeriod(timePeriod: TimePeriodItem) {
         this.setTimePeriodId(timePeriod.id);
-
         this.updateRoute();
     }
 
     updateRoute(): void {
         this.$router.push({
-            name: this.$router.currentRoute.name,
+            name: this.currentView,
             query: this.getQuery
         });
     }

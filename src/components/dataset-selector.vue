@@ -57,6 +57,7 @@ export default class DatasetSelector extends Vue {
     @Action setDatasetId: (value: string) => void;
 
     @State datasetId: string;
+    @State currentView: string;
 
     @Getter getQuery: Dictionary<string>;
 
@@ -75,7 +76,7 @@ export default class DatasetSelector extends Vue {
 
     updateRoute(): void {
         this.$router.push({
-            name: this.$router.currentRoute.name,
+            name: this.currentView,
             query: this.getQuery
         });
     }
