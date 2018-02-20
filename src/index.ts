@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex, { Store } from 'vuex';
+import VueI18n from 'vue-i18n';
 
 import app from './app.vue';
 import routes from './routes';
@@ -10,6 +11,7 @@ import api from './api/main';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(VueI18n);
 
 const router = new VueRouter({ routes });
 
