@@ -1,8 +1,10 @@
 export interface AppState {
+    currentView: string | null;
     timePeriodId: string | null;
     variableId: string | null;
     datasetId: string | null;
     stationId: string | null;
+    rcpId: string | null;
     centerPoint: CenterPoint | null;
     zoomLevel: string | null;
 

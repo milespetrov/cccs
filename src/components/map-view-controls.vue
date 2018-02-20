@@ -8,6 +8,14 @@
             <dataset-selector></dataset-selector>
         </div>
 
+        <div class="menu-option" v-show="rcpEnabled">
+            <rcp-selector></rcp-selector>
+        </div>
+
+        <div class="menu-option" v-show="timeSelectorEnabled">
+            <time-period-selector></time-period-selector>
+        </div>
+
         <span class="separator"></span>
 
         <div class="menu-option">
@@ -30,19 +38,34 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State, Getter, Action } from 'vuex-class';
 
 import VariableSelector from './variable-selector.vue';
 import DatasetSelector from './dataset-selector.vue';
+import RcpSelector from './rcp-selector.vue';
+import TimePeriodSelector from './time-period-selector.vue';
 
 import api from './../api/main';
 
 @Component({
     components: {
         VariableSelector,
-        DatasetSelector
+        DatasetSelector,
+        RcpSelector,
+        TimePeriodSelector
     }
 })
 export default class MapViewControls extends Vue {
+    @Getter getControls: string[];
+
+    get rcpEnabled() {
+        return this.getControls.includes('rcp');
+    }
+
+    get timeSelectorEnabled() {
+        return this.getControls.includes('period');
+    }
+
     downloadImage(type: string): void {
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].export();
     }

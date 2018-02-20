@@ -9,7 +9,11 @@
             <dataset-selector></dataset-selector>
         </div>
 
-        <div class="menu-option">
+        <div class="menu-option" v-show="rcpEnabled">
+            <rcp-selector></rcp-selector>
+        </div>
+
+        <div class="menu-option" v-show="timeSelectorEnabled">
             <time-period-selector></time-period-selector>
         </div>
 
@@ -76,6 +80,7 @@ import { State, Getter, Action } from 'vuex-class';
 import VariableSelector from './variable-selector.vue';
 import DatasetSelector from './dataset-selector.vue';
 import TimePeriodSelector from './time-period-selector.vue';
+import RcpSelector from './rcp-selector.vue';
 
 import { sprintf } from 'sprintf-js';
 
@@ -85,10 +90,21 @@ import api from './../api/main';
     components: {
         VariableSelector,
         DatasetSelector,
-        TimePeriodSelector
+        TimePeriodSelector,
+        RcpSelector
     }
 })
 export default class ChartViewControls extends Vue {
+    @Getter getControls: string[];
+
+    get rcpEnabled() {
+        return this.getControls.includes('rcp');
+    }
+
+    get timeSelectorEnabled() {
+        return this.getControls.includes('period');
+    }
+
     @Getter getQuery: Dictionary<string>;
 
     changeView(viewName: string): void {
