@@ -1,6 +1,6 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="viewName">
-
+        
         <div class="cip-strip cip-backdrop-map">
             <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
         </div>
@@ -54,7 +54,7 @@
             <!-- TODO: create two separate headers for map and chart views -->
             <!-- TODO: move header into a separate component -->
             <div class="cip-header container">
-                <h1>Explore Climate Data</h1>
+                <h1>{{ $t('title') }} </h1>
 
                 <span class="cip-view-toggle-label">click to see the full map</span>
             </div>
