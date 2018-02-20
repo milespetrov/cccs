@@ -1,3 +1,5 @@
+import api from './../../api/main';
+
 interface period_mappings {
     [key: string]: number;
 }
@@ -192,7 +194,17 @@ function makeConfig(
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: stationData.data_years.start
+                pointStart: stationData.data_years.start,
+                events: {
+                    hide: function () {
+                        if (!(<any>this).dvchart.highchart.series.some((series: any) => series.visible)){
+                            api.DQV.sections.dvSection1.data.isTable = false;
+                        }
+                    },
+                    show: () => {
+                        api.DQV.sections.dvSection1.data.isTable = true;
+                    }
+                }
             }
         },
         series: [

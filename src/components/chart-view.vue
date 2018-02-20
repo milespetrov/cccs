@@ -104,7 +104,8 @@ export default class ChartView extends Vue {
 
     initDQV(config: object): void {
         const data = {
-            name: 'foobar'
+            name: 'foobar',
+            isTable: true
         };
 
         const template = `
@@ -113,7 +114,8 @@ export default class ChartView extends Vue {
                     <details>
                         <summary @click="window.wb.add('table')">View data for this chart</summary>
                         <div class="summary">
-                            <dv-chart-table dv-auto-render dv-table-class="wb-tables table table-striped"></dv-chart-table>
+                            <dv-chart-table v-show="isTable" dv-auto-render dv-table-class="wb-tables table table-striped"></dv-chart-table>
+                            <div v-show="!isTable"> Enable a data series to show the table. </div>
                         </div>
                     </details>
                 </dv-chart>
