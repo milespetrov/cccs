@@ -1,20 +1,8 @@
 <template>
     <div class="cip-view-controls container">
-
-        <div class="menu-option" v-show="varEnabled">
-            <variable-selector></variable-selector>
-        </div>
-
-        <div class="menu-option" v-show="datasetEnabled">
-            <dataset-selector></dataset-selector>
-        </div>
-
-        <div class="menu-option" v-show="rcpEnabled">
-            <rcp-selector></rcp-selector>
-        </div>
-
-        <div class="menu-option" v-show="timeEnabled">
-            <time-period-selector></time-period-selector>
+        
+        <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
+            <component :is="controlRef"></component>
         </div>
 
         <span class="separator"></span>
@@ -77,42 +65,17 @@ import { Dictionary } from 'vue-router/types/router';
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 
-import VariableSelector from './variable-selector.vue';
-import DatasetSelector from './dataset-selector.vue';
-import TimePeriodSelector from './time-period-selector.vue';
-import RcpSelector from './rcp-selector.vue';
+import selectors from './vis-controls/selectors';
 
 import { sprintf } from 'sprintf-js';
 
 import api from './../api/main';
 
 @Component({
-    components: {
-        VariableSelector,
-        DatasetSelector,
-        TimePeriodSelector,
-        RcpSelector
-    }
+    components: selectors
 })
 export default class ChartViewControls extends Vue {
     @Getter getControls: string[];
-
-    get varEnabled() {
-        return this.getControls.includes('var');
-    }
-
-    get datasetEnabled() {
-        return this.getControls.includes('dataset');
-    }
-
-    get rcpEnabled() {
-        return this.getControls.includes('rcp');
-    }
-
-    get timeEnabled() {
-        return this.getControls.includes('period');
-    }
-
     @Getter getQuery: Dictionary<string>;
 
     downloadImage(type: string): void {

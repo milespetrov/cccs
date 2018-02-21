@@ -118,7 +118,6 @@ import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
 Vue.use(FormSelect);
 
-import VariableSelector from './components/variable-selector.vue';
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
 import { CenterPoint } from './store/index';
@@ -127,7 +126,6 @@ import { UpdateRouteMixin } from './globals/mixin';
 
 @Component({
     components: {
-        VariableSelector,
         MapInstance,
         GeoSearch
     }

@@ -6,16 +6,16 @@ interface controlConfig {
 
 const config: controlConfig = {
     ahccd: {
-        'map-view': ['var', 'dataset'],
-        'chart-view': ['var', 'dataset', 'period']
+        'map-view': ['variable-selector', 'dataset-selector'],
+        'chart-view': ['variable-selector', 'dataset-selector', 'time-period-selector']
     },
     cmip5: {
-        'map-view': ['var', 'dataset', 'period'],
-        'chart-view': ['var', 'dataset', 'rcp', 'period']
+        'map-view': ['variable-selector', 'dataset-selector', 'rcp-selector', 'time-period-selector'],
+        'chart-view': ['variable-selector', 'dataset-selector', 'rcp-selector', 'time-period-selector']
     },
     cangrd: {
-        'map-view': ['var', 'dataset', 'period'],
-        'chart-view': ['var', 'dataset', 'period']
+        'map-view': ['variable-selector', 'dataset-selector', 'time-period-selector'],
+        'chart-view': ['variable-selector', 'dataset-selector', 'time-period-selector']
     }
 }
 

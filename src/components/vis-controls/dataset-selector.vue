@@ -26,9 +26,9 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
-import api from './../api/main';
+import api from './../../api/main';
 import { Dictionary } from 'vue-router/types/router';
-import { UpdateRouteMixin } from '../globals/mixin';
+import { UpdateRouteMixin } from './../../globals/mixin';
 
 interface DatasetItem {
     name: string;
@@ -78,8 +78,8 @@ export default class DatasetSelector extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/variables.scss';
-@import './../styles/view-controls.scss';
+@import './../../styles/variables.scss';
+@import './../../styles/view-controls.scss';
 
 .cip-dataset-selector {
     .dropdown-item {
