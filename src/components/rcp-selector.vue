@@ -27,6 +27,8 @@ import { State, Getter, Action } from 'vuex-class';
 
 import api from './../api/main';
 import { Dictionary } from 'vue-router/types/router';
+import { mixins } from 'vue-class-component';
+import { UpdateRouteMixin } from '../globals/mixin';
 
 interface RcpItem {
     name: string;
@@ -35,7 +37,7 @@ interface RcpItem {
 }
 
 @Component
-export default class RcpSelector extends Vue {
+export default class RcpSelector extends mixins(UpdateRouteMixin) {
     rcpItems: RcpItem[] = [
         {
             name: 'Representative Concentration Pathway 2.6',
@@ -74,13 +76,6 @@ export default class RcpSelector extends Vue {
     selectRcp(rcp: RcpItem) {
         this.setRcpId(rcp.id);
         this.updateRoute();
-    }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.currentView,
-            query: this.getQuery
-        });
     }
 }
 </script>

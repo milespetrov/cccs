@@ -31,11 +31,13 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
+import { mixins } from 'vue-class-component';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 
 import { CenterPoint } from '../store/index';
+import { UpdateRouteMixin } from '../globals/mixin';
 
 Vue.filter('truncate', (str: string) => {
     if (str && str.length > 15) {
@@ -45,7 +47,7 @@ Vue.filter('truncate', (str: string) => {
 });
 
 @Component
-export default class GeoSearch extends Vue {
+export default class GeoSearch extends mixins(UpdateRouteMixin) {
     @Getter getQuery: Dictionary<string>;
 
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
@@ -153,13 +155,6 @@ export default class GeoSearch extends Vue {
                 this.isVisible = false;
             }
         }
-    }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.$router.currentRoute.name,
-            query: this.getQuery
-        });
     }
 
     beforeDestroy() {

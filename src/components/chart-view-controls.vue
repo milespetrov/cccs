@@ -115,13 +115,6 @@ export default class ChartViewControls extends Vue {
 
     @Getter getQuery: Dictionary<string>;
 
-    changeView(viewName: string): void {
-        this.$router.push({
-            name: viewName,
-            query: this.getQuery
-        });
-    }
-
     downloadImage(type: string): void {
         (<any>window).DQV.charts.dvChart1.highchart.exportChart({
             type

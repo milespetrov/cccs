@@ -38,9 +38,11 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
+import { mixins } from 'vue-class-component';
 
 import api from './../api/main';
 import { Dictionary } from 'vue-router/types/router';
+import { UpdateRouteMixin } from '../globals/mixin';
 
 interface VariableGroup {
     name: string;
@@ -61,7 +63,7 @@ interface VariableOption {
 }
 
 @Component
-export default class VariableSelector extends Vue {
+export default class VariableSelector extends mixins(UpdateRouteMixin) {
     variableGroups: VariableGroup[] = [
         {
             name: 'Temperature',
@@ -216,13 +218,6 @@ export default class VariableSelector extends Vue {
         this.setDatasetId(option.datasetId);
 
         this.updateRoute();
-    }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.currentView,
-            query: this.getQuery
-        });
     }
 }
 </script>

@@ -24,9 +24,11 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
+import { mixins } from 'vue-class-component';
 
 import api from './../api/main';
 import { Dictionary } from 'vue-router/types/router';
+import { UpdateRouteMixin } from '../globals/mixin';
 
 interface DatasetItem {
     name: string;
@@ -35,7 +37,7 @@ interface DatasetItem {
 }
 
 @Component
-export default class DatasetSelector extends Vue {
+export default class DatasetSelector extends mixins(UpdateRouteMixin) {
     datasetItems: DatasetItem[] = [
         {
             name: 'Coupled Model Intercomparison Project Phase 5',
@@ -70,15 +72,7 @@ export default class DatasetSelector extends Vue {
 
     selectDataset(dataset: DatasetItem) {
         this.setDatasetId(dataset.id);
-
         this.updateRoute();
-    }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.currentView,
-            query: this.getQuery
-        });
     }
 }
 </script>

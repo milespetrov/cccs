@@ -109,9 +109,9 @@
 
 <script lang="ts">
 import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
-import { Getter, Action } from 'vuex-class';
+import { Getter, Action, State } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
-import { State } from 'vuex-class';
+import { mixins } from 'vue-class-component';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
 import FormSelect from 'bootstrap-vue/es/components/form-select';
@@ -123,6 +123,7 @@ import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
 import { CenterPoint } from './store/index';
 import api from './api/main';
+import { UpdateRouteMixin } from './globals/mixin';
 
 @Component({
     components: {
@@ -131,7 +132,7 @@ import api from './api/main';
         GeoSearch
     }
 })
-export default class App extends Vue {
+export default class App extends mixins(UpdateRouteMixin) {
     @Action setCurrentView: (value: string) => void;
     @Action setTimePeriodId: (value: string | null) => void;
     @Action setVariableId: (value: string | null) => void;
@@ -142,7 +143,7 @@ export default class App extends Vue {
 
     @Getter getQuery: Dictionary<string>;
 
-    @State ('currentView') currentView: string;
+    @State currentView: string;
 
     viewName: string = '';
     reloadKey: string = '';
@@ -163,7 +164,6 @@ export default class App extends Vue {
             return;
         }
         const centerExtent = mapInstance._fgpMap.extent.getCenter();
-
         // let res = 529.1677250021168; // 8
         // let res = 926.0435187537042; // 7
         let res = 7937.5158750317505; // 3
@@ -239,10 +239,7 @@ export default class App extends Vue {
                 this.$router.currentRoute.query.z
             );
 
-            this.$router.push({
-                name: this.currentView,
-                query: this.getQuery
-            });
+            this.updateRoute();
             return;
         }
 
@@ -250,10 +247,7 @@ export default class App extends Vue {
         this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830', null, null);
 
         // DEMO: push to the chart view on mount by default, so something will show up
-        this.$router.push({
-            name: this.currentView,
-            query: this.getQuery
-        });
+        this.updateRoute();
     }
 
     updateStore(
@@ -280,10 +274,7 @@ export default class App extends Vue {
 
         this.setTimePeriodId('Annual_Annuel');
         this.setCurrentView('map-view');
-        this.$router.push({
-            name: this.currentView,
-            query: this.getQuery
-        });
+        this.updateRoute();
     }
 }
 </script>
