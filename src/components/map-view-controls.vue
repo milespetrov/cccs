@@ -1,10 +1,10 @@
 <template>
     <div class="cip-view-controls container">
-        <div class="menu-option">
+        <div class="menu-option" v-show="varEnabled">
             <variable-selector></variable-selector>
         </div>
 
-        <div class="menu-option">
+        <div class="menu-option" v-show="datasetEnabled">
             <dataset-selector></dataset-selector>
         </div>
 
@@ -12,7 +12,7 @@
             <rcp-selector></rcp-selector>
         </div>
 
-        <div class="menu-option" v-show="timeSelectorEnabled">
+        <div class="menu-option" v-show="timeEnabled">
             <time-period-selector></time-period-selector>
         </div>
 
@@ -58,11 +58,19 @@ import api from './../api/main';
 export default class MapViewControls extends Vue {
     @Getter getControls: string[];
 
+    get varEnabled() {
+        return this.getControls.includes('var');
+    }
+
+    get datasetEnabled() {
+        return this.getControls.includes('dataset');
+    }
+
     get rcpEnabled() {
         return this.getControls.includes('rcp');
     }
 
-    get timeSelectorEnabled() {
+    get timeEnabled() {
         return this.getControls.includes('period');
     }
 
