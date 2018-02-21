@@ -198,9 +198,6 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
 
     @State variableId: string;
     @State datasetId: string;
-    @State currentView: string;
-
-    @Getter getQuery: Dictionary<string>;
 
     get selectedVariableName(): string {
         const variables = this.variableGroups.reduce<VariableItem[]>(

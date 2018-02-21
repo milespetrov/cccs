@@ -7,6 +7,7 @@ interface string_to_string {
     [key: string]: string
 }
 
+// For displaying on the chart, tooltips, etc.
 const periodToNames: string_to_string = {
     Jan_Janv: 'January',
     Feb_Fev: 'February',
@@ -27,6 +28,7 @@ const periodToNames: string_to_string = {
     Annual_Annuel: 'Annual'
 };
 
+// For mapping to the data API
 const periodToNum: string_to_num = {
     Jan_Janv: 1,
     Feb_Fev: 2,

@@ -106,9 +106,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State centerPoint: CenterPoint;
     @State zoomLevel: number;
     @State mapPin: CenterPoint;
-    @State currentView: string;
-
-    @Getter getQuery: Dictionary<string>;
 
     @Action setStationId: (value: string) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;

@@ -57,15 +57,13 @@ export default class RcpSelector extends mixins(UpdateRouteMixin) {
     ];
 
     @Action setRcpId: (value: string) => void;
-
     @State rcpId: string;
-    @State currentView: string;
-
-    @Getter getQuery: Dictionary<string>;
 
     get selectedRcpShortName(): string {
+        // select a default Rcp
+        // TODO: revisit once we decide how to handle defaults/leaving out variables
         if (this.rcpId == null) {
-            this.selectRcp(this.rcpItems[0]); 
+            this.selectRcp(this.rcpItems[0]);
         }
         return `Model: ${
             this.rcpItems.find(rcp => rcp.id === this.rcpId)!

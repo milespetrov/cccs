@@ -109,11 +109,7 @@ export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
     ];
 
     @Action setTimePeriodId: (value: string) => void;
-
     @State timePeriodId: string;
-    @State currentView: string;
-
-    @Getter getQuery: Dictionary<string>;
 
     get selectedTimePeriodName(): string {
         const timePeriods = this.timePeriodGroups.reduce<TimePeriodItem[]>(

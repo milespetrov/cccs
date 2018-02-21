@@ -48,8 +48,6 @@ Vue.filter('truncate', (str: string) => {
 
 @Component
 export default class GeoSearch extends mixins(UpdateRouteMixin) {
-    @Getter getQuery: Dictionary<string>;
-
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
     @Action setZoomLevel: (value: number) => void;
     @Action setMapPin: (value: { x: number; y: number }) => void;

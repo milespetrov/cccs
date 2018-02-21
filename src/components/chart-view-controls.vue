@@ -76,7 +76,6 @@ import api from './../api/main';
 })
 export default class ChartViewControls extends Vue {
     @Getter getControls: string[];
-    @Getter getQuery: Dictionary<string>;
 
     downloadImage(type: string): void {
         (<any>window).DQV.charts.dvChart1.highchart.exportChart({

@@ -57,11 +57,7 @@ export default class DatasetSelector extends mixins(UpdateRouteMixin) {
     ];
 
     @Action setDatasetId: (value: string) => void;
-
     @State datasetId: string;
-    @State currentView: string;
-
-    @Getter getQuery: Dictionary<string>;
 
     get selectedDatasetShortName(): string {
         return `Dataset: ${

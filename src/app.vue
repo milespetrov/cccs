@@ -139,8 +139,6 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setCenterPoint: (value: string | null) => void;
     @Action setZoomLevel: (value: string | null) => void;
 
-    @Getter getQuery: Dictionary<string>;
-
     @State currentView: string;
 
     viewName: string = '';
