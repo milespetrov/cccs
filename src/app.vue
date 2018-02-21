@@ -109,29 +109,29 @@
 
 <script lang="ts">
 import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
-import { Getter, Action } from 'vuex-class';
+import { Getter, Action, State } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
-import { State } from 'vuex-class';
+import { mixins } from 'vue-class-component';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
 import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
 Vue.use(FormSelect);
 
-import VariableSelector from './components/variable-selector.vue';
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
 import { CenterPoint } from './store/index';
 import api from './api/main';
+import { UpdateRouteMixin } from './globals/mixin';
 
 @Component({
     components: {
-        VariableSelector,
         MapInstance,
         GeoSearch
     }
 })
-export default class App extends Vue {
+export default class App extends mixins(UpdateRouteMixin) {
+    @Action setCurrentView: (value: string) => void;
     @Action setTimePeriodId: (value: string | null) => void;
     @Action setVariableId: (value: string | null) => void;
     @Action setDatasetId: (value: string | null) => void;
@@ -139,7 +139,7 @@ export default class App extends Vue {
     @Action setCenterPoint: (value: string | null) => void;
     @Action setZoomLevel: (value: string | null) => void;
 
-    @Getter getQuery: Dictionary<string>;
+    @State currentView: string;
 
     viewName: string = '';
     reloadKey: string = '';
@@ -160,7 +160,6 @@ export default class App extends Vue {
             return;
         }
         const centerExtent = mapInstance._fgpMap.extent.getCenter();
-
         // let res = 529.1677250021168; // 8
         // let res = 926.0435187537042; // 7
         let res = 7937.5158750317505; // 3
@@ -225,6 +224,8 @@ export default class App extends Vue {
                 defaultTime = 'Annual_Annuel';
                 defaultStation = null;
             }
+
+            this.setCurrentView(this.$router.currentRoute.name);
             this.updateStore(
                 defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
                 this.$router.currentRoute.query.v || 'tmax',
@@ -234,20 +235,15 @@ export default class App extends Vue {
                 this.$router.currentRoute.query.z
             );
 
-            this.$router.push({
-                name: this.$router.currentRoute.name,
-                query: this.getQuery
-            });
+            this.updateRoute();
             return;
         }
 
+        this.setCurrentView('chart-view');
         this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830', null, null);
 
         // DEMO: push to the chart view on mount by default, so something will show up
-        this.$router.push({
-            name: 'chart-view',
-            query: this.getQuery
-        });
+        this.updateRoute();
     }
 
     updateStore(
@@ -273,10 +269,8 @@ export default class App extends Vue {
         }
 
         this.setTimePeriodId('Annual_Annuel');
-        this.$router.push({
-            name: 'map-view',
-            query: this.getQuery
-        });
+        this.setCurrentView('map-view');
+        this.updateRoute();
     }
 }
 </script>

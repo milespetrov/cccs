@@ -38,9 +38,11 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
+import { mixins } from 'vue-class-component';
 
-import api from './../api/main';
+import api from './../../api/main';
 import { Dictionary } from 'vue-router/types/router';
+import { UpdateRouteMixin } from './../../globals/mixin';
 
 interface VariableGroup {
     name: string;
@@ -61,7 +63,7 @@ interface VariableOption {
 }
 
 @Component
-export default class VariableSelector extends Vue {
+export default class VariableSelector extends mixins(UpdateRouteMixin) {
     variableGroups: VariableGroup[] = [
         {
             name: 'Temperature',
@@ -197,8 +199,6 @@ export default class VariableSelector extends Vue {
     @State variableId: string;
     @State datasetId: string;
 
-    @Getter getQuery: Dictionary<string>;
-
     get selectedVariableName(): string {
         const variables = this.variableGroups.reduce<VariableItem[]>(
             (array, group) => array.concat(group.items),
@@ -216,19 +216,12 @@ export default class VariableSelector extends Vue {
 
         this.updateRoute();
     }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.$router.currentRoute.name,
-            query: this.getQuery
-        });
-    }
 }
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/variables.scss';
-@import './../styles/view-controls.scss';
+@import './../../styles/variables.scss';
+@import './../../styles/view-controls.scss';
 
 .b-dropdown .cip-dropdown-multi-item-options {
     width: 16em !important;

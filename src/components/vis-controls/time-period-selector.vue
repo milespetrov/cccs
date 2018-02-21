@@ -36,9 +36,11 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
+import { mixins } from 'vue-class-component';
 
-import api from './../api/main';
+import api from './../../api/main';
 import { Dictionary } from 'vue-router/types/router';
+import { UpdateRouteMixin } from './../../globals/mixin';
 
 interface TimePeriodGroup {
     name: string;
@@ -53,7 +55,7 @@ interface TimePeriodItem {
 }
 
 @Component
-export default class TimePeriodSelector extends Vue {
+export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
     timePeriodGroups: TimePeriodGroup[] = [
         {
             name: 'Monthly',
@@ -107,10 +109,7 @@ export default class TimePeriodSelector extends Vue {
     ];
 
     @Action setTimePeriodId: (value: string) => void;
-
     @State timePeriodId: string;
-
-    @Getter getQuery: Dictionary<string>;
 
     get selectedTimePeriodName(): string {
         const timePeriods = this.timePeriodGroups.reduce<TimePeriodItem[]>(
@@ -126,22 +125,14 @@ export default class TimePeriodSelector extends Vue {
 
     selectTimePeriod(timePeriod: TimePeriodItem) {
         this.setTimePeriodId(timePeriod.id);
-
         this.updateRoute();
-    }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.$router.currentRoute.name,
-            query: this.getQuery
-        });
     }
 }
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/variables.scss';
-@import './../styles/view-controls.scss';
+@import './../../styles/variables.scss';
+@import './../../styles/view-controls.scss';
 
 .cip-time-period-selector {
     .cip-dropdown-horizontal {

@@ -1,11 +1,8 @@
 <template>
     <div class="cip-view-controls container">
-        <div class="menu-option">
-            <variable-selector></variable-selector>
-        </div>
 
-        <div class="menu-option">
-            <dataset-selector></dataset-selector>
+        <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
+            <component :is="controlRef"></component>
         </div>
 
         <span class="separator"></span>
@@ -30,19 +27,18 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { State, Getter, Action } from 'vuex-class';
 
-import VariableSelector from './variable-selector.vue';
-import DatasetSelector from './dataset-selector.vue';
+import selectors from './vis-controls/selectors';
 
 import api from './../api/main';
 
 @Component({
-    components: {
-        VariableSelector,
-        DatasetSelector
-    }
+    components: selectors
 })
 export default class MapViewControls extends Vue {
+    @Getter getControls: string[];
+
     downloadImage(type: string): void {
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].export();
     }

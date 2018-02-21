@@ -18,6 +18,7 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
+import { mixins } from 'vue-class-component';
 
 import sprintf from 'sprintf-js';
 import { Subject } from 'rxjs/Subject';
@@ -25,6 +26,7 @@ import { Subject } from 'rxjs/Subject';
 import api from './../api/main';
 import ahccdTemp from '../configs/chart/ahccd-temp';
 import { CenterPoint } from './../store/';
+import { UpdateRouteMixin } from '../globals/mixin';
 
 interface tooltips {
     'en-CA': {
@@ -41,7 +43,7 @@ interface tooltips {
 }
 
 @Component
-export default class MapInstance extends Vue {
+export default class MapInstance extends mixins(UpdateRouteMixin) {
     tooltipTemplates: tooltips = {
         'en-CA': {
             ahccd: {
@@ -105,11 +107,10 @@ export default class MapInstance extends Vue {
     @State zoomLevel: number;
     @State mapPin: CenterPoint;
 
-    @Getter getQuery: Dictionary<string>;
-
     @Action setStationId: (value: string) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
     @Action setMapPin: (value?: CenterPoint) => void;
+    @Action setCurrentView: (value: string) => void;
 
     @Watch('mapPin')
     onMapPinChanged(newValue: CenterPoint): void {
@@ -488,17 +489,8 @@ export default class MapInstance extends Vue {
     }
 
     changeViewToChart(): void {
-        this.$router.push({
-            name: 'chart-view',
-            query: this.getQuery
-        });
-    }
-
-    updateRoute(): void {
-        this.$router.push({
-            name: this.$router.currentRoute.name,
-            query: this.getQuery
-        });
+        this.setCurrentView('chart-view');
+        this.updateRoute();
     }
 
     beforeDestroy(): void {

@@ -2,13 +2,17 @@ import { ActionContext, Store, StoreOptions, Module } from 'vuex';
 
 import { AppState, CenterPoint } from './index';
 
+import controls from './../globals/controls';
+
 type AppContext = ActionContext<AppState, AppState>;
 
 const state: AppState = {
+    currentView: null,
     timePeriodId: null,
     variableId: null,
     datasetId: null,
     stationId: null,
+    rcpId: null,
     centerPoint: null,
     zoomLevel: null,
 
@@ -24,6 +28,7 @@ const getters = {
             v: state.variableId,
             d: state.datasetId,
             s: state.stationId,
+            r: state.rcpId,
             c: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel
         };
@@ -34,11 +39,19 @@ const getters = {
         );
 
         return queryObject;
+    },
+
+    getControls: () => {
+        return controls.config[state.datasetId!][state.currentView!];
     }
 };
 
 // actions
 const actions = {
+    setCurrentView(context: AppContext, value: string) {
+        context.commit('SET_CURRENT_VIEW', value);
+    },
+
     setTimePeriodId(context: AppContext, value: string | null) {
         context.commit('SET_TIME_PERIOD_ID', value);
     },
@@ -53,6 +66,10 @@ const actions = {
 
     setStationId(context: AppContext, value: string | null) {
         context.commit('SET_STATION_ID', value);
+    },
+
+    setRcpId(context: AppContext, value: string | null) {
+        context.commit('SET_RCP_ID', value);
     },
 
     setCenterPoint(
@@ -98,6 +115,10 @@ const actions = {
 
 // mutations
 const mutations = {
+    SET_CURRENT_VIEW(state: AppState, value: string): void {
+        state.currentView = value;
+    },
+
     SET_TIME_PERIOD_ID(state: AppState, value: string): void {
         state.timePeriodId = value;
     },
@@ -112,6 +133,10 @@ const mutations = {
 
     SET_STATION_ID(state: AppState, value: string): void {
         state.stationId = value;
+    },
+
+    SET_RCP_ID(state: AppState, value: string): void {
+        state.rcpId = value;
     },
 
     SET_CENTER_POINT(state: AppState, value: CenterPoint | null): void {

@@ -1,16 +1,8 @@
 <template>
     <div class="cip-view-controls container">
-
-        <div class="menu-option">
-            <variable-selector></variable-selector>
-        </div>
-
-        <div class="menu-option">
-            <dataset-selector></dataset-selector>
-        </div>
-
-        <div class="menu-option">
-            <time-period-selector></time-period-selector>
+        
+        <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
+            <component :is="controlRef"></component>
         </div>
 
         <span class="separator"></span>
@@ -73,30 +65,17 @@ import { Dictionary } from 'vue-router/types/router';
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 
-import VariableSelector from './variable-selector.vue';
-import DatasetSelector from './dataset-selector.vue';
-import TimePeriodSelector from './time-period-selector.vue';
+import selectors from './vis-controls/selectors';
 
 import { sprintf } from 'sprintf-js';
 
 import api from './../api/main';
 
 @Component({
-    components: {
-        VariableSelector,
-        DatasetSelector,
-        TimePeriodSelector
-    }
+    components: selectors
 })
 export default class ChartViewControls extends Vue {
-    @Getter getQuery: Dictionary<string>;
-
-    changeView(viewName: string): void {
-        this.$router.push({
-            name: viewName,
-            query: this.getQuery
-        });
-    }
+    @Getter getControls: string[];
 
     downloadImage(type: string): void {
         (<any>window).DQV.charts.dvChart1.highchart.exportChart({
