@@ -32,7 +32,8 @@
         "test": "poi test",
         "dev": "poi --port 3001 src/index.ts",
         "build": "poi build src/index.ts",
-        "serve": "http-server ./dist -p 3002"
+        "serve": "http-server ./dist -p 3002",
+        "docs": "http-server ./docs -p 3002"
     },
     "author": "",
     "license": "ISC",
