@@ -52,7 +52,12 @@ function makeConfig(
             },
             marginRight: 265,
             events: {
-                load: (event: any) => { [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, stationData)}
+                load: (event: any) => {
+                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(
+                        event,
+                        stationData
+                    );
+                }
             },
             style: {
                 fontFamily: 'inherit'
@@ -104,11 +109,15 @@ function makeConfig(
                             } else {
                                 (<any>secondTrendValueLabel).textSetter(
                                     //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
-                                    `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
+                                    `<b>${((<any>data).value > 0 ? '+' : '') +
+                                        +(<any>data).value.toFixed(4)}</b>`
                                 );
                             }
                             (<any>secondTrendValueLabel).attr({
-                                x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
+                                x:
+                                    event.target.chart.chartWidth -
+                                    (<any>secondTrendValueLabel).width +
+                                    6
                             });
                         }
                     );
@@ -154,13 +163,16 @@ function makeConfig(
                 pointStart: stationData.data_years.start,
                 events: {
                     hide: () => {
-                        if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)){
+                        if (
+                            !api.DQV.charts.dvChart1.highchart.series.some(
+                                (series: any) => series.visible
+                            )
+                        ) {
                             api.DQV.sections.dvSection1.data.isTable = false;
                         }
                     },
-                    show: () => {
-                        api.DQV.sections.dvSection1.data.isTable = true;
-                    }
+                    show: () =>
+                        (api.DQV.sections.dvSection1.data.isTable = true)
                 }
             }
         },
@@ -173,6 +185,7 @@ function makeConfig(
                 groupPadding: 0.1,
                 lineWidth: 2,
                 color: '#34495e',
+                cropThreshold: 1, // workaround for https://github.com/highcharts/highcharts/issues/7913
                 marker: { enabled: true }
             }
         ]
@@ -194,16 +207,17 @@ function makeConfig(
                 load: (event: any) => {
                     const ren = event.target.renderer;
 
-                    ren.label(
-                        'Click to see chart',
-                        event.target.chartWidth - 120,
-                        5
-                    )
-                    .css({
-                        display: 'none'
-                    })
-                    .addClass('click-hint')
-                    .add();
+                    ren
+                        .label(
+                            'Click to see chart',
+                            event.target.chartWidth - 120,
+                            5
+                        )
+                        .css({
+                            display: 'none'
+                        })
+                        .addClass('click-hint')
+                        .add();
                 }
             }
         },
@@ -271,17 +285,28 @@ function makeConfig(
     return mini ? miniConfig : config;
 }
 
-function makeLabels(event:any, stationData:any){
+function makeLabels(event: any, stationData: any) {
     const firstLabelY = 145;
-    const stationTrendValue = (stationData.trend.value ? stationData.trend.value : 'N/A');
+    const stationTrendValue = stationData.trend.value
+        ? stationData.trend.value
+        : 'N/A';
     const ren = event.target.renderer;
 
-    const firstTrend = (stationTrendValue == 'N/A' ? 'Not Available' : 
-        (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4));
+    const firstTrend =
+        stationTrendValue == 'N/A'
+            ? 'Not Available'
+            : (stationTrendValue > 0 ? '+' : '') +
+              +stationTrendValue.toFixed(4);
 
-    ren.path(
-        ['M', event.target.plotWidth + event.target.plotLeft + 35, 0, 'L', event.target.plotWidth + event.target.plotLeft + 35, event.target.plotTop + event.target.plotHeight + 100]
-    )
+    ren
+        .path([
+            'M',
+            event.target.plotWidth + event.target.plotLeft + 35,
+            0,
+            'L',
+            event.target.plotWidth + event.target.plotLeft + 35,
+            event.target.plotTop + event.target.plotHeight + 100
+        ])
         .attr({
             'stroke-width': 0.5,
             stroke: '#AAAAAA',
@@ -289,9 +314,12 @@ function makeLabels(event:any, stationData:any){
         })
         .add();
 
-    ren.label('<b>Trends</b>',
-        event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY)
+    ren
+        .label(
+            '<b>Trends</b>',
+            event.target.plotWidth + event.target.plotLeft + 55,
+            firstLabelY
+        )
         .css({
             'font-size': '16px',
             color: 'black' //'#ecf0f1'
@@ -303,13 +331,14 @@ function makeLabels(event:any, stationData:any){
         })
         .add();
 
-
     // draw the first trend value
     ren
         .label(
-        `Overall (${stationData.data_years.start}-${stationData.data_years.end}):`,
-        event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + 25
+            `Overall (${stationData.data_years.start}-${
+                stationData.data_years.end
+            }):`,
+            event.target.plotWidth + event.target.plotLeft + 55,
+            firstLabelY + 25
         )
         .css({
             color: 'black' //'#ecf0f1'
@@ -320,28 +349,25 @@ function makeLabels(event:any, stationData:any){
             zIndex: 6
         })
         .add();
-    let current = ren.label(
-        `<b>${firstTrend}</b>`,
-        null,
-        firstLabelY + 25
-    )
-    .css({
-        color: 'black' //'#ecf0f1'
-    })
-    .attr({
-        //fill: '#222222',
-        padding: 7,
-        zIndex: 6
-    })
-    .add();
+    let current = ren
+        .label(`<b>${firstTrend}</b>`, null, firstLabelY + 25)
+        .css({
+            color: 'black' //'#ecf0f1'
+        })
+        .attr({
+            //fill: '#222222',
+            padding: 7,
+            zIndex: 6
+        })
+        .add();
     (<any>current).attr({
         x: event.target.chartWidth - (<any>current).width + 6
     });
     let trendRangeLabel = ren
         .label(
-        ``,
-        event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + 45
+            ``,
+            event.target.plotWidth + event.target.plotLeft + 55,
+            firstLabelY + 45
         )
         .css({
             color: 'black' //'#ecf0f1'
@@ -354,9 +380,11 @@ function makeLabels(event:any, stationData:any){
         .add();
     // draw the second trend value
     let secondTrendValueLabel = ren
-        .label(``,
-        event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + 45)
+        .label(
+            ``,
+            event.target.plotWidth + event.target.plotLeft + 55,
+            firstLabelY + 45
+        )
         .css({
             color: 'black' //'#ecf0f1'
         })
@@ -369,9 +397,9 @@ function makeLabels(event:any, stationData:any){
 
     ren
         .label(
-        `<b>Key Information</b>`,
-        event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + 110
+            `<b>Key Information</b>`,
+            event.target.plotWidth + event.target.plotLeft + 55,
+            firstLabelY + 110
         )
         .css({
             'font-size': '16px',
@@ -382,13 +410,14 @@ function makeLabels(event:any, stationData:any){
             padding: 7,
             zIndex: 6
         })
-        .add()
+        .add();
 
     ren
         .label(
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
-        event.target.plotWidth + event.target.plotLeft + 55,
-        firstLabelY + 135)
+            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
+            event.target.plotWidth + event.target.plotLeft + 55,
+            firstLabelY + 135
+        )
         .css({
             'pointer-events': 'none',
             width: 200,
