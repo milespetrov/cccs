@@ -112,6 +112,32 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setMapPin: (value?: CenterPoint) => void;
     @Action setCurrentView: (value: string) => void;
 
+
+    // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+    counter = 0;
+
+    @Watch('currentVariable')
+    onVarChanged(newValue: string, oldValue: string) {
+        this._mapInstance.layers.removeLayer(
+            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            `${this.currentDataset}_${oldValue}_${this.counter}`
+        );
+        this.addCurrentVarLayer();
+    }
+
+    addCurrentVarLayer() {
+        this.counter += 1;
+        $.getJSON(
+            `./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`,
+            data => {
+                let snippet = data[this.currentVariable];
+                // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+                snippet.id = `${this.currentDataset}_${this.currentVariable}_${this.counter}`;
+                this._mapInstance.layers.addLayer(snippet);
+            }
+        );
+    }
+
     @Watch('mapPin')
     onMapPinChanged(newValue: CenterPoint): void {
         // HACK
@@ -124,7 +150,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('centerPoint')
     onCenterPointChanged(): void {
-        if (!this.mapInstance) {
+        if (!this._mapInstance) {
             return;
         }
 
@@ -137,17 +163,17 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.centerPoint.x,
             this.centerPoint.y
         );
-        this.mapInstance.setCenter(XYcenter);
+        this._mapInstance.setCenter(XYcenter);
     }
 
     @Watch('zoomLevel')
     onZoomLevelChanged(): void {
-        this.mapInstance.zoom = this.zoomLevel;
+        this._mapInstance.zoom = this.zoomLevel;
     }
 
     localCenterPointUpdate: boolean = false;
 
-    mapInstance: any = null;
+    _mapInstance: any = null;
 
     deactivate: Subject<boolean> = new Subject<boolean>();
 
@@ -192,9 +218,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         const clone = (<HTMLElement>event.target).cloneNode() as HTMLElement;
         fg.appendChild(clone);
 
-        this.fhDownS = this.mapInstance.mouseDown.subscribe(
+        this.fhDownS = this._mapInstance.mouseDown.subscribe(
             (eventDown: MouseEvent) =>
-                (this.fhMoveS = this.mapInstance.mouseMove.subscribe(
+                (this.fhMoveS = this._mapInstance.mouseMove.subscribe(
                     (eventMove: MouseEvent) => {
                         if (
                             eventDown.screenX !== eventMove.screenX ||
@@ -253,39 +279,38 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         new RZ.Map(
             this.anchor,
-            `./assets/configs/config-${
-                this.currentDataset
-            }-${this.currentVariable.replace(/_/g, '-')}.en-CA.json`
+            `./assets/configs/${this.currentDataset}.en-CA.json`
         );
 
         let tooltip;
         RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
-            this.mapInstance = RZ.mapInstances[RZ.mapInstances.length - 1];
+            this._mapInstance = mapi;
+            this.addCurrentVarLayer();
 
             // turn off default identify behaviour
-            this.mapInstance.identify = false;
+            this._mapInstance.identify = false;
 
             // subscribe to tooltips events
-            this.mapInstance.ui.tooltip.mouseOver
+            this._mapInstance.ui.tooltip.mouseOver
                 .takeUntil(this.deactivate)
                 .subscribe(this.tooltipMouseOverHandler);
 
-            this.mapInstance.ui.tooltip.mouseOut
+            this._mapInstance.ui.tooltip.mouseOut
                 .takeUntil(this.deactivate)
                 .subscribe(this.tooltipMouseOutHandler);
 
             // subscribe to the center change stream to update the url and store with the current center point
-            this.mapInstance.centerChanged.subscribe(
+            this._mapInstance.centerChanged.subscribe(
                 this.mapInstanceCenterChangedHandler
             );
 
-            this.mapInstance.ui.anchors.CONTEXT_MAP.after(`
+            this._mapInstance.ui.anchors.CONTEXT_MAP.after(`
                 <div id="cip-mini-chart-mount"></div>
             `);
 
             // subscribe to map click events to track clicks on features
             // TODO: this will change when API allows listening on individual layers
-            this.mapInstance.click
+            this._mapInstance.click
                 .takeUntil(this.deactivate)
                 .subscribe(this.mapInstanceClickHandler);
 
@@ -299,13 +324,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // if the current station is already set, open the mini chart
             if (this.currentStation) {
-                this.displayMiniChart(this.currentStation);
+                //this.displayMiniChart(this.currentStation);
             }
 
             if (this.centerPoint) {
-                this.mapInstance.setCenter(this.centerPoint);
+                this._mapInstance.setCenter(this.centerPoint);
             } else {
-                const center = this.mapInstance.center;
+                const center = this._mapInstance.center;
 
                 const XYcenter = new api.RZ.GEO.XY(center.x, center.y);
 
@@ -321,7 +346,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // TODO: remove HACKS
         // centerChange seems to fire
         if (this.mapCenter.x !== event.x || this.mapCenter.y !== event.y) {
-            this.mapCenter = event;
+            //this.mapCenter = event;
         } else {
             return;
         }
@@ -433,7 +458,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             }"></dv-chart></dv-section>`
         });
 
-        /* this.mapInstance.ui.anchors.CONTEXT_MAP.html(`
+        /* this._mapInstance.ui.anchors.CONTEXT_MAP.html(`
             <div class="mApiOverViewMap">
                 <div id="cip-mini-chart-mount"></div>
             </div>
@@ -449,14 +474,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         // seems that you need to subscribe every time after setting the guts of the context map node
         // TODO: fix; since we not using the mini map container, the subsscription won't work
-        /* this.mapInstance.ui.anchors.CONTEXT_MAP.on(
+        /* this._mapInstance.ui.anchors.CONTEXT_MAP.on(
             'click',
             this.changeViewToChart
         ); */
     }
 
     scrollGuardHandler(event: WheelEvent): void {
-        if (!this.mapInstance) {
+        if (!this._mapInstance) {
             return;
         }
 
@@ -469,7 +494,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // I couldn't find why this is happening, or how to stop it properly
             // using this esri function seems to be the simplest solution
             // TODO: use a proper API endpoint when it's created
-            this.mapInstance._fgpMap._map.disableScrollWheelZoom();
+            this._mapInstance._fgpMap._map.disableScrollWheelZoom();
 
             scrollGuardClassList.remove('cip-scrolling');
             scrollGuardClassList.add('cip-active');
@@ -484,7 +509,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             scrollGuardClassList.remove('cip-active');
             scrollGuardClassList.add('cip-scrolling');
 
-            this.mapInstance._fgpMap._map.enableScrollWheelZoom();
+            this._mapInstance._fgpMap._map.enableScrollWheelZoom();
         }
     }
 
