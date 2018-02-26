@@ -122,15 +122,7 @@
       }
     ],
     "legend": {
-      "type": "structured",
-      "root": {
-        "name": "root",
-        "children": [
-          {
-            "layerId": "ahccd_mean"
-          }
-        ]
-      }
+      "type": "autopopulate"
     },
     "tileSchemas": [
       {
@@ -140,16 +132,7 @@
         "lodSetId": "LOD_NRCAN_Lambert_3978"
       }
     ],
-    "layers": [
-      {
-        "id": "ahccd_mean",
-        "name": "Mean Temperature",
-        "nameField": "station_name_nom",
-        "layerType": "esriFeature",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
-        "controls": ["data"]
-      }
-    ],
+    "layers": [],
     "baseMaps": [
       {
         "id": "baseNrCan",

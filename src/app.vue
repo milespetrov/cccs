@@ -144,11 +144,11 @@ export default class App extends mixins(UpdateRouteMixin) {
     viewName: string = '';
     reloadKey: string = '';
 
-    @State('variableId') currentVariable: string;
+    @State('datasetId') currentDataset: string;
 
-    @Watch('currentVariable')
+    @Watch('currentDataset')
     async onVariableChange() {
-        this.reloadKey = this.currentVariable;
+        this.reloadKey = this.currentDataset;
     }
 
     @State centerPoint: CenterPoint;
