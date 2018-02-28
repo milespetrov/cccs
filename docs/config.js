@@ -16,6 +16,10 @@ docute.init({
             {
                 title: 'Developers Guide',
                 path: '/dev_guide'
+            },
+            {
+                title: 'Solution Details',
+                path: '/solution_details'
             }
         ]
     },
