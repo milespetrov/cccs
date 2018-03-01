@@ -1,7 +1,3 @@
----
-search: english
----
-
 # CCPED UI Behaviour Specifications
 
 ## Change Log
