@@ -1,0 +1,44 @@
+{
+    "layers": [
+        {
+            "name": "Sea Ice Fraction - Annual - RCP 85 - 2021 to 2040",
+            "id": "SeaIceFraction_2021_20yr_ANN_rcp85",
+            "layerType": "esriTile",
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceFraction/SeaIceFraction_2021_20yr_ANN_rcp85/MapServer",
+            "state": {
+                "opacity": 0.8,
+                "visibility": false
+            }
+        },
+        {
+            "name": "Sea Ice Fraction - Annual - RCP 85 - 2041 to 2060",
+            "id": "SeaIceFraction_2041_20yr_ANN_rcp85",
+            "layerType": "esriTile",
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceFraction/SeaIceFraction_2041_20yr_ANN_rcp85/MapServer",
+            "state": {
+                "opacity": 0.8,
+                "visibility": false
+            }
+        },
+        {
+            "name": "Sea Ice Fraction - Annual - RCP 85 - 2061 to 2080",
+            "id": "SeaIceFraction_2061_20yr_ANN_rcp85",
+            "layerType": "esriTile",
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceFraction/SeaIceFraction_2061_20yr_ANN_rcp85/MapServer",
+            "state": {
+                "opacity": 0.8,
+                "visibility": false
+            }
+        },
+        {
+            "name": "Sea Ice Fraction - Annual - RCP 85 - 2081 to 2100",
+            "id": "SeaIceFraction_2081_20yr_ANN_rcp85",
+            "layerType": "esriTile",
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceFraction/SeaIceFraction_2081_20yr_ANN_rcp85/MapServer",
+            "state": {
+                "opacity": 0.8,
+                "visibility": false
+            }
+        }
+    ]
+}
