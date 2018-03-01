@@ -1,14 +1,12 @@
-# Solution Details
+# Routing
 
-## Routing
-
-### URL
+## URL
 
 ```
 /climate-data/:view?query
 ```
 
-#### View
+### View
 
 Examples: `/map/?query`, `/chart/?query`
 
@@ -18,11 +16,11 @@ Examples: `/map/?query`, `/chart/?query`
 | chart     | Chart visualization    |
 | location  | Locations results page |
 
-#### Query Parameters
+### Query Parameters
 
 An example query string: `?t=Annual,v=tmax,d=ahccd,f=6014353`
 
-##### Time Period
+#### Time Period
 
 Specifies the time period to be used in the visualization.
 
@@ -40,7 +38,7 @@ Specifies the time period to be used in the visualization.
 
 For the purpose of shortening the bookmark, time periods can be mapped to numbers (1 to 17).
 
-##### Variable
+#### Variable
 
 Specifies the currently selected variable to be used in the visualization.
 
@@ -55,7 +53,7 @@ Specifies the currently selected variable to be used in the visualization.
 
 For the purpose of shortening the bookmark, variable ids can be mapped to numbers.
 
-##### Dataset
+#### Dataset
 
 Specifies the currently selected dataset providing data for the selected variable to be used in the visualization.
 
@@ -70,7 +68,7 @@ Specifies the currently selected dataset providing data for the selected variabl
 
 For the purpose of shortening the bookmark, dataset ids can be mapped to numbers.
 
-##### RCP Model
+#### RCP Model
 
 Specifies the currently RCP models to be used in the visualization. This is only on the bookmark if the dataset allows it; CMIP5, DCS, etc.
 
@@ -85,7 +83,7 @@ Specifies the currently RCP models to be used in the visualization. This is only
 
 For the purpose of shortening the bookmark, RCP model ids can be mapped to numbers.
 
-##### Feature
+#### Feature
 
 Specifies the currently selected map feature id to provide data for the `Chart` visualization.
 
@@ -98,7 +96,7 @@ Specifies the currently selected map feature id to provide data for the `Chart` 
 /climate-data/:view?f=6014353
 ```
 
-##### Center Point
+#### Center Point
 
 Specifies the `lat/long` center point of the `Map` visualization. This is used the center the Map visualization and the `Back to map` button in the `Chart` view.
 
@@ -111,7 +109,7 @@ Specifies the `lat/long` center point of the `Map` visualization. This is used t
 /climate-data/:view?cp=-95.4135979036534,57.24796047965218
 ```
 
-##### Feature Point
+#### Feature Point
 
 Specifies the `lat/long` center point of the currently selected map feature. This is used the center the `Location Preview` map in the `Chart` view.
 
@@ -124,7 +122,7 @@ Specifies the `lat/long` center point of the currently selected map feature. Thi
 /climate-data/:view?fp=-95.4135979036534,57.24796047965218
 ```
 
-##### Zoom Level
+#### Zoom Level
 
 Specifies the current zoom level of the `Map` visualization.
 
@@ -137,7 +135,7 @@ Specifies the current zoom level of the `Map` visualization.
 /climate-data/:view?z=5
 ```
 
-##### Chart Series
+#### Chart Series
 
 Specifies which chart series are toggled on in the `Chart` visualization.
 
@@ -150,7 +148,7 @@ Specifies which chart series are toggled on in the `Chart` visualization.
 /climate-data/:view?cs=0,3,6
 ```
 
-##### Chart Range
+#### Chart Range
 
 Specifies the user defined chart range of the `Chart` visualization.
 
@@ -163,7 +161,7 @@ Specifies the user defined chart range of the `Chart` visualization.
 /climate-data/:view?cr=1920,2015
 ```
 
-##### Base map
+#### Base map
 
 Specifies the current selected base map in the `Map` visualization.
 
@@ -178,40 +176,40 @@ Specifies the current selected base map in the `Map` visualization.
 
 For the purpose of shortening the bookmark, basemap ids can be mapped to numbers.
 
-### Working with routing
+## Working with routing
 
-#### General rules
+### General rules
 
 Everything above will be shown on the bookmark at all times; provided there is a value for it in the store. The **one** exception to this is `RCP Model`. To not confuse the user, `RCP Model` will only be shown when the current dataset has `RCP` values.
 
-##### What tools are used
+#### What tools are used
 
 View routing is handled by the `$router`, this takes a view and a query object and handles the building of the "fake" URL.
 
 Since `vuex` is used to store state within the site we only ever update the route with values from the store. That means at no point should anything be manually added to the route, only the store.
 
-#### Parsing
+### Parsing
 
 Reading the URL will be done by `app.vue`. The bookmark will be read, and each of the values that are present will be passed to the store using `updateStore(...)`. The rest of the application gets the information from the store.
 
-#### Defaults
+### Defaults
 
 Any defaults should be handled by the selectors. For query parameters that don't have a selector, a `null` value will remain until the related info has shown up. For instance, `Basemap` will be `null` until the map loads with a base map, which we will then pass to the router (and the store).
 
-#### Updating the route
+### Updating the route
 
 To update the route you call `updateRoute()`. This should be done exactly once per action (that modifies a query parameter or view). For instance if the variable is changed, and that ends up changing the dataset; both of those values are passed to the store then `updateRoute()` is called. This allows the user to undo one action with one press of the browsers back button and maintains consistent state.
 
 Example: Changing a variable. If the user changes their variable selection which in turn changes the dataset selected, **both** should be modified before `updateRoute()` is called.
 
-### Testing
+## Testing
 
-#### Goals
+### Goals
 
 * Ensure all values present in the route get added to the store
 * Ensure no unexpected defaults are applied
 
-#### Tools
+### Tools
 
 `vue-test-utils` :
 

@@ -10,18 +10,52 @@ docute.init({
                 path: '/home'
             },
             {
-                title: 'UI Specs',
-                path: '/ui_specs'
-            },
-            {
-                title: 'Developers Guide',
-                path: '/dev_guide'
-            },
-            {
-                title: 'Solution Details',
-                path: '/solution_details'
+                title: 'Software Design',
+                type: 'dropdown',
+                items: [
+                    { type: 'label', title: 'UI Design' },
+                    {
+                        title: 'UI Specs',
+                        path: '/design/ui_specs',
+                        matchPath: /\/ui_specs/
+                    },
+                    {
+                        title: 'Mockups',
+                        path: '/design/mockups',
+                        matchPath: /\/mockups/
+                    },
+                    { type: 'sep' },
+                    { type: 'label', title: 'Developers Guide' },
+                    {
+                        title: 'Coding Standards',
+                        path: '/guide/coding_standards',
+                        matchPath: /\/coding_standards/
+                    },
+                    {
+                        title: 'Code Organization',
+                        path: '/guide/code_organization',
+                        matchPath: /\/code_organization/
+                    },
+                    {
+                        title: 'Tools, builds, and brances',
+                        path: '/guide/tools_builds_branches',
+                        matchPath: /\/tools_builds_branches/
+                    },
+                    { type: 'sep' },
+                    { type: 'label', title: 'Solution Details' },
+                    {
+                        title: 'Routing and Bookmark',
+                        path: '/solution/routing_bookmark',
+                        matchPath: /\/routing_bookmark/
+                    },
+                    {
+                        title: 'Localization Strategy',
+                        path: '/solution/localization_strategy',
+                        matchPath: /\/localization_strategy/
+                    }
+                ]
             }
         ]
     },
-    plugins: [evanyou()]
+    plugins: [evanyou(), docuteIframe()]
 });
