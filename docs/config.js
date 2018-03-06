@@ -13,6 +13,23 @@ docute.init({
                 title: 'Software Design',
                 type: 'dropdown',
                 items: [
+                    { type: 'label', title: 'System Design' },
+                    {
+                        title: 'System Organization',
+                        path: '/system/organization',
+                        matchPath: /\/organization/
+                    },
+                    {
+                        title: 'Technology Overview',
+                        path: '/system/technology',
+                        matchPath: /\/technology/
+                    },
+                    {
+                        title: 'Design Strategies',
+                        path: '/system/strategies',
+                        matchPath: /\/strategies/
+                    },
+                    { type: 'sep' },
                     { type: 'label', title: 'UI Design' },
                     {
                         title: 'UI Specs',
