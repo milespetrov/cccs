@@ -128,10 +128,8 @@ const actions = {
     },
 
     setChartRange(context: AppContext, value: { min: number; max: number }) {
-        console.log(value);
         const newVal = new Range(value.min, value.max);
         context.commit('SET_CHART_RANGE', newVal);
-        console.log((<any>state.chartRange).min + '...');
     },
 
     clearChart(context: AppContext): void {

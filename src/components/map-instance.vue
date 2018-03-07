@@ -109,7 +109,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Action setFeatureId: (value: string) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
-    @Action setMapPin: (value?: MapPoint) => void;
+    @Action setMapPin: (value: MapPoint | null) => void;
     @Action setCurrentView: (value: string) => void;
     @Action setFeaturePoint: (value: { x: number; y: number }) => void;
 
@@ -223,7 +223,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     clearFakeHighlight(): void {
-        this.setMapPin();
+        this.setMapPin(null);
 
         if (this.fhDownS) {
             this.fhDownS.unsubscribe();
