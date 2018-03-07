@@ -132,12 +132,12 @@ import { UpdateRouteMixin } from './globals/mixin';
 })
 export default class App extends mixins(UpdateRouteMixin) {
     @Action setCurrentView: (value: string) => void;
-    @Action setTimePeriodId: (value: string | undefined) => void;
-    @Action setVariableId: (value: string | undefined) => void;
-    @Action setDatasetId: (value: string | undefined) => void;
-    @Action setFeatureId: (value: string | undefined) => void;
-    @Action setCenterPoint: (value: string | undefined) => void;
-    @Action setZoomLevel: (value: string | undefined) => void;
+    @Action setTimePeriodId: (value: string | null) => void;
+    @Action setVariableId: (value: string | null) => void;
+    @Action setDatasetId: (value: string | null) => void;
+    @Action setFeatureId: (value: string | null) => void;
+    @Action setCenterPoint: (value: string | null) => void;
+    @Action setZoomLevel: (value: string | null) => void;
 
     @State currentView: string;
 

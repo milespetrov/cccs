@@ -1,21 +1,21 @@
 export interface AppState {
-    currentView: string | undefined;
-    timePeriodId: string | undefined;
-    variableId: string | undefined;
-    datasetId: string | undefined;
-    featureId: string | undefined;
-    featurePoint: MapPoint | undefined;
-    rcpId: string | undefined;
-    centerPoint: MapPoint | undefined;
-    zoomLevel: string | undefined;
-    chartRange: Range | undefined;
-    chartSeries: string | undefined;
+    currentView: string | null;
+    timePeriodId: string | null;
+    variableId: string | null;
+    datasetId: string | null;
+    featureId: string | null;
+    featurePoint: MapPoint | null;
+    rcpId: string | null;
+    centerPoint: MapPoint | null;
+    zoomLevel: string | null;
+    chartRange: Range | null;
+    chartSeries: string | null;
 
-    mapPin: MapPoint | undefined;
+    mapPin: MapPoint | null;
 }
 
 export class MapPoint {
-    constructor(public x: number, public y: number) { }
+    constructor(public x: number, public y: number) {}
 
     get safeString(): string {
         return `${this.x.toString()},${this.y.toString()}`;
@@ -23,7 +23,7 @@ export class MapPoint {
 }
 
 export class Range {
-    constructor(public min: number, public max: number) { }
+    constructor(public min: number, public max: number) {}
 
     get safeString(): string {
         return `${this.min.toString()},${this.max.toString()}`;

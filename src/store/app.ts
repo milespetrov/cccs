@@ -7,40 +7,40 @@ import controls from './../globals/controls';
 type AppContext = ActionContext<AppState, AppState>;
 
 const state: AppState = {
-    currentView: undefined,
-    timePeriodId: undefined,
-    variableId: undefined,
-    datasetId: undefined,
-    featureId: undefined,
-    featurePoint: undefined,
-    rcpId: undefined,
-    centerPoint: undefined,
-    zoomLevel: undefined,
-    chartRange: undefined,
-    chartSeries: undefined,
+    currentView: null,
+    timePeriodId: null,
+    variableId: null,
+    datasetId: null,
+    featureId: null,
+    featurePoint: null,
+    rcpId: null,
+    centerPoint: null,
+    zoomLevel: null,
+    chartRange: null,
+    chartSeries: null,
 
-    mapPin: undefined
+    mapPin: null
 };
 
 // getters
 const getters = {
     // TODO: type the query object
     getQuery: (state: AppState): object => {
-        const queryObject: { [name: string]: string | undefined } = {
+        const queryObject: { [name: string]: string | null } = {
             t: state.timePeriodId,
             v: state.variableId,
             d: state.datasetId,
             f: state.featureId,
-            fp: state.featurePoint ? state.featurePoint.safeString : undefined,
-            r: state.datasetId !== 'ahccd' ? state.rcpId : undefined,
-            cp: state.centerPoint ? state.centerPoint.safeString : undefined,
+            fp: state.featurePoint ? state.featurePoint.safeString : null,
+            r: state.datasetId !== 'ahccd' ? state.rcpId : null,
+            cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
             cs: state.chartSeries,
-            cr: state.chartRange ? state.chartRange.safeString : undefined
+            cr: state.chartRange ? state.chartRange.safeString : null
         };
 
-        // remove undefined values from the query object
-        Object.keys(queryObject).forEach(key => queryObject[key] == undefined && delete queryObject[key]);
+        // remove null values from the query object
+        Object.keys(queryObject).forEach(key => queryObject[key] === null && delete queryObject[key]);
 
         return queryObject;
     },
@@ -58,27 +58,27 @@ const actions = {
         context.commit('SET_CURRENT_VIEW', value);
     },
 
-    setTimePeriodId(context: AppContext, value: string | undefined) {
+    setTimePeriodId(context: AppContext, value: string | null) {
         context.commit('SET_TIME_PERIOD_ID', value);
     },
 
-    setVariableId(context: AppContext, value: string | undefined) {
+    setVariableId(context: AppContext, value: string | null) {
         context.commit('SET_VARIABLE_ID', value);
     },
 
-    setDatasetId(context: AppContext, value: string | undefined) {
+    setDatasetId(context: AppContext, value: string | null) {
         context.commit('SET_DATASET_ID', value);
     },
 
-    setFeatureId(context: AppContext, value: string | undefined) {
+    setFeatureId(context: AppContext, value: string | null) {
         context.commit('SET_FEATURE_ID', value);
     },
 
-    setFeaturePoint(context: AppContext, value: { x: number; y: number } | string | undefined): void {
+    setFeaturePoint(context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
-        if (value === undefined || typeof value === 'undefined') {
-            point = undefined;
+        if (value === null) {
+            point = null;
         } else if (typeof value !== 'string') {
             point = new MapPoint(value.x, value.y);
         } else {
@@ -89,15 +89,15 @@ const actions = {
         context.commit('SET_FEATURE_POINT', point);
     },
 
-    setRcpId(context: AppContext, value: string | undefined) {
+    setRcpId(context: AppContext, value: string | null) {
         context.commit('SET_RCP_ID', value);
     },
 
-    setCenterPoint(context: AppContext, value: { x: number; y: number } | string | undefined): void {
+    setCenterPoint(context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
-        if (value === undefined || typeof value === 'undefined') {
-            point = undefined;
+        if (value === null) {
+            point = null;
         } else if (typeof value !== 'string') {
             point = new MapPoint(value.x, value.y);
         } else {
@@ -108,15 +108,15 @@ const actions = {
         context.commit('SET_CENTER_POINT', point);
     },
 
-    setZoomLevel(context: AppContext, value: string | undefined) {
+    setZoomLevel(context: AppContext, value: string | null) {
         context.commit('SET_ZOOM_LEVEL', value);
     },
 
-    setMapPin(context: AppContext, value: { x: number; y: number } | string | undefined): void {
+    setMapPin(context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
-        if (value === undefined || typeof value === 'undefined') {
-            point = undefined;
+        if (value === null) {
+            point = null;
         } else if (typeof value !== 'string') {
             point = new MapPoint(value.x, value.y);
         } else {
@@ -135,13 +135,13 @@ const actions = {
     },
 
     clearChart(context: AppContext): void {
-        context.commit('SET_CHART_RANGE', undefined);
-        context.commit('SET_CHART_SERIES', undefined);
+        context.commit('SET_CHART_RANGE', null);
+        context.commit('SET_CHART_SERIES', null);
     },
 
     clearFeature(context: AppContext): void {
-        context.commit('SET_FEATURE_ID', undefined);
-        context.commit('SET_FEATURE_POINT', undefined);
+        context.commit('SET_FEATURE_ID', null);
+        context.commit('SET_FEATURE_POINT', null);
     }
 };
 
@@ -167,7 +167,7 @@ const mutations = {
         state.featureId = value;
     },
 
-    SET_FEATURE_POINT(state: AppState, value: MapPoint | undefined): void {
+    SET_FEATURE_POINT(state: AppState, value: MapPoint | null): void {
         state.featurePoint = value;
     },
 
@@ -175,11 +175,11 @@ const mutations = {
         state.rcpId = value;
     },
 
-    SET_CENTER_POINT(state: AppState, value: MapPoint | undefined): void {
+    SET_CENTER_POINT(state: AppState, value: MapPoint | null): void {
         state.centerPoint = value;
     },
 
-    SET_ZOOM_LEVEL(state: AppState, value: string | undefined): void {
+    SET_ZOOM_LEVEL(state: AppState, value: string | null): void {
         state.zoomLevel = value;
     },
 
@@ -187,11 +187,11 @@ const mutations = {
         state.mapPin = value;
     },
 
-    SET_CHART_RANGE(state: AppState, value: Range | undefined): void {
+    SET_CHART_RANGE(state: AppState, value: Range | null): void {
         state.chartRange = value;
     },
 
-    SET_CHART_SERIES(state: AppState, value: string | undefined): void {
+    SET_CHART_SERIES(state: AppState, value: string | null): void {
         state.chartSeries = value;
     }
 };

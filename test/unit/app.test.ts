@@ -38,7 +38,7 @@ describe('app.vue', () => {
         // reset route
         $router = {
             currentRoute: {
-                name: '',
+                name: null,
                 query: {}
             },
 
@@ -110,7 +110,7 @@ describe('app.vue - routing', () => {
         // reset route each time
         $router = {
             currentRoute: {
-                name: undefined,
+                name: null,
                 query: {}
             },
 
