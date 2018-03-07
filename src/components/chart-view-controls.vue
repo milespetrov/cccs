@@ -88,16 +88,11 @@ export default class ChartViewControls extends Vue {
         const chart = (<any>window).DQV.charts.dvChart1.highchart;
 
         // cache current extremes
-        let extremes = chart.xAxis[0].getExtremes();
+        const extremes = chart.xAxis[0].getExtremes();
 
         // if need full range, adjust quickly reset chart to the full range
         if (fullRange) {
-            chart.xAxis[0].setExtremes(
-                extremes.dataMin,
-                extremes.dataMax,
-                true,
-                false
-            );
+            chart.xAxis[0].setExtremes(extremes.dataMin, extremes.dataMax, true, false);
         }
 
         const downloadMap: { [name: string]: () => void } = {

@@ -35,8 +35,6 @@ import { mixins } from 'vue-class-component';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
-
-import { CenterPoint } from '../store/index';
 import { UpdateRouteMixin } from '../globals/mixin';
 
 Vue.filter('truncate', (str: string) => {
@@ -108,7 +106,7 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
             }
         }
     }; */
-    gSearch: any = new (<any>window).GeoSearch(null);
+    gSearch: any = new (<any>window).GeoSearch(undefined);
 
     mounted(): void {
         this.queryStream.debounceTime(200).subscribe(this.getResults);
