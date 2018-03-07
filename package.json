@@ -10,6 +10,7 @@
         "@types/sprintf-js": "^1.1.0",
         "bootstrap": "^4.0.0-beta.2",
         "bootstrap-vue": "^1.4.1",
+        "http-server": "^0.11.1",
         "karma-typescript": "^3.0.9",
         "node-sass": "^4.7.2",
         "poi": "^9.6.12",
@@ -19,6 +20,7 @@
         "rxjs": "^5.5.6",
         "sass-loader": "^6.0.6",
         "sprintf-js": "^1.1.1",
+        "tslint": "^5.9.1",
         "typescript": "^2.7.1",
         "vue-class-component": "^6.2.0",
         "vue-i18n": "^7.4.2",
@@ -36,8 +38,5 @@
         "docs": "http-server ./docs -p 3002"
     },
     "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "http-server": "^0.11.1"
-    }
+    "license": "ISC"
 }
