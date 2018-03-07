@@ -2,7 +2,6 @@ import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
 import { Getter, Action, State } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
 
-
 /**
  * to use:
  * 'extends mixins(UpdateRouteMixin)'
@@ -17,6 +16,13 @@ export class UpdateRouteMixin extends Vue {
     // Updates the router using the in-store view and query variables
     updateRoute(): void {
         this.$router.push({
+            name: this.currentView,
+            query: this.getQuery
+        });
+    }
+
+    replaceRoute(): void {
+        this.$router.replace({
             name: this.currentView,
             query: this.getQuery
         });

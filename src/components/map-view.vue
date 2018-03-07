@@ -126,7 +126,7 @@ export default class MapView extends Vue {
 
         this.config = {
             data: tableData,
-            columns: columns
+            columns
         };
     }
 }

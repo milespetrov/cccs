@@ -1,14 +1,13 @@
-
-interface string_to_num {
-    [key: string]: number
+interface StringToNum {
+    [key: string]: number;
 }
 
-interface string_to_string {
-    [key: string]: string
+interface StringToString {
+    [key: string]: string;
 }
 
 // For displaying on the chart, tooltips, etc.
-const periodToNames: string_to_string = {
+const periodToNames: StringToString = {
     Jan_Janv: 'January',
     Feb_Fev: 'February',
     Mar_March: 'March',
@@ -29,7 +28,7 @@ const periodToNames: string_to_string = {
 };
 
 // For mapping to the data API
-const periodToNum: string_to_num = {
+const periodToNum: StringToNum = {
     Jan_Janv: 1,
     Feb_Fev: 2,
     Mar_March: 3,
@@ -52,4 +51,4 @@ const periodToNum: string_to_num = {
 export default {
     periodToNames,
     periodToNum
-}
+};

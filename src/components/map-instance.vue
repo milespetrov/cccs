@@ -25,10 +25,10 @@ import { Subject } from 'rxjs/Subject';
 
 import api from './../api/main';
 import ahccdTemp from '../configs/chart/ahccd-temp';
-import { CenterPoint } from './../store/';
+import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
 
-interface tooltips {
+interface Tooltips {
     'en-CA': {
         [key: string]: {
             [key: string]: {
@@ -44,27 +44,27 @@ interface tooltips {
 
 @Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
-    tooltipTemplates: tooltips = {
+    tooltipTemplates: Tooltips = {
         'en-CA': {
             ahccd: {
                 tmean: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmin: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmax: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 precip: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 }
             }
@@ -73,22 +73,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             ahccd: {
                 tmean: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmin: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 tmax: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 },
                 precip: {
                     template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(start_year)s-%(end_year)s): %(value)s</span></div>",
+                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
                     value_key: 'Annual_Annuel'
                 }
             }
@@ -102,16 +102,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State('variableId') currentVariable: string;
     @State('datasetId') currentDataset: string;
     @State('timePeriodId') currentTimePeriod: string;
-    @State('stationId') currentStation: string;
-    @State centerPoint: CenterPoint;
+    @State('featureId') currentFeature: string;
+    @State centerPoint: MapPoint;
     @State zoomLevel: number;
-    @State mapPin: CenterPoint;
+    @State mapPin: MapPoint;
 
-    @Action setStationId: (value: string) => void;
+    @Action setFeatureId: (value: string) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
-    @Action setMapPin: (value?: CenterPoint) => void;
+    @Action setMapPin: (value: MapPoint | null) => void;
     @Action setCurrentView: (value: string) => void;
-
+    @Action setFeaturePoint: (value: { x: number; y: number }) => void;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -127,19 +127,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     addCurrentVarLayer() {
         this.counter += 1;
-        $.getJSON(
-            `./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`,
-            data => {
-                let snippet = data[this.currentVariable];
-                // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-                snippet.id = `${this.currentDataset}_${this.currentVariable}_${this.counter}`;
-                this._mapInstance.layers.addLayer(snippet);
-            }
-        );
+        $.getJSON(`./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`, data => {
+            const snippet = data[this.currentVariable];
+            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            snippet.id = `${this.currentDataset}_${this.currentVariable}_${this.counter}`;
+            this._mapInstance.layers.addLayer(snippet);
+        });
     }
 
     @Watch('mapPin')
-    onMapPinChanged(newValue: CenterPoint): void {
+    onMapPinChanged(newValue: MapPoint): void {
         // HACK
         if (!newValue) {
             return;
@@ -159,11 +156,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        const XYcenter = new api.RZ.GEO.XY(
-            this.centerPoint.x,
-            this.centerPoint.y
-        );
-        this._mapInstance.setCenter(XYcenter);
+        const xyCenter = new api.RZ.GEO.XY(this.centerPoint.x, this.centerPoint.y);
+        this._mapInstance.setCenter(xyCenter);
     }
 
     @Watch('zoomLevel')
@@ -173,7 +167,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     localCenterPointUpdate: boolean = false;
 
-    _mapInstance: any = null;
+    _mapInstance: any;
 
     deactivate: Subject<boolean> = new Subject<boolean>();
 
@@ -220,21 +214,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         this.fhDownS = this._mapInstance.mouseDown.subscribe(
             (eventDown: MouseEvent) =>
-                (this.fhMoveS = this._mapInstance.mouseMove.subscribe(
-                    (eventMove: MouseEvent) => {
-                        if (
-                            eventDown.screenX !== eventMove.screenX ||
-                            eventDown.screenY !== eventMove.screenY
-                        ) {
-                            this.clearFakeHighlight();
-                        }
+                (this.fhMoveS = this._mapInstance.mouseMove.subscribe((eventMove: MouseEvent) => {
+                    if (eventDown.screenX !== eventMove.screenX || eventDown.screenY !== eventMove.screenY) {
+                        this.clearFakeHighlight();
                     }
-                ))
+                }))
         );
     }
 
     clearFakeHighlight(): void {
-        this.setMapPin();
+        this.setMapPin(null);
 
         if (this.fhDownS) {
             this.fhDownS.unsubscribe();
@@ -256,7 +245,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     // #endregion HACKS
 
     mounted(): void {
-        let RZ = (<any>window).RZ;
+        const RZ = (<any>window).RZ;
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RZ) {
@@ -265,9 +254,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         if (this.currentVariable === null || this.currentDataset === null) {
-            console.log(
-                'cannot create the map - either variable or dataset is not set'
-            );
+            console.log('cannot create the map - either variable or dataset is not set');
             return;
         }
 
@@ -277,12 +264,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.$el.addEventListener('click', this.setFakeHighlight);
         // end TODO: remove HACKS
 
-        new RZ.Map(
-            this.anchor,
-            `./assets/configs/${this.currentDataset}.en-CA.json`
-        );
+        // tslint:disable-next-line:no-unused-expression
+        new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}.en-CA.json`);
 
-        let tooltip;
         RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
             this._mapInstance = mapi;
             this.addCurrentVarLayer();
@@ -290,19 +274,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // turn off default identify behaviour
             this._mapInstance.identify = false;
 
-            // subscribe to tooltips events
-            this._mapInstance.ui.tooltip.mouseOver
-                .takeUntil(this.deactivate)
-                .subscribe(this.tooltipMouseOverHandler);
+            // subscribe to Tooltips events
+            this._mapInstance.ui.tooltip.mouseOver.takeUntil(this.deactivate).subscribe(this.tooltipMouseOverHandler);
 
-            this._mapInstance.ui.tooltip.mouseOut
-                .takeUntil(this.deactivate)
-                .subscribe(this.tooltipMouseOutHandler);
+            this._mapInstance.ui.tooltip.mouseOut.takeUntil(this.deactivate).subscribe(this.tooltipMouseOutHandler);
 
             // subscribe to the center change stream to update the url and store with the current center point
-            this._mapInstance.centerChanged.subscribe(
-                this.mapInstanceCenterChangedHandler
-            );
+            this._mapInstance.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
 
             this._mapInstance.ui.anchors.CONTEXT_MAP.after(`
                 <div id="cip-mini-chart-mount"></div>
@@ -310,31 +288,20 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // subscribe to map click events to track clicks on features
             // TODO: this will change when API allows listening on individual layers
-            this._mapInstance.click
-                .takeUntil(this.deactivate)
-                .subscribe(this.mapInstanceClickHandler);
+            this._mapInstance.click.takeUntil(this.deactivate).subscribe(this.mapInstanceClickHandler);
 
-            document.querySelector('.rv-esri-map')!.addEventListener(
-                'wheel',
-                this.scrollGuardHandler,
-                {
-                    capture: true
-                }
-            );
-
-            // if the current station is already set, open the mini chart
-            if (this.currentStation) {
-                //this.displayMiniChart(this.currentStation);
-            }
+            document.querySelector('.rv-esri-map')!.addEventListener('wheel', this.scrollGuardHandler, {
+                capture: true
+            });
 
             if (this.centerPoint) {
                 this._mapInstance.setCenter(this.centerPoint);
             } else {
                 const center = this._mapInstance.center;
 
-                const XYcenter = new api.RZ.GEO.XY(center.x, center.y);
+                const xyCenter = new api.RZ.GEO.XY(center.x, center.y);
 
-                this.mapInstanceCenterChangedHandler(XYcenter);
+                this.mapInstanceCenterChangedHandler(xyCenter);
             }
         });
     }
@@ -373,17 +340,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 return;
             }
 
-            const currentTemplate = this.tooltipTemplates[this.lang][
-                this.dataSet
-            ][this.currentVariable!];
+            const currentTemplate = this.tooltipTemplates[this.lang][this.dataSet][this.currentVariable!];
 
             const name = a.station_name_nom;
-            let value = Intl.NumberFormat(this.lang).format(
-                a[currentTemplate.value_key]
-            );
+            let value = Intl.NumberFormat(this.lang).format(a[currentTemplate.value_key]);
 
-            const start_year = a.beg_yr_annee_deb;
-            const end_year = a.end_yr_annee_fin;
+            const startYear = a.beg_yr_annee_deb;
+            const endYear = a.end_yr_annee_fin;
 
             if (parseFloat(value) > 0) {
                 value = '+' + value;
@@ -393,8 +356,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 sprintf.sprintf(currentTemplate.template, <any>{
                     name,
                     value,
-                    start_year,
-                    end_year
+                    startYear,
+                    endYear
                 })
             );
         });
@@ -409,36 +372,25 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             .debounceTime(20)
             .takeUntil(this.deactivate)
             .subscribe((features: any) => {
-                const station_id = features.data.find(
-                    (attrib: any) =>
-                        attrib.key === 'stnid' || attrib.key === 'Station ID'
+                const stationId = features.data.find(
+                    (attrib: any) => attrib.key === 'stnid' || attrib.key === 'Station ID'
                 )!.value;
 
-                this.displayMiniChart(station_id);
+                this.setFeaturePoint(event.xy);
+                this.setFeatureId(stationId);
+                this.updateRoute();
+
+                this.displayMiniChart(stationId);
             });
     }
 
-    async displayMiniChart(station_id: string): Promise<void> {
+    async displayMiniChart(stationId: string): Promise<void> {
         console.log('display mini chart');
 
-        this.setStationId(station_id);
-        this.updateRoute();
-
         // TODO: abstract data retrieval to a single place
-        const data = await api.getData(
-            this.currentTimePeriod,
-            this.currentVariable,
-            this.currentDataset,
-            station_id
-        );
+        const data = await api.getData(this.currentTimePeriod, this.currentVariable, this.currentDataset, stationId);
 
-        const config = ahccdTemp(
-            data,
-            this.currentTimePeriod,
-            this.currentVariable,
-            <any>station_id,
-            true
-        );
+        const config = ahccdTemp(data, this.currentTimePeriod, this.currentVariable, <any>stationId, {}, true);
 
         console.log(config);
 
@@ -450,12 +402,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // create the mini-chart
+        // tslint:disable-next-line:no-unused-expression
         new api.DQV.Chart({ id: this.miniChartChartId, config });
         const dvsection = new api.DQV.Section({
             id: this.miniChartSectionId,
-            template: `<dv-section><dv-chart id="${
-                this.miniChartChartId
-            }"></dv-chart></dv-section>`
+            template: `<dv-section><dv-chart id="${this.miniChartChartId}"></dv-chart></dv-section>`
         });
 
         /* this._mapInstance.ui.anchors.CONTEXT_MAP.html(`
@@ -501,10 +452,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // proper use of timeout
             // remove scroll guard notification after two seconds
-            window.setTimeout(
-                () => scrollGuardClassList.remove('cip-active'),
-                2000
-            );
+            window.setTimeout(() => scrollGuardClassList.remove('cip-active'), 2000);
         } else {
             scrollGuardClassList.remove('cip-active');
             scrollGuardClassList.add('cip-scrolling');
@@ -582,17 +530,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             transition-duration: 0.3s;
         }
 
-        $rv-top-offset: $top-navigation-height + $page-header-height +
-            $view-controls-height;
+        $rv-top-offset: $top-navigation-height + $page-header-height + $view-controls-height;
 
         .cip-label {
             font-size: 1em * 1.5;
             color: white;
             position: relative;
             margin: 0;
-            top: calc(
-                 (100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}
-            ) !important;
+            top: calc((100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}) !important;
             transform: translateY(-50%);
         }
     }

@@ -5,17 +5,12 @@ interface EnhancedWindow extends Window {
     RZ: any;
 }
 
-interface period_mappings {
+interface PeriodMappings {
     [key: string]: number;
 }
 
-function getData(
-    timePeriod: string,
-    variable: string,
-    dataset: string,
-    stnid: string
-): Promise<any[]> {
-    const period_mappings: period_mappings = {
+function getData(timePeriod: string, variable: string, dataset: string, stnid: string): Promise<any[]> {
+    const periodMappings: PeriodMappings = {
         Jan_Janv: 1,
         Feb_Fev: 2,
         Mar_March: 3,
@@ -37,9 +32,7 @@ function getData(
 
     const promise = new Promise<any[]>((resolve, reject) => {
         $.getJSON(
-            `http://${dataset}-dev.azurewebsites.net/${stnid}/${variable}/${
-                period_mappings[timePeriod]
-            }`,
+            `http://${dataset}-dev.azurewebsites.net/${stnid}/${variable}/${periodMappings[timePeriod]}`,
             (data: any[]) => resolve(data)
         );
     });

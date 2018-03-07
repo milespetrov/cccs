@@ -1,5 +1,5 @@
 <template>
-    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="viewName">
+    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="currentView">
         
         <div class="cip-strip cip-backdrop-map">
             <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
@@ -120,7 +120,7 @@ Vue.use(FormSelect);
 
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
-import { CenterPoint } from './store/index';
+import { MapPoint } from './store/index';
 import api from './api/main';
 import { UpdateRouteMixin } from './globals/mixin';
 
@@ -135,13 +135,12 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setTimePeriodId: (value: string | null) => void;
     @Action setVariableId: (value: string | null) => void;
     @Action setDatasetId: (value: string | null) => void;
-    @Action setStationId: (value: string | null) => void;
+    @Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: string | null) => void;
     @Action setZoomLevel: (value: string | null) => void;
 
     @State currentView: string;
 
-    viewName: string = '';
     reloadKey: string = '';
 
     @State('datasetId') currentDataset: string;
@@ -151,7 +150,7 @@ export default class App extends mixins(UpdateRouteMixin) {
         this.reloadKey = this.currentDataset;
     }
 
-    @State centerPoint: CenterPoint;
+    @State centerPoint: MapPoint;
 
     @Watch('centerPoint')
     onCenterPointChanged(): void {
@@ -162,17 +161,17 @@ export default class App extends mixins(UpdateRouteMixin) {
         const centerExtent = mapInstance._fgpMap.extent.getCenter();
         // let res = 529.1677250021168; // 8
         // let res = 926.0435187537042; // 7
-        let res = 7937.5158750317505; // 3
-        let xorigin = -34655800;
-        let yorigin = 39310000;
+        const res = 7937.5158750317505; // 3
+        const xorigin = -34655800;
+        const yorigin = 39310000;
 
         // TODO: clean up magic numbers
 
         let tx = (centerExtent.x - xorigin) / 256 / res;
         let ty = (-centerExtent.y + yorigin) / 256 / res;
 
-        let dx = (tx % 1) * 256 + (tx % 1 > 0.5 ? 0 : 256) - 250 / 2;
-        let dy = (ty % 1) * 256 + (ty % 1 > 0.5 ? 0 : 256) - 130 / 2;
+        const dx = (tx % 1) * 256 + (tx % 1 > 0.5 ? 0 : 256) - 250 / 2;
+        const dy = (ty % 1) * 256 + (ty % 1 > 0.5 ? 0 : 256) - 130 / 2;
 
         this.tileStyle = {
             transform: `translate(${-dx + 'px'}, ${-dy + 'px'})`
@@ -192,79 +191,35 @@ export default class App extends mixins(UpdateRouteMixin) {
     tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
-        this.$router.afterEach((to, from) => {
-            if (this.$router.currentRoute.name == 'map-view') {
-                this.updateStore(
-                    'Annual_Annuel',
-                    to.query.v,
-                    to.query.d,
-                    to.query.s,
-                    to.query.c,
-                    to.query.z
-                );
-            } else {
-                this.updateStore(
-                    to.query.t,
-                    to.query.v,
-                    to.query.d,
-                    to.query.s,
-                    to.query.c,
-                    to.query.z
-                );
-            }
-        });
-
-        if (this.$router.currentRoute.name) {
-            let defaultTime = null;
-            let defaultStation: string | null =
-                this.$router.currentRoute.query.s || '1021830';
-
-            // the route is set already
-            if (this.$router.currentRoute.name == 'map-view') {
-                defaultTime = 'Annual_Annuel';
-                defaultStation = null;
-            }
-
-            this.setCurrentView(this.$router.currentRoute.name);
-            this.updateStore(
-                defaultTime || this.$router.currentRoute.query.t || 'Jan_Janv',
-                this.$router.currentRoute.query.v || 'tmax',
-                this.$router.currentRoute.query.d || 'ahccd',
-                defaultStation,
-                this.$router.currentRoute.query.c,
-                this.$router.currentRoute.query.z
-            );
-
-            this.updateRoute();
-            return;
+        interface FunctionArray {
+            [key: string]: any;
         }
 
-        this.setCurrentView('chart-view');
-        this.updateStore('Jan_Janv', 'tmax', 'ahccd', '1021830', null, null);
+        const storeFns: FunctionArray = {
+            t: this.setTimePeriodId,
+            v: this.setVariableId,
+            d: this.setDatasetId,
+            f: this.setFeatureId,
+            cp: this.setCenterPoint,
+            z: this.setZoomLevel
+        };
 
-        // DEMO: push to the chart view on mount by default, so something will show up
+        if (this.$router.currentRoute.name) {
+            this.setCurrentView(this.$router.currentRoute.name);
+            Object.keys(storeFns).forEach(parameter => {
+                const value = this.$router.currentRoute.query[parameter];
+                if (!value) {
+                    return;
+                }
+
+                storeFns[parameter](value);
+            });
+        }
         this.updateRoute();
     }
 
-    updateStore(
-        timePeriodId: string,
-        variableId: string,
-        datasetId: string,
-        stationId: string | null,
-        centerPoint: string | null,
-        zoomLevel: string | null
-    ): void {
-        this.viewName = this.$router.currentRoute.name!;
-        this.setTimePeriodId(timePeriodId);
-        this.setVariableId(variableId);
-        this.setDatasetId(datasetId);
-        this.setStationId(stationId);
-        this.setCenterPoint(centerPoint);
-        this.setZoomLevel(zoomLevel);
-    }
-
     changeViewToMap() {
-        if (this.viewName === 'map-view') {
+        if (this.currentView === 'map-view') {
             return;
         }
 
@@ -292,8 +247,7 @@ export default class App extends mixins(UpdateRouteMixin) {
         width: 100%;
 
         .chart-view & {
-            height: $top-navigation-height + $page-header-height +
-                $view-controls-height;
+            height: $top-navigation-height + $page-header-height + $view-controls-height;
             overflow: hidden;
         }
     }
@@ -356,8 +310,8 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     .map-view & {
         margin-top: calc(
-            #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} -
-                #{$view-controls-height} + 3rem
+            #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} - #{$view-controls-height} +
+                3rem
         );
     }
     .chart-view & {
@@ -394,8 +348,7 @@ $rv-left-offset: calc((100vw - 1170px) / 2);
     float: right;
     margin: 0 0 0 2rem;
     cursor: pointer;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-        0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
         0px 3px 1px -2px rgba(0, 0, 0, 0.12);
     .cip-map-button {
         display: flex;

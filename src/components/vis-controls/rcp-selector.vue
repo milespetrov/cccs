@@ -62,13 +62,10 @@ export default class RcpSelector extends mixins(UpdateRouteMixin) {
     get selectedRcpShortName(): string {
         // select a default Rcp
         // TODO: revisit once we decide how to handle defaults/leaving out variables
-        if (this.rcpId == null) {
+        if (this.rcpId === null) {
             this.selectRcp(this.rcpItems[0]);
         }
-        return `Model: ${
-            this.rcpItems.find(rcp => rcp.id === this.rcpId)!
-                .shortName
-        }`;
+        return `Model: ${this.rcpItems.find(rcp => rcp.id === this.rcpId)!.shortName}`;
     }
 
     selectRcp(rcp: RcpItem) {

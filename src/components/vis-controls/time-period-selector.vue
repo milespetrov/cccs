@@ -117,10 +117,7 @@ export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
             []
         );
 
-        return `Time period: ${
-            timePeriods.find(timePeriod => timePeriod.id === this.timePeriodId)!
-                .name
-        }`;
+        return `Time period: ${timePeriods.find(timePeriod => timePeriod.id === this.timePeriodId)!.name}`;
     }
 
     selectTimePeriod(timePeriod: TimePeriodItem) {
