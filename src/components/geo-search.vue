@@ -106,17 +106,14 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
             }
         }
     }; */
-    gSearch: any = new (<any>window).GeoSearch(undefined);
+    gSearch: any = new (<any>window).GeoSearch(null);
 
     mounted(): void {
         this.queryStream.debounceTime(200).subscribe(this.getResults);
 
         // clickout
         if (typeof document !== 'undefined') {
-            document.documentElement.addEventListener(
-                'click',
-                this.clickOutListener
-            );
+            document.documentElement.addEventListener('click', this.clickOutListener);
         }
     }
 
@@ -156,10 +153,7 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
     beforeDestroy() {
         // clickout
         if (typeof document !== 'undefined') {
-            document.documentElement.removeEventListener(
-                'click',
-                this.clickOutListener
-            );
+            document.documentElement.removeEventListener('click', this.clickOutListener);
         }
     }
 

@@ -10,7 +10,7 @@ function makeConfig(
     callbacks: any,
     mini: boolean = false
 ) {
-    const seriesData = stationData.absolute_values.map((value: number) => (value > -9999 ? value : undefined));
+    const seriesData = stationData.absolute_values.map((value: number) => (value > -9999 ? value : null));
 
     let secondTrendValueLabel: HTMLElement;
     let trendRangeLabel: SVGElement;
@@ -178,7 +178,7 @@ function makeConfig(
         chart: {
             height: 130,
             width: 250,
-            zoomSlider: undefined,
+            zoomSlider: null,
             spacingBottom: 5,
             spacingLeft: 10,
             spacingTop: 10,
@@ -320,7 +320,7 @@ function makeLabels(event: any, stationData: any) {
         })
         .add();
     const current = ren
-        .label(`<b>${firstTrend}</b>`, undefined, firstLabelY + 25)
+        .label(`<b>${firstTrend}</b>`, null, firstLabelY + 25)
         .css({
             color: 'black' //'#ecf0f1'
         })

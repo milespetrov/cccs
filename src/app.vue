@@ -187,7 +187,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     }
 
     tileUrl: string = 'http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile';
-    tileCoordinates: { x: number; y: number } | undefined;
+    tileCoordinates: { x: number; y: number } | null = null;
     tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
