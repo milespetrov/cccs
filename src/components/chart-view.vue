@@ -33,8 +33,8 @@ import { UpdateRouteMixin } from '../globals/mixin';
 
 @Component
 export default class ChartView extends mixins(UpdateRouteMixin) {
-    @Action setChartRange: (value: object) => void;
-    @State chartRange: object;
+    @Action setChartRange: (value: { min: number; max: number }) => void;
+    @State chartRange: { min: number; max: number };
 
     @State('timePeriodId') currentTimePeriod: string;
 
@@ -174,13 +174,7 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         //(<any>window).wb.add('table');
     }
 
-    makeConfig(
-        data: any,
-        period: string,
-        variable: string,
-        stnid: string,
-        callbacks: any
-    ): object {
+    makeConfig(data: any, period: string, variable: string, stnid: string, callbacks: any): object {
         return ahccdTemp(data, period, variable, stnid, callbacks);
     }
 
@@ -228,11 +222,7 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         margin-bottom: 20px;
 
         .noUi-target {
-            background-image: linear-gradient(
-                to right,
-                #333 20%,
-                rgba(255, 255, 255, 0) 0%
-            );
+            background-image: linear-gradient(to right, #333 20%, rgba(255, 255, 255, 0) 0%);
             background-position-y: 7px;
             background-size: 10px 2px;
             background-repeat: repeat-x;
