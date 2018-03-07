@@ -1,20 +1,31 @@
 export interface AppState {
-    currentView: string | null;
-    timePeriodId: string | null;
-    variableId: string | null;
-    datasetId: string | null;
-    stationId: string | null;
-    rcpId: string | null;
-    centerPoint: CenterPoint | null;
-    zoomLevel: string | null;
+    currentView: string | undefined;
+    timePeriodId: string | undefined;
+    variableId: string | undefined;
+    datasetId: string | undefined;
+    featureId: string | undefined;
+    featurePoint: MapPoint | undefined;
+    rcpId: string | undefined;
+    centerPoint: MapPoint | undefined;
+    zoomLevel: string | undefined;
+    chartRange: Range | undefined;
+    chartSeries: string | undefined;
 
-    mapPin: CenterPoint | null;
+    mapPin: MapPoint | undefined;
 }
 
-export class CenterPoint {
-    constructor(public x: number, public y: number) {}
+export class MapPoint {
+    constructor(public x: number, public y: number) { }
 
     get safeString(): string {
         return `${this.x.toString()},${this.y.toString()}`;
+    }
+}
+
+export class Range {
+    constructor(public min: number, public max: number) { }
+
+    get safeString(): string {
+        return `${this.min.toString()},${this.max.toString()}`;
     }
 }

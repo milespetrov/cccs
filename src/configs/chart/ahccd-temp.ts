@@ -1,16 +1,16 @@
 import api from './../../api/main';
 import mappings from './../../globals/mappings';
+import { app } from './../../store/app';
 
 function makeConfig(
     stationData: any,
     period: string,
     variable: string,
     stnid: string,
+    callbacks: any,
     mini: boolean = false
 ) {
-    const seriesData = stationData.absolute_values.map(
-        (value: number) => (value > -9999 ? value : null)
-    );
+    const seriesData = stationData.absolute_values.map((value: number) => (value > -9999 ? value : undefined));
 
     let secondTrendValueLabel: HTMLElement;
     let trendRangeLabel: SVGElement;
@@ -53,10 +53,7 @@ function makeConfig(
             marginRight: 265,
             events: {
                 load: (event: any) => {
-                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(
-                        event,
-                        stationData
-                    );
+                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, stationData);
                 }
             },
             style: {
@@ -91,33 +88,25 @@ function makeConfig(
                 setExtremes: (event: any) => {
                     console.log(event, event.target);
 
+                    callbacks.xaxis.events.setExtremes(event);
+
                     $.getJSON(
-                        `http://ahccd-dev.azurewebsites.net/${stnid}/${
-                            (<any>item!).id
-                        }/${mappings.periodToNum[period]}/trend/${event.min}/${
-                            event.max
-                        }`,
+                        `http://ahccd-dev.azurewebsites.net/${stnid}/${(<any>item!).id}/${
+                            mappings.periodToNum[period]
+                        }/trend/${event.min}/${event.max}`,
                         data => {
                             console.log(data);
-                            (<any>trendRangeLabel).textSetter(
-                                `Selection (${event.min}-${event.max}):`
-                            );
+                            (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
                             if (!data.value) {
-                                (<any>secondTrendValueLabel).textSetter(
-                                    `<b>Not Available</b>`
-                                );
+                                (<any>secondTrendValueLabel).textSetter(`<b>Not Available</b>`);
                             } else {
                                 (<any>secondTrendValueLabel).textSetter(
                                     //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
-                                    `<b>${((<any>data).value > 0 ? '+' : '') +
-                                        +(<any>data).value.toFixed(4)}</b>`
+                                    `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
                                 );
                             }
                             (<any>secondTrendValueLabel).attr({
-                                x:
-                                    event.target.chart.chartWidth -
-                                    (<any>secondTrendValueLabel).width +
-                                    6
+                                x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
                             });
                         }
                     );
@@ -148,8 +137,7 @@ function makeConfig(
             },
             y: 40,
             x: -128,
-            labelFormat:
-                '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
+            labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
             symbolHeight: 0.1,
             symbolWidth: 0.1,
@@ -163,16 +151,11 @@ function makeConfig(
                 pointStart: stationData.data_years.start,
                 events: {
                     hide: () => {
-                        if (
-                            !api.DQV.charts.dvChart1.highchart.series.some(
-                                (series: any) => series.visible
-                            )
-                        ) {
+                        if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)) {
                             api.DQV.sections.dvSection1.data.isTable = false;
                         }
                     },
-                    show: () =>
-                        (api.DQV.sections.dvSection1.data.isTable = true)
+                    show: () => (api.DQV.sections.dvSection1.data.isTable = true)
                 }
             }
         },
@@ -195,7 +178,7 @@ function makeConfig(
         chart: {
             height: 130,
             width: 250,
-            zoomSlider: null,
+            zoomSlider: undefined,
             spacingBottom: 5,
             spacingLeft: 10,
             spacingTop: 10,
@@ -208,11 +191,7 @@ function makeConfig(
                     const ren = event.target.renderer;
 
                     ren
-                        .label(
-                            'Click to see chart',
-                            event.target.chartWidth - 120,
-                            5
-                        )
+                        .label('Click to see chart', event.target.chartWidth - 120, 5)
                         .css({
                             display: 'none'
                         })
@@ -250,9 +229,9 @@ function makeConfig(
             }
         },
         title: {
-            text: `${variable} at ${stationData.station_name}, ${
-                stationData.data_years.start
-            } - ${stationData.data_years.end}`,
+            text: `${variable} at ${stationData.station_name}, ${stationData.data_years.start} - ${
+                stationData.data_years.end
+            }`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -261,7 +240,7 @@ function makeConfig(
             }
         },
         tooltip: {
-            positioner: function() {
+            positioner: () => {
                 return { x: 0, y: 0 };
             },
             shadow: false,
@@ -287,16 +266,13 @@ function makeConfig(
 
 function makeLabels(event: any, stationData: any) {
     const firstLabelY = 145;
-    const stationTrendValue = stationData.trend.value
-        ? stationData.trend.value
-        : 'N/A';
+    const stationTrendValue = stationData.trend.value ? stationData.trend.value : 'N/A';
     const ren = event.target.renderer;
 
     const firstTrend =
-        stationTrendValue == 'N/A'
+        stationTrendValue === 'N/A'
             ? 'Not Available'
-            : (stationTrendValue > 0 ? '+' : '') +
-              +stationTrendValue.toFixed(4);
+            : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4);
 
     ren
         .path([
@@ -315,11 +291,7 @@ function makeLabels(event: any, stationData: any) {
         .add();
 
     ren
-        .label(
-            '<b>Trends</b>',
-            event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY
-        )
+        .label('<b>Trends</b>', event.target.plotWidth + event.target.plotLeft + 55, firstLabelY)
         .css({
             'font-size': '16px',
             color: 'black' //'#ecf0f1'
@@ -334,9 +306,7 @@ function makeLabels(event: any, stationData: any) {
     // draw the first trend value
     ren
         .label(
-            `Overall (${stationData.data_years.start}-${
-                stationData.data_years.end
-            }):`,
+            `Overall (${stationData.data_years.start}-${stationData.data_years.end}):`,
             event.target.plotWidth + event.target.plotLeft + 55,
             firstLabelY + 25
         )
@@ -349,8 +319,8 @@ function makeLabels(event: any, stationData: any) {
             zIndex: 6
         })
         .add();
-    let current = ren
-        .label(`<b>${firstTrend}</b>`, null, firstLabelY + 25)
+    const current = ren
+        .label(`<b>${firstTrend}</b>`, undefined, firstLabelY + 25)
         .css({
             color: 'black' //'#ecf0f1'
         })
@@ -363,12 +333,8 @@ function makeLabels(event: any, stationData: any) {
     (<any>current).attr({
         x: event.target.chartWidth - (<any>current).width + 6
     });
-    let trendRangeLabel = ren
-        .label(
-            ``,
-            event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY + 45
-        )
+    const trendRangeLabel = ren
+        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 45)
         .css({
             color: 'black' //'#ecf0f1'
         })
@@ -379,12 +345,8 @@ function makeLabels(event: any, stationData: any) {
         })
         .add();
     // draw the second trend value
-    let secondTrendValueLabel = ren
-        .label(
-            ``,
-            event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY + 45
-        )
+    const secondTrendValueLabel = ren
+        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 45)
         .css({
             color: 'black' //'#ecf0f1'
         })
@@ -396,11 +358,7 @@ function makeLabels(event: any, stationData: any) {
         .add();
 
     ren
-        .label(
-            `<b>Key Information</b>`,
-            event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY + 110
-        )
+        .label(`<b>Key Information</b>`, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 110)
         .css({
             'font-size': '16px',
             color: 'black' //'#ecf0f1'

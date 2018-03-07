@@ -24,13 +24,18 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State } from 'vuex-class';
+import { State, Action } from 'vuex-class';
 
 import api from './../api/main';
 import ahccdTemp from './../configs/chart/ahccd-temp';
+import { mixins } from 'vue-class-component/lib/util';
+import { UpdateRouteMixin } from '../globals/mixin';
 
 @Component
-export default class ChartView extends Vue {
+export default class ChartView extends mixins(UpdateRouteMixin) {
+    @Action setChartRange: (value: object) => void;
+    @State chartRange: object;
+
     @State('timePeriodId') currentTimePeriod: string;
 
     @Watch('currentTimePeriod')
@@ -47,10 +52,10 @@ export default class ChartView extends Vue {
 
     @State('datasetId') currentDataset: string;
 
-    @State('stationId') currentStation: string;
+    @State('featureId') currentFeature: string;
 
-    @Watch('currentStation')
-    onCurrentStationChanged(): void {
+    @Watch('currentFeature')
+    onCurrentFeatureChanged(): void {
         this.updateDQV();
     }
 
@@ -88,14 +93,15 @@ export default class ChartView extends Vue {
                 this.currentTimePeriod,
                 this.currentVariable,
                 this.currentDataset,
-                this.currentStation
+                this.currentFeature
             );
 
             const config = this.makeConfig(
                 this.data,
                 this.currentTimePeriod,
                 this.currentVariable,
-                this.currentStation
+                this.currentFeature,
+                this.callbacks
             );
             this.initDQV(config);
             return;
@@ -132,9 +138,9 @@ export default class ChartView extends Vue {
             data
         });
 
-        //window.setTimeout(() => {
+        // window.setTimeout(() => {
         dvsection1.mount(document.getElementById('mount-point'));
-        //}, 2000);
+        // }, 2000);
 
         (<any>window).wb.add('summary');
         /* (<any>window).wb.add('table'); */
@@ -149,17 +155,19 @@ export default class ChartView extends Vue {
             this.currentTimePeriod,
             this.currentVariable,
             this.currentDataset,
-            this.currentStation
+            this.currentFeature
         );
 
         const config = this.makeConfig(
             this.data,
             this.currentTimePeriod,
             this.currentVariable,
-            this.currentStation
+            this.currentFeature,
+            this.callbacks
         );
 
-        const dvChart = api.DQV.charts['dvChart1'];
+        const chartId = 'dvChart1';
+        const dvChart = api.DQV.charts[chartId];
         dvChart.config = config;
 
         (<any>window).wb.add('summary');
@@ -170,10 +178,27 @@ export default class ChartView extends Vue {
         data: any,
         period: string,
         variable: string,
-        stnid: string
+        stnid: string,
+        callbacks: any
     ): object {
-        return ahccdTemp(data, period, variable, stnid);
+        return ahccdTemp(data, period, variable, stnid, callbacks);
     }
+
+    /**
+     * Used to add callbacks to the chart config;
+     * Add the function here then call it within the config event
+     */
+
+    callbacks = {
+        xaxis: {
+            events: {
+                setExtremes: (event: any) => {
+                    this.setChartRange({ min: event.min, max: event.max });
+                    this.replaceRoute();
+                }
+            }
+        }
+    };
 }
 </script>
 
