@@ -42,7 +42,8 @@ describe('app.vue', () => {
                 query: {}
             },
 
-            push: () => undefined
+            push: () => undefined,
+            afterEach: () => undefined
         };
     });
 
@@ -114,29 +115,9 @@ describe('app.vue - routing', () => {
                 query: {}
             },
 
-            push: () => undefined
+            push: () => undefined,
+            afterEach: () => undefined
         };
-    });
-
-    it('should always call updateRoute', () => {
-        // spy on update route
-        const updateRoute = sinon.spy();
-
-        const wrapper = shallow(app, {
-            methods: {
-                updateRoute
-            },
-            store,
-            localVue,
-            stubs: ['router-link', 'router-view'],
-            mocks: {
-                $t,
-                $router
-            }
-        });
-
-        // make sure it was called
-        expect(updateRoute).to.have.been.called;
     });
 
     it('should set the currentView in the store when given one in the route', () => {

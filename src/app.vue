@@ -141,6 +141,9 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     @State currentView: string;
 
+    @State internalRouteUpdate: boolean;
+    @Action setInternalRouteUpdate: (value: boolean) => void;
+
     reloadKey: string = '';
 
     @State('datasetId') currentDataset: string;
@@ -191,6 +194,21 @@ export default class App extends mixins(UpdateRouteMixin) {
     tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
+        this.$router.afterEach((to, from) => {
+            if (this.internalRouteUpdate) {
+                this.setInternalRouteUpdate(false);
+                this.routeHandler();
+            }
+        });
+
+        this.routeHandler();
+    }
+
+    routeHandler(): void {
+        if (!this.$router.currentRoute.name) {
+            return;
+        }
+
         interface FunctionArray {
             [key: string]: any;
         }
@@ -204,18 +222,15 @@ export default class App extends mixins(UpdateRouteMixin) {
             z: this.setZoomLevel
         };
 
-        if (this.$router.currentRoute.name) {
-            this.setCurrentView(this.$router.currentRoute.name);
-            Object.keys(storeFns).forEach(parameter => {
-                const value = this.$router.currentRoute.query[parameter];
-                if (!value) {
-                    return;
-                }
+        this.setCurrentView(this.$router.currentRoute.name);
+        Object.keys(storeFns).forEach(parameter => {
+            const value = this.$router.currentRoute.query[parameter];
+            if (!value) {
+                return;
+            }
 
-                storeFns[parameter](value);
-            });
-        }
-        this.updateRoute();
+            storeFns[parameter](value);
+        });
     }
 
     changeViewToMap() {
