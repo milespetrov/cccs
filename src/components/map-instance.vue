@@ -123,6 +123,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             `${this.currentDataset}_${oldValue}_${this.counter}`
         );
         this.addCurrentVarLayer();
+
+        if (!this.currentFeature) {
+            return;
+        }
+        this.displayMiniChart(this.currentFeature);
     }
 
     addCurrentVarLayer() {
@@ -293,6 +298,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             document.querySelector('.rv-esri-map')!.addEventListener('wheel', this.scrollGuardHandler, {
                 capture: true
             });
+
+            // if the current station is already set, open the mini chart
+            if (this.currentFeature) {
+                this.displayMiniChart(this.currentFeature);
+            }
 
             if (this.centerPoint) {
                 this._mapInstance.setCenter(this.centerPoint);
