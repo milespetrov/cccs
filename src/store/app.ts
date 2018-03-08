@@ -4,6 +4,8 @@ import { AppState, MapPoint, Range } from './index';
 
 import controls from './../globals/controls';
 
+import { defaultSelectors, datasets } from './../configs';
+
 type AppContext = ActionContext<AppState, AppState>;
 
 const state: AppState = {
@@ -46,6 +48,9 @@ const getters = {
     },
 
     getControls: () => {
+        // TODO: replace chart view with current view
+        // return Object.keys(datasets[state.datasetId!].chartView).concat(defaultSelectors);
+
         return controls.config.default[state.currentView!].concat(
             state.datasetId ? controls.config[state.datasetId!][state.currentView!] : []
         );
