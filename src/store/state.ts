@@ -10,8 +10,9 @@ export interface AppState {
     zoomLevel: string | null;
     chartRange: Range | null;
     chartSeries: string | null;
-
     mapPin: MapPoint | null;
+
+    internalRouteUpdate: boolean;
 }
 
 export class MapPoint {

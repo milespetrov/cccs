@@ -141,6 +141,9 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     @State currentView: string;
 
+    @State internalRouteUpdate: boolean;
+    @Action setInternalRouteUpdate: (value: boolean) => void;
+
     reloadKey: string = '';
 
     @State('datasetId') currentDataset: string;
@@ -191,10 +194,30 @@ export default class App extends mixins(UpdateRouteMixin) {
     tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
+        // This is to allow the back/forward browser functions to update the store
+        // We flag internal updates with `internalRouteUpdate` in the store so that
+        // we don't double up on internal state commits
+        this.$router.afterEach((to, from) => {
+            if (this.internalRouteUpdate) {
+                this.setInternalRouteUpdate(false);
+                return;
+            }
+            this.routeHandler();
+        });
+
+        this.routeHandler();
+    }
+
+    routeHandler(): void {
+        if (!this.$router.currentRoute.name) {
+            return;
+        }
+
         interface FunctionArray {
             [key: string]: any;
         }
 
+        // map from query param to store function
         const storeFns: FunctionArray = {
             t: this.setTimePeriodId,
             v: this.setVariableId,
@@ -204,18 +227,16 @@ export default class App extends mixins(UpdateRouteMixin) {
             z: this.setZoomLevel
         };
 
-        if (this.$router.currentRoute.name) {
-            this.setCurrentView(this.$router.currentRoute.name);
-            Object.keys(storeFns).forEach(parameter => {
-                const value = this.$router.currentRoute.query[parameter];
-                if (!value) {
-                    return;
-                }
+        // update the store
+        this.setCurrentView(this.$router.currentRoute.name);
+        Object.keys(storeFns).forEach(parameter => {
+            const value = this.$router.currentRoute.query[parameter];
+            if (!value) {
+                return;
+            }
 
-                storeFns[parameter](value);
-            });
-        }
-        this.updateRoute();
+            storeFns[parameter](value);
+        });
     }
 
     changeViewToMap() {

@@ -20,8 +20,10 @@ const state: AppState = {
     zoomLevel: null,
     chartRange: null,
     chartSeries: null,
+    mapPin: null,
 
-    mapPin: null
+    // Does not belong
+    internalRouteUpdate: false
 };
 
 // getters
@@ -145,6 +147,10 @@ const actions = {
     clearFeature(context: AppContext): void {
         context.commit('SET_FEATURE_ID', null);
         context.commit('SET_FEATURE_POINT', null);
+    },
+
+    setInternalRouteUpdate(context: AppContext, value: boolean): void {
+        context.commit('SET_INTERNAL_ROUTE_UPDATE', value);
     }
 };
 
@@ -196,6 +202,10 @@ const mutations = {
 
     SET_CHART_SERIES(state: AppState, value: string | null): void {
         state.chartSeries = value;
+    },
+
+    SET_INTERNAL_ROUTE_UPDATE(state: AppState, value: boolean): void {
+        state.internalRouteUpdate = value;
     }
 };
 
