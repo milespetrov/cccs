@@ -1,16 +1,17 @@
 import { DatasetSource, VariableId, DatasetId } from './types';
 import { VisualizationControlType, TimePeriodType, VariableStageType } from './../selectors/types';
+import { ViewType } from '../../store';
 
 const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,
 
-    chartView: {
+    [ViewType.ChartView]: {
         [VisualizationControlType.Time]: {
             default: TimePeriodType.Annual,
             options: [TimePeriodType.Annual, TimePeriodType.Winter, TimePeriodType.Spring]
         }
     },
-    mapView: {},
+    [ViewType.MapView]: {},
 
     variables: [
         {

@@ -1,10 +1,10 @@
 import { ActionContext, Store, StoreOptions, Module } from 'vuex';
 
-import { AppState, MapPoint, Range } from './index';
+import { AppState, MapPoint, Range, ViewType } from './index';
 
 import controls from './../globals/controls';
 
-import { defaultSelectors, datasets } from './../configs';
+import { defaultSelectors, datasets, VisualizationControlType } from './../configs';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -49,19 +49,22 @@ const getters = {
         return queryObject;
     },
 
-    getControls: () => {
-        // TODO: replace chart view with current view
-        // return Object.keys(datasets[state.datasetId!].chartView).concat(defaultSelectors);
-
-        return controls.config.default[state.currentView!].concat(
-            state.datasetId ? controls.config[state.datasetId!][state.currentView!] : []
-        );
+    /**
+     * Returns a list of VisualizationControlType string specifying which controls shoudl be visible in the current view.
+     *
+     * @param {AppState} state
+     * @returns {VisualizationControlType[]}
+     */
+    getControls: (state: AppState): VisualizationControlType[] => {
+        return defaultSelectors.concat(Object.keys(
+            datasets[state.datasetId!][state.currentView!]
+        ) as VisualizationControlType[]);
     }
 };
 
 // actions
 const actions = {
-    setCurrentView(context: AppContext, value: string) {
+    setCurrentView(context: AppContext, value: ViewType) {
         context.commit('SET_CURRENT_VIEW', value);
     },
 
@@ -156,7 +159,7 @@ const actions = {
 
 // mutations
 const mutations = {
-    SET_CURRENT_VIEW(state: AppState, value: string): void {
+    SET_CURRENT_VIEW(state: AppState, value: ViewType): void {
         state.currentView = value;
     },
 

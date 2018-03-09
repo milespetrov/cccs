@@ -1,4 +1,5 @@
 import { TimePeriodType, RCPType, VariableStageType, VisualizationControlType } from './../selectors/types';
+import { ViewType } from '../../store';
 
 /**
  * All available Dataset ids.
@@ -137,14 +138,14 @@ export interface DatasetSource {
      * @type {DatasetViewSource}
      * @memberof DatasetSource
      */
-    chartView: DatasetViewSource;
+    [ViewType.ChartView]: DatasetViewSource;
     /**
      * Provides map view visualization options.
      *
      * @type {DatasetViewSource}
      * @memberof DatasetSource
      */
-    mapView: DatasetViewSource;
+    [ViewType.MapView]: DatasetViewSource;
 
     /**
      * A list of Variable configuration options.
