@@ -1,27 +1,25 @@
 # Localization
 
-Adding localization support to the app.
+Localization is the process of adapting software for a specific region or language by adding locale-specific components and translating text. These text strings are rendered in certain parts of the interface using their translation keys and based on the currently selected language. 
 
-## Process
-
-### General Idea
+## General Idea
 
 All locale strings are kept in a single `.csv` file (not in `src` directory), which is converted to JSON format during the the build step, and further broken in a number of `.json` files - one file per language. These files are loaded by the app and are passed to the `i18n` Vue plugin to update templates.
 
-### Implementation Options
+## Implementation Options
 
-How are the translation files loaded by the app exactly? There are options.
+There are several ways translations can be loaded in the app.
 
-#### Bundle Them All
+### Bundle Them All
 
 Bundle all translations with the app production bundle. This can be done by a Webpack loader file that converts `.csv` to `.json` and adds the result as an asset.
 
-| Pros                                                              | Cons                                                                  |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Pros                                     | Cons                                     |
+| ---------------------------------------- | ---------------------------------------- |
 | all translations are available immediately after the initial load | large resultant bundle size - depending on the number of translations |
-| language switching happens instantaneously                        |                                                                       |
+| language switching happens instantaneously |                                          |
 
-#### Split Them Up
+### Split Them Up
 
 Copy `.json` translation files to the `src` directory and lazy loaded with Webpack. Lazy loading converts `.json` files to JS modules and splits the translations from the main JS bundle to be loaded on demand.
 
@@ -31,29 +29,32 @@ Lazy loading will looks like this:
 const messages = await import(/* webpackChunkName: 'i18n/lang-[request]' */ `./lang/${lang}`);
 ```
 
-| Pros                          | Cons                                                                                                    |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Pros                          | Cons                                     |
+| ----------------------------- | ---------------------------------------- |
 | smaller resultant bundle size | a slight delay on initial load while translations are being loaded; need to deal with unstyled content; |
-|                               | a slight delay when switching language                                                                  |
-|                               | more HTTP requests                                                                                      |
+|                               | a slight delay when switching language   |
+|                               | more HTTP requests                       |
 
-#### Two Bundles (or more)
+### Two Bundles (or more)
 
 Create several production builds - one per language. On initial page load, detect the current language and load an appropriate bundle. Similar to `Bundle Them All` approach. If the language is changed, a different app bundle needs to be downloaded.
 
-| Pros                                                 | Cons                                                                                        |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Pros                                     | Cons                                     |
+| ---------------------------------------- | ---------------------------------------- |
 | smaller than `Bundle Them All` resultant bundle size | larger than `Split Them Up` resultant bundle size - depending on the number of translations |
-|                                                      | a full page reload when switching language                                                  |
+|                                          | a full page reload when switching language |
 
-#### The Return of the Bundle
+### The Return of the Bundle
 
 Start with the `Bundle Them All` option until the number of translations increases dramatically so that the app bundle size is affected significantly, then switch to one of the `Split Them Up` or `Two Bundles` options.
 
-| Pros                          | Cons                                          |
-| ----------------------------- | --------------------------------------------- |
-| less work upfront             | more work later                               |
-| all Pros of `Bundle Them All` | all Pros of `Split Them All` or `Two Bundles` |
+| Pros                                     | Cons                                     |
+| ---------------------------------------- | ---------------------------------------- |
+| less work upfront                        | more work later                          |
+| all Pros of `Bundle Them All`            | all Pros of `Split Them All` or `Two Bundles` |
+| relatively easy to switch to a different implementation option |                                          |
+
+It is recommended to start with this option as the most flexible to allow for future changes as the amount of translations becomes clear as development progresses.
 
 ## Library
 
@@ -134,9 +135,9 @@ It seems easiest to modify the `.csv` file in Excel. Add line breaks by pressing
 
 ### File Structure
 
-| Field Name       | Description                                                                                                                                                                                                                                                                                         |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| description      | Describes the intended purpose of the string to help with adding new translations for people not familiar with the code. The description should be filled in by a developer when adding a new string.                                                                                               |
-| key              | A string key used by the localization library to insert the locale strings into the pages.                                                                                                                                                                                                          |
+| Field Name       | Description                              |
+| ---------------- | ---------------------------------------- |
+| description      | Describes the intended purpose of the string to help with adding new translations for people not familiar with the code. The description should be filled in by a developer when adding a new string. |
+| key              | A string key used by the localization library to insert the locale strings into the pages. |
 | ![language code] | A "dirty" bit identifies invalid translation strings (initial translation was made by automated translator - Google Translate) or strings that were added as placeholders when a new language or string was added. Flip the "dirty" bit when adding a correct translation. (0 - invalid, 1 - valid) |
-| [language-code]  | An actual translation string.                                                                                                                                                                                                                                                                       |
+| [language-code]  | An actual translation string.            |

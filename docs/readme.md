@@ -1,13 +1,10 @@
----
-search: english
----
-
 # Climate Information Portal
 
-Demo-driven development
+Demo-driven development.
 
 ## How does it work
 
 ![](https://i.imgur.com/Hd87wik.png)
 
 > http://www.commitstrip.com/en/2017/02/08/where-are-the-tests/
+

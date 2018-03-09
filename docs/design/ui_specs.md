@@ -21,7 +21,7 @@
     * added link to the latest mockups
 
 <p class="tip">
-    This document is based on the CCPED Interactive Mockups: [link1](https://projects.invisionapp.com/share/JPET2QZBQ#/screens/267564155), [link2](https://projects.invisionapp.com/share/DGEYN5GPQ#/screens/269323797), [link3](https://projects.invisionapp.com/share/84FLZAMEHJN#/screens/276586379_Ca-8-a-1).
+This document is based on the CCPED Interactive Mockups: [link1](https://projects.invisionapp.com/share/JPET2QZBQ#/screens/267564155), [link2](https://projects.invisionapp.com/share/DGEYN5GPQ#/screens/269323797), [link3](https://projects.invisionapp.com/share/84FLZAMEHJN#/screens/276586379_Ca-8-a-1).
 </p>
 
 ## Overall Design
@@ -149,7 +149,7 @@ The main visualization has controls like the variable selector, series legend, t
 
 * The currently selected dataset is highlighted
 * Datasets available for the currently selected variable are grouped into `Future` and `Historic` lists
-    * Do we want to group them in UI as well (?)
+    * Is there value in grouping them in UI as well (?)
     * Can the groups be collapsed (?)
 * Selecting a dataset from the group other that is currently selected, will also update the variable selector's highlighted option
 
