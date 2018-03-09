@@ -1,30 +1,30 @@
 <template>
-    <b-dropdown :text="selectedVariableName" variant="light" class="cip-variable-selector">
-        
+    <b-dropdown :text="$t(`${tPath}.title`, { current: $t(`${tPath}.${variableId}.shortName`) })" variant="light" class="cip-variable-selector">
+
         <div class="cip-dropdown-info">
-            <h6 class="dropdown-header">Climate Data</h6>
-            <div class="cip-dropdown-description">An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate.</div>
+            <h6 class="dropdown-header">{{ $t(`${tPath}.header`) }}</h6>
+            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }} {{ a }}</div>
         </div>
-        
+
         <b-dropdown-divider></b-dropdown-divider>
 
-        <template v-for="(variableGroup, index) in variableGroups">
+        <template v-for="(variableGroup, index) in config.groups">
             <b-dropdown-divider :key="`divider-${ variableGroup.id }`" v-if="index !== 0"></b-dropdown-divider>
-            
+
             <div role="group" :aria-lableledby="variableGroup.id" :key="`group-${ variableGroup.id }`">
-                <b-dropdown-header :id="variableGroup.id" v-if="variableGroup.items.length > 1">{{ variableGroup.name }}</b-dropdown-header>
-                
-                <div class="cip-dropdown-multi-item" v-for="variableItem in variableGroup.items" :key="`item-${ variableItem.id }`">
-                    <span>{{ variableItem.name }}</span>
+                <b-dropdown-header :id="variableGroup.id" v-if="variableGroup.items.length > 1">{{ $t(`${tPath}.${variableGroup.id}`) }}</b-dropdown-header>
+
+                <div class="cip-dropdown-multi-item" v-for="variableItem in variableGroup.items" :key="`item-${ variableItem }`">
+                    <span>{{ $t(`${tPath}.${variableItem}.fullName`) }}</span>
 
                     <div class="cip-dropdown-multi-item-options">
-                        <!-- :class="{'cip-selected': variableItem.id === variableId && option.id === datasetId }" -->
-                        <b-dropdown-item-button 
+
+                        <!-- <b-dropdown-item-button
                             :aria-describedby="variableGroup.id"
                             :disabled="variableItem.id === variableId && option.datasetId === datasetId"
                             :class="{ 'cip-selected': variableItem.id === variableId && option.datasetId === datasetId }"
-                            @click="selectVariable(variableItem, option)"
-                            v-for="option in variableItem.options" :key="`option-${ option.datasetId }`">{{ option.name }}</b-dropdown-item-button>
+                            v-for="option in variableItem.options" :key="`option-${ option.datasetId }`"
+                            @click="selectVariable(variableItem, option)">{{ option.name }}</b-dropdown-item-button> -->
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
         </template>
 
     </b-dropdown>
-    
+
 </template>
 
 <script lang="ts">
@@ -43,6 +43,7 @@ import { mixins } from 'vue-class-component';
 import api from './../../api/main';
 import { Dictionary } from 'vue-router/types/router';
 import { UpdateRouteMixin } from './../../globals/mixin';
+import { variableSelectorConfig, VariableSelectorConfig, datasets, DatasetId, VariableStageType } from '../../configs';
 
 interface VariableGroup {
     name: string;
@@ -193,21 +194,42 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
         }
     ];
 
+    tPath: string = 'variableSelector';
+    config: VariableSelectorConfig = variableSelectorConfig;
+
     @Action setVariableId: (value: string) => void;
     @Action setDatasetId: (value: string) => void;
 
     @State variableId: string;
-    @State datasetId: string;
+    @State datasetId: DatasetId;
+
+    a: any = {};
+
+    mounted() {
+        // this.a = Object.values(DatasetId).reduce((map: any, id: DatasetId) => {
+        this.a = [DatasetId.AHCCD].reduce((map: any, id: DatasetId) => {
+            // const dataset = datasets[id];
+            datasets[id].variables.forEach(variable => {
+                if (!map[variable.id]) {
+                    map[variable.id] = {
+                        [VariableStageType.Future]: [],
+                        [VariableStageType.Historic]: []
+                    };
+                }
+
+                map[variable.id][variable.stage].push(id);
+            });
+
+            return map;
+        }, {});
+
+        console.log('a', this.a);
+    }
 
     get selectedVariableName(): string {
-        const variables = this.variableGroups.reduce<VariableItem[]>(
-            (array, group) => array.concat(group.items),
-            []
-        );
+        const variables = this.variableGroups.reduce<VariableItem[]>((array, group) => array.concat(group.items), []);
 
-        return `Variable: ${
-            variables.find(variable => variable.id === this.variableId)!.name
-        }`;
+        return `Variable: ${variables.find(variable => variable.id === this.variableId)!.name}`;
     }
 
     selectVariable(variable: VariableItem, option: VariableOption) {

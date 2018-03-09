@@ -14,7 +14,7 @@
                 <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
 
                 <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
-                    <b-dropdown-header :id="group.id" v-if="group.items.length > 0 && group.showHeader === true">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
+                    <b-dropdown-header :id="group.id" v-if="group.items.length > 0">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
 
                     <b-dropdown-item-button
                         :aria-describedby="group.id"

@@ -1,6 +1,50 @@
 {
     "title": "Explore Climate Data",
 
+    "variableSelector": {
+        "title": "Variable: {current}",
+        "header": "Climate Data",
+        "description":
+            "An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate",
+
+        "temperature_group": "Temperature",
+        "wind_group": "Wind",
+        "ice_group": "Ice",
+        "precipitation_group": "Precipitation",
+        "snow_depth_group": "Snow Depth"
+    },
+
+    "timePeriodSelector": {
+        "title": "Time Period: {current}",
+        "header": "Time Period",
+        "description":
+            "Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere \"behaves\" over relatively long periods of time.",
+
+        "monthly_group": "Monthly",
+        "season_group": "Seasonal",
+        "annual_group": "Annual",
+
+        "Jan_Janv": { "fullName": "January", "shortName": "January", "qualifier": "" },
+        "Feb_Fev": { "fullName": "February", "shortName": "February", "qualifier": "" },
+        "Mar_March": { "fullName": "March", "shortName": "March", "qualifier": "" },
+        "Apr_Avr": { "fullName": "April", "shortName": "April", "qualifier": "" },
+        "May_Mai": { "fullName": "May", "shortName": "May", "qualifier": "" },
+        "June_Juin": { "fullName": "June", "shortName": "June", "qualifier": "" },
+        "July_Juil": { "fullName": "July", "shortName": "July", "qualifier": "" },
+        "Aug_Aout": { "fullName": "August", "shortName": "August", "qualifier": "" },
+        "Sept_Sept": { "fullName": "September", "shortName": "September", "qualifier": "" },
+        "Oct_Oct": { "fullName": "October", "shortName": "October", "qualifier": "" },
+        "Nov_Nov": { "fullName": "November", "shortName": "November", "qualifier": "" },
+        "Dec_Dec": { "fullName": "December", "shortName": "December", "qualifier": "" },
+
+        "Winter_Hiver": { "fullName": "Winter", "shortName": "Winter", "qualifier": "Dec - Feb" },
+        "Spring_Printemp": { "fullName": "Spring", "shortName": "Spring", "qualifier": "Mar - May" },
+        "Summer_Ete": { "fullName": "Summer", "shortName": "Summer", "qualifier": "Jun - Aug" },
+        "Autumn_Autome": { "fullName": "Autumn", "shortName": "Autumn", "qualifier": "Sep - Nov" },
+
+        "Annual_Annuel": { "fullName": "Annual", "shortName": "Annual", "qualifier": "" }
+    },
+
     "rcpSelector": {
         "title": "Model: {current}",
         "header": "RCP",
@@ -24,36 +68,5 @@
             "fullName": "Representative Concentration Pathway 8.5",
             "qualifier": ""
         }
-    },
-
-    "timePeriodSelector": {
-        "title": "Time Period: {current}",
-        "header": "Time Period",
-        "description":
-            "Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere \"behaves\" over relatively long periods of time.",
-
-        "monthly-group": "Monthly",
-        "seasonal-group": "Seasonal",
-        "annual-group": "Annual",
-
-        "Jan_Janv": { "fullName": "January", "shortName": "January", "qualifier": "" },
-        "Feb_Fev": { "fullName": "February", "shortName": "February", "qualifier": "" },
-        "Mar_March": { "fullName": "March", "shortName": "March", "qualifier": "" },
-        "Apr_Avr": { "fullName": "April", "shortName": "April", "qualifier": "" },
-        "May_Mai": { "fullName": "May", "shortName": "May", "qualifier": "" },
-        "June_Juin": { "fullName": "June", "shortName": "June", "qualifier": "" },
-        "July_Juil": { "fullName": "July", "shortName": "July", "qualifier": "" },
-        "Aug_Aout": { "fullName": "August", "shortName": "August", "qualifier": "" },
-        "Sept_Sept": { "fullName": "September", "shortName": "September", "qualifier": "" },
-        "Oct_Oct": { "fullName": "October", "shortName": "October", "qualifier": "" },
-        "Nov_Nov": { "fullName": "November", "shortName": "November", "qualifier": "" },
-        "Dec_Dec": { "fullName": "December", "shortName": "December", "qualifier": "" },
-
-        "Winter_Hiver": { "fullName": "Winter", "shortName": "Winter", "qualifier": "Dec - Feb" },
-        "Spring_Printemp": { "fullName": "Spring", "shortName": "Spring", "qualifier": "Mar - May" },
-        "Summer_Ete": { "fullName": "Summer", "shortName": "Summer", "qualifier": "Jun - Aug" },
-        "Autumn_Autome": { "fullName": "Autumn", "shortName": "Autumn", "qualifier": "Sep - Nov" },
-
-        "Annual_Annuel": { "fullName": "Annual", "shortName": "Annual", "qualifier": "" }
     }
 }
