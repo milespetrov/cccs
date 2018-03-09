@@ -1,13 +1,13 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="currentView">
-        
+
         <div class="cip-strip cip-backdrop-map">
             <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
         </div>
 
         <div class="cip-strip cip-top-navigation">
             <!-- TODO: move top-navigatoin into a separate component -->
-            
+
             <nav class="cip-navigation container">
                 <geo-search></geo-search>
 
@@ -80,11 +80,11 @@
 
                 <span class="cip-view-toggle-label">click to see the full map</span>
             </div>
-            
+
             <keep-alive>
                 <router-view class="visualization" name="visualization"></router-view>
             </keep-alive>
-            
+
             <div class="well mrgn-tp-lg">
                 <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
                 <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’s leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
@@ -120,7 +120,7 @@ Vue.use(FormSelect);
 
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
-import { MapPoint } from './store/index';
+import { MapPoint, ViewType } from './store';
 import api from './api/main';
 import { UpdateRouteMixin } from './globals/mixin';
 
@@ -131,7 +131,7 @@ import { UpdateRouteMixin } from './globals/mixin';
     }
 })
 export default class App extends mixins(UpdateRouteMixin) {
-    @Action setCurrentView: (value: string) => void;
+    @Action setCurrentView: (value: ViewType) => void;
     @Action setTimePeriodId: (value: string | null) => void;
     @Action setVariableId: (value: string | null) => void;
     @Action setDatasetId: (value: string | null) => void;
@@ -228,7 +228,7 @@ export default class App extends mixins(UpdateRouteMixin) {
         };
 
         // update the store
-        this.setCurrentView(this.$router.currentRoute.name);
+        this.setCurrentView(this.$router.currentRoute.name as ViewType);
         Object.keys(storeFns).forEach(parameter => {
             const value = this.$router.currentRoute.query[parameter];
             if (!value) {
@@ -240,12 +240,13 @@ export default class App extends mixins(UpdateRouteMixin) {
     }
 
     changeViewToMap() {
-        if (this.currentView === 'map-view') {
+        // TODO: is this check really necessary?
+        if (this.currentView === ViewType.MapView) {
             return;
         }
 
         this.setTimePeriodId('Annual_Annuel');
-        this.setCurrentView('map-view');
+        this.setCurrentView(ViewType.MapView);
         this.updateRoute();
     }
 }

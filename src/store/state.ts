@@ -1,5 +1,10 @@
+export enum ViewType {
+    MapView = 'map-view',
+    ChartView = 'chart-view'
+}
+
 export interface AppState {
-    currentView: string | null;
+    currentView: ViewType | null;
     timePeriodId: string | null;
     variableId: string | null;
     datasetId: string | null;

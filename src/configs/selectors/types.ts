@@ -28,9 +28,9 @@ export enum VariableStageType {
  * @enum {string}
  */
 export enum RCPType {
-    RCP2_6 = '2.6',
-    RCP4_5 = '4.5',
-    RCP8_5 = '8.5'
+    RCP2_6 = '2_6',
+    RCP4_5 = '4_5',
+    RCP8_5 = '8_5'
 }
 
 /**

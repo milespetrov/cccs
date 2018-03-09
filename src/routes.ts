@@ -4,6 +4,7 @@ import mapView from './components/map-view.vue';
 import mapViewControls from './components/map-view-controls.vue';
 
 import { Route, RouteConfig } from 'vue-router';
+import { ViewType } from './store';
 
 const routes: RouteConfig[] = [
     {
@@ -12,7 +13,7 @@ const routes: RouteConfig[] = [
             visualization: chartView,
             'view-controls': chartViewControls
         },
-        name: 'chart-view'
+        name: ViewType.ChartView
     },
     {
         path: '/map',
@@ -20,7 +21,7 @@ const routes: RouteConfig[] = [
             visualization: mapView,
             'view-controls': mapViewControls
         },
-        name: 'map-view'
+        name: ViewType.MapView
     }
 ];
 
