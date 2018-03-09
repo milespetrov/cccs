@@ -9,10 +9,6 @@ const ahccdDataset: DatasetSource = {
         [VisualizationControlType.Time]: {
             default: TimePeriodType.Annual,
             options: [TimePeriodType.Annual, TimePeriodType.Winter, TimePeriodType.Spring]
-        },
-        [VisualizationControlType.RCP]: {
-            default: RCPType.RCP2_6,
-            options: [RCPType.RCP2_6, RCPType.RCP4_5, RCPType.RCP8_5]
         }
     },
     [ViewType.MapView]: {},
