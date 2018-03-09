@@ -21,8 +21,16 @@ export enum DatasetId {
 export enum VariableId {
     TMin = 'tmin',
     TMax = 'tmax',
+
+    /**
+     * Mean temperature.
+     */
     TMean = 'tmean',
-    SurfaceWind = 'surface-wind'
+    Precipitation = 'precip',
+    SurfaceWind = 'surface_wind',
+    IceThickness = 'ice_thickness',
+    IceFraction = 'ice_fraction',
+    SnowDepth = 'snow_depth'
 }
 
 /**

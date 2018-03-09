@@ -3,7 +3,7 @@
 
         <div class="cip-dropdown-info">
             <h6 class="dropdown-header">{{ $t(`${tPath}.header`) }}</h6>
-            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }} {{ a }}</div>
+            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
         </div>
 
         <b-dropdown-divider></b-dropdown-divider>
@@ -19,12 +19,22 @@
 
                     <div class="cip-dropdown-multi-item-options">
 
-                        <!-- <b-dropdown-item-button
+                        <!-- <div v-for="option in options[variableItem]" :key="option">{{ option }}</div> -->
+
+                        <b-dropdown-item-button
                             :aria-describedby="variableGroup.id"
-                            :disabled="variableItem.id === variableId && option.datasetId === datasetId"
-                            :class="{ 'cip-selected': variableItem.id === variableId && option.datasetId === datasetId }"
-                            v-for="option in variableItem.options" :key="`option-${ option.datasetId }`"
-                            @click="selectVariable(variableItem, option)">{{ option.name }}</b-dropdown-item-button> -->
+                            v-if="futureStage.length > 0"
+                            :disabled="variableItem === variableId && futureStage.includes(datasetId)"
+                            :class="{ 'cip-selected': variableItem === variableId && futureStage.includes(datasetId) }"
+                            @click="selectVariable(variableItem, option)">button!</b-dropdown-item-button>
+
+                        <b-dropdown-item-button
+                            :aria-describedby="variableGroup.id"
+                            v-for="(option, $index) in options[variableItem]" :key="`option-${ $index }`"
+                            v-if="option.length > 0"
+                            :disabled="variableItem === variableId"
+                            :class="{ 'cip-selected': variableItem === variableId }"
+                            @click="selectVariable(variableItem, option)">button!</b-dropdown-item-button>
                     </div>
                 </div>
             </div>
@@ -203,11 +213,15 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
     @State variableId: string;
     @State datasetId: DatasetId;
 
-    a: any = {};
+    get futureStage() {
+        return this.options[VariableStageType.Future];
+    }
 
-    mounted() {
+    options: any = {};
+
+    created() {
         // this.a = Object.values(DatasetId).reduce((map: any, id: DatasetId) => {
-        this.a = [DatasetId.AHCCD].reduce((map: any, id: DatasetId) => {
+        this.options = [DatasetId.AHCCD].reduce((map: any, id: DatasetId) => {
             // const dataset = datasets[id];
             datasets[id].variables.forEach(variable => {
                 if (!map[variable.id]) {
@@ -223,7 +237,7 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
             return map;
         }, {});
 
-        console.log('a', this.a);
+        console.log('a', this.options);
     }
 
     get selectedVariableName(): string {

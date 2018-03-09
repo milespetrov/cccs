@@ -11,7 +11,16 @@
         "wind_group": "Wind",
         "ice_group": "Ice",
         "precipitation_group": "Precipitation",
-        "snow_depth_group": "Snow Depth"
+        "snow_depth_group": "Snow Depth",
+
+        "tmean": { "fullName": "Mean Temperature", "shortName": "", "qualifier": "" },
+        "tmin": { "fullName": "Minimum Temperature", "shortName": "", "qualifier": "" },
+        "tmax": { "fullName": "Maximum Temperature", "shortName": "", "qualifier": "" },
+        "precip": { "fullName": "Precipitation", "shortName": "", "qualifier": "" },
+        "surface_wind": { "fullName": "Surface Wind Speed", "shortName": "", "qualifier": "" },
+        "ice_thickness": { "fullName": "Sea Ice Thickness", "shortName": "", "qualifier": "" },
+        "ice_fraction": { "fullName": "Sea Ice Fraction", "shortName": "", "qualifier": "" },
+        "snow_depth": { "fullName": " Snow Depth", "shortName": "", "qualifier": "" }
     },
 
     "timePeriodSelector": {
