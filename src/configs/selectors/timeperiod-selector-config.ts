@@ -25,7 +25,7 @@ export const timePeriodSelectorConfig: TimePeriodSelectorConfig = {
         },
         {
             id: 'annual-group',
-            items: [TimePeriodType.Autumn]
+            items: [TimePeriodType.Annual]
         }
     ]
 };

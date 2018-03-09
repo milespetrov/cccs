@@ -9,12 +9,12 @@
 
         <b-dropdown-divider></b-dropdown-divider>
 
-        <div class="cip-dropdown-horizontal">
+        <div class="cip-dropdown-content">
             <template v-for="(group, index) in config.groups">
                 <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
 
                 <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
-                    <b-dropdown-header :id="group.id" v-if="group.items.length > 0 && group.showHeader">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
+                    <b-dropdown-header :id="group.id" v-if="group.items.length > 0 && group.showHeader === true">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
 
                     <b-dropdown-item-button
                         :aria-describedby="group.id"
@@ -74,6 +74,24 @@ export default class BaseSelectorV extends Vue {
     .cip-short-name {
         font-size: 0.7em;
         font-weight: 100;
+    }
+
+    .cip-qualifier {
+        font-size: 0.7em;
+        font-weight: 100;
+    }
+
+    &.cip-horizontal {
+        .cip-dropdown-content {
+            display: flex;
+            margin: 0 0.5rem;
+        }
+    }
+
+    .dropdown-divider {
+        border-right: 1px solid #e9ecef;
+        height: auto;
+        margin: 0.5rem;
     }
 }
 </style>
