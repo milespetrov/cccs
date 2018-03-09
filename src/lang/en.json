@@ -1,3 +1,28 @@
 {
-    "title": "Explore Climate Data"
+    "title": "Explore Climate Data",
+
+    "rcpSelector": {
+        "title": "Model: {current}",
+        "header": "RCP",
+        "description":
+            "The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",
+
+        "all_rcp_modles": "",
+
+        "2_6": {
+            "shortName": "RCP 2.6",
+            "fullName": " Representative Concentration Pathway 2.6",
+            "qualifier": ""
+        },
+        "4_5": {
+            "shortName": "RCP 8.5",
+            "fullName": "Representative Concentration Pathway 4.5",
+            "qualifier": ""
+        },
+        "8_5": {
+            "shortName": "RCP 8.5",
+            "fullName": "Representative Concentration Pathway 8.5",
+            "qualifier": ""
+        }
+    }
 }

@@ -36,7 +36,7 @@ const getters = {
             d: state.datasetId,
             f: state.featureId,
             fp: state.featurePoint ? state.featurePoint.safeString : null,
-            r: state.datasetId !== 'ahccd' ? state.rcpId : null,
+            r: state.rcpId,
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
             cs: state.chartSeries,
