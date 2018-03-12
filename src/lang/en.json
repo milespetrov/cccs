@@ -68,17 +68,17 @@
         "2_6": {
             "shortName": "RCP 2.6",
             "fullName": " Representative Concentration Pathway 2.6",
-            "qualifier": ""
+            "qualifier": "RCP 2.6"
         },
         "4_5": {
-            "shortName": "RCP 8.5",
+            "shortName": "RCP 4.5",
             "fullName": "Representative Concentration Pathway 4.5",
-            "qualifier": ""
+            "qualifier": "RCP 4.5"
         },
         "8_5": {
             "shortName": "RCP 8.5",
             "fullName": "Representative Concentration Pathway 8.5",
-            "qualifier": ""
+            "qualifier": "RCP 8.5"
         }
     },
 

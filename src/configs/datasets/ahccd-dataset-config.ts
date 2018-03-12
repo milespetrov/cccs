@@ -7,8 +7,7 @@ const ahccdDataset: DatasetSource = {
 
     [ViewType.ChartView]: {
         [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual,
-            options: [TimePeriodType.Annual, TimePeriodType.Winter, TimePeriodType.Spring]
+            default: TimePeriodType.Annual
         }
     },
     [ViewType.MapView]: {},

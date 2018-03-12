@@ -61,20 +61,13 @@ const getters = {
         ) as VisualizationControlType[]);
     },
 
-    getDatasetControlOptions: (state: AppState): DatasetViewSource => {
+    datasetControlOptions: (state: AppState): DatasetViewSource => {
         return datasets[state.datasetId!][state.currentView!];
     }
 };
 
 // actions
 const actions = {
-    getDatasetControlOptions(
-        context: AppContext,
-        { controlType }: { controlType: VisualizationControlType }
-    ): DatasetViewSource {
-        return datasets[state.datasetId!][state.currentView!];
-    },
-
     setCurrentView(context: AppContext, value: ViewType) {
         context.commit('SET_CURRENT_VIEW', value);
     },

@@ -10,7 +10,7 @@
         <b-dropdown-divider></b-dropdown-divider>
 
         <div class="cip-dropdown-content">
-            <template v-for="(group, index) in config.groups">
+            <template v-for="(group, index) in filteredGroups">
                 <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
 
                 <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
@@ -25,7 +25,7 @@
                         :key="`item-${ item }`">
                             <span class="cip-name">{{ $t(`${tPath}.${item}.fullName`) }}</span>
                             <span class="cip-qualifier">{{ $t(`${tPath}.${item}.qualifier`) }} </span>
-                        </b-dropdown-item-button>
+                    </b-dropdown-item-button>
                 </div>
 
             </template>
@@ -49,9 +49,38 @@ export default class BaseSelectorV extends Vue {
     select(value: string) {}
 
     @Prop() config: BaseSelectorConfig;
+    @Prop({ default: undefined })
+    available: string[];
     @Prop() currentId: string;
 
     @Prop() tPath: string;
+
+    /**
+     * Returns a filtered set of selector groups.
+     * Each group's items are filtered against the available items passed to the selector. Only groups with more than one item after filtering will be included in the selector.
+     */
+    get filteredGroups(): BaseSelectorGroupConfig[] {
+        const result = this.config.groups.reduce((map: BaseSelectorGroupConfig[], group) => {
+            const filteredItems = this.available
+                ? group.items.filter(item => this.available.includes(item))
+                : group.items;
+
+            if (filteredItems.length === 0) {
+                return map;
+            }
+
+            const filteredGroup: BaseSelectorGroupConfig = {
+                id: group.id,
+                showHeader: group.showHeader,
+                items: filteredItems
+            };
+            map.push(filteredGroup);
+
+            return map;
+        }, []);
+
+        return result;
+    }
 
     /**
      * Specifies if the group header should be shown or not.

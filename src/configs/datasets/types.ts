@@ -33,12 +33,17 @@ export enum VariableId {
     SnowDepth = 'snow_depth'
 }
 
+export interface BaseDatasetSelectorSource {
+    default: string;
+    options?: string[];
+}
+
 /**
  * Configuration options for the TimePeriod selector.
  *
  * @interface DatasetTimeSelectorSource
  */
-export interface DatasetTimeSelectorSource {
+export interface DatasetTimeSelectorSource extends BaseDatasetSelectorSource {
     /**
      * Specifies the option selected by default.
      *
@@ -63,7 +68,7 @@ export interface DatasetTimeSelectorSource {
  *
  * @interface DatasetRCPSelectorSource
  */
-export interface DatasetRCPSelectorSource {
+export interface DatasetRCPSelectorSource extends BaseDatasetSelectorSource {
     /**
      * Specifies the option selected by default.
      *
@@ -78,7 +83,7 @@ export interface DatasetRCPSelectorSource {
      * @type {RCPType[]}
      * @memberof DatasetRCPSelectorSource
      */
-    options: RCPType[];
+    options?: RCPType[];
 }
 
 /**
@@ -101,10 +106,11 @@ export interface DatasetViewSource {
      * @memberof DatasetViewSource
      */
     [VisualizationControlType.Time]?: DatasetTimeSelectorSource;
+    [key: string]: BaseDatasetSelectorSource | undefined;
 }
 
 /**
- * Configuration optiosn for a Dataset.
+ * Configuration options for a Dataset.
  *
  * @interface DatasetSource
  */
