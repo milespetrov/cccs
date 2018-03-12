@@ -84,7 +84,6 @@ export default class BaseSelectorV extends Vue {
     &.cip-horizontal {
         .cip-dropdown-content {
             display: flex;
-            margin: 0 0.5rem;
         }
     }
 

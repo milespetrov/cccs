@@ -104,29 +104,6 @@ export interface DatasetViewSource {
 }
 
 /**
- * Configuration options for a Dataset Variable.
- *
- * @interface DatasetVariableSource
- */
-export interface DatasetVariableSource {
-    /**
-     * Variable id.
-     *
-     * @type {VariableId}
-     * @memberof DatasetVariableSource
-     */
-    id: VariableId;
-    /**
-     * Specifies if this Variable provides Future or Historic data under this Dataset.
-     * This affects which Datasets will be displayed in the Dataset selector when a certain Variable is selected.
-     *
-     * @type {VariableStageType}
-     * @memberof DatasetVariableSource
-     */
-    stage: VariableStageType;
-}
-
-/**
  * Configuration optiosn for a Dataset.
  *
  * @interface DatasetSource
@@ -155,14 +132,7 @@ export interface DatasetSource {
      */
     [ViewType.MapView]: DatasetViewSource;
 
-    /**
-     * A list of Variable configuration options.
-     * Only variables present in this list will be displayed in the Variable Selector.
-     *
-     * @type {DatasetVariableSource[]}
-     * @memberof DatasetSource
-     */
-    variables: DatasetVariableSource[];
+    variables: VariableId[];
 
     /**
      * A path to them base map config.

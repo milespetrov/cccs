@@ -13,16 +13,7 @@ const ahccdDataset: DatasetSource = {
     },
     [ViewType.MapView]: {},
 
-    variables: [
-        {
-            id: VariableId.TMax,
-            stage: VariableStageType.Historic
-        },
-        {
-            id: VariableId.TMean,
-            stage: VariableStageType.Historic
-        }
-    ],
+    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'

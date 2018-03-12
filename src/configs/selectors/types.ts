@@ -23,6 +23,28 @@ export enum VariableStageType {
 }
 
 /**
+ * Specifies which Datasets represent Future and Historic data for a specific variable.
+ * The first dataset in the list will be used when changin variable in the variable selector.
+ *
+ * @export
+ * @interface VariableStageMap
+ */
+export interface VariableStageMap {
+    [VariableStageType.Historic]?: DatasetId[];
+    [VariableStageType.Future]?: DatasetId[];
+}
+
+/**
+ * Map Variable Futuren and Historic stages to datasets.
+ *
+ * @export
+ * @interface VariableStageMapping
+ */
+export interface VariableStageMapping {
+    [name: string]: VariableStageMap;
+}
+
+/**
  * All available RCP model ids.
  *
  * @enum {string}
