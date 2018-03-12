@@ -80,5 +80,35 @@
             "fullName": "Representative Concentration Pathway 8.5",
             "qualifier": ""
         }
+    },
+
+    "datasetSelector": {
+        "title": "Dataset: {current}",
+        "header": "Datasets",
+        "description":
+            "Climate models use quantitative methods to simulate the interactions of the important drivers of climate, including atmosphere, oceans, land surface and ice. They are used for a variety of purposes from study of the dynamics of the climate system to projections of future climate.",
+
+        "all_datasets": "",
+
+        "ahccd": {
+            "shortName": "AHCCD",
+            "fullName": "Adjusted and homogenized Canadian Climate Data",
+            "qualifier": "AHCCD"
+        },
+        "cmip5": {
+            "shortName": "CMIP Phase 5",
+            "fullName": "Coupled Model Intercomparison Project Phase 5",
+            "qualifier": "CMIP5"
+        },
+        "cangrd": {
+            "shortName": "CanGRD",
+            "fullName": "Canadian Gridded Temperature and Precipitation Anomalies",
+            "qualifier": "CanGRD"
+        },
+        "dcs": {
+            "shortName": "DCS",
+            "fullName": "Downscale Climate Scenario",
+            "qualifier": "DCS"
+        }
     }
 }

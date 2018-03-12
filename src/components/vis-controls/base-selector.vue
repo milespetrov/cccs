@@ -14,7 +14,7 @@
                 <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
 
                 <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
-                    <b-dropdown-header :id="group.id" v-if="group.items.length > 0">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
+                    <b-dropdown-header :id="group.id" v-if="isHeaderVisible(group)">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
 
                     <b-dropdown-item-button
                         :aria-describedby="group.id"
@@ -40,9 +40,8 @@ import { Vue, Component, Watch, Prop, Inject, Emit } from 'vue-property-decorato
 import { State, Getter, Action } from 'vuex-class';
 
 import api from './../../api/main';
-import { Dictionary } from 'vue-router/types/router';
 
-import { rcpSelectorConfig, BaseSelectorConfig } from './../../configs';
+import { rcpSelectorConfig, BaseSelectorConfig, BaseSelectorGroupConfig } from './../../configs';
 
 @Component
 export default class BaseSelectorV extends Vue {
@@ -53,6 +52,17 @@ export default class BaseSelectorV extends Vue {
     @Prop() currentId: string;
 
     @Prop() tPath: string;
+
+    /**
+     * Specifies if the group header should be shown or not.
+     */
+    isHeaderVisible(group: BaseSelectorGroupConfig): boolean {
+        if (group.showHeader === undefined) {
+            return group.items.length > 1;
+        } else {
+            return group.showHeader;
+        }
+    }
 }
 </script>
 

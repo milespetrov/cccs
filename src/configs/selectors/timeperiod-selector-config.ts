@@ -17,15 +17,18 @@ export const timePeriodSelectorConfig: TimePeriodSelectorConfig = {
                 TimePeriodType.October,
                 TimePeriodType.November,
                 TimePeriodType.December
-            ]
+            ],
+            showHeader: true
         },
         {
             id: 'season_group',
-            items: [TimePeriodType.Winter, TimePeriodType.Spring, TimePeriodType.Summer, TimePeriodType.Autumn]
+            items: [TimePeriodType.Winter, TimePeriodType.Spring, TimePeriodType.Summer, TimePeriodType.Autumn],
+            showHeader: true
         },
         {
             id: 'annual_group',
-            items: [TimePeriodType.Annual]
+            items: [TimePeriodType.Annual],
+            showHeader: true
         }
     ]
 };
