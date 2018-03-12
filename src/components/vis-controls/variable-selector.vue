@@ -51,11 +51,11 @@ import { Dictionary } from 'vue-router/types/router';
 import { UpdateRouteMixin } from './../../globals/mixin';
 import {
     variableSelectorConfig,
-    variableStages,
-    VariableStageMapping,
+    stages,
+    StageMapping,
     VariableSelectorConfig,
     DatasetId,
-    VariableStageType,
+    StageType,
     VariableId
 } from '../../configs';
 
@@ -63,7 +63,7 @@ import {
 export default class VariableSelector extends mixins(UpdateRouteMixin) {
     tPath: string = 'variableSelector';
     config: VariableSelectorConfig = variableSelectorConfig;
-    stages: VariableStageMapping = variableStages;
+    stages: StageMapping = stages;
 
     @Action setVariableId: (value: string) => void;
     @Action setDatasetId: (value: string) => void;

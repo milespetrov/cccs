@@ -1,5 +1,5 @@
 import { VariableId, DatasetId } from './../datasets/types';
-import { VariableSelectorConfig, VariableStageType, VariableStageMapping } from './types';
+import { VariableSelectorConfig, StageType, StageMapping } from './types';
 
 export const variableSelectorConfig: VariableSelectorConfig = {
     groups: [
@@ -26,33 +26,33 @@ export const variableSelectorConfig: VariableSelectorConfig = {
     ]
 };
 
-export const variableStages: VariableStageMapping = {
+export const stages: StageMapping = {
     [VariableId.TMean]: {
-        [VariableStageType.Historic]: [DatasetId.AHCCD],
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD],
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     },
     [VariableId.TMax]: {
-        [VariableStageType.Historic]: [DatasetId.AHCCD],
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD],
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     },
     [VariableId.TMin]: {
-        [VariableStageType.Historic]: [DatasetId.AHCCD],
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD],
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     },
     [VariableId.Precipitation]: {
-        [VariableStageType.Historic]: [DatasetId.AHCCD],
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD],
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     },
     [VariableId.SurfaceWind]: {
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     },
     [VariableId.IceFraction]: {
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     },
     [VariableId.IceThickness]: {
-        [VariableStageType.Historic]: [DatasetId.AHCCD]
+        [StageType.Historic]: [DatasetId.AHCCD]
     },
     [VariableId.SnowDepth]: {
-        [VariableStageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
     }
 };

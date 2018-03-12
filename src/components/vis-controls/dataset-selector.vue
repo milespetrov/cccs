@@ -18,13 +18,7 @@ import { mixins } from 'vue-class-component';
 import BaseSelectorV from './base-selector.vue';
 import api from './../../api/main';
 import { UpdateRouteMixin } from './../../globals/mixin';
-import {
-    datasetSelectorConfig,
-    DatasetSelectorConfig,
-    DatasetId,
-    VariableStageType,
-    variableStages
-} from '../../configs';
+import { datasetSelectorConfig, DatasetSelectorConfig, DatasetId, StageType, stages } from '../../configs';
 
 @Component({
     components: {
@@ -39,7 +33,7 @@ export default class DatasetSelector extends mixins(UpdateRouteMixin) {
     config: DatasetSelectorConfig = datasetSelectorConfig;
 
     get available(): string[] {
-        const options = Object.values(variableStages[this.variableId]).find(stageDatasets =>
+        const options = Object.values(stages[this.variableId]).find(stageDatasets =>
             stageDatasets.includes(this.datasetId)
         );
 

@@ -1,4 +1,4 @@
-import { TimePeriodType, RCPType, VariableStageType, VisualizationControlType } from './../selectors/types';
+import { TimePeriodType, RCPType, StageType, VisualizationControlType } from './../selectors/types';
 import { ViewType } from '../../store';
 
 /**
