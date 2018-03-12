@@ -14,7 +14,7 @@
                 <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
 
                 <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
-                    <b-dropdown-header :id="group.id" v-if="isHeaderVisible(group)">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
+                    <b-dropdown-header :id="group.id" v-if="group.showHeader">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
 
                     <b-dropdown-item-button
                         :aria-describedby="group.id"
@@ -37,9 +37,6 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject, Emit } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
-
-import api from './../../api/main';
 
 import { rcpSelectorConfig, BaseSelectorConfig, BaseSelectorGroupConfig } from './../../configs';
 
@@ -54,6 +51,10 @@ export default class BaseSelectorV extends Vue {
     @Prop() currentId: string;
 
     @Prop() tPath: string;
+
+    create() {
+        console.log('----', this.config, this.currentId);
+    }
 
     /**
      * Returns a filtered set of selector groups.
@@ -71,9 +72,11 @@ export default class BaseSelectorV extends Vue {
 
             const filteredGroup: BaseSelectorGroupConfig = {
                 id: group.id,
-                showHeader: group.showHeader,
-                items: filteredItems
+                items: filteredItems,
+                showHeader: group.showHeader
             };
+            filteredGroup.showHeader = this.isHeaderVisible(filteredGroup);
+
             map.push(filteredGroup);
 
             return map;
