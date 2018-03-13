@@ -1,3 +1,5 @@
+import { DatasetId } from '../configs';
+
 export enum ViewType {
     MapView = 'map-view',
     ChartView = 'chart-view'
@@ -7,7 +9,7 @@ export interface AppState {
     currentView: ViewType | null;
     timePeriodId: string | null;
     variableId: string | null;
-    datasetId: string | null;
+    datasetId: DatasetId | null;
     featureId: string | null;
     featurePoint: MapPoint | null;
     rcpId: string | null;

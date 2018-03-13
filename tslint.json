@@ -101,6 +101,7 @@
 
         // Not doing
         "no-empty": false,
+        "no-unused-expression": false,
         "ban-comma-operator": false,
         "max-classes-per-file": false,
         "member-ordering": false,

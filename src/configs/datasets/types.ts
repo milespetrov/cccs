@@ -34,6 +34,14 @@ export enum VariableId {
 }
 
 export interface BaseDatasetSelectorSource {
+    /**
+     * Specifies whether the selector is visible to the user and can be manipulated by the user.
+     * If not explicitly set to false, the selector should be rendered.
+     *
+     * @type {boolean}
+     * @memberof BaseDatasetSelectorSource
+     */
+    visible?: boolean;
     default: string;
     options?: string[];
 }
