@@ -1,5 +1,5 @@
 import { DatasetSource, VariableId, DatasetId } from './types';
-import { VisualizationControlType, TimePeriodType, VariableStageType, RCPType } from './../selectors/types';
+import { VisualizationControlType, TimePeriodType, StageType, RCPType } from './../selectors/types';
 import { ViewType } from '../../store';
 
 const ahccdDataset: DatasetSource = {
@@ -7,22 +7,12 @@ const ahccdDataset: DatasetSource = {
 
     [ViewType.ChartView]: {
         [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual,
-            options: [TimePeriodType.Annual, TimePeriodType.Winter, TimePeriodType.Spring]
+            default: TimePeriodType.Annual
         }
     },
     [ViewType.MapView]: {},
 
-    variables: [
-        {
-            id: VariableId.TMax,
-            stage: VariableStageType.Historic
-        },
-        {
-            id: VariableId.TMean,
-            stage: VariableStageType.Historic
-        }
-    ],
+    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'

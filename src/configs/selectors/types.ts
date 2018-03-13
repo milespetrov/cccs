@@ -17,9 +17,31 @@ export enum VisualizationControlType {
  *
  * @enum {string}
  */
-export enum VariableStageType {
+export enum StageType {
     Future = 'future',
     Historic = 'historic'
+}
+
+/**
+ * Specifies which Datasets represent Future and Historic data for a specific variable.
+ * The first dataset in the list will be used when changin variable in the variable selector.
+ *
+ * @export
+ * @interface StageMap
+ */
+export interface StageMap {
+    [StageType.Historic]?: DatasetId[];
+    [StageType.Future]?: DatasetId[];
+}
+
+/**
+ * Map Variable Futuren and Historic stages to datasets.
+ *
+ * @export
+ * @interface StageMapping
+ */
+export interface StageMapping {
+    [name: string]: StageMap;
 }
 
 /**

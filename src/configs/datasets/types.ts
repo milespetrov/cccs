@@ -1,4 +1,4 @@
-import { TimePeriodType, RCPType, VariableStageType, VisualizationControlType } from './../selectors/types';
+import { TimePeriodType, RCPType, StageType, VisualizationControlType } from './../selectors/types';
 import { ViewType } from '../../store';
 
 /**
@@ -21,8 +21,21 @@ export enum DatasetId {
 export enum VariableId {
     TMin = 'tmin',
     TMax = 'tmax',
+
+    /**
+     * Mean temperature.
+     */
     TMean = 'tmean',
-    SurfaceWind = 'surface-wind'
+    Precipitation = 'precip',
+    SurfaceWind = 'surface_wind',
+    IceThickness = 'ice_thickness',
+    IceFraction = 'ice_fraction',
+    SnowDepth = 'snow_depth'
+}
+
+export interface BaseDatasetSelectorSource {
+    default: string;
+    options?: string[];
 }
 
 /**
@@ -30,7 +43,7 @@ export enum VariableId {
  *
  * @interface DatasetTimeSelectorSource
  */
-export interface DatasetTimeSelectorSource {
+export interface DatasetTimeSelectorSource extends BaseDatasetSelectorSource {
     /**
      * Specifies the option selected by default.
      *
@@ -55,7 +68,7 @@ export interface DatasetTimeSelectorSource {
  *
  * @interface DatasetRCPSelectorSource
  */
-export interface DatasetRCPSelectorSource {
+export interface DatasetRCPSelectorSource extends BaseDatasetSelectorSource {
     /**
      * Specifies the option selected by default.
      *
@@ -70,7 +83,7 @@ export interface DatasetRCPSelectorSource {
      * @type {RCPType[]}
      * @memberof DatasetRCPSelectorSource
      */
-    options: RCPType[];
+    options?: RCPType[];
 }
 
 /**
@@ -93,33 +106,11 @@ export interface DatasetViewSource {
      * @memberof DatasetViewSource
      */
     [VisualizationControlType.Time]?: DatasetTimeSelectorSource;
+    [key: string]: BaseDatasetSelectorSource | undefined;
 }
 
 /**
- * Configuration options for a Dataset Variable.
- *
- * @interface DatasetVariableSource
- */
-export interface DatasetVariableSource {
-    /**
-     * Variable id.
-     *
-     * @type {VariableId}
-     * @memberof DatasetVariableSource
-     */
-    id: VariableId;
-    /**
-     * Specifies if this Variable provides Future or Historic data under this Dataset.
-     * This affects which Datasets will be displayed in the Dataset selector when a certain Variable is selected.
-     *
-     * @type {VariableStageType}
-     * @memberof DatasetVariableSource
-     */
-    stage: VariableStageType;
-}
-
-/**
- * Configuration optiosn for a Dataset.
+ * Configuration options for a Dataset.
  *
  * @interface DatasetSource
  */
@@ -147,14 +138,7 @@ export interface DatasetSource {
      */
     [ViewType.MapView]: DatasetViewSource;
 
-    /**
-     * A list of Variable configuration options.
-     * Only variables present in this list will be displayed in the Variable Selector.
-     *
-     * @type {DatasetVariableSource[]}
-     * @memberof DatasetSource
-     */
-    variables: DatasetVariableSource[];
+    variables: VariableId[];
 
     /**
      * A path to them base map config.

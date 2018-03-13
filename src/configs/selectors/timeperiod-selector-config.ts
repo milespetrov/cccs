@@ -3,7 +3,7 @@ import { TimePeriodSelectorConfig, TimePeriodType } from './types';
 export const timePeriodSelectorConfig: TimePeriodSelectorConfig = {
     groups: [
         {
-            id: 'monthly-group',
+            id: 'monthly_group',
             items: [
                 TimePeriodType.January,
                 TimePeriodType.February,
@@ -17,15 +17,18 @@ export const timePeriodSelectorConfig: TimePeriodSelectorConfig = {
                 TimePeriodType.October,
                 TimePeriodType.November,
                 TimePeriodType.December
-            ]
+            ],
+            showHeader: true
         },
         {
-            id: 'season-group',
-            items: [TimePeriodType.Winter, TimePeriodType.Spring, TimePeriodType.Summer, TimePeriodType.Autumn]
+            id: 'season_group',
+            items: [TimePeriodType.Winter, TimePeriodType.Spring, TimePeriodType.Summer, TimePeriodType.Autumn],
+            showHeader: true
         },
         {
-            id: 'annual-group',
-            items: [TimePeriodType.Annual]
+            id: 'annual_group',
+            items: [TimePeriodType.Annual],
+            showHeader: true
         }
     ]
 };

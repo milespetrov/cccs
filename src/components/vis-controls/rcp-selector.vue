@@ -2,6 +2,7 @@
 
     <base-selector
         :config="config"
+        :available="available"
         :currentId="rcpId"
         tPath="rcpSelector"
         @select="select">
@@ -19,7 +20,13 @@ import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
-import { rcpSelectorConfig, RCPSelectorConfig, RCPType } from './../../configs';
+import {
+    rcpSelectorConfig,
+    RCPSelectorConfig,
+    RCPType,
+    VisualizationControlType,
+    DatasetViewSource
+} from './../../configs';
 
 @Component({
     components: {
@@ -27,10 +34,23 @@ import { rcpSelectorConfig, RCPSelectorConfig, RCPType } from './../../configs';
     }
 })
 export default class RcpSelector extends mixins(UpdateRouteMixin) {
-    @Action setRcpId: (value: RCPType) => void;
     @State rcpId: string;
+    @Getter datasetControlOptions: DatasetViewSource;
+    @Action setRcpId: (value: RCPType) => void;
 
     config: RCPSelectorConfig = rcpSelectorConfig;
+
+    /**
+     * Returns a list of rcp options available for the currently selected dataset.
+     */
+    get available(): string[] | undefined {
+        const selectorSource = this.datasetControlOptions[VisualizationControlType.RCP];
+        if (!selectorSource) {
+            return;
+        }
+
+        return selectorSource.options;
+    }
 
     select(value: RCPType) {
         this.setRcpId(value);

@@ -4,7 +4,7 @@ import { AppState, MapPoint, Range, ViewType } from './index';
 
 import controls from './../globals/controls';
 
-import { defaultSelectors, datasets, VisualizationControlType } from './../configs';
+import { defaultSelectors, datasets, VisualizationControlType, DatasetSource, DatasetViewSource } from './../configs';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -59,6 +59,10 @@ const getters = {
         return defaultSelectors.concat(Object.keys(
             datasets[state.datasetId!][state.currentView!]
         ) as VisualizationControlType[]);
+    },
+
+    datasetControlOptions: (state: AppState): DatasetViewSource => {
+        return datasets[state.datasetId!][state.currentView!];
     }
 };
 

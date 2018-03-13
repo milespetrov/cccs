@@ -1,30 +1,36 @@
 <template>
-    <b-dropdown :text="selectedVariableName" variant="light" class="cip-variable-selector">
-        
+    <b-dropdown :text="$t(`${tPath}.title`, { current: $t(`${tPath}.${variableId}.shortName`) })" variant="light" class="cip-variable-selector">
+
         <div class="cip-dropdown-info">
-            <h6 class="dropdown-header">Climate Data</h6>
-            <div class="cip-dropdown-description">An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate.</div>
+            <h6 class="dropdown-header">{{ $t(`${tPath}.header`) }}</h6>
+            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
         </div>
-        
+
         <b-dropdown-divider></b-dropdown-divider>
 
-        <template v-for="(variableGroup, index) in variableGroups">
-            <b-dropdown-divider :key="`divider-${ variableGroup.id }`" v-if="index !== 0"></b-dropdown-divider>
-            
-            <div role="group" :aria-lableledby="variableGroup.id" :key="`group-${ variableGroup.id }`">
-                <b-dropdown-header :id="variableGroup.id" v-if="variableGroup.items.length > 1">{{ variableGroup.name }}</b-dropdown-header>
-                
-                <div class="cip-dropdown-multi-item" v-for="variableItem in variableGroup.items" :key="`item-${ variableItem.id }`">
-                    <span>{{ variableItem.name }}</span>
+        <template v-for="(group, index) in config.groups">
+            <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
+
+            <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
+                <b-dropdown-header :id="group.id" v-if="group.items.length > 1">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
+
+                <div class="cip-dropdown-multi-item" v-for="item in group.items" :key="`item-${ item }`">
+                    <span>{{ $t(`${tPath}.${item}.fullName`) }}</span>
 
                     <div class="cip-dropdown-multi-item-options">
-                        <!-- :class="{'cip-selected': variableItem.id === variableId && option.id === datasetId }" -->
-                        <b-dropdown-item-button 
-                            :aria-describedby="variableGroup.id"
-                            :disabled="variableItem.id === variableId && option.datasetId === datasetId"
-                            :class="{ 'cip-selected': variableItem.id === variableId && option.datasetId === datasetId }"
-                            @click="selectVariable(variableItem, option)"
-                            v-for="option in variableItem.options" :key="`option-${ option.datasetId }`">{{ option.name }}</b-dropdown-item-button>
+                        
+                        <!-- TODO: need to set aria attribute on the button or add a hidden label because multiple buttons have the same text: Historic or Future -->
+
+                        <template v-for="(stageDatasets, key) in stages[item]">
+                            <b-dropdown-item-button
+                                :key="`stage-${key}`"
+                                :aria-describedby="group.id"
+                                v-if="stageDatasets.length > 0"
+                                :disabled="isStageDisabled(item, stageDatasets)"
+                                :class="{ 'cip-selected': isStageDisabled(item, stageDatasets) }"
+                                @click="selectVariable(item, stageDatasets)">{{ $t(`${tPath}.${key}`) }}</b-dropdown-item-button>
+
+                        </template>
                     </div>
                 </div>
             </div>
@@ -32,7 +38,7 @@
         </template>
 
     </b-dropdown>
-    
+
 </template>
 
 <script lang="ts">
@@ -43,176 +49,35 @@ import { mixins } from 'vue-class-component';
 import api from './../../api/main';
 import { Dictionary } from 'vue-router/types/router';
 import { UpdateRouteMixin } from './../../globals/mixin';
-
-interface VariableGroup {
-    name: string;
-    id: string;
-    items: VariableItem[];
-}
-
-interface VariableItem {
-    name: string;
-    id: string;
-    options: VariableOption[];
-}
-
-interface VariableOption {
-    name: string;
-    datasetId: string;
-    // datasetOptions: string[];
-}
+import {
+    variableSelectorConfig,
+    stages,
+    StageMapping,
+    VariableSelectorConfig,
+    DatasetId,
+    StageType,
+    VariableId
+} from '../../configs';
 
 @Component
 export default class VariableSelector extends mixins(UpdateRouteMixin) {
-    variableGroups: VariableGroup[] = [
-        {
-            name: 'Temperature',
-            id: 'temp-group',
-            items: [
-                {
-                    name: 'Mean Temperature',
-                    id: 'tmean',
-                    options: [
-                        {
-                            name: 'Historic',
-                            datasetId: 'ahccd'
-                        },
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                },
-                {
-                    name: 'Minimum Temperature',
-                    id: 'tmin',
-                    options: [
-                        {
-                            name: 'Historic',
-                            datasetId: 'ahccd'
-                        },
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                },
-                {
-                    name: 'Maximum Temperature',
-                    id: 'tmax',
-                    options: [
-                        {
-                            name: 'Historic',
-                            datasetId: 'ahccd'
-                        },
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            name: 'Wind Speed',
-            id: 'wind-speed-group',
-            items: [
-                {
-                    name: 'Surface Wind Speed',
-                    id: 'surface-wind-speed',
-                    options: [
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            name: 'Precipitation',
-            id: 'precip-group',
-            items: [
-                {
-                    name: 'Precipitation',
-                    id: 'precip',
-                    options: [
-                        {
-                            name: 'Historic',
-                            datasetId: 'ahccd'
-                        },
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            name: 'Ice',
-            id: 'ice-group',
-            items: [
-                {
-                    name: 'Sea Ice Thickness',
-                    id: 'ice-thickness',
-                    options: [
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                },
-                {
-                    name: 'Sea Ice Fraction',
-                    id: 'ice-fraction',
-                    options: [
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            name: 'Snow Depth',
-            id: 'snow-group',
-            items: [
-                {
-                    name: 'Snow Depth',
-                    id: 'snow-depth',
-                    options: [
-                        {
-                            name: 'Future',
-                            datasetId: 'cmip5'
-                        }
-                    ]
-                }
-            ]
-        }
-    ];
+    tPath: string = 'variableSelector';
+    config: VariableSelectorConfig = variableSelectorConfig;
+    stages: StageMapping = stages;
 
     @Action setVariableId: (value: string) => void;
     @Action setDatasetId: (value: string) => void;
 
     @State variableId: string;
-    @State datasetId: string;
+    @State datasetId: DatasetId;
 
-    get selectedVariableName(): string {
-        const variables = this.variableGroups.reduce<VariableItem[]>(
-            (array, group) => array.concat(group.items),
-            []
-        );
-
-        return `Variable: ${
-            variables.find(variable => variable.id === this.variableId)!.name
-        }`;
+    isStageDisabled(item: VariableId, stageDatasets: DatasetId[]): boolean {
+        return item === this.variableId && stageDatasets.includes(this.datasetId);
     }
 
-    selectVariable(variable: VariableItem, option: VariableOption) {
-        this.setVariableId(variable.id);
-        this.setDatasetId(option.datasetId);
+    selectVariable(item: VariableId, stageDatasets: DatasetId[]) {
+        this.setVariableId(item);
+        this.setDatasetId(stageDatasets[0]);
 
         this.updateRoute();
     }

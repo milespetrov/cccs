@@ -70,8 +70,8 @@
         <section class="container main">
 
             <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
-                <div class="cip-map-button" ref="mapButton"
-                    v-bind:style="tileStyle">
+                <div class="cip-map-button" 
+                    :style="tileStyle">
                     <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x }`" alt="">
                     <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x + 1 }`" alt="">
                     <img :src="`${ tileUrl }/3/${ tileCoordinates.y + 1 }/${ tileCoordinates.x }`" alt="">

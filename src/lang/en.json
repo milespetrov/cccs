@@ -1,29 +1,29 @@
 {
     "title": "Explore Climate Data",
 
-    "rcpSelector": {
-        "title": "Model: {current}",
-        "header": "RCP",
+    "variableSelector": {
+        "title": "Variable: {current}",
+        "header": "Climate Data",
         "description":
-            "The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",
+            "An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate",
 
-        "all_rcp_modles": "",
+        "temperature_group": "Temperature",
+        "wind_group": "Wind",
+        "ice_group": "Ice",
+        "precipitation_group": "Precipitation",
+        "snow_depth_group": "Snow Depth",
 
-        "2_6": {
-            "shortName": "RCP 2.6",
-            "fullName": " Representative Concentration Pathway 2.6",
-            "qualifier": ""
-        },
-        "4_5": {
-            "shortName": "RCP 8.5",
-            "fullName": "Representative Concentration Pathway 4.5",
-            "qualifier": ""
-        },
-        "8_5": {
-            "shortName": "RCP 8.5",
-            "fullName": "Representative Concentration Pathway 8.5",
-            "qualifier": ""
-        }
+        "tmean": { "fullName": "Mean Temperature", "shortName": "Mean Temperature", "qualifier": "" },
+        "tmin": { "fullName": "Minimum Temperature", "shortName": "Minimum Temperature", "qualifier": "" },
+        "tmax": { "fullName": "Maximum Temperature", "shortName": "Maximum Temperature", "qualifier": "" },
+        "precip": { "fullName": "Precipitation", "shortName": "Precipitation", "qualifier": "" },
+        "surface_wind": { "fullName": "Surface Wind Speed", "shortName": "Surface Wind Speed", "qualifier": "" },
+        "ice_thickness": { "fullName": "Sea Ice Thickness", "shortName": "Sea Ice Thickness", "qualifier": "" },
+        "ice_fraction": { "fullName": "Sea Ice Fraction", "shortName": "Sea Ice Fraction", "qualifier": "" },
+        "snow_depth": { "fullName": " Snow Depth", "shortName": " Snow Depth", "qualifier": "" },
+
+        "historic": "Historic",
+        "future": "Future"
     },
 
     "timePeriodSelector": {
@@ -32,9 +32,9 @@
         "description":
             "Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere \"behaves\" over relatively long periods of time.",
 
-        "monthly-group": "Monthly",
-        "seasonal-group": "Seasonal",
-        "annual-group": "Annual",
+        "monthly_group": "Monthly",
+        "season_group": "Seasonal",
+        "annual_group": "Annual",
 
         "Jan_Janv": { "fullName": "January", "shortName": "January", "qualifier": "" },
         "Feb_Fev": { "fullName": "February", "shortName": "February", "qualifier": "" },
@@ -55,5 +55,60 @@
         "Autumn_Autome": { "fullName": "Autumn", "shortName": "Autumn", "qualifier": "Sep - Nov" },
 
         "Annual_Annuel": { "fullName": "Annual", "shortName": "Annual", "qualifier": "" }
+    },
+
+    "rcpSelector": {
+        "title": "Model: {current}",
+        "header": "RCP",
+        "description":
+            "The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",
+
+        "all_rcp_modles": "",
+
+        "2_6": {
+            "shortName": "RCP 2.6",
+            "fullName": " Representative Concentration Pathway 2.6",
+            "qualifier": "RCP 2.6"
+        },
+        "4_5": {
+            "shortName": "RCP 4.5",
+            "fullName": "Representative Concentration Pathway 4.5",
+            "qualifier": "RCP 4.5"
+        },
+        "8_5": {
+            "shortName": "RCP 8.5",
+            "fullName": "Representative Concentration Pathway 8.5",
+            "qualifier": "RCP 8.5"
+        }
+    },
+
+    "datasetSelector": {
+        "title": "Dataset: {current}",
+        "header": "Datasets",
+        "description":
+            "Climate models use quantitative methods to simulate the interactions of the important drivers of climate, including atmosphere, oceans, land surface and ice. They are used for a variety of purposes from study of the dynamics of the climate system to projections of future climate.",
+
+        "all_datasets": "",
+
+        "ahccd": {
+            "shortName": "AHCCD",
+            "fullName": "Adjusted and homogenized Canadian Climate Data",
+            "qualifier": "AHCCD"
+        },
+        "cmip5": {
+            "shortName": "CMIP Phase 5",
+            "fullName": "Coupled Model Intercomparison Project Phase 5",
+            "qualifier": "CMIP5"
+        },
+        "cangrd": {
+            "shortName": "CanGRD",
+            "fullName": "Canadian Gridded Temperature and Precipitation Anomalies",
+            "qualifier": "CanGRD"
+        },
+        "dcs": {
+            "shortName": "DCS",
+            "fullName": "Downscale Climate Scenario",
+            "qualifier": "DCS"
+        }
     }
 }
