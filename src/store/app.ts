@@ -111,28 +111,31 @@ const actions = {
      */
     applyDatasetDefault(context: AppContext): void {
         // both dataset and view must be set to apply the dataset defaults
-        if (!state.currentView || !state.datasetId) {
+        if (!context.state.currentView || !context.state.datasetId) {
             return;
         }
 
-        const datasetControlOptions = getters.datasetControlOptions(context.state);
+        const datasetControlOptions = context.getters.datasetControlOptions;
 
         // map relevant actions and state accessors agaisnt the visualization control types
         const map: {
-            [name: string]: { action: (context: AppContext, value: string | null) => void; state: string | null };
+            [name: string]: { action: (value: string | null) => void; state: string | null };
         } = {
             [VisualizationControlType.Time]: {
-                action: actions.setTimePeriodId,
-                state: state.timePeriodId
+                action: (value: string) => context.dispatch('setTimePeriodId', value),
+                state: context.state.timePeriodId
             },
-            [VisualizationControlType.RCP]: { action: actions.setRcpId, state: state.rcpId }
+            [VisualizationControlType.RCP]: {
+                action: (value: string) => context.dispatch('setRcpId', value),
+                state: context.state.rcpId
+            }
         };
 
         [VisualizationControlType.Time, VisualizationControlType.RCP].forEach(type => {
             // if the selector is not defined for this dataset/view combination, reset the value to null
             const selectorSource = datasetControlOptions[type];
             if (!selectorSource) {
-                map[type].action(context, null);
+                map[type].action(null);
                 return;
             }
 
@@ -149,7 +152,7 @@ const actions = {
             }
 
             // set the value to the default specified in the selector source
-            map[type].action(context, selectorSource.default);
+            map[type].action(selectorSource.default);
         });
     },
 
