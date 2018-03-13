@@ -245,7 +245,6 @@ export default class App extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        this.setTimePeriodId('Annual_Annuel');
         this.setCurrentView(ViewType.MapView);
         this.updateRoute();
     }

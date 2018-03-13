@@ -4,7 +4,14 @@ import { AppState, MapPoint, Range, ViewType } from './index';
 
 import controls from './../globals/controls';
 
-import { defaultSelectors, datasets, VisualizationControlType, DatasetSource, DatasetViewSource } from './../configs';
+import {
+    defaultSelectors,
+    datasets,
+    VisualizationControlType,
+    DatasetSource,
+    DatasetViewSource,
+    DatasetId
+} from './../configs';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -56,9 +63,17 @@ const getters = {
      * @returns {VisualizationControlType[]}
      */
     getControls: (state: AppState): VisualizationControlType[] => {
-        return defaultSelectors.concat(Object.keys(
-            datasets[state.datasetId!][state.currentView!]
-        ) as VisualizationControlType[]);
+        const options = getters.datasetControlOptions(state);
+
+        // filter out visualization control ids which corresponding configurations are set to be invisible
+        const controls = Object.entries(options).reduce<VisualizationControlType[]>((map, [key, value]) => {
+            if (value!.visible !== false) {
+                map.push(key as VisualizationControlType);
+            }
+            return map;
+        }, []);
+
+        return defaultSelectors.concat(controls);
     },
 
     datasetControlOptions: (state: AppState): DatasetViewSource => {
@@ -70,6 +85,8 @@ const getters = {
 const actions = {
     setCurrentView(context: AppContext, value: ViewType) {
         context.commit('SET_CURRENT_VIEW', value);
+
+        actions.applyDatasetDefault(context);
     },
 
     setTimePeriodId(context: AppContext, value: string | null) {
@@ -80,8 +97,60 @@ const actions = {
         context.commit('SET_VARIABLE_ID', value);
     },
 
-    setDatasetId(context: AppContext, value: string | null) {
+    setDatasetId(context: AppContext, value: DatasetId) {
         context.commit('SET_DATASET_ID', value);
+
+        actions.applyDatasetDefault(context);
+    },
+
+    /**
+     * Apply the default selector values (time perido and rcp model if provided) specified in the current dataset configuration.
+     *
+     * @param {AppContext} context
+     * @returns {void}
+     */
+    applyDatasetDefault(context: AppContext): void {
+        // both dataset and view must be set to apply the dataset defaults
+        if (!state.currentView || !state.datasetId) {
+            return;
+        }
+
+        const datasetControlOptions = getters.datasetControlOptions(context.state);
+
+        // map relevant actions and state accessors agaisnt the visualization control types
+        const map: {
+            [name: string]: { action: (context: AppContext, value: string | null) => void; state: string | null };
+        } = {
+            [VisualizationControlType.Time]: {
+                action: actions.setTimePeriodId,
+                state: state.timePeriodId
+            },
+            [VisualizationControlType.RCP]: { action: actions.setRcpId, state: state.rcpId }
+        };
+
+        [VisualizationControlType.Time, VisualizationControlType.RCP].forEach(type => {
+            // if the selector is not defined for this dataset/view combination, reset the value to null
+            const selectorSource = datasetControlOptions[type];
+            if (!selectorSource) {
+                map[type].action(context, null);
+                return;
+            }
+
+            const currentValue = map[type].state;
+            // falsy options specified on the dataset configuration indicate that all available selector options will be used
+            // leave the currently selected option in place
+            if (currentValue && !selectorSource.options) {
+                return;
+            }
+
+            // if the currently set value is one of the options specified on the dataset config, leave it in place
+            if (currentValue && (<string[]>selectorSource.options).includes(currentValue)) {
+                return;
+            }
+
+            // set the value to the default specified in the selector source
+            map[type].action(context, selectorSource.default);
+        });
     },
 
     setFeatureId(context: AppContext, value: string | null) {
@@ -175,7 +244,7 @@ const mutations = {
         state.variableId = value;
     },
 
-    SET_DATASET_ID(state: AppState, value: string): void {
+    SET_DATASET_ID(state: AppState, value: DatasetId): void {
         state.datasetId = value;
     },
 

@@ -7,10 +7,16 @@ const ahccdDataset: DatasetSource = {
 
     [ViewType.ChartView]: {
         [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual
+            default: TimePeriodType.January
         }
     },
-    [ViewType.MapView]: {},
+    [ViewType.MapView]: {
+        [VisualizationControlType.Time]: {
+            visible: false,
+            default: TimePeriodType.Annual,
+            options: [TimePeriodType.Annual]
+        }
+    },
 
     variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
 
