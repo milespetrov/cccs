@@ -24,10 +24,9 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Action } from 'vuex-class';
+import { State, Action, Getter } from 'vuex-class';
 
 import api from './../api/main';
-import ahccdTemp from './../configs/chart/ahccd-temp';
 import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from '../globals/mixin';
 
@@ -35,6 +34,8 @@ import { UpdateRouteMixin } from '../globals/mixin';
 export default class ChartView extends mixins(UpdateRouteMixin) {
     @Action setChartRange: (value: { min: number; max: number }) => void;
     @State chartRange: { min: number; max: number };
+
+    @Getter chartBuilder: (builderDetails: object) => object;
 
     @State('timePeriodId') currentTimePeriod: string;
 
@@ -89,20 +90,23 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         if (!this.data) {
-            this.data = await api.getData(
+            this.data = await $.getJSON('./../../assets/configs/sfcWindSample.json', (data: any) => data);
+            /* this.data = await api.getData(
                 this.currentTimePeriod,
                 this.currentVariable,
                 this.currentDataset,
                 this.currentFeature
-            );
+            ); */
 
-            const config = this.makeConfig(
-                this.data,
-                this.currentTimePeriod,
-                this.currentVariable,
-                this.currentFeature,
-                this.callbacks
-            );
+            const builderPackage = {
+                data: this.data,
+                period: this.currentTimePeriod,
+                variable: this.currentVariable,
+                featureId: this.currentFeature,
+                callbacks: this.callbacks
+            };
+
+            const config = this.chartBuilder(builderPackage);
             this.initDQV(config);
             return;
         }
@@ -151,20 +155,25 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        this.data = await api.getData(
-            this.currentTimePeriod,
-            this.currentVariable,
-            this.currentDataset,
-            this.currentFeature
-        );
+        this.data = await $.getJSON('./../../assets/configs/sfcWindSample.json', (data: any) => data);
 
-        const config = this.makeConfig(
+        const builderPackage = {
+            data: this.data,
+            period: this.currentTimePeriod,
+            variable: this.currentVariable,
+            featureId: this.currentFeature,
+            callbacks: this.callbacks
+        };
+
+        const config = this.chartBuilder(builderPackage);
+
+        /* const config = this.makeConfig(
             this.data,
             this.currentTimePeriod,
             this.currentVariable,
             this.currentFeature,
             this.callbacks
-        );
+        ); */
 
         const chartId = 'dvChart1';
         const dvChart = api.DQV.charts[chartId];
@@ -172,10 +181,6 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
 
         (<any>window).wb.add('summary');
         //(<any>window).wb.add('table');
-    }
-
-    makeConfig(data: any, period: string, variable: string, stnid: string, callbacks: any): object {
-        return ahccdTemp(data, period, variable, stnid, callbacks);
     }
 
     /**

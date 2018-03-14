@@ -113,6 +113,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setCurrentView: (value: string) => void;
     @Action setFeaturePoint: (value: { x: number; y: number }) => void;
 
+    @Getter chartBuilder: (builderDetails: object) => object;
+
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
 
@@ -400,7 +402,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // TODO: abstract data retrieval to a single place
         const data = await api.getData(this.currentTimePeriod, this.currentVariable, this.currentDataset, stationId);
 
-        const config = ahccdTemp(data, this.currentTimePeriod, this.currentVariable, <any>stationId, {}, true);
+        const config = this.chartBuilder({
+            data,
+            period: this.currentTimePeriod,
+            variable: this.currentVariable,
+            featureId: stationId,
+            callbacks: {},
+            mini: true
+        });
 
         console.log(config);
 
