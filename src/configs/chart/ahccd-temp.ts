@@ -1,6 +1,5 @@
 import api from './../../api/main';
 import mappings from './../../globals/mappings';
-import { app } from './../../store/app';
 
 function makeConfig(
     stationData: any,

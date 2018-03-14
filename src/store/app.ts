@@ -33,6 +33,40 @@ const state: AppState = {
     internalRouteUpdate: false
 };
 
+enum Action {
+    applyDatasetDefault = 'applyDatasetDefault',
+    clearChart = 'clearChart',
+    clearFeature = 'clearFeature',
+    setCenterPoint = 'setCenterPoint',
+    setChartRange = 'setChartRange',
+    setCurrentView = 'setCurrentView',
+    setDatasetId = 'setDatasetId',
+    setFeatureId = 'setFeatureId',
+    setFeaturePoint = 'setFeaturePoint',
+    setInternalRouteUpdate = 'setInternalRouteUpdate',
+    setMapPin = 'setMapPin',
+    setRcpId = 'setRcpId',
+    setTimePeriodId = 'setTimePeriodId',
+    setVariableId = 'setVariableId',
+    setZoomLevel = 'setZoomLevel'
+}
+
+enum Mutation {
+    SET_CENTER_POINT = 'SET_CENTER_POINT',
+    SET_CHART_RANGE = 'SET_CHART_RANGE',
+    SET_CHART_SERIES = 'SET_CHART_SERIES',
+    SET_CURRENT_VIEW = 'SET_CURRENT_VIEW',
+    SET_DATASET_ID = 'SET_DATASET_ID',
+    SET_FEATURE_ID = 'SET_FEATURE_ID',
+    SET_FEATURE_POINT = 'SET_FEATURE_POINT',
+    SET_INTERNAL_ROUTE_UPDATE = 'SET_INTERNAL_ROUTE_UPDATE',
+    SET_MAP_PIN = 'SET_MAP_PIN',
+    SET_RCP_ID = 'SET_RCP_ID',
+    SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
+    SET_VARIABLE_ID = 'SET_VARIABLE_ID',
+    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL'
+}
+
 // getters
 const getters = {
     // TODO: type the query object
@@ -83,24 +117,24 @@ const getters = {
 
 // actions
 const actions = {
-    setCurrentView(context: AppContext, value: ViewType) {
-        context.commit('SET_CURRENT_VIEW', value);
+    [Action.setCurrentView](context: AppContext, value: ViewType) {
+        context.commit(Mutation.SET_CURRENT_VIEW, value);
 
-        actions.applyDatasetDefault(context);
+        context.dispatch(Action.applyDatasetDefault);
     },
 
-    setTimePeriodId(context: AppContext, value: string | null) {
-        context.commit('SET_TIME_PERIOD_ID', value);
+    [Action.setTimePeriodId](context: AppContext, value: string | null) {
+        context.commit(Mutation.SET_TIME_PERIOD_ID, value);
     },
 
-    setVariableId(context: AppContext, value: string | null) {
-        context.commit('SET_VARIABLE_ID', value);
+    [Action.setVariableId](context: AppContext, value: string | null) {
+        context.commit(Mutation.SET_VARIABLE_ID, value);
     },
 
-    setDatasetId(context: AppContext, value: DatasetId) {
-        context.commit('SET_DATASET_ID', value);
+    [Action.setDatasetId](context: AppContext, value: DatasetId) {
+        context.commit(Mutation.SET_DATASET_ID, value);
 
-        actions.applyDatasetDefault(context);
+        context.dispatch(Action.applyDatasetDefault);
     },
 
     /**
@@ -109,7 +143,7 @@ const actions = {
      * @param {AppContext} context
      * @returns {void}
      */
-    applyDatasetDefault(context: AppContext): void {
+    [Action.applyDatasetDefault](context: AppContext): void {
         // both dataset and view must be set to apply the dataset defaults
         if (!context.state.currentView || !context.state.datasetId) {
             return;
@@ -122,11 +156,11 @@ const actions = {
             [name: string]: { action: (value: string | null) => void; state: string | null };
         } = {
             [VisualizationControlType.Time]: {
-                action: (value: string) => context.dispatch('setTimePeriodId', value),
+                action: (value: string) => context.dispatch(Action.setTimePeriodId, value),
                 state: context.state.timePeriodId
             },
             [VisualizationControlType.RCP]: {
-                action: (value: string) => context.dispatch('setRcpId', value),
+                action: (value: string) => context.dispatch(Action.setRcpId, value),
                 state: context.state.rcpId
             }
         };
@@ -156,11 +190,11 @@ const actions = {
         });
     },
 
-    setFeatureId(context: AppContext, value: string | null) {
-        context.commit('SET_FEATURE_ID', value);
+    [Action.setFeatureId](context: AppContext, value: string | null) {
+        context.commit(Mutation.SET_FEATURE_ID, value);
     },
 
-    setFeaturePoint(context: AppContext, value: { x: number; y: number } | string | null): void {
+    [Action.setFeaturePoint](context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
         if (value === null) {
@@ -172,14 +206,14 @@ const actions = {
             point = new MapPoint(parseFloat(x), parseFloat(y));
         }
 
-        context.commit('SET_FEATURE_POINT', point);
+        context.commit(Mutation.SET_FEATURE_POINT, point);
     },
 
-    setRcpId(context: AppContext, value: string | null) {
-        context.commit('SET_RCP_ID', value);
+    [Action.setRcpId](context: AppContext, value: string | null) {
+        context.commit(Mutation.SET_RCP_ID, value);
     },
 
-    setCenterPoint(context: AppContext, value: { x: number; y: number } | string | null): void {
+    [Action.setCenterPoint](context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
         if (value === null) {
@@ -191,14 +225,14 @@ const actions = {
             point = new MapPoint(parseFloat(x), parseFloat(y));
         }
 
-        context.commit('SET_CENTER_POINT', point);
+        context.commit(Mutation.SET_CENTER_POINT, point);
     },
 
-    setZoomLevel(context: AppContext, value: string | null) {
-        context.commit('SET_ZOOM_LEVEL', value);
+    [Action.setZoomLevel](context: AppContext, value: string | null) {
+        context.commit(Mutation.SET_ZOOM_LEVEL, value);
     },
 
-    setMapPin(context: AppContext, value: { x: number; y: number } | string | null): void {
+    [Action.setMapPin](context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
         if (value === null) {
@@ -210,80 +244,80 @@ const actions = {
             point = new MapPoint(parseFloat(x), parseFloat(y));
         }
 
-        context.commit('SET_MAP_PIN', value);
+        context.commit(Mutation.SET_MAP_PIN, value);
     },
 
-    setChartRange(context: AppContext, value: { min: number; max: number }) {
+    [Action.setChartRange](context: AppContext, value: { min: number; max: number }) {
         const newVal = new Range(value.min, value.max);
-        context.commit('SET_CHART_RANGE', newVal);
+        context.commit(Mutation.SET_CHART_RANGE, newVal);
     },
 
-    clearChart(context: AppContext): void {
-        context.commit('SET_CHART_RANGE', null);
-        context.commit('SET_CHART_SERIES', null);
+    [Action.clearChart](context: AppContext): void {
+        context.commit(Mutation.SET_CHART_RANGE, null);
+        context.commit(Mutation.SET_CHART_SERIES, null);
     },
 
-    clearFeature(context: AppContext): void {
-        context.commit('SET_FEATURE_ID', null);
-        context.commit('SET_FEATURE_POINT', null);
+    [Action.clearFeature](context: AppContext): void {
+        context.commit(Mutation.SET_FEATURE_ID, null);
+        context.commit(Mutation.SET_FEATURE_POINT, null);
     },
 
-    setInternalRouteUpdate(context: AppContext, value: boolean): void {
-        context.commit('SET_INTERNAL_ROUTE_UPDATE', value);
+    [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
+        context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
     }
 };
 
 // mutations
 const mutations = {
-    SET_CURRENT_VIEW(state: AppState, value: ViewType): void {
+    [Mutation.SET_CURRENT_VIEW](state: AppState, value: ViewType): void {
         state.currentView = value;
     },
 
-    SET_TIME_PERIOD_ID(state: AppState, value: string): void {
+    [Mutation.SET_TIME_PERIOD_ID](state: AppState, value: string): void {
         state.timePeriodId = value;
     },
 
-    SET_VARIABLE_ID(state: AppState, value: string): void {
+    [Mutation.SET_VARIABLE_ID](state: AppState, value: string): void {
         state.variableId = value;
     },
 
-    SET_DATASET_ID(state: AppState, value: DatasetId): void {
+    [Mutation.SET_DATASET_ID](state: AppState, value: DatasetId): void {
         state.datasetId = value;
     },
 
-    SET_FEATURE_ID(state: AppState, value: string): void {
+    [Mutation.SET_FEATURE_ID](state: AppState, value: string): void {
         state.featureId = value;
     },
 
-    SET_FEATURE_POINT(state: AppState, value: MapPoint | null): void {
+    [Mutation.SET_FEATURE_POINT](state: AppState, value: MapPoint | null): void {
         state.featurePoint = value;
     },
 
-    SET_RCP_ID(state: AppState, value: string): void {
+    [Mutation.SET_RCP_ID](state: AppState, value: string): void {
         state.rcpId = value;
     },
 
-    SET_CENTER_POINT(state: AppState, value: MapPoint | null): void {
+    [Mutation.SET_CENTER_POINT](state: AppState, value: MapPoint | null): void {
         state.centerPoint = value;
     },
 
-    SET_ZOOM_LEVEL(state: AppState, value: string | null): void {
+    [Mutation.SET_ZOOM_LEVEL](state: AppState, value: string | null): void {
         state.zoomLevel = value;
     },
 
-    SET_MAP_PIN(state: AppState, value: MapPoint): void {
+    [Mutation.SET_MAP_PIN](state: AppState, value: MapPoint): void {
         state.mapPin = value;
     },
 
-    SET_CHART_RANGE(state: AppState, value: Range | null): void {
+    [Mutation.SET_CHART_RANGE](state: AppState, value: Range | null): void {
         state.chartRange = value;
     },
 
-    SET_CHART_SERIES(state: AppState, value: string | null): void {
+    [Mutation.SET_CHART_SERIES](state: AppState, value: string | null): void {
         state.chartSeries = value;
     },
 
-    SET_INTERNAL_ROUTE_UPDATE(state: AppState, value: boolean): void {
+    [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {
         state.internalRouteUpdate = value;
     }
 };
