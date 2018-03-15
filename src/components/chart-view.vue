@@ -26,7 +26,7 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Action, Getter } from 'vuex-class';
 
-import api from './../api/main';
+import api from './../api';
 import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from '../globals/mixin';
 
@@ -90,13 +90,11 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         if (!this.data) {
-            this.data = await $.getJSON('./../../assets/configs/sfcWindSample.json', (data: any) => data);
-            /* this.data = await api.getData(
+            this.data = await (<any>api)[this.currentDataset].getData(
                 this.currentTimePeriod,
                 this.currentVariable,
-                this.currentDataset,
                 this.currentFeature
-            ); */
+            );
 
             const builderPackage = {
                 data: this.data,
@@ -155,7 +153,11 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        this.data = await $.getJSON('./../../assets/configs/sfcWindSample.json', (data: any) => data);
+        this.data = await (<any>api)[this.currentDataset].getData(
+            this.currentTimePeriod,
+            this.currentVariable,
+            this.currentFeature
+        );
 
         const builderPackage = {
             data: this.data,

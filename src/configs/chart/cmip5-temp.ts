@@ -1,4 +1,4 @@
-import api from './../../api/main';
+import api from './../../api/';
 import mappings from './../../globals/mappings';
 import { app } from './../../store/app';
 
@@ -53,7 +53,7 @@ function makeConfig(details: Parameters) {
         },
         {
             name: 'Surface Wind Speed',
-            id: 'surface-wind-speed',
+            id: 'surface_wind',
             unit: '%'
         }
     ];

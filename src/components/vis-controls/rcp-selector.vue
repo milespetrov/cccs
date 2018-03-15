@@ -15,7 +15,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 
 import BaseSelectorV from './base-selector.vue';
-import api from './../../api/main';
+import api from './../../api/';
 import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 import { UpdateRouteMixin } from './../../globals/mixin';
@@ -60,5 +60,4 @@ export default class RcpSelector extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

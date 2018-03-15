@@ -16,7 +16,7 @@ import { State, Getter, Action } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
 import BaseSelectorV from './base-selector.vue';
-import api from './../../api/main';
+import api from './../../api/';
 import { UpdateRouteMixin } from './../../globals/mixin';
 import {
     TimePeriodSelectorConfig,
@@ -59,5 +59,4 @@ export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

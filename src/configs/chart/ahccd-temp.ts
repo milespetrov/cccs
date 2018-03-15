@@ -1,4 +1,4 @@
-import api from './../../api/main';
+import api from './../../api/';
 import mappings from './../../globals/mappings';
 
 interface Parameters {
@@ -42,7 +42,7 @@ function makeConfig(details: Parameters) {
     ];
 
     const item = variables.find((v: { id: string }) => v.id === details.variable);
-    details.variable = item ? (<any>item).name : details.variable;
+    const varFullName = item ? (<any>item).name : details.variable;
 
     const config = {
         chart: {
@@ -68,7 +68,7 @@ function makeConfig(details: Parameters) {
             enabled: false
         },
         title: {
-            text: `${details.variable} at ${details.data.station_name},
+            text: `${varFullName} at ${details.data.station_name},
              ${details.data.data_years.start} - ${details.data.data_years.end}`,
             x: -110
         },
@@ -86,37 +86,38 @@ function makeConfig(details: Parameters) {
             crosshair: true,
             gridLineWidth: 1,
             events: {
-                setExtremes: (event: any) => {
+                setExtremes: async (event: any) => {
                     console.log(event, event.target);
 
                     details.callbacks.xaxis.events.setExtremes(event);
 
-                    $.getJSON(
-                        `http://ahccd-dev.azurewebsites.net/${details.featureId}/${(<any>item!).id}/${
-                            mappings.periodToNum[details.period]
-                        }/trend/${event.min}/${event.max}`,
-                        data => {
-                            console.log(data);
-                            (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
-                            if (!data.value) {
-                                (<any>secondTrendValueLabel).textSetter(`<b>Not Available</b>`);
-                            } else {
-                                (<any>secondTrendValueLabel).textSetter(
-                                    //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
-                                    `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
-                                );
-                            }
-                            (<any>secondTrendValueLabel).attr({
-                                x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
-                            });
-                        }
+                    const data = await api.ahccd.getTrend(
+                        details.variable,
+                        details.period,
+                        details.featureId,
+                        event.min,
+                        event.max
                     );
+
+                    console.log(data);
+                    (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
+                    if (!data.value) {
+                        (<any>secondTrendValueLabel).textSetter(`<b>Not Available</b>`);
+                    } else {
+                        (<any>secondTrendValueLabel).textSetter(
+                            //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
+                            `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
+                        );
+                    }
+                    (<any>secondTrendValueLabel).attr({
+                        x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
+                    });
                 }
             }
         },
         yAxis: {
             title: {
-                text: `${details.variable}, ${(<any>item!).unit}`
+                text: `${varFullName}, ${(<any>item!).unit}`
             },
             labels: { style: { color: 'black' } },
             min: Math.min(0, ...seriesData) * 1.5,
@@ -230,7 +231,7 @@ function makeConfig(details: Parameters) {
             }
         },
         title: {
-            text: `${details.variable} at ${details.data.station_name}, ${details.data.data_years.start} - ${
+            text: `${varFullName} at ${details.data.station_name}, ${details.data.data_years.start} - ${
                 details.data.data_years.end
             }`,
             style: { fontSize: '10px' }

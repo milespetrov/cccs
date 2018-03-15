@@ -6,7 +6,7 @@ import VueI18n from 'vue-i18n';
 import app from './app.vue';
 import routes from './routes';
 import { AppState, createStore } from './store';
-import api from './api/main';
+import api from './api/';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -17,12 +17,7 @@ const router = new VueRouter({ routes });
 // initialize a new app-wide store
 const store: Store<AppState> = createStore();
 
-Vue.config.ignoredElements = [
-    'dv-section',
-    'dv-chart',
-    'dv-chart-table',
-    'rv-map'
-];
+Vue.config.ignoredElements = ['dv-section', 'dv-chart', 'dv-chart-table', 'rv-map'];
 
 // TODO: move this to a separate module
 // TODO: check query string or url to to load the proper locale

@@ -23,7 +23,7 @@ import { mixins } from 'vue-class-component';
 import sprintf from 'sprintf-js';
 import { Subject } from 'rxjs/Subject';
 
-import api from './../api/main';
+import api from './../api/';
 import ahccdTemp from '../configs/chart/ahccd-temp';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
@@ -400,7 +400,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         console.log('display mini chart');
 
         // TODO: abstract data retrieval to a single place
-        const data = await api.getData(this.currentTimePeriod, this.currentVariable, this.currentDataset, stationId);
+        const data = await (<any>api)[this.currentDataset].getData(
+            this.currentTimePeriod,
+            this.currentVariable,
+            stationId
+        );
 
         const config = this.chartBuilder({
             data,
