@@ -399,15 +399,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     async displayMiniChart(stationId: string): Promise<void> {
         console.log('display mini chart');
 
-        // TODO: abstract data retrieval to a single place
-        const data = await (<any>api)[this.currentDataset].getData(
-            this.currentTimePeriod,
-            this.currentVariable,
-            stationId
-        );
-
-        const config = this.chartBuilder({
-            data,
+        const config = await this.chartBuilder({
             period: this.currentTimePeriod,
             variable: this.currentVariable,
             featureId: stationId,

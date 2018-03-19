@@ -1,18 +1,11 @@
-import api from './../../api/';
+import api, { cmip5Api } from './../../api/';
 import mappings from './../../globals/mappings';
-import { app } from './../../store/app';
+import { BuilderDetails } from './builders';
 
-interface Parameters {
-    data: any;
-    period: string;
-    variable: string;
-    featureId: string;
-    callbacks: any;
-    mini?: boolean;
-}
+async function makeConfig(details: BuilderDetails) {
+    const data = await cmip5Api.getData(details.period, details.variable, details.featureId);
 
-function makeConfig(details: Parameters) {
-    const seriesData = details.data.models['rcp8.5'].ann['50'].anomaly.map((value: any) => {
+    const seriesData = data.models['rcp8.5'].ann['50'].anomaly.map((value: any) => {
         if (value && value > -9999) {
             return +value.toFixed(2);
         } else {
@@ -71,7 +64,7 @@ function makeConfig(details: Parameters) {
             marginRight: 265,
             events: {
                 load: (event: any) => {
-                    makeLabels(event, details.data);
+                    makeLabels(event, data);
                 }
             },
             style: {
@@ -85,8 +78,8 @@ function makeConfig(details: Parameters) {
             enabled: false
         },
         title: {
-            text: `${details.variable} at ${details.data.grid_id},
-             ${details.data.start_year} - ${details.data.end_year}`,
+            text: `${details.variable} at ${data.grid_id},
+             ${data.start_year} - ${data.end_year}`,
             x: -110
         },
         subtitle: {
@@ -143,7 +136,7 @@ function makeConfig(details: Parameters) {
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: details.data.start_year,
+                pointStart: data.start_year,
                 events: {
                     hide: () => {
                         if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)) {
@@ -242,14 +235,12 @@ function makeConfig(details: Parameters) {
             }
         },
         title: {
-            text: `${details.variable} at ${details.data.grid_id}, ${details.data.start_year} - ${
-                details.data.end_year
-            }`,
+            text: `${details.variable} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
             series: {
-                pointStart: details.data.start_year
+                pointStart: data.start_year
             }
         },
         tooltip: {

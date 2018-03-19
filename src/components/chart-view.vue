@@ -60,8 +60,6 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         this.updateDQV();
     }
 
-    private data: any[];
-
     private userTrendValue: SVGElement;
 
     /**
@@ -88,23 +86,18 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         this.isActive = false;
     }
 
+    data: any;
+
     async mounted(): Promise<void> {
         if (!this.data) {
-            this.data = await (<any>api)[this.currentDataset].getData(
-                this.currentTimePeriod,
-                this.currentVariable,
-                this.currentFeature
-            );
-
             const builderPackage = {
-                data: this.data,
                 period: this.currentTimePeriod,
                 variable: this.currentVariable,
                 featureId: this.currentFeature,
                 callbacks: this.callbacks
             };
 
-            const config = this.chartBuilder(builderPackage);
+            const config = await this.chartBuilder(builderPackage);
             this.initDQV(config);
             return;
         }
@@ -153,29 +146,14 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        this.data = await (<any>api)[this.currentDataset].getData(
-            this.currentTimePeriod,
-            this.currentVariable,
-            this.currentFeature
-        );
-
         const builderPackage = {
-            data: this.data,
             period: this.currentTimePeriod,
             variable: this.currentVariable,
             featureId: this.currentFeature,
             callbacks: this.callbacks
         };
 
-        const config = this.chartBuilder(builderPackage);
-
-        /* const config = this.makeConfig(
-            this.data,
-            this.currentTimePeriod,
-            this.currentVariable,
-            this.currentFeature,
-            this.callbacks
-        ); */
+        const config = await this.chartBuilder(builderPackage);
 
         const chartId = 'dvChart1';
         const dvChart = api.DQV.charts[chartId];

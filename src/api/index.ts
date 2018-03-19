@@ -1,5 +1,5 @@
-import ahccd from './ahccd-api';
-import cmip5 from './cmip5-api';
+import ahccdApi from './ahccd-api';
+import cmip5Api from './cmip5-api';
 import { EnhancedWindow } from './types';
 
 const DQV: any = (<EnhancedWindow>window).DQV;
@@ -9,7 +9,7 @@ const RZ: any = (<EnhancedWindow>window).RZ;
 export default {
     DQV,
     $,
-    RZ,
-    ahccd,
-    cmip5
+    RZ
 };
+
+export { ahccdApi, cmip5Api };

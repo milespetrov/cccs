@@ -1,17 +1,11 @@
-import api from './../../api/';
+import api, { ahccdApi } from './../../api/';
 import mappings from './../../globals/mappings';
+import { BuilderDetails } from './../chart/builders';
 
-interface Parameters {
-    data: any;
-    period: string;
-    variable: string;
-    featureId: string;
-    callbacks: any;
-    mini?: boolean;
-}
+async function makeConfig(details: BuilderDetails) {
+    const data = await ahccdApi.getData(details.period, details.variable, details.featureId);
 
-function makeConfig(details: Parameters) {
-    const seriesData = details.data.absolute_values.map((value: number) => (value > -9999 ? value : null));
+    const seriesData = data.absolute_values.map((value: number) => (value > -9999 ? value : null));
 
     let secondTrendValueLabel: HTMLElement;
     let trendRangeLabel: SVGElement;
@@ -54,7 +48,7 @@ function makeConfig(details: Parameters) {
             marginRight: 265,
             events: {
                 load: (event: any) => {
-                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, details.data);
+                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, data);
                 }
             },
             style: {
@@ -68,8 +62,8 @@ function makeConfig(details: Parameters) {
             enabled: false
         },
         title: {
-            text: `${varFullName} at ${details.data.station_name},
-             ${details.data.data_years.start} - ${details.data.data_years.end}`,
+            text: `${varFullName} at ${data.station_name},
+             ${data.data_years.start} - ${data.data_years.end}`,
             x: -110
         },
         subtitle: {
@@ -91,13 +85,13 @@ function makeConfig(details: Parameters) {
 
                     details.callbacks.xaxis.events.setExtremes(event);
 
-                    const data = await api.ahccd.getTrend(
-                        details.variable,
-                        details.period,
-                        details.featureId,
-                        event.min,
-                        event.max
-                    );
+                    const data = await ahccdApi.getTrend({
+                        variable: details.variable,
+                        timePeriod: details.period,
+                        featureId: details.featureId,
+                        startYear: event.min,
+                        endYear: event.max
+                    });
 
                     console.log(data);
                     (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
@@ -150,7 +144,7 @@ function makeConfig(details: Parameters) {
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: details.data.data_years.start,
+                pointStart: data.data_years.start,
                 events: {
                     hide: () => {
                         if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)) {
@@ -231,14 +225,12 @@ function makeConfig(details: Parameters) {
             }
         },
         title: {
-            text: `${varFullName} at ${details.data.station_name}, ${details.data.data_years.start} - ${
-                details.data.data_years.end
-            }`,
+            text: `${varFullName} at ${data.station_name}, ${data.data_years.start} - ${data.data_years.end}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
             series: {
-                pointStart: details.data.data_years.start
+                pointStart: data.data_years.start
             }
         },
         tooltip: {

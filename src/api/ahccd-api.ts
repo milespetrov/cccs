@@ -1,8 +1,12 @@
 import { DatasetApi } from './types';
 
-interface AhccdApi extends DatasetApi {
-    getTrend: (variable: string, timePeriod: string, featureId: string, startYear: number, endYear: number) => any;
+export interface AhccdApi extends DatasetApi {
+    getTrend: (
+        options: { variable: string; timePeriod: string; featureId: string; startYear: number; endYear: number }
+    ) => any;
 }
+
+const baseApiUrl = 'http://ahccd-dev.azurewebsites.net';
 
 const periodMappings: { [key: string]: number } = {
     Jan_Janv: 1,
@@ -26,20 +30,25 @@ const periodMappings: { [key: string]: number } = {
 
 function getData(timePeriod: string, variable: string, featureId: string): Promise<any[]> {
     const promise = new Promise<any[]>((resolve, reject) => {
-        $.getJSON(
-            `http://ahccd-dev.azurewebsites.net/${featureId}/${variable}/${periodMappings[timePeriod]}`,
-            (data: any[]) => resolve(data)
+        $.getJSON(`${baseApiUrl}/${featureId}/${variable}/${periodMappings[timePeriod]}`, (data: any[]) =>
+            resolve(data)
         );
     });
 
     return promise;
 }
 
-function getTrend(variable: string, timePeriod: string, featureId: string, startYear: number, endYear: number) {
+function getTrend(options: {
+    variable: string;
+    timePeriod: string;
+    featureId: string;
+    startYear: number;
+    endYear: number;
+}) {
     return $.getJSON(
-        `http://ahccd-dev.azurewebsites.net/${featureId}/${variable}/${
-            periodMappings[timePeriod]
-        }/trend/${startYear}/${endYear}`,
+        `${baseApiUrl}/${options.featureId}/${options.variable}/${periodMappings[options.timePeriod]}/trend/${
+            options.startYear
+        }/${options.endYear}`,
         data => data
     );
 }
