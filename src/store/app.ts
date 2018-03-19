@@ -13,6 +13,8 @@ import {
     DatasetId
 } from './../configs';
 
+import chartBuilders from './../configs/chart/builders';
+
 type AppContext = ActionContext<AppState, AppState>;
 
 const state: AppState = {
@@ -112,6 +114,10 @@ const getters = {
 
     datasetControlOptions: (state: AppState): DatasetViewSource => {
         return datasets[state.datasetId!][state.currentView!];
+    },
+
+    chartBuilder: () => {
+        return chartBuilders[state.datasetId!];
     }
 };
 

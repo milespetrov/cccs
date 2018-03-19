@@ -69,7 +69,7 @@ import selectors from './vis-controls/selectors';
 
 import { sprintf } from 'sprintf-js';
 
-import api from './../api/main';
+import api from './../api/';
 
 @Component({
     components: selectors

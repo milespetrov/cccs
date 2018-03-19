@@ -46,7 +46,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
-import api from './../../api/main';
+import api from './../../api/';
 import { Dictionary } from 'vue-router/types/router';
 import { UpdateRouteMixin } from './../../globals/mixin';
 import {

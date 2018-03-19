@@ -1,14 +1,25 @@
-import api, { ahccdApi } from './../../api/';
+import api, { cmip5Api } from './../../api/';
 import mappings from './../../globals/mappings';
-import { BuilderDetails } from './../chart/builders';
+import { BuilderDetails } from './builders';
 
 async function makeConfig(details: BuilderDetails) {
-    const data = await ahccdApi.getData(details.period, details.variable, details.featureId);
+    const data = await cmip5Api.getData(details.period, details.variable, details.featureId);
 
-    const seriesData = data.absolute_values.map((value: number) => (value > -9999 ? value : null));
+    const seriesData = data.models['rcp8.5'].ann['50'].anomaly.map((value: any) => {
+        if (value && value > -9999) {
+            return +value.toFixed(2);
+        } else {
+            return null;
+        }
+    });
 
-    let secondTrendValueLabel: HTMLElement;
-    let trendRangeLabel: SVGElement;
+    const seriesData25 = seriesData.map((value: any) => {
+        return [value - (Math.random() * 10 + 2.5), value + (Math.random() * 10 + 2.5)];
+    });
+
+    const seriesData5 = seriesData25.map((value: any) => {
+        return [value[0] - (Math.random() * 15 + 1.5), value[1] + (Math.random() * 15 + 1.5)];
+    });
 
     // HACK: get a proper variable name
     // should be retrieved from the store
@@ -32,11 +43,16 @@ async function makeConfig(details: BuilderDetails) {
             name: 'Precipitation',
             id: 'precip',
             unit: 'mm'
+        },
+        {
+            name: 'Surface Wind Speed',
+            id: 'surface_wind',
+            unit: '%'
         }
     ];
 
     const item = variables.find((v: { id: string }) => v.id === details.variable);
-    const varFullName = item ? (<any>item).name : details.variable;
+    details.variable = item ? (<any>item).name : details.variable;
 
     const config = {
         chart: {
@@ -48,7 +64,7 @@ async function makeConfig(details: BuilderDetails) {
             marginRight: 265,
             events: {
                 load: (event: any) => {
-                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, data);
+                    makeLabels(event, data);
                 }
             },
             style: {
@@ -62,8 +78,8 @@ async function makeConfig(details: BuilderDetails) {
             enabled: false
         },
         title: {
-            text: `${varFullName} at ${data.station_name},
-             ${data.data_years.start} - ${data.data_years.end}`,
+            text: `${details.variable} at ${data.grid_id},
+             ${data.start_year} - ${data.end_year}`,
             x: -110
         },
         subtitle: {
@@ -80,46 +96,22 @@ async function makeConfig(details: BuilderDetails) {
             crosshair: true,
             gridLineWidth: 1,
             events: {
-                setExtremes: async (event: any) => {
+                setExtremes: (event: any) => {
                     console.log(event, event.target);
 
                     details.callbacks.xaxis.events.setExtremes(event);
-
-                    const data = await ahccdApi.getTrend({
-                        variable: details.variable,
-                        timePeriod: details.period,
-                        featureId: details.featureId,
-                        startYear: event.min,
-                        endYear: event.max
-                    });
-
-                    console.log(data);
-                    (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
-                    if (!data.value) {
-                        (<any>secondTrendValueLabel).textSetter(`<b>Not Available</b>`);
-                    } else {
-                        (<any>secondTrendValueLabel).textSetter(
-                            //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
-                            `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
-                        );
-                    }
-                    (<any>secondTrendValueLabel).attr({
-                        x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
-                    });
                 }
             }
         },
         yAxis: {
             title: {
-                text: `${varFullName}, ${(<any>item!).unit}`
+                text: `${details.variable}, %`
             },
-            labels: { style: { color: 'black' } },
-            min: Math.min(0, ...seriesData) * 1.5,
-            max: Math.max(0, ...seriesData) * 1.5
+            labels: { style: { color: 'black' } }
         },
         tooltip: {
             shared: true,
-            valueSuffix: `${(<any>item!).unit}`
+            valueSuffix: `%`
         },
         legend: {
             layout: 'vertical',
@@ -132,7 +124,7 @@ async function makeConfig(details: BuilderDetails) {
                 }
             },
             y: 40,
-            x: -128,
+            x: -62,
             labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
             symbolHeight: 0.1,
@@ -144,7 +136,7 @@ async function makeConfig(details: BuilderDetails) {
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: data.data_years.start,
+                pointStart: data.start_year,
                 events: {
                     hide: () => {
                         if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)) {
@@ -157,15 +149,33 @@ async function makeConfig(details: BuilderDetails) {
         },
         series: [
             {
-                name: mappings.periodToNames[details.period],
+                name: 'Ensemble Median',
                 data: seriesData,
-                type: 'spline',
+                type: 'line',
                 pointPadding: 0.1,
                 groupPadding: 0.1,
-                lineWidth: 2,
+                zIndex: 2,
                 color: '#34495e',
-                cropThreshold: 1, // workaround for https://github.com/highcharts/highcharts/issues/7913
-                marker: { enabled: true }
+                marker: { enabled: true },
+                events: {
+                    legendItemClick: () => false
+                }
+            },
+            {
+                name: '25th, 75th Percentiles',
+                data: seriesData25,
+                type: 'arearange',
+                zIndex: 1,
+                color: '#6D8398',
+                marker: { enabled: false }
+            },
+            {
+                name: '5th, 95th Percentiles',
+                data: seriesData5,
+                type: 'arearange',
+                zIndex: 0,
+                color: '#8DA3B8',
+                marker: { enabled: false }
             }
         ]
     };
@@ -225,12 +235,12 @@ async function makeConfig(details: BuilderDetails) {
             }
         },
         title: {
-            text: `${varFullName} at ${data.station_name}, ${data.data_years.start} - ${data.data_years.end}`,
+            text: `${details.variable} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
             series: {
-                pointStart: data.data_years.start
+                pointStart: data.start_year
             }
         },
         tooltip: {
@@ -243,30 +253,39 @@ async function makeConfig(details: BuilderDetails) {
         },
         series: [
             {
-                name: mappings.periodToNames[details.period],
+                name: 'Ensemble Median',
                 data: seriesData,
-                color: '#666666',
                 type: 'line',
-                lineWidth: 1,
-                marker: {
-                    radius: 2
-                }
+                pointPadding: 0.1,
+                groupPadding: 0.1,
+                zIndex: 2,
+                color: '#666666',
+                marker: { enabled: false }
+            },
+            {
+                name: '25th, 75th Percentiles',
+                data: seriesData25,
+                type: 'arearange',
+                zIndex: 1,
+                color: '#959595',
+                marker: { enabled: false }
+            },
+            {
+                name: '5th, 95th Percentiles',
+                data: seriesData5,
+                type: 'arearange',
+                zIndex: 0,
+                color: '#B5B5B5',
+                marker: { enabled: false }
             }
         ]
     };
-
     return details.mini ? miniConfig : config;
 }
 
 function makeLabels(event: any, data: any) {
     const firstLabelY = 145;
-    const stationTrendValue = data.trend.value ? data.trend.value : 'N/A';
     const ren = event.target.renderer;
-
-    const firstTrend =
-        stationTrendValue === 'N/A'
-            ? 'Not Available'
-            : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4);
 
     ren
         .path([
@@ -285,74 +304,7 @@ function makeLabels(event: any, data: any) {
         .add();
 
     ren
-        .label('<b>Trends</b>', event.target.plotWidth + event.target.plotLeft + 55, firstLabelY)
-        .css({
-            'font-size': '16px',
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-
-    // draw the first trend value
-    ren
-        .label(
-            `Overall (${data.data_years.start}-${data.data_years.end}):`,
-            event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY + 25
-        )
-        .css({
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-    const current = ren
-        .label(`<b>${firstTrend}</b>`, null, firstLabelY + 25)
-        .css({
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-    (<any>current).attr({
-        x: event.target.chartWidth - (<any>current).width + 6
-    });
-    const trendRangeLabel = ren
-        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 45)
-        .css({
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-    // draw the second trend value
-    const secondTrendValueLabel = ren
-        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 45)
-        .css({
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-
-    ren
-        .label(`<b>Key Information</b>`, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 110)
+        .label(`<b>Key Information</b>`, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY)
         .css({
             'font-size': '16px',
             color: 'black' //'#ecf0f1'
@@ -368,7 +320,7 @@ function makeLabels(event: any, data: any) {
         .label(
             `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
             event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY + 135
+            firstLabelY + 25
         )
         .css({
             'pointer-events': 'none',
@@ -381,8 +333,6 @@ function makeLabels(event: any, data: any) {
             zIndex: 6
         })
         .add();
-
-    return [trendRangeLabel, secondTrendValueLabel];
 }
 
 export default makeConfig;

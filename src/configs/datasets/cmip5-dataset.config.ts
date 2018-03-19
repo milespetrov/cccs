@@ -8,7 +8,13 @@ const cimp5Dataset: DatasetSource = {
     [ViewType.ChartView]: {
         [VisualizationControlType.Time]: {
             default: TimePeriodType.Annual,
-            options: [TimePeriodType.Winter, TimePeriodType.Spring]
+            options: [
+                TimePeriodType.Annual,
+                TimePeriodType.Autumn,
+                TimePeriodType.Summer,
+                TimePeriodType.Winter,
+                TimePeriodType.Spring
+            ]
         },
         [VisualizationControlType.RCP]: {
             default: RCPType.RCP2_6

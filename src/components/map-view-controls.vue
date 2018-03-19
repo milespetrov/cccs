@@ -31,7 +31,7 @@ import { State, Getter, Action } from 'vuex-class';
 
 import selectors from './vis-controls/selectors';
 
-import api from './../api/main';
+import api from './../api/';
 
 @Component({
     components: selectors

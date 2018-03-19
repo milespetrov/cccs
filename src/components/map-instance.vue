@@ -23,7 +23,7 @@ import { mixins } from 'vue-class-component';
 import sprintf from 'sprintf-js';
 import { Subject } from 'rxjs/Subject';
 
-import api from './../api/main';
+import api from './../api/';
 import ahccdTemp from '../configs/chart/ahccd-temp';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
@@ -112,6 +112,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setMapPin: (value: MapPoint | null) => void;
     @Action setCurrentView: (value: string) => void;
     @Action setFeaturePoint: (value: { x: number; y: number }) => void;
+
+    @Getter chartBuilder: (builderDetails: object) => object;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -397,10 +399,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     async displayMiniChart(stationId: string): Promise<void> {
         console.log('display mini chart');
 
-        // TODO: abstract data retrieval to a single place
-        const data = await api.getData(this.currentTimePeriod, this.currentVariable, this.currentDataset, stationId);
-
-        const config = ahccdTemp(data, this.currentTimePeriod, this.currentVariable, <any>stationId, {}, true);
+        const config = await this.chartBuilder({
+            period: this.currentTimePeriod,
+            variable: this.currentVariable,
+            featureId: stationId,
+            callbacks: {},
+            mini: true
+        });
 
         console.log(config);
 
