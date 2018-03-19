@@ -45,6 +45,8 @@ interface BuilderDetails {
      * @memberof BuilderDetails
      */
     mini?: boolean;
+
+    chartSeries?: number[];
 }
 
 /**

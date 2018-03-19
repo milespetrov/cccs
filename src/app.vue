@@ -138,6 +138,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: string | null) => void;
     @Action setZoomLevel: (value: string | null) => void;
+    @Action setChartSeries: (value: number[] | null) => void;
 
     @State currentView: string;
 
@@ -224,6 +225,7 @@ export default class App extends mixins(UpdateRouteMixin) {
             d: this.setDatasetId,
             f: this.setFeatureId,
             cp: this.setCenterPoint,
+            cs: this.setChartSeries,
             z: this.setZoomLevel
         };
 

@@ -30,6 +30,7 @@ const state: AppState = {
     chartRange: null,
     chartSeries: null,
     mapPin: null,
+    rcpTimeSlice: null,
 
     // Does not belong
     internalRouteUpdate: false
@@ -41,6 +42,7 @@ enum Action {
     clearFeature = 'clearFeature',
     setCenterPoint = 'setCenterPoint',
     setChartRange = 'setChartRange',
+    setChartSeries = 'setChartSeries',
     setCurrentView = 'setCurrentView',
     setDatasetId = 'setDatasetId',
     setFeatureId = 'setFeatureId',
@@ -48,6 +50,7 @@ enum Action {
     setInternalRouteUpdate = 'setInternalRouteUpdate',
     setMapPin = 'setMapPin',
     setRcpId = 'setRcpId',
+    setRcpTimeSlice = 'setRcpTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
     setZoomLevel = 'setZoomLevel'
@@ -64,6 +67,7 @@ enum Mutation {
     SET_INTERNAL_ROUTE_UPDATE = 'SET_INTERNAL_ROUTE_UPDATE',
     SET_MAP_PIN = 'SET_MAP_PIN',
     SET_RCP_ID = 'SET_RCP_ID',
+    SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
     SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL'
@@ -82,7 +86,7 @@ const getters = {
             r: state.rcpId,
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
-            cs: state.chartSeries,
+            cs: state.chartSeries ? state.chartSeries.toString() : null,
             cr: state.chartRange ? state.chartRange.safeString : null
         };
 
@@ -93,7 +97,7 @@ const getters = {
     },
 
     /**
-     * Returns a list of VisualizationControlType string specifying which controls shoudl be visible in the current view.
+     * Returns a list of VisualizationControlType string specifying which controls shoudl be visible in the new view.
      *
      * @param {AppState} state
      * @returns {VisualizationControlType[]}
@@ -144,7 +148,7 @@ const actions = {
     },
 
     /**
-     * Apply the default selector values (time perido and rcp model if provided) specified in the current dataset configuration.
+     * Apply the default selector values (time perido and rcp model if provided) specified in the new dataset configuration.
      *
      * @param {AppContext} context
      * @returns {void}
@@ -179,15 +183,15 @@ const actions = {
                 return;
             }
 
-            const currentValue = map[type].state;
+            const newValue = map[type].state;
             // falsy options specified on the dataset configuration indicate that all available selector options will be used
-            // leave the currently selected option in place
-            if (currentValue && !selectorSource.options) {
+            // leave the newly selected option in place
+            if (newValue && !selectorSource.options) {
                 return;
             }
 
-            // if the currently set value is one of the options specified on the dataset config, leave it in place
-            if (currentValue && (<string[]>selectorSource.options).includes(currentValue)) {
+            // if the newly set value is one of the options specified on the dataset config, leave it in place
+            if (newValue && (<string[]>selectorSource.options).includes(newValue)) {
                 return;
             }
 
@@ -217,6 +221,10 @@ const actions = {
 
     [Action.setRcpId](context: AppContext, value: string | null) {
         context.commit(Mutation.SET_RCP_ID, value);
+    },
+
+    [Action.setRcpTimeSlice](context: AppContext, value: number | null) {
+        context.commit(Mutation.SET_RCP_TIME_SLICE, value);
     },
 
     [Action.setCenterPoint](context: AppContext, value: { x: number; y: number } | string | null): void {
@@ -270,6 +278,18 @@ const actions = {
 
     [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
         context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
+    },
+
+    [Action.setChartSeries](context: AppContext, value: number[] | string | null): void {
+        if (value === [] || value === '') {
+            value = null;
+        } else if (typeof value === 'string') {
+            // convert string into number[]
+            value = value.split(',').map(val => {
+                return parseInt(val);
+            });
+        }
+        context.commit(Mutation.SET_CHART_SERIES, value);
     }
 };
 
@@ -303,6 +323,10 @@ const mutations = {
         state.rcpId = value;
     },
 
+    [Mutation.SET_RCP_TIME_SLICE](state: AppState, value: number | null): void {
+        state.rcpTimeSlice = value;
+    },
+
     [Mutation.SET_CENTER_POINT](state: AppState, value: MapPoint | null): void {
         state.centerPoint = value;
     },
@@ -319,7 +343,7 @@ const mutations = {
         state.chartRange = value;
     },
 
-    [Mutation.SET_CHART_SERIES](state: AppState, value: string | null): void {
+    [Mutation.SET_CHART_SERIES](state: AppState, value: number[] | null): void {
         state.chartSeries = value;
     },
 

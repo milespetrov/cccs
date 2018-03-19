@@ -35,6 +35,9 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
     @Action setChartRange: (value: { min: number; max: number }) => void;
     @State chartRange: { min: number; max: number };
 
+    @Action setChartSeries: (visible: number[]) => void;
+    @State chartSeries: number[];
+
     @Getter chartBuilder: (builderDetails: object) => object;
 
     @State('timePeriodId') currentTimePeriod: string;
@@ -94,7 +97,8 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
                 period: this.currentTimePeriod,
                 variable: this.currentVariable,
                 featureId: this.currentFeature,
-                callbacks: this.callbacks
+                callbacks: this.callbacks,
+                chartSeries: this.chartSeries
             };
 
             const config = await this.chartBuilder(builderPackage);
@@ -150,7 +154,8 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             period: this.currentTimePeriod,
             variable: this.currentVariable,
             featureId: this.currentFeature,
-            callbacks: this.callbacks
+            callbacks: this.callbacks,
+            chartSeries: this.chartSeries
         };
 
         const config = await this.chartBuilder(builderPackage);
@@ -176,8 +181,27 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
                     this.replaceRoute();
                 }
             }
+        },
+        plotOptions: {
+            series: {
+                events: {
+                    show: this.chartSeriesToggleHandler,
+                    hide: this.chartSeriesToggleHandler
+                }
+            }
         }
     };
+
+    chartSeriesToggleHandler(): void {
+        const visible: number[] = [];
+        api.DQV.charts.dvChart1.highchart.series.forEach((series: any) => {
+            if (series.visible) {
+                visible.push(series.index);
+            }
+        });
+        this.setChartSeries(visible);
+        this.updateRoute();
+    }
 }
 </script>
 

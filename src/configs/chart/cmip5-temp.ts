@@ -142,8 +142,12 @@ async function makeConfig(details: BuilderDetails) {
                         if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)) {
                             api.DQV.sections.dvSection1.data.isTable = false;
                         }
+                        details.callbacks.plotOptions.series.events.hide();
                     },
-                    show: () => (api.DQV.sections.dvSection1.data.isTable = true)
+                    show: () => {
+                        api.DQV.sections.dvSection1.data.isTable = true;
+                        details.callbacks.plotOptions.series.events.show();
+                    }
                 }
             }
         },
@@ -159,7 +163,8 @@ async function makeConfig(details: BuilderDetails) {
                 marker: { enabled: true },
                 events: {
                     legendItemClick: () => false
-                }
+                },
+                visible: details.chartSeries ? details.chartSeries.includes(0) : true
             },
             {
                 name: '25th, 75th Percentiles',
@@ -167,7 +172,8 @@ async function makeConfig(details: BuilderDetails) {
                 type: 'arearange',
                 zIndex: 1,
                 color: '#6D8398',
-                marker: { enabled: false }
+                marker: { enabled: false },
+                visible: details.chartSeries ? details.chartSeries.includes(1) : true
             },
             {
                 name: '5th, 95th Percentiles',
@@ -175,7 +181,8 @@ async function makeConfig(details: BuilderDetails) {
                 type: 'arearange',
                 zIndex: 0,
                 color: '#8DA3B8',
-                marker: { enabled: false }
+                marker: { enabled: false },
+                visible: details.chartSeries ? details.chartSeries.includes(2) : true
             }
         ]
     };
