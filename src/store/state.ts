@@ -16,8 +16,9 @@ export interface AppState {
     centerPoint: MapPoint | null;
     zoomLevel: string | null;
     chartRange: Range | null;
-    chartSeries: string | null;
+    chartSeries: number[] | null;
     mapPin: MapPoint | null;
+    timeSlice: number | null;
 
     internalRouteUpdate: boolean;
 }

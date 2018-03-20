@@ -112,6 +112,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setMapPin: (value: MapPoint | null) => void;
     @Action setCurrentView: (value: string) => void;
     @Action setFeaturePoint: (value: { x: number; y: number }) => void;
+    @Action setZoomLevel: (value: number) => void;
 
     @Getter chartBuilder: (builderDetails: object) => object;
 
@@ -169,10 +170,15 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('zoomLevel')
     onZoomLevelChanged(): void {
+        if (this.localZoomLevelUpdate) {
+            this.localZoomLevelUpdate = false;
+            return;
+        }
         this._mapInstance.zoom = this.zoomLevel;
     }
 
     localCenterPointUpdate: boolean = false;
+    localZoomLevelUpdate: boolean = false;
 
     _mapInstance: any;
 
@@ -289,6 +295,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // subscribe to the center change stream to update the url and store with the current center point
             this._mapInstance.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
 
+            this._mapInstance.zoomChanged.subscribe(this.mapZoomChangedHandler);
+
             this._mapInstance.ui.anchors.CONTEXT_MAP.after(`
                 <div id="cip-mini-chart-mount"></div>
             `);
@@ -306,14 +314,18 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this.displayMiniChart(this.currentFeature);
             }
 
+            if (this.zoomLevel) {
+                this.onZoomLevelChanged();
+            } else {
+                this.mapZoomChangedHandler(this._mapInstance.zoom);
+            }
+
             if (this.centerPoint) {
-                this._mapInstance.setCenter(this.centerPoint);
+                this.onCenterPointChanged();
             } else {
                 const center = this._mapInstance.center;
 
-                const xyCenter = new api.RZ.GEO.XY(center.x, center.y);
-
-                this.mapInstanceCenterChangedHandler(xyCenter);
+                this.mapInstanceCenterChangedHandler({ x: center.x, y: center.y });
             }
         });
     }
@@ -336,6 +348,19 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.localCenterPointUpdate = true;
 
         this.setCenterPoint(event);
+
+        // update zoom if we're out of sync
+        if (this._mapInstance.zoom !== this.zoomLevel) {
+            this.localZoomLevelUpdate = true;
+            this.setZoomLevel(this._mapInstance.zoom);
+        }
+        this.updateRoute();
+    }
+
+    mapZoomChangedHandler(event: any): void {
+        this.localZoomLevelUpdate = true;
+
+        this.setZoomLevel(event);
         this.updateRoute();
     }
 
