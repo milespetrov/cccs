@@ -349,6 +349,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         this.setCenterPoint(event);
 
+        // update zoom if we're out of sync
         if (this._mapInstance.zoom !== this.zoomLevel) {
             this.localZoomLevelUpdate = true;
             this.setZoomLevel(this._mapInstance.zoom);

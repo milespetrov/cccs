@@ -192,14 +192,13 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         }
     };
 
-    chartSeriesToggleHandler(): void {
-        const visible: number[] = [];
-        api.DQV.charts.dvChart1.highchart.series.forEach((series: any) => {
-            if (series.visible) {
-                visible.push(series.index);
-            }
-        });
-        this.setChartSeries(visible);
+    /**
+     * Takes an array of series indices to store and updates the route.
+     *
+     * @param visibleSeries An array of series indices that are visible
+     */
+    chartSeriesToggleHandler(visibleSeries: number[]): void {
+        this.setChartSeries(visibleSeries);
         this.updateRoute();
     }
 }

@@ -18,7 +18,7 @@ export interface AppState {
     chartRange: Range | null;
     chartSeries: number[] | null;
     mapPin: MapPoint | null;
-    rcpTimeSlice: number | null;
+    timeSlice: number | null;
 
     internalRouteUpdate: boolean;
 }

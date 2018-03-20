@@ -30,7 +30,7 @@ const state: AppState = {
     chartRange: null,
     chartSeries: null,
     mapPin: null,
-    rcpTimeSlice: null,
+    timeSlice: null,
 
     // Does not belong
     internalRouteUpdate: false
@@ -50,7 +50,7 @@ enum Action {
     setInternalRouteUpdate = 'setInternalRouteUpdate',
     setMapPin = 'setMapPin',
     setRcpId = 'setRcpId',
-    setRcpTimeSlice = 'setRcpTimeSlice',
+    setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
     setZoomLevel = 'setZoomLevel'
@@ -223,7 +223,7 @@ const actions = {
         context.commit(Mutation.SET_RCP_ID, value);
     },
 
-    [Action.setRcpTimeSlice](context: AppContext, value: number | null) {
+    [Action.setTimeSlice](context: AppContext, value: number | null) {
         context.commit(Mutation.SET_RCP_TIME_SLICE, value);
     },
 
@@ -324,7 +324,7 @@ const mutations = {
     },
 
     [Mutation.SET_RCP_TIME_SLICE](state: AppState, value: number | null): void {
-        state.rcpTimeSlice = value;
+        state.timeSlice = value;
     },
 
     [Mutation.SET_CENTER_POINT](state: AppState, value: MapPoint | null): void {
