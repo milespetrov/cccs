@@ -103,6 +103,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State('datasetId') currentDataset: string;
     @State('timePeriodId') currentTimePeriod: string;
     @State('featureId') currentFeature: string;
+    @State('rcpId') currentRcp: string;
     @State centerPoint: MapPoint;
     @State zoomLevel: number;
     @State mapPin: MapPoint;
@@ -136,10 +137,15 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     addCurrentVarLayer() {
         this.counter += 1;
         $.getJSON(`./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`, data => {
-            const snippet = data[this.currentVariable];
+            let snippet = data[this.currentVariable];
+            if (this.currentRcp) {
+                snippet = snippet[this.currentRcp];
+            }
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            snippet.id = `${this.currentDataset}_${this.currentVariable}_${this.counter}`;
-            this._mapInstance.layers.addLayer(snippet);
+            snippet.forEach((layer: any) => {
+                layer.id += `_${this.counter}`;
+                this._mapInstance.layers.addLayer(layer);
+            });
         });
     }
 
