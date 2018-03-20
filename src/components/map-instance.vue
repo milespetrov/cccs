@@ -157,11 +157,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.counter += 1;
         $.getJSON(`./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`, data => {
             let snippet = data[this.currentVariable];
+            // for some datasets (like cmip5) we also have to select on rcp
             if (this.currentRcp) {
                 snippet = snippet[this.currentRcp];
             }
-            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            // loop through layer array, add each layer snippet to the map
             snippet.forEach((layer: any) => {
+                // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
                 layer.id += `_${this.counter}`;
                 this._mapInstance.layers.addLayer(layer);
             });
