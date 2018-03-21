@@ -1,12 +1,10 @@
 <template>
 
-    <div id="cip-map-anchor">
+    <div id="cip-map-anchor" :class="currentDataset">
 
         <div ref="scrollGuard" class="cip-scroll-guard">
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
         </div>
-
-        <svg ref="fakeHighlight" class="cip-fake-highlight"></svg>
 
         <img v-if="mapPin" class="cip-fake-map-pin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARuSURBVDiNjZVrbFRVEMd/5967e9vddbduN4WWYgXKKyVQWgIhkQBVqJIYCQZJI00UH2DiNxUUQwQNSfH1RYwghphoCIGADQk1QKqAGCKhCKTKq6GWbYHSdvve9u7ee8cP210LAjrJ+XAmM78zOf8zcxT/bROBYuDRkX03cA1ofliSeoDfBFYAz2UZemFZXsBf6De9gkvbQCJx7k7/4LAjrUAtcBBI/B/wDGBL6Zhg0cZ5E8YvKswJ+zRl4LqIOOC6xBO2fbytJ7a1oS16sSveDGwG/ngYuEJXatOnT06f9ErJuEINUYgLrosK5CDiID2d4LogLrbtyDeX7rSu/631msBHwPE0SB9dqa5Uzf4V5SWrpuXna6AQAQREyFqzGWPWAuwzR0j7Fag5EV+oPOILHGjuni5wFugYDTaB7Z8vmTFj1bSC/DQMEbRIAZ6FK9BL5qGCYVSWD4m1I4N9mZhJj3j9OR5dP3azf/LIvbtp8AulY0LPbF86c6oCBQKAt7Ia8+VN6BNKQNPA8GJMKcNTsRKUwrl6LlN9aTgreLSt37o9ZHcDjWnwpi+eLp01NdcfSAd6lq7GU7ma5C+1WF9tQC+ajnS3M7TtNZTpw1tZDeLiXGnIXEvEq+sHW3pN4IABTDR1fdyiotxwRtFIAZ4lVSRP1pI4+CW4Ltb3NSnxhgaw9n4GCOazr2KfrsNtv5FSPt8fztLV+GFHHteA4vL8kN/vNYw02CirANcl+eO3GWWlL4b0xTL7RO0OEBdj/rKMz2doRmk42wcUa0BuYcjvBVA5EczXt6aCHRtzzQeoUG7qsLlLMeZWko7LeqMGsW28i1fie2cnWngsAIU+wwtENEBERO55z/zLcT+7T3uN5IkGdLX1xZMA0tOJ9fX72KfrULqOtXsL0tsFgH3maOoNj8QN73gPpRskftpH/JO1uLHbAETjdgLo1ICmhlu9gwMJ206fajfUg9LwLHvpn+KCYVQwoy/e5esAhX26LuMbTLr2hdhQHGjSgGbLcaInWroyykjXLZLH9uBZsBzv82+isv2Yq98lq3ojKjuAWfU2nsUrsQ7twu1oy4B/vj0YsxyJAi3pW6qaOSb01qnqJ8r09HwQwXiqCu/SF0EEsZOpyg0PKEXi0C6sw7vBcUBckrYjCw83nWvsGf4Y2JdukKvtg1ZFxGcG54wNhdIt7TRdwGmoR4b60QsmgpMkWb8X67sa7PMnMi0Nws5LndE913saga2MamkHuFjf3DF/dn4oUJzj86eTJN6He+08+pRypC+G9f221JwYNU+ORHs71v0avQxsANrh7unWJXBj/6Wb08LZHr00LxjU0nNDBOfyWewLJ2E4nqnSdlzZ+eed6NpTNy4LfEhqunEvGOAvoOFoc+fkuusdw3l+0ygMmKZXUxrDccRKQQcs2z7S2tO55vj1K3uaYo3A+tFQePDX5CH1NS03dTV+dl7Q91jANAWXaH/C+r2jPz6i/g8jK3kv4EHg0VYETOHuz/Qq0PKwpL8BL8EAdKaMj7AAAAAASUVORK5CYII="/>
 
@@ -40,6 +38,27 @@ interface Tooltips {
     [key: string]: {
         [key: string]: { [key: string]: { [key: string]: string } };
     };
+}
+
+// TODO: import proper RAMP definitions
+export interface IdentifyResult {
+    data: { key: string; value: string | number }[];
+    name: string;
+    oid: string;
+    symbology: { svgcode: string }[];
+}
+
+export interface IdentifyRequest {
+    sessionId: number;
+    event: any;
+    layer: any;
+    features: Promise<IdentifyResult[]>;
+}
+
+export interface IdentifySession {
+    sessionId: number;
+    event: any;
+    requests: IdentifyRequest[];
 }
 
 @Component
@@ -204,65 +223,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         return this.$refs.scrollGuard as HTMLElement;
     }
 
-    // #region HACKS
-
-    realLayer: JQuery<HTMLElement>;
-    fhDownS: any;
-    fhMoveS: any;
-
-    setFakeHighlight(event: MouseEvent): void {
-        if ((<HTMLElement>event.target).tagName !== 'image') {
-            this.clearFakeHighlight();
-            return;
-        }
-
-        if (!this.realLayer) {
-            this.realLayer = $('.esriMapLayers > svg').first();
-        }
-
-        this.clearFakeHighlight();
-
-        const transform = this.realLayer.css('transform');
-        this.realLayer.find('> g').css('opacity', 0.25);
-
-        const fg = <HTMLElement>this.$refs.fakeHighlight;
-        fg.style.transform = transform;
-
-        const clone = (<HTMLElement>event.target).cloneNode() as HTMLElement;
-        fg.appendChild(clone);
-
-        this.fhDownS = this._mapInstance.mouseDown.subscribe(
-            (eventDown: MouseEvent) =>
-                (this.fhMoveS = this._mapInstance.mouseMove.subscribe((eventMove: MouseEvent) => {
-                    if (eventDown.screenX !== eventMove.screenX || eventDown.screenY !== eventMove.screenY) {
-                        this.clearFakeHighlight();
-                    }
-                }))
-        );
-    }
-
-    clearFakeHighlight(): void {
-        this.setMapPin(null);
-
-        if (this.fhDownS) {
-            this.fhDownS.unsubscribe();
-        }
-        if (this.fhMoveS) {
-            this.fhMoveS.unsubscribe();
-        }
-        if (this.realLayer) {
-            this.realLayer.find('> g').css('opacity', 1);
-        }
-
-        const fh = this.$refs.fakeHighlight as HTMLElement;
-
-        while (fh.firstChild) {
-            fh.removeChild(fh.firstChild);
-        }
-    }
-
-    // #endregion HACKS
-
     mounted(): void {
         const RZ = (<any>window).RZ;
 
@@ -276,12 +236,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             console.log('cannot create the map - either variable or dataset is not set');
             return;
         }
-
-        // TODO: remove HACKS
-        // temporary click feature highlight
-        this.clearFakeHighlight();
-        this.$el.addEventListener('click', this.setFakeHighlight);
-        // end TODO: remove HACKS
 
         // tslint:disable-next-line:no-unused-expression
         new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}.en-CA.json`);
@@ -307,9 +261,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 <div id="cip-mini-chart-mount"></div>
             `);
 
-            // subscribe to map click events to track clicks on features
-            // TODO: this will change when API allows listening on individual layers
-            this._mapInstance.click.takeUntil(this.deactivate).subscribe(this.mapInstanceClickHandler);
+            // set the identify mode to 'highlight' to prevent the details panel from opening
+            this._mapInstance.identifyMode = 'highlight';
+            // subscribe to identify events to track highlighted items
+            this._mapInstance.layers.identify.subscribe(this.mapIdentifyHandler);
 
             document.querySelector('.rv-esri-map')!.addEventListener('wheel', this.scrollGuardHandler, {
                 capture: true
@@ -348,7 +303,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        this.clearFakeHighlight();
         // end TODO: remove HACKS
 
         this.localCenterPointUpdate = true;
@@ -410,21 +364,37 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.isMousedOver = false;
     }
 
-    mapInstanceClickHandler(event: any): void {
-        event.features
-            .debounceTime(20)
-            .takeUntil(this.deactivate)
-            .subscribe((features: any) => {
-                const stationId = features.data.find(
-                    (attrib: any) => attrib.key === 'stnid' || attrib.key === 'Station ID'
-                )!.value;
+    /**
+     * Handle the identify sesssion, but updating the routes with the feature cooridatese
+     * // TODO: this is another implementation of feature highlightning
+     * // this will be replaced by the math grid for CMIP5
+     */
+    mapIdentifyHandler({ requests, event }: IdentifySession) {
+        if (requests.length === 0) {
+            return;
+        }
 
-                this.setFeaturePoint(event.xy);
-                this.setFeatureId(stationId);
-                this.updateRoute();
+        requests[0].features.then((features: IdentifyResult[]) => {
+            if (features.length === 0) {
+                return;
+            }
 
-                this.displayMiniChart(stationId);
-            });
+            // if multiple features are received, leave only one
+            features.splice(1);
+
+            const feature = features[0].data.find(({ key }) => key === 'Station ID');
+            const stationId = feature ? feature.value.toString() : '';
+
+            // features.find(feature => )
+
+            console.log(features);
+
+            this.setFeaturePoint(event.xy);
+            this.setFeatureId(stationId);
+            this.updateRoute();
+
+            this.displayMiniChart(stationId);
+        });
     }
 
     async displayMiniChart(stationId: string): Promise<void> {
@@ -536,12 +506,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     height: $backdrop-map-height;
     // position: absolute;
 
-    .cip-fake-highlight {
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-
     .cip-fake-map-pin {
         position: absolute;
         top: calc(50% - 11px);
@@ -585,6 +549,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             margin: 0;
             top: calc((100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}) !important;
             transform: translateY(-50%);
+        }
+    }
+}
+
+// specific CMIP5 styles to handle grid cell highlighting
+#cip-map-anchor.cmip5 /deep/ {
+    .rv-map-highlight .esriMapLayers {
+        > div:not(:first-child),
+        > svg > g:not([id='rv_hilight_layer']) {
+            // do not change opacity of data layers
+            opacity: inherit !important;
+        }
+
+        div[id$='cmip5_grid'] {
+            // keep the grid layer fully transparent
+            opacity: 0 !important;
         }
     }
 }
