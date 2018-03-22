@@ -125,7 +125,22 @@
                 "lodSetId": "LOD_NRCAN_Lambert_3978"
             }
         ],
-        "layers": [],
+        "layers": [
+            {
+                "id": "cmip5_grid",
+                "name": "CMIP5 Grid Layer",
+                "layerType": "esriDynamic",
+                "layerEntries": [
+                    {
+                        "index": 0
+                    }
+                ],
+                "state": {
+                    "opacity": 0
+                },
+                "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_Grid/MapServer"
+            }
+        ],
         "baseMaps": [
             {
                 "id": "baseNrCan",
