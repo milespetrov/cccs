@@ -3,3 +3,10 @@ $page-header-height: 15rem;
 $view-controls-height: 3rem * 1.6;
 
 $backdrop-map-height: 95vh;
+
+// TODO: different screen sizes have different widths so all the derived values below need to adjust
+// aslo, for small screens the app bar should take all width anyway, so no need to change anything I think;
+$container-width: 1170px;
+
+$rv-top-offset: $top-navigation-height + $page-header-height + $view-controls-height;
+$rv-left-offset: calc((100vw - #{$container-width}) / 2);

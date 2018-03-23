@@ -88,13 +88,6 @@
     }
 }
 
-// different screen sizes have different widths so all the derived values below need to adjust
-// aslo, for small screens the app bar should take all width anyway, so no need to change anything I think;
-$container-width: 1170px;
-
-$rv-top-offset: $top-navigation-height + $page-header-height + $view-controls-height;
-$rv-left-offset: calc((100vw - 1170px) / 2);
-
 rv-appbar {
     top: calc(#{$rv-top-offset} + 10px) !important;
     left: $rv-left-offset !important;
