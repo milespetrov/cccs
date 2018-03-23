@@ -175,12 +175,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // loop through layer array, add each layer snippet to the map
             snippet.forEach((layer: any, index: number) => {
+                if (index === this.timeSlice) {
+                    layer.state.visibility = true;
+                }
+
                 // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
                 layer.id += `_${this.counter}`;
                 const addedLayer = this._mapInstance.layers.addLayer(layer);
                 this.currentLayers[index] = layer.id;
-                console.log(index);
-                console.log(layer.id);
             });
         });
     }
