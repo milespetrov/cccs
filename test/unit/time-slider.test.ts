@@ -112,6 +112,7 @@ describe('time-slider.vue', () => {
         });
 
         wrapper.find('.noUi-handle').trigger('keydown.left');
+        // timeout due to buffer on keypress stream
         setTimeout(() => {
             expect(setTimeSlice).to.be.calledWith(timeSlice - 1);
             wrapper.destroy();
@@ -136,6 +137,7 @@ describe('time-slider.vue', () => {
         });
 
         wrapper.find('.noUi-handle').trigger('keydown.home');
+        // timeout due to buffer on keypress stream
         setTimeout(() => {
             expect(setTimeSlice).to.be.calledWith(0);
             wrapper.destroy();
@@ -160,6 +162,7 @@ describe('time-slider.vue', () => {
         });
 
         wrapper.find('.noUi-handle').trigger('keydown.end');
+        // timeout due to buffer on keypress stream
         setTimeout(() => {
             expect(setTimeSlice).to.be.calledWith(store.getters.timeSliderLabels.length - 1);
             wrapper.destroy();
