@@ -1,7 +1,7 @@
 <template>
-    <div id="cip-time-slider-container" :class="['layers-' + timeSliderLabels.length]">
-        <div id="cip-time-slider-backdrop"></div>
-        <div id="target" class="noUi-target noUiSlider"></div>
+    <div class="cip-time-slider-container" :class="['layers-' + timeSliderLabels.length]">
+        <div class="cip-time-slider-backdrop"></div>
+        <div class="noUi-target noUiSlider"></div>
     </div>
 </template>
 
@@ -34,7 +34,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         if (!this.timeSlice) {
             this.setTimeSlice(0);
         }
-        this.slider = document.getElementById('target');
+        this.slider = this.$el.querySelector('.noUi-target');
         noUiSlider.create(this.slider, {
             start: this.timeSlice,
             step: 1,
@@ -163,14 +163,14 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-#cip-time-slider-container /deep/ {
+.cip-time-slider-container /deep/ {
     @import './../../node_modules/nouislider/distribute/nouislider';
     display: flex;
     align-items: center;
     margin: 10px 0;
     border: none;
     font-family: Helvetica, Arial, sans-serif;
-    #cip-time-slider-backdrop {
+    .cip-time-slider-backdrop {
         background: white;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
             0px 3px 1px -2px rgba(0, 0, 0, 0.12);
@@ -240,7 +240,7 @@ $max-layers: 4;
 // Spacing for different amounts of layers
 // This is based on the amount of layers in the selector
 @for $i from 4 through $max-layers {
-    #cip-time-slider-container.layers-#{$i} /deep/ {
+    .cip-time-slider-container.layers-#{$i} /deep/ {
         // the container is the width of i-1 labels
         $selection-width: calc(100% / (#{$i} - 1));
 
@@ -253,7 +253,7 @@ $max-layers: 4;
         }
 
         // set the width of the white div behind the slider
-        #cip-time-slider-backdrop {
+        .cip-time-slider-backdrop {
             width: calc(#{$selection-width} * #{$i});
             left: calc(#{$selection-width} / -2);
         }

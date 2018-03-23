@@ -578,7 +578,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
     }
 
-    #cip-time-slider-container {
+    .cip-time-slider-container {
         width: $container-width * 0.25;
         left: calc((#{$container-width} * 0.375) + #{$rv-left-offset});
         position: absolute;

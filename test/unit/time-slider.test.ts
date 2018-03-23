@@ -82,8 +82,6 @@ describe('time-slider.vue', () => {
             }
         });
 
-        expect((<any>document.getElementById('target')).noUiSlider.get()).to.equal('0.00');
-
         wrapper.find('.noUi-handle').trigger('keydown.right');
         // timeout due to buffer on keypress stream
         setTimeout(() => {
