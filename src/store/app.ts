@@ -87,7 +87,8 @@ const getters = {
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
             cs: state.chartSeries ? state.chartSeries.toString() : null,
-            cr: state.chartRange ? state.chartRange.safeString : null
+            cr: state.chartRange ? state.chartRange.safeString : null,
+            ts: state.timeSlice !== null ? state.timeSlice.toString() : null
         };
 
         // remove null values from the query object
@@ -118,6 +119,10 @@ const getters = {
 
     datasetControlOptions: (state: AppState): DatasetViewSource => {
         return datasets[state.datasetId!][state.currentView!];
+    },
+
+    timeSliderLabels: (state: AppState): string[] | undefined => {
+        return datasets[state.datasetId!].timeSliderLabels;
     },
 
     chartBuilder: () => {
@@ -223,7 +228,10 @@ const actions = {
         context.commit(Mutation.SET_RCP_ID, value);
     },
 
-    [Action.setTimeSlice](context: AppContext, value: number | null) {
+    [Action.setTimeSlice](context: AppContext, value: number | string | null) {
+        if (typeof value === 'string') {
+            value = parseInt(value);
+        }
         context.commit(Mutation.SET_RCP_TIME_SLICE, value);
     },
 
