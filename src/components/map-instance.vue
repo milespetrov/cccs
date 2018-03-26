@@ -8,8 +8,9 @@
 
         <img v-if="mapPin" class="cip-fake-map-pin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARuSURBVDiNjZVrbFRVEMd/5967e9vddbduN4WWYgXKKyVQWgIhkQBVqJIYCQZJI00UH2DiNxUUQwQNSfH1RYwghphoCIGADQk1QKqAGCKhCKTKq6GWbYHSdvve9u7ee8cP210LAjrJ+XAmM78zOf8zcxT/bROBYuDRkX03cA1ofliSeoDfBFYAz2UZemFZXsBf6De9gkvbQCJx7k7/4LAjrUAtcBBI/B/wDGBL6Zhg0cZ5E8YvKswJ+zRl4LqIOOC6xBO2fbytJ7a1oS16sSveDGwG/ngYuEJXatOnT06f9ErJuEINUYgLrosK5CDiID2d4LogLrbtyDeX7rSu/631msBHwPE0SB9dqa5Uzf4V5SWrpuXna6AQAQREyFqzGWPWAuwzR0j7Fag5EV+oPOILHGjuni5wFugYDTaB7Z8vmTFj1bSC/DQMEbRIAZ6FK9BL5qGCYVSWD4m1I4N9mZhJj3j9OR5dP3azf/LIvbtp8AulY0LPbF86c6oCBQKAt7Ia8+VN6BNKQNPA8GJMKcNTsRKUwrl6LlN9aTgreLSt37o9ZHcDjWnwpi+eLp01NdcfSAd6lq7GU7ma5C+1WF9tQC+ajnS3M7TtNZTpw1tZDeLiXGnIXEvEq+sHW3pN4IABTDR1fdyiotxwRtFIAZ4lVSRP1pI4+CW4Ltb3NSnxhgaw9n4GCOazr2KfrsNtv5FSPt8fztLV+GFHHteA4vL8kN/vNYw02CirANcl+eO3GWWlL4b0xTL7RO0OEBdj/rKMz2doRmk42wcUa0BuYcjvBVA5EczXt6aCHRtzzQeoUG7qsLlLMeZWko7LeqMGsW28i1fie2cnWngsAIU+wwtENEBERO55z/zLcT+7T3uN5IkGdLX1xZMA0tOJ9fX72KfrULqOtXsL0tsFgH3maOoNj8QN73gPpRskftpH/JO1uLHbAETjdgLo1ICmhlu9gwMJ206fajfUg9LwLHvpn+KCYVQwoy/e5esAhX26LuMbTLr2hdhQHGjSgGbLcaInWroyykjXLZLH9uBZsBzv82+isv2Yq98lq3ojKjuAWfU2nsUrsQ7twu1oy4B/vj0YsxyJAi3pW6qaOSb01qnqJ8r09HwQwXiqCu/SF0EEsZOpyg0PKEXi0C6sw7vBcUBckrYjCw83nWvsGf4Y2JdukKvtg1ZFxGcG54wNhdIt7TRdwGmoR4b60QsmgpMkWb8X67sa7PMnMi0Nws5LndE913saga2MamkHuFjf3DF/dn4oUJzj86eTJN6He+08+pRypC+G9f221JwYNU+ORHs71v0avQxsANrh7unWJXBj/6Wb08LZHr00LxjU0nNDBOfyWewLJ2E4nqnSdlzZ+eed6NpTNy4LfEhqunEvGOAvoOFoc+fkuusdw3l+0ygMmKZXUxrDccRKQQcs2z7S2tO55vj1K3uaYo3A+tFQePDX5CH1NS03dTV+dl7Q91jANAWXaH/C+r2jPz6i/g8jK3kv4EHg0VYETOHuz/Qq0PKwpL8BL8EAdKaMj7AAAAAASUVORK5CYII="/>
 
+        <time-slider v-if="timeSliderLabels"></time-slider>
     </div>
-    
+
 </template>
 
 <script lang="ts">
@@ -25,6 +26,8 @@ import api from './../api/';
 import ahccdTemp from '../configs/chart/ahccd-temp';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
+
+import TimeSlider from './time-slider.vue';
 
 interface Tooltips {
     'en-CA': {
@@ -61,7 +64,11 @@ export interface IdentifySession {
     requests: IdentifyRequest[];
 }
 
-@Component
+@Component({
+    components: {
+        'time-slider': TimeSlider
+    }
+})
 export default class MapInstance extends mixins(UpdateRouteMixin) {
     tooltipTemplates: Tooltips = {
         'en-CA': {
@@ -123,6 +130,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State('timePeriodId') currentTimePeriod: string;
     @State('featureId') currentFeature: string;
     @State('rcpId') currentRcp: string;
+    @State timeSlice: number;
     @State centerPoint: MapPoint;
     @State zoomLevel: number;
     @State mapPin: MapPoint;
@@ -135,16 +143,18 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setZoomLevel: (value: number) => void;
 
     @Getter chartBuilder: (builderDetails: object) => object;
+    @Getter timeSliderLabels: string[] | undefined;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
 
+    currentLayers: any[];
+
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
-        this._mapInstance.layers.removeLayer(
-            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            `${this.currentDataset}_${oldValue}_${this.counter}`
-        );
+        this.currentLayers.forEach((layerId: string) => {
+            this._mapInstance.layers.removeLayer(layerId);
+        });
         this.addCurrentVarLayer();
 
         if (!this.currentFeature) {
@@ -154,17 +164,43 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     addCurrentVarLayer() {
+        this.currentLayers = [];
         this.counter += 1;
         $.getJSON(`./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`, data => {
             let snippet = data[this.currentVariable];
+            // for some datasets (like cmip5) we also have to select on rcp
             if (this.currentRcp) {
                 snippet = snippet[this.currentRcp];
             }
-            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            snippet.forEach((layer: any) => {
+
+            // loop through layer array, add each layer snippet to the map
+            snippet.forEach((layer: any, index: number) => {
+                if (index === this.timeSlice) {
+                    layer.state.visibility = true;
+                }
+
+                // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
                 layer.id += `_${this.counter}`;
-                this._mapInstance.layers.addLayer(layer);
+                const addedLayer = this._mapInstance.layers.addLayer(layer);
+                this.currentLayers[index] = layer.id;
             });
+        });
+    }
+
+    @Watch('timeSlice')
+    onTimeSliceChanged(newValue: number, oldValue: number) {
+        if (!this.timeSliderLabels) {
+            return;
+        }
+        // turn off old layer
+        this.getLayerById(this.currentLayers[oldValue]).visibility = false;
+        // set new layer visible
+        this.getLayerById(this.currentLayers[newValue]).visibility = true;
+    }
+
+    getLayerById(searchId: string): any {
+        return this._mapInstance.layers.allLayers.find((layer: any) => {
+            return layer.id === searchId;
         });
     }
 
@@ -291,19 +327,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         });
     }
 
-    // HACKS
-    mapCenter: any = { x: -1, y: -1 };
-
     mapInstanceCenterChangedHandler(event: any): void {
-        // TODO: remove HACKS
-        // centerChange seems to fire
-        if (this.mapCenter.x !== event.x || this.mapCenter.y !== event.y) {
-            //this.mapCenter = event;
-        } else {
+        // make sure the centerpoint is new
+        if (this.centerPoint.x === event.x && this.centerPoint.y === event.y) {
             return;
         }
-
-        // end TODO: remove HACKS
 
         this.localCenterPointUpdate = true;
 
@@ -518,8 +546,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         background-color: rgba(0, 0, 0, 0.45);
         text-align: center;
 
-        // z-index: 2;
-        position: absolute;
+        position: relative;
+        z-index: 2;
         height: 100%;
         width: 100%;
         padding: 0px;
@@ -540,8 +568,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             transition-duration: 0.3s;
         }
 
-        $rv-top-offset: $top-navigation-height + $page-header-height + $view-controls-height;
-
         .cip-label {
             font-size: 1em * 1.5;
             color: white;
@@ -550,6 +576,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             top: calc((100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}) !important;
             transform: translateY(-50%);
         }
+    }
+
+    .cip-time-slider-container {
+        width: $container-width * 0.25;
+        left: calc((#{$container-width} * 0.375) + #{$rv-left-offset});
+        position: absolute;
+        bottom: 20px;
     }
 }
 

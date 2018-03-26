@@ -26,12 +26,13 @@ const cimp5Dataset: DatasetSource = {
             options: [TimePeriodType.Winter, TimePeriodType.Spring]
         },
         [VisualizationControlType.RCP]: {
-            default: RCPType.RCP2_6,
-            options: [RCPType.RCP2_6]
+            default: RCPType.RCP8_5
         }
     },
 
     variables: [VariableId.SurfaceWind],
+
+    timeSliderLabels: ['2021-2040', '2041-2060', '2061-2080', '2081-2100'],
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'

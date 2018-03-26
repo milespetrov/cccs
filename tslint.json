@@ -24,7 +24,6 @@
         "interface-name": [true, "never-prefix"],
         "interface-over-type-literal": true,
         "jsdoc-format": true,
-        "linebreak-style": [true, "CRLF"],
         "no-inferrable-types": false,
         "no-internal-module": true,
         "no-null-keyword": false,
@@ -109,6 +108,7 @@
         "no-bitwise": false,
         "no-namespace": false,
         "object-literal-sort-keys": false,
-        "one-variable-per-declaration": false
+        "one-variable-per-declaration": false,
+        "linebreak-style": false
     }
 }

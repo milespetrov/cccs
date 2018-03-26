@@ -139,6 +139,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setCenterPoint: (value: string | null) => void;
     @Action setZoomLevel: (value: string | null) => void;
     @Action setChartSeries: (value: number[] | null) => void;
+    @Action setTimeSlice: (value: number | null) => void;
 
     @State currentView: string;
 
@@ -226,13 +227,14 @@ export default class App extends mixins(UpdateRouteMixin) {
             f: this.setFeatureId,
             cp: this.setCenterPoint,
             cs: this.setChartSeries,
-            z: this.setZoomLevel
+            z: this.setZoomLevel,
+            ts: this.setTimeSlice
         };
 
         // update the store
         this.setCurrentView(this.$router.currentRoute.name as ViewType);
         Object.keys(storeFns).forEach(parameter => {
-            const value = this.$router.currentRoute.query[parameter];
+            const value: string = this.$router.currentRoute.query[parameter];
             if (!value) {
                 return;
             }

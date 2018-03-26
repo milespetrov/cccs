@@ -148,6 +148,8 @@ export interface DatasetSource {
 
     variables: VariableId[];
 
+    timeSliderLabels?: string[];
+
     /**
      * A path to them base map config.
      *
