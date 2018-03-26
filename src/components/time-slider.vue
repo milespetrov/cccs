@@ -1,5 +1,5 @@
 <template>
-    <div class="cip-time-slider-container" :class="['layers-' + timeSliderLabels.length]">
+    <div class="cip-time-slider-container" :class="`layers-${timeSliderLabels.length}`">
         <div class="cip-time-slider-backdrop"></div>
         <div class="noUi-target noUiSlider"></div>
     </div>
