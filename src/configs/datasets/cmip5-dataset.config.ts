@@ -5,28 +5,34 @@ import { ViewType } from '../../store';
 const cimp5Dataset: DatasetSource = {
     id: DatasetId.CMIP5,
 
-    [ViewType.ChartView]: {
-        [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual,
-            options: [
-                TimePeriodType.Annual,
-                TimePeriodType.Autumn,
-                TimePeriodType.Summer,
-                TimePeriodType.Winter,
-                TimePeriodType.Spring
-            ]
+    views: {
+        [ViewType.ChartView]: {
+            controls: {
+                [VisualizationControlType.Time]: {
+                    default: TimePeriodType.Annual,
+                    options: [
+                        TimePeriodType.Annual,
+                        TimePeriodType.Autumn,
+                        TimePeriodType.Summer,
+                        TimePeriodType.Winter,
+                        TimePeriodType.Spring
+                    ]
+                },
+                [VisualizationControlType.RCP]: {
+                    default: RCPType.RCP2_6
+                }
+            }
         },
-        [VisualizationControlType.RCP]: {
-            default: RCPType.RCP2_6
-        }
-    },
-    [ViewType.MapView]: {
-        [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual,
-            options: [TimePeriodType.Winter, TimePeriodType.Spring]
-        },
-        [VisualizationControlType.RCP]: {
-            default: RCPType.RCP8_5
+        [ViewType.MapView]: {
+            controls: {
+                [VisualizationControlType.Time]: {
+                    default: TimePeriodType.Annual,
+                    options: [TimePeriodType.Winter, TimePeriodType.Spring]
+                },
+                [VisualizationControlType.RCP]: {
+                    default: RCPType.RCP8_5
+                }
+            }
         }
     },
 

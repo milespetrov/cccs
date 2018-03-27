@@ -4,17 +4,22 @@ import { ViewType } from '../../store';
 
 const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,
-
-    [ViewType.ChartView]: {
-        [VisualizationControlType.Time]: {
-            default: TimePeriodType.January
-        }
-    },
-    [ViewType.MapView]: {
-        [VisualizationControlType.Time]: {
-            visible: false,
-            default: TimePeriodType.Annual,
-            options: [TimePeriodType.Annual]
+    views: {
+        [ViewType.ChartView]: {
+            controls: {
+                [VisualizationControlType.Time]: {
+                    default: TimePeriodType.January
+                }
+            }
+        },
+        [ViewType.MapView]: {
+            controls: {
+                [VisualizationControlType.Time]: {
+                    visible: false,
+                    default: TimePeriodType.Annual,
+                    options: [TimePeriodType.Annual]
+                }
+            }
         }
     },
 
