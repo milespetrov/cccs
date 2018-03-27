@@ -329,7 +329,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     mapInstanceCenterChangedHandler(event: any): void {
         // make sure the centerpoint is new
-        if (this.centerPoint.x === event.x && this.centerPoint.y === event.y) {
+        if (this.centerPoint && this.centerPoint.x === event.x && this.centerPoint.y === event.y) {
             return;
         }
 
