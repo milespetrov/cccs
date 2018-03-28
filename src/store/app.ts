@@ -164,7 +164,8 @@ const actions = {
             return;
         }
 
-        const datasetControlOptions = context.getters.datasetControlOptions;
+        //TODO: check why getters aren't typed
+        const datasetControlOptions = context.getters.datasetControlOptions as DatasetViewSource;
 
         // map relevant actions and state accessors agaisnt the visualization control types
         const map: {
@@ -182,7 +183,7 @@ const actions = {
 
         [VisualizationControlType.Time, VisualizationControlType.RCP].forEach(type => {
             // if the selector is not defined for this dataset/view combination, reset the value to null
-            const selectorSource = datasetControlOptions[type];
+            const selectorSource = datasetControlOptions.controls[type];
             if (!selectorSource) {
                 map[type].action(null);
                 return;
