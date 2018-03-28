@@ -34,7 +34,7 @@ import { ChartConfigGenerator, ChartConfigType } from '../configs/charts';
 
 @Component
 export default class ChartView extends mixins(UpdateRouteMixin) {
-    @Action setChartRange: (value: { min: number; max: number }) => void;
+    @Action setChartRange: (value: { min: number; max: number } | null) => void;
     @State chartRange: { min: number; max: number };
 
     @Action setChartSeries: (visible: number[]) => void;
@@ -190,7 +190,12 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         xaxis: {
             events: {
                 setExtremes: (event: any) => {
-                    this.setChartRange({ min: event.min, max: event.max });
+                    // handles the 'reset zoom' button
+                    if (!event.min || !event.max) {
+                        this.setChartRange(null);
+                    } else {
+                        this.setChartRange({ min: event.min, max: event.max });
+                    }
                     this.replaceRoute();
                 }
             }
