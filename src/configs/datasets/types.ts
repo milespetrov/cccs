@@ -101,20 +101,33 @@ export interface DatasetRCPSelectorSource extends BaseDatasetSelectorSource {
  */
 export interface DatasetViewSource {
     /**
-     * Provides RCP selector options.
+     * Contains configuration for different controls available in this view.
      *
-     * @type {DatasetRCPSelectorSource}
+     * @type {({
+     *         [VisualizationControlType.RCP]?: DatasetRCPSelectorSource;
+     *         [VisualizationControlType.Time]?: DatasetTimeSelectorSource;
+     *     })}
      * @memberof DatasetViewSource
      */
-    [VisualizationControlType.RCP]?: DatasetRCPSelectorSource;
-    /**
-     * Provides TimePeriod selector options.
-     *
-     * @type {DatasetTimeSelectorSource}
-     * @memberof DatasetViewSource
-     */
-    [VisualizationControlType.Time]?: DatasetTimeSelectorSource;
-    [key: string]: BaseDatasetSelectorSource | undefined;
+    controls: {
+        /**
+         * Provides RCP selector options.
+         *
+         * @type {DatasetRCPSelectorSource}
+         * @memberof DatasetViewSource
+         */
+        [VisualizationControlType.RCP]?: DatasetRCPSelectorSource;
+        /**
+         * Provides TimePeriod selector options.
+         *
+         * @type {DatasetTimeSelectorSource}
+         * @memberof DatasetViewSource
+         */
+        [VisualizationControlType.Time]?: DatasetTimeSelectorSource;
+        // TODO: because two items above are options, an explicit index is required, but the `VisualizationControlType` enum can't be used
+        // in the index, so this is not completely type safe
+        [key: string]: BaseDatasetSelectorSource | undefined;
+    };
 }
 
 /**
@@ -132,19 +145,30 @@ export interface DatasetSource {
     id: string;
 
     /**
-     * Provides chart view visualization options.
+     * Contains configurations for different views (map / chart).
      *
-     * @type {DatasetViewSource}
+     * @type {{
+     *         [ViewType.ChartView]: DatasetViewSource;
+     *         [ViewType.MapView]: DatasetViewSource;
+     *     }}
      * @memberof DatasetSource
      */
-    [ViewType.ChartView]: DatasetViewSource;
-    /**
-     * Provides map view visualization options.
-     *
-     * @type {DatasetViewSource}
-     * @memberof DatasetSource
-     */
-    [ViewType.MapView]: DatasetViewSource;
+    views: {
+        /**
+         * Provides chart view visualization options.
+         *
+         * @type {DatasetViewSource}
+         * @memberof DatasetSource
+         */
+        [ViewType.ChartView]: DatasetViewSource;
+        /**
+         * Provides map view visualization options.
+         *
+         * @type {DatasetViewSource}
+         * @memberof DatasetSource
+         */
+        [ViewType.MapView]: DatasetViewSource;
+    };
 
     variables: VariableId[];
 

@@ -44,7 +44,7 @@ export default class RcpSelector extends mixins(UpdateRouteMixin) {
      * Returns a list of rcp options available for the currently selected dataset.
      */
     get available(): string[] | undefined {
-        const selectorSource = this.datasetControlOptions[VisualizationControlType.RCP];
+        const selectorSource = this.datasetControlOptions.controls[VisualizationControlType.RCP];
         if (!selectorSource) {
             return;
         }

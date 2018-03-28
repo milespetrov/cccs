@@ -107,7 +107,7 @@ const getters = {
         const options = getters.datasetControlOptions(state);
 
         // filter out visualization control ids which corresponding configurations are set to be invisible
-        const controls = Object.entries(options).reduce<VisualizationControlType[]>((map, [key, value]) => {
+        const controls = Object.entries(options.controls).reduce<VisualizationControlType[]>((map, [key, value]) => {
             if (value!.visible !== false) {
                 map.push(key as VisualizationControlType);
             }
@@ -118,7 +118,7 @@ const getters = {
     },
 
     datasetControlOptions: (state: AppState): DatasetViewSource => {
-        return datasets[state.datasetId!][state.currentView!];
+        return datasets[state.datasetId!].views[state.currentView!];
     },
 
     timeSliderLabels: (state: AppState): string[] | undefined => {
