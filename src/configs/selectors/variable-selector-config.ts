@@ -28,31 +28,31 @@ export const variableSelectorConfig: VariableSelectorConfig = {
 
 export const stages: StageMapping = {
     [VariableId.TMean]: {
-        [StageType.Historic]: [DatasetId.AHCCD],
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD, DatasetId.CANGRD],
+        [StageType.Future]: [DatasetId.DCS]
     },
     [VariableId.TMax]: {
-        [StageType.Historic]: [DatasetId.AHCCD],
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD, DatasetId.CANGRD],
+        [StageType.Future]: [DatasetId.DCS]
     },
     [VariableId.TMin]: {
-        [StageType.Historic]: [DatasetId.AHCCD],
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD, DatasetId.CANGRD],
+        [StageType.Future]: [DatasetId.DCS]
     },
     [VariableId.Precipitation]: {
-        [StageType.Historic]: [DatasetId.AHCCD],
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Historic]: [DatasetId.AHCCD, DatasetId.CANGRD],
+        [StageType.Future]: [DatasetId.DCS]
     },
     [VariableId.SurfaceWind]: {
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Future]: [DatasetId.CMIP5]
     },
     [VariableId.IceFraction]: {
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Future]: [DatasetId.CMIP5]
     },
     [VariableId.IceThickness]: {
-        [StageType.Historic]: [DatasetId.AHCCD]
+        [StageType.Future]: [DatasetId.CMIP5]
     },
     [VariableId.SnowDepth]: {
-        [StageType.Future]: [DatasetId.CMIP5, DatasetId.CANGRD]
+        [StageType.Future]: [DatasetId.CMIP5]
     }
 };

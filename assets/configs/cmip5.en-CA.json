@@ -32,10 +32,18 @@
         "exportMapUrl":
             "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
+            "title": {
+                "value": "Climate Information Portal - CMIP5"
+            },
             "map": {},
             "mapElements": {},
-            "legend": {},
-            "footnote": {}
+            "legend": {
+                "showInfoSymbology": true
+            },
+            "footnote": {
+                "value":
+                    "The Coupled Model Intercomparison Project Phase 5 (CMIP5) is future data. Canadian patterns of climate change computed from multi-model ensemble climate output."
+            }
         },
         "search": {
             "serviceUrls": {

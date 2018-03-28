@@ -19,7 +19,7 @@ const cimp5Dataset: DatasetSource = {
                     ]
                 },
                 [VisualizationControlType.RCP]: {
-                    default: RCPType.RCP2_6
+                    default: RCPType.RCP8_5
                 }
             }
         },
@@ -27,7 +27,13 @@ const cimp5Dataset: DatasetSource = {
             controls: {
                 [VisualizationControlType.Time]: {
                     default: TimePeriodType.Annual,
-                    options: [TimePeriodType.Winter, TimePeriodType.Spring]
+                    options: [
+                        TimePeriodType.Annual,
+                        TimePeriodType.Autumn,
+                        TimePeriodType.Summer,
+                        TimePeriodType.Winter,
+                        TimePeriodType.Spring
+                    ]
                 },
                 [VisualizationControlType.RCP]: {
                     default: RCPType.RCP8_5
@@ -36,7 +42,7 @@ const cimp5Dataset: DatasetSource = {
         }
     },
 
-    variables: [VariableId.SurfaceWind],
+    variables: [VariableId.SurfaceWind, VariableId.IceFraction, VariableId.IceThickness, VariableId.SnowDepth],
 
     timeSliderLabels: ['2021-2040', '2041-2060', '2061-2080', '2081-2100'],
 

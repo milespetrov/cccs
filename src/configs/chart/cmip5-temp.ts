@@ -25,28 +25,23 @@ async function makeConfig(details: BuilderDetails) {
     // should be retrieved from the store
     const variables: object[] = [
         {
-            name: 'Mean Temperature',
-            id: 'tmean',
-            unit: '°C'
-        },
-        {
-            name: 'Minimum Temperature',
-            id: 'tmin',
-            unit: '°C'
-        },
-        {
-            name: 'Maximum Temperature',
-            id: 'tmax',
-            unit: '°C'
-        },
-        {
-            name: 'Precipitation',
-            id: 'precip',
-            unit: 'mm'
-        },
-        {
             name: 'Surface Wind Speed',
             id: 'surface_wind',
+            unit: '%'
+        },
+        {
+            name: 'Sea Ice Thickness',
+            id: 'ice_thickness',
+            unit: '%'
+        },
+        {
+            name: 'Sea Ice Fraction',
+            id: 'ice_fraction',
+            unit: '%'
+        },
+        {
+            name: 'Snow Depth',
+            id: 'snow_depth',
             unit: '%'
         }
     ];
@@ -262,7 +257,9 @@ async function makeConfig(details: BuilderDetails) {
             },
             shadow: false,
             borderWidth: 0,
-            backgroundColor: 'rgba(255,255,255,0.8)'
+            backgroundColor: 'rgba(255,255,255,0.8)',
+            shared: false,
+            valueSuffix: '%'
         },
         series: [
             {
@@ -281,7 +278,8 @@ async function makeConfig(details: BuilderDetails) {
                 type: 'arearange',
                 zIndex: 1,
                 color: '#959595',
-                marker: { enabled: false }
+                marker: { enabled: false },
+                enableMouseTracking: false
             },
             {
                 name: '5th, 95th Percentiles',
@@ -289,7 +287,8 @@ async function makeConfig(details: BuilderDetails) {
                 type: 'arearange',
                 zIndex: 0,
                 color: '#B5B5B5',
-                marker: { enabled: false }
+                marker: { enabled: false },
+                enableMouseTracking: false
             }
         ]
     };
