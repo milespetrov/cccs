@@ -10,7 +10,8 @@ import {
     VisualizationControlType,
     DatasetSource,
     DatasetViewSource,
-    DatasetId
+    DatasetId,
+    ColourRamp
 } from './../configs';
 
 import chartBuilders from './../configs/chart/builders';
@@ -125,6 +126,31 @@ const getters = {
         return datasets[state.datasetId!].timeSliderLabels;
     },
 
+    colourRamp: (state: AppState): ColourRamp | null => {
+        // check if dataset config specifies the colour ramp at all
+        const dataset = datasets[state.datasetId!];
+        if (!dataset || !dataset.colourRamp) {
+            return null;
+        }
+
+        // get the default colour ramp
+        const defaultColourRamp: ColourRamp = {
+            colours: dataset.colourRamp.defaultColours,
+            labels: dataset.colourRamp.defaultLabels
+        };
+
+        // check if a colour ramp is specified for the current variable
+        const variableColourRamp = dataset.colourRamp.variables[state.variableId!];
+        if (!variableColourRamp) {
+            return defaultColourRamp;
+        }
+
+        // apply defaults to the colour ramp of the current variable
+        const defaultedVariableColourRamp: ColourRamp = { ...defaultColourRamp, ...variableColourRamp };
+
+        return defaultedVariableColourRamp;
+    },
+
     chartBuilder: () => {
         return chartBuilders[state.datasetId!];
     }
@@ -153,7 +179,7 @@ const actions = {
     },
 
     /**
-     * Apply the default selector values (time perido and rcp model if provided) specified in the new dataset configuration.
+     * Apply the default selector values (time period and rcp model if provided) specified in the new dataset configuration.
      *
      * @param {AppContext} context
      * @returns {void}

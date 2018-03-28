@@ -131,6 +131,57 @@ export interface DatasetViewSource {
 }
 
 /**
+ * A colour ramp configuration for a specific variable.
+ *
+ * @export
+ * @interface ColourRamp
+ */
+export interface ColourRamp {
+    /**
+     * A list of colour ramp colour hex values to be used.
+     *
+     * @type {string[]}
+     * @memberof ColourRamp
+     */
+    colours?: string[];
+    /**
+     * A list of colour ramp labels to be used.
+     * Right now only two labels are supported on either sides of the colour ramp representing extreme values.
+     *
+     * @type {[string, string]}
+     * @memberof ColourRamp
+     */
+    labels?: [string, string];
+}
+
+/**
+ * A colour ramp configuration for the dataset along with default values.
+ *
+ * @export
+ * @interface DatasetColourRamp
+ */
+export interface DatasetColourRamp {
+    /**
+     * A list of default colour ramp colour hex values to be used. They can be overwritten by variable-specific colour ramp configurations.
+     *
+     * @type {string[]}
+     * @memberof DatasetColourRamp
+     */
+    defaultColours: string[];
+    /**
+     * A list of default colour ramp labels to be used. They can be overwritten by variable-specific colour ramp configurations.
+     * Right now only two labels are supported on either sides of the colour ramp representing extreme values.
+     *
+     * @type {[string, string]}
+     * @memberof DatasetColourRamp
+     */
+    defaultLabels: [string, string];
+
+    // TODO: use enum in the index signature when Typescript supports it
+    variables: { [name: string]: ColourRamp };
+}
+
+/**
  * Configuration options for a Dataset.
  *
  * @interface DatasetSource
@@ -173,6 +224,14 @@ export interface DatasetSource {
     variables: VariableId[];
 
     timeSliderLabels?: string[];
+
+    /**
+     * [optional] The configuration for the colour ramp to be displayed on the map.
+     *
+     * @type {DatasetColourRamp}
+     * @memberof DatasetSource
+     */
+    colourRamp?: DatasetColourRamp;
 
     /**
      * A path to them base map config.

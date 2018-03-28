@@ -165,11 +165,13 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 <style lang="scss" scoped>
 .cip-time-slider-container /deep/ {
     @import './../../node_modules/nouislider/distribute/nouislider';
+
     display: flex;
     align-items: center;
     margin: 10px 0;
     border: none;
     font-family: Helvetica, Arial, sans-serif;
+
     .cip-time-slider-backdrop {
         background: white;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
