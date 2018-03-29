@@ -1,6 +1,16 @@
 {
     "title": "Explore Climate Data",
 
+    "geo": {
+        "attribution": "©Natural Resources Canada",
+        "coordinates": {
+            "east": "E",
+            "west": "W",
+            "north": "N",
+            "south": "S"
+        }
+    },
+
     "variableSelector": {
         "title": "Variable: {current}",
         "header": "Climate Data",

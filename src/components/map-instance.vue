@@ -8,15 +8,23 @@
 
         <img v-if="mapPin" class="cip-fake-map-pin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARuSURBVDiNjZVrbFRVEMd/5967e9vddbduN4WWYgXKKyVQWgIhkQBVqJIYCQZJI00UH2DiNxUUQwQNSfH1RYwghphoCIGADQk1QKqAGCKhCKTKq6GWbYHSdvve9u7ee8cP210LAjrJ+XAmM78zOf8zcxT/bROBYuDRkX03cA1ofliSeoDfBFYAz2UZemFZXsBf6De9gkvbQCJx7k7/4LAjrUAtcBBI/B/wDGBL6Zhg0cZ5E8YvKswJ+zRl4LqIOOC6xBO2fbytJ7a1oS16sSveDGwG/ngYuEJXatOnT06f9ErJuEINUYgLrosK5CDiID2d4LogLrbtyDeX7rSu/631msBHwPE0SB9dqa5Uzf4V5SWrpuXna6AQAQREyFqzGWPWAuwzR0j7Fag5EV+oPOILHGjuni5wFugYDTaB7Z8vmTFj1bSC/DQMEbRIAZ6FK9BL5qGCYVSWD4m1I4N9mZhJj3j9OR5dP3azf/LIvbtp8AulY0LPbF86c6oCBQKAt7Ia8+VN6BNKQNPA8GJMKcNTsRKUwrl6LlN9aTgreLSt37o9ZHcDjWnwpi+eLp01NdcfSAd6lq7GU7ma5C+1WF9tQC+ajnS3M7TtNZTpw1tZDeLiXGnIXEvEq+sHW3pN4IABTDR1fdyiotxwRtFIAZ4lVSRP1pI4+CW4Ltb3NSnxhgaw9n4GCOazr2KfrsNtv5FSPt8fztLV+GFHHteA4vL8kN/vNYw02CirANcl+eO3GWWlL4b0xTL7RO0OEBdj/rKMz2doRmk42wcUa0BuYcjvBVA5EczXt6aCHRtzzQeoUG7qsLlLMeZWko7LeqMGsW28i1fie2cnWngsAIU+wwtENEBERO55z/zLcT+7T3uN5IkGdLX1xZMA0tOJ9fX72KfrULqOtXsL0tsFgH3maOoNj8QN73gPpRskftpH/JO1uLHbAETjdgLo1ICmhlu9gwMJ206fajfUg9LwLHvpn+KCYVQwoy/e5esAhX26LuMbTLr2hdhQHGjSgGbLcaInWroyykjXLZLH9uBZsBzv82+isv2Yq98lq3ojKjuAWfU2nsUrsQ7twu1oy4B/vj0YsxyJAi3pW6qaOSb01qnqJ8r09HwQwXiqCu/SF0EEsZOpyg0PKEXi0C6sw7vBcUBckrYjCw83nWvsGf4Y2JdukKvtg1ZFxGcG54wNhdIt7TRdwGmoR4b60QsmgpMkWb8X67sa7PMnMi0Nws5LndE913saga2MamkHuFjf3DF/dn4oUJzj86eTJN6He+08+pRypC+G9f221JwYNU+ORHs71v0avQxsANrh7unWJXBj/6Wb08LZHr00LxjU0nNDBOfyWewLJ2E4nqnSdlzZ+eed6NpTNy4LfEhqunEvGOAvoOFoc+fkuusdw3l+0ygMmKZXUxrDccRKQQcs2z7S2tO55vj1K3uaYo3A+tFQePDX5CH1NS03dTV+dl7Q91jANAWXaH/C+r2jPz6i/g8jK3kv4EHg0VYETOHuz/Qq0PKwpL8BL8EAdKaMj7AAAAAASUVORK5CYII="/>
 
+
+        <!-- TODO: move all these extra map components into a single container to simplify their positioning -->
+        <!-- TODO: hide these components while the map loading/reloading since they are poking through the loading screen  -->
+        <!-- TODO: when RAMP api supports it, move them inside the ramp container  -->
+        <!-- TODO: fidn a way to hide these when a help/export dialog or datatable is opened as they are pokinig through them -->
         <map-colour-ramp
             v-if="colourRamp"
-            :labels="colourRamp.labels" 
+            :labels="colourRamp.labels"
             :colours="colourRamp.colours">
         </map-colour-ramp>
 
-        <time-slider 
+        <time-slider
             v-if="timeSliderLabels">
         </time-slider>
+
+        <map-fineprint
+            :cursor-point="cursorPoint"></map-fineprint>
     </div>
 
 </template>
@@ -29,6 +37,7 @@ import { mixins } from 'vue-class-component';
 
 import sprintf from 'sprintf-js';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/throttleTime';
 
 import api from './../api/';
 import ahccdTemp from '../configs/chart/ahccd-temp';
@@ -39,6 +48,7 @@ import { ColourRamp } from './../configs';
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
+import MapFineprint from './map-fineprint.vue';
 
 interface Tooltips {
     'en-CA': {
@@ -78,7 +88,8 @@ export interface IdentifySession {
 @Component({
     components: {
         'time-slider': TimeSlider,
-        'map-colour-ramp': MapColourRamp
+        'map-colour-ramp': MapColourRamp,
+        'map-fineprint': MapFineprint
     }
 })
 export default class MapInstance extends mixins(UpdateRouteMixin) {
@@ -166,7 +177,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
         this.currentLayers.forEach((layerId: string) => {
-            this._mapInstance.layers.removeLayer(layerId);
+            this._mapi.layers.removeLayer(layerId);
         });
         this.addCurrentVarLayer();
 
@@ -194,7 +205,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
                 // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
                 layer.id += `_${this.counter}`;
-                const addedLayer = this._mapInstance.layers.addLayer(layer);
+                const addedLayer = this._mapi.layers.addLayer(layer);
                 this.currentLayers[index] = layer.id;
             });
         });
@@ -212,7 +223,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     getLayerById(searchId: string): any {
-        return this._mapInstance.layers.allLayers.find((layer: any) => {
+        return this._mapi.layers.allLayers.find((layer: any) => {
             return layer.id === searchId;
         });
     }
@@ -229,7 +240,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('centerPoint')
     onCenterPointChanged(): void {
-        if (!this._mapInstance) {
+        if (!this._mapi) {
             return;
         }
 
@@ -239,7 +250,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         const xyCenter = new api.RZ.GEO.XY(this.centerPoint.x, this.centerPoint.y);
-        this._mapInstance.setCenter(xyCenter);
+        this._mapi.setCenter(xyCenter);
     }
 
     @Watch('zoomLevel')
@@ -248,13 +259,17 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.localZoomLevelUpdate = false;
             return;
         }
-        this._mapInstance.zoom = this.zoomLevel;
+        this._mapi.zoom = this.zoomLevel;
     }
 
     localCenterPointUpdate: boolean = false;
     localZoomLevelUpdate: boolean = false;
 
-    _mapInstance: any;
+    // leading `_` is used to prevent Vue from poking all the propertise on this reference and making in an attempt to make it reactive
+    _mapi: any;
+
+    // the last coordinates of the mouse cursor
+    cursorPoint: MapPoint = new MapPoint(0, 0);
 
     deactivate: Subject<boolean> = new Subject<boolean>();
 
@@ -290,30 +305,38 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}.en-CA.json`);
 
         RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
-            this._mapInstance = mapi;
+            this._mapi = mapi;
             this.addCurrentVarLayer();
 
             // turn off default identify behaviour
-            this._mapInstance.identify = false;
+            this._mapi.identify = false;
 
             // subscribe to Tooltips events
-            this._mapInstance.ui.tooltip.mouseOver.takeUntil(this.deactivate).subscribe(this.tooltipMouseOverHandler);
-
-            this._mapInstance.ui.tooltip.mouseOut.takeUntil(this.deactivate).subscribe(this.tooltipMouseOutHandler);
+            this._mapi.ui.tooltip.mouseOver.takeUntil(this.deactivate).subscribe(this.tooltipMouseOverHandler);
+            this._mapi.ui.tooltip.mouseOut.takeUntil(this.deactivate).subscribe(this.tooltipMouseOutHandler);
 
             // subscribe to the center change stream to update the url and store with the current center point
-            this._mapInstance.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
+            this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
 
-            this._mapInstance.zoomChanged.subscribe(this.mapZoomChangedHandler);
+            this._mapi.zoomChanged.subscribe(this.mapZoomChangedHandler);
 
-            this._mapInstance.ui.anchors.CONTEXT_MAP.after(`
+            this._mapi.ui.anchors.CONTEXT_MAP.after(`
                 <div id="cip-mini-chart-mount"></div>
             `);
 
             // set the identify mode to 'highlight' to prevent the details panel from opening
-            this._mapInstance.identifyMode = 'highlight';
+            this._mapi.identifyMode = 'highlight';
             // subscribe to identify events to track highlighted items
-            this._mapInstance.layers.identify.subscribe(this.mapIdentifyHandler);
+            this._mapi.layers.identify.subscribe(this.mapIdentifyHandler);
+
+            this._mapi.mouseMove.throttleTime(30).subscribe((event: any) => {
+                // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
+                if (!event.xy) {
+                    return;
+                }
+
+                this.cursorPoint = new MapPoint(event.xy.x, event.xy.y);
+            });
 
             document.querySelector('.rv-esri-map')!.addEventListener('wheel', this.scrollGuardHandler, {
                 capture: true
@@ -327,13 +350,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             if (this.zoomLevel) {
                 this.onZoomLevelChanged();
             } else {
-                this.mapZoomChangedHandler(this._mapInstance.zoom);
+                this.mapZoomChangedHandler(this._mapi.zoom);
             }
 
             if (this.centerPoint) {
                 this.onCenterPointChanged();
             } else {
-                const center = this._mapInstance.center;
+                const center = this._mapi.center;
 
                 this.mapInstanceCenterChangedHandler({ x: center.x, y: center.y });
             }
@@ -351,9 +374,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.setCenterPoint(event);
 
         // update zoom if we're out of sync
-        if (this._mapInstance.zoom !== this.zoomLevel) {
+        if (this._mapi.zoom !== this.zoomLevel) {
             this.localZoomLevelUpdate = true;
-            this.setZoomLevel(this._mapInstance.zoom);
+            this.setZoomLevel(this._mapi.zoom);
         }
         this.updateRoute();
     }
@@ -466,7 +489,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             template: `<dv-section><dv-chart id="${this.miniChartChartId}"></dv-chart></dv-section>`
         });
 
-        /* this._mapInstance.ui.anchors.CONTEXT_MAP.html(`
+        /* this._mapi.ui.anchors.CONTEXT_MAP.html(`
             <div class="mApiOverViewMap">
                 <div id="cip-mini-chart-mount"></div>
             </div>
@@ -482,14 +505,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         // seems that you need to subscribe every time after setting the guts of the context map node
         // TODO: fix; since we not using the mini map container, the subsscription won't work
-        /* this._mapInstance.ui.anchors.CONTEXT_MAP.on(
+        /* this._mapi.ui.anchors.CONTEXT_MAP.on(
             'click',
             this.changeViewToChart
         ); */
     }
 
     scrollGuardHandler(event: WheelEvent): void {
-        if (!this._mapInstance) {
+        if (!this._mapi) {
             return;
         }
 
@@ -502,7 +525,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // I couldn't find why this is happening, or how to stop it properly
             // using this esri function seems to be the simplest solution
             // TODO: use a proper API endpoint when it's created
-            this._mapInstance._fgpMap._map.disableScrollWheelZoom();
+            this._mapi._fgpMap._map.disableScrollWheelZoom();
 
             scrollGuardClassList.remove('cip-scrolling');
             scrollGuardClassList.add('cip-active');
@@ -514,7 +537,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             scrollGuardClassList.remove('cip-active');
             scrollGuardClassList.add('cip-scrolling');
 
-            this._mapInstance._fgpMap._map.enableScrollWheelZoom();
+            this._mapi._fgpMap._map.enableScrollWheelZoom();
         }
     }
 

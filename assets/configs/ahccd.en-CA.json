@@ -56,7 +56,7 @@
                 "showInfo": false
             },
             "mouseInfo": {
-                "enabled": true,
+                "enabled": false,
                 "spatialReference": {
                     "wkid": 4326
                 }
@@ -72,7 +72,7 @@
                 "layerType": "imagery"
             },
             "scaleBar": {
-                "enabled": true
+                "enabled": false
             }
         },
         "extentSets": [
@@ -140,7 +140,15 @@
                         "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer"
                     }
                 ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
             },
             {
                 "id": "baseSimple",
@@ -159,7 +167,15 @@
                         "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
                     }
                 ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
             },
             {
                 "id": "baseCBME_CBCE_HS_RO_3978",
