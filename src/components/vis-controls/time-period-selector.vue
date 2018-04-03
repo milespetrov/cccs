@@ -22,9 +22,10 @@ import {
     TimePeriodSelectorConfig,
     TimePeriodType,
     timePeriodSelectorConfig,
-    VisualizationControlType,
-    DatasetViewSource
-} from '../../configs';
+    VisualizationControlType
+} from '../../configs/selectors';
+
+import { DatasetViewSource } from './../../configs/datasets';
 
 @Component({
     components: {

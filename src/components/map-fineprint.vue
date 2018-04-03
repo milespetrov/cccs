@@ -70,7 +70,7 @@ export default class MapFineprint extends Vue {
 @import './../styles/variables.scss';
 
 .cip-map-fineprint-container {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.6);
 
     position: absolute;
     bottom: 0px;

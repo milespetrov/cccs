@@ -1,9 +1,26 @@
-import api, { cmip5Api } from './../../api/';
-import mappings from './../../globals/mappings';
-import { BuilderDetails } from './builders';
+import api, { cmip5Api } from '@/api/';
+import { AppState } from '@/store';
 
-async function makeConfig(details: BuilderDetails) {
-    const data = await cmip5Api.getData(details.period, details.variable, details.featureId);
+import { ChartConfigType, ChartConfigCallbacks, ChartConfigGenerator } from './types';
+
+async function makeConfig(
+    state: AppState,
+    chartConfigType: ChartConfigType,
+    callbacks: ChartConfigCallbacks
+): Promise<any> {
+    const { timePeriodId, variableId } = state;
+
+    // chartSeries default to `null` which cannot be used as non-value in a desctructuring statement
+    const chartSeries = state.chartSeries || [0, 1, 2];
+
+    if (!timePeriodId || !variableId || !chartSeries) {
+        console.error('cannot generate chart config, parameters are not set');
+
+        return null;
+    }
+
+    // get chart data
+    const data = await cmip5Api.getData(timePeriodId, variableId, 'featureId');
 
     const seriesData = data.models['rcp8.5'].ann['50'].anomaly.map((value: any) => {
         if (value && value > -9999) {
@@ -46,8 +63,9 @@ async function makeConfig(details: BuilderDetails) {
         }
     ];
 
-    const item = variables.find((v: { id: string }) => v.id === details.variable);
-    details.variable = item ? (<any>item).name : details.variable;
+    const item = variables.find((v: { id: string }) => v.id === variableId);
+    // TODO: what does that do?
+    //variableId = item ? (<any>item).name : variableId;
 
     const config = {
         chart: {
@@ -73,8 +91,7 @@ async function makeConfig(details: BuilderDetails) {
             enabled: false
         },
         title: {
-            text: `${details.variable} at ${data.grid_id},
-             ${data.start_year} - ${data.end_year}`,
+            text: `${variableId} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
             x: -110
         },
         subtitle: {
@@ -94,13 +111,13 @@ async function makeConfig(details: BuilderDetails) {
                 setExtremes: (event: any) => {
                     console.log(event, event.target);
 
-                    details.callbacks.xaxis.events.setExtremes(event);
+                    callbacks.setExtremes(event);
                 }
             }
         },
         yAxis: {
             title: {
-                text: `${details.variable}, %`
+                text: `${variableId}, %`
             },
             labels: { style: { color: 'black' } }
         },
@@ -138,16 +155,12 @@ async function makeConfig(details: BuilderDetails) {
                             api.DQV.sections.dvSection1.data.isTable = false;
                         }
 
-                        details.callbacks.plotOptions.series.events.hide(
-                            getVisibleSeries(api.DQV.charts.dvChart1.highchart)
-                        );
+                        callbacks.hide(getVisibleSeries(api.DQV.charts.dvChart1.highchart));
                     },
                     show: () => {
                         api.DQV.sections.dvSection1.data.isTable = true;
 
-                        details.callbacks.plotOptions.series.events.show(
-                            getVisibleSeries(api.DQV.charts.dvChart1.highchart)
-                        );
+                        callbacks.show(getVisibleSeries(api.DQV.charts.dvChart1.highchart));
                     }
                 }
             }
@@ -165,7 +178,7 @@ async function makeConfig(details: BuilderDetails) {
                 events: {
                     legendItemClick: () => false
                 },
-                visible: details.chartSeries ? details.chartSeries.includes(0) : true
+                visible: chartSeries.includes(0)
             },
             {
                 name: '25th, 75th Percentiles',
@@ -174,7 +187,7 @@ async function makeConfig(details: BuilderDetails) {
                 zIndex: 1,
                 color: '#6D8398',
                 marker: { enabled: false },
-                visible: details.chartSeries ? details.chartSeries.includes(1) : true
+                visible: chartSeries.includes(1)
             },
             {
                 name: '5th, 95th Percentiles',
@@ -183,7 +196,7 @@ async function makeConfig(details: BuilderDetails) {
                 zIndex: 0,
                 color: '#8DA3B8',
                 marker: { enabled: false },
-                visible: details.chartSeries ? details.chartSeries.includes(2) : true
+                visible: chartSeries.includes(2)
             }
         ]
     };
@@ -243,7 +256,7 @@ async function makeConfig(details: BuilderDetails) {
             }
         },
         title: {
-            text: `${details.variable} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
+            text: `${variableId} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -292,7 +305,13 @@ async function makeConfig(details: BuilderDetails) {
             }
         ]
     };
-    return details.mini ? miniConfig : config;
+
+    const chartTypeMap = {
+        [ChartConfigType.FOCUS]: config,
+        [ChartConfigType.GLANCE]: miniConfig
+    };
+
+    return chartTypeMap[chartConfigType];
 }
 
 function makeLabels(event: any, data: any) {
@@ -363,4 +382,12 @@ function getVisibleSeries(chart: any): number[] {
     return visible;
 }
 
-export default makeConfig;
+class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
+    make(chartConfigType: ChartConfigType, callbacks?: ChartConfigCallbacks): Promise<any> {
+        super.make(chartConfigType, callbacks);
+
+        return makeConfig(this.state, chartConfigType, this.callbacks);
+    }
+}
+
+export default CMIP5ChartConfigGenerator;

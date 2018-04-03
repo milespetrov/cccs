@@ -1,5 +1,4 @@
 import { VisualizationControlType } from './types';
-import { DatasetViewSource } from '..';
 
 export * from './types';
 export * from './dataset-selector-config';

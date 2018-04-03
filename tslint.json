@@ -54,19 +54,11 @@
                 "variable-declaration": "onespace"
             }
         ],
-        "whitespace": [
-            true,
-            "check-branch",
-            "check-decl",
-            "check-operator",
-            "check-module",
-            "check-separator",
-            "check-type"
-        ],
+        "whitespace": false, // prettier takes care of whitespace, no need to needlessly pester devs with error messages
         "no-reference": true,
 
         // Config different from tslint:latest
-        "no-implicit-dependencies": [true, "dev"],
+        "no-implicit-dependencies": false, // so `@` alias to the `src` folder in `import` statements
         "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
 
         "arrow-parens": false, // [true, "ban-single-arg-parens"]

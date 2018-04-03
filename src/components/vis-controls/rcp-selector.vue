@@ -20,13 +20,9 @@ import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
-import {
-    rcpSelectorConfig,
-    RCPSelectorConfig,
-    RCPType,
-    VisualizationControlType,
-    DatasetViewSource
-} from './../../configs';
+import { rcpSelectorConfig, RCPSelectorConfig, RCPType, VisualizationControlType } from './../../configs/selectors';
+
+import { DatasetViewSource } from './../../configs/datasets';
 
 @Component({
     components: {
@@ -60,4 +56,5 @@ export default class RcpSelector extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

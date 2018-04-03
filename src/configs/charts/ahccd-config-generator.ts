@@ -1,9 +1,24 @@
-import api, { ahccdApi } from './../../api/';
-import mappings from './../../globals/mappings';
-import { BuilderDetails } from './../chart/builders';
+import api, { ahccdApi } from '@/api/';
+import { AppState } from '@/store';
+import mappings from '@/globals/mappings';
 
-async function makeConfig(details: BuilderDetails) {
-    const data = await ahccdApi.getData(details.period, details.variable, details.featureId);
+import { ChartConfigType, ChartConfigCallbacks, ChartConfigGenerator } from './types';
+
+async function makeConfig(
+    state: AppState,
+    chartConfigType: ChartConfigType,
+    callbacks: ChartConfigCallbacks
+): Promise<any> {
+    const { timePeriodId, variableId, featureId } = state;
+
+    if (!timePeriodId || !variableId || !featureId) {
+        console.error('cannot generate chart config, parameters are not set');
+
+        return null;
+    }
+
+    // get chart data
+    const data = await ahccdApi.getData(timePeriodId, variableId, featureId);
 
     const seriesData = data.absolute_values.map((value: number) => (value > -9999 ? value : null));
 
@@ -35,8 +50,11 @@ async function makeConfig(details: BuilderDetails) {
         }
     ];
 
-    const item = variables.find((v: { id: string }) => v.id === details.variable);
-    const varFullName = item ? (<any>item).name : details.variable;
+    const item = variables.find((v: { id: string }) => v.id === variableId);
+    // TODO: what does that do?
+    // const varFullName = item ? (<any>item).name : variableId;
+
+    const varFullName = variableId;
 
     const config = {
         chart: {
@@ -83,12 +101,12 @@ async function makeConfig(details: BuilderDetails) {
                 setExtremes: async (event: any) => {
                     console.log(event, event.target);
 
-                    details.callbacks.xaxis.events.setExtremes(event);
+                    callbacks.setExtremes(event);
 
                     const data = await ahccdApi.getTrend({
-                        variable: details.variable,
-                        timePeriod: details.period,
-                        featureId: details.featureId,
+                        variable: variableId,
+                        timePeriod: timePeriodId,
+                        featureId,
                         startYear: event.min,
                         endYear: event.max
                     });
@@ -157,7 +175,7 @@ async function makeConfig(details: BuilderDetails) {
         },
         series: [
             {
-                name: mappings.periodToNames[details.period],
+                name: mappings.periodToNames[timePeriodId],
                 data: seriesData,
                 type: 'spline',
                 pointPadding: 0.1,
@@ -243,7 +261,7 @@ async function makeConfig(details: BuilderDetails) {
         },
         series: [
             {
-                name: mappings.periodToNames[details.period],
+                name: mappings.periodToNames[timePeriodId],
                 data: seriesData,
                 color: '#666666',
                 type: 'line',
@@ -255,7 +273,12 @@ async function makeConfig(details: BuilderDetails) {
         ]
     };
 
-    return details.mini ? miniConfig : config;
+    const chartTypeMap = {
+        [ChartConfigType.FOCUS]: config,
+        [ChartConfigType.GLANCE]: miniConfig
+    };
+
+    return chartTypeMap[chartConfigType];
 }
 
 function makeLabels(event: any, data: any) {
@@ -385,4 +408,12 @@ function makeLabels(event: any, data: any) {
     return [trendRangeLabel, secondTrendValueLabel];
 }
 
-export default makeConfig;
+class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
+    make(chartConfigType: ChartConfigType, callbacks?: ChartConfigCallbacks): Promise<any> {
+        super.make(chartConfigType, callbacks);
+
+        return makeConfig(this.state, chartConfigType, this.callbacks);
+    }
+}
+
+export default CMIP5ChartConfigGenerator;

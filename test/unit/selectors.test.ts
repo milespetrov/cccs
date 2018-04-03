@@ -17,9 +17,10 @@ import {
     BaseSelectorGroupConfig,
     RCPType,
     VisualizationControlType,
-    TimePeriodType,
-    DatasetId
-} from '../../src/configs';
+    TimePeriodType
+} from './../../src/configs/selectors';
+
+import { DatasetId } from './../../src/configs/datasets';
 import { AppState, createStore, ViewType } from '../../src/store';
 
 import { app } from './../../src/store/app';

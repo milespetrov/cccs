@@ -4,17 +4,9 @@ import { AppState, MapPoint, Range, ViewType } from './index';
 
 import controls from './../globals/controls';
 
-import {
-    defaultSelectors,
-    datasets,
-    VisualizationControlType,
-    DatasetSource,
-    DatasetViewSource,
-    DatasetId,
-    ColourRamp
-} from './../configs';
-
-import chartBuilders from './../configs/chart/builders';
+import chartConfigGenerators, { ChartConfigGenerator } from '../configs/charts';
+import { datasets, DatasetSource, DatasetViewSource, DatasetId, ColourRamp } from './../configs/datasets';
+import { defaultSelectors, VisualizationControlType } from './../configs/selectors';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -151,8 +143,15 @@ const getters = {
         return defaultedVariableColourRamp;
     },
 
-    chartBuilder: () => {
-        return chartBuilders[state.datasetId!];
+    /**
+     * Returns a chart config generator object based on the current state values.
+     *
+     * @param {AppState} state
+     * @returns {ChartConfigGenerator} config generator
+     */
+    chartConfigGenerator(state: AppState): ChartConfigGenerator {
+        // TODO: decide on the way to check for existence of state items like `datasetId`
+        return chartConfigGenerators(state.datasetId!, state);
     }
 };
 

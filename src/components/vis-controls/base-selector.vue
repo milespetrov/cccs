@@ -38,7 +38,7 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject, Emit } from 'vue-property-decorator';
 
-import { rcpSelectorConfig, BaseSelectorConfig, BaseSelectorGroupConfig } from './../../configs';
+import { rcpSelectorConfig, BaseSelectorConfig, BaseSelectorGroupConfig } from './../../configs/selectors';
 
 @Component
 export default class BaseSelectorV extends Vue {

@@ -63,7 +63,7 @@ const cimp5Dataset: DatasetSource = {
         defaultLabels: ['-100', '100'],
         variables: {
             [VariableId.IceFraction]: {
-                labels: ['-40', '30']
+                labels: ['-40', '40']
             },
             [VariableId.SurfaceWind]: {
                 labels: ['-30', '30']

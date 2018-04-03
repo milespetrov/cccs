@@ -54,10 +54,10 @@ import {
     stages,
     StageMapping,
     VariableSelectorConfig,
-    DatasetId,
-    StageType,
-    VariableId
-} from '../../configs';
+    StageType
+} from './../../configs/selectors';
+
+import { DatasetId, VariableId } from './../../configs/datasets';
 
 @Component
 export default class VariableSelector extends mixins(UpdateRouteMixin) {
