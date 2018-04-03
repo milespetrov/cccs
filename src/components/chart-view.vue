@@ -191,6 +191,7 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             events: {
                 setExtremes: (event: any) => {
                     // handles the 'reset zoom' button
+                    // TODO: figure out why 'reset zoom' passes back undefined values
                     if (!event.min || !event.max) {
                         this.setChartRange(null);
                     } else {
