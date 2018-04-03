@@ -12,16 +12,24 @@
             <i class="fas fa-search"></i>
         </div>
 
-        <div class="cip-results" v-if="isVisible && hasResults">
+        <div class="cip-results" v-if="isVisible && queryResult && (queryResult.featureResults || queryResult.results && queryResult.results.length > 0)">
+            <button
+                v-if="queryResult.featureResults"
+                class="cip-result"
+                @click="zoomToResult(queryResult.featureResults.LatLon.lon, queryResult.featureResults.LatLon.lat)">
+                <span class="cip-name">{{ queryResult.featureResults.fsa || queryResult.featureResults.nts }} <span class="cip-details">{{ abbreviations[queryResult.featureResults.province] || queryResult.featureResults.location }}</span></span><span class="cip-type">{{ queryResult.featureResults.code }}</span>
+            </button>
+
             <button class="cip-result"
-                v-for="(result, index) in queryResults.slice(0, 10)"
+                v-if="queryResult.results && queryResult.results.length > 0"
+                v-for="(result, index) in queryResult.results.slice(0, 10)"
                 :key="index"
-                @click="zoomToResult(result)">
-                <span class="cip-name">{{ result.name }},<span class="cip-details"> {{ result.location | truncate }}, {{abbreviations[result.province]}}</span></span><span class="cip-type">{{ result.type | truncate }}</span>
+                @click="zoomToResult(result.LatLon.lon, result.LatLon.lat)">
+                <span class="cip-name">{{ result.name }}<span class="cip-details">{{ result.location ? `, ${result.location}` : '' | truncate }}, {{ abbreviations[result.province] }}</span></span><span class="cip-type">{{ result.type | truncate }}</span>
             </button>
         </div>
 
-        <div class="cip-results" v-if="isVisible && hasNoResults">
+        <div class="cip-results" v-else-if="isVisible && query.length >= 3 && noResults">
             <span class="cip-result">no matches found for "{{ query }}"</span>
         </div>
     </div>
@@ -49,7 +57,6 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
     @Action setZoomLevel: (value: number) => void;
     @Action setMapPin: (value: { x: number; y: number }) => void;
-
     query: string = '';
 
     abbreviations = {
@@ -71,10 +78,11 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
     @Watch('query')
     onQueryChanged(): void {
         if (this.query.length === 0) {
-            this.queryResults = [];
+            this.queryResult = undefined;
         }
 
         if (this.query.length < 3) {
+            this.noResults = false;
             return;
         }
 
@@ -82,35 +90,17 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
     }
 
     queryStream: Subject<string> = new Subject<string>();
-    queryResults: any[] = [];
-
+    //TODO: replace with GeoS.GeoQuery.Query | undefined when GeoSearch has type definitions
+    queryResult: any = {};
     isVisible: boolean = false;
-
-    get hasResults(): boolean {
-        return this.queryResults.length > 0 && this.query.length >= 3;
-    }
-
-    get hasNoResults(): boolean {
-        return this.queryResults.length === 0 && this.query.length >= 3;
-    }
-
-    /*gConfig: any = {
-        language: 'en',
-        types: {
-            CITY: {
-                fr: {
-                    term: 'Ville',
-                    description:
-                        "La principale division administrative du Canada. Il s'agit d'un territoire juridiquement défini, établi par des articles de la Confédération ou par des amendements constitutionnels."
-                }
-            }
-        }
-    }; */
-    gSearch: any = new (<any>window).GeoSearch(null);
+    gSearch = new (<any>window).GeoSearch({includeTypes: ['CITY', 'FSA', 'NTS', 'PROV', 'TERR', 'TOWN']});
+    noResults = false;
 
     mounted(): void {
-        this.queryStream.debounceTime(200).subscribe(this.getResults);
-
+        this.queryStream.debounceTime(200).subscribe(async q => {
+            await this.getResults(q);
+            this.noResults = this.queryResult && !this.queryResult.featureResults && (!this.queryResult.results || this.queryResult.results.length === 0);
+        });
         // clickout
         if (typeof document !== 'undefined') {
             document.documentElement.addEventListener('click', this.clickOutListener);
@@ -119,26 +109,17 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
 
     async getResults(query: string) {
         try {
-            this.queryResults = await this.gSearch.query(query + '*');
-            // console.log('q results', this.queryResults);
+            this.queryResult = await this.gSearch.query(query).onComplete;
         } catch (event) {
-            console.log(event);
+            this.noResults = true;
         }
     }
 
-    zoomToResult(result: any): void {
-        console.log(result.geometry);
-
-        const centerPoint = {
-            x: result.pointCoords[0],
-            y: result.pointCoords[1]
-        };
-
+    zoomToResult(x: number, y: number): void {
+        const centerPoint = { x, y };
         this.setCenterPoint(centerPoint);
-
         this.setZoomLevel(8);
         this.updateRoute();
-
         this.setMapPin(centerPoint);
     }
 
