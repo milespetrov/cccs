@@ -40,15 +40,15 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/throttleTime';
 
 import api from './../api/';
-import ahccdTemp from '../configs/chart/ahccd-temp';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
 
-import { ColourRamp } from './../configs';
+import { ColourRamp } from './../configs/datasets';
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapFineprint from './map-fineprint.vue';
+import { ChartConfigGenerator, ChartConfigType } from './../configs/charts';
 
 interface Tooltips {
     'en-CA': {
@@ -165,7 +165,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setFeaturePoint: (value: { x: number; y: number }) => void;
     @Action setZoomLevel: (value: number) => void;
 
-    @Getter chartBuilder: (builderDetails: object) => object;
+    @Getter chartConfigGenerator: ChartConfigGenerator;
     @Getter timeSliderLabels: string[] | undefined;
     @Getter colourRamp: ColourRamp | null;
 
@@ -464,13 +464,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     async displayMiniChart(stationId: string): Promise<void> {
         console.log('display mini chart');
 
-        const config = await this.chartBuilder({
-            period: this.currentTimePeriod,
-            variable: this.currentVariable,
-            featureId: stationId,
-            callbacks: {},
-            mini: true
-        });
+        const config = await this.chartConfigGenerator.make(ChartConfigType.GLANCE);
 
         console.log(config);
 

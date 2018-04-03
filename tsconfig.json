@@ -12,7 +12,11 @@
         "module": "esnext",
         "moduleResolution": "node",
         "target": "es5",
-        "jsx": "react"
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
     },
     "exclude": ["node_modules"]
 }

@@ -30,6 +30,8 @@ import api from './../api';
 import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from '../globals/mixin';
 
+import { ChartConfigGenerator, ChartConfigType } from '../configs/charts';
+
 @Component
 export default class ChartView extends mixins(UpdateRouteMixin) {
     @Action setChartRange: (value: { min: number; max: number }) => void;
@@ -38,7 +40,7 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
     @Action setChartSeries: (visible: number[]) => void;
     @State chartSeries: number[];
 
-    @Getter chartBuilder: (builderDetails: object) => object;
+    @Getter chartConfigGenerator: ChartConfigGenerator;
 
     @State('timePeriodId') currentTimePeriod: string;
 
@@ -101,7 +103,8 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
                 chartSeries: this.chartSeries
             };
 
-            const config = await this.chartBuilder(builderPackage);
+            //const config = await this.chartBuilder(builderPackage);
+            const config = await this.chartConfigGenerator.make(ChartConfigType.FOCUS, this.callbacks);
             this.initDQV(config);
             return;
         }
@@ -158,7 +161,8 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             chartSeries: this.chartSeries
         };
 
-        const config = await this.chartBuilder(builderPackage);
+        //const config = await this.chartBuilder(builderPackage);
+        const config = await this.chartConfigGenerator.make(ChartConfigType.FOCUS, this.callbacks);
 
         const chartId = 'dvChart1';
         const dvChart = api.DQV.charts[chartId];
@@ -174,6 +178,15 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
      */
 
     callbacks = {
+        setExtremes: (event: any) => {
+            this.setChartRange({ min: event.min, max: event.max });
+            this.replaceRoute();
+        },
+        show: this.chartSeriesToggleHandler,
+        hide: this.chartSeriesToggleHandler
+    };
+
+    callbacks2 = {
         xaxis: {
             events: {
                 setExtremes: (event: any) => {

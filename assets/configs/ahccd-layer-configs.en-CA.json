@@ -6,7 +6,10 @@
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/3",
-            "controls": ["data"]
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
         }
     ],
     "tmin": [
@@ -16,7 +19,10 @@
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/1",
-            "controls": ["data"]
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
         }
     ],
     "tmean": [
@@ -26,7 +32,10 @@
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
-            "controls": ["data"]
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
         }
     ],
     "tmax": [
@@ -36,7 +45,10 @@
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
-            "controls": ["data"]
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
         }
     ]
 }

@@ -1,4 +1,4 @@
-import { DatasetId } from '../configs';
+import { DatasetId } from '../configs/datasets';
 
 export enum ViewType {
     MapView = 'map-view',
