@@ -48,7 +48,8 @@ import { ColourRamp } from './../configs/datasets';
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapFineprint from './map-fineprint.vue';
-import { ChartConfigGenerator, ChartConfigType } from './../configs/charts';
+import { ChartConfigGenerator } from './../configs/charts';
+import { ChartConfigType } from '@/types';
 
 interface Tooltips {
     'en-CA': {

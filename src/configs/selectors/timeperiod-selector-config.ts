@@ -1,4 +1,5 @@
-import { TimePeriodSelectorConfig, TimePeriodType } from './types';
+import { TimePeriodSelectorConfig } from './types';
+import { TimePeriodType } from '@/types';
 
 export const timePeriodSelectorConfig: TimePeriodSelectorConfig = {
     groups: [

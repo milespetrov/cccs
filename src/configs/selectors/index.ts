@@ -1,4 +1,4 @@
-import { VisualizationControlType } from './types';
+import { VisualizationControlType } from '@/types';
 
 export * from './types';
 export * from './dataset-selector-config';

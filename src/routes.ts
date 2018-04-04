@@ -4,7 +4,7 @@ import mapView from './components/map-view.vue';
 import mapViewControls from './components/map-view-controls.vue';
 
 import { Route, RouteConfig } from 'vue-router';
-import { ViewType } from './store';
+import { ViewType } from '@/types';
 
 const routes: RouteConfig[] = [
     {

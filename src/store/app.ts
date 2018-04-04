@@ -1,12 +1,13 @@
 import { ActionContext, Store, StoreOptions, Module } from 'vuex';
 
-import { AppState, MapPoint, Range, ViewType } from './index';
+import { AppState, MapPoint, Range } from './index';
 
 import controls from './../globals/controls';
 
-import chartConfigGenerators, { ChartConfigGenerator } from '../configs/charts';
-import { datasets, DatasetSource, DatasetViewSource, DatasetId, ColourRamp } from './../configs/datasets';
-import { defaultSelectors, VisualizationControlType } from './../configs/selectors';
+import { chartConfigGenerators, ChartConfigGenerator } from '../configs/charts';
+import { datasets, DatasetSource, DatasetViewSource, ColourRamp } from './../configs/datasets';
+import { defaultSelectors } from './../configs/selectors';
+import { VisualizationControlType, ViewType, DatasetId } from '@/types';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -151,7 +152,7 @@ const getters = {
      */
     chartConfigGenerator(state: AppState): ChartConfigGenerator {
         // TODO: decide on the way to check for existence of state items like `datasetId`
-        return chartConfigGenerators(state.datasetId!, state);
+        return chartConfigGenerators[state.datasetId!](state);
     }
 };
 

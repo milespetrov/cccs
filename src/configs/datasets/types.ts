@@ -1,37 +1,4 @@
-import { TimePeriodType, RCPType, StageType, VisualizationControlType } from './../selectors/types';
-import { ViewType } from '../../store';
-
-/**
- * All available Dataset ids.
- *
- * @enum {string}
- */
-export enum DatasetId {
-    AHCCD = 'ahccd',
-    CMIP5 = 'cmip5',
-    CANGRD = 'cangrd',
-    DCS = 'dcs'
-}
-
-/**
- * All available Variable across all Datasets ids.
- *
- * @enum {string}
- */
-export enum VariableId {
-    TMin = 'tmin',
-    TMax = 'tmax',
-
-    /**
-     * Mean temperature.
-     */
-    TMean = 'tmean',
-    Precipitation = 'precip',
-    SurfaceWind = 'surface_wind',
-    IceThickness = 'ice_thickness',
-    IceFraction = 'ice_fraction',
-    SnowDepth = 'snow_depth'
-}
+import { VariableId, TimePeriodType, RCPType, VisualizationControlType, ViewType } from '@/types';
 
 export interface BaseDatasetSelectorSource {
     /**

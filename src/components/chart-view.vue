@@ -30,7 +30,8 @@ import api from './../api';
 import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from '../globals/mixin';
 
-import { ChartConfigGenerator, ChartConfigType } from '../configs/charts';
+import { ChartConfigGenerator } from '../configs/charts';
+import { ChartConfigType } from '@/types';
 
 @Component
 export default class ChartView extends mixins(UpdateRouteMixin) {

@@ -1,6 +1,5 @@
-import { DatasetSource, VariableId, DatasetId } from './types';
-import { VisualizationControlType, TimePeriodType, StageType, RCPType } from './../selectors/types';
-import { ViewType } from '../../store';
+import { DatasetSource } from './types';
+import { VisualizationControlType, TimePeriodType, StageType, RCPType, ViewType, DatasetId, VariableId } from '@/types';
 
 const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,

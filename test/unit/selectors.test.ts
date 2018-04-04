@@ -12,18 +12,12 @@ import Dropdown from 'bootstrap-vue/es/components/dropdown';
 
 // Import the module we're testing
 import baseSelectorV from './../../src/components/vis-controls/base-selector.vue';
-import {
-    BaseSelectorConfig,
-    BaseSelectorGroupConfig,
-    RCPType,
-    VisualizationControlType,
-    TimePeriodType
-} from './../../src/configs/selectors';
+import { BaseSelectorConfig, BaseSelectorGroupConfig } from './../../src/configs/selectors';
 
-import { DatasetId } from './../../src/configs/datasets';
-import { AppState, createStore, ViewType } from '../../src/store';
+import { AppState, createStore } from '../../src/store';
 
 import { app } from './../../src/store/app';
+import { ViewType, DatasetId, VisualizationControlType, TimePeriodType, RCPType } from '@/types';
 
 // Allows us to spy on functions
 chai.use(sinonChai);
@@ -51,18 +45,22 @@ describe('base-selector.vue', () => {
             datasetControlOptions: () => {
                 return {
                     [ViewType.ChartView]: {
-                        [VisualizationControlType.Time]: {
-                            default: TimePeriodType.January
-                        },
-                        [VisualizationControlType.RCP]: {
-                            default: RCPType.RCP4_5
+                        controls: {
+                            [VisualizationControlType.Time]: {
+                                default: TimePeriodType.January
+                            },
+                            [VisualizationControlType.RCP]: {
+                                default: RCPType.RCP4_5
+                            }
                         }
                     },
                     [ViewType.MapView]: {
-                        [VisualizationControlType.Time]: {
-                            visible: false,
-                            default: TimePeriodType.Annual,
-                            options: [TimePeriodType.Annual]
+                        controls: {
+                            [VisualizationControlType.Time]: {
+                                visible: false,
+                                default: TimePeriodType.Annual,
+                                options: [TimePeriodType.Annual]
+                            }
                         }
                     }
                 }[state.currentView];

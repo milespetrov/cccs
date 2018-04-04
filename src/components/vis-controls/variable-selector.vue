@@ -49,15 +49,8 @@ import { mixins } from 'vue-class-component';
 import api from './../../api/';
 import { Dictionary } from 'vue-router/types/router';
 import { UpdateRouteMixin } from './../../globals/mixin';
-import {
-    variableSelectorConfig,
-    stages,
-    StageMapping,
-    VariableSelectorConfig,
-    StageType
-} from './../../configs/selectors';
-
-import { DatasetId, VariableId } from './../../configs/datasets';
+import { variableSelectorConfig, stages, StageMapping, VariableSelectorConfig } from './../../configs/selectors';
+import { DatasetId, VariableId } from '@/types';
 
 @Component
 export default class VariableSelector extends mixins(UpdateRouteMixin) {

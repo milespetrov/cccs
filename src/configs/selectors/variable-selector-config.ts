@@ -1,5 +1,5 @@
-import { VariableId, DatasetId } from './../datasets/types';
-import { VariableSelectorConfig, StageType, StageMapping } from './types';
+import { VariableId, DatasetId, StageType } from '@/types';
+import { VariableSelectorConfig, StageMapping } from './types';
 
 export const variableSelectorConfig: VariableSelectorConfig = {
     groups: [

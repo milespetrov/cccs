@@ -1,15 +1,5 @@
-import { AppState } from '@/store';
-
-/**
- * All available chart config types.
- *
- * @export
- * @enum {number}
- */
-export enum ChartConfigType {
-    FOCUS = 'focus',
-    GLANCE = 'glance'
-}
+import { AppState } from '@/store/state';
+import { ChartConfigType } from '@/types';
 
 /**
  * A collection of callbacks which can be passed to the chart config generator.

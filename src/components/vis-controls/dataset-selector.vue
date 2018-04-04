@@ -19,8 +19,8 @@ import BaseSelectorV from './base-selector.vue';
 import api from './../../api/';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
-import { DatasetId } from '../../configs/datasets';
-import { datasetSelectorConfig, DatasetSelectorConfig, StageType, stages } from './../../configs/selectors';
+import { DatasetId } from '@/types';
+import { datasetSelectorConfig, DatasetSelectorConfig, stages } from './../../configs/selectors';
 
 @Component({
     components: {

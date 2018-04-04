@@ -120,9 +120,11 @@ Vue.use(FormSelect);
 
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
-import { MapPoint, ViewType } from './store';
+import { MapPoint } from './store';
 import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
+
+import { ViewType } from '@/types';
 
 @Component({
     components: {

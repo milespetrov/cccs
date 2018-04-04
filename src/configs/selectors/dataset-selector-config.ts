@@ -1,5 +1,5 @@
-import { DatasetId } from './../datasets/types';
 import { DatasetSelectorConfig } from './types';
+import { DatasetId } from '@/types';
 
 export const datasetSelectorConfig: DatasetSelectorConfig = {
     groups: [
