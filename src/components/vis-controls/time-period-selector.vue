@@ -18,14 +18,10 @@ import { mixins } from 'vue-class-component';
 import BaseSelectorV from './base-selector.vue';
 import api from './../../api/';
 import { UpdateRouteMixin } from './../../globals/mixin';
-import {
-    TimePeriodSelectorConfig,
-    TimePeriodType,
-    timePeriodSelectorConfig,
-    VisualizationControlType
-} from '../../configs/selectors';
+import { TimePeriodSelectorConfig, timePeriodSelectorConfig } from '../../configs/selectors';
 
 import { DatasetViewSource } from './../../configs/datasets';
+import { TimePeriodType, VisualizationControlType } from '@/types';
 
 @Component({
     components: {

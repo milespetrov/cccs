@@ -1,9 +1,4 @@
-import { DatasetId } from '../configs/datasets';
-
-export enum ViewType {
-    MapView = 'map-view',
-    ChartView = 'chart-view'
-}
+import { ViewType, DatasetId } from '@/types';
 
 export interface AppState {
     currentView: ViewType | null;

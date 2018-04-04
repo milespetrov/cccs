@@ -1,4 +1,5 @@
-import { RCPSelectorConfig, RCPType } from './types';
+import { RCPSelectorConfig } from './types';
+import { RCPType } from '@/types';
 
 export const rcpSelectorConfig: RCPSelectorConfig = {
     groups: [

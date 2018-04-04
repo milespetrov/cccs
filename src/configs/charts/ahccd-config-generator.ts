@@ -2,7 +2,8 @@ import api, { ahccdApi } from '@/api/';
 import { AppState } from '@/store';
 import mappings from '@/globals/mappings';
 
-import { ChartConfigType, ChartConfigCallbacks, ChartConfigGenerator } from './types';
+import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
+import { ChartConfigType } from '@/types';
 
 async function makeConfig(
     state: AppState,
@@ -408,7 +409,7 @@ function makeLabels(event: any, data: any) {
     return [trendRangeLabel, secondTrendValueLabel];
 }
 
-class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
+class AHCCDChartConfigGenerator extends ChartConfigGenerator {
     make(chartConfigType: ChartConfigType, callbacks?: ChartConfigCallbacks): Promise<any> {
         super.make(chartConfigType, callbacks);
 
@@ -416,4 +417,6 @@ class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
     }
 }
 
-export default CMIP5ChartConfigGenerator;
+export default function(state: AppState) {
+    return new AHCCDChartConfigGenerator(state);
+}

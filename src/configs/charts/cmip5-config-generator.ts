@@ -1,7 +1,8 @@
 import api, { cmip5Api } from '@/api/';
 import { AppState } from '@/store';
 
-import { ChartConfigType, ChartConfigCallbacks, ChartConfigGenerator } from './types';
+import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
+import { ChartConfigType } from '@/types';
 
 async function makeConfig(
     state: AppState,
@@ -390,4 +391,6 @@ class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
     }
 }
 
-export default CMIP5ChartConfigGenerator;
+export default function(state: AppState) {
+    return new CMIP5ChartConfigGenerator(state);
+}

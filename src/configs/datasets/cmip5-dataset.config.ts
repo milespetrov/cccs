@@ -1,6 +1,5 @@
-import { DatasetSource, VariableId, DatasetId } from './types';
-import { VisualizationControlType, TimePeriodType, StageType, RCPType } from './../selectors/types';
-import { ViewType } from '../../store';
+import { DatasetSource } from './types';
+import { VisualizationControlType, TimePeriodType, StageType, RCPType, VariableId, DatasetId, ViewType } from '@/types';
 
 const cimp5Dataset: DatasetSource = {
     id: DatasetId.CMIP5,
