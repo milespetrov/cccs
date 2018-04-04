@@ -175,6 +175,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     currentLayers: any[];
 
+    configVersion: number;
+
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
         this.currentLayers.forEach((layerId: string) => {
@@ -191,7 +193,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     addCurrentVarLayer() {
         this.currentLayers = [];
         this.counter += 1;
-        $.getJSON(`./assets/configs/${this.currentDataset}-layer-configs.en-CA.json`, data => {
+        $.getJSON(`./assets/configs/${this.currentDataset}/${this.configVersion}/layer-configs.en-CA.json`, data => {
             let snippet = data[this.currentVariable];
             // for some datasets (like cmip5) we also have to select on rcp
             if (this.currentRcp) {
@@ -288,8 +290,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         return this.$refs.scrollGuard as HTMLElement;
     }
 
-    mounted(): void {
+    async mounted(): Promise<void> {
         const RZ = (<any>window).RZ;
+        await $.get(`./assets/configs/${this.currentDataset}/current`, data => {
+            this.configVersion = data;
+        });
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RZ) {
@@ -303,7 +308,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // tslint:disable-next-line:no-unused-expression
-        new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}.en-CA.json`);
+        new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}/${this.configVersion}/ramp.en-CA.json`);
 
         RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
             this._mapi = mapi;
