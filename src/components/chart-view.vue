@@ -180,36 +180,17 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
 
     callbacks = {
         setExtremes: (event: any) => {
-            this.setChartRange({ min: event.min, max: event.max });
+            // handles the 'reset zoom' button
+            // TODO: figure out why 'reset zoom' passes back undefined values
+            if (!event.min || !event.max) {
+                this.setChartRange(null);
+            } else {
+                this.setChartRange({ min: event.min, max: event.max });
+            }
             this.replaceRoute();
         },
         show: this.chartSeriesToggleHandler,
         hide: this.chartSeriesToggleHandler
-    };
-
-    callbacks2 = {
-        xaxis: {
-            events: {
-                setExtremes: (event: any) => {
-                    // handles the 'reset zoom' button
-                    // TODO: figure out why 'reset zoom' passes back undefined values
-                    if (!event.min || !event.max) {
-                        this.setChartRange(null);
-                    } else {
-                        this.setChartRange({ min: event.min, max: event.max });
-                    }
-                    this.replaceRoute();
-                }
-            }
-        },
-        plotOptions: {
-            series: {
-                events: {
-                    show: this.chartSeriesToggleHandler,
-                    hide: this.chartSeriesToggleHandler
-                }
-            }
-        }
     };
 
     /**
