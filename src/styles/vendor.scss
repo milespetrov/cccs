@@ -124,7 +124,7 @@ rv-mapnav {
 }
 
 .rv-export {
-    max-height: calc(100% - #{$rv-top-offset} - 2rem) !important;
+    max-height: calc(100% - #{$rv-top-offset} - 17rem) !important;
     top: $rv-top-offset;
     width: $container-width;
 }

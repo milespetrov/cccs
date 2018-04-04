@@ -295,9 +295,11 @@ const actions = {
         context.commit(Mutation.SET_MAP_PIN, value);
     },
 
-    [Action.setChartRange](context: AppContext, value: { min: number; max: number }) {
-        const newVal = new Range(value.min, value.max);
-        context.commit(Mutation.SET_CHART_RANGE, newVal);
+    [Action.setChartRange](context: AppContext, value: { min: number; max: number } | null) {
+        if (value) {
+            value = new Range(value.min, value.max);
+        }
+        context.commit(Mutation.SET_CHART_RANGE, value);
     },
 
     [Action.clearChart](context: AppContext): void {
