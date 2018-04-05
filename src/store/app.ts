@@ -8,6 +8,8 @@ import { chartConfigGenerators, ChartConfigGenerator } from '../configs/charts';
 import { datasets, DatasetSource, DatasetViewSource, ColourRamp } from './../configs/datasets';
 import { defaultSelectors } from './../configs/selectors';
 import { VisualizationControlType, ViewType, DatasetId } from '@/types';
+import { DatasetApi } from '@/api/types';
+import { datasetApis } from '@/api/index';
 
 type AppContext = ActionContext<AppState, AppState>;
 
@@ -153,6 +155,10 @@ const getters = {
     chartConfigGenerator(state: AppState): ChartConfigGenerator {
         // TODO: decide on the way to check for existence of state items like `datasetId`
         return chartConfigGenerators[state.datasetId!](state);
+    },
+
+    datasetApi(state: AppState): DatasetApi {
+        return datasetApis[state.datasetId!];
     }
 };
 

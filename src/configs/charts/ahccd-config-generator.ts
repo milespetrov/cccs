@@ -1,15 +1,16 @@
-import api, { ahccdApi } from '@/api/';
+import api, { datasetApis } from '@/api/';
 import { AppState } from '@/store';
 import mappings from '@/globals/mappings';
 
 import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
-import { ChartConfigType } from '@/types';
+import { ChartConfigType, DatasetId } from '@/types';
 
 async function makeConfig(
     state: AppState,
     chartConfigType: ChartConfigType,
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
+    const ahccdApi = datasetApis[DatasetId.AHCCD];
     const { timePeriodId, variableId, featureId } = state;
 
     if (!timePeriodId || !variableId || !featureId) {
