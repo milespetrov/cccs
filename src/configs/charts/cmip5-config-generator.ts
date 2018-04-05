@@ -1,14 +1,16 @@
-import api, { cmip5Api } from '@/api/';
+import api from '@/api/';
 import { AppState } from '@/store';
 
 import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
-import { ChartConfigType } from '@/types';
+import { ChartConfigType, DatasetId } from '@/types';
+import { datasetApis } from '@/api';
 
 async function makeConfig(
     state: AppState,
     chartConfigType: ChartConfigType,
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
+    const cmip5Api = datasetApis[DatasetId.CMIP5];
     const { timePeriodId, variableId } = state;
 
     // chartSeries default to `null` which cannot be used as non-value in a desctructuring statement
