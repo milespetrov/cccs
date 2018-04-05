@@ -49,7 +49,7 @@ import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapFineprint from './map-fineprint.vue';
 import { ChartConfigGenerator } from './../configs/charts';
-import { ChartConfigType } from '@/types';
+import { ChartConfigType, DatasetId } from '@/types';
 
 interface Tooltips {
     'en-CA': {
@@ -169,6 +169,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Getter chartConfigGenerator: ChartConfigGenerator;
     @Getter timeSliderLabels: string[] | undefined;
     @Getter colourRamp: ColourRamp | null;
+    @Getter datasetApi: any;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -331,7 +332,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             `);
 
             // set the identify mode to 'highlight' to prevent the details panel from opening
-            this._mapi.identifyMode = 'highlight';
+            if (this.currentDataset === DatasetId.AHCCD) {
+                this._mapi.identifyMode = 'highlight';
+            } else {
+                this._mapi.identifyMode = 'silent';
+            }
             // subscribe to identify events to track highlighted items
             this._mapi.layers.identify.subscribe(this.mapIdentifyHandler);
 
@@ -435,13 +440,27 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     /**
-     * Handle the identify sesssion, but updating the routes with the feature cooridatese
-     * // TODO: this is another implementation of feature highlightning
-     * // this will be replaced by the math grid for CMIP5
+     * Handle the identify sesssion, but updating the routes with the feature coordinates
+     *
      */
-    mapIdentifyHandler({ requests, event }: IdentifySession) {
+    async mapIdentifyHandler({ requests, event }: IdentifySession) {
         if (requests.length === 0) {
             return;
+        }
+
+        // if the identify mode is silent that means we need to draw our own highlight
+        if (this._mapi.identifyMode === 'silent') {
+            // retrieve the geometry points from the api
+            const coordinates = await this.datasetApi.getGeometryPoints(event.xy);
+
+            // build the polygon
+            const RZ = (<any>window).RZ;
+            const line = new RZ.GEO.LinearRing(requests[0].sessionId, coordinates);
+            const poly = new RZ.GEO.Polygon(requests[0].sessionId, [line]);
+
+            //update drawn geometry
+            this._mapi.simpleLayer.removeGeometry();
+            this._mapi.simpleLayer.addGeometry([poly]);
         }
 
         requests[0].features.then((features: IdentifyResult[]) => {
