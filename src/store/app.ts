@@ -8,8 +8,7 @@ import { chartConfigGenerators, ChartConfigGenerator } from '../configs/charts';
 import { datasets, DatasetSource, DatasetViewSource, ColourRamp } from './../configs/datasets';
 import { defaultSelectors } from './../configs/selectors';
 import { VisualizationControlType, ViewType, DatasetId } from '@/types';
-import { DatasetApi } from '@/api/types';
-import { datasetApis } from '@/api/index';
+import { DatasetApi, datasetApis } from '@/api';
 
 type AppContext = ActionContext<AppState, AppState>;
 

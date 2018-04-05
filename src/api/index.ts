@@ -3,6 +3,8 @@ import cmip5Api from './cmip5-api';
 import { EnhancedWindow } from './types';
 import { DatasetId } from '@/types';
 
+export * from './types';
+
 const DQV: any = (<EnhancedWindow>window).DQV;
 const $: any = (<EnhancedWindow>window).$;
 const RZ: any = (<EnhancedWindow>window).RZ;
