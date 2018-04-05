@@ -293,8 +293,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         const RZ = (<any>window).RZ;
-        await $.get(`./assets/configs/${this.currentDataset}/current`, data => {
-            this.configVersion = data;
+        await $.getJSON(`./assets/configs/${this.currentDataset}/current.json`, data => {
+            this.configVersion = parseInt(data.version);
         });
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
