@@ -489,14 +489,21 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     async displayMiniChart(stationId: string): Promise<void> {
         console.log('display mini chart');
 
+        // TODO: move the glance chart to the separate component
         const config = await this.chartConfigGenerator.make(ChartConfigType.GLANCE);
+        const chartMount = document.getElementById('cip-mini-chart-mount');
 
-        console.log(config);
+        // if the mini-chart section is already create but dismounted, remount it
+        const miniChartSection = api.DQV.sections[this.miniChartSectionId];
+        if (miniChartSection) {
+            if (!miniChartSection.isMounted) {
+                miniChartSection.mount(chartMount);
+            }
 
-        // if the mini-chart is already loaded, update its config
-        const miniChartChart = api.DQV.charts[this.miniChartChartId];
-        if (miniChartChart) {
+            // if the mini-chart is already loaded, update its config
+            const miniChartChart = api.DQV.charts[this.miniChartChartId];
             miniChartChart.config = config;
+
             return;
         }
 
@@ -505,29 +512,19 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         new api.DQV.Chart({ id: this.miniChartChartId, config });
         const dvsection = new api.DQV.Section({
             id: this.miniChartSectionId,
-            template: `<dv-section><dv-chart id="${this.miniChartChartId}"></dv-chart></dv-section>`
+            data: {
+                changeView: () => this.changeViewToChart(),
+                dismountChart: () => dvsection.dismount()
+            },
+            template: `
+                <dv-section class="cip-glance-chart-container">
+                    <dv-chart id="${this.miniChartChartId}" role="button" @click.native="changeView"></dv-chart>
+                    <button class="btn btn-link cip-close-button" @click="dismountChart" title="Close"><i class="fa fa-times"></i></button>
+                </dv-section>
+            `
         });
 
-        /* this._mapi.ui.anchors.CONTEXT_MAP.html(`
-            <div class="mApiOverViewMap">
-                <div id="cip-mini-chart-mount"></div>
-            </div>
-        `); */
-
-        const chartMount = document.getElementById('cip-mini-chart-mount');
         dvsection.mount(chartMount);
-
-        // TODO: fix, this is likely accumulating click listeners
-        const chartSection = document.getElementById('cip-mini-chart-section')!;
-        chartSection.setAttribute('tabIndex', '-1');
-        chartSection.addEventListener('click', this.changeViewToChart);
-
-        // seems that you need to subscribe every time after setting the guts of the context map node
-        // TODO: fix; since we not using the mini map container, the subsscription won't work
-        /* this._mapi.ui.anchors.CONTEXT_MAP.on(
-            'click',
-            this.changeViewToChart
-        ); */
     }
 
     scrollGuardHandler(event: WheelEvent): void {
@@ -566,10 +563,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     beforeDestroy(): void {
-        // destroy the mini-chart DV section when the map component is reloaded
+        // dismount the mini-chart DV section when the map component is reloaded
         const miniChartSection = api.DQV.sections[this.miniChartSectionId];
         if (miniChartSection) {
-            miniChartSection.destroy();
+            miniChartSection.dismount();
         }
 
         // deactivate all subscriptions when the component is being destroyed
@@ -638,6 +635,15 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         left: calc((#{$container-width} * 0.375) + #{$rv-left-offset});
         position: absolute;
         bottom: 20px;
+    }
+
+    .cip-glance-chart-container {
+        .cip-close-button {
+            font-size: 1em;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     }
 }
 
