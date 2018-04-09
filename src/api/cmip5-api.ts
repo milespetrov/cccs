@@ -7,7 +7,7 @@ const periodMappings: { [key: string]: string } = {
     Winter_Hiver: 'winter',
     Spring_Printemp: 'spring',
     Summer_Ete: 'summer',
-    Autumn_Autome: 'autumn',
+    Autumn_Autome: 'fall',
     Annual_Annuel: 'annual'
 };
 function getData(timePeriod: string, variable: string, featureId: string, rcpId: string): Promise<any[]> {

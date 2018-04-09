@@ -29,26 +29,24 @@ async function makeConfig(
     const actualData = data.properties.models[rcpId][cmip5Api.periodMappings[timePeriodId]];
 
     const seriesData = actualData['50'].anomaly.map((value: any) => {
-        if (value && value > -9999) {
-            return +value.toFixed(2);
-        } else {
-            return null;
-        }
+        return value ? parseInt(value.toFixed(2)) : value;
     });
 
     // zip the 25th & 75th percentiles
     const seriesData25 = actualData['25'].anomaly.map((value: any, index: number) => {
         return [
-            value ? +value.toFixed(2) : null,
-            +actualData['75'].anomaly[index] ? +actualData['75'].anomaly[index].toFixed(2) : null
+            value ? +value.toFixed(2) : value,
+            actualData['75'].anomaly[index] ? parseInt(actualData['75'].anomaly[index].toFixed(2)) : null
         ];
     });
 
     // zip the 5th & 95th percentiles
     const seriesData5 = actualData['5'].anomaly.map((value: any, index: number) => {
         return [
-            value ? +value.toFixed(2) : null,
-            +actualData['95'].anomaly[index] ? +actualData['95'].anomaly[index].toFixed(2) : null
+            value ? +value.toFixed(2) : value,
+            actualData['95'].anomaly[index]
+                ? parseInt(actualData['95'].anomaly[index].toFixed(2))
+                : actualData['95'].anomaly[index]
         ];
     });
 
@@ -398,9 +396,9 @@ function getVisibleSeries(chart: any): number[] {
 
 /**
  * Formats a latlong into degrees minutes seconds
- * 
+ *
  * Taken from RAMP source
- * 
+ *
  * @param long longitude coordinate
  * @param lat latitude coordinate
  */

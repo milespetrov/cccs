@@ -204,6 +204,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.displayMiniChart();
     }
 
+    @Watch('currentTimePeriod')
+    onTimePeriodChange() {
+        this.displayMiniChart();
+    }
+
     addCurrentVarLayer() {
         this.currentLayers = [];
         this.counter += 1;
