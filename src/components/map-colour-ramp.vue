@@ -41,15 +41,10 @@ export default class MapColourRamp extends Vue {
 <style lang="scss" scoped>
 // TODO: clean up unused styles
 .colour-ramp {
-    width: 400px;
     position: relative;
     display: flex;
     align-items: center;
-    padding: 6px 8px;
-    background: #ffffff;
-
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-        0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    padding: 0.5rem 0;
 }
 
 .range-label {
@@ -92,14 +87,6 @@ export default class MapColourRamp extends Vue {
             color: #000000;
         }
     }
-}
-
-.title {
-    background: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    font-size: 14px;
-    flex-shrink: 0;
-    padding: 0 0 6px 0;
 }
 </style>
 

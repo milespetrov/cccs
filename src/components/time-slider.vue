@@ -44,7 +44,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
             },
             pips: {
                 mode: 'steps',
-                density: 0,
+                density: 100,
                 format: {
                     to: (val: number) => {
                         return this.timeSliderLabels[val];
@@ -166,103 +166,95 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 .cip-time-slider-container /deep/ {
     @import './../../node_modules/nouislider/distribute/nouislider';
 
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    border: none;
     font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
 
-    .cip-time-slider-backdrop {
-        background: white;
-        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-            0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-        height: 32px;
-        position: absolute;
-    }
     cursor: pointer;
 
-    // add a bit of padding around the slider container to accomodate for the entry field on the sides
-    .noUi-target {
-        flex: 1; // fill the available width of the slider container
-        //margin: 0 20px;
+    // hide the slider connect node
+    .noUi-connects {
+        display: none;
+    }
 
-        background: none;
+    // hide the slider rail
+    .noUi-target {
         border: none;
+        background: none;
         box-shadow: none;
     }
 
-    .noUi-pips-horizontal {
-        top: -23px;
-        color: #4a4a4a;
-        font-size: 0.9em;
-        height: 0px;
-        padding: 0%;
-        .noUi-value-large {
-            cursor: pointer;
-            padding: 6px 0px;
+    // hide most of the slider handle leaving a bottom border only
+    .noUi-origin {
+        .noUi-handle {
+            &::before,
+            &::after {
+                content: none !important;
+            }
+
+            background: none;
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+            border-bottom: 3px solid #335075;
+        }
+    }
+
+    .noUi-pips {
+        top: 0;
+        height: auto;
+        padding: 0;
+
+        // reposition slider values on top of the slider rail
+        .noUi-value {
+            color: #4a4a4a;
+
+            transform: translate(-50%, 0);
+
             &.selected {
                 font-weight: bold;
             }
         }
 
-        .noUi-marker-normal,
-        .noUi-marker-large {
+        // hide large slider value pips
+        .noUi-marker {
             display: none;
         }
     }
+
     // these two blocks are taken from the noUiSlider styles and modified to select on the `html:not([dir='rtl'])` element outside the DQV scope
     // otherwise, the slider appearance will only work in `rtl` pages
     /* Offset direction
     */
-    .noUi-base .noUi-origin {
+    .noUi-horizontal .noUi-origin {
         html:not([dir='rtl']) & {
             left: auto;
             right: 0;
         }
     }
-    .noUi-base .noUi-handle {
-        &::before,
-        &::after {
-            content: none !important;
-        }
+
+    .noUi-horizontal .noUi-handle {
         html:not([dir='rtl']) & {
+            right: -17px;
             left: auto;
-            top: -7px;
-            border-radius: 0;
-            height: 32px;
-            background: none;
-            box-shadow: none;
-            border: none;
-            border-bottom: 3px solid #335075;
         }
     }
 }
 
 $max-layers: 4;
+
 // Spacing for different amounts of layers
 // This is based on the amount of layers in the selector
 @for $i from 4 through $max-layers {
     .cip-time-slider-container.layers-#{$i} /deep/ {
-        // the container is the width of i-1 labels
-        $selection-width: calc(100% / (#{$i} - 1));
+        margin: 0 calc(100% / #{$i} / 2);
+
+        // make handle a tiny bit wider than a label, so the bottom border of the handle protrudes beyoned the label boundaries
+        $handle-width: calc(100% / #{$i} + 1rem);
 
         // set the width of the handle (and move it correctly over the labels)
-        .noUi-base .noUi-handle {
-            html:not([dir='rtl']) & {
-                right: calc((100% /#{$i}) / -2);
-                width: calc(100% /#{$i});
-            }
-        }
-
-        // set the width of the white div behind the slider
-        .cip-time-slider-backdrop {
-            width: calc(#{$selection-width} * #{$i});
-            left: calc(#{$selection-width} / -2);
-        }
-
-        // widens the label div so it makes a larger area clickable
-        .noUi-pips-horizontal .noUi-value-large {
-            width: $selection-width;
+        .noUi-origin .noUi-handle {
+            width: $handle-width;
+            right: calc(#{$handle-width} / -2) !important;
         }
     }
 }
