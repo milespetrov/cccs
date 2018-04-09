@@ -5,6 +5,8 @@ import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
 import { ChartConfigType, DatasetId } from '@/types';
 import { datasetApis } from '@/api';
 
+import { formatLatLong } from '@/globals/utils';
+
 async function makeConfig(
     state: AppState,
     chartConfigType: ChartConfigType,
@@ -103,7 +105,7 @@ async function makeConfig(
             enabled: false
         },
         title: {
-            text: `${variableId} at ${formatLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
+            text: `${variableId} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             x: -110
         },
         subtitle: {
@@ -268,7 +270,7 @@ async function makeConfig(
             }
         },
         title: {
-            text: `${variableId} at ${formatLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
+            text: `${variableId} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -395,42 +397,15 @@ function getVisibleSeries(chart: any): number[] {
 }
 
 /**
- * Formats a latlong into degrees minutes seconds
+ * Returns a formatted latlong string for use in chart titles, uses the 'formatLatLong' utils function
  *
- * Taken from RAMP source
- *
- * @param long longitude coordinate
- * @param lat latitude coordinate
+ * @param long
+ * @param lat
  */
-function formatLatLong(long: number, lat: number): string {
-    const degreeSymbol = String.fromCharCode(176);
-
-    const dy = Math.floor(Math.abs(lat)) * (lat < 0 ? -1 : 1);
-    const my = Math.floor(Math.abs((lat - dy) * 60));
-    const sy = Math.round((Math.abs(lat) - Math.abs(dy) - my / 60) * 3600);
-
-    const dx = Math.floor(Math.abs(long)) * (long < 0 ? -1 : 1);
-    const mx = Math.floor(Math.abs((long - dx) * 60));
-    const sx = Math.round((Math.abs(long) - Math.abs(dx) - mx / 60) * 3600);
-
-    const newY = `${Math.abs(dy)}${degreeSymbol} ${padZero(my)}' ${padZero(sy)}"`;
-    const newX = `${Math.abs(dx)}${degreeSymbol} ${padZero(mx)}' ${padZero(sx)}"`;
-
-    return `${newY} ${lat > 0 ? 'N' : 'S'}, ${newX} ${long > 0 ? 'E' : 'W'}`;
-
-    /**
-     * Pad value with leading 0 to make sure there is always 2 digits if number is below 10.
-     *
-     * @function padZero
-     * @private
-     * @param {Number} val value to pad with 0
-     * @return {String} string with always 2 characters
-     */
-    function padZero(val: number) {
-        return val >= 10 ? `${val}` : `0${val}`;
-    }
+function titleLatLong(long: number, lat: number): string {
+    const { x, y } = formatLatLong(long, lat);
+    return `${y} ${lat > 0 ? 'N' : 'S'}, ${x} ${long > 0 ? 'E' : 'W'}`;
 }
-
 class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
     make(chartConfigType: ChartConfigType, callbacks?: ChartConfigCallbacks): Promise<any> {
         super.make(chartConfigType, callbacks);

@@ -3,6 +3,10 @@ import { TimePeriodType } from '@/types';
 
 const baseApiUrl = 'https://cmip5dev.azurewebsites.net';
 
+/**
+ * The cmip5 api period keys
+ */
+// TODO: figure out which set of period keys should be everywhere and use those
 const periodMappings: { [key: string]: string } = {
     Winter_Hiver: 'winter',
     Spring_Printemp: 'spring',
@@ -10,6 +14,15 @@ const periodMappings: { [key: string]: string } = {
     Autumn_Autome: 'fall',
     Annual_Annuel: 'annual'
 };
+
+/**
+ * Returns all 5 percentile lines for a given gridId, variable, rcp and period
+ *
+ * @param timePeriod time period from state
+ * @param variable variable from state
+ * @param featureId feature from state
+ * @param rcpId rcp from state
+ */
 function getData(timePeriod: string, variable: string, featureId: string, rcpId: string): Promise<any[]> {
     const promise = new Promise<any[]>((resolve, reject) =>
         $.getJSON(
