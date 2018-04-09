@@ -188,7 +188,25 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         if (!this.currentFeature) {
             return;
         }
-        this.displayMiniChart(this.currentFeature);
+        this.displayMiniChart();
+    }
+
+    @Watch('currentRcp')
+    onRcpChanged(newValue: string, oldValue: string) {
+        this.currentLayers.forEach((layerId: string) => {
+            this._mapi.layers.removeLayer(layerId);
+        });
+        this.addCurrentVarLayer();
+
+        if (!this.currentFeature) {
+            return;
+        }
+        this.displayMiniChart();
+    }
+
+    @Watch('currentTimePeriod')
+    onTimePeriodChange() {
+        this.displayMiniChart();
     }
 
     addCurrentVarLayer() {
@@ -355,7 +373,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // if the current station is already set, open the mini chart
             if (this.currentFeature) {
-                this.displayMiniChart(this.currentFeature);
+                this.displayMiniChart();
             }
 
             if (this.zoomLevel) {
@@ -451,7 +469,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // if the identify mode is silent that means we need to draw our own highlight
         if (this._mapi.identifyMode === 'silent') {
             // retrieve the geometry points from the api
-            const coordinates = await this.datasetApi.getGeometryPoints(event.xy);
+            const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(event.xy);
 
             // build the polygon
             const RZ = (<any>window).RZ;
@@ -461,32 +479,40 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             //update drawn geometry
             this._mapi.simpleLayer.removeGeometry();
             this._mapi.simpleLayer.addGeometry([poly]);
-        }
 
-        requests[0].features.then((features: IdentifyResult[]) => {
-            if (features.length === 0) {
-                return;
-            }
-
-            // if multiple features are received, leave only one
-            features.splice(1);
-
-            const feature = features[0].data.find(({ key }) => key === 'Station ID');
-            const stationId = feature ? feature.value.toString() : '';
-
-            // features.find(feature => )
-
-            console.log(features);
-
+            // update the route
             this.setFeaturePoint(event.xy);
-            this.setFeatureId(stationId);
+            this.setFeatureId(gridId);
             this.updateRoute();
 
-            this.displayMiniChart(stationId);
-        });
+            //draw the minichart
+            this.displayMiniChart();
+        } else {
+            requests[0].features.then((features: IdentifyResult[]) => {
+                if (features.length === 0) {
+                    return;
+                }
+
+                // if multiple features are received, leave only one
+                features.splice(1);
+
+                const feature = features[0].data.find(({ key }) => key === 'Station ID');
+                const stationId = feature ? feature.value.toString() : '';
+
+                // features.find(feature => )
+
+                console.log(features);
+
+                this.setFeaturePoint(event.xy);
+                this.setFeatureId(stationId);
+                this.updateRoute();
+
+                this.displayMiniChart();
+            });
+        }
     }
 
-    async displayMiniChart(stationId: string): Promise<void> {
+    async displayMiniChart(): Promise<void> {
         console.log('display mini chart');
 
         // TODO: move the glance chart to the separate component

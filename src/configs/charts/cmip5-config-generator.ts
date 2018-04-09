@@ -5,40 +5,51 @@ import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
 import { ChartConfigType, DatasetId } from '@/types';
 import { datasetApis } from '@/api';
 
+import { formatLatLong } from '@/globals/utils';
+
 async function makeConfig(
     state: AppState,
     chartConfigType: ChartConfigType,
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
     const cmip5Api = datasetApis[DatasetId.CMIP5];
-    const { timePeriodId, variableId } = state;
+    const { timePeriodId, rcpId, featureId, featurePoint } = state;
+    let { variableId } = state;
 
     // chartSeries default to `null` which cannot be used as non-value in a desctructuring statement
     const chartSeries = state.chartSeries || [0, 1, 2];
 
-    if (!timePeriodId || !variableId || !chartSeries) {
+    if (!timePeriodId || !variableId || !chartSeries || !featureId || !rcpId || !featurePoint) {
         console.error('cannot generate chart config, parameters are not set');
 
         return null;
     }
 
     // get chart data
-    const data = await cmip5Api.getData(timePeriodId, variableId, 'featureId');
+    const data = await cmip5Api.getData(timePeriodId, variableId, featureId, rcpId);
 
-    const seriesData = data.models['rcp8.5'].ann['50'].anomaly.map((value: any) => {
-        if (value && value > -9999) {
-            return +value.toFixed(2);
-        } else {
-            return null;
-        }
+    const actualData = data.properties.models[rcpId][cmip5Api.periodMappings[timePeriodId]];
+
+    const seriesData = actualData['50'].anomaly.map((value: any) => {
+        return value ? parseInt(value.toFixed(2)) : value;
     });
 
-    const seriesData25 = seriesData.map((value: any) => {
-        return [value - (Math.random() * 10 + 2.5), value + (Math.random() * 10 + 2.5)];
+    // zip the 25th & 75th percentiles
+    const seriesData25 = actualData['25'].anomaly.map((value: any, index: number) => {
+        return [
+            value ? +value.toFixed(2) : value,
+            actualData['75'].anomaly[index] ? parseInt(actualData['75'].anomaly[index].toFixed(2)) : null
+        ];
     });
 
-    const seriesData5 = seriesData25.map((value: any) => {
-        return [value[0] - (Math.random() * 15 + 1.5), value[1] + (Math.random() * 15 + 1.5)];
+    // zip the 5th & 95th percentiles
+    const seriesData5 = actualData['5'].anomaly.map((value: any, index: number) => {
+        return [
+            value ? +value.toFixed(2) : value,
+            actualData['95'].anomaly[index]
+                ? parseInt(actualData['95'].anomaly[index].toFixed(2))
+                : actualData['95'].anomaly[index]
+        ];
     });
 
     // HACK: get a proper variable name
@@ -46,17 +57,17 @@ async function makeConfig(
     const variables: object[] = [
         {
             name: 'Surface Wind Speed',
-            id: 'surface_wind',
+            id: 'sfcwind',
             unit: '%'
         },
         {
             name: 'Sea Ice Thickness',
-            id: 'ice_thickness',
+            id: 'sit',
             unit: '%'
         },
         {
-            name: 'Sea Ice Fraction',
-            id: 'ice_fraction',
+            name: 'Sea Ice Concentration',
+            id: 'sic',
             unit: '%'
         },
         {
@@ -68,7 +79,7 @@ async function makeConfig(
 
     const item = variables.find((v: { id: string }) => v.id === variableId);
     // TODO: what does that do?
-    //variableId = item ? (<any>item).name : variableId;
+    variableId = item ? (<any>item).name : variableId;
 
     const config = {
         chart: {
@@ -94,7 +105,7 @@ async function makeConfig(
             enabled: false
         },
         title: {
-            text: `${variableId} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
+            text: `${variableId} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             x: -110
         },
         subtitle: {
@@ -151,7 +162,7 @@ async function makeConfig(
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: data.start_year,
+                pointStart: 1900,
                 events: {
                     hide: () => {
                         if (!api.DQV.charts.dvChart1.highchart.series.some((series: any) => series.visible)) {
@@ -259,12 +270,12 @@ async function makeConfig(
             }
         },
         title: {
-            text: `${variableId} at ${data.grid_id}, ${data.start_year} - ${data.end_year}`,
+            text: `${variableId} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
             series: {
-                pointStart: data.start_year
+                pointStart: 1900
             }
         },
         tooltip: {
@@ -385,6 +396,16 @@ function getVisibleSeries(chart: any): number[] {
     return visible;
 }
 
+/**
+ * Returns a formatted latlong string for use in chart titles, uses the 'formatLatLong' utils function
+ *
+ * @param long
+ * @param lat
+ */
+function titleLatLong(long: number, lat: number): string {
+    const { x, y } = formatLatLong(long, lat);
+    return `${y} ${lat > 0 ? 'N' : 'S'}, ${x} ${long > 0 ? 'E' : 'W'}`;
+}
 class CMIP5ChartConfigGenerator extends ChartConfigGenerator {
     make(chartConfigType: ChartConfigType, callbacks?: ChartConfigCallbacks): Promise<any> {
         super.make(chartConfigType, callbacks);

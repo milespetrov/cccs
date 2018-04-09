@@ -17,7 +17,7 @@ export const variableSelectorConfig: VariableSelectorConfig = {
         },
         {
             id: 'ice_group',
-            items: [VariableId.IceFraction, VariableId.IceThickness]
+            items: [VariableId.IceConcentration, VariableId.IceThickness]
         },
         {
             id: 'snow_depth_group',
@@ -46,7 +46,7 @@ export const stages: StageMapping = {
     [VariableId.SurfaceWind]: {
         [StageType.Future]: [DatasetId.CMIP5]
     },
-    [VariableId.IceFraction]: {
+    [VariableId.IceConcentration]: {
         [StageType.Future]: [DatasetId.CMIP5]
     },
     [VariableId.IceThickness]: {

@@ -54,9 +54,7 @@ async function makeConfig(
 
     const item = variables.find((v: { id: string }) => v.id === variableId);
     // TODO: what does that do?
-    // const varFullName = item ? (<any>item).name : variableId;
-
-    const varFullName = variableId;
+    const varFullName = item ? (<any>item).name : variableId;
 
     const config = {
         chart: {

@@ -66,6 +66,13 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         this.updateDQV();
     }
 
+    @State('rcpId') currentRcp: string;
+
+    @Watch('currentRcp')
+    onRcpChanged(): void {
+        this.updateDQV();
+    }
+
     private userTrendValue: SVGElement;
 
     /**

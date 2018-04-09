@@ -1,8 +1,8 @@
 {
-    "ice_fraction": {
-        "8_5": [
+    "sic": {
+        "rcp85": [
             {
-                "name": "Sea Ice Fraction - 2021 to 2040",
+                "name": "Sea Ice Concentration - 2021 to 2040",
                 "id": "SeaIceFraction_2021_20yr_ANN_rcp85",
                 "layerType": "esriTile",
                 "url":
@@ -14,7 +14,7 @@
                 "controls": ["data"]
             },
             {
-                "name": "Sea Ice Fraction - 2041 to 2060",
+                "name": "Sea Ice Concentration - 2041 to 2060",
                 "id": "SeaIceFraction_2041_20yr_ANN_rcp85",
                 "layerType": "esriTile",
                 "url":
@@ -26,7 +26,7 @@
                 "controls": ["data"]
             },
             {
-                "name": "Sea Ice Fraction - 2061 to 2080",
+                "name": "Sea Ice Concentration - 2061 to 2080",
                 "id": "SeaIceFraction_2061_20yr_ANN_rcp85",
                 "layerType": "esriTile",
                 "url":
@@ -38,7 +38,7 @@
                 "controls": ["data"]
             },
             {
-                "name": "Sea Ice Fraction - 2081 to 2100",
+                "name": "Sea Ice Concentration - 2081 to 2100",
                 "id": "SeaIceFraction_2081_20yr_ANN_rcp85",
                 "layerType": "esriTile",
                 "url":
