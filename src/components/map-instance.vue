@@ -2,26 +2,43 @@
 
     <div id="cip-map-anchor" :class="currentDataset">
 
-        <div ref="scrollGuard" class="cip-scroll-guard">
+        <div class="cip-scroll-guard" ref="scrollGuard">
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
         </div>
 
         <img v-if="mapPin" class="cip-fake-map-pin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARuSURBVDiNjZVrbFRVEMd/5967e9vddbduN4WWYgXKKyVQWgIhkQBVqJIYCQZJI00UH2DiNxUUQwQNSfH1RYwghphoCIGADQk1QKqAGCKhCKTKq6GWbYHSdvve9u7ee8cP210LAjrJ+XAmM78zOf8zcxT/bROBYuDRkX03cA1ofliSeoDfBFYAz2UZemFZXsBf6De9gkvbQCJx7k7/4LAjrUAtcBBI/B/wDGBL6Zhg0cZ5E8YvKswJ+zRl4LqIOOC6xBO2fbytJ7a1oS16sSveDGwG/ngYuEJXatOnT06f9ErJuEINUYgLrosK5CDiID2d4LogLrbtyDeX7rSu/631msBHwPE0SB9dqa5Uzf4V5SWrpuXna6AQAQREyFqzGWPWAuwzR0j7Fag5EV+oPOILHGjuni5wFugYDTaB7Z8vmTFj1bSC/DQMEbRIAZ6FK9BL5qGCYVSWD4m1I4N9mZhJj3j9OR5dP3azf/LIvbtp8AulY0LPbF86c6oCBQKAt7Ia8+VN6BNKQNPA8GJMKcNTsRKUwrl6LlN9aTgreLSt37o9ZHcDjWnwpi+eLp01NdcfSAd6lq7GU7ma5C+1WF9tQC+ajnS3M7TtNZTpw1tZDeLiXGnIXEvEq+sHW3pN4IABTDR1fdyiotxwRtFIAZ4lVSRP1pI4+CW4Ltb3NSnxhgaw9n4GCOazr2KfrsNtv5FSPt8fztLV+GFHHteA4vL8kN/vNYw02CirANcl+eO3GWWlL4b0xTL7RO0OEBdj/rKMz2doRmk42wcUa0BuYcjvBVA5EczXt6aCHRtzzQeoUG7qsLlLMeZWko7LeqMGsW28i1fie2cnWngsAIU+wwtENEBERO55z/zLcT+7T3uN5IkGdLX1xZMA0tOJ9fX72KfrULqOtXsL0tsFgH3maOoNj8QN73gPpRskftpH/JO1uLHbAETjdgLo1ICmhlu9gwMJ206fajfUg9LwLHvpn+KCYVQwoy/e5esAhX26LuMbTLr2hdhQHGjSgGbLcaInWroyykjXLZLH9uBZsBzv82+isv2Yq98lq3ojKjuAWfU2nsUrsQ7twu1oy4B/vj0YsxyJAi3pW6qaOSb01qnqJ8r09HwQwXiqCu/SF0EEsZOpyg0PKEXi0C6sw7vBcUBckrYjCw83nWvsGf4Y2JdukKvtg1ZFxGcG54wNhdIt7TRdwGmoR4b60QsmgpMkWb8X67sa7PMnMi0Nws5LndE913saga2MamkHuFjf3DF/dn4oUJzj86eTJN6He+08+pRypC+G9f221JwYNU+ORHs71v0avQxsANrh7unWJXBj/6Wb08LZHr00LxjU0nNDBOfyWewLJ2E4nqnSdlzZ+eed6NpTNy4LfEhqunEvGOAvoOFoc+fkuusdw3l+0ygMmKZXUxrDccRKQQcs2z7S2tO55vj1K3uaYo3A+tFQePDX5CH1NS03dTV+dl7Q91jANAWXaH/C+r2jPz6i/g8jK3kv4EHg0VYETOHuz/Qq0PKwpL8BL8EAdKaMj7AAAAAASUVORK5CYII="/>
 
-
         <!-- TODO: move all these extra map components into a single container to simplify their positioning -->
         <!-- TODO: hide these components while the map loading/reloading since they are poking through the loading screen  -->
         <!-- TODO: when RAMP api supports it, move them inside the ramp container  -->
         <!-- TODO: fidn a way to hide these when a help/export dialog or datatable is opened as they are pokinig through them -->
-        <map-colour-ramp
-            v-if="colourRamp"
-            :labels="colourRamp.labels"
-            :colours="colourRamp.colours">
-        </map-colour-ramp>
 
-        <time-slider
-            v-if="timeSliderLabels">
-        </time-slider>
+        <div class="cip-control-cluster" v-if="timeSliderLabels || colourRamp">
+
+            <div class="row">
+                <div class="col-md-4" v-if="timeSliderLabels">
+                    <span class="cip-label">Timeline:</span>
+                </div>
+                <div class="col-md-8">
+                    <time-slider></time-slider>
+                </div>
+            </div>
+
+            <!-- remove seprator if only one section is visible -->
+            <span class="cip-separator-vertical"></span>
+
+            <div class="row" v-if="colourRamp">
+                <div class="col-md-4">
+                    <span class="cip-label">{{ $t(`variableSelector.${currentVariable}.shortName`) }} change (%):</span>
+                </div>
+                <div class="col-md-8">
+                    <map-colour-ramp
+                        :labels="colourRamp.labels"
+                        :colours="colourRamp.colours">
+                    </map-colour-ramp>
+                </div>
+            </div>
+        </div>
 
         <map-fineprint
             :cursor-point="cursorPoint"></map-fineprint>
@@ -656,11 +673,32 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
     }
 
-    .cip-time-slider-container {
-        width: $container-width * 0.25;
-        left: calc((#{$container-width} * 0.375) + #{$rv-left-offset});
+    .cip-control-cluster {
+        padding: 0.5rem 0;
+
+        // TODO: positioning should be changed after https://github.com/fgpv-vpgf/fgpv-vpgf/pull/2623 is merged
         position: absolute;
         bottom: 20px;
+        left: calc(#{$rv-left-offset} + #{$container-width} / 4);
+        width: $container-width / 2;
+
+        background-color: #fff;
+        // TODO: create a shared variable for the box-shadow
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+            0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+
+        .row {
+            margin: 0;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+
+            .cip-label {
+                font-size: 0.8em;
+                display: inline-block;
+                line-height: normal;
+            }
+        }
     }
 
     .cip-glance-chart-container {
@@ -689,9 +727,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 }
 
-.colour-ramp {
-    position: absolute;
-    bottom: 120px;
-    left: 760px;
+// TODO: make a divider a shared component
+.cip-separator-vertical {
+    width: 100%;
+    height: 1px;
+    display: block;
+    background: rgba(0, 0, 0, 0.15);
+    margin: 0.5rem 0;
 }
 </style>
