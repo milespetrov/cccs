@@ -1,5 +1,6 @@
 export interface DatasetApi {
-    getData: (timePeriod: string, variable: string, featureId: string) => any;
+    getData: (timePeriod: string, variable: string, featureId: string, rcpId?: string) => any;
+    periodMappings: { [key: string]: string };
 }
 
 export interface EnhancedWindow extends Window {

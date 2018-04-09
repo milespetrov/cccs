@@ -27,9 +27,9 @@
         "tmin": { "fullName": "Minimum Temperature", "shortName": "Minimum Temperature", "qualifier": "" },
         "tmax": { "fullName": "Maximum Temperature", "shortName": "Maximum Temperature", "qualifier": "" },
         "precip": { "fullName": "Precipitation", "shortName": "Precipitation", "qualifier": "" },
-        "surface_wind": { "fullName": "Surface Wind Speed", "shortName": "Surface Wind Speed", "qualifier": "" },
-        "ice_thickness": { "fullName": "Sea Ice Thickness", "shortName": "Sea Ice Thickness", "qualifier": "" },
-        "ice_fraction": { "fullName": "Sea Ice Fraction", "shortName": "Sea Ice Fraction", "qualifier": "" },
+        "sfcwind": { "fullName": "Surface Wind Speed", "shortName": "Surface Wind Speed", "qualifier": "" },
+        "sit": { "fullName": "Sea Ice Thickness", "shortName": "Sea Ice Thickness", "qualifier": "" },
+        "sic": { "fullName": "Sea Ice Concentration", "shortName": "Sea Ice Concentration", "qualifier": "" },
         "snow_depth": { "fullName": " Snow Depth", "shortName": " Snow Depth", "qualifier": "" },
 
         "historic": "Historic",
@@ -73,19 +73,19 @@
         "description":
             "The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",
 
-        "all_rcp_modles": "",
+        "all_rcp_models": "",
 
-        "2_6": {
+        "rcp26": {
             "shortName": "RCP 2.6",
             "fullName": " Representative Concentration Pathway 2.6",
             "qualifier": "RCP 2.6"
         },
-        "4_5": {
+        "rcp45": {
             "shortName": "RCP 4.5",
             "fullName": "Representative Concentration Pathway 4.5",
             "qualifier": "RCP 4.5"
         },
-        "8_5": {
+        "rcp85": {
             "shortName": "RCP 8.5",
             "fullName": "Representative Concentration Pathway 8.5",
             "qualifier": "RCP 8.5"

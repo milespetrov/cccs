@@ -35,9 +35,9 @@ export enum VariableId {
      */
     TMean = 'tmean',
     Precipitation = 'precip',
-    SurfaceWind = 'surface_wind',
-    IceThickness = 'ice_thickness',
-    IceFraction = 'ice_fraction',
+    SurfaceWind = 'sfcwind',
+    IceThickness = 'sit',
+    IceConcentration = 'sic',
     SnowDepth = 'snow_depth'
 }
 
@@ -69,9 +69,9 @@ export enum StageType {
  * @enum {string}
  */
 export enum RCPType {
-    RCP2_6 = '2_6',
-    RCP4_5 = '4_5',
-    RCP8_5 = '8_5'
+    RCP2_6 = 'rcp26',
+    RCP4_5 = 'rcp45',
+    RCP8_5 = 'rcp85'
 }
 
 /**

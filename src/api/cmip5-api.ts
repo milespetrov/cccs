@@ -1,8 +1,21 @@
 import { DatasetApi } from './types';
+import { TimePeriodType } from '@/types';
 
-function getData(timePeriod: string, variable: string, featureId: string): Promise<any[]> {
+const baseApiUrl = 'https://cmip5dev.azurewebsites.net';
+
+const periodMappings: { [key: string]: string } = {
+    Winter_Hiver: 'winter',
+    Spring_Printemp: 'spring',
+    Summer_Ete: 'summer',
+    Autumn_Autome: 'autumn',
+    Annual_Annuel: 'annual'
+};
+function getData(timePeriod: string, variable: string, featureId: string, rcpId: string): Promise<any[]> {
     const promise = new Promise<any[]>((resolve, reject) =>
-        $.getJSON('./assets/configs/sfcWindSample.json', (data: any[]) => resolve(data))
+        $.getJSON(
+            `${baseApiUrl}/time_series/${featureId}/${variable}/${rcpId}/${periodMappings[timePeriod]}`,
+            (data: any[]) => resolve(data)
+        )
     );
 
     return promise;
@@ -16,9 +29,12 @@ function getData(timePeriod: string, variable: string, featureId: string): Promi
  */
 function getGeometryPoints(xy: { x: number; y: number }): Promise<any[]> {
     const promise = new Promise<any>((resolve, reject) =>
-        $.getJSON(`https://cmip5dev.azurewebsites.net/grid_id/${xy.x},${xy.y}`, (data: any) =>
+        $.getJSON(`${baseApiUrl}/grid_id/${xy.x},${xy.y}`, (data: any) =>
             // return the coordinates for the grid
-            resolve(data.geometry.coordinates[0])
+            resolve({
+                coordinates: data.geometry.coordinates[0],
+                gridId: data.properties.grid_id
+            })
         )
     );
     return promise;
@@ -26,5 +42,6 @@ function getGeometryPoints(xy: { x: number; y: number }): Promise<any[]> {
 
 export default <DatasetApi>{
     getData,
-    getGeometryPoints
+    getGeometryPoints,
+    periodMappings
 };

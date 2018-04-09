@@ -142,6 +142,8 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setZoomLevel: (value: string | null) => void;
     @Action setChartSeries: (value: number[] | null) => void;
     @Action setTimeSlice: (value: number | null) => void;
+    @Action setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
+    @Action setRcpId: (value: string | null) => void;
 
     @State currentView: string;
 
@@ -230,7 +232,9 @@ export default class App extends mixins(UpdateRouteMixin) {
             cp: this.setCenterPoint,
             cs: this.setChartSeries,
             z: this.setZoomLevel,
-            ts: this.setTimeSlice
+            ts: this.setTimeSlice,
+            fp: this.setFeaturePoint,
+            r: this.setRcpId
         };
 
         // update the store
