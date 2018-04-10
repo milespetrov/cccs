@@ -490,8 +490,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // build the polygon
             const RZ = (<any>window).RZ;
-            const line = new RZ.GEO.LinearRing(requests[0].sessionId, coordinates);
-            const poly = new RZ.GEO.Polygon(requests[0].sessionId, [line]);
+            const poly = new RZ.GEO.Polygon(requests[0].sessionId, coordinates);
 
             //update drawn geometry
             this._mapi.simpleLayer.removeGeometry();
