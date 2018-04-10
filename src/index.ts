@@ -5,7 +5,7 @@ import VueI18n from 'vue-i18n';
 
 import app from './app.vue';
 import routes from './routes';
-import { AppState, createStore } from './store';
+import { createStore, RootState } from './store';
 import api from './api/';
 
 Vue.use(VueRouter);
@@ -15,7 +15,7 @@ Vue.use(VueI18n);
 const router = new VueRouter({ routes });
 
 // initialize a new app-wide store
-const store: Store<AppState> = createStore();
+const store: Store<RootState> = createStore();
 
 Vue.config.ignoredElements = ['dv-section', 'dv-chart', 'dv-chart-table', 'rv-map'];
 

@@ -1,6 +1,6 @@
 import { ActionContext, Store, StoreOptions, Module } from 'vuex';
 
-import { AppState, MapPoint, Range } from './index';
+import { AppState, MapPoint, Range, RootState } from './index';
 
 import controls from './../globals/controls';
 
@@ -10,7 +10,7 @@ import { defaultSelectors } from './../configs/selectors';
 import { VisualizationControlType, ViewType, DatasetId } from '@/types';
 import { DatasetApi, datasetApis } from '@/api';
 
-type AppContext = ActionContext<AppState, AppState>;
+type AppContext = ActionContext<AppState, RootState>;
 
 const state: AppState = {
     currentView: null,

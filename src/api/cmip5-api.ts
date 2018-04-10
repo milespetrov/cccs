@@ -1,7 +1,8 @@
 import { DatasetApi } from './types';
-import { TimePeriodType } from '@/types';
+import { getJSON } from './util';
+import { TimePeriodType, DatasetId } from '@/types';
 
-const baseApiUrl = 'https://cmip5dev.azurewebsites.net';
+const BASE_API_URL = 'https://cmip5dev.azurewebsites.net';
 
 /**
  * The cmip5 api period keys
@@ -23,15 +24,11 @@ const periodMappings: { [key: string]: string } = {
  * @param featureId feature from state
  * @param rcpId rcp from state
  */
-function getData(timePeriod: string, variable: string, featureId: string, rcpId: string): Promise<any[]> {
-    const promise = new Promise<any[]>((resolve, reject) =>
-        $.getJSON(
-            `${baseApiUrl}/time_series/${featureId}/${variable}/${rcpId}/${periodMappings[timePeriod]}`,
-            (data: any[]) => resolve(data)
-        )
-    );
+async function getData(timePeriod: string, variable: string, featureId: string, rcpId: string): Promise<any[]> {
+    const fetchUrl = `${BASE_API_URL}/time_series/${featureId}/${variable}/${rcpId}/${periodMappings[timePeriod]}`;
+    const data = await getJSON<any[]>(fetchUrl, DatasetId.CMIP5, 'getData');
 
-    return promise;
+    return data;
 }
 
 /**
@@ -40,17 +37,16 @@ function getData(timePeriod: string, variable: string, featureId: string, rcpId:
  * @param xy the x and y (latlong) to find the geometry for
  * @returns an array of coordinates to build a grid polygon
  */
-function getGeometryPoints(xy: { x: number; y: number }): Promise<any[]> {
-    const promise = new Promise<any>((resolve, reject) =>
-        $.getJSON(`${baseApiUrl}/grid_id/${xy.x},${xy.y}`, (data: any) =>
-            // return the coordinates for the grid
-            resolve({
-                coordinates: data.geometry.coordinates[0],
-                gridId: data.properties.grid_id
-            })
-        )
-    );
-    return promise;
+async function getGeometryPoints(xy: { x: number; y: number }): Promise<{ coordinates: any; gridId: any }> {
+    const fetchUrl = `${BASE_API_URL}/grid_id/${xy.x},${xy.y}`;
+    const data = await getJSON<any>(fetchUrl, DatasetId.CMIP5, 'getGeometryPoints');
+
+    const result = {
+        coordinates: data.geometry.coordinates[0],
+        gridId: data.properties.grid_id
+    };
+
+    return result;
 }
 
 export default <DatasetApi>{

@@ -1,4 +1,6 @@
 import { DatasetApi } from './types';
+import { getJSON } from './util';
+import { DatasetId } from '@/types';
 
 export interface AhccdApi extends DatasetApi {
     getTrend: (
@@ -6,7 +8,7 @@ export interface AhccdApi extends DatasetApi {
     ) => any;
 }
 
-const baseApiUrl = 'http://ahccd-dev.azurewebsites.net';
+const BASE_API_URL = 'http://ahccd-dev.azurewebsites.net';
 
 const periodMappings: { [key: string]: number } = {
     Jan_Janv: 1,
@@ -28,29 +30,26 @@ const periodMappings: { [key: string]: number } = {
     Annual_Annuel: 17
 };
 
-function getData(timePeriod: string, variable: string, featureId: string): Promise<any[]> {
-    const promise = new Promise<any[]>((resolve, reject) => {
-        $.getJSON(`${baseApiUrl}/${featureId}/${variable}/${periodMappings[timePeriod]}`, (data: any[]) =>
-            resolve(data)
-        );
-    });
+async function getData(timePeriod: string, variable: string, featureId: string): Promise<any[]> {
+    const fetchUrl = `${BASE_API_URL}/${featureId}/${variable}/${periodMappings[timePeriod]}`;
+    const data = await getJSON<any[]>(fetchUrl, DatasetId.AHCCD, 'getData');
 
-    return promise;
+    return data;
 }
 
-function getTrend(options: {
+async function getTrend(options: {
     variable: string;
     timePeriod: string;
     featureId: string;
     startYear: number;
     endYear: number;
 }) {
-    return $.getJSON(
-        `${baseApiUrl}/${options.featureId}/${options.variable}/${periodMappings[options.timePeriod]}/trend/${
-            options.startYear
-        }/${options.endYear}`,
-        data => data
-    );
+    const fetchUrl = `${BASE_API_URL}/${options.featureId}/${options.variable}/${
+        periodMappings[options.timePeriod]
+    }/trend/${options.startYear}/${options.endYear}`;
+    const data = await getJSON<any[]>(fetchUrl, DatasetId.AHCCD, 'getData');
+
+    return data;
 }
 
 export default <AhccdApi>{
