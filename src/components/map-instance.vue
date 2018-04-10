@@ -176,11 +176,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State zoomLevel: number;
     @State mapPin: MapPoint;
 
-    @Action setFeatureId: (value: string) => void;
+    @Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
     @Action setMapPin: (value: MapPoint | null) => void;
     @Action setCurrentView: (value: string) => void;
-    @Action setFeaturePoint: (value: { x: number; y: number }) => void;
+    @Action setFeaturePoint: (value: { x: number; y: number } | null) => void;
     @Action setZoomLevel: (value: number) => void;
 
     @Getter chartConfigGenerator: ChartConfigGenerator;
@@ -556,7 +556,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             id: this.miniChartSectionId,
             data: {
                 changeView: () => this.changeViewToChart(),
-                dismountChart: () => dvsection.dismount()
+                dismountChart: () => {
+                    dvsection.dismount();
+                    this.removeGridHighlight();
+                }
             },
             template: `
                 <dv-section class="cip-glance-chart-container">
@@ -614,6 +617,15 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // deactivate all subscriptions when the component is being destroyed
         this.deactivate.next(true);
         this.deactivate.unsubscribe();
+    }
+
+    removeGridHighlight(): void {
+        // remove any geometry drawn on the map
+        this._mapi.simpleLayer.removeGeometry();
+        // clear the feature from the store + route
+        this.setFeatureId(null);
+        this.setFeaturePoint(null);
+        this.updateRoute();
     }
 }
 </script>
