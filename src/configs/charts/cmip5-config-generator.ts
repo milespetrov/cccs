@@ -232,7 +232,7 @@ async function makeConfig(
                     const ren = event.target.renderer;
 
                     ren
-                        .label('Click to see chart', event.target.chartWidth - 120, 5)
+                        .label('click to see the full chart', event.target.chartWidth / 2 - 65, 5)
                         .css({
                             display: 'none'
                         })
@@ -280,11 +280,11 @@ async function makeConfig(
         },
         tooltip: {
             positioner: () => {
-                return { x: 0, y: 0 };
+                return { x: 0, y: 10 };
             },
             shadow: false,
             borderWidth: 0,
-            backgroundColor: 'rgba(255,255,255,0.8)',
+            backgroundColor: 'rgba(255,255,255,0)',
             shared: false,
             valueSuffix: '%'
         },
