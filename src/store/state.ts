@@ -18,6 +18,10 @@ export interface AppState {
     internalRouteUpdate: boolean;
 }
 
+export interface RootState {
+    // app: AppState;
+}
+
 export class MapPoint {
     constructor(public x: number, public y: number) {}
 
