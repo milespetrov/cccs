@@ -188,29 +188,34 @@ async function makeConfig(
                 groupPadding: 0.1,
                 zIndex: 2,
                 color: '#34495e',
-                marker: { enabled: true },
+                marker: { enabled: false },
                 events: {
                     legendItemClick: () => false
                 },
-                visible: chartSeries.includes(0)
+                visible: chartSeries.includes(0),
+                lineWidth: 2.3
             },
             {
                 name: '25th, 75th Percentiles',
                 data: seriesData25,
                 type: 'arearange',
                 zIndex: 1,
-                color: '#6D8398',
+                color: '#647990',
                 marker: { enabled: false },
-                visible: chartSeries.includes(1)
+                visible: chartSeries.includes(1),
+                fillOpacity: 0.5,
+                lineWidth: 0
             },
             {
                 name: '5th, 95th Percentiles',
                 data: seriesData5,
                 type: 'arearange',
                 zIndex: 0,
-                color: '#8DA3B8',
+                color: '#98adc6',
                 marker: { enabled: false },
-                visible: chartSeries.includes(2)
+                visible: chartSeries.includes(2),
+                fillOpacity: 0.5,
+                lineWidth: 0
             }
         ]
     };
