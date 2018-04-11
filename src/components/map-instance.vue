@@ -620,6 +620,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     removeGridHighlight(): void {
+        // TODO: AHCCD must be handled differently, it does not use geometry drawing
         // remove any geometry drawn on the map
         this._mapi.simpleLayer.removeGeometry();
         // clear the feature from the store + route
