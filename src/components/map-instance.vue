@@ -259,6 +259,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.getLayerById(this.currentLayers[oldValue]).visibility = false;
         // set new layer visible
         this.getLayerById(this.currentLayers[newValue]).visibility = true;
+
+        // no need to update the mini-chart on timeslice change since the chart includes the data for all the entire time range
     }
 
     getLayerById(searchId: string): any {
@@ -390,7 +392,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // if the current station is already set, open the mini chart
             if (this.currentFeature) {
-                this.displayMiniChart();
+                // this.displayMiniChart();
             }
 
             if (this.zoomLevel) {
@@ -485,6 +487,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         // if the identify mode is silent that means we need to draw our own highlight
         if (this._mapi.identifyMode === 'silent') {
+            // draw the minichart, without the actual chart
+            // the loading indicator will show up
+            this.displayMiniChart(false);
+
             // retrieve the geometry points from the api
             const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(event.xy);
 
@@ -501,7 +507,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.setFeatureId(gridId);
             this.updateRoute();
 
-            //draw the minichart
+            // draw the minichart
             this.displayMiniChart();
         } else {
             requests[0].features.then((features: IdentifyResult[]) => {
@@ -528,48 +534,84 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
     }
 
-    async displayMiniChart(): Promise<void> {
+    // if showChart is `false`, the chart box will drawn with loading animation
+    // TODO: move the glance chart to the separate component
+    async displayMiniChart(showChart: boolean = true): Promise<void> {
         console.log('display mini chart');
 
-        // TODO: move the glance chart to the separate component
-        const config = await this.chartConfigGenerator.make(ChartConfigType.GLANCE);
         const chartMount = document.getElementById('cip-mini-chart-mount');
 
-        // if the mini-chart section is already create but dismounted, remount it
-        const miniChartSection = api.DQV.sections[this.miniChartSectionId];
+        let miniChartSection = api.DQV.sections[this.miniChartSectionId];
+        let miniChartChart = api.DQV.charts[this.miniChartChartId];
+
         if (miniChartSection) {
+            // if mini chart section exist, the mini chart chart will exist as well
+            // reset the config before remounting; otherwise it will remount with the old config
+            miniChartChart.config = null;
+
+            // if the mini-chart section is already create but dismounted, remount it
             if (!miniChartSection.isMounted) {
                 miniChartSection.mount(chartMount);
             }
+        } else {
+            // create the mini-chart
+            // tslint:disable-next-line:no-unused-expression
+            miniChartChart = new api.DQV.Chart({ id: this.miniChartChartId });
+            miniChartSection = new api.DQV.Section({
+                id: this.miniChartSectionId,
+                data: {
+                    changeView: () => this.changeViewToChart(),
+                    dismountChart: () => {
+                        miniChartSection.dismount();
+                        this.removeGridHighlight();
+                    }
+                },
+                // https://stephanwagner.me/only-css-loading-spinner ??
+                // http://tobiasahlin.com/spinkit/ ??
+                template: `
+                    <dv-section class="cip-glance-chart-container">
+                        <dv-chart id="${this.miniChartChartId}" role="button" @click.native="changeView">
 
-            // if the mini-chart is already loaded, update its config
-            const miniChartChart = api.DQV.charts[this.miniChartChartId];
-            miniChartChart.config = config;
+                            <div class="cip-spinner" >
+                                <div class="sk-circle">
+                                    <div class="sk-circle1 sk-child"></div>
+                                    <div class="sk-circle2 sk-child"></div>
+                                    <div class="sk-circle3 sk-child"></div>
+                                    <div class="sk-circle4 sk-child"></div>
+                                    <div class="sk-circle5 sk-child"></div> 
+                                    <div class="sk-circle6 sk-child"></div>
+                                    <div class="sk-circle7 sk-child"></div>
+                                    <div class="sk-circle8 sk-child"></div>
+                                    <div class="sk-circle9 sk-child"></div>
+                                    <div class="sk-circle10 sk-child"></div>
+                                    <div class="sk-circle11 sk-child"></div>
+                                    <div class="sk-circle12 sk-child"></div>
+                                </div>
+                            </div>
 
+                        </dv-chart>
+
+                        <button class="btn btn-link cip-close-button" @click="dismountChart" title="Close"><i class="fa fa-times"></i></button>
+                    </dv-section>
+                `
+            });
+
+            miniChartSection.mount(chartMount);
+        }
+
+        if (!showChart) {
             return;
         }
 
-        // create the mini-chart
-        // tslint:disable-next-line:no-unused-expression
-        new api.DQV.Chart({ id: this.miniChartChartId, config });
-        const dvsection = new api.DQV.Section({
-            id: this.miniChartSectionId,
-            data: {
-                changeView: () => this.changeViewToChart(),
-                dismountChart: () => {
-                    dvsection.dismount();
-                    this.removeGridHighlight();
-                }
-            },
-            template: `
-                <dv-section class="cip-glance-chart-container">
-                    <dv-chart id="${this.miniChartChartId}" role="button" @click.native="changeView"></dv-chart>
-                    <button class="btn btn-link cip-close-button" @click="dismountChart" title="Close"><i class="fa fa-times"></i></button>
-                </dv-section>
-            `
-        });
+        // wait for the chart config to be created or 300 milliseconds, whicever is longer
+        // 300 is needed for a smooth fade in/out animation
+        const [config] = await Promise.all([
+            this.chartConfigGenerator.make(ChartConfigType.GLANCE),
+            new Promise(resolve => window.setTimeout(resolve, 300))
+        ]);
 
-        dvsection.mount(chartMount);
+        // update the glance chart with this config
+        miniChartChart.config = config;
     }
 
     scrollGuardHandler(event: WheelEvent): void {
@@ -714,11 +756,106 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     .cip-glance-chart-container {
+        background-color: #fff;
+
+        .cip-spinner {
+            position: absolute;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+
+            pointer-events: none;
+        }
+
+        [dv-chart] {
+            cursor: pointer;
+
+            // TODO: move to sass variable file
+            width: 250px;
+            height: 130px;
+
+            &.dv-loading {
+                cursor: none;
+
+                [dv-chart-container] {
+                    opacity: 0;
+                }
+
+                .cip-spinner {
+                    opacity: 1;
+                }
+            }
+        }
+
+        [dv-chart-container] {
+            opacity: 1;
+        }
+
+        .cip-spinner {
+            opacity: 0;
+        }
+
+        [dv-chart-container],
+        .cip-spinner {
+            transition: opacity 0.3s ease-in-out;
+        }
+
         .cip-close-button {
             font-size: 1em;
             position: absolute;
             top: 0;
             right: 0;
+        }
+    }
+
+    .sk-circle {
+        width: 4rem;
+        height: 4rem;
+        position: relative;
+
+        .sk-child {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .sk-child:before {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 15%;
+            height: 15%;
+            background-color: #333;
+            border-radius: 100%;
+            animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+        }
+
+        @for $i from 2 through 12 {
+            .sk-circle#{$i} {
+                transform: rotate(0deg + 30deg * ($i - 1));
+
+                &:before {
+                    animation-delay: -1.2s + ($i - 1) * 0.1s;
+                }
+            }
+        }
+    }
+
+    @keyframes sk-circleBounceDelay {
+        0%,
+        80%,
+        100% {
+            transform: scale(0);
+        }
+        40% {
+            transform: scale(1);
         }
     }
 }

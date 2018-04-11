@@ -70,7 +70,7 @@
         <section class="container main">
 
             <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
-                <div class="cip-map-button" 
+                <div class="cip-map-button"
                     :style="tileStyle">
                     <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x }`" alt="">
                     <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x + 1 }`" alt="">
@@ -85,10 +85,10 @@
                 <router-view class="visualization" name="visualization"></router-view>
             </keep-alive>
 
-            <div class="well mrgn-tp-lg">
-                <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
+            <section class="alert alert-info mrgn-tp-lg">
+                <h4> Need help? </h4>
                 <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’s leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
-            </div>
+            </section>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
@@ -386,6 +386,10 @@ $rv-left-offset: calc((100vw - 1170px) / 2);
         flex-wrap: wrap;
         width: 256px * 2;
         height: 256px * 2;
+        img {
+            width: 256px;
+            height: 256px;
+        }
     }
     .cip-view-toggle-label {
         color: white;
