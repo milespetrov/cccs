@@ -5,6 +5,8 @@ import mappings from '@/globals/mappings';
 import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
 import { ChartConfigType, DatasetId } from '@/types';
 
+import { removeTooltip } from './util';
+
 async function makeConfig(
     state: AppState,
     chartConfigType: ChartConfigType,
@@ -67,6 +69,7 @@ async function makeConfig(
             events: {
                 load: (event: any) => {
                     [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, data);
+                    removeTooltip(event.target);
                 }
             },
             style: {
@@ -211,6 +214,8 @@ async function makeConfig(
                         })
                         .addClass('click-hint')
                         .add();
+
+                    removeTooltip(event.target);
                 }
             }
         },
