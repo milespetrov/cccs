@@ -152,7 +152,7 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         dvsection1.mount(document.getElementById('mount-point'));
         // }, 2000);
 
-        (<any>window).wb.add('summary');
+        // (<any>window).wb.add('summary');
         /* (<any>window).wb.add('table'); */
     }
 
@@ -176,7 +176,7 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         const dvChart = api.DQV.charts[chartId];
         dvChart.config = config;
 
-        (<any>window).wb.add('summary');
+        // (<any>window).wb.add('summary');
         //(<any>window).wb.add('table');
     }
 
