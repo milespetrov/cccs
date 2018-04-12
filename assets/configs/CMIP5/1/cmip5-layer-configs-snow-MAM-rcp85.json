@@ -1,0 +1,45 @@
+{
+  "layers": [
+      {
+        "id": "SnowDepth_2021_20yr_MAM_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2021_20yr_MAM_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SnowDepth_2041_20yr_MAM_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2041_20yr_MAM_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SnowDepth_2061_20yr_MAM_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2061_20yr_MAM_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SnowDepth_2081_20yr_MAM_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2081_20yr_MAM_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      }
+
+  ]
+}
