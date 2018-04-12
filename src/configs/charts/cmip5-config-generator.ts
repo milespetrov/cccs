@@ -6,6 +6,7 @@ import { ChartConfigType, DatasetId } from '@/types';
 import { datasetApis } from '@/api';
 
 import { formatLatLong } from '@/globals/utils';
+import { removeTooltip } from './util';
 
 async function makeConfig(
     state: AppState,
@@ -92,6 +93,7 @@ async function makeConfig(
             events: {
                 load: (event: any) => {
                     makeLabels(event, data);
+                    removeTooltip(event.target);
                 }
             },
             style: {
@@ -243,6 +245,8 @@ async function makeConfig(
                         })
                         .addClass('click-hint')
                         .add();
+
+                    removeTooltip(event.target);
                 }
             }
         },
