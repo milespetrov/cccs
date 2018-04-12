@@ -1,0 +1,45 @@
+{
+  "layers": [
+      {
+        "id": "SeaIceThickness_2021_20yr_SON_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2021_20yr_SON_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SeaIceThickness_2041_20yr_SON_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2041_20yr_SON_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SeaIceThickness_2061_20yr_SON_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2061_20yr_SON_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SeaIceThickness_2081_20yr_SON_rcp85",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2081_20yr_SON_rcp85/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      }
+
+  ]
+}

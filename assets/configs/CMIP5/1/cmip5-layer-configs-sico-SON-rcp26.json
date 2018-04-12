@@ -1,0 +1,45 @@
+{
+  "layers": [
+      {
+        "id": "SeaIceConcentration_2021_20yr_SON_rcp26",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2021_20yr_SON_rcp26/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SeaIceConcentration_2041_20yr_SON_rcp26",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2041_20yr_SON_rcp26/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SeaIceConcentration_2061_20yr_SON_rcp26",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2061_20yr_SON_rcp26/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      },
+      {
+        "id": "SeaIceConcentration_2081_20yr_SON_rcp26",
+        "layerType": "esriTile",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2081_20yr_SON_rcp26/MapServer",
+        "state": {
+          "opacity": 1,
+          "visibility": false
+        },
+        "controls": ["data"]
+      }
+
+  ]
+}
