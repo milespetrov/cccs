@@ -1,11 +1,18 @@
+/**
+ * Hides the auto-tooltip on a chart svg by removing the title while hovering.
+ * This tooltip gets in the way of actual information and doesn't add anything as the chart title is always visible.
+ *
+ * @param target the highcharts object that the SVG tooltip should be "removed" for
+ */
 export function removeTooltip(target: any): void {
-    const title = $(`#highcharts-title-${target.index}`);
+    // the title element in the SVG
+    const title = target.container.querySelector(`#highcharts-title-${target.index}`);
+    // the charts title text, NOT the text of the title element above
     const titleText = target.title.textStr;
-    const roots = document.getElementsByClassName('highcharts-root');
-    roots.item(roots.length - 1).addEventListener('mouseenter', () => {
-        title.text('');
+    target.container.addEventListener('mouseenter', () => {
+        title.innerHTML = '';
     });
-    roots.item(roots.length - 1).addEventListener('mouseleave', () => {
-        title.text(titleText);
+    target.container.addEventListener('mouseleave', () => {
+        title.innerHTML = titleText;
     });
 }
