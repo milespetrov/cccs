@@ -92,11 +92,11 @@ export enum TimePeriodType {
     October = 'Oct_Oct',
     November = 'Nov_Nov',
     December = 'Dec_Dec',
-    Winter = 'Winter_Hiver',
-    Spring = 'Spring_Printemp',
-    Summer = 'Summer_Ete',
-    Autumn = 'Autumn_Autome',
-    Annual = 'Annual_Annuel'
+    Winter = 'winter',
+    Spring = 'spring',
+    Summer = 'summer',
+    Autumn = 'fall',
+    Annual = 'annual'
 }
 
 export enum ViewType {

@@ -223,30 +223,31 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentTimePeriod')
     onTimePeriodChange() {
+        this.currentLayers.forEach((layerId: string) => {
+            this._mapi.layers.removeLayer(layerId);
+        });
+        this.addCurrentVarLayer();
+
+        if (!this.currentFeature) {
+            return;
+        }
         this.displayMiniChart();
     }
 
-    addCurrentVarLayer() {
+    async addCurrentVarLayer() {
         this.currentLayers = [];
         this.counter += 1;
-        $.getJSON(`./assets/configs/${this.currentDataset}/${this.configVersion}/layer-configs.en-CA.json`, data => {
-            let snippet = data[this.currentVariable];
-            // for some datasets (like cmip5) we also have to select on rcp
-            if (this.currentRcp) {
-                snippet = snippet[this.currentRcp];
+
+        const layers = await this.datasetApi.getDataLayers(this.configVersion);
+        layers.forEach((layer: any, index: number) => {
+            if (index === this.timeSlice) {
+                layer.state.visibility = true;
             }
 
-            // loop through layer array, add each layer snippet to the map
-            snippet.forEach((layer: any, index: number) => {
-                if (index === this.timeSlice) {
-                    layer.state.visibility = true;
-                }
-
-                // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-                layer.id += `_${this.counter}`;
-                const addedLayer = this._mapi.layers.addLayer(layer);
-                this.currentLayers[index] = layer.id;
-            });
+            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            layer.id += `_${this.counter}`;
+            const addedLayer = this._mapi.layers.addLayer(layer);
+            this.currentLayers[index] = layer.id;
         });
     }
 
