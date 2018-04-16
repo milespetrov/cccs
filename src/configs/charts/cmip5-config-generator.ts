@@ -57,22 +57,22 @@ async function makeConfig(
     // should be retrieved from the store
     const variables: object[] = [
         {
-            name: 'Surface Wind Speed',
+            name: 'Surface wind speed',
             id: 'sfcwind',
             unit: '%'
         },
         {
-            name: 'Sea Ice Thickness',
+            name: 'Sea ice thickness',
             id: 'sit',
             unit: '%'
         },
         {
-            name: 'Sea Ice Concentration',
+            name: 'Sea ice concentration',
             id: 'sic',
             unit: '%'
         },
         {
-            name: 'Snow Depth',
+            name: 'Snow depth',
             id: 'snow_depth',
             unit: '%'
         }

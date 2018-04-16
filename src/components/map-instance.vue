@@ -374,6 +374,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.updateLegend();
             this.addCurrentVarLayer();
 
+            // move cluster directly after the map so tab order is preserved
+            $('.cip-control-cluster').first().insertAfter('rv-shell');
+
             // turn off default identify behaviour
             this._mapi.identify = false;
 
