@@ -157,7 +157,7 @@ const getters = {
     },
 
     datasetApi(state: AppState): DatasetApi {
-        return datasetApis[state.datasetId!];
+        return datasetApis[state.datasetId!](state);
     }
 };
 

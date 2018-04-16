@@ -1,14 +1,10 @@
 import { DatasetApi } from './types';
 import { getJSON } from './util';
 import { DatasetId } from '@/types';
-
-export interface AhccdApi extends DatasetApi {
-    getTrend: (
-        options: { variable: string; timePeriod: string; featureId: string; startYear: number; endYear: number }
-    ) => any;
-}
+import { AppState } from '@/store';
 
 const BASE_API_URL = 'http://ahccd-dev.azurewebsites.net';
+const BASE_MAP_URL = './assets/configs/AHCCD';
 
 const periodMappings: { [key: string]: number } = {
     Jan_Janv: 1,
@@ -23,36 +19,61 @@ const periodMappings: { [key: string]: number } = {
     Oct_Oct: 10,
     Nov_Nov: 11,
     Dec_Dec: 12,
-    Winter_Hiver: 13,
-    Spring_Printemp: 14,
-    Summer_Ete: 15,
-    Autumn_Autome: 16,
-    Annual_Annuel: 17
+    winter: 13,
+    spring: 14,
+    summer: 15,
+    fall: 16,
+    annual: 17
 };
 
-async function getData(timePeriod: string, variable: string, featureId: string): Promise<any[]> {
-    const fetchUrl = `${BASE_API_URL}/${featureId}/${variable}/${periodMappings[timePeriod]}`;
-    const data = await getJSON<any[]>(fetchUrl, DatasetId.AHCCD, 'getData');
+/**
+ * @class AHCCDApi
+ *
+ * @method getData returns data for the current feature/variable
+ * @method getTrend returns the trend value for the current feature/variable for the specified start and end years
+ */
+class AHCCDApi extends DatasetApi {
+    /**
+     * Returns the chart data for the current feature and variable
+     */
+    async getData(): Promise<any> {
+        const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
+            periodMappings[this.state.timePeriodId!]
+        }`;
+        const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
 
-    return data;
+        return data;
+    }
+
+    /**
+     * Returns the trend value for the period beginning at startYear and ending at endYear.
+     * The trend is for the current feature and variable
+     *
+     * @param startYear the beginning year for the trend calculation
+     * @param endYear the end year for the trend calculation
+     */
+    async getTrend(startYear: number, endYear: number): Promise<any> {
+        const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
+            periodMappings[this.state.timePeriodId!]
+        }/trend/${startYear}/${endYear}`;
+        const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
+
+        return data;
+    }
+
+    /**
+     * Returns an array of data layers for the current state.
+     *
+     * @param configVersion version grabbed from the config storage
+     */
+    async getDataLayers(configVersion: string): Promise<any[]> {
+        const fetchUrl = `${BASE_MAP_URL}/${configVersion}/layer-configs.json`;
+        const result = await $.getJSON(fetchUrl);
+
+        return result[this.state.variableId!];
+    }
 }
 
-async function getTrend(options: {
-    variable: string;
-    timePeriod: string;
-    featureId: string;
-    startYear: number;
-    endYear: number;
-}) {
-    const fetchUrl = `${BASE_API_URL}/${options.featureId}/${options.variable}/${
-        periodMappings[options.timePeriod]
-    }/trend/${options.startYear}/${options.endYear}`;
-    const data = await getJSON<any[]>(fetchUrl, DatasetId.AHCCD, 'getData');
-
-    return data;
+export default function(state: AppState) {
+    return new AHCCDApi(state);
 }
-
-export default <AhccdApi>{
-    getData,
-    getTrend
-};

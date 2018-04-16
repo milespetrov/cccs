@@ -1,6 +1,11 @@
-export interface DatasetApi {
-    getData: (timePeriod: string, variable: string, featureId: string, rcpId?: string) => any;
-    periodMappings: { [key: string]: string };
+import { AppState } from '@/store';
+
+export class DatasetApi {
+    protected state: AppState;
+
+    constructor(state: AppState) {
+        this.state = state;
+    }
 }
 
 export interface EnhancedWindow extends Window {

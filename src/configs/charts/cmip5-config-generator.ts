@@ -13,23 +13,23 @@ async function makeConfig(
     chartConfigType: ChartConfigType,
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
-    const cmip5Api = datasetApis[DatasetId.CMIP5];
-    const { timePeriodId, rcpId, featureId, featurePoint } = state;
+    const cmip5Api = datasetApis[DatasetId.CMIP5](state);
+    const { timePeriodId, rcpId, featurePoint } = state;
     let { variableId } = state;
 
     // chartSeries default to `null` which cannot be used as non-value in a desctructuring statement
     const chartSeries = state.chartSeries || [0, 1, 2];
 
-    if (!timePeriodId || !variableId || !chartSeries || !featureId || !rcpId || !featurePoint) {
+    if (!timePeriodId || !variableId || !chartSeries || !rcpId || !featurePoint) {
         console.error('cannot generate chart config, parameters are not set');
 
         return null;
     }
 
     // get chart data
-    const data = await cmip5Api.getData(timePeriodId, variableId, featureId, rcpId);
+    const data = await cmip5Api.getData();
 
-    const actualData = data.properties.models[rcpId][cmip5Api.periodMappings[timePeriodId]];
+    const actualData = data.properties.models[rcpId][timePeriodId];
 
     const seriesData = actualData['50'].anomaly.map((value: any) => {
         return value ? parseInt(value.toFixed(2)) : value;

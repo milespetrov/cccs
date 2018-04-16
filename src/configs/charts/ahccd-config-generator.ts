@@ -12,7 +12,7 @@ async function makeConfig(
     chartConfigType: ChartConfigType,
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
-    const ahccdApi = datasetApis[DatasetId.AHCCD];
+    const ahccdApi = datasetApis[DatasetId.AHCCD](state);
     const { timePeriodId, variableId, featureId } = state;
 
     if (!timePeriodId || !variableId || !featureId) {
@@ -22,7 +22,7 @@ async function makeConfig(
     }
 
     // get chart data
-    const data = await ahccdApi.getData(timePeriodId, variableId, featureId);
+    const data = await ahccdApi.getData();
 
     const seriesData = data.absolute_values.map((value: number) => (value > -9999 ? value : null));
 
@@ -106,13 +106,7 @@ async function makeConfig(
 
                     callbacks.setExtremes(event);
 
-                    const data = await ahccdApi.getTrend({
-                        variable: variableId,
-                        timePeriod: timePeriodId,
-                        featureId,
-                        startYear: event.min,
-                        endYear: event.max
-                    });
+                    const data = await ahccdApi.getTrend(event.min, event.max);
 
                     console.log(data);
                     (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
