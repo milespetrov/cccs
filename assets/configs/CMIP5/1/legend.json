@@ -1,0 +1,79 @@
+{
+    "precip": [],
+    "sfcwind": [],
+    "sitt": [],
+    "sic": [
+        {
+            "infoType": "text",
+            "content":
+                "Sea ice concentration is a useful variable for climate scientists and nautical navigators. It is defined as the area of sea ice relative to the total at a given point in the ocean. This article will deal primarily with its determination from remote sensing measurements."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Sea Ice Concentration",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "exclusiveVisibility": [
+                {
+                    "infoType": "unboundLayer",
+                    "layerName": "Cities",
+                    "coverIcon": "//i.imgur.com/0fbeTFW.png",
+                    "symbologyStack": [
+                        {
+                            "image": "//i.imgur.com/0fbeTFW.png",
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "infoType": "unboundLayer",
+                    "layerName": "Provinces",
+                    "coverIcon": "//i.imgur.com/56bZPq2.png",
+                    "symbologyStack": [
+                        {
+                            "image": "//i.imgur.com/56bZPq2.png",
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "infoType": "unboundLayer",
+                    "layerName": "Municipalities",
+                    "coverIcon": "//i.imgur.com/SQrdkzT.png",
+                    "symbologyStack": [
+                        {
+                            "image": "//i.imgur.com/SQrdkzT.png",
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "infoType": "unboundLayer",
+                    "layerName": "Treaties",
+                    "coverIcon": "//i.imgur.com/frlKCK4.png",
+                    "symbologyStack": [
+                        {
+                            "image": "//i.imgur.com/frlKCK4.png",
+                            "text": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "snow_depth": []
+}

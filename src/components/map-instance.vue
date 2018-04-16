@@ -197,6 +197,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
+        this.updateLegend();
+
         this.currentLayers.forEach((layerId: string) => {
             this._mapi.layers.removeLayer(layerId);
         });
@@ -206,6 +208,23 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
         this.displayMiniChart();
+    }
+
+    /**
+     * Updates the current legend based on the selected variable and its dataset.
+     */
+    async updateLegend(): Promise<void> {
+        const legends: { [name: string]: object[] } = await $.getJSON(
+            `./assets/configs/${this.currentDataset}/${this.configVersion}/legend.json`
+        );
+
+        // TODO: update legend settings layers and link them to actual reference layers
+        let legend = legends[this.currentVariable];
+        if (!legend) {
+            legend = [];
+        }
+
+        this._mapi.legendConfig = legend;
     }
 
     @Watch('currentRcp')
@@ -351,6 +370,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
             this._mapi = mapi;
+
+            this.updateLegend();
             this.addCurrentVarLayer();
 
             // turn off default identify behaviour
@@ -579,7 +600,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                                     <div class="sk-circle2 sk-child"></div>
                                     <div class="sk-circle3 sk-child"></div>
                                     <div class="sk-circle4 sk-child"></div>
-                                    <div class="sk-circle5 sk-child"></div> 
+                                    <div class="sk-circle5 sk-child"></div>
                                     <div class="sk-circle6 sk-child"></div>
                                     <div class="sk-circle7 sk-child"></div>
                                     <div class="sk-circle8 sk-child"></div>

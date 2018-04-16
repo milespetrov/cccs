@@ -114,7 +114,11 @@
             }
         ],
         "legend": {
-            "type": "autopopulate"
+            "type": "structured",
+            "root": {
+                "name": "root",
+                "children": []
+            }
         },
         "tileSchemas": [
             {
