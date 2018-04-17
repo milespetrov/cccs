@@ -27,14 +27,15 @@
                             <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
                         </div>
                     </div>
-                    <div class="cip-dropdown-multi-item">
+                    <!-- temporary remove visible time range option -->
+                    <!-- <div class="cip-dropdown-multi-item">
                         <span>Visible Time Range Only</span>
 
                         <div class="cip-dropdown-multi-item-options">
                             <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
                             <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <b-dropdown-divider></b-dropdown-divider>
