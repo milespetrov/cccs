@@ -23,19 +23,27 @@
             "content": "Settings"
         },
         {
-            "exclusiveVisibility": [
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
                 {
-                    "infoType": "unboundLayer",
-                    "layerName": "Provinces",
-                    "coverIcon": "//i.imgur.com/56bZPq2.png",
-                    "symbologyStack": [
-                        {
-                            "image": "//i.imgur.com/56bZPq2.png",
-                            "text": ""
-                        }
-                    ]
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
                 }
             ]
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
+                {
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
+                }
+            ],
+            "entryIndex": 4
         }
     ],
     "sitt": [
@@ -62,19 +70,27 @@
             "content": "Settings"
         },
         {
-            "exclusiveVisibility": [
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
                 {
-                    "infoType": "unboundLayer",
-                    "layerName": "Provinces",
-                    "coverIcon": "//i.imgur.com/56bZPq2.png",
-                    "symbologyStack": [
-                        {
-                            "image": "//i.imgur.com/56bZPq2.png",
-                            "text": ""
-                        }
-                    ]
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
                 }
             ]
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
+                {
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
+                }
+            ],
+            "entryIndex": 4
         }
     ],
     "sic": [
@@ -102,19 +118,27 @@
             "content": "Settings"
         },
         {
-            "exclusiveVisibility": [
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
                 {
-                    "infoType": "unboundLayer",
-                    "layerName": "Provinces",
-                    "coverIcon": "//i.imgur.com/56bZPq2.png",
-                    "symbologyStack": [
-                        {
-                            "image": "//i.imgur.com/56bZPq2.png",
-                            "text": ""
-                        }
-                    ]
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
                 }
             ]
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
+                {
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
+                }
+            ],
+            "entryIndex": 4
         }
     ],
     "snow_depth": [
@@ -141,19 +165,27 @@
             "content": "Settings"
         },
         {
-            "exclusiveVisibility": [
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
                 {
-                    "infoType": "unboundLayer",
-                    "layerName": "Provinces",
-                    "coverIcon": "//i.imgur.com/56bZPq2.png",
-                    "symbologyStack": [
-                        {
-                            "image": "//i.imgur.com/56bZPq2.png",
-                            "text": ""
-                        }
-                    ]
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
                 }
             ]
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": [
+                {
+                    "image": "//i.imgur.com/56bZPq2.png",
+                    "text": ""
+                }
+            ],
+            "entryIndex": 4
         }
     ]
 }

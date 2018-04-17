@@ -54,6 +54,18 @@ class CMIP5Api extends DatasetApi {
 
         return result.layers;
     }
+
+    /**
+     * Returns an array of reference layers for cmip5
+     *
+     * @param configVersion version grabbed from the config storage
+     */
+    async getReferenceLayers(configVersion: string): Promise<any[]> {
+        const fetchUrl = `${BASE_MAP_URL}/${configVersion}/reference-layers.json`;
+        const result = await $.getJSON(fetchUrl);
+
+        return result.layers;
+    }
 }
 
 export default function(state: AppState) {
