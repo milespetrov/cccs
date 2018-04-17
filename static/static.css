@@ -1,3 +1,6 @@
+a.underline {
+    text-decoration: underline;
+}
 .top-level-menu {
     display: flex;
     align-items: center;
@@ -115,17 +118,18 @@
     left: 2rem;
 }
 .landing-buttons {
-    border-bottom: 1px solid #333333;
+
 }
 .feature-box-text {
   margin-left: 2rem;
   margin-top: 3rem;
   padding-right: 2.5rem;
 }
-.feature-box-text h1 {
+.feature-box-text h1, .feature-box-text .h1 {
     border-bottom: none;
     margin-top: 1rem;
     margin-bottom: 3rem;
+    color: #333;
 }
 .feature-box-text h3 {
     color: #aaaaaa;

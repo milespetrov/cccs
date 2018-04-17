@@ -1,10 +1,5 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="currentView">
-
-        <div class="cip-strip cip-backdrop-map">
-            <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
-        </div>
-
         <div class="cip-strip cip-top-navigation">
             <!-- TODO: move top-navigatoin into a separate component -->
 
@@ -28,11 +23,11 @@
                     </span>
 
                     <span class="menu-option">
-                        <a href="./climate-data.html">Climate Data</a>
+                        <a href="./climate-data.html">Climate data</a>
                         <i class="fas fa-chevron-down"></i>
                         <span class="menu-option-dropdown">
-                            <a href="./location-search.html">Location Search</a>
-                            <a href="./climate-variables.html">Climate Variables</a>
+                            <a href="./location-search.html">Location search</a>
+                            <a href="./climate-variables.html">Climate variables</a>
                         </span>
                     </span>
 
@@ -67,6 +62,10 @@
             </keep-alive>
         </div>
 
+        <div class="cip-strip cip-backdrop-map">
+            <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
+        </div>
+
         <section class="container main">
 
             <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
@@ -85,9 +84,12 @@
                 <router-view class="visualization" name="visualization"></router-view>
             </keep-alive>
 
-            <section class="alert alert-info mrgn-tp-lg">
-                <h4> Need help? </h4>
-                <p> Making decisions based on climate change and climate data is challenging.  CCCS’s Help Desk is here to help by providing access to the country’s leading climate science experts and resources to help support you in your decision making and research.  Contact us at <a href=#>climate-helpdesk@canada.ca</a></p>
+            <section class="alert alert-info">
+                <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
+                <p> Making decisions based on climate change and climate data is challenging. CCCS’s Help Desk is here to help by
+                    providing access to the country’s leading climate science experts and resources to help support you in your
+                    decision making and research. <a class="underline" href=#>Contact the climate helpdesk.</a>
+                </p>
             </section>
 
             <div class="pagedetails">
@@ -276,11 +278,16 @@ export default class App extends mixins(UpdateRouteMixin) {
     &.cip-backdrop-map {
         position: absolute;
         width: 100%;
+        top:0;
 
         .chart-view & {
             height: $top-navigation-height + $page-header-height + $view-controls-height;
             overflow: hidden;
         }
+    }
+
+    &:not(.cip-backdrop-map) {
+        z-index: 1;
     }
 
     &.cip-top-navigation {
