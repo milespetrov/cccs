@@ -1,7 +1,82 @@
 {
-    "precip": [],
-    "sfcwind": [],
-    "sitt": [],
+    "sfcwind": [
+        {
+            "infoType": "text",
+            "content": " ... description here ..."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Surface Wind",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "exclusiveVisibility": [
+                {
+                    "infoType": "unboundLayer",
+                    "layerName": "Provinces",
+                    "coverIcon": "//i.imgur.com/56bZPq2.png",
+                    "symbologyStack": [
+                        {
+                            "image": "//i.imgur.com/56bZPq2.png",
+                            "text": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sitt": [
+        {
+            "infoType": "text",
+            "content": " ... description here ..."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Sea Ice Thickness",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "exclusiveVisibility": [
+                {
+                    "infoType": "unboundLayer",
+                    "layerName": "Provinces",
+                    "coverIcon": "//i.imgur.com/56bZPq2.png",
+                    "symbologyStack": [
+                        {
+                            "image": "//i.imgur.com/56bZPq2.png",
+                            "text": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "sic": [
         {
             "infoType": "text",
@@ -30,15 +105,43 @@
             "exclusiveVisibility": [
                 {
                     "infoType": "unboundLayer",
-                    "layerName": "Cities",
-                    "coverIcon": "//i.imgur.com/0fbeTFW.png",
+                    "layerName": "Provinces",
+                    "coverIcon": "//i.imgur.com/56bZPq2.png",
                     "symbologyStack": [
                         {
-                            "image": "//i.imgur.com/0fbeTFW.png",
+                            "image": "//i.imgur.com/56bZPq2.png",
                             "text": ""
                         }
                     ]
-                },
+                }
+            ]
+        }
+    ],
+    "snow_depth": [
+        {
+            "infoType": "text",
+            "content": " ... description here ..."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Snow Depth",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "exclusiveVisibility": [
                 {
                     "infoType": "unboundLayer",
                     "layerName": "Provinces",
@@ -49,31 +152,8 @@
                             "text": ""
                         }
                     ]
-                },
-                {
-                    "infoType": "unboundLayer",
-                    "layerName": "Municipalities",
-                    "coverIcon": "//i.imgur.com/SQrdkzT.png",
-                    "symbologyStack": [
-                        {
-                            "image": "//i.imgur.com/SQrdkzT.png",
-                            "text": ""
-                        }
-                    ]
-                },
-                {
-                    "infoType": "unboundLayer",
-                    "layerName": "Treaties",
-                    "coverIcon": "//i.imgur.com/frlKCK4.png",
-                    "symbologyStack": [
-                        {
-                            "image": "//i.imgur.com/frlKCK4.png",
-                            "text": ""
-                        }
-                    ]
                 }
             ]
         }
-    ],
-    "snow_depth": []
+    ]
 }
