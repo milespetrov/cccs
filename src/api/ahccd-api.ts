@@ -79,6 +79,46 @@ class AHCCDApi extends DatasetApi {
     getReferenceLayers() {
         return [];
     }
+
+    async getTableData() {
+        const aliases: any = {
+            station_name_nom: 'Station Name',
+            stnid: 'Station ID',
+            beg_yr_annee_deb: 'Beginning Year',
+            beg_mon_mois_deb: 'Beginning Month',
+            end_yr_annee_fin: 'Ending Year',
+            end_mon_mois_fin: 'Ending Month',
+            Annual_Annuel: 'Annual'
+        };
+        const varArray: any = {
+            precip: 3,
+            tmean: 0,
+            tmax: 2,
+            tmin: 1
+        };
+
+        const tempData: any = await $.getJSON(
+            `http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${
+                varArray[this.state.variableId!]
+            }/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
+            data => {
+                return data;
+            }
+        );
+        const tableData: any[] = [];
+
+        tempData.features.forEach((feature: any) => {
+            const row: any[] = [];
+            Object.keys(aliases).forEach(key => {
+                row.push(feature.attributes[key]);
+            });
+            tableData.push(row);
+        });
+
+        console.log(tableData);
+
+        return tableData;
+    }
 }
 
 export default function(state: AppState) {

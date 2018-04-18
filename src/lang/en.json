@@ -37,7 +37,7 @@
         "sfcwind": { "fullName": "Surface wind speed", "shortName": "Surface wind speed", "qualifier": "" },
         "sit": { "fullName": "Sea ice thickness", "shortName": "Sea ice thickness", "qualifier": "" },
         "sic": { "fullName": "Sea ice concentration", "shortName": "Sea ice concentration", "qualifier": "" },
-        "snow_depth": { "fullName": " Snow depth", "shortName": " Snow depth", "qualifier": "" },
+        "snd": { "fullName": "Snow depth", "shortName": "Snow depth", "qualifier": "" },
 
         "historic": "Historic",
         "future": "Future"

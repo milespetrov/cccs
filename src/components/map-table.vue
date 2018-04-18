@@ -3,17 +3,13 @@
         <summary>View map data</summary>
 
             <div class="summary">
-                <table id="map-table" class="table table-striped" v-if="config">
-        <thead>
-            <tr>
-                <th>Longitude <span class="sorting-cnt"><span class="sorting-icons"></span></span></th>
-                <th>Latitude <span class="sorting-cnt"><span class="sorting-icons"></span></span></th>
-                <th>Value <span class="sorting-cnt"><span class="sorting-icons"></span></span></th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+                <table id="map-table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th v-for="col in mapTableColumns" :key="col">{{col}}<span class="sorting-cnt"><span class="sorting-icons"></span></span></th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
     </details>
 </template>
@@ -24,61 +20,59 @@ import { State, Getter, Action } from 'vuex-class';
 
 @Component
 export default class MapTable extends Vue {
-    @Prop() config: any;
-    @State timeSlice: number;
+    @State timeSlice: number | null;
+    @State variableId: string | null;
+    @State datasetId: string | null;
+    @State rcpId: string | null;
+
+    @Getter datasetApi: any;
+    @Getter mapTableColumns: string[];
     table: any;
 
-    /** 
-     * Handles data transformation from API to the table for CMIP5 
-    */
-    CMIP5( json: CMIP5_Data ): [any[]] {
-        let b: any = [];
+    columns = ['Longitude', 'Latitude', 'Value'];
 
-        json.data.forEach((yl, yi) => {
-            yl.forEach((xl, xi) => {
-                b.push([json.xmin + xi, json.ymin + yi, json.data[yi][xi]]);
-            });
-        });
-        
-        return b;
+    @Watch('timeSlice')
+    onTimeChanged() {
+        this.updateTable();
     }
 
-    CMIP5_Url(timeSlice: number): string {
-        const timePeriods = ['2021-2040', '2041-2060', '2061-2080', '2081-2100'];
-        return `https://cmip5dev.azurewebsites.net/map_average/sic/rcp85/spring/${timePeriods[timeSlice]}`;
+    @Watch('variableId')
+    onVariableChanged() {
+        this.updateTable();
     }
-    
-    mounted(): void {
+
+    @Watch('datasetId')
+    onDatasetChanged() {
+        this.updateTable();
+    }
+
+    @Watch('rcpId')
+    onRcpChanged() {
+        this.updateTable();
+    }
+
+    async mounted(): Promise<void> {
+        const tableData = await this.datasetApi.getTableData();
+
         this.table = (<any>$('#map-table')).DataTable({
-            "dom": 'ilftpr',
-            "ajax": {
-                "url": this.CMIP5_Url(this.timeSlice),
-                "dataSrc": (json: CMIP5_Data) => {
-                    return this.CMIP5(json);
-                }
-            },
-            "oLanguage": {
-                "sSearch": "Filter items "
+            // dom elements in order:
+            // [i]nfo summary (showing x of y), [l]ength change (show z entries), [f]ilter
+            // [t]able, [p]agination, p[r]ocessing
+            dom: 'ilftpr',
+            data: tableData,
+            oLanguage: {
+                sSearch: 'Filter items '
             }
         });
     }
 
-    @Watch('timeSlice')
-    onTimeChanged(newValue: string) {
-        this.table.ajax.url(this.CMIP5_Url(parseInt(newValue)));
-        this.table.ajax.reload();
+    async updateTable() {
+        const tableData = await this.datasetApi.getTableData();
+        this.table.clear();
+        this.table.rows.add(tableData);
+        this.table.draw();
     }
 }
-
-interface CMIP5_Data {
-    xmin: number,
-    xmax: number,
-    ymin: number,
-    ymax: number,
-    data: [number[]]
-}
-
-
 </script>
 
 <style lang="css" scoped>

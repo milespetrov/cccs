@@ -66,6 +66,32 @@ class CMIP5Api extends DatasetApi {
 
         return result.layers;
     }
+
+    tableUrl(): string {
+        const slices = ['2021-2040', '2041-2060', '2061-2080', '2081-2100'];
+        return `${BASE_API_URL}/map_average/${this.state.variableId}/${this.state.rcpId}/${this.state.timePeriodId}/${
+            slices[this.state.timeSlice!]
+        }`;
+    }
+
+    async getTableData() {
+        const slices = ['2021-2040', '2041-2060', '2061-2080', '2081-2100'];
+        const apiData = await $.getJSON(
+            `${BASE_API_URL}/map_average/${this.state.variableId}/${this.state.rcpId}/${this.state.timePeriodId}/${
+                slices[this.state.timeSlice!]
+            }`
+        );
+
+        const b: any = [];
+
+        apiData.data.forEach((yl: any[], yi: number) => {
+            yl.forEach((xl: number, xi: number) => {
+                b.push([apiData.xmin + xi, apiData.ymin + yi, apiData.data[yi][xi]]);
+            });
+        });
+
+        return b;
+    }
 }
 
 export default function(state: AppState) {

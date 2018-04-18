@@ -70,6 +70,8 @@ const cimp5Dataset: DatasetSource = {
         }
     },
 
+    mapTableColumns: ['Longitude', 'Latitude', 'Value'],
+
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'
 };

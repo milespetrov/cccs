@@ -158,6 +158,10 @@ const getters = {
 
     datasetApi(state: AppState): DatasetApi {
         return datasetApis[state.datasetId!](state);
+    },
+
+    mapTableColumns(state: AppState): string[] {
+        return datasets[state.datasetId!].mapTableColumns;
     }
 };
 
