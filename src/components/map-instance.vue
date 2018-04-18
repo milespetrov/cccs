@@ -197,12 +197,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
-        this.updateLegend();
-
-        this.currentLayers.forEach((layerId: string) => {
-            this._mapi.layers.removeLayer(layerId);
-        });
-        this.addCurrentVarLayer();
+        this.switchLayers();
 
         if (!this.currentFeature) {
             return;
@@ -222,6 +217,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         let legend = legends[this.currentVariable];
         if (!legend) {
             legend = [];
+        } else {
+            legend.forEach((entry: any) => {
+                if (entry.layerId) {
+                    // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+                    entry.layerId += `_${this.counter}`;
+                }
+            });
         }
 
         this._mapi.legendConfig = legend;
@@ -229,10 +231,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentRcp')
     onRcpChanged(newValue: string, oldValue: string) {
-        this.currentLayers.forEach((layerId: string) => {
-            this._mapi.layers.removeLayer(layerId);
-        });
-        this.addCurrentVarLayer();
+        this.switchLayers();
 
         if (!this.currentFeature) {
             return;
@@ -242,10 +241,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentTimePeriod')
     onTimePeriodChange() {
-        this.currentLayers.forEach((layerId: string) => {
-            this._mapi.layers.removeLayer(layerId);
-        });
-        this.addCurrentVarLayer();
+        this.switchLayers();
 
         if (!this.currentFeature) {
             return;
@@ -253,7 +249,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.displayMiniChart();
     }
 
-    async addCurrentVarLayer() {
+    //async addCurrentVarLayer() {
+    async switchLayers(emptyMap?: boolean) {
+        if (!emptyMap) {
+            this._mapi.layers.allLayers.forEach((layer: any) => {
+                this._mapi.layers.removeLayer(layer.id);
+            });
+        }
+
         this.currentLayers = [];
         this.counter += 1;
 
@@ -267,6 +270,18 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             layer.id += `_${this.counter}`;
             const addedLayer = this._mapi.layers.addLayer(layer);
             this.currentLayers[index] = layer.id;
+        });
+
+        this.addReferenceLayers();
+        this.updateLegend();
+    }
+
+    async addReferenceLayers() {
+        const layers = await this.datasetApi.getReferenceLayers(this.configVersion);
+        layers.forEach((layer: any, index: number) => {
+            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            layer.id += `_${this.counter}`;
+            this._mapi.layers.addLayer(layer);
         });
     }
 
@@ -371,11 +386,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
             this._mapi = mapi;
 
-            this.updateLegend();
-            this.addCurrentVarLayer();
+            this.switchLayers(true);
 
             // move cluster directly after the map so tab order is preserved
-            $('.cip-control-cluster').first().insertAfter('rv-shell');
+            $('.cip-control-cluster')
+                .first()
+                .insertAfter('rv-shell');
 
             // turn off default identify behaviour
             this._mapi.identify = false;

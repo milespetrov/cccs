@@ -56,7 +56,7 @@
         }
     },
     "map": {
-        "initialBasemapId": "baseNrCan",
+        "initialBasemapId": "baseSimple",
         "components": {
             "geoSearch": {
                 "enabled": true,
@@ -178,11 +178,6 @@
                         "id": "SMR",
                         "layerType": "esriFeature",
                         "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer"
-                    },
-                    {
-                        "id": "labels",
-                        "layerType": "esriFeature",
-                        "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",

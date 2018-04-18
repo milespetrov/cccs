@@ -72,6 +72,13 @@ class AHCCDApi extends DatasetApi {
 
         return result[this.state.variableId!];
     }
+
+    /**
+     * AHCCD has no reference layers (currently), return an empty array
+     */
+    getReferenceLayers() {
+        return [];
+    }
 }
 
 export default function(state: AppState) {
