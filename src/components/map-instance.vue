@@ -773,7 +773,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         // TODO: positioning should be changed after https://github.com/fgpv-vpgf/fgpv-vpgf/pull/2623 is merged
         position: absolute;
-        bottom: 20px;
+        bottom: calc(#{$rv-bottom-offset} + 1rem);
         left: calc(#{$rv-left-offset} + #{$container-width} / 4);
         width: $container-width / 2;
 

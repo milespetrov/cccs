@@ -10,3 +10,6 @@ $container-width: 1170px;
 
 $rv-top-offset: $top-navigation-height + $page-header-height + $view-controls-height;
 $rv-left-offset: calc((100vw - #{$container-width}) / 2);
+
+// the height of fineprint container (1rem + 4px)
+$rv-bottom-offset: calc(1rem + 4px);

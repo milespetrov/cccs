@@ -26,23 +26,13 @@
             "layerId": "labels",
             "layerName": "Labels",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ]
+            "symbologyStack": []
         },
         {
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ],
+            "symbologyStack": [],
             "entryIndex": 4
         }
     ],
@@ -73,23 +63,13 @@
             "layerId": "labels",
             "layerName": "Labels",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ]
+            "symbologyStack": []
         },
         {
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ],
+            "symbologyStack": [],
             "entryIndex": 4
         }
     ],
@@ -121,23 +101,13 @@
             "layerId": "labels",
             "layerName": "Labels",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ]
+            "symbologyStack": []
         },
         {
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ],
+            "symbologyStack": [],
             "entryIndex": 4
         }
     ],
@@ -168,23 +138,13 @@
             "layerId": "labels",
             "layerName": "Labels",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ]
+            "symbologyStack": []
         },
         {
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [
-                {
-                    "image": "//i.imgur.com/56bZPq2.png",
-                    "text": ""
-                }
-            ],
+            "symbologyStack": [],
             "entryIndex": 4
         }
     ]

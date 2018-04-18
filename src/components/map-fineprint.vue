@@ -57,13 +57,13 @@ export default class MapFineprint extends Vue {
 
     pointer-events: none;
 
-    font-size: 10px;
+    font-size: 1rem;
     color: #000;
 
     .cip-map-fineprint-content {
         display: flex;
 
-        padding-bottom: 2px;
+        padding: 2px 0;
     }
 
     .cip-separator {
