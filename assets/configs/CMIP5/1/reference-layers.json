@@ -1,12 +1,6 @@
 {
     "layers": [
         {
-            "id": "labels",
-            "name": "Labels",
-            "layerType": "esriTile",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
-        },
-        {
             "id": "provinces",
             "name": "Provinces",
             "layerType": "esriDynamic",
@@ -17,6 +11,12 @@
                 }
             ],
             "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/SupportData/MapServer"
+        },
+        {
+            "id": "labels",
+            "name": "Labels",
+            "layerType": "esriTile",
+            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
         }
     ]
 }
