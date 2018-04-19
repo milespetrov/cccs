@@ -15,7 +15,7 @@ async function makeConfig(
 ): Promise<any> {
     const cmip5Api = datasetApis[DatasetId.CMIP5](state);
     const { timePeriodId, rcpId, featurePoint } = state;
-    let { variableId } = state;
+    const { variableId } = state;
 
     // chartSeries default to `null` which cannot be used as non-value in a desctructuring statement
     const chartSeries = state.chartSeries || [0, 1, 2];
@@ -26,61 +26,65 @@ async function makeConfig(
         return null;
     }
 
-    // get chart data
-    const data = await cmip5Api.getData();
-
-    const actualData = data.properties.models[rcpId][timePeriodId];
-
-    const seriesData = actualData['50'].anomaly.map((value: any) => {
-        return value ? parseInt(value.toFixed(2)) : value;
-    });
-
-    // zip the 25th & 75th percentiles
-    const seriesData25 = actualData['25'].anomaly.map((value: any, index: number) => {
-        return [
-            value ? +value.toFixed(2) : value,
-            actualData['75'].anomaly[index] ? parseInt(actualData['75'].anomaly[index].toFixed(2)) : null
-        ];
-    });
-
-    // zip the 5th & 95th percentiles
-    const seriesData5 = actualData['5'].anomaly.map((value: any, index: number) => {
-        return [
-            value ? +value.toFixed(2) : value,
-            actualData['95'].anomaly[index]
-                ? parseInt(actualData['95'].anomaly[index].toFixed(2))
-                : actualData['95'].anomaly[index]
-        ];
-    });
-
     // HACK: get a proper variable name
     // should be retrieved from the store
     const variables: object[] = [
         {
             name: 'Surface wind speed',
             id: 'sfcwind',
-            unit: '%'
+            unit: ' m/s',
+            rounding: 1
         },
         {
             name: 'Sea ice thickness',
             id: 'sit',
-            unit: '%'
+            unit: ' m',
+            rounding: 2
         },
         {
             name: 'Sea ice concentration',
             id: 'sic',
-            unit: '%'
+            unit: '%',
+            rounding: 1
         },
         {
             name: 'Snow depth',
             id: 'snow_depth',
-            unit: '%'
+            unit: ' cm',
+            rounding: 1
         }
     ];
 
-    const item = variables.find((v: { id: string }) => v.id === variableId);
-    // TODO: what does that do?
-    variableId = item ? (<any>item).name : variableId;
+    const variable: any = variables.find((v: { id: string }) => v.id === variableId);
+
+    // get chart data
+    const data = await cmip5Api.getData();
+
+    const actualData = data.properties.models[rcpId][timePeriodId];
+
+    const seriesData = actualData['50'].anomaly.map((value: any) => {
+        return value ? parseInt(value.toFixed(variable.rounding)) : value;
+    });
+
+    // zip the 25th & 75th percentiles
+    const seriesData25 = actualData['25'].anomaly.map((value: any, index: number) => {
+        return [
+            value ? +value.toFixed(variable.rounding) : value,
+            actualData['75'].anomaly[index]
+                ? parseInt(actualData['75'].anomaly[index].toFixed(variable.rounding))
+                : actualData['75'].anomaly[index]
+        ];
+    });
+
+    // zip the 5th & 95th percentiles
+    const seriesData5 = actualData['5'].anomaly.map((value: any, index: number) => {
+        return [
+            value ? +value.toFixed(variable.rounding) : value,
+            actualData['95'].anomaly[index]
+                ? parseInt(actualData['95'].anomaly[index].toFixed(variable.rounding))
+                : actualData['95'].anomaly[index]
+        ];
+    });
 
     const config = {
         chart: {
@@ -107,7 +111,7 @@ async function makeConfig(
             enabled: false
         },
         title: {
-            text: `${variableId} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
+            text: `${variable.name} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             x: -110
         },
         subtitle: {
@@ -115,7 +119,6 @@ async function makeConfig(
             x: -110
         },
         xAxis: {
-            // categories: details.data.Year_Annee,
             title: {
                 text: 'Year'
             },
@@ -133,13 +136,12 @@ async function makeConfig(
         },
         yAxis: {
             title: {
-                text: `${variableId}, %`
+                text: `${variable.name}, ${variable.unit}`
             },
             labels: { style: { color: 'black' } }
         },
         tooltip: {
-            shared: true,
-            valueSuffix: `%`
+            shared: true
         },
         legend: {
             layout: 'vertical',
@@ -152,7 +154,6 @@ async function makeConfig(
                 }
             },
             y: 40,
-            x: -62,
             labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
             symbolHeight: 0.1,
@@ -183,7 +184,7 @@ async function makeConfig(
         },
         series: [
             {
-                name: 'Ensemble Median',
+                name: `Ensemble Median, ${variable.unit}`,
                 data: seriesData,
                 type: 'line',
                 pointPadding: 0.1,
@@ -198,7 +199,7 @@ async function makeConfig(
                 lineWidth: 2.3
             },
             {
-                name: '25th, 75th Percentiles',
+                name: `25th, 75th Percentiles, ${variable.unit}`,
                 data: seriesData25,
                 type: 'arearange',
                 zIndex: 1,
@@ -209,7 +210,7 @@ async function makeConfig(
                 lineWidth: 0
             },
             {
-                name: '5th, 95th Percentiles',
+                name: `5th, 95th Percentiles, ${variable.unit}`,
                 data: seriesData5,
                 type: 'arearange',
                 zIndex: 0,
@@ -279,7 +280,7 @@ async function makeConfig(
             }
         },
         title: {
-            text: `${variableId} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
+            text: `${variable.name} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -294,12 +295,11 @@ async function makeConfig(
             shadow: false,
             borderWidth: 0,
             backgroundColor: 'rgba(255,255,255,0)',
-            shared: false,
-            valueSuffix: '%'
+            shared: false
         },
         series: [
             {
-                name: 'Ensemble Median',
+                name: `Ensemble Median, ${variable.unit}`,
                 data: seriesData,
                 type: 'line',
                 pointPadding: 0.1,
@@ -309,7 +309,7 @@ async function makeConfig(
                 marker: { enabled: false }
             },
             {
-                name: '25th, 75th Percentiles',
+                name: `25th, 75th Percentiles, ${variable.unit}`,
                 data: seriesData25,
                 type: 'arearange',
                 zIndex: 1,
@@ -318,7 +318,7 @@ async function makeConfig(
                 enableMouseTracking: false
             },
             {
-                name: '5th, 95th Percentiles',
+                name: `5th, 95th Percentiles, ${variable.unit}`,
                 data: seriesData5,
                 type: 'arearange',
                 zIndex: 0,

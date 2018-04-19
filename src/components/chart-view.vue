@@ -221,6 +221,10 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
         height: 500px;
     }
 
+    .highcharts-legend {
+        left: 931px !important;
+    }
+
     .highcharts-legend-item-hidden .fa-check {
         color: inherit !important;
     }

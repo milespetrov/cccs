@@ -29,7 +29,7 @@
 
             <div class="row" v-if="colourRamp">
                 <div class="col-md-4">
-                    <span class="cip-label">{{ $t(`variableSelector.${currentVariable}.shortName`) }} change (%):</span>
+                    <span class="cip-label">{{ $t(`variableSelector.${currentVariable}.shortName`) }} change ({{$t(`units.${currentVariable}.shortName`)}}):</span>
                 </div>
                 <div class="col-md-8">
                     <map-colour-ramp
@@ -295,7 +295,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // set new layer visible
         this.getLayerById(this.currentLayers[newValue]).visibility = true;
 
-        // no need to update the mini-chart on timeslice change since the chart includes the data for all the entire time range
+        // no need to update the mini-chart on timeslice change since the chart includes the data for the entire time range
     }
 
     getLayerById(searchId: string): any {

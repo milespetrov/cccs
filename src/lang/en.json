@@ -127,5 +127,16 @@
             "fullName": "Downscale Climate Scenario",
             "qualifier": "DCS"
         }
+    },
+
+    "units": {
+        "sit": { "shortName": "m", "fullName": "metres", "qualifier": "" },
+        "sic": { "shortName": "%", "fullName": "%", "qualifier": "" },
+        "sfcwind": { "shortName": "m/s", "fullName": "metres/second", "qualifier": "" },
+        "snd": { "shortName": "cm", "fullName": "centimetres", "qualifier": "" },
+        "tmean": { "shortName": "°C", "fullName": "degrees Celsius", "qualifier": "" },
+        "tmax": { "shortName": "°C", "fullName": "degrees Celsius", "qualifier": "" },
+        "tmin": { "shortName": "°C", "fullName": "degrees Celsius", "qualifier": "" },
+        "precip": { "shortName": "mm", "fullName": "millimetres", "qualifier": "" }
     }
 }

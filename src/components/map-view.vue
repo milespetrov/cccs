@@ -1,16 +1,9 @@
 <template>
     <aside class="cip-map-view">
-
-        <!-- <map-instance :key="`instance-${reloadKey}`"></map-instance> -->
-
         <map-table :key="`instance-${reloadKey}`"></map-table>
 
         <br>
         <p>{{ $t(`map.${datasetId}_desc`) }}</p>
-
-       <!--  <rv-map class="myMap" id="mobile-map" is="rv-map"
-            rv-config="http://fgpv.cloudapp.net/demo/develop/dev/samples/config/config-sample-01-structured-visibility-sets.json"
-            rv-langs='["en-CA", "fr-CA"]'></rv-map> -->
     </aside>
 </template>
 
