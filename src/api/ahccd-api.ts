@@ -80,6 +80,9 @@ class AHCCDApi extends DatasetApi {
         return [];
     }
 
+    /**
+     * Returns an array of rows for a datatable.
+     */
     async getTableData() {
         const aliases: any = {
             station_name_nom: 'Station Name',
