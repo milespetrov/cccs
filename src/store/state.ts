@@ -9,10 +9,10 @@ export interface AppState {
     featurePoint: MapPoint | null;
     rcpId: string | null;
     centerPoint: MapPoint | null;
+    locationPoint: MapPoint | null;
     zoomLevel: string | null;
     chartRange: Range | null;
     chartSeries: number[] | null;
-    mapPin: MapPoint | null;
     timeSlice: number | null;
 
     internalRouteUpdate: boolean;

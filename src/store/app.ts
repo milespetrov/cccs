@@ -21,10 +21,10 @@ const state: AppState = {
     featurePoint: null,
     rcpId: null,
     centerPoint: null,
+    locationPoint: null,
     zoomLevel: null,
     chartRange: null,
     chartSeries: null,
-    mapPin: null,
     timeSlice: null,
 
     // Does not belong
@@ -36,6 +36,7 @@ enum Action {
     clearChart = 'clearChart',
     clearFeature = 'clearFeature',
     setCenterPoint = 'setCenterPoint',
+    setLocationPoint = 'setLocationPoint',
     setChartRange = 'setChartRange',
     setChartSeries = 'setChartSeries',
     setCurrentView = 'setCurrentView',
@@ -43,7 +44,6 @@ enum Action {
     setFeatureId = 'setFeatureId',
     setFeaturePoint = 'setFeaturePoint',
     setInternalRouteUpdate = 'setInternalRouteUpdate',
-    setMapPin = 'setMapPin',
     setRcpId = 'setRcpId',
     setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
@@ -53,6 +53,7 @@ enum Action {
 
 enum Mutation {
     SET_CENTER_POINT = 'SET_CENTER_POINT',
+    SET_LOCATION_POINT = 'SET_LOCATION_POINT',
     SET_CHART_RANGE = 'SET_CHART_RANGE',
     SET_CHART_SERIES = 'SET_CHART_SERIES',
     SET_CURRENT_VIEW = 'SET_CURRENT_VIEW',
@@ -60,7 +61,6 @@ enum Mutation {
     SET_FEATURE_ID = 'SET_FEATURE_ID',
     SET_FEATURE_POINT = 'SET_FEATURE_POINT',
     SET_INTERNAL_ROUTE_UPDATE = 'SET_INTERNAL_ROUTE_UPDATE',
-    SET_MAP_PIN = 'SET_MAP_PIN',
     SET_RCP_ID = 'SET_RCP_ID',
     SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
@@ -271,6 +271,21 @@ const actions = {
         context.commit(Mutation.SET_RCP_TIME_SLICE, value);
     },
 
+    [Action.setLocationPoint](context: AppContext, value: { x: number; y: number } | string | null): void {
+        let point;
+
+        if (value === null) {
+            point = null;
+        } else if (typeof value !== 'string') {
+            point = new MapPoint(value.x, value.y);
+        } else {
+            const [x, y] = value.split(',');
+            point = new MapPoint(parseFloat(x), parseFloat(y));
+        }
+
+        context.commit(Mutation.SET_LOCATION_POINT, point);
+    },
+
     [Action.setCenterPoint](context: AppContext, value: { x: number; y: number } | string | null): void {
         let point;
 
@@ -288,21 +303,6 @@ const actions = {
 
     [Action.setZoomLevel](context: AppContext, value: string | null) {
         context.commit(Mutation.SET_ZOOM_LEVEL, value);
-    },
-
-    [Action.setMapPin](context: AppContext, value: { x: number; y: number } | string | null): void {
-        let point;
-
-        if (value === null) {
-            point = null;
-        } else if (typeof value !== 'string') {
-            point = new MapPoint(value.x, value.y);
-        } else {
-            const [x, y] = value.split(',');
-            point = new MapPoint(parseFloat(x), parseFloat(y));
-        }
-
-        context.commit(Mutation.SET_MAP_PIN, value);
     },
 
     [Action.setChartRange](context: AppContext, value: { min: number; max: number } | null) {
@@ -373,16 +373,16 @@ const mutations = {
         state.timeSlice = value;
     },
 
+    [Mutation.SET_LOCATION_POINT](state: AppState, value: MapPoint | null): void {
+        state.locationPoint = value;
+    },
+
     [Mutation.SET_CENTER_POINT](state: AppState, value: MapPoint | null): void {
         state.centerPoint = value;
     },
 
     [Mutation.SET_ZOOM_LEVEL](state: AppState, value: string | null): void {
         state.zoomLevel = value;
-    },
-
-    [Mutation.SET_MAP_PIN](state: AppState, value: MapPoint): void {
-        state.mapPin = value;
     },
 
     [Mutation.SET_CHART_RANGE](state: AppState, value: Range | null): void {
