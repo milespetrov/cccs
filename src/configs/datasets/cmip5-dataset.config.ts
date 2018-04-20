@@ -65,7 +65,20 @@ const cimp5Dataset: DatasetSource = {
                 labels: ['-40', '40']
             },
             [VariableId.SurfaceWind]: {
-                labels: ['-30', '30']
+                labels: ['-30', '30'],
+                colours: [
+                    '#053061',
+                    '#2166ac',
+                    '#4393c3',
+                    '#92c5de',
+                    '#d1e5f0',
+                    '#f7f7f7',
+                    '#fddbc7',
+                    '#f4a582',
+                    '#d6604d',
+                    '#b2182b',
+                    '#67001f'
+                ]
             }
         }
     },
