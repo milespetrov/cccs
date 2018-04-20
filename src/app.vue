@@ -1,17 +1,6 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="currentView">
 
-        <div class="cip-strip cip-page-header" @click="changeViewToMap">
-            <!-- TODO: create two separate headers for map and chart views -->
-            <!-- TODO: move header into a separate component -->
-            <div class="cip-header container">
-                <h1>{{ $t('title') }} </h1>
-
-                <span class="cip-view-toggle-label">click to see the full map</span>
-            </div>
-
-        </div>
-
          <div class="cip-strip cip-top-navigation">
             <!-- TODO: move top-navigatoin into a separate component -->
 
@@ -55,6 +44,18 @@
                     </span>
                 </div>
             </nav>
+        </div>
+
+        
+        <div class="cip-strip cip-page-header" @click="changeViewToMap">
+            <!-- TODO: create two separate headers for map and chart views -->
+            <!-- TODO: move header into a separate component -->
+            <div class="cip-header container">
+                <h1>{{ $t('title') }} </h1>
+
+                <span class="cip-view-toggle-label">click to see the full map</span>
+            </div>
+
         </div>
 
         <div class="cip-strip cip-view-controls">
@@ -301,10 +302,7 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     &.cip-top-navigation {
         background-color: rgba(255, 255, 255, 0.95);
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index:2;
+        z-index: 2;
     }
 
     &.cip-page-header {

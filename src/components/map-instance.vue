@@ -103,7 +103,7 @@ export interface IdentifySession {
     requests: IdentifyRequest[];
 }
 
-let centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
+const centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
 
 @Component({
     components: {
@@ -322,11 +322,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this._mapi.simpleLayer.addGeometry(point);
 
         race(
-            this._mapi.boundsChanged.skip(2).takeUntil(centerPntDeactivate).take(1), // skip first two boundChange as the map pans and zooms
-            this._mapi.mouseDown.takeUntil(centerPntDeactivate).take(1))
-        .subscribe(() => this._mapi.simpleLayer.removeGeometry('centerPnt'));
+            this._mapi.boundsChanged
+                .skip(2)
+                .takeUntil(centerPntDeactivate)
+                .take(1), // skip first two boundChange as the map pans and zooms
+            this._mapi.mouseDown.takeUntil(centerPntDeactivate).take(1)
+        ).subscribe(() => this._mapi.simpleLayer.removeGeometry('centerPnt'));
 
-        this.setCenterPoint({x: this.locationPoint.x, y: this.locationPoint.y});
+        this.setCenterPoint({ x: this.locationPoint.x, y: this.locationPoint.y });
         this.setZoomLevel(8);
 
         this.updateRoute();
