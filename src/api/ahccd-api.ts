@@ -2,29 +2,11 @@ import { DatasetApi } from './types';
 import { getJSON } from './util';
 import { DatasetId } from '@/types';
 import { AppState } from '@/store';
+import mappings from '@/globals/mappings';
+import ahccdDataset from '@/configs/datasets/ahccd-dataset-config';
 
 const BASE_API_URL = 'http://ahccd-dev.azurewebsites.net';
 const BASE_MAP_URL = './assets/configs/AHCCD';
-
-const periodMappings: { [key: string]: number } = {
-    Jan_Janv: 1,
-    Feb_Fev: 2,
-    Mar_March: 3,
-    Apr_Avr: 4,
-    May_Mai: 5,
-    June_Juin: 6,
-    July_Juil: 7,
-    Aug_Aout: 8,
-    Sept_Sept: 9,
-    Oct_Oct: 10,
-    Nov_Nov: 11,
-    Dec_Dec: 12,
-    winter: 13,
-    spring: 14,
-    summer: 15,
-    fall: 16,
-    annual: 17
-};
 
 /**
  * @class AHCCDApi
@@ -38,7 +20,7 @@ class AHCCDApi extends DatasetApi {
      */
     async getData(): Promise<any> {
         const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
-            periodMappings[this.state.timePeriodId!]
+            mappings.periodToNum[this.state.timePeriodId!]
         }`;
         const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
 
@@ -54,7 +36,7 @@ class AHCCDApi extends DatasetApi {
      */
     async getTrend(startYear: number, endYear: number): Promise<any> {
         const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
-            periodMappings[this.state.timePeriodId!]
+            mappings.periodToNum[this.state.timePeriodId!]
         }/trend/${startYear}/${endYear}`;
         const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
 
@@ -78,6 +60,49 @@ class AHCCDApi extends DatasetApi {
      */
     getReferenceLayers() {
         return [];
+    }
+
+    /**
+     * Returns an array of rows for a datatable.
+     */
+    async getTableData() {
+        enum columns {
+            'Station Name' = 'station_name_nom',
+            'Station ID' = 'stnid',
+            'Beginning Year' = 'beg_yr_annee_deb',
+            'Beginning Month' = 'beg_mon_mois_deb',
+            'Ending Year' = 'end_yr_annee_fin',
+            'Ending Month' = 'end_mon_mois_fin',
+            'Value' = 'Annual_Annuel'
+        }
+        const varArray: any = {
+            precip: 3,
+            tmean: 0,
+            tmax: 2,
+            tmin: 1
+        };
+
+        const tempData: any = await $.getJSON(
+            `http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${
+                varArray[this.state.variableId!]
+            }/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
+            data => {
+                return data;
+            }
+        );
+        const tableData: any[] = [];
+
+        tempData.features.forEach((feature: any) => {
+            const row: any[] = [];
+            ahccdDataset.mapTableColumns.forEach((column: string) => {
+                row.push(feature.attributes[columns[<any>column]]);
+            });
+            tableData.push(row);
+        });
+
+        console.log(tableData);
+
+        return tableData;
     }
 }
 

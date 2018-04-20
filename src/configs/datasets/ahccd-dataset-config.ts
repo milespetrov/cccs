@@ -24,6 +24,16 @@ const ahccdDataset: DatasetSource = {
 
     variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
 
+    mapTableColumns: [
+        'Station Name',
+        'Station ID',
+        'Beginning Year',
+        'Beginning Month',
+        'Ending Year',
+        'Ending Month',
+        'Value'
+    ],
+
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'
 };

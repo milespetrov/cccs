@@ -38,7 +38,7 @@ export enum VariableId {
     SurfaceWind = 'sfcwind',
     IceThickness = 'sit',
     IceConcentration = 'sic',
-    SnowDepth = 'snow_depth'
+    SnowDepth = 'snd'
 }
 
 /**

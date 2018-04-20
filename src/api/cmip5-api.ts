@@ -1,6 +1,6 @@
 import { DatasetApi } from './types';
 import { getJSON } from './util';
-import { DatasetId } from '@/types';
+import { DatasetId, VariableId } from '@/types';
 import { AppState } from '@/store';
 
 const BASE_API_URL = 'https://cmip5dev.azurewebsites.net';
@@ -65,6 +65,40 @@ class CMIP5Api extends DatasetApi {
         const result = await $.getJSON(fetchUrl);
 
         return result.layers;
+    }
+
+    /**
+     * Returns an array of rows for a datatable. Values are properly rounded and appended with +/-
+     */
+    async getTableData() {
+        const slices = ['2021-2040', '2041-2060', '2061-2080', '2081-2100'];
+        const apiData = await $.getJSON(
+            `${BASE_API_URL}/map_average/${this.state.variableId}/${this.state.rcpId}/${this.state.timePeriodId}/${
+                slices[this.state.timeSlice!]
+            }`
+        );
+
+        const tableData: any = [];
+        const roundingAmount = this.state.variableId === VariableId.IceConcentration ? 2 : 1;
+
+        apiData.data.forEach((yl: any[], yi: number) => {
+            yl.forEach((xl: number, xi: number) => {
+                // round the value
+                let actualValue: string = apiData.data[yi][xi].toFixed(roundingAmount);
+
+                // append a '+' if needed
+                if (parseInt(actualValue) >= 0) {
+                    // some zeroes were showing up negative...
+                    if (actualValue.startsWith('-')) {
+                        actualValue = actualValue.slice(1);
+                    }
+                    actualValue = '+' + actualValue;
+                }
+                tableData.push([apiData.xmin + xi, apiData.ymin + yi, actualValue]);
+            });
+        });
+
+        return tableData;
     }
 }
 
