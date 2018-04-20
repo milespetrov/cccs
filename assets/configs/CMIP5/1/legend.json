@@ -2,7 +2,7 @@
     "sfcwind": [
         {
             "infoType": "text",
-            "content": " ... description here ..."
+            "content": "Projected changes in Surface wind from CMIP Phase 5. This change is measured in metres/second."
         },
         {
             "infoType": "unboundLayer",
@@ -39,7 +39,7 @@
     "sit": [
         {
             "infoType": "text",
-            "content": " ... description here ..."
+            "content": "Projected changes in Sea ice thickness from CMIP Phase 5. This change is measured in metres."
         },
         {
             "infoType": "unboundLayer",
@@ -114,7 +114,7 @@
     "snd": [
         {
             "infoType": "text",
-            "content": " ... description here ..."
+            "content": "Projected changes in Snow depth from CMIP Phase 5. This change is measured in centimetres."
         },
         {
             "infoType": "unboundLayer",
