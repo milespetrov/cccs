@@ -146,6 +146,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setTimeSlice: (value: number | null) => void;
     @Action setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
     @Action setRcpId: (value: string | null) => void;
+    @Action clearChart: () => void;
 
     @State currentView: string;
 
@@ -157,8 +158,15 @@ export default class App extends mixins(UpdateRouteMixin) {
     @State('datasetId') currentDataset: string;
 
     @Watch('currentDataset')
-    async onVariableChange() {
+    async onDatasetChange(newValue: string, oldValue: string) {
         this.reloadKey = this.currentDataset;
+
+        if (oldValue === null) {
+            return;
+        }
+        this.setFeatureId(null);
+        this.clearChart();
+        this.updateRoute();
     }
 
     @State centerPoint: MapPoint;
@@ -278,7 +286,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     &.cip-backdrop-map {
         position: absolute;
         width: 100%;
-        top:0;
+        top: 0;
 
         .chart-view & {
             height: $top-navigation-height + $page-header-height + $view-controls-height;

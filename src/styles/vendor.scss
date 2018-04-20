@@ -115,6 +115,10 @@
             box-shadow: none !important;
         }
     }
+
+    .rv-export {
+        max-height: calc(100% - 17rem) !important;
+    }
 }
 
 // side navigation still needs to be adjusted as it can't be properly added into the inner-shell container

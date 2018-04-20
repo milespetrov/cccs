@@ -54,9 +54,7 @@ async function makeConfig(
         }
     ];
 
-    const item = variables.find((v: { id: string }) => v.id === variableId);
-    // TODO: what does that do?
-    const varFullName = item ? (<any>item).name : variableId;
+    const variable: any = variables.find((v: { id: string }) => v.id === variableId);
 
     const config = {
         chart: {
@@ -83,12 +81,8 @@ async function makeConfig(
             enabled: false
         },
         title: {
-            text: `${varFullName} at ${data.station_name},
+            text: `${variable.name} at ${data.station_name},
              ${data.data_years.start} - ${data.data_years.end}`,
-            x: -110
-        },
-        subtitle: {
-            text: 'climate-adaptation.canada.ca',
             x: -110
         },
         xAxis: {
@@ -108,6 +102,11 @@ async function makeConfig(
 
                     const data = await ahccdApi.getTrend(event.min, event.max);
 
+                    // Makes sure we dont display old info
+                    if (`${event.min},${event.max}` !== state.chartRange!.safeString) {
+                        return;
+                    }
+
                     console.log(data);
                     (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
                     if (!data.value) {
@@ -115,7 +114,7 @@ async function makeConfig(
                     } else {
                         (<any>secondTrendValueLabel).textSetter(
                             //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
-                            `<b>${((<any>data).value > 0 ? '+' : '') + +(<any>data).value.toFixed(4)}</b>`
+                            `<b>${(data.value > 0 ? '+' : '') + +data.value.toFixed(4)}</b>`
                         );
                     }
                     (<any>secondTrendValueLabel).attr({
@@ -126,15 +125,14 @@ async function makeConfig(
         },
         yAxis: {
             title: {
-                text: `${varFullName}, ${(<any>item!).unit}`
+                text: `${variable.name}, ${variable.unit}`
             },
             labels: { style: { color: 'black' } },
             min: Math.min(0, ...seriesData) * 1.5,
             max: Math.max(0, ...seriesData) * 1.5
         },
         tooltip: {
-            shared: true,
-            valueSuffix: `${(<any>item!).unit}`
+            shared: true
         },
         legend: {
             layout: 'vertical',
@@ -146,7 +144,7 @@ async function makeConfig(
                     fontSize: '16px'
                 }
             },
-            y: 40,
+            y: 30,
             x: -128,
             labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
@@ -172,7 +170,7 @@ async function makeConfig(
         },
         series: [
             {
-                name: mappings.periodToNames[timePeriodId],
+                name: `${mappings.periodToNames[timePeriodId]}, ${variable.unit}`,
                 data: seriesData,
                 type: 'spline',
                 pointPadding: 0.1,
@@ -242,7 +240,7 @@ async function makeConfig(
             }
         },
         title: {
-            text: `${varFullName} at ${data.station_name}, ${data.data_years.start} - ${data.data_years.end}`,
+            text: `${variable.name} at ${data.station_name}, ${data.data_years.start} - ${data.data_years.end}`,
             style: { fontSize: '10px' }
         },
         plotOptions: {
@@ -260,7 +258,7 @@ async function makeConfig(
         },
         series: [
             {
-                name: mappings.periodToNames[timePeriodId],
+                name: `${mappings.periodToNames[timePeriodId]}, ${variable.unit}`,
                 data: seriesData,
                 color: '#666666',
                 type: 'line',
@@ -281,7 +279,7 @@ async function makeConfig(
 }
 
 function makeLabels(event: any, data: any) {
-    const firstLabelY = 145;
+    const firstLabelY = 135;
     const stationTrendValue = data.trend.value ? data.trend.value : 'N/A';
     const ren = event.target.renderer;
 

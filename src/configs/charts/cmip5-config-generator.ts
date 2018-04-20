@@ -14,8 +14,7 @@ async function makeConfig(
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
     const cmip5Api = datasetApis[DatasetId.CMIP5](state);
-    const { timePeriodId, rcpId, featurePoint } = state;
-    const { variableId } = state;
+    const { timePeriodId, rcpId, featurePoint, variableId } = state;
 
     // chartSeries default to `null` which cannot be used as non-value in a desctructuring statement
     const chartSeries = state.chartSeries || [0, 1, 2];
@@ -49,7 +48,7 @@ async function makeConfig(
         },
         {
             name: 'Snow depth',
-            id: 'snow_depth',
+            id: 'snd',
             unit: ' cm',
             rounding: 1
         }
@@ -114,10 +113,6 @@ async function makeConfig(
             text: `${variable.name} at ${titleLatLong(featurePoint.x, featurePoint.y)}, 1900 - 2100`,
             x: -110
         },
-        subtitle: {
-            text: 'climate-adaptation.canada.ca',
-            x: -110
-        },
         xAxis: {
             title: {
                 text: 'Year'
@@ -153,7 +148,7 @@ async function makeConfig(
                     fontSize: '16px'
                 }
             },
-            y: 40,
+            y: 30,
             labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
             useHTML: true,
             symbolHeight: 0.1,
@@ -338,7 +333,7 @@ async function makeConfig(
 }
 
 function makeLabels(event: any, data: any) {
-    const firstLabelY = 145;
+    const firstLabelY = 135;
     const ren = event.target.renderer;
 
     ren
