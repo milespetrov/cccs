@@ -20,11 +20,11 @@ const periodToNames: StringToString = {
     Oct_Oct: 'October',
     Nov_Nov: 'November',
     Dec_Dec: 'December',
-    Winter_Hiver: 'Winter',
-    Spring_Printemp: 'Spring',
-    Summer_Ete: 'Summer',
-    Autumn_Autome: 'Autumn',
-    Annual_Annuel: 'Annual'
+    winter: 'Winter',
+    spring: 'Spring',
+    summer: 'Summer',
+    fall: 'Autumn',
+    annual: 'Annual'
 };
 
 // For mapping to the data API
@@ -41,11 +41,11 @@ const periodToNum: StringToNum = {
     Oct_Oct: 10,
     Nov_Nov: 11,
     Dec_Dec: 12,
-    Winter_Hiver: 13,
-    Spring_Printemp: 14,
-    Summer_Ete: 15,
-    Autumn_Autome: 16,
-    Annual_Annuel: 17
+    winter: 13,
+    spring: 14,
+    summer: 15,
+    fall: 16,
+    annual: 17
 };
 
 export default {

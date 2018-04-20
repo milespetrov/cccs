@@ -175,6 +175,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State centerPoint: MapPoint;
     @State zoomLevel: number;
     @State mapPin: MapPoint;
+    @State featurePoint: MapPoint;
 
     @Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
@@ -259,7 +260,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         this.currentLayers = [];
         this.counter += 1;
-
         const layers = await this.datasetApi.getDataLayers(this.configVersion);
         layers.forEach((layer: any, index: number) => {
             if (index === this.timeSlice) {
@@ -271,7 +271,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             const addedLayer = this._mapi.layers.addLayer(layer);
             this.currentLayers[index] = layer.id;
         });
-
         this.addReferenceLayers();
         this.updateLegend();
     }
@@ -383,7 +382,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // tslint:disable-next-line:no-unused-expression
         new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}/${this.configVersion}/ramp.en-CA.json`);
 
-        RZ.mapAdded.takeUntil(this.deactivate).subscribe((mapi: any) => {
+        RZ.mapAdded.takeUntil(this.deactivate).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
             this.switchLayers(true);
@@ -432,8 +431,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             });
 
             // if the current station is already set, open the mini chart
-            if (this.currentFeature) {
-                // this.displayMiniChart();
+            if (this.currentFeature && this._mapi.identifyMode !== 'silent') {
+                this.displayMiniChart();
+            } else if (this.featurePoint) {
+                await this.drawGrid(this.featurePoint, -1);
+
+                // draw the minichart
+                this.displayMiniChart();
             }
 
             if (this.zoomLevel) {
@@ -532,21 +536,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // the loading indicator will show up
             this.displayMiniChart(false);
 
-            // retrieve the geometry points from the api
-            const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(event.xy);
-
-            // build the polygon
-            const RZ = (<any>window).RZ;
-            const poly = new RZ.GEO.Polygon(requests[0].sessionId, coordinates);
-
-            //update drawn geometry
-            this._mapi.simpleLayer.removeGeometry();
-            this._mapi.simpleLayer.addGeometry([poly]);
-
-            // update the route
-            this.setFeaturePoint(event.xy);
-            this.setFeatureId(gridId);
-            this.updateRoute();
+            await this.drawGrid(event.xy, requests[0].sessionId);
 
             // draw the minichart
             this.displayMiniChart();
@@ -573,6 +563,31 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this.displayMiniChart();
             });
         }
+    }
+
+    /**
+     * Draw the geometry for the grid square containing xy
+     *
+     * @param xy the latlong point to draw the grid around
+     * @param requestNum (should probably be replaced) used as an id for the polygon
+     */
+    async drawGrid(xy: { x: number; y: number }, requestNum: number) {
+        // retrieve the geometry points from the api
+        const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(xy);
+
+        // build the polygon
+        const RZ = (<any>window).RZ;
+        const poly = new RZ.GEO.Polygon(requestNum, coordinates);
+
+        //update drawn geometry
+        this._mapi.simpleLayer.removeGeometry();
+        this._mapi.simpleLayer.addGeometry([poly]);
+
+        // update the route
+        this.setFeaturePoint(xy);
+        this.setFeatureId(gridId);
+
+        this.updateRoute();
     }
 
     // if showChart is `false`, the chart box will drawn with loading animation
