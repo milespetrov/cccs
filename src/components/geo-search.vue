@@ -8,7 +8,10 @@
                 class="form-control"
                 v-model="query"
                 @focus="isVisible = true"
-                placeholder="enter location" />
+                @click="isVisible = true"
+                @keydown="isVisible = $event.keyCode !== 9 || isVisible"
+                placeholder="enter location"
+                ref="geosearchinput" />
             <i class="fas fa-search"></i>
         </div>
 
@@ -44,6 +47,7 @@ import { mixins } from 'vue-class-component';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 import { UpdateRouteMixin } from '../globals/mixin';
+import api from '../api/';
 
 Vue.filter('truncate', (str: string) => {
     if (str && str.length > 15) {
@@ -55,8 +59,8 @@ Vue.filter('truncate', (str: string) => {
 @Component
 export default class GeoSearch extends mixins(UpdateRouteMixin) {
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
+    @Action setLocationPoint: (value: { x: number; y: number }) => void;
     @Action setZoomLevel: (value: number) => void;
-    @Action setMapPin: (value: { x: number; y: number }) => void;
     query: string = '';
 
     abbreviations = {
@@ -116,11 +120,11 @@ export default class GeoSearch extends mixins(UpdateRouteMixin) {
     }
 
     zoomToResult(x: number, y: number): void {
-        const centerPoint = { x, y };
-        this.setCenterPoint(centerPoint);
-        this.setZoomLevel(8);
-        this.updateRoute();
-        this.setMapPin(centerPoint);
+        this.setLocationPoint({x, y});
+
+        // when search item is selected close the result box and refocus on search input
+        (<HTMLElement>this.$refs.geosearchinput).focus();
+        this.isVisible = false;
     }
 
     clickOutListener(e: MouseEvent): void {

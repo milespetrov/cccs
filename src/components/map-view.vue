@@ -43,4 +43,8 @@ img {
 #map-anchor {
     height: 500px;
 }
+
+.cip-map-view {
+        margin-top: 35px;
+}
 </style>
