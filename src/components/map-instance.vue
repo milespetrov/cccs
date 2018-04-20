@@ -330,7 +330,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         ).subscribe(() => this._mapi.simpleLayer.removeGeometry('centerPnt'));
 
         this.setCenterPoint({ x: this.locationPoint.x, y: this.locationPoint.y });
-        this.setZoomLevel(8);
+        //this.setZoomLevel(8);
+        //TODO(HACK): DEMO DRIVEN DEVELOPMENT dont blame me
+        this._mapi.zoom = 8;
 
         this.updateRoute();
 
