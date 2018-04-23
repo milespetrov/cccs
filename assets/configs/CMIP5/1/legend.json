@@ -8,10 +8,10 @@
             "infoType": "unboundLayer",
             "layerName": "Surface Wind",
             "description": "Layer description goes here ...",
-            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "coverIcon": "//i.imgur.com/PxK0hIe.png",
             "symbologyStack": [
                 {
-                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "image": "https://i.imgur.com/FMqQI0i.png",
                     "text": ""
                 }
             ],
@@ -25,7 +25,7 @@
         {
             "layerId": "labels",
             "layerName": "Labels",
-            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
             "symbologyStack": []
         },
         {
@@ -48,7 +48,7 @@
             "coverIcon": "//i.imgur.com/t3bQEuw.png",
             "symbologyStack": [
                 {
-                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "image": "https://i.imgur.com/7b7VZCE.png",
                     "text": ""
                 }
             ],
@@ -62,7 +62,7 @@
         {
             "layerId": "labels",
             "layerName": "Labels",
-            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
             "symbologyStack": []
         },
         {
@@ -86,7 +86,7 @@
             "coverIcon": "//i.imgur.com/t3bQEuw.png",
             "symbologyStack": [
                 {
-                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "image": "https://i.imgur.com/gzKijEF.png",
                     "text": ""
                 }
             ],
@@ -100,7 +100,7 @@
         {
             "layerId": "labels",
             "layerName": "Labels",
-            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
             "symbologyStack": []
         },
         {
@@ -123,7 +123,7 @@
             "coverIcon": "//i.imgur.com/t3bQEuw.png",
             "symbologyStack": [
                 {
-                    "image": "https://i.imgur.com/qzaq5Cv.png",
+                    "image": "https://i.imgur.com/jr8Vct9.png",
                     "text": ""
                 }
             ],
@@ -137,7 +137,7 @@
         {
             "layerId": "labels",
             "layerName": "Labels",
-            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
             "symbologyStack": []
         },
         {

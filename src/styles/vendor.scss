@@ -111,7 +111,16 @@
     }
 
     rv-toc {
+        .rv-cover-icon {
+            background-color: transparent;
+        }
         .rv-cover-icon .rv-symbol-graphic {
+            box-shadow: none !important;
+            background-color: transparent;
+        }
+
+        .rv-symbol:not(.rv-cover-icon) {
+            pointer-events: none;
             box-shadow: none !important;
         }
     }
