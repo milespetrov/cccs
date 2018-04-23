@@ -110,7 +110,14 @@
         top: auto;
     }
 
+    // these will disable shadows and event on certain elemnts of the structuted legend
+    // TODO: clean up after the demo
     rv-toc {
+        // hide the tools row with expand/collapse-all, hide/show-all options
+        .rv-toc-tools {
+            display: none;
+        }
+
         .rv-cover-icon {
             background-color: transparent;
         }
@@ -122,6 +129,15 @@
         .rv-symbol:not(.rv-cover-icon) {
             pointer-events: none;
             box-shadow: none !important;
+        }
+
+        // make the heading in the structured legend bigger
+        .md-subhead {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.005em;
+            margin: 1rem 0;
+            margin: 2rem 0 1rem;
         }
     }
 
