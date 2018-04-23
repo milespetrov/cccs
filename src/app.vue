@@ -379,7 +379,6 @@ export default class App extends mixins(UpdateRouteMixin) {
         background-color: rgba(0, 0, 0, 0.7);
         padding: 11px;
         display: inline-block;
-        font-size: 2.5rem;
         margin: 0;
     }
 }
