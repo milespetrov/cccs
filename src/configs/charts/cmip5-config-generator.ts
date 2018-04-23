@@ -2,7 +2,7 @@ import api from '@/api/';
 import { AppState } from '@/store';
 
 import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
-import { ChartConfigType, DatasetId } from '@/types';
+import { ChartConfigType, DatasetId, VariableId } from '@/types';
 import { datasetApis } from '@/api';
 
 import { formatLatLong } from '@/globals/utils';
@@ -136,7 +136,8 @@ async function makeConfig(
             labels: { style: { color: 'black' } }
         },
         tooltip: {
-            shared: true
+            shared: true,
+            valueDecimals: state.variableId === VariableId.IceThickness ? 2 : 1
         },
         legend: {
             layout: 'vertical',
@@ -287,6 +288,8 @@ async function makeConfig(
             positioner: () => {
                 return { x: 0, y: 10 };
             },
+            // TODO: clean up after demo
+            valueDecimals: state.variableId === VariableId.IceThickness ? 2 : 1,
             shadow: false,
             borderWidth: 0,
             backgroundColor: 'rgba(255,255,255,0)',

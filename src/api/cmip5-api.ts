@@ -78,8 +78,13 @@ class CMIP5Api extends DatasetApi {
             }`
         );
 
+        /* Snow depth: round at 0.1 cm
+        Wind speed: 0.1 m/s
+        Sea ice concentration: 0.1%
+        Sea ice thickness: 0.01 m */
+
         const tableData: any = [];
-        const roundingAmount = this.state.variableId === VariableId.IceConcentration ? 2 : 1;
+        const roundingAmount = this.state.variableId === VariableId.IceThickness ? 2 : 1;
 
         apiData.data.forEach((yl: any[], yi: number) => {
             yl.forEach((xl: number, xi: number) => {
