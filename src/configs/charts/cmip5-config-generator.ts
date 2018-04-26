@@ -97,6 +97,25 @@ async function makeConfig(
                 load: (event: any) => {
                     makeLabels(event, data);
                     removeTooltip(event.target);
+                },
+                redraw: (event: any) => {
+                    /**
+                     * Reset zoom accessibility 
+                     * 
+                     * The following fixes an issue with highcharts implementation of the resetZoomButton which is not keyboard accessible.
+                     * There is no direct API method to make this element focusable, and even if this were possible the element does not listen on key presses.
+                     */
+                    if (!event.target.resetZoomButton || !event.target.resetZoomButton.added) {
+                        return;
+                    }
+
+                    const resetButton = $(event.target.resetZoomButton.element);
+                    resetButton.attr('tabindex', 0);
+                    resetButton.keydown(evt => {
+                        if (evt.keyCode === 13) {
+                            event.target.zoomOut();
+                        }
+                    });
                 }
             },
             style: {
