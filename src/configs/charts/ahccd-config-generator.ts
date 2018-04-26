@@ -26,7 +26,6 @@ async function makeConfig(
 
     const seriesData = data.absolute_values.map((value: number) => (value > -9999 ? value : null));
 
-    let secondTrendValueLabel: HTMLElement;
     let trendRangeLabel: SVGElement;
 
     // HACK: get a proper variable name
@@ -60,13 +59,16 @@ async function makeConfig(
         chart: {
             backgroundColor: '#f9f9f9',
             zoomType: 'x',
-            zoomSlider: {
-                step: 1
-            },
+            zoomSlider:
+                variableId === 'precip'
+                    ? null
+                    : {
+                          step: 1
+                      },
             marginRight: 265,
             events: {
                 load: (event: any) => {
-                    [trendRangeLabel, secondTrendValueLabel] = makeLabels(event, data);
+                    trendRangeLabel = makeLabels(event, data, featureId, variableId);
                     removeTooltip(event.target);
                 }
             },
@@ -101,6 +103,7 @@ async function makeConfig(
                     callbacks.setExtremes(event);
 
                     const data = await ahccdApi.getTrend(event.min, event.max);
+                    let trendValue: string;
 
                     // Makes sure we dont display old info
                     if (`${event.min},${event.max}` !== state.chartRange!.safeString) {
@@ -108,18 +111,17 @@ async function makeConfig(
                     }
 
                     console.log(data);
-                    (<any>trendRangeLabel).textSetter(`Selection (${event.min}-${event.max}):`);
+
                     if (!data.value) {
-                        (<any>secondTrendValueLabel).textSetter(`<b>Not Available</b>`);
+                        trendValue = 'Not Available';
                     } else {
-                        (<any>secondTrendValueLabel).textSetter(
-                            //(stationTrendValue == 'N/A' ? 'N/A' : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4))
-                            `<b>${(data.value > 0 ? '+' : '') + +data.value.toFixed(4)}</b>`
+                        trendValue = (data.value > 0 ? '+' : '') + +data.value.toFixed(4) + '°C';
+                    }
+                    if (variableId !== 'precip') {
+                        (<any>trendRangeLabel).textSetter(
+                            `Selection: <b>${trendValue}</b> for the ${event.min}-${event.max} period.`
                         );
                     }
-                    (<any>secondTrendValueLabel).attr({
-                        x: event.target.chart.chartWidth - (<any>secondTrendValueLabel).width + 6
-                    });
                 }
             }
         },
@@ -132,7 +134,8 @@ async function makeConfig(
             max: Math.max(0, ...seriesData) * 1.5
         },
         tooltip: {
-            shared: true
+            shared: true,
+            valueDecimals: 1
         },
         legend: {
             layout: 'vertical',
@@ -254,7 +257,8 @@ async function makeConfig(
             },
             shadow: false,
             borderWidth: 0,
-            backgroundColor: 'rgba(255,255,255,0)'
+            backgroundColor: 'rgba(255,255,255,0)',
+            valueDecimals: 1
         },
         series: [
             {
@@ -278,7 +282,7 @@ async function makeConfig(
     return chartTypeMap[chartConfigType];
 }
 
-function makeLabels(event: any, data: any) {
+function makeLabels(event: any, data: any, featureId: string, variableId: string) {
     const firstLabelY = 135;
     const stationTrendValue = data.trend.value ? data.trend.value : 'N/A';
     const ren = event.target.renderer;
@@ -286,8 +290,9 @@ function makeLabels(event: any, data: any) {
     const firstTrend =
         stationTrendValue === 'N/A'
             ? 'Not Available'
-            : (stationTrendValue > 0 ? '+' : '') + +stationTrendValue.toFixed(4);
-
+            : (stationTrendValue > 0 ? '+' : '') +
+              +stationTrendValue.toFixed(4) +
+              (variableId === 'precip' ? '%' : '°C');
     ren
         .path([
             'M',
@@ -320,11 +325,12 @@ function makeLabels(event: any, data: any) {
     // draw the first trend value
     ren
         .label(
-            `Overall (${data.data_years.start}-${data.data_years.end}):`,
+            `Overall: <b>${firstTrend}</b> for the ${data.data_years.start}-${data.data_years.end} period`,
             event.target.plotWidth + event.target.plotLeft + 55,
             firstLabelY + 25
         )
         .css({
+            width: 200,
             color: 'black' //'#ecf0f1'
         })
         .attr({
@@ -333,35 +339,11 @@ function makeLabels(event: any, data: any) {
             zIndex: 6
         })
         .add();
-    const current = ren
-        .label(`<b>${firstTrend}</b>`, null, firstLabelY + 25)
-        .css({
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-    (<any>current).attr({
-        x: event.target.chartWidth - (<any>current).width + 6
-    });
+
     const trendRangeLabel = ren
-        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 45)
+        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 58)
         .css({
-            color: 'black' //'#ecf0f1'
-        })
-        .attr({
-            //fill: '#222222',
-            padding: 7,
-            zIndex: 6
-        })
-        .add();
-    // draw the second trend value
-    const secondTrendValueLabel = ren
-        .label(``, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY + 45)
-        .css({
+            width: 200,
             color: 'black' //'#ecf0f1'
         })
         .attr({
@@ -386,12 +368,11 @@ function makeLabels(event: any, data: any) {
 
     ren
         .label(
-            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
+            `AHCCD Station ID: <b>${featureId}</b>`,
             event.target.plotWidth + event.target.plotLeft + 55,
             firstLabelY + 135
         )
         .css({
-            'pointer-events': 'none',
             width: 200,
             color: 'black' //'#ecf0f1'
         })
@@ -402,7 +383,7 @@ function makeLabels(event: any, data: any) {
         })
         .add();
 
-    return [trendRangeLabel, secondTrendValueLabel];
+    return trendRangeLabel;
 }
 
 class AHCCDChartConfigGenerator extends ChartConfigGenerator {
