@@ -169,8 +169,8 @@ async function makeConfig(
                 }
             },
             y: 30,
-            labelFormat: '<i class="fa fa-check" aria-hidden="true" style="color:{color}"></i> {name}',
-            useHTML: true,
+            x: -30,
+            labelFormat: '✔ {name}',
             symbolHeight: 0.1,
             symbolWidth: 0.1,
             symbolPadding: 0
