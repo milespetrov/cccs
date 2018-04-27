@@ -14,6 +14,7 @@
 
                     <div class="cip-dropdown-multi-item-options">
                         <b-dropdown-item-button @click="downloadImage('png', true)">.png</b-dropdown-item-button>
+                        <b-dropdown-item-button @click="downloadImage('jpg', true)">.jpg</b-dropdown-item-button>
                     </div>
                 </div>
 
@@ -40,7 +41,7 @@ export default class MapViewControls extends Vue {
     @Getter getControls: string[];
 
     downloadImage(type: string): void {
-        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].export();
+        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].export(type);
     }
 }
 </script>
