@@ -3,7 +3,7 @@ import { AppState } from '@/store';
 import mappings from '@/globals/mappings';
 
 import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
-import { ChartConfigType, DatasetId } from '@/types';
+import { ChartConfigType, DatasetId, VariableId } from '@/types';
 
 import { removeTooltip } from './util';
 
@@ -33,22 +33,22 @@ async function makeConfig(
     const variables: object[] = [
         {
             name: 'Mean Temperature',
-            id: 'tmean',
+            id: VariableId.TMean,
             unit: '°C'
         },
         {
             name: 'Minimum Temperature',
-            id: 'tmin',
+            id: VariableId.TMin,
             unit: '°C'
         },
         {
             name: 'Maximum Temperature',
-            id: 'tmax',
+            id: VariableId.TMax,
             unit: '°C'
         },
         {
             name: 'Precipitation',
-            id: 'precip',
+            id: VariableId.Precipitation,
             unit: 'mm'
         }
     ];
@@ -60,7 +60,7 @@ async function makeConfig(
             backgroundColor: '#f9f9f9',
             zoomType: 'x',
             zoomSlider:
-                variableId === 'precip'
+                variableId === VariableId.Precipitation
                     ? null
                     : {
                           step: 1
@@ -117,7 +117,7 @@ async function makeConfig(
                     } else {
                         trendValue = (data.value > 0 ? '+' : '') + +data.value.toFixed(4) + '°C';
                     }
-                    if (variableId !== 'precip') {
+                    if (variableId !== VariableId.Precipitation) {
                         (<any>trendRangeLabel).textSetter(
                             `Selection: <b>${trendValue}</b> for the ${event.min}-${event.max} period.`
                         );
@@ -292,7 +292,7 @@ function makeLabels(event: any, data: any, featureId: string, variableId: string
             ? 'Not Available'
             : (stationTrendValue > 0 ? '+' : '') +
               +stationTrendValue.toFixed(4) +
-              (variableId === 'precip' ? '%' : '°C');
+              (variableId === VariableId.Precipitation ? '%' : '°C');
     ren
         .path([
             'M',
