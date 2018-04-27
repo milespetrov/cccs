@@ -576,7 +576,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 // if multiple features are received, leave only one
                 features.splice(1);
 
-                const feature = features[0].data.find(({ key }) => key === 'Station ID');
+                const feature = features[0].data.find(({ key }) => key === 'AHCCD Station ID');
                 const stationId = feature ? feature.value.toString() : '';
 
                 // features.find(feature => )
