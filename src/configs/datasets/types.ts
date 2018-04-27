@@ -192,6 +192,10 @@ export interface DatasetSource {
 
     timeSliderLabels?: string[];
 
+    legend?: {
+        [index:string] : string
+    };
+
     /**
      * [optional] The configuration for the colour ramp to be displayed on the map.
      *
