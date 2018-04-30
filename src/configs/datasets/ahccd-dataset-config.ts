@@ -26,12 +26,12 @@ const ahccdDataset: DatasetSource = {
 
     mapTableColumns: [
         'Station Name',
-        'Station ID',
+        'AHCCD Station ID',
         'Beginning Year',
         'Beginning Month',
         'Ending Year',
         'Ending Month',
-        'Value'
+        'Annual trend'
     ],
 
     mapConfigPath: 'config-base.json',

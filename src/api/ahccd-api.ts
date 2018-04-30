@@ -1,6 +1,6 @@
 import { DatasetApi } from './types';
 import { getJSON } from './util';
-import { DatasetId } from '@/types';
+import { DatasetId, VariableId } from '@/types';
 import { AppState } from '@/store';
 import mappings from '@/globals/mappings';
 import ahccdDataset from '@/configs/datasets/ahccd-dataset-config';
@@ -68,12 +68,12 @@ class AHCCDApi extends DatasetApi {
     async getTableData() {
         enum columns {
             'Station Name' = 'station_name_nom',
-            'Station ID' = 'stnid',
+            'AHCCD Station ID' = 'stnid',
             'Beginning Year' = 'beg_yr_annee_deb',
             'Beginning Month' = 'beg_mon_mois_deb',
             'Ending Year' = 'end_yr_annee_fin',
             'Ending Month' = 'end_mon_mois_fin',
-            'Value' = 'Annual_Annuel'
+            'Annual trend' = 'Annual_Annuel'
         }
         const varArray: any = {
             precip: 3,
@@ -95,7 +95,9 @@ class AHCCDApi extends DatasetApi {
         tempData.features.forEach((feature: any) => {
             const row: any[] = [];
             ahccdDataset.mapTableColumns.forEach((column: string) => {
-                row.push(feature.attributes[columns[<any>column]]);
+                // Precipitation does not have Annual trend data
+                if (this.state.variableId !== VariableId.Precipitation || column !== 'Annual trend')
+                    row.push(feature.attributes[columns[<any>column]]);
             });
             tableData.push(row);
         });
