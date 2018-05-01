@@ -41,7 +41,7 @@ export default class MapViewControls extends Vue {
     @Getter getControls: string[];
 
     downloadImage(type: string): void {
-        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].export(type);
+        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);
     }
 }
 </script>

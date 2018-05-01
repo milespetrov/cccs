@@ -1,6 +1,7 @@
 <template>
 
     <div id="cip-map-anchor" :class="currentDataset">
+        <div id="minichart"></div>
 
         <div class="cip-scroll-guard" ref="scrollGuard">
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
@@ -622,8 +623,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     async displayMiniChart(showChart: boolean = true): Promise<void> {
         console.log('display mini chart');
 
-        const chartMount = document.getElementById('cip-mini-chart-mount');
-
+        const chartMount = document.getElementById('minichart');
+        
         let miniChartSection = api.DQV.sections[this.miniChartSectionId];
         let miniChartChart = api.DQV.charts[this.miniChartChartId];
 
