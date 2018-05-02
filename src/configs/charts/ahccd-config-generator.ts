@@ -1,5 +1,5 @@
 import api, { datasetApis } from '@/api/';
-import { AppState } from '@/store';
+import { AppState, Range } from '@/store';
 import mappings from '@/globals/mappings';
 
 import { ChartConfigCallbacks, ChartConfigGenerator } from './types';
@@ -13,7 +13,7 @@ async function makeConfig(
     callbacks: ChartConfigCallbacks
 ): Promise<any> {
     const ahccdApi = datasetApis[DatasetId.AHCCD](state);
-    const { timePeriodId, variableId, featureId } = state;
+    const { timePeriodId, variableId, featureId, chartRange } = state;
 
     if (!timePeriodId || !variableId || !featureId) {
         console.error('cannot generate chart config, parameters are not set');
@@ -27,6 +27,17 @@ async function makeConfig(
     const seriesData = data.absolute_values.map((value: number) => (value > -9999 ? value : null));
 
     let trendRangeLabel: SVGElement;
+    let startRange;
+
+    // if the chart range is not set we want to start the chart at the normal start and end of the data
+    if (!chartRange) {
+        startRange = {
+            min: data.data_years.start,
+            max: data.data_years.end
+        };
+    } else {
+        startRange = chartRange;
+    }
 
     // HACK: get a proper variable name
     // should be retrieved from the store
@@ -63,7 +74,8 @@ async function makeConfig(
                 variableId === VariableId.Precipitation
                     ? null
                     : {
-                          step: 1
+                          step: 1,
+                          start: [startRange.min, startRange.max]
                       },
             marginRight: 265,
             events: {

@@ -305,9 +305,12 @@ const actions = {
         context.commit(Mutation.SET_ZOOM_LEVEL, value);
     },
 
-    [Action.setChartRange](context: AppContext, value: { min: number; max: number } | null) {
-        if (value) {
+    [Action.setChartRange](context: AppContext, value: { min: number; max: number } | string | null) {
+        if (value && typeof value !== 'string') {
             value = new Range(value.min, value.max);
+        } else if (typeof value === 'string') {
+            const [min, max] = value.split(',');
+            value = new Range(parseInt(min), parseInt(max));
         }
         context.commit(Mutation.SET_CHART_RANGE, value);
     },

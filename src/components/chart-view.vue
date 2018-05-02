@@ -36,7 +36,6 @@ import { ChartConfigType } from '@/types';
 @Component
 export default class ChartView extends mixins(UpdateRouteMixin) {
     @Action setChartRange: (value: { min: number; max: number } | null) => void;
-    @State chartRange: { min: number; max: number };
 
     @Action setChartSeries: (visible: number[]) => void;
     @State chartSeries: number[];
@@ -103,15 +102,6 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         if (!this.data) {
-            const builderPackage = {
-                period: this.currentTimePeriod,
-                variable: this.currentVariable,
-                featureId: this.currentFeature,
-                callbacks: this.callbacks,
-                chartSeries: this.chartSeries
-            };
-
-            //const config = await this.chartBuilder(builderPackage);
             const config = await this.chartConfigGenerator.make(ChartConfigType.FOCUS, this.callbacks);
             this.initDQV(config);
             return;
@@ -161,15 +151,6 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        const builderPackage = {
-            period: this.currentTimePeriod,
-            variable: this.currentVariable,
-            featureId: this.currentFeature,
-            callbacks: this.callbacks,
-            chartSeries: this.chartSeries
-        };
-
-        //const config = await this.chartBuilder(builderPackage);
         const config = await this.chartConfigGenerator.make(ChartConfigType.FOCUS, this.callbacks);
 
         const chartId = 'dvChart1';
