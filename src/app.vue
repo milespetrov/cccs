@@ -124,7 +124,7 @@ Vue.use(FormSelect);
 
 import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
-import { MapPoint } from './store';
+import { MapPoint, Range } from './store';
 import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
 
@@ -149,6 +149,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
     @Action setRcpId: (value: string | null) => void;
     @Action clearChart: () => void;
+    @Action setChartRange: (value: Range | string | null) => void;
 
     @State currentView: string;
 
@@ -243,6 +244,7 @@ export default class App extends mixins(UpdateRouteMixin) {
             f: this.setFeatureId,
             cp: this.setCenterPoint,
             cs: this.setChartSeries,
+            cr: this.setChartRange,
             z: this.setZoomLevel,
             ts: this.setTimeSlice,
             fp: this.setFeaturePoint,
