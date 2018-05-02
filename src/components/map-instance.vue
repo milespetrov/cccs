@@ -330,15 +330,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._mapi.mouseDown.takeUntil(centerPntDeactivate).take(1)
         ).subscribe(() => this._mapi.simpleLayer.removeGeometry('centerPnt'));
 
-        this.setCenterPoint({ x: this.locationPoint.x, y: this.locationPoint.y });
-        //this.setZoomLevel(8);
-        //TODO(HACK): DEMO DRIVEN DEVELOPMENT dont blame me
-        this._mapi.zoom = 8;
-
+        this._mapi.simpleLayer._layerProxy.zoomToGraphic('centerPnt', this._mapi._fgpMap, {x: 0, y: 0.1});
         this.updateRoute();
-
-        // offset y-axis by 10% to account for top header
-        // api.RZ.mapInstances[0].simpleLayer._layerProxy.zoomToGraphic('centerPnt', api.RZ.mapInstances[0]._fgpMap, {x: 0, y: 0.1});
     }
 
     @Watch('centerPoint')
