@@ -120,6 +120,10 @@ const getters = {
         return datasets[state.datasetId!].timeSliderLabels;
     },
 
+    legend: (state: AppState): { [index: string]: string; } | undefined => {
+        return datasets[state.datasetId!].legend;
+    },
+
     colourRamp: (state: AppState): ColourRamp | null => {
         // check if dataset config specifies the colour ramp at all
         const dataset = datasets[state.datasetId!];

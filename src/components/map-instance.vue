@@ -12,10 +12,19 @@
         <!-- TODO: when RAMP api supports it, move them inside the ramp container  -->
         <!-- TODO: fidn a way to hide these when a help/export dialog or datatable is opened as they are pokinig through them -->
 
-        <div class="cip-control-cluster" v-if="timeSliderLabels || colourRamp">
+        <div class="cip-control-cluster" v-if="timeSliderLabels || colourRamp || legend">
 
-            <div class="row">
-                <div class="col-md-4" v-if="timeSliderLabels">
+             <div class="row" v-if="legend">
+                <div class="col-md-4">
+                    <span class="cip-label">AHCCD Station:</span>
+                </div>
+                <div class="col-md-8">
+                    <span v-html="legend[currentVariable]"></span>
+                </div>
+            </div>
+
+            <div class="row" v-if="timeSliderLabels">
+                <div class="col-md-4">
                     <span class="cip-label">Timeline:</span>
                 </div>
                 <div class="col-md-8">
@@ -24,7 +33,7 @@
             </div>
 
             <!-- remove seprator if only one section is visible -->
-            <span class="cip-separator-vertical"></span>
+            <span class="cip-separator-vertical" v-if="colourRamp"></span>
 
             <div class="row" v-if="colourRamp">
                 <div class="col-md-4">
@@ -188,6 +197,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Getter chartConfigGenerator: ChartConfigGenerator;
     @Getter timeSliderLabels: string[] | undefined;
+    @Getter legend: { [index: string]: string; } | undefined;
     @Getter colourRamp: ColourRamp | null;
     @Getter datasetApi: any;
 
