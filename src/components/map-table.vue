@@ -6,7 +6,7 @@
                 <table id="map-table" class="table table-striped">
                     <thead>
                         <tr>
-                            <th v-for="(col, index) in mapTableColumns" :key="col">{{col}}{{index === mapTableColumns.length - 1 ? ', ' + $t(`units.${variableId}.shortName`) : ''}}<span class="sorting-cnt"><span class="sorting-icons"></span></span></th>
+                            <th v-for="(col, index) in mapTableColumns" :key="col" v-if="variableId !== 'precip' || col !== 'Annual trend'">{{col}}{{index === mapTableColumns.length - 1 ? ', ' + $t(`units.${variableId}.shortName`) : ''}}<span class="sorting-cnt"><span class="sorting-icons"></span></span></th>
                         </tr>
                     </thead>
                 </table>
