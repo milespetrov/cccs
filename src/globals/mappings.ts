@@ -41,10 +41,10 @@ const periodToNum: StringToNum = {
     Oct_Oct: 10,
     Nov_Nov: 11,
     Dec_Dec: 12,
-    winter: 13,
-    spring: 14,
-    summer: 15,
-    fall: 16,
+    spring: 13,
+    summer: 14,
+    fall: 15,
+    winter: 16,
     annual: 17
 };
 
