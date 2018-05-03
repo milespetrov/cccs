@@ -96,8 +96,9 @@ class AHCCDApi extends DatasetApi {
             const row: any[] = [];
             ahccdDataset.mapTableColumns.forEach((column: string) => {
                 // Precipitation does not have Annual trend data
-                if (this.state.variableId !== VariableId.Precipitation || column !== 'Annual trend')
+                if (this.state.variableId !== VariableId.Precipitation || column !== 'Annual trend') {
                     row.push(feature.attributes[columns[<any>column]]);
+                }
             });
             tableData.push(row);
         });
