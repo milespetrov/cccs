@@ -1,67 +1,67 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="currentView">
+        <div class="cip-header-container">
+            <div class="cip-strip cip-top-navigation">
+                <!-- TODO: move top-navigatoin into a separate component -->
 
-         <div class="cip-strip cip-top-navigation">
-            <!-- TODO: move top-navigatoin into a separate component -->
+                <nav class="cip-navigation container">
+                    <geo-search></geo-search>
 
-            <nav class="cip-navigation container">
-                <geo-search></geo-search>
-
-                <span class="separator"></span>
-                <div>
-                    <span class="menu-option">
-                        <a href="./climate-basics.html">Climate Basics</a>
-                        <i class="fas fa-chevron-down"></i>
-                        <span class="menu-option-dropdown">
-                            <a href="./climate-basics.html">Concepts</a>
-                            <a href="./climate-basics.html">Impacts</a>
-                            <a href="./climate-basics.html">Adaptations</a>
-                            <a href="./climate-basics.html">Calendar</a>
-                            <a href="./climate-basics.html">Notifications</a>
-                            <a href="./climate-basics.html">Reports</a>
-                            <a href="./climate-basics.html">Resources</a>
+                    <span class="separator"></span>
+                    <div>
+                        <span class="menu-option">
+                            <a href="./climate-basics.html">Climate Basics</a>
+                            <i class="fas fa-chevron-down"></i>
+                            <span class="menu-option-dropdown">
+                                <a href="./climate-basics.html">Concepts</a>
+                                <a href="./climate-basics.html">Impacts</a>
+                                <a href="./climate-basics.html">Adaptations</a>
+                                <a href="./climate-basics.html">Calendar</a>
+                                <a href="./climate-basics.html">Notifications</a>
+                                <a href="./climate-basics.html">Reports</a>
+                                <a href="./climate-basics.html">Resources</a>
+                            </span>
                         </span>
-                    </span>
 
-                    <span class="menu-option">
-                        <a href="./climate-data.html">Climate data</a>
-                        <i class="fas fa-chevron-down"></i>
-                        <span class="menu-option-dropdown">
-                            <a href="./location-search.html">Location search</a>
-                            <a href="./climate-variables.html">Climate variables</a>
+                        <span class="menu-option">
+                            <a href="./climate-data.html">Climate data</a>
+                            <i class="fas fa-chevron-down"></i>
+                            <span class="menu-option-dropdown">
+                                <a href="./location-search.html">Location search</a>
+                                <a href="./climate-variables.html">Climate variables</a>
+                            </span>
                         </span>
-                    </span>
 
-                    <span class="menu-option">
-                        <a href="#">Catalogue</a>
-                        <i class="fas fa-chevron-down"></i>
-                        <span class="menu-option-dropdown">
-                            <a href=#>Catalogue section 1</a>
-                            <a href=#>Catalogue section 2</a>
-                            <a href=#>Catalogue section 3</a>
-                            <a href=#>Catalogue section 4</a>
+                        <span class="menu-option">
+                            <a href="#">Catalogue</a>
+                            <i class="fas fa-chevron-down"></i>
+                            <span class="menu-option-dropdown">
+                                <a href=#>Catalogue section 1</a>
+                                <a href=#>Catalogue section 2</a>
+                                <a href=#>Catalogue section 3</a>
+                                <a href=#>Catalogue section 4</a>
+                            </span>
                         </span>
-                    </span>
-                </div>
-            </nav>
-        </div>
-
+                    </div>
+                </nav>
+            </div>
         
-        <div class="cip-strip cip-page-header" @click="changeViewToMap">
-            <!-- TODO: create two separate headers for map and chart views -->
-            <!-- TODO: move header into a separate component -->
-            <div class="cip-header container">
-                <h1>{{ $t('title') }} </h1>
+            <div class="cip-strip cip-page-header" @click="changeViewToMap">
+                <!-- TODO: create two separate headers for map and chart views -->
+                <!-- TODO: move header into a separate component -->
+                <div class="cip-header container">
+                    <h1>{{ $t('title') }} </h1>
 
-                <span class="cip-view-toggle-label">click to see the full map</span>
+                    <span class="cip-view-toggle-label">click to see the full map</span>
+                </div>
+
             </div>
 
-        </div>
-
-        <div class="cip-strip cip-view-controls">
-            <keep-alive>
-                <router-view class="container" name="view-controls"></router-view>
-            </keep-alive>
+            <div class="cip-strip cip-view-controls">
+                <keep-alive>
+                    <router-view class="container" name="view-controls"></router-view>
+                </keep-alive>
+            </div>
         </div>
 
         <div class="cip-strip cip-backdrop-map">
@@ -298,13 +298,8 @@ export default class App extends mixins(UpdateRouteMixin) {
         }
     }
 
-    &:not(.cip-backdrop-map) {
-        z-index: 1;
-    }
-
     &.cip-top-navigation {
         background-color: rgba(255, 255, 255, 0.95);
-        z-index: 2;
     }
 
     &.cip-page-header {
@@ -354,6 +349,10 @@ export default class App extends mixins(UpdateRouteMixin) {
     &.cip-view-controls {
         background-color: #ecf0f1;
     }
+}
+.cip-header-container {
+    z-index: 1;
+    position: relative;
 }
 
 .container.main {
