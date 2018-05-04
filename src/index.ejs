@@ -23,7 +23,7 @@
     <!--[if gte IE 9 | !IE ]><!-->
     <link href="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
-    <link href="http://fgpv.cloudapp.net/demo/v3.1/prod/rv-styles.css" rel="stylesheet">
+    <link href="http://fgpv.cloudapp.net/demo/cip-00/prod/rv-styles.css" rel="stylesheet">
     <!--<![endif]-->
     <!--[if lt IE 9]>
             <link href="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="shortcut icon" />
@@ -43,8 +43,11 @@
     <script>dataLayer1 = [];</script>
     <!-- End Google Tag Manager -->
 
-    <script src="http://fgpv.cloudapp.net/demo/develop/dev/ie-polyfills.js"></script>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Object.entries"></script>
+    <script type="text/javascript">
+        if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
+            document.write('<script src="http://fgpv.cloudapp.net/demo/cip-00/dev/ie-polyfills.js"><\/script>');
+    </script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.includes"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -305,7 +308,7 @@
     <script src="https://ramp-pcar.github.io/geosearch/dist/geosearch.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <script src="http://fgpv.cloudapp.net/demo/v3.1/prod/rv-main.js"></script>
+    <script src="http://fgpv.cloudapp.net/demo/cip-00/prod/rv-main.js"></script>
 </body>
 
 </html>
