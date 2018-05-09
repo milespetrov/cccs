@@ -142,8 +142,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                     value_key: 'Annual_Annuel'
                 },
                 precip: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s</div>",
                     value_key: 'Annual_Annuel'
                 }
             }
@@ -166,8 +165,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                     value_key: 'Annual_Annuel'
                 },
                 precip: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
+                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s</div>",
                     value_key: 'Annual_Annuel'
                 }
             }
@@ -197,7 +195,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Getter chartConfigGenerator: ChartConfigGenerator;
     @Getter timeSliderLabels: string[] | undefined;
-    @Getter legend: { [index: string]: string; } | undefined;
+    @Getter legend: { [index: string]: string } | undefined;
     @Getter colourRamp: ColourRamp | null;
     @Getter datasetApi: any;
 
@@ -340,7 +338,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._mapi.mouseDown.takeUntil(centerPntDeactivate).take(1)
         ).subscribe(() => this._mapi.simpleLayer.removeGeometry('centerPnt'));
 
-        this._mapi.simpleLayer._layerProxy.zoomToGraphic('centerPnt', this._mapi._fgpMap, {x: 0, y: 0.1});
+        this._mapi.simpleLayer._layerProxy.zoomToGraphic('centerPnt', this._mapi._fgpMap, { x: 0, y: 0.1 });
         this.updateRoute();
     }
 
@@ -627,7 +625,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         console.log('display mini chart');
 
         const chartMount = document.getElementById('minichart');
-        
+
         let miniChartSection = api.DQV.sections[this.miniChartSectionId];
         let miniChartChart = api.DQV.charts[this.miniChartChartId];
 
