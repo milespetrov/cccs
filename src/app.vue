@@ -6,43 +6,6 @@
 
                 <nav class="cip-navigation container">
                     <geo-search></geo-search>
-
-                    <span class="separator"></span>
-                    <div>
-                        <span class="menu-option">
-                            <a href="./climate-basics.html">Climate Basics</a>
-                            <i class="fas fa-chevron-down"></i>
-                            <span class="menu-option-dropdown">
-                                <a href="./climate-basics.html">Concepts</a>
-                                <a href="./climate-basics.html">Impacts</a>
-                                <a href="./climate-basics.html">Adaptations</a>
-                                <a href="./climate-basics.html">Calendar</a>
-                                <a href="./climate-basics.html">Notifications</a>
-                                <a href="./climate-basics.html">Reports</a>
-                                <a href="./climate-basics.html">Resources</a>
-                            </span>
-                        </span>
-
-                        <span class="menu-option">
-                            <a href="./climate-data.html">Climate data</a>
-                            <i class="fas fa-chevron-down"></i>
-                            <span class="menu-option-dropdown">
-                                <a href="./location-search.html">Location search</a>
-                                <a href="./climate-variables.html">Climate variables</a>
-                            </span>
-                        </span>
-
-                        <span class="menu-option">
-                            <a href="#">Catalogue</a>
-                            <i class="fas fa-chevron-down"></i>
-                            <span class="menu-option-dropdown">
-                                <a href=#>Catalogue section 1</a>
-                                <a href=#>Catalogue section 2</a>
-                                <a href=#>Catalogue section 3</a>
-                                <a href=#>Catalogue section 4</a>
-                            </span>
-                        </span>
-                    </div>
                 </nav>
             </div>
         
@@ -88,9 +51,7 @@
 
             <section class="alert alert-info">
                 <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
-                <p> Making decisions based on climate change and climate data is challenging. CCCS’s Help Desk is here to help by
-                    providing access to the country’s leading climate science experts and resources to help support you in your
-                    decision making and research. <a class="underline" href=#>Contact the climate helpdesk.</a>
+                <p> Look through the CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=scen-intromenu">resources overview</a> and <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=data-categories">data categories</a>. Contact CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=contact">here</a>.
                 </p>
             </section>
 
