@@ -263,7 +263,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     //async addCurrentVarLayer() {
     async switchLayers(emptyMap?: boolean) {
         if (!emptyMap) {
-            this._mapi.layers.allLayers.forEach((layer: any) => {
+            // .slice() to clone the array, otherwise indices will be skipped
+            this._mapi.layers.allLayers.slice().forEach((layer: any) => {
                 this._mapi.layers.removeLayer(layer.id);
             });
         }
