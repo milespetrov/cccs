@@ -280,6 +280,16 @@ export default class ChartView extends mixins(UpdateRouteMixin) {
                 border-color: #d9d9d9;
             }
         }
+
+        .dv-slider-input-label {
+            // These are '.wb-inv' styles
+            clip: rect(1px, 1px, 1px, 1px);
+            height: 1px;
+            margin: 0;
+            overflow: hidden;
+            position: absolute;
+            width: 1px;
+        }
     }
 }
 </style>

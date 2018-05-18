@@ -75,7 +75,8 @@ async function makeConfig(
                     ? null
                     : {
                           step: 1,
-                          start: [startRange.min, startRange.max]
+                          start: [startRange.min, startRange.max],
+                          labels: ['Start year', 'End year']
                       },
             marginRight: 265,
             events: {

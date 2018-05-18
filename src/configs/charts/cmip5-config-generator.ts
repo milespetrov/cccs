@@ -90,7 +90,8 @@ async function makeConfig(
             backgroundColor: '#f9f9f9',
             zoomType: 'x',
             zoomSlider: {
-                step: 1
+                step: 1,
+                labels: ['Start year', 'End year']
             },
             marginRight: 265,
             events: {
@@ -100,8 +101,8 @@ async function makeConfig(
                 },
                 redraw: (event: any) => {
                     /**
-                     * Reset zoom accessibility 
-                     * 
+                     * Reset zoom accessibility
+                     *
                      * The following fixes an issue with highcharts implementation of the resetZoomButton which is not keyboard accessible.
                      * There is no direct API method to make this element focusable, and even if this were possible the element does not listen on key presses.
                      */
