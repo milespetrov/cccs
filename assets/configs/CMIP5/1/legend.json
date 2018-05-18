@@ -35,8 +35,7 @@
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [],
-            "entryIndex": 4
+            "symbologyStack": []
         }
     ],
     "sit": [
@@ -76,8 +75,7 @@
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [],
-            "entryIndex": 4
+            "symbologyStack": []
         }
     ],
     "sic": [
@@ -118,8 +116,7 @@
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [],
-            "entryIndex": 4
+            "symbologyStack": []
         }
     ],
     "snd": [
@@ -159,8 +156,7 @@
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": [],
-            "entryIndex": 4
+            "symbologyStack": []
         }
     ]
 }

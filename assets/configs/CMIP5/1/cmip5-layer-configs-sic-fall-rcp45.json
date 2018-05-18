@@ -1,43 +1,47 @@
 {
   "layers": [
       {
-        "id": "SeaIceConcentration_2021_20yr_SON_rcp45",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2021_20yr_SON_rcp45/MapServer",
+        "id": "sico_43",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 43 }],
         "controls": ["data"]
       },
       {
-        "id": "SeaIceConcentration_2041_20yr_SON_rcp45",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2041_20yr_SON_rcp45/MapServer",
+        "id": "sico_44",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 44 }],
         "controls": ["data"]
       },
       {
-        "id": "SeaIceConcentration_2061_20yr_SON_rcp45",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2061_20yr_SON_rcp45/MapServer",
+        "id": "sico_45",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 45 }],
         "controls": ["data"]
       },
       {
-        "id": "SeaIceConcentration_2081_20yr_SON_rcp45",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceConcentration/SeaIceConcentration_2081_20yr_SON_rcp45/MapServer",
+        "id": "sico_46",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 46 }],
         "controls": ["data"]
       }
 

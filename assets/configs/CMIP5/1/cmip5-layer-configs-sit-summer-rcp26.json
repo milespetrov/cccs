@@ -1,43 +1,47 @@
 {
   "layers": [
       {
-        "id": "SeaIceThickness_2021_20yr_JJA_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2021_20yr_JJA_rcp26/MapServer",
+        "id": "sith_12",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SITH/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 12 }],
         "controls": ["data"]
       },
       {
-        "id": "SeaIceThickness_2041_20yr_JJA_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2041_20yr_JJA_rcp26/MapServer",
+        "id": "sith_13",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SITH/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 13 }],
         "controls": ["data"]
       },
       {
-        "id": "SeaIceThickness_2061_20yr_JJA_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2061_20yr_JJA_rcp26/MapServer",
+        "id": "sith_14",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SITH/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 14 }],
         "controls": ["data"]
       },
       {
-        "id": "SeaIceThickness_2081_20yr_JJA_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SeaIceThickness/SeaIceThickness_2081_20yr_JJA_rcp26/MapServer",
+        "id": "sith_15",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SITH/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 15 }],
         "controls": ["data"]
       }
 
