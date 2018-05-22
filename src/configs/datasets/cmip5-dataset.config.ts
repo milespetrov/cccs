@@ -46,39 +46,14 @@ const cimp5Dataset: DatasetSource = {
     timeSliderLabels: ['2021-2040', '2041-2060', '2061-2080', '2081-2100'],
 
     colourRamp: {
-        defaultColours: [
-            '#67001f',
-            '#b2182b',
-            '#d6604d',
-            '#f4a582',
-            '#fddbc7',
-            '#f7f7f7',
-            '#d1e5f0',
-            '#92c5de',
-            '#4393c3',
-            '#2166ac',
-            '#053061'
-        ],
+        defaultColours: ['#733E05', '#D6AF67', '#EFF0ED', '#6BBFB1', '#023D32'],
         defaultLabels: ['-100', '100'],
         variables: {
             [VariableId.IceConcentration]: {
                 labels: ['-40', '40']
             },
             [VariableId.SurfaceWind]: {
-                labels: ['-30', '30'],
-                colours: [
-                    '#053061',
-                    '#2166ac',
-                    '#4393c3',
-                    '#92c5de',
-                    '#d1e5f0',
-                    '#f7f7f7',
-                    '#fddbc7',
-                    '#f4a582',
-                    '#d6604d',
-                    '#b2182b',
-                    '#67001f'
-                ]
+                labels: ['-30', '30']
             }
         }
     },
