@@ -1,43 +1,47 @@
 {
   "layers": [
       {
-        "id": "WindSpeed_2021_20yr_SON_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_WindSpeed/WindSpeed_2021_20yr_SON_rcp26/MapServer",
+        "id": "wind_17",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_WIND/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 17 }],
         "controls": ["data"]
       },
       {
-        "id": "WindSpeed_2041_20yr_SON_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_WindSpeed/WindSpeed_2041_20yr_SON_rcp26/MapServer",
+        "id": "wind_18",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_WIND/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 18 }],
         "controls": ["data"]
       },
       {
-        "id": "WindSpeed_2061_20yr_SON_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_WindSpeed/WindSpeed_2061_20yr_SON_rcp26/MapServer",
+        "id": "wind_19",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_WIND/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 19 }],
         "controls": ["data"]
       },
       {
-        "id": "WindSpeed_2081_20yr_SON_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_WindSpeed/WindSpeed_2081_20yr_SON_rcp26/MapServer",
+        "id": "wind_20",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_WIND/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 20 }],
         "controls": ["data"]
       }
 

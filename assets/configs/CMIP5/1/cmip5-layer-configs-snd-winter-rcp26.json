@@ -1,43 +1,47 @@
 {
   "layers": [
       {
-        "id": "SnowDepth_2021_20yr_DJF_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2021_20yr_DJF_rcp26/MapServer",
+        "id": "snow_22",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 22 }],
         "controls": ["data"]
       },
       {
-        "id": "SnowDepth_2041_20yr_DJF_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2041_20yr_DJF_rcp26/MapServer",
+        "id": "snow_23",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 23 }],
         "controls": ["data"]
       },
       {
-        "id": "SnowDepth_2061_20yr_DJF_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2061_20yr_DJF_rcp26/MapServer",
+        "id": "snow_24",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 24 }],
         "controls": ["data"]
       },
       {
-        "id": "SnowDepth_2081_20yr_DJF_rcp26",
-        "layerType": "esriTile",
-        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5_SnowDepth/SnowDepth_2081_20yr_DJF_rcp26/MapServer",
+        "id": "snow_25",
+        "layerType": "esriDynamic",
+        "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
-          "opacity": 1,
+          "opacity": 0.85,
           "visibility": false
         },
+        "layerEntries": [{"index": 25 }],
         "controls": ["data"]
       }
 

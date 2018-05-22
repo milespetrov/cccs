@@ -56,7 +56,7 @@
         }
     },
     "map": {
-        "initialBasemapId": "baseSimple",
+        "initialBasemapId": "baseCBMT_CBCT_GEOM_3978",
         "components": {
             "geoSearch": {
                 "enabled": true,

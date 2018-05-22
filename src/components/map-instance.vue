@@ -263,7 +263,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     //async addCurrentVarLayer() {
     async switchLayers(emptyMap?: boolean) {
         if (!emptyMap) {
-            this._mapi.layers.allLayers.forEach((layer: any) => {
+            // .slice() to clone the array, otherwise indices will be skipped
+            this._mapi.layers.allLayers.slice().forEach((layer: any) => {
                 this._mapi.layers.removeLayer(layer.id);
             });
         }
@@ -440,11 +441,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // set the identify mode to 'highlight' to prevent the details panel from opening
             if (this.currentDataset === DatasetId.AHCCD) {
                 this._mapi.identifyMode = 'highlight';
+                // subscribe to identify events to track highlighted items
+                this._mapi.layers.identify.subscribe(this.pointIdentifyHandler);
             } else {
                 this._mapi.identifyMode = 'silent';
+                this._mapi.click.subscribe(this.gridIdentifyHandler);
             }
-            // subscribe to identify events to track highlighted items
-            this._mapi.layers.identify.subscribe(this.mapIdentifyHandler);
 
             this._mapi.mouseMove.throttleTime(30).subscribe((event: any) => {
                 // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
@@ -554,44 +556,42 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
      * Handle the identify sesssion, but updating the routes with the feature coordinates
      *
      */
-    async mapIdentifyHandler({ requests, event }: IdentifySession) {
+    async pointIdentifyHandler({ requests, event }: IdentifySession) {
         if (requests.length === 0) {
             return;
         }
+        requests[0].features.then((features: IdentifyResult[]) => {
+            if (features.length === 0) {
+                return;
+            }
 
-        // if the identify mode is silent that means we need to draw our own highlight
-        if (this._mapi.identifyMode === 'silent') {
-            // draw the minichart, without the actual chart
-            // the loading indicator will show up
-            this.displayMiniChart(false);
+            // if multiple features are received, leave only one
+            features.splice(1);
 
-            await this.drawGrid(event.xy, requests[0].sessionId);
+            const feature = features[0].data.find(({ key }) => key === 'AHCCD Station ID');
+            const stationId = feature ? feature.value.toString() : '';
 
-            // draw the minichart
+            // features.find(feature => )
+
+            console.log(features);
+
+            this.setFeaturePoint(event.xy);
+            this.setFeatureId(stationId);
+            this.updateRoute();
+
             this.displayMiniChart();
-        } else {
-            requests[0].features.then((features: IdentifyResult[]) => {
-                if (features.length === 0) {
-                    return;
-                }
+        });
+    }
 
-                // if multiple features are received, leave only one
-                features.splice(1);
+    async gridIdentifyHandler(event: any) {
+        // draw the minichart, without the actual chart
+        // the loading indicator will show up
+        this.displayMiniChart(false);
 
-                const feature = features[0].data.find(({ key }) => key === 'AHCCD Station ID');
-                const stationId = feature ? feature.value.toString() : '';
+        await this.drawGrid(event.xy, 0);
 
-                // features.find(feature => )
-
-                console.log(features);
-
-                this.setFeaturePoint(event.xy);
-                this.setFeatureId(stationId);
-                this.updateRoute();
-
-                this.displayMiniChart();
-            });
-        }
+        // draw the minichart
+        this.displayMiniChart();
     }
 
     /**

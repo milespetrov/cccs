@@ -4,15 +4,8 @@
             "id": "provinces",
             "name": "Provinces",
             "controls": ["visibility", "opacity", "reload", "settings"],
-            "layerType": "esriDynamic",
-            "layerEntries": [
-                {
-                    "index": 4,
-                    "name": "Provinces"
-                }
-            ],
-
-            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/SupportData/MapServer"
+            "layerType": "esriTile",
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_Overlay/MapServer"
         },
         {
             "id": "labels",
