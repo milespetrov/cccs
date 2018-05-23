@@ -36,6 +36,11 @@
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
             "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
+            "symbologyStack": []
         }
     ],
     "sit": [
@@ -75,6 +80,11 @@
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
             "symbologyStack": []
         }
     ],
@@ -117,6 +127,11 @@
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
             "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
+            "symbologyStack": []
         }
     ],
     "snd": [
@@ -156,6 +171,11 @@
             "layerId": "provinces",
             "layerName": "Provinces",
             "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
             "symbologyStack": []
         }
     ]
