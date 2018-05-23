@@ -1,11 +1,18 @@
 {
     "layers": [
         {
+            "id": "grid",
+            "name": "Grid",
+            "controls": ["visibility", "opacity", "reload", "settings"],
+            "layerType": "esriTile",
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/CMIP5_Grid/MapServer"
+        },
+        {
             "id": "provinces",
             "name": "Provinces",
             "controls": ["visibility", "opacity", "reload", "settings"],
             "layerType": "esriTile",
-            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_Overlay/MapServer"
+            "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer"
         },
         {
             "id": "labels",
