@@ -193,7 +193,7 @@ export interface DatasetSource {
     timeSliderLabels?: string[];
 
     legend?: {
-        [index:string] : string
+        [index: string]: string;
     };
 
     /**
