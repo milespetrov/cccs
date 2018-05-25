@@ -117,32 +117,6 @@ export interface RCPSelectorConfig extends BaseSelectorConfig {
 
 ////////
 
-// Dataset Selector Config
-
-/**
- * Configuration of the DatasetGroup in the Dataset selector.
- *
- * @interface DatasetSelectorGroupConfig
- * @extends {BaseSelectorGroupConfig}
- */
-export interface DatasetSelectorGroupConfig extends BaseSelectorGroupConfig {
-    items: DatasetId[];
-}
-
-/**
- * Configuration of the Dataset selector.
- *
- * @interface DatasetSelectorConfig
- * @extends {BaseSelectorConfig}
- */
-export interface DatasetSelectorConfig extends BaseSelectorConfig {
-    groups: DatasetSelectorGroupConfig[];
-}
-
-// example
-
-////////
-
 export interface VariableSelectorGroupConfig extends BaseSelectorGroupConfig {
     items: VariableId[];
 }
