@@ -30,7 +30,7 @@
     "language": "en",
     "services": {
         "exportMapUrl":
-            "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+            "http://section917.cloudapp.net/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
             "map": {},
             "mapElements": {},

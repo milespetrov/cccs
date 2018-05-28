@@ -30,7 +30,7 @@
     "language": "en",
     "services": {
         "exportMapUrl":
-            "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+            "http://section917.cloudapp.net/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
             "title": {
                 "value": "Climate Information Portal - CMIP5"
@@ -141,7 +141,7 @@
                 "state": {
                     "opacity": 0
                 },
-                "url": "http://cipgis.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_Grid/MapServer"
+                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_Grid/MapServer"
             }
         ],
         "baseMaps": [
