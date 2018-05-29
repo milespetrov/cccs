@@ -54,16 +54,6 @@ export enum VisualizationControlType {
 }
 
 /**
- * Variable stage group ids for the variable selector.
- *
- * @enum {string}
- */
-export enum StageType {
-    Future = 'future',
-    Historic = 'historic'
-}
-
-/**
  * All available RCP model ids.
  *
  * @enum {string}
