@@ -48,8 +48,15 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
 
     @Action setVariableId: (value: string) => void;
 
-    @State variableId: string;
+    @State variableId: VariableId;
     @State datasetId: DatasetId;
+
+    @Watch('datasetId')
+    onDatasetChange() {
+        if (!datasets[this.datasetId].variables.includes(this.variableId)) {
+            this.selectVariable(datasets[this.datasetId].variables[0]);
+        }
+    }
 
     isSelected(item: VariableId): boolean {
         return item === this.variableId;

@@ -2,7 +2,6 @@
 
     <base-selector
         :config="config"
-        :available="available"
         :currentId="datasetId"
         tPath="datasetSelector"
         @select="select">
@@ -20,7 +19,7 @@ import api from './../../api/';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
 import { DatasetId } from '@/types';
-import { datasetSelectorConfig, DatasetSelectorConfig, stages } from './../../configs/selectors';
+import { datasetSelectorConfig, DatasetSelectorConfig } from './../../configs/selectors';
 
 @Component({
     components: {
@@ -33,14 +32,6 @@ export default class DatasetSelector extends mixins(UpdateRouteMixin) {
     @State datasetId: string;
 
     config: DatasetSelectorConfig = datasetSelectorConfig;
-
-    get available(): string[] {
-        const options = Object.values(stages[this.variableId]).find(stageDatasets =>
-            stageDatasets.includes(this.datasetId)
-        );
-
-        return options;
-    }
 
     select(value: DatasetId) {
         this.setDatasetId(value);
