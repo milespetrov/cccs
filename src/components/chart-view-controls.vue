@@ -1,5 +1,5 @@
 <template>
-    <div class="cip-view-controls container">
+    <div class="cip-view-controls">
         
         <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
             <component :is="controlRef"></component>

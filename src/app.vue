@@ -6,13 +6,13 @@
 
         <div class="cip-strip cip-view-controls">
             <keep-alive>
-                <router-view class="container" name="view-controls"></router-view>
+                <router-view name="view-controls"></router-view>
             </keep-alive>
         </div>
 
         <section class="main">
 
-            <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
+            <div class="cip-view-toggle" @click="changeViewToMap">
                 <div class="cip-map-button"
                     :style="tileStyle">
                     <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x }`" alt="">
@@ -147,7 +147,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     }
 
     tileUrl: string = 'http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile';
-    tileCoordinates: { x: number; y: number } | null = null;
+    tileCoordinates: { x: number; y: number } = { x: 0, y: 0 };
     tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
@@ -272,7 +272,9 @@ export default class App extends mixins(UpdateRouteMixin) {
     position: relative;
 }
 
-.container.main {
+.main {
+    position: relative; // background-color: white;
+
     margin-top: 1rem;
 
     .chart-view & {
@@ -280,9 +282,6 @@ export default class App extends mixins(UpdateRouteMixin) {
             display: block;
         }
     }
-}
-.main {
-    position: relative; // background-color: white;
 }
 
 // $rv-left-offset: calc((100vw - 1170px) / 2);
