@@ -4,11 +4,11 @@
             "sideMenu": true,
             "basemap": false,
             "layers": true,
-            "geoSearch": false
+            "geoSearch": true
         },
         "navBar": {
             "zoom": "buttons",
-            "extra": ["home", "help"]
+            "extra": ["home", "help", "fullscreen"]
         },
         "sideMenu": {
             "logo": true,
@@ -52,8 +52,8 @@
         "components": {
             "geoSearch": {
                 "enabled": true,
-                "showGraphic": false,
-                "showInfo": false
+                "showGraphic": true,
+                "showInfo": true
             },
             "mouseInfo": {
                 "enabled": false,
