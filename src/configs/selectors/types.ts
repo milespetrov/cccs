@@ -1,26 +1,4 @@
-import { StageType, TimePeriodType, DatasetId, VariableId } from '@/types';
-
-/**
- * Specifies which Datasets represent Future and Historic data for a specific variable.
- * The first dataset in the list will be used when changin variable in the variable selector.
- *
- * @export
- * @interface StageMap
- */
-export interface StageMap {
-    [StageType.Historic]?: DatasetId[];
-    [StageType.Future]?: DatasetId[];
-}
-
-/**
- * Map Variable Futuren and Historic stages to datasets.
- *
- * @export
- * @interface StageMapping
- */
-export interface StageMapping {
-    [name: string]: StageMap;
-}
+import { TimePeriodType, DatasetId, VariableId } from '@/types';
 
 /**
  * Selector group base interface.
@@ -111,6 +89,32 @@ export interface RCPSelectorGroupConfig extends BaseSelectorGroupConfig {
  */
 export interface RCPSelectorConfig extends BaseSelectorConfig {
     groups: RCPSelectorGroupConfig[];
+}
+
+// example
+
+////////
+
+// Dataset Selector Config
+
+/**
+ * Configuration of the DatasetGroup in the Dataset selector.
+ *
+ * @interface DatasetSelectorGroupConfig
+ * @extends {BaseSelectorGroupConfig}
+ */
+export interface DatasetSelectorGroupConfig extends BaseSelectorGroupConfig {
+    items: DatasetId[];
+}
+
+/**
+ * Configuration of the Dataset selector.
+ *
+ * @interface DatasetSelectorConfig
+ * @extends {BaseSelectorConfig}
+ */
+export interface DatasetSelectorConfig extends BaseSelectorConfig {
+    groups: DatasetSelectorGroupConfig[];
 }
 
 // example

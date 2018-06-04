@@ -6,34 +6,22 @@
             <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
         </div>
 
-        <b-dropdown-divider></b-dropdown-divider>
-
-        <template v-for="(group, index) in config.groups">
-            <b-dropdown-divider :key="`divider-${ group.id }`" v-if="index !== 0"></b-dropdown-divider>
+        <template v-for="(group) in config.groups" v-if="group.items.some(item => datasetVariables.includes(item))">
+            <b-dropdown-divider :key="`divider-${ group.id }`"></b-dropdown-divider>
 
             <div role="group" :aria-lableledby="group.id" :key="`group-${ group.id }`">
-                <b-dropdown-header :id="group.id" v-if="group.items.length > 1">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
-
-                <div class="cip-dropdown-multi-item" v-for="item in group.items" :key="`item-${ item }`">
-                    <span>{{ $t(`${tPath}.${item}.fullName`) }}</span>
-
-                    <div class="cip-dropdown-multi-item-options">
-                        
-                        <!-- TODO: need to set aria attribute on the button or add a hidden label because multiple buttons have the same text: Historic or Future -->
-
-                        <template v-for="(stageDatasets, key) in stages[item]">
+                <b-dropdown-header :id="group.id">{{ $t(`${tPath}.${group.id}`) }}</b-dropdown-header>
+                        <template v-for="item in group.items">
                             <b-dropdown-item-button
-                                :key="`stage-${key}`"
+                                :key="`stage-${item}`"
                                 :aria-describedby="group.id"
-                                v-if="stageDatasets.length > 0"
-                                :disabled="isStageDisabled(item, stageDatasets)"
-                                :class="{ 'cip-selected': isStageDisabled(item, stageDatasets) }"
-                                @click="selectVariable(item, stageDatasets)">{{ $t(`${tPath}.${key}`) }}</b-dropdown-item-button>
+                                v-if="datasetVariables.includes(item)"
+                                :disabled="isSelected(item)"
+                                :class="{ 'cip-selected': isSelected(item) }"
+                                @click="selectVariable(item)">{{ $t(`${tPath}.${item}.fullName`) }}</b-dropdown-item-button>
 
                         </template>
                     </div>
-                </div>
-            </div>
 
         </template>
 
@@ -46,33 +34,43 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
-import api from './../../api/';
+import api from '@/api/';
 import { Dictionary } from 'vue-router/types/router';
-import { UpdateRouteMixin } from './../../globals/mixin';
-import { variableSelectorConfig, stages, StageMapping, VariableSelectorConfig } from './../../configs/selectors';
+import { UpdateRouteMixin } from '@/globals/mixin';
+import { variableSelectorConfig, VariableSelectorConfig } from './../../configs/selectors';
 import { DatasetId, VariableId } from '@/types';
+import { datasets } from '@/configs/datasets';
 
 @Component
 export default class VariableSelector extends mixins(UpdateRouteMixin) {
     tPath: string = 'variableSelector';
     config: VariableSelectorConfig = variableSelectorConfig;
-    stages: StageMapping = stages;
 
     @Action setVariableId: (value: string) => void;
-    @Action setDatasetId: (value: string) => void;
 
-    @State variableId: string;
+    @State variableId: VariableId;
     @State datasetId: DatasetId;
 
-    isStageDisabled(item: VariableId, stageDatasets: DatasetId[]): boolean {
-        return item === this.variableId && stageDatasets.includes(this.datasetId);
+    @Watch('datasetId')
+    onDatasetChange() {
+        if (!datasets[this.datasetId].variables.includes(this.variableId)) {
+            this.selectVariable(datasets[this.datasetId].variables[0]);
+        }
     }
 
-    selectVariable(item: VariableId, stageDatasets: DatasetId[]) {
+    isSelected(item: VariableId): boolean {
+        return item === this.variableId;
+    }
+
+    //datasetVariables = datasets[this.datasetId].variables;
+    selectVariable(item: VariableId) {
         this.setVariableId(item);
-        this.setDatasetId(stageDatasets[0]);
 
         this.updateRoute();
+    }
+
+    get datasetVariables() {
+        return datasets[this.datasetId].variables;
     }
 }
 </script>
@@ -80,8 +78,4 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 @import './../../styles/view-controls.scss';
-
-.b-dropdown .cip-dropdown-multi-item-options {
-    width: 16em !important;
-}
 </style>
