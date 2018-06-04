@@ -1,37 +1,21 @@
 <template>
-    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope" :class="currentView">
-        <div class="cip-header-container">
-            <div class="cip-strip cip-top-navigation">
-                <!-- TODO: move top-navigatoin into a separate component -->
-
-                <nav class="cip-navigation container">
-                    <geo-search></geo-search>
-                </nav>
-            </div>
-        
-            <div class="cip-strip cip-page-header" @click="changeViewToMap">
-                <!-- TODO: create two separate headers for map and chart views -->
-                <!-- TODO: move header into a separate component -->
-                <div class="cip-header container">
-                    <h1>{{ $t('title') }} </h1>
-
-                    <span class="cip-view-toggle-label">click to see the full map</span>
-                </div>
-
-            </div>
-
-            <div class="cip-strip cip-view-controls">
-                <keep-alive>
-                    <router-view class="container" name="view-controls"></router-view>
-                </keep-alive>
-            </div>
+    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope container" :class="currentView">
+        <div class="cip-header-container mrgn-bttm-lg">
+            <h1>Explore climate data</h1>
         </div>
 
-        <div class="cip-strip cip-backdrop-map">
+        <div class="cip-strip cip-view-controls">
+            <keep-alive>
+                <router-view class="container" name="view-controls"></router-view>
+            </keep-alive>
+        </div>
+        
+
+        <div class="cip-backdrop-map">
             <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
         </div>
 
-        <section class="container main">
+        <section class="main">
 
             <div class="cip-view-toggle" @click="changeViewToMap" v-if="tileCoordinates">
                 <div class="cip-map-button"
@@ -245,19 +229,15 @@ export default class App extends mixins(UpdateRouteMixin) {
 @import './styles/variables.scss';
 
 // cip-strips go across the full width page
+
+.cip-backdrop-map {
+    position: relative;
+    width: 100%;
+    top: 0;
+}
+
 .cip-strip {
     position: relative;
-
-    &.cip-backdrop-map {
-        position: absolute;
-        width: 100%;
-        top: 0;
-
-        .chart-view & {
-            height: $top-navigation-height + $page-header-height + $view-controls-height;
-            overflow: hidden;
-        }
-    }
 
     &.cip-top-navigation {
         background-color: rgba(255, 255, 255, 0.95);
@@ -286,23 +266,6 @@ export default class App extends mixins(UpdateRouteMixin) {
                     background-color: rgba(0, 0, 0, 0.3);
                     backdrop-filter: blur(5px);
                 }
-
-                .cip-header {
-                    justify-content: center;
-                    h1 {
-                        display: none;
-                    }
-
-                    .cip-view-toggle-label {
-                        color: white;
-                        border: none;
-                        background-color: rgba(0, 0, 0, 0.7);
-                        padding: 11px;
-                        display: inline-block;
-                        font-size: 2.5rem;
-                        margin: 0;
-                    }
-                }
             }
         }
     }
@@ -319,29 +282,10 @@ export default class App extends mixins(UpdateRouteMixin) {
 .container.main {
     margin-top: 1rem;
 
-    .map-view & {
-        margin-top: calc(
-            #{$backdrop-map-height} - #{$top-navigation-height} - #{$page-header-height} - #{$view-controls-height} +
-                3rem
-        );
-    }
     .chart-view & {
         .cip-view-toggle {
             display: block;
         }
-    }
-}
-.cip-header {
-    height: $page-header-height;
-    display: flex;
-    align-items: center;
-    h1 {
-        color: white;
-        border: none;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 11px;
-        display: inline-block;
-        margin: 0;
     }
 }
 .main {
@@ -391,63 +335,5 @@ $rv-left-offset: calc((100vw - 1170px) / 2);
             opacity: 1;
         }
     }
-}
-.cip-navigation {
-    display: flex;
-    align-items: center;
-    height: $top-navigation-height; // padding: 1rem; // background-color: rgba(255, 255, 255, 0.7);
-    position: relative;
-    .title {
-        margin: 0 0 0 1rem;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        > svg {
-            margin-right: 1rem;
-        }
-        > span {
-            font-size: 2rem;
-        }
-    }
-    > div {
-        > .menu-option {
-            margin: 0 2rem;
-            // font-weight: bold;
-            font-weight: bold;
-            display: block;
-            float: left;
-            > svg {
-                margin: auto;
-            }
-        }
-        float: right;
-    }
-    .separator {
-        flex: 1;
-    }
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-}
-.menu-option:hover .menu-option-dropdown {
-    display: block;
-}
-.menu-option-dropdown {
-    display: none;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.9);
-    min-width: 185px;
-    z-index: 1;
-    a {
-        float: none;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
-}
-.menu-option-dropdown > a:hover {
-    background-color: #aaaaaa;
 }
 </style>
