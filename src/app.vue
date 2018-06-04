@@ -9,11 +9,6 @@
                 <router-view class="container" name="view-controls"></router-view>
             </keep-alive>
         </div>
-        
-
-        <div class="cip-backdrop-map">
-            <map-instance :key="`instance-${reloadKey}`" v-if="reloadKey !== ''"></map-instance>
-        </div>
 
         <section class="main">
 
@@ -67,7 +62,6 @@ import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
 Vue.use(FormSelect);
 
-import MapInstance from './components/map-instance.vue';
 import GeoSearch from './components/geo-search.vue';
 import { MapPoint, Range } from './store';
 import api from './api/';
@@ -77,7 +71,6 @@ import { ViewType } from '@/types';
 
 @Component({
     components: {
-        MapInstance,
         GeoSearch
     }
 })
@@ -291,7 +284,9 @@ export default class App extends mixins(UpdateRouteMixin) {
 .main {
     position: relative; // background-color: white;
 }
-$rv-left-offset: calc((100vw - 1170px) / 2);
+
+// $rv-left-offset: calc((100vw - 1170px) / 2);
+
 .cip-view-toggle {
     overflow: hidden;
     display: none;

@@ -815,13 +815,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     .cip-control-cluster {
         padding: 0.5rem 0;
 
-        // TODO: positioning should be changed after https://github.com/fgpv-vpgf/fgpv-vpgf/pull/2623 is merged
         position: absolute;
         bottom: calc(#{$rv-bottom-offset} + 1rem);
-        left: calc(#{$rv-left-offset} + #{$container-width} / 4);
+        left: $container-width / 4;
         width: $container-width / 2;
 
         background-color: #fff;
+
         // TODO: create a shared variable for the box-shadow
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
             0px 3px 1px -2px rgba(0, 0, 0, 0.12);

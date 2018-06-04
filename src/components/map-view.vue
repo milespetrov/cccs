@@ -1,10 +1,17 @@
 <template>
-    <aside class="cip-map-view">
-        <map-table :key="`instance-${reloadKey}`"></map-table>
+    <div class="cip-map-view">
+        
+        <div class="cip-strip cip-backdrop-map">
+            <map-instance :key="`instance-${reloadKey}`"></map-instance>
+        </div>
 
-        <br>
-        <p>{{ $t(`map.${datasetId}_desc`) }}</p>
-    </aside>
+        <aside class="cip-map-view">
+            <map-table :key="`instance-${reloadKey}`"></map-table>
+
+            <br>
+            <p>{{ $t(`map.${datasetId}_desc`) }}</p>
+        </aside>
+    </div>
 </template>
 
 <script lang="ts">
@@ -16,8 +23,8 @@ import MapInstance from './map-instance.vue';
 
 @Component({
     components: {
-        'map-instance': MapInstance,
-        'map-table': MapTable
+        MapInstance,
+        MapTable
     }
 })
 export default class MapView extends Vue {
@@ -40,11 +47,12 @@ export default class MapView extends Vue {
 img {
     width: 100%;
 }
+/* 
 #map-anchor {
     height: 500px;
-}
+} */
 
 .cip-map-view {
-        margin-top: 35px;
+    // margin-top: 35px;
 }
 </style>
