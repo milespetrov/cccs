@@ -18,7 +18,6 @@ import { mixins } from 'vue-class-component';
 import BaseSelectorV from './base-selector.vue';
 
 import api from '@/api/';
-import { Dictionary } from 'vue-router/types/router';
 import { UpdateRouteMixin } from '@/globals/mixin';
 import { variableSelectorConfig, VariableSelectorConfig } from './../../configs/selectors';
 import { DatasetId, VariableId } from '@/types';
