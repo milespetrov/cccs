@@ -3,7 +3,7 @@
       {
         "id": "sico_22",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SICO/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
@@ -14,7 +14,7 @@
       {
         "id": "sico_23",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SICO/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
@@ -25,7 +25,7 @@
       {
         "id": "sico_24",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SICO/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
@@ -36,7 +36,7 @@
       {
         "id": "sico_25",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SICO/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SICO/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false

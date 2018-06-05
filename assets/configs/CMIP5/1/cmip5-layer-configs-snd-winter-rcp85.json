@@ -3,7 +3,7 @@
       {
         "id": "snow_74",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SNOW/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
@@ -14,7 +14,7 @@
       {
         "id": "snow_75",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SNOW/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
@@ -25,7 +25,7 @@
       {
         "id": "snow_76",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SNOW/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
@@ -36,7 +36,7 @@
       {
         "id": "snow_77",
         "layerType": "esriDynamic",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_SNOW/MapServer",
+        "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/CMIP5/CMIP5_SNOW/MapServer",
         "state": {
           "opacity": 0.85,
           "visibility": false
