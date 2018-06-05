@@ -27,6 +27,8 @@ const state: AppState = {
     chartSeries: null,
     timeSlice: null,
 
+    tileInfo: null,
+
     // Does not belong
     internalRouteUpdate: false
 };
@@ -48,7 +50,8 @@ enum Action {
     setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
-    setZoomLevel = 'setZoomLevel'
+    setZoomLevel = 'setZoomLevel',
+    setTileInfo = 'setTileInfo'
 }
 
 enum Mutation {
@@ -65,7 +68,8 @@ enum Mutation {
     SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
-    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL'
+    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL',
+    SET_TILE_INFO = 'SET_TILE_INFO'
 }
 
 // getters
@@ -83,7 +87,8 @@ const getters = {
             z: state.zoomLevel,
             cs: state.chartSeries ? state.chartSeries.toString() : null,
             cr: state.chartRange ? state.chartRange.safeString : null,
-            ts: state.timeSlice !== null ? state.timeSlice.toString() : null
+            ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
+            ti: state.tileInfo ? state.tileInfo.toString() : null
         };
 
         // remove null values from the query object
@@ -120,7 +125,7 @@ const getters = {
         return datasets[state.datasetId!].timeSliderLabels;
     },
 
-    legend: (state: AppState): { [index: string]: string; } | undefined => {
+    legend: (state: AppState): { [index: string]: string } | undefined => {
         return datasets[state.datasetId!].legend;
     },
 
@@ -343,6 +348,15 @@ const actions = {
             });
         }
         context.commit(Mutation.SET_CHART_SERIES, value);
+    },
+
+    [Action.setTileInfo](context: AppContext, value: number[] | string | null): void {
+        if (typeof value === 'string') {
+            value = value.split(',').map(val => {
+                return parseInt(val);
+            });
+        }
+        context.commit(Mutation.SET_TILE_INFO, value);
     }
 };
 
@@ -398,6 +412,10 @@ const mutations = {
 
     [Mutation.SET_CHART_SERIES](state: AppState, value: number[] | null): void {
         state.chartSeries = value;
+    },
+
+    [Mutation.SET_TILE_INFO](state: AppState, value: number[] | null): void {
+        state.tileInfo = value;
     },
 
     [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {

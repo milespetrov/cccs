@@ -12,17 +12,7 @@
 
         <section class="main">
 
-            <div class="cip-view-toggle" @click="changeViewToMap">
-                <div class="cip-map-button"
-                    :style="tileStyle">
-                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x }`" alt="">
-                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y }/${ tileCoordinates.x + 1 }`" alt="">
-                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y + 1 }/${ tileCoordinates.x }`" alt="">
-                    <img :src="`${ tileUrl }/3/${ tileCoordinates.y + 1 }/${ tileCoordinates.x + 1 }`" alt="">
-                </div>
-
-                <span class="cip-view-toggle-label">click to see the full map</span>
-            </div>
+            
 
             <keep-alive>
                 <router-view class="visualization" name="visualization"></router-view>
@@ -88,6 +78,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setRcpId: (value: string | null) => void;
     @Action clearChart: () => void;
     @Action setChartRange: (value: Range | string | null) => void;
+    @Action setTileInfo: (value: number[] | string | null) => void;
 
     @State currentView: string;
 
@@ -109,46 +100,6 @@ export default class App extends mixins(UpdateRouteMixin) {
         this.clearChart();
         this.updateRoute();
     }
-
-    @State centerPoint: MapPoint;
-
-    @Watch('centerPoint')
-    onCenterPointChanged(): void {
-        const mapInstance = api.RZ.mapInstances[api.RZ.mapInstances.length - 1];
-        if (!mapInstance) {
-            return;
-        }
-        const centerExtent = mapInstance._fgpMap.extent.getCenter();
-        // let res = 529.1677250021168; // 8
-        // let res = 926.0435187537042; // 7
-        const res = 7937.5158750317505; // 3
-        const xorigin = -34655800;
-        const yorigin = 39310000;
-
-        // TODO: clean up magic numbers
-
-        let tx = (centerExtent.x - xorigin) / 256 / res;
-        let ty = (-centerExtent.y + yorigin) / 256 / res;
-
-        const dx = (tx % 1) * 256 + (tx % 1 > 0.5 ? 0 : 256) - 250 / 2;
-        const dy = (ty % 1) * 256 + (ty % 1 > 0.5 ? 0 : 256) - 130 / 2;
-
-        this.tileStyle = {
-            transform: `translate(${-dx + 'px'}, ${-dy + 'px'})`
-        };
-
-        tx += tx % 1 > 0.5 ? 0 : -1;
-        ty += ty % 1 > 0.5 ? 0 : -1;
-
-        this.tileCoordinates = {
-            x: Math.floor(tx),
-            y: Math.floor(ty)
-        };
-    }
-
-    tileUrl: string = 'http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/tile';
-    tileCoordinates: { x: number; y: number } = { x: 0, y: 0 };
-    tileStyle: any = { transform: 'translate(0px, 0px)' };
 
     created(): void {
         // This is to allow the back/forward browser functions to update the store
@@ -186,7 +137,8 @@ export default class App extends mixins(UpdateRouteMixin) {
             z: this.setZoomLevel,
             ts: this.setTimeSlice,
             fp: this.setFeaturePoint,
-            r: this.setRcpId
+            r: this.setRcpId,
+            ti: this.setTileInfo
         };
 
         // update the store
@@ -199,16 +151,6 @@ export default class App extends mixins(UpdateRouteMixin) {
 
             storeFns[parameter](value);
         });
-    }
-
-    changeViewToMap() {
-        // TODO: is this check really necessary?
-        if (this.currentView === ViewType.MapView) {
-            return;
-        }
-
-        this.setCurrentView(ViewType.MapView);
-        this.updateRoute();
     }
 }
 </script>
@@ -283,50 +225,4 @@ export default class App extends mixins(UpdateRouteMixin) {
 }
 
 // $rv-left-offset: calc((100vw - 1170px) / 2);
-
-.cip-view-toggle {
-    overflow: hidden;
-    display: none;
-    width: 250px;
-    height: 130px;
-    position: relative;
-    right: 10px;
-    top: -20px;
-    float: right;
-    margin: 0 0 0 2rem;
-    cursor: pointer;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-        0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-    .cip-map-button {
-        display: flex;
-        flex-wrap: wrap;
-        width: 256px * 2;
-        height: 256px * 2;
-        img {
-            width: 256px;
-            height: 256px;
-        }
-    }
-    .cip-view-toggle-label {
-        color: white;
-        font-size: 2rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: darkblue;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-        transition: opacity 200ms ease-in;
-    }
-    &:hover {
-        .cip-view-toggle-label {
-            opacity: 1;
-        }
-    }
-}
 </style>

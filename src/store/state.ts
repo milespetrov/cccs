@@ -15,6 +15,8 @@ export interface AppState {
     chartSeries: number[] | null;
     timeSlice: number | null;
 
+    tileInfo: number[] | null;
+
     internalRouteUpdate: boolean;
 }
 

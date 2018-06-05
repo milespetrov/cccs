@@ -83,7 +83,7 @@ class AHCCDApi extends DatasetApi {
         };
 
         const tempData: any = await $.getJSON(
-            `http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/AHCCD_en/MapServer/${
+            `http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${
                 varArray[this.state.variableId!]
             }/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
             data => {
