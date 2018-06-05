@@ -88,7 +88,7 @@ const getters = {
             cs: state.chartSeries ? state.chartSeries.toString() : null,
             cr: state.chartRange ? state.chartRange.safeString : null,
             ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
-            ti: state.tileInfo ? state.tileInfo.safeString : null
+            ti: state.tileInfo ? state.tileInfo.toString() : null
         };
 
         // remove null values from the query object
@@ -350,12 +350,11 @@ const actions = {
         context.commit(Mutation.SET_CHART_SERIES, value);
     },
 
-    [Action.setTileInfo](context: AppContext, value: { x: number; y: number } | string | null): void {
+    [Action.setTileInfo](context: AppContext, value: number[] | string | null): void {
         if (typeof value === 'string') {
-            const arr = value.split(',');
-            value = new MapPoint(parseInt(arr[0]), parseInt(arr[1]));
-        } else if (value !== null) {
-            value = new MapPoint(value.x, value.y);
+            value = value.split(',').map(val => {
+                return parseInt(val);
+            });
         }
         context.commit(Mutation.SET_TILE_INFO, value);
     }
@@ -415,7 +414,7 @@ const mutations = {
         state.chartSeries = value;
     },
 
-    [Mutation.SET_TILE_INFO](state: AppState, value: MapPoint | null): void {
+    [Mutation.SET_TILE_INFO](state: AppState, value: number[] | null): void {
         state.tileInfo = value;
     },
 
