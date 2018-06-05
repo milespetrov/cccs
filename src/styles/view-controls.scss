@@ -1,19 +1,19 @@
 @import './variables.scss';
 
 .cip-view-controls {
-    height: $view-controls-height;
-    // width: 100%;
     display: flex;
     align-items: center;
 
-    padding: 0 1rem;
+    height: $view-controls-height;
+
+    // padding: 0 1rem;
     // background-color: lightgray;
 
     .separator {
         flex: 1;
     }
 
-    .menu-option {
+    /* .menu-option {
         margin: 0 1rem;
 
         &:first-child {
@@ -27,26 +27,85 @@
         > svg {
             margin: auto;
         }
+    } */
+
+    $wet-primary-colour: #335075;
+    $border-colour-one: #545353;
+
+    %dropdown-toggle-highlight {
+        background-color: #fff !important;
+        border: 1px solid $border-colour-one;
+    }
+
+    %dropdown-menu-highlight {
+        &:before {
+            position: absolute;
+            top: 0;
+            left: -1px;
+            width: 6px;
+            height: 100%;
+
+            content: '';
+            background-color: $wet-primary-colour;
+        }
     }
 
     .b-dropdown {
-        /deep/ .dropdown-toggle {
-            display: flex;
-            align-items: center;
+        /deep/ {
+            .dropdown-toggle {
+                display: flex;
+                align-items: center;
 
-            border: none;
-            height: 5rem;
-            padding: 0 1.2rem 0 1.5rem;
-            background-color: transparent;
+                border: none;
+                height: $view-controls-height;
+                padding: 0 1.7rem 0 3rem;
+                background-color: transparent;
 
-            &:hover,
-            &:focus {
-                // font-weight: bold;
-                background-color: #e2e6ea;
+                border: 1px solid transparent;
+
+                &:hover,
+                &:focus {
+                    @extend %dropdown-toggle-highlight;
+                }
+
+                &:after {
+                    margin-left: 3rem;
+                }
             }
 
-            &::after {
-                margin-left: 2.3rem;
+            .dropdown-menu {
+                margin-top: -1px;
+
+                border: 1px solid $border-colour-one;
+                box-shadow: none;
+
+                min-width: 400px;
+
+                @extend %dropdown-menu-highlight;
+            }
+        }
+
+        &.show /deep/ {
+            .dropdown-toggle {
+                @extend %dropdown-toggle-highlight;
+                @extend %dropdown-menu-highlight;
+            }
+        }
+
+        &.cip-dropdown-right.show /deep/ {
+            .dropdown-menu {
+                // for some reason the right-aligned menu is offset to the left by one extra pixel
+                margin-right: -1px;
+
+                &:before {
+                    right: -1px;
+                    left: auto;
+                }
+            }
+
+            .dropdown-toggle:before {
+                right: -1px;
+                left: auto;
             }
         }
 
@@ -54,7 +113,7 @@
             // &:hover,
             // &:focus,
             &.cip-selected {
-                background-color: #243850;
+                background-color: $wet-primary-colour;
                 color: white;
             }
         }
