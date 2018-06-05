@@ -5,7 +5,7 @@
             "name": "Precipitation",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
-            "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/AHCCD_en/MapServer/3",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/3",
             "controls": ["data"],
             "state": {
                 "visibility": true
@@ -18,7 +18,7 @@
             "name": "Min Temperature",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
-            "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/AHCCD_en/MapServer/1",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/1",
             "controls": ["data"],
             "state": {
                 "visibility": true
@@ -31,7 +31,7 @@
             "name": "Mean Temperature",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
-            "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/AHCCD_en/MapServer/0",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
             "controls": ["data"],
             "state": {
                 "visibility": true
@@ -44,7 +44,7 @@
             "name": "Max Temperature",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
-            "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/AHCCD_en/MapServer/2",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
             "controls": ["data"],
             "state": {
                 "visibility": true
