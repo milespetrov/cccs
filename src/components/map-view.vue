@@ -5,7 +5,7 @@
             <map-instance :key="`instance-${reloadKey}`"></map-instance>
         </div>
 
-        <aside class="cip-map-view">
+        <aside class="cip-map-view mrgn-tp-md">
             <map-table :key="`instance-${reloadKey}`"></map-table>
 
             <br>

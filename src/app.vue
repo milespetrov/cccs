@@ -275,8 +275,6 @@ export default class App extends mixins(UpdateRouteMixin) {
 .main {
     position: relative; // background-color: white;
 
-    margin-top: 1rem;
-
     .chart-view & {
         .cip-view-toggle {
             display: block;
@@ -292,7 +290,8 @@ export default class App extends mixins(UpdateRouteMixin) {
     width: 250px;
     height: 130px;
     position: relative;
-    right: -6px;
+    right: 10px;
+    top: -20px;
     float: right;
     margin: 0 0 0 2rem;
     cursor: pointer;
