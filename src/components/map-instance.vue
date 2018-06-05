@@ -192,6 +192,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Action setCurrentView: (value: string) => void;
     @Action setFeaturePoint: (value: { x: number; y: number } | null) => void;
     @Action setZoomLevel: (value: number) => void;
+    @Action setTileInfo: (value: { x: number; y: number } | null) => void;
 
     @Getter chartConfigGenerator: ChartConfigGenerator;
     @Getter timeSliderLabels: string[] | undefined;
@@ -730,6 +731,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     changeViewToChart(): void {
+        if (!this._mapi) {
+            return;
+        }
+        const centerExtent = this._mapi._fgpMap.extent.getCenter();
+        // let res = 529.1677250021168; // 8
+        // let res = 926.0435187537042; // 7
+        const res = 7937.5158750317505; // 3
+        const xorigin = -34655800;
+        const yorigin = 39310000;
+
+        // TODO: clean up magic numbers
+
+        const tx = (centerExtent.x - xorigin) / 256 / res;
+        const ty = (-centerExtent.y + yorigin) / 256 / res;
+
+        this.setTileInfo({ x: tx, y: ty });
         this.setCurrentView('chart-view');
         this.updateRoute();
     }

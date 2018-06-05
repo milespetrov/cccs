@@ -88,6 +88,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setRcpId: (value: string | null) => void;
     @Action clearChart: () => void;
     @Action setChartRange: (value: Range | string | null) => void;
+    @Action setTileInfo: (value: { x: number; y: number } | string | null) => void;
 
     @State currentView: string;
 
@@ -110,35 +111,19 @@ export default class App extends mixins(UpdateRouteMixin) {
         this.updateRoute();
     }
 
-    @State centerPoint: MapPoint;
+    @State tileInfo: { x: number; y: number };
 
-    @Watch('centerPoint')
-    onCenterPointChanged(): void {
-        const mapInstance = api.RZ.mapInstances[api.RZ.mapInstances.length - 1];
-        if (!mapInstance) {
-            return;
-        }
-        const centerExtent = mapInstance._fgpMap.extent.getCenter();
-        // let res = 529.1677250021168; // 8
-        // let res = 926.0435187537042; // 7
-        const res = 7937.5158750317505; // 3
-        const xorigin = -34655800;
-        const yorigin = 39310000;
-
-        // TODO: clean up magic numbers
-
-        let tx = (centerExtent.x - xorigin) / 256 / res;
-        let ty = (-centerExtent.y + yorigin) / 256 / res;
-
-        const dx = (tx % 1) * 256 + (tx % 1 > 0.5 ? 0 : 256) - 250 / 2;
-        const dy = (ty % 1) * 256 + (ty % 1 > 0.5 ? 0 : 256) - 130 / 2;
+    @Watch('tileInfo')
+    onTilesChanged(): void {
+        const dx = (this.tileInfo.x % 1) * 256 + (this.tileInfo.x % 1 > 0.5 ? 0 : 256) - 250 / 2;
+        const dy = (this.tileInfo.y % 1) * 256 + (this.tileInfo.y % 1 > 0.5 ? 0 : 256) - 130 / 2;
 
         this.tileStyle = {
             transform: `translate(${-dx + 'px'}, ${-dy + 'px'})`
         };
 
-        tx += tx % 1 > 0.5 ? 0 : -1;
-        ty += ty % 1 > 0.5 ? 0 : -1;
+        const tx = this.tileInfo.x + (this.tileInfo.x % 1 > 0.5 ? 0 : -1);
+        const ty = this.tileInfo.y + (this.tileInfo.y % 1 > 0.5 ? 0 : -1);
 
         this.tileCoordinates = {
             x: Math.floor(tx),
@@ -186,7 +171,8 @@ export default class App extends mixins(UpdateRouteMixin) {
             z: this.setZoomLevel,
             ts: this.setTimeSlice,
             fp: this.setFeaturePoint,
-            r: this.setRcpId
+            r: this.setRcpId,
+            ti: this.setTileInfo
         };
 
         // update the store
