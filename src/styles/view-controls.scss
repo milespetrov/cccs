@@ -31,8 +31,11 @@
 
     .b-dropdown {
         /deep/ .dropdown-toggle {
+            display: flex;
+            align-items: center;
+
             border: none;
-            height: 4.8rem;
+            height: 5rem;
             padding: 0 1.2rem 0 1.5rem;
             background-color: transparent;
 
@@ -40,6 +43,10 @@
             &:focus {
                 // font-weight: bold;
                 background-color: #e2e6ea;
+            }
+
+            &::after {
+                margin-left: 2.3rem;
             }
         }
 
@@ -50,6 +57,29 @@
                 background-color: #243850;
                 color: white;
             }
+        }
+
+        .dropdown-divider {
+            border-right: 1px solid #e9ecef;
+            height: auto;
+            margin: 0.5rem;
+        }
+
+        .cip-content-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cip-value-label {
+            font-size: 0.8em;
+            line-height: 1.2em;
+        }
+
+        .cip-selected-value {
+            font-size: 0.9em;
+            font-weight: bold;
+            line-height: 1.2em;
         }
 
         .cip-dropdown-multi-item {

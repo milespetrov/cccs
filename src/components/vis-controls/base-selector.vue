@@ -1,6 +1,13 @@
 <template>
 
-    <b-dropdown :text="$t(`${tPath}.title`, { current: $t(`${tPath}.${currentId}.shortName`) })" variant="light" class="cip-selector">
+    <b-dropdown variant="light" class="cip-selector">
+
+        <template slot="button-content">
+            <div class="cip-content-wrap">
+                <span class="cip-value-label">{{ $t(`${tPath}.title`) }}</span>
+                <span class="cip-selected-value">{{ $t(`${tPath}.${currentId}.shortName`) }}</span>
+            </div>
+        </template>
 
         <div class="cip-dropdown-info">
             <h6 class="dropdown-header">{{ $t(`${tPath}.header`) }}</h6>
@@ -127,12 +134,6 @@ export default class BaseSelectorV extends Vue {
         .cip-dropdown-content {
             display: flex;
         }
-    }
-
-    .dropdown-divider {
-        border-right: 1px solid #e9ecef;
-        height: auto;
-        margin: 0.5rem;
     }
 }
 </style>
