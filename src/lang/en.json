@@ -19,7 +19,7 @@
     },
 
     "variableSelector": {
-        "title": "Variable: {current}",
+        "title": "Variable",
         "header": "Climate Data",
         "description":
             "An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate",
@@ -44,7 +44,7 @@
     },
 
     "timePeriodSelector": {
-        "title": "Time Period: {current}",
+        "title": "Time Period",
         "header": "Time Period",
         "description":
             "Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere \"behaves\" over relatively long periods of time.",
@@ -75,7 +75,7 @@
     },
 
     "rcpSelector": {
-        "title": "Model: {current}",
+        "title": "Model",
         "header": "RCP",
         "description":
             "The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",
@@ -100,7 +100,7 @@
     },
 
     "datasetSelector": {
-        "title": "Dataset: {current}",
+        "title": "Dataset",
         "header": "Datasets",
         "description":
             "Climate models use quantitative methods to simulate the interactions of the important drivers of climate, including atmosphere, oceans, land surface and ice. They are used for a variety of purposes from study of the dynamics of the climate system to projections of future climate.",

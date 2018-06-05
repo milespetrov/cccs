@@ -5,23 +5,28 @@ export const variableSelectorConfig: VariableSelectorConfig = {
     groups: [
         {
             id: 'temperature_group',
-            items: [VariableId.TMean, VariableId.TMin, VariableId.TMax]
+            items: [VariableId.TMean, VariableId.TMin, VariableId.TMax],
+            showHeader: true
         },
         {
             id: 'wind_group',
-            items: [VariableId.SurfaceWind]
+            items: [VariableId.SurfaceWind],
+            showHeader: true
         },
         {
             id: 'precipitation_group',
-            items: [VariableId.Precipitation]
+            items: [VariableId.Precipitation],
+            showHeader: true
         },
         {
             id: 'ice_group',
-            items: [VariableId.IceConcentration, VariableId.IceThickness]
+            items: [VariableId.IceConcentration, VariableId.IceThickness],
+            showHeader: true
         },
         {
             id: 'snow_depth_group',
-            items: [VariableId.SnowDepth]
+            items: [VariableId.SnowDepth],
+            showHeader: true
         }
     ]
 };

@@ -1,5 +1,5 @@
 <template>
-    <div class="cip-view-controls container">
+    <div class="cip-view-controls">
 
         <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
             <component :is="controlRef"></component>
@@ -8,7 +8,13 @@
         <span class="separator"></span>
 
         <div class="menu-option">
-            <b-dropdown text="Download" variant="light" right>
+            <b-dropdown variant="light" right>
+                <template slot="button-content">
+                    <div class="cip-content-wrap">
+                        <span class="cip-selected-value">Download</span>
+                    </div>
+                </template>
+                
                 <div class="cip-dropdown-multi-item">
                     <span>Export Map Image</span>
 

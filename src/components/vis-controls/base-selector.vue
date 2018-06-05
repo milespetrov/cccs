@@ -1,6 +1,13 @@
 <template>
 
-    <b-dropdown :text="$t(`${tPath}.title`, { current: $t(`${tPath}.${currentId}.shortName`) })" variant="light" class="cip-selector">
+    <b-dropdown variant="light" class="cip-selector">
+
+        <template slot="button-content">
+            <div class="cip-content-wrap">
+                <span class="cip-value-label">{{ $t(`${tPath}.title`) }}</span>
+                <span class="cip-selected-value">{{ $t(`${tPath}.${currentId}.shortName`) }}</span>
+            </div>
+        </template>
 
         <div class="cip-dropdown-info">
             <h6 class="dropdown-header">{{ $t(`${tPath}.header`) }}</h6>
@@ -47,14 +54,14 @@ export default class BaseSelectorV extends Vue {
 
     @Prop() config: BaseSelectorConfig;
     @Prop({ default: undefined })
-    available: string[];
+    available: string[]; // an array of item ids/names which can be rendered in this selector; all other value will not be shown
     @Prop() currentId: string;
 
     @Prop() tPath: string;
 
-    create() {
+    /* create() {
         console.log('----', this.config, this.currentId);
-    }
+    } */
 
     /**
      * Returns a filtered set of selector groups.
@@ -66,6 +73,7 @@ export default class BaseSelectorV extends Vue {
                 ? group.items.filter(item => this.available.includes(item))
                 : group.items;
 
+            // filter out groups with not items in them
             if (filteredItems.length === 0) {
                 return map;
             }
@@ -127,12 +135,6 @@ export default class BaseSelectorV extends Vue {
         .cip-dropdown-content {
             display: flex;
         }
-    }
-
-    .dropdown-divider {
-        border-right: 1px solid #e9ecef;
-        height: auto;
-        margin: 0.5rem;
     }
 }
 </style>
