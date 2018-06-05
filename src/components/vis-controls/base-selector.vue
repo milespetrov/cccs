@@ -54,14 +54,14 @@ export default class BaseSelectorV extends Vue {
 
     @Prop() config: BaseSelectorConfig;
     @Prop({ default: undefined })
-    available: string[];
+    available: string[]; // an array of item ids/names which can be rendered in this selector; all other value will not be shown
     @Prop() currentId: string;
 
     @Prop() tPath: string;
 
-    create() {
+    /* create() {
         console.log('----', this.config, this.currentId);
-    }
+    } */
 
     /**
      * Returns a filtered set of selector groups.
@@ -73,6 +73,7 @@ export default class BaseSelectorV extends Vue {
                 ? group.items.filter(item => this.available.includes(item))
                 : group.items;
 
+            // filter out groups with not items in them
             if (filteredItems.length === 0) {
                 return map;
             }
