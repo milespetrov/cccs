@@ -204,7 +204,15 @@
                             "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
                     }
                 ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
             },
             {
                 "id": "baseCBMT_CBCT_GEOM_3978",
@@ -220,7 +228,15 @@
                             "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
                     }
                 ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
             }
         ]
     }
