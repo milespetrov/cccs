@@ -51,6 +51,30 @@ async function makeConfig(
             id: 'snd',
             unit: ' cm',
             rounding: 1
+        },
+        {
+            name: 'Mean Temperature',
+            id: VariableId.TMean,
+            unit: '°C',
+            rounding: 1
+        },
+        {
+            name: 'Minimum Temperature',
+            id: VariableId.TMin,
+            unit: '°C',
+            rounding: 1
+        },
+        {
+            name: 'Maximum Temperature',
+            id: VariableId.TMax,
+            unit: '°C',
+            rounding: 1
+        },
+        {
+            name: 'Precipitation',
+            id: VariableId.Precipitation,
+            unit: 'mm',
+            rounding: 1
         }
     ];
 
@@ -255,8 +279,7 @@ async function makeConfig(
                 load: (event: any) => {
                     const ren = event.target.renderer;
 
-                    ren
-                        .label('click to see the full chart', event.target.chartWidth / 2 - 65, 5)
+                    ren.label('click to see the full chart', event.target.chartWidth / 2 - 65, 5)
                         .css({
                             display: 'none'
                         })
@@ -359,15 +382,14 @@ function makeLabels(event: any, data: any) {
     const firstLabelY = 135;
     const ren = event.target.renderer;
 
-    ren
-        .path([
-            'M',
-            event.target.plotWidth + event.target.plotLeft + 35,
-            0,
-            'L',
-            event.target.plotWidth + event.target.plotLeft + 35,
-            event.target.plotTop + event.target.plotHeight + 100
-        ])
+    ren.path([
+        'M',
+        event.target.plotWidth + event.target.plotLeft + 35,
+        0,
+        'L',
+        event.target.plotWidth + event.target.plotLeft + 35,
+        event.target.plotTop + event.target.plotHeight + 100
+    ])
         .attr({
             'stroke-width': 0.5,
             stroke: '#AAAAAA',
@@ -375,8 +397,7 @@ function makeLabels(event: any, data: any) {
         })
         .add();
 
-    ren
-        .label(`<b>Key Information</b>`, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY)
+    ren.label(`<b>Key Information</b>`, event.target.plotWidth + event.target.plotLeft + 55, firstLabelY)
         .css({
             'font-size': '16px',
             color: 'black' //'#ecf0f1'
@@ -388,12 +409,11 @@ function makeLabels(event: any, data: any) {
         })
         .add();
 
-    ren
-        .label(
-            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
-            event.target.plotWidth + event.target.plotLeft + 55,
-            firstLabelY + 25
-        )
+    ren.label(
+        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis neque metus. Nunc enim velit, malesuada vitae vehicula vel, suscipit et neque. Donec ac ante sit amet nunc tristique interdum.`,
+        event.target.plotWidth + event.target.plotLeft + 55,
+        firstLabelY + 25
+    )
         .css({
             'pointer-events': 'none',
             width: 200,

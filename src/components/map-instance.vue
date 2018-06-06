@@ -225,8 +225,20 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             `./assets/configs/${this.currentDataset}/${this.configVersion}/legend.json`
         );
 
+        //DEMO, REMOVE
+        const DEMO_MAPPINGS: { [key: string]: string } = {
+            tmean: 'sfcwind',
+            tmin: 'sic',
+            tmax: 'sit',
+            precip: 'sfcwind',
+            sfcwind: 'sfcwind',
+            sic: 'sic',
+            sit: 'sit',
+            snd: 'snd'
+        };
+
         // TODO: update legend settings layers and link them to actual reference layers
-        let legend = legends[this.currentVariable];
+        let legend = legends[DEMO_MAPPINGS[this.currentVariable]];
         if (!legend) {
             legend = [];
         } else {

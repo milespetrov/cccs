@@ -10,14 +10,26 @@ const BASE_MAP_URL = './assets/configs/CMIP5';
  * @class CMIP5Api
  */
 class CMIP5Api extends DatasetApi {
+    //REMOVE THIS ONCE VARIABLES EXIST
+    DEMO_MAPPINGS: { [key: string]: string } = {
+        tmean: 'sfcwind',
+        tmin: 'sic',
+        tmax: 'sit',
+        precip: 'sfcwind',
+        sfcwind: 'sfcwind',
+        sic: 'sic',
+        sit: 'sit',
+        snd: 'snd'
+    };
+
     /**
      * Returns all 5 percentile lines for the current state
      *
      */
     async getData(): Promise<any> {
-        const fetchUrl = `${BASE_API_URL}/time_series/${this.state.featureId}/${this.state.variableId}/${
-            this.state.rcpId
-        }/${this.state.timePeriodId}`;
+        const fetchUrl = `${BASE_API_URL}/time_series/${this.state.featureId}/${
+            this.DEMO_MAPPINGS[this.state.variableId!]
+        }/${this.state.rcpId}/${this.state.timePeriodId}`;
         const data = await getJSON<any>(fetchUrl, DatasetId.CMIP5, 'getData');
 
         return data;
@@ -47,9 +59,9 @@ class CMIP5Api extends DatasetApi {
      * @param configVersion version grabbed from the config storage
      */
     async getDataLayers(configVersion: string): Promise<any[]> {
-        const fetchUrl = `${BASE_MAP_URL}/${configVersion}/cmip5-layer-configs-${this.state.variableId}-${
-            this.state.timePeriodId
-        }-${this.state.rcpId}.json`;
+        const fetchUrl = `${BASE_MAP_URL}/${configVersion}/cmip5-layer-configs-${
+            this.DEMO_MAPPINGS[this.state.variableId!]
+        }-${this.state.timePeriodId}-${this.state.rcpId}.json`;
         const result = await $.getJSON(fetchUrl);
 
         return result.layers;
@@ -73,9 +85,9 @@ class CMIP5Api extends DatasetApi {
     async getTableData() {
         const slices = ['2021-2040', '2041-2060', '2061-2080', '2081-2100'];
         const apiData = await $.getJSON(
-            `${BASE_API_URL}/map_average/${this.state.variableId}/${this.state.rcpId}/${this.state.timePeriodId}/${
-                slices[this.state.timeSlice!]
-            }`
+            `${BASE_API_URL}/map_average/${this.DEMO_MAPPINGS[this.state.variableId!]}/${this.state.rcpId}/${
+                this.state.timePeriodId
+            }/${slices[this.state.timeSlice!]}`
         );
 
         /* Snow depth: round at 0.1 cm
