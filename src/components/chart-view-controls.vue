@@ -8,7 +8,7 @@
         <span class="separator"></span>
 
         <div class="menu-option">
-            <b-dropdown variant="light" right class="cip-dropdown-right">
+            <b-dropdown variant="light" right class="cip-dropdown-right cip-selector">
                 
                 <template slot="button-content">
                     <div class="cip-content-wrap">
@@ -16,53 +16,46 @@
                     </div>
                 </template>
                 
+                <div class="cip-dropdown-info">
+                    <span class="dropdown-header">Download</span>
+                    <div class="cip-dropdown-description">Dictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.</div>
+                </div>
+
+                <b-dropdown-divider></b-dropdown-divider>
+
                 <div role="group" aria-lableledby="chart-download-data">
-                    
-                    <div class="cip-dropdown-info">
-                        <h6 class="dropdown-header">Download</h6>
-                        <div class="cip-dropdown-description">Dictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.</div>
-                    </div>
 
-                    <b-dropdown-divider></b-dropdown-divider>
-                    
-                    <b-dropdown-header id="chart-download-data">Data</b-dropdown-header>
-                    <div class="cip-dropdown-multi-item">
-                        <span>Full Time Range</span>
+                    <b-dropdown-header id="chart-download-data">Chart data</b-dropdown-header>
 
-                        <div class="cip-dropdown-multi-item-options">
-                            <b-dropdown-item-button @click="downloadData('csv', true)">.csv</b-dropdown-item-button>
-                            <b-dropdown-item-button @click="downloadData('xls', true)">.xls</b-dropdown-item-button>
-                        </div>
-                    </div>
-                    <!-- temporary remove visible time range option -->
-                    <!-- <div class="cip-dropdown-multi-item">
-                        <span>Visible Time Range Only</span>
+                    <b-dropdown-item-button @click="downloadData('xls', true)">XLS file</b-dropdown-item-button>
+                    <b-dropdown-item-button @click="downloadData('csv', true)">CSV file</b-dropdown-item-button>
 
-                        <div class="cip-dropdown-multi-item-options">
-                            <b-dropdown-item-button @click="downloadData('csv')">.csv</b-dropdown-item-button>
-                            <b-dropdown-item-button @click="downloadData('xls')">.xls</b-dropdown-item-button>
-                        </div>
-                    </div> -->
                 </div>
                 
                 <b-dropdown-divider></b-dropdown-divider>
 
                 <div role="group" aria-lableledby="chart-download-image">
-                    <b-dropdown-header id="chart-download-image">Image</b-dropdown-header>
-                    <div class="cip-dropdown-multi-item">
-                        <span>Chart</span>
+                    <b-dropdown-header id="chart-download-image">Chart image</b-dropdown-header>
 
-                        <div class="cip-dropdown-multi-item-options">
-                            <b-dropdown-item-button @click="downloadImage('png')">.png</b-dropdown-item-button>
-                            <b-dropdown-item-button @click="downloadImage('jpeg')">.jpeg</b-dropdown-item-button>
-                            <b-dropdown-item-button @click="downloadImage('pdf')">.pdf</b-dropdown-item-button>
-                            <b-dropdown-item-button @click="downloadImage('svg')">.svg</b-dropdown-item-button>
-                        </div>
-                    </div>
+                    <b-dropdown-item-button @click="downloadImage('png')">PNG image</b-dropdown-item-button>
+                    <b-dropdown-item-button @click="downloadImage('jpeg')">JPEG image</b-dropdown-item-button>
+                    <b-dropdown-item-button @click="downloadImage('pdf')">PDF file</b-dropdown-item-button>
+                    <b-dropdown-item-button @click="downloadImage('svg')">SVG image</b-dropdown-item-button>
+
                 </div>
+
                 <b-dropdown-divider></b-dropdown-divider>
 
-                <b-dropdown-item-button>Access full dataset in Catalogue</b-dropdown-item-button>
+                <div role="group" aria-lableledby="chart-download-dataset">
+                    <b-dropdown-header id="chart-download-dataset">Dataset</b-dropdown-header>
+
+                    <b-dropdown-item target="_blank" href="https://open.canada.ca/en/open-data">
+                        <span class="cip-name"><span class="wb-inv">Access full dataset in</span> Data Catalogue</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </b-dropdown-item>
+
+                </div>
+                
             </b-dropdown>
         </div>
     </div>

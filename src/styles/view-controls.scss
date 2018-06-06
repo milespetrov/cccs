@@ -6,28 +6,9 @@
 
     height: $view-controls-height;
 
-    // padding: 0 1rem;
-    // background-color: lightgray;
-
     .separator {
         flex: 1;
     }
-
-    /* .menu-option {
-        margin: 0 1rem;
-
-        &:first-child {
-            margin-left: 0;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        > svg {
-            margin: auto;
-        }
-    } */
 
     $wet-primary-colour: #335075;
     $border-colour-one: #545353;
@@ -110,12 +91,14 @@
         }
 
         .dropdown-item {
-            // &:hover,
-            // &:focus,
             &.cip-selected {
                 background-color: $wet-primary-colour;
                 color: white;
             }
+        }
+
+        a.dropdown-item {
+            text-decoration: none;
         }
 
         .dropdown-divider {
@@ -198,6 +181,38 @@
         .cip-dropdown-description {
             padding: 0.25rem * 1.6 1.5rem * 1.6;
             font-size: 0.8em;
+        }
+    }
+
+    .cip-selector {
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .cip-name {
+            flex: 1;
+            margin-right: 3rem;
+        }
+
+        .cip-short-name {
+            font-size: 0.7em;
+            font-weight: 100;
+        }
+
+        .cip-qualifier {
+            font-size: 0.7em;
+            font-weight: 100;
+        }
+
+        &.cip-horizontal {
+            .cip-dropdown-content {
+                display: flex;
+
+                > [role='group'] {
+                    flex: 1;
+                }
+            }
         }
     }
 }

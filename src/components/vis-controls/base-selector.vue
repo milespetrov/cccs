@@ -10,7 +10,7 @@
         </template>
 
         <div class="cip-dropdown-info">
-            <h6 class="dropdown-header">{{ $t(`${tPath}.header`) }}</h6>
+            <span class="dropdown-header">{{ $t(`${tPath}.header`) }}</span>
             <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
         </div>
 
@@ -109,32 +109,4 @@ export default class BaseSelectorV extends Vue {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 @import './../../styles/view-controls.scss';
-
-.cip-selector {
-    .dropdown-item {
-        display: flex;
-        align-items: center;
-    }
-
-    .cip-name {
-        flex: 1;
-        margin-right: 3rem;
-    }
-
-    .cip-short-name {
-        font-size: 0.7em;
-        font-weight: 100;
-    }
-
-    .cip-qualifier {
-        font-size: 0.7em;
-        font-weight: 100;
-    }
-
-    &.cip-horizontal {
-        .cip-dropdown-content {
-            display: flex;
-        }
-    }
-}
 </style>
