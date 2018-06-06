@@ -60,6 +60,8 @@ export default class MapFineprint extends Vue {
     font-size: 1rem;
     color: #000;
 
+    padding: 0 1rem;
+
     .cip-map-fineprint-content {
         display: flex;
 
