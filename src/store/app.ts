@@ -143,7 +143,9 @@ const getters = {
         };
 
         // check if a colour ramp is specified for the current variable
-        const variableColourRamp = dataset.colourRamp.variables[state.variableId!];
+        const variableColourRamp = dataset.colourRamp.variables
+            ? dataset.colourRamp.variables[state.variableId!]
+            : null;
         if (!variableColourRamp) {
             return defaultColourRamp;
         }

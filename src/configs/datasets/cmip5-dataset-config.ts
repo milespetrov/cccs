@@ -56,15 +56,7 @@ const cimp5Dataset: DatasetSource = {
 
     colourRamp: {
         defaultColours: ['#733E05', '#D6AF67', '#EFF0ED', '#6BBFB1', '#023D32'],
-        defaultLabels: ['-100', '100'],
-        variables: {
-            [VariableId.IceConcentration]: {
-                labels: ['-40', '40']
-            },
-            [VariableId.SurfaceWind]: {
-                labels: ['-30', '30']
-            }
-        }
+        defaultLabels: ['-100', '100']
     },
 
     mapTableColumns: ['Longitude', 'Latitude', 'Value'],

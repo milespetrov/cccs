@@ -836,7 +836,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             color: white;
             position: relative;
             margin: 0;
-            top: calc((100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}) !important;
+            top: 50% !important;
             transform: translateY(-50%);
         }
     }

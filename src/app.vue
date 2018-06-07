@@ -223,6 +223,4 @@ export default class App extends mixins(UpdateRouteMixin) {
         }
     }
 }
-
-// $rv-left-offset: calc((100vw - 1170px) / 2);
 </style>

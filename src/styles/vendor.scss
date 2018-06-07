@@ -92,27 +92,6 @@
 }
 
 .cip-backdrop-map rv-shell .rv-inner-shell {
-    /* @media (min-width: 768px) {
-        width: 750px;
-    }
-
-    @media (min-width: 992px) {
-        width: 970px;
-    }
-
-    @media (min-width: 1200px) {
-        width: 1170px;
-    }
-
-    margin: $rv-top-offset auto $rv-bottom-offset auto;
-    height: calc(#{$backdrop-map-height} - #{$rv-top-offset} - #{$rv-bottom-offset});
-
-    position: relative;
-
-    rv-mapnav {
-        top: auto;
-    } */
-
     // these will disable shadows and event on certain elemnts of the structuted legend
     // TODO: clean up after the demo
     rv-toc {
@@ -168,9 +147,6 @@
 }
 
 .esriOverviewMap.ovwTR {
-    /* top: calc(#{$rv-top-offset} + 10px) !important;
-    right: $rv-left-offset !important; */
-
     .ovwContainer {
         display: none !important;
     }

@@ -145,7 +145,7 @@ export interface DatasetColourRamp {
     defaultLabels: [string, string];
 
     // TODO: use enum in the index signature when Typescript supports it
-    variables: { [name: string]: ColourRamp };
+    variables?: { [name: string]: ColourRamp };
 }
 
 /**
