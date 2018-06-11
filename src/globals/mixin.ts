@@ -11,15 +11,12 @@ import { Dictionary } from 'vue-router/types/router';
 export class UpdateRouteMixin extends Vue {
     @Getter getQuery: Dictionary<string>;
 
-    @State currentView: string;
-
     @Action setInternalRouteUpdate: (value: boolean) => void;
 
     // Updates the router using the in-store view and query variables
     updateRoute(): void {
         this.setInternalRouteUpdate(true);
         this.$router.push({
-            name: this.currentView,
             query: this.getQuery
         });
     }
@@ -27,7 +24,6 @@ export class UpdateRouteMixin extends Vue {
     replaceRoute(): void {
         this.setInternalRouteUpdate(true);
         this.$router.replace({
-            name: this.currentView,
             query: this.getQuery
         });
     }

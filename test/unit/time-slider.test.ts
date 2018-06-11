@@ -19,7 +19,7 @@ localVue.use(Vuex);
 // Appeasing Vue some more
 const $t = () => undefined;
 
-import TimeSlider from './../../src/components/time-slider.vue';
+import TimeSlider from 'src/components/time-slider.vue';
 
 describe('time-slider.vue', () => {
     let $router: any;
@@ -43,7 +43,6 @@ describe('time-slider.vue', () => {
         // reset route
         $router = {
             currentRoute: {
-                name: null,
                 query: {}
             },
 

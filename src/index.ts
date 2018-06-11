@@ -4,7 +4,6 @@ import Vuex, { Store } from 'vuex';
 import VueI18n from 'vue-i18n';
 
 import app from './app.vue';
-import routes from './routes';
 import { createStore, RootState } from './store';
 import api from './api/';
 
@@ -12,7 +11,7 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueI18n);
 
-const router = new VueRouter({ routes });
+const router = new VueRouter();
 
 // initialize a new app-wide store
 const store: Store<RootState> = createStore();

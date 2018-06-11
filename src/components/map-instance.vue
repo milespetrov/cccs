@@ -73,8 +73,7 @@ import { ColourRamp } from './../configs/datasets';
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapFineprint from './map-fineprint.vue';
-import { ChartConfigGenerator } from './../configs/charts';
-import { ChartConfigType, DatasetId } from '@/types';
+import { DatasetId } from '@/types';
 
 import { race } from 'rxjs/observable/race';
 
@@ -189,12 +188,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
-    @Action setCurrentView: (value: string) => void;
     @Action setFeaturePoint: (value: { x: number; y: number } | null) => void;
     @Action setZoomLevel: (value: number) => void;
     @Action setTileInfo: (value: number[] | null) => void;
 
-    @Getter chartConfigGenerator: ChartConfigGenerator;
     @Getter timeSliderLabels: string[] | undefined;
     @Getter legend: { [index: string]: string } | undefined;
     @Getter colourRamp: ColourRamp | null;
@@ -210,11 +207,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
         this.switchLayers();
-
-        if (!this.currentFeature) {
-            return;
-        }
-        this.displayMiniChart();
     }
 
     /**
@@ -256,21 +248,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Watch('currentRcp')
     onRcpChanged(newValue: string, oldValue: string) {
         this.switchLayers();
-
-        if (!this.currentFeature) {
-            return;
-        }
-        this.displayMiniChart();
     }
 
     @Watch('currentTimePeriod')
     onTimePeriodChange() {
         this.switchLayers();
-
-        if (!this.currentFeature) {
-            return;
-        }
-        this.displayMiniChart();
     }
 
     //async addCurrentVarLayer() {
@@ -447,10 +429,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             this._mapi.zoomChanged.subscribe(this.mapZoomChangedHandler);
 
-            this._mapi.ui.anchors.CONTEXT_MAP.after(`
-                <div id="cip-mini-chart-mount"></div>
-            `);
-
             // set the identify mode to 'highlight' to prevent the details panel from opening
             if (this.currentDataset === DatasetId.AHCCD) {
                 this._mapi.identifyMode = 'highlight';
@@ -474,14 +452,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 capture: true
             });
 
-            // if the current station is already set, open the mini chart
-            if (this.currentFeature && this._mapi.identifyMode !== 'silent') {
-                this.displayMiniChart();
-            } else if (this.featurePoint) {
+            // if the current feature is already set, open the mini chart
+            if (this.featurePoint && this._mapi.identifyMode === 'silent') {
                 await this.drawGrid(this.featurePoint, -1);
-
-                // draw the minichart
-                this.displayMiniChart();
             }
 
             if (this.zoomLevel) {
@@ -591,20 +564,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.setFeaturePoint(event.xy);
             this.setFeatureId(stationId);
             this.updateRoute();
-
-            this.displayMiniChart();
         });
     }
 
     async gridIdentifyHandler(event: any) {
-        // draw the minichart, without the actual chart
-        // the loading indicator will show up
-        this.displayMiniChart(false);
-
         await this.drawGrid(event.xy, 0);
-
-        // draw the minichart
-        this.displayMiniChart();
     }
 
     /**
@@ -630,86 +594,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.setFeatureId(gridId);
 
         this.updateRoute();
-    }
-
-    // if showChart is `false`, the chart box will drawn with loading animation
-    // TODO: move the glance chart to the separate component
-    async displayMiniChart(showChart: boolean = true): Promise<void> {
-        console.log('display mini chart');
-
-        const chartMount = document.getElementById('minichart');
-
-        let miniChartSection = api.DQV.sections[this.miniChartSectionId];
-        let miniChartChart = api.DQV.charts[this.miniChartChartId];
-
-        if (miniChartSection) {
-            // if mini chart section exist, the mini chart chart will exist as well
-            // reset the config before remounting; otherwise it will remount with the old config
-            miniChartChart.config = null;
-
-            // if the mini-chart section is already create but dismounted, remount it
-            if (!miniChartSection.isMounted) {
-                miniChartSection.mount(chartMount);
-            }
-        } else {
-            // create the mini-chart
-            // tslint:disable-next-line:no-unused-expression
-            miniChartChart = new api.DQV.Chart({ id: this.miniChartChartId });
-            miniChartSection = new api.DQV.Section({
-                id: this.miniChartSectionId,
-                data: {
-                    changeView: () => this.changeViewToChart(),
-                    dismountChart: () => {
-                        miniChartSection.dismount();
-                        this.removeGridHighlight();
-                    }
-                },
-                // https://stephanwagner.me/only-css-loading-spinner ??
-                // http://tobiasahlin.com/spinkit/ ??
-                template: `
-                    <dv-section class="cip-glance-chart-container">
-                        <dv-chart id="${this.miniChartChartId}" role="button" @click.native="changeView">
-
-                            <div class="cip-spinner" >
-                                <div class="sk-circle">
-                                    <div class="sk-circle1 sk-child"></div>
-                                    <div class="sk-circle2 sk-child"></div>
-                                    <div class="sk-circle3 sk-child"></div>
-                                    <div class="sk-circle4 sk-child"></div>
-                                    <div class="sk-circle5 sk-child"></div>
-                                    <div class="sk-circle6 sk-child"></div>
-                                    <div class="sk-circle7 sk-child"></div>
-                                    <div class="sk-circle8 sk-child"></div>
-                                    <div class="sk-circle9 sk-child"></div>
-                                    <div class="sk-circle10 sk-child"></div>
-                                    <div class="sk-circle11 sk-child"></div>
-                                    <div class="sk-circle12 sk-child"></div>
-                                </div>
-                            </div>
-
-                        </dv-chart>
-
-                        <button class="btn btn-link cip-close-button" @click="dismountChart" title="Close"><i class="fa fa-times"></i></button>
-                    </dv-section>
-                `
-            });
-
-            miniChartSection.mount(chartMount);
-        }
-
-        if (!showChart) {
-            return;
-        }
-
-        // wait for the chart config to be created or 300 milliseconds, whicever is longer
-        // 300 is needed for a smooth fade in/out animation
-        const [config] = await Promise.all([
-            this.chartConfigGenerator.make(ChartConfigType.GLANCE),
-            new Promise(resolve => window.setTimeout(resolve, 300))
-        ]);
-
-        // update the glance chart with this config
-        miniChartChart.config = config;
     }
 
     scrollGuardHandler(event: WheelEvent): void {
@@ -740,39 +624,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             this._mapi._fgpMap._map.enableScrollWheelZoom();
         }
-    }
-
-    changeViewToChart(): void {
-        if (!this._mapi) {
-            return;
-        }
-        const centerExtent = this._mapi._fgpMap.extent.getCenter();
-        // let res = 529.1677250021168; // 8
-        // let res = 926.0435187537042; // 7
-        const res = 7937.5158750317505; // 3
-        const xorigin = -34655800;
-        const yorigin = 39310000;
-
-        // TODO: clean up magic numbers
-
-        const tx = (centerExtent.x - xorigin) / 256 / res;
-        const ty = (-centerExtent.y + yorigin) / 256 / res;
-
-        this.setTileInfo([tx, ty]);
-        this.setCurrentView('chart-view');
-        this.updateRoute();
-    }
-
-    beforeDestroy(): void {
-        // dismount the mini-chart DV section when the map component is reloaded
-        const miniChartSection = api.DQV.sections[this.miniChartSectionId];
-        if (miniChartSection) {
-            miniChartSection.dismount();
-        }
-
-        // deactivate all subscriptions when the component is being destroyed
-        this.deactivate.next(true);
-        this.deactivate.unsubscribe();
     }
 
     removeGridHighlight(): void {
@@ -836,7 +687,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             color: white;
             position: relative;
             margin: 0;
-            top: calc((100% - #{$rv-top-offset}) / 2 + #{$rv-top-offset}) !important;
+            top: 50% !important;
             transform: translateY(-50%);
         }
     }

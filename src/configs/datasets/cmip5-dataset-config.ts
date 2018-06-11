@@ -4,40 +4,19 @@ import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetI
 const cimp5Dataset: DatasetSource = {
     id: DatasetId.CMIP5,
 
-    views: {
-        [ViewType.ChartView]: {
-            controls: {
-                [VisualizationControlType.Time]: {
-                    default: TimePeriodType.Annual,
-                    options: [
-                        TimePeriodType.Annual,
-                        TimePeriodType.Autumn,
-                        TimePeriodType.Summer,
-                        TimePeriodType.Winter,
-                        TimePeriodType.Spring
-                    ]
-                },
-                [VisualizationControlType.RCP]: {
-                    default: RCPType.RCP8_5
-                }
-            }
+    controls: {
+        [VisualizationControlType.Time]: {
+            default: TimePeriodType.Annual,
+            options: [
+                TimePeriodType.Annual,
+                TimePeriodType.Autumn,
+                TimePeriodType.Summer,
+                TimePeriodType.Winter,
+                TimePeriodType.Spring
+            ]
         },
-        [ViewType.MapView]: {
-            controls: {
-                [VisualizationControlType.Time]: {
-                    default: TimePeriodType.Annual,
-                    options: [
-                        TimePeriodType.Annual,
-                        TimePeriodType.Autumn,
-                        TimePeriodType.Summer,
-                        TimePeriodType.Winter,
-                        TimePeriodType.Spring
-                    ]
-                },
-                [VisualizationControlType.RCP]: {
-                    default: RCPType.RCP8_5
-                }
-            }
+        [VisualizationControlType.RCP]: {
+            default: RCPType.RCP8_5
         }
     },
 
@@ -56,15 +35,7 @@ const cimp5Dataset: DatasetSource = {
 
     colourRamp: {
         defaultColours: ['#733E05', '#D6AF67', '#EFF0ED', '#6BBFB1', '#023D32'],
-        defaultLabels: ['-100', '100'],
-        variables: {
-            [VariableId.IceConcentration]: {
-                labels: ['-40', '40']
-            },
-            [VariableId.SurfaceWind]: {
-                labels: ['-30', '30']
-            }
-        }
+        defaultLabels: ['-100', '100']
     },
 
     mapTableColumns: ['Longitude', 'Latitude', 'Value'],
