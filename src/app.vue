@@ -45,7 +45,6 @@ import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
 Vue.use(FormSelect);
 
-import GeoSearch from './components/geo-search.vue';
 import { MapPoint, Range } from './store';
 import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
@@ -56,7 +55,6 @@ import MapViewControls from './components/map-view-controls.vue';
 
 @Component({
     components: {
-        GeoSearch,
         MapView,
         MapViewControls
     }
