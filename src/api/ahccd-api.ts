@@ -18,14 +18,14 @@ class AHCCDApi extends DatasetApi {
     /**
      * Returns the chart data for the current feature and variable
      */
-    async getData(): Promise<any> {
+    /* async getData(): Promise<any> {
         const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
             mappings.periodToNum[this.state.timePeriodId!]
         }`;
         const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
 
         return data;
-    }
+    } */
 
     /**
      * Returns the trend value for the period beginning at startYear and ending at endYear.
@@ -34,14 +34,14 @@ class AHCCDApi extends DatasetApi {
      * @param startYear the beginning year for the trend calculation
      * @param endYear the end year for the trend calculation
      */
-    async getTrend(startYear: number, endYear: number): Promise<any> {
+    /* async getTrend(startYear: number, endYear: number): Promise<any> {
         const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
             mappings.periodToNum[this.state.timePeriodId!]
         }/trend/${startYear}/${endYear}`;
         const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
 
         return data;
-    }
+    } */
 
     /**
      * Returns an array of data layers for the current state.
@@ -60,52 +60,6 @@ class AHCCDApi extends DatasetApi {
      */
     getReferenceLayers() {
         return [];
-    }
-
-    /**
-     * Returns an array of rows for a datatable.
-     */
-    async getTableData() {
-        enum columns {
-            'Station Name' = 'station_name_nom',
-            'AHCCD Station ID' = 'stnid',
-            'Beginning Year' = 'beg_yr_annee_deb',
-            'Beginning Month' = 'beg_mon_mois_deb',
-            'Ending Year' = 'end_yr_annee_fin',
-            'Ending Month' = 'end_mon_mois_fin',
-            'Annual trend' = 'Annual_Annuel'
-        }
-        const varArray: any = {
-            precip: 3,
-            tmean: 0,
-            tmax: 2,
-            tmin: 1
-        };
-
-        const tempData: any = await $.getJSON(
-            `http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/${
-                varArray[this.state.variableId!]
-            }/query?where=1%3D1&outFields=*&returnGeometry=false&f=json`,
-            data => {
-                return data;
-            }
-        );
-        const tableData: any[] = [];
-
-        tempData.features.forEach((feature: any) => {
-            const row: any[] = [];
-            ahccdDataset.mapTableColumns.forEach((column: string) => {
-                // Precipitation does not have Annual trend data
-                if (this.state.variableId !== VariableId.Precipitation || column !== 'Annual trend') {
-                    row.push(feature.attributes[columns[<any>column]]);
-                }
-            });
-            tableData.push(row);
-        });
-
-        console.log(tableData);
-
-        return tableData;
     }
 }
 
