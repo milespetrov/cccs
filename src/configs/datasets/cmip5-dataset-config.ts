@@ -4,40 +4,19 @@ import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetI
 const cimp5Dataset: DatasetSource = {
     id: DatasetId.CMIP5,
 
-    views: {
-        [ViewType.ChartView]: {
-            controls: {
-                [VisualizationControlType.Time]: {
-                    default: TimePeriodType.Annual,
-                    options: [
-                        TimePeriodType.Annual,
-                        TimePeriodType.Autumn,
-                        TimePeriodType.Summer,
-                        TimePeriodType.Winter,
-                        TimePeriodType.Spring
-                    ]
-                },
-                [VisualizationControlType.RCP]: {
-                    default: RCPType.RCP8_5
-                }
-            }
+    controls: {
+        [VisualizationControlType.Time]: {
+            default: TimePeriodType.Annual,
+            options: [
+                TimePeriodType.Annual,
+                TimePeriodType.Autumn,
+                TimePeriodType.Summer,
+                TimePeriodType.Winter,
+                TimePeriodType.Spring
+            ]
         },
-        [ViewType.MapView]: {
-            controls: {
-                [VisualizationControlType.Time]: {
-                    default: TimePeriodType.Annual,
-                    options: [
-                        TimePeriodType.Annual,
-                        TimePeriodType.Autumn,
-                        TimePeriodType.Summer,
-                        TimePeriodType.Winter,
-                        TimePeriodType.Spring
-                    ]
-                },
-                [VisualizationControlType.RCP]: {
-                    default: RCPType.RCP8_5
-                }
-            }
+        [VisualizationControlType.RCP]: {
+            default: RCPType.RCP8_5
         }
     },
 

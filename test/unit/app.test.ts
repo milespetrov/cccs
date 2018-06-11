@@ -27,7 +27,6 @@ describe('app.vue', () => {
     // store mock
     const store = new Vuex.Store({
         getters: {
-            currentView: () => '',
             centerPoint: () => '',
             getQuery: () => '',
             currentDataset: () => ''
@@ -97,14 +96,11 @@ describe('app.vue - routing', () => {
     // store mock
     const store = new Vuex.Store({
         getters: {
-            currentView: () => '',
             centerPoint: () => '',
             getQuery: () => '',
             currentDataset: () => ''
         },
-        actions: {
-            setCurrentView: () => undefined
-        }
+        actions: {}
     });
 
     beforeEach(() => {
@@ -118,30 +114,6 @@ describe('app.vue - routing', () => {
             push: () => undefined,
             afterEach: () => undefined
         };
-    });
-
-    it('should set the currentView in the store when given one in the route', () => {
-        // set the route name
-        $router.currentRoute.name = 'map-view';
-
-        //spy
-        const setCurrentView = sinon.spy();
-
-        const wrapper = shallow(app, {
-            methods: {
-                setCurrentView
-            },
-            store,
-            localVue,
-            stubs: ['router-link', 'router-view'],
-            mocks: {
-                $t,
-                $router
-            }
-        });
-
-        // make sure the app *tries* to set the current view (this isn't a test for the store functions)
-        expect(setCurrentView).to.have.been.calledWith('map-view');
     });
 
     it('should properly call each store function with correct parameter', () => {

@@ -50,7 +50,7 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action } from 'vuex-class';
 
-import BaseSelectorV from './vis-controls/base-selector.vue';
+import BaseSelectorV from 'src/components/vis-controls/base-selector.vue';
 import selectors from './vis-controls/selectors';
 
 import api from './../api/';

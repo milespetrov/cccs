@@ -6,9 +6,6 @@
         </div>
 
         <aside class="cip-map-view mrgn-tp-md">
-            <map-table :key="`instance-${reloadKey}`"></map-table>
-
-            <br>
             <p>{{ $t(`map.${datasetId}_desc`) }}</p>
         </aside>
     </div>
@@ -18,13 +15,11 @@
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 
-import MapTable from './map-table.vue';
 import MapInstance from './map-instance.vue';
 
 @Component({
     components: {
-        MapInstance,
-        MapTable
+        MapInstance
     }
 })
 export default class MapView extends Vue {
@@ -44,15 +39,4 @@ export default class MapView extends Vue {
 
 
 <style lang="scss" scoped>
-img {
-    width: 100%;
-}
-/* 
-#map-anchor {
-    height: 500px;
-} */
-
-.cip-map-view {
-    // margin-top: 35px;
-}
 </style>

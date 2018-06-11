@@ -1,7 +1,6 @@
 import { ViewType, DatasetId } from '@/types';
 
 export interface AppState {
-    currentView: ViewType | null;
     timePeriodId: string | null;
     variableId: string | null;
     datasetId: DatasetId | null;
@@ -11,11 +10,7 @@ export interface AppState {
     centerPoint: MapPoint | null;
     locationPoint: MapPoint | null;
     zoomLevel: string | null;
-    chartRange: Range | null;
-    chartSeries: number[] | null;
     timeSlice: number | null;
-
-    tileInfo: number[] | null;
 
     internalRouteUpdate: boolean;
 }

@@ -1,23 +1,16 @@
 <template>
-    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope container" :class="currentView">
+    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope container">
         <div class="cip-header-container mrgn-bttm-lg">
             <h1>Explore climate data</h1>
         </div>
 
         <div class="cip-strip cip-view-controls">
-            <keep-alive>
-                <router-view name="view-controls"></router-view>
-            </keep-alive>
+            <map-view-controls></map-view-controls>
         </div>
 
-        <section class="main">
-
-            
-
-            <keep-alive>
-                <router-view class="visualization" name="visualization"></router-view>
-            </keep-alive>
-
+        <section class="main">     
+            <map-view name="visualization"></map-view>
+ 
             <section class="alert alert-info">
                 <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
                 <p> Look through the CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=scen-intromenu">resources overview</a> and <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=data-categories">data categories</a>. Contact CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=contact">here</a>.
@@ -58,29 +51,26 @@ import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
 
 import { ViewType } from '@/types';
+import MapView from './components/map-view.vue';
+import MapViewControls from './components/map-view-controls.vue';
 
 @Component({
     components: {
-        GeoSearch
+        GeoSearch,
+        MapView,
+        MapViewControls
     }
 })
 export default class App extends mixins(UpdateRouteMixin) {
-    @Action setCurrentView: (value: ViewType) => void;
     @Action setTimePeriodId: (value: string | null) => void;
     @Action setVariableId: (value: string | null) => void;
     @Action setDatasetId: (value: string | null) => void;
     @Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: string | null) => void;
     @Action setZoomLevel: (value: string | null) => void;
-    @Action setChartSeries: (value: number[] | null) => void;
     @Action setTimeSlice: (value: number | null) => void;
     @Action setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
     @Action setRcpId: (value: string | null) => void;
-    @Action clearChart: () => void;
-    @Action setChartRange: (value: Range | string | null) => void;
-    @Action setTileInfo: (value: number[] | string | null) => void;
-
-    @State currentView: string;
 
     @State internalRouteUpdate: boolean;
     @Action setInternalRouteUpdate: (value: boolean) => void;
@@ -97,7 +87,6 @@ export default class App extends mixins(UpdateRouteMixin) {
             return;
         }
         this.setFeatureId(null);
-        this.clearChart();
         this.updateRoute();
     }
 
@@ -117,10 +106,6 @@ export default class App extends mixins(UpdateRouteMixin) {
     }
 
     routeHandler(): void {
-        if (!this.$router.currentRoute.name) {
-            return;
-        }
-
         interface FunctionArray {
             [key: string]: any;
         }
@@ -132,17 +117,13 @@ export default class App extends mixins(UpdateRouteMixin) {
             d: this.setDatasetId,
             f: this.setFeatureId,
             cp: this.setCenterPoint,
-            cs: this.setChartSeries,
-            cr: this.setChartRange,
             z: this.setZoomLevel,
             ts: this.setTimeSlice,
             fp: this.setFeaturePoint,
-            r: this.setRcpId,
-            ti: this.setTileInfo
+            r: this.setRcpId
         };
 
         // update the store
-        this.setCurrentView(this.$router.currentRoute.name as ViewType);
         Object.keys(storeFns).forEach(parameter => {
             const value: string = this.$router.currentRoute.query[parameter];
             if (!value) {
@@ -183,25 +164,11 @@ export default class App extends mixins(UpdateRouteMixin) {
             display: none;
         }
 
-        .map-view & {
-            background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.7);
 
-            @supports (backdrop-filter: blur(5px)) {
-                background-color: rgba(255, 255, 255, 0.3);
-                backdrop-filter: blur(5px);
-            }
-        }
-
-        .chart-view & {
-            &:hover {
-                cursor: pointer;
-                background-color: rgba(0, 0, 0, 0.5);
-
-                @supports (backdrop-filter: blur(5px)) {
-                    background-color: rgba(0, 0, 0, 0.3);
-                    backdrop-filter: blur(5px);
-                }
-            }
+        @supports (backdrop-filter: blur(5px)) {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
         }
     }
 
@@ -216,11 +183,5 @@ export default class App extends mixins(UpdateRouteMixin) {
 
 .main {
     position: relative; // background-color: white;
-
-    .chart-view & {
-        .cip-view-toggle {
-            display: block;
-        }
-    }
 }
 </style>

@@ -3,22 +3,11 @@ import { VisualizationControlType, TimePeriodType, RCPType, ViewType, DatasetId,
 
 const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,
-    views: {
-        [ViewType.ChartView]: {
-            controls: {
-                [VisualizationControlType.Time]: {
-                    default: TimePeriodType.January
-                }
-            }
-        },
-        [ViewType.MapView]: {
-            controls: {
-                [VisualizationControlType.Time]: {
-                    visible: false,
-                    default: TimePeriodType.Annual,
-                    options: [TimePeriodType.Annual]
-                }
-            }
+    controls: {
+        [VisualizationControlType.Time]: {
+            visible: false,
+            default: TimePeriodType.Annual,
+            options: [TimePeriodType.Annual]
         }
     },
 

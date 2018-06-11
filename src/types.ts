@@ -1,15 +1,4 @@
 /**
- * All available chart config types.
- *
- * @export
- * @enum {number}
- */
-export enum ChartConfigType {
-    FOCUS = 'focus',
-    GLANCE = 'glance'
-}
-
-/**
  * All available Dataset ids.
  *
  * @enum {string}

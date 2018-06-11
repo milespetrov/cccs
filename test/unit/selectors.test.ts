@@ -11,7 +11,7 @@ import Vuex, { Store } from 'vuex';
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
 
 // Import the module we're testing
-import baseSelectorV from './../../src/components/vis-controls/base-selector.vue';
+import baseSelectorV from 'src/components/vis-controls/base-selector.vue';
 import { BaseSelectorConfig, BaseSelectorGroupConfig } from './../../src/configs/selectors';
 
 import { AppState, createStore } from '../../src/store';
@@ -35,7 +35,6 @@ const $t = () => undefined;
 describe('base-selector.vue', () => {
     it('apply selector defaults', () => {
         const state = {
-            currentView: ViewType.MapView,
             datasetId: DatasetId.AHCCD,
             timePeriodId: null,
             rcpId: null
@@ -44,26 +43,12 @@ describe('base-selector.vue', () => {
         const getters = {
             datasetControlOptions: () => {
                 return {
-                    [ViewType.ChartView]: {
-                        controls: {
-                            [VisualizationControlType.Time]: {
-                                default: TimePeriodType.January
-                            },
-                            [VisualizationControlType.RCP]: {
-                                default: RCPType.RCP4_5
-                            }
-                        }
-                    },
-                    [ViewType.MapView]: {
-                        controls: {
-                            [VisualizationControlType.Time]: {
-                                visible: false,
-                                default: TimePeriodType.Annual,
-                                options: [TimePeriodType.Annual]
-                            }
-                        }
+                    [VisualizationControlType.Time]: {
+                        visible: false,
+                        default: TimePeriodType.Annual,
+                        options: [TimePeriodType.Annual]
                     }
-                }[state.currentView];
+                };
             }
         };
 
@@ -84,20 +69,6 @@ describe('base-selector.vue', () => {
             actions
         });
 
-        store.dispatch('applyDatasetDefault');
-        expect(state.rcpId).equal(null);
-        expect(state.timePeriodId).equal(TimePeriodType.Annual);
-
-        store.state.currentView = ViewType.ChartView;
-        store.dispatch('applyDatasetDefault');
-        expect(state.rcpId).equal(RCPType.RCP4_5);
-        expect(state.timePeriodId).equal(TimePeriodType.Annual);
-
-        store.state.timePeriodId = null;
-        store.dispatch('applyDatasetDefault');
-        expect(state.timePeriodId).equal(TimePeriodType.January);
-
-        store.state.currentView = ViewType.MapView;
         store.dispatch('applyDatasetDefault');
         expect(state.rcpId).equal(null);
         expect(state.timePeriodId).equal(TimePeriodType.Annual);

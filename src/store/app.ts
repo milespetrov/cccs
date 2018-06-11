@@ -4,7 +4,6 @@ import { AppState, MapPoint, Range, RootState } from './index';
 
 import controls from './../globals/controls';
 
-import { chartConfigGenerators, ChartConfigGenerator } from '../configs/charts';
 import { datasets, DatasetSource, DatasetViewSource, ColourRamp } from './../configs/datasets';
 import { defaultSelectors } from './../configs/selectors';
 import { VisualizationControlType, ViewType, DatasetId } from '@/types';
@@ -13,7 +12,6 @@ import { DatasetApi, datasetApis } from '@/api';
 type AppContext = ActionContext<AppState, RootState>;
 
 const state: AppState = {
-    currentView: null,
     timePeriodId: null,
     variableId: null,
     datasetId: null,
@@ -23,11 +21,7 @@ const state: AppState = {
     centerPoint: null,
     locationPoint: null,
     zoomLevel: null,
-    chartRange: null,
-    chartSeries: null,
     timeSlice: null,
-
-    tileInfo: null,
 
     // Does not belong
     internalRouteUpdate: false
@@ -39,9 +33,6 @@ enum Action {
     clearFeature = 'clearFeature',
     setCenterPoint = 'setCenterPoint',
     setLocationPoint = 'setLocationPoint',
-    setChartRange = 'setChartRange',
-    setChartSeries = 'setChartSeries',
-    setCurrentView = 'setCurrentView',
     setDatasetId = 'setDatasetId',
     setFeatureId = 'setFeatureId',
     setFeaturePoint = 'setFeaturePoint',
@@ -50,16 +41,12 @@ enum Action {
     setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
-    setZoomLevel = 'setZoomLevel',
-    setTileInfo = 'setTileInfo'
+    setZoomLevel = 'setZoomLevel'
 }
 
 enum Mutation {
     SET_CENTER_POINT = 'SET_CENTER_POINT',
     SET_LOCATION_POINT = 'SET_LOCATION_POINT',
-    SET_CHART_RANGE = 'SET_CHART_RANGE',
-    SET_CHART_SERIES = 'SET_CHART_SERIES',
-    SET_CURRENT_VIEW = 'SET_CURRENT_VIEW',
     SET_DATASET_ID = 'SET_DATASET_ID',
     SET_FEATURE_ID = 'SET_FEATURE_ID',
     SET_FEATURE_POINT = 'SET_FEATURE_POINT',
@@ -68,8 +55,7 @@ enum Mutation {
     SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
-    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL',
-    SET_TILE_INFO = 'SET_TILE_INFO'
+    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL'
 }
 
 // getters
@@ -85,10 +71,7 @@ const getters = {
             r: state.rcpId,
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
-            cs: state.chartSeries ? state.chartSeries.toString() : null,
-            cr: state.chartRange ? state.chartRange.safeString : null,
-            ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
-            ti: state.tileInfo ? state.tileInfo.toString() : null
+            ts: state.timeSlice !== null ? state.timeSlice.toString() : null
         };
 
         // remove null values from the query object
@@ -107,7 +90,7 @@ const getters = {
         const options = getters.datasetControlOptions(state);
 
         // filter out visualization control ids which corresponding configurations are set to be invisible
-        const controls = Object.entries(options.controls).reduce<VisualizationControlType[]>((map, [key, value]) => {
+        const controls = Object.entries(options).reduce<VisualizationControlType[]>((map, [key, value]) => {
             if (value!.visible !== false) {
                 map.push(key as VisualizationControlType);
             }
@@ -118,7 +101,7 @@ const getters = {
     },
 
     datasetControlOptions: (state: AppState): DatasetViewSource => {
-        return datasets[state.datasetId!].views[state.currentView!];
+        return datasets[state.datasetId!].controls;
     },
 
     timeSliderLabels: (state: AppState): string[] | undefined => {
@@ -156,17 +139,6 @@ const getters = {
         return defaultedVariableColourRamp;
     },
 
-    /**
-     * Returns a chart config generator object based on the current state values.
-     *
-     * @param {AppState} state
-     * @returns {ChartConfigGenerator} config generator
-     */
-    chartConfigGenerator(state: AppState): ChartConfigGenerator {
-        // TODO: decide on the way to check for existence of state items like `datasetId`
-        return chartConfigGenerators[state.datasetId!](state);
-    },
-
     datasetApi(state: AppState): DatasetApi {
         return datasetApis[state.datasetId!](state);
     },
@@ -178,12 +150,6 @@ const getters = {
 
 // actions
 const actions = {
-    [Action.setCurrentView](context: AppContext, value: ViewType) {
-        context.commit(Mutation.SET_CURRENT_VIEW, value);
-
-        context.dispatch(Action.applyDatasetDefault);
-    },
-
     [Action.setTimePeriodId](context: AppContext, value: string | null) {
         context.commit(Mutation.SET_TIME_PERIOD_ID, value);
     },
@@ -206,7 +172,7 @@ const actions = {
      */
     [Action.applyDatasetDefault](context: AppContext): void {
         // both dataset and view must be set to apply the dataset defaults
-        if (!context.state.currentView || !context.state.datasetId) {
+        if (!context.state.datasetId) {
             return;
         }
 
@@ -229,7 +195,7 @@ const actions = {
 
         [VisualizationControlType.Time, VisualizationControlType.RCP].forEach(type => {
             // if the selector is not defined for this dataset/view combination, reset the value to null
-            const selectorSource = datasetControlOptions.controls[type];
+            const selectorSource = datasetControlOptions[type];
             if (!selectorSource) {
                 map[type].action(null);
                 return;
@@ -316,21 +282,6 @@ const actions = {
         context.commit(Mutation.SET_ZOOM_LEVEL, value);
     },
 
-    [Action.setChartRange](context: AppContext, value: { min: number; max: number } | string | null) {
-        if (value && typeof value !== 'string') {
-            value = new Range(value.min, value.max);
-        } else if (typeof value === 'string') {
-            const [min, max] = value.split(',');
-            value = new Range(parseInt(min), parseInt(max));
-        }
-        context.commit(Mutation.SET_CHART_RANGE, value);
-    },
-
-    [Action.clearChart](context: AppContext): void {
-        context.commit(Mutation.SET_CHART_RANGE, null);
-        context.commit(Mutation.SET_CHART_SERIES, null);
-    },
-
     [Action.clearFeature](context: AppContext): void {
         context.commit(Mutation.SET_FEATURE_ID, null);
         context.commit(Mutation.SET_FEATURE_POINT, null);
@@ -338,36 +289,11 @@ const actions = {
 
     [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
         context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
-    },
-
-    [Action.setChartSeries](context: AppContext, value: number[] | string | null): void {
-        if (value === [] || value === '') {
-            value = null;
-        } else if (typeof value === 'string') {
-            // convert string into number[]
-            value = value.split(',').map(val => {
-                return parseInt(val);
-            });
-        }
-        context.commit(Mutation.SET_CHART_SERIES, value);
-    },
-
-    [Action.setTileInfo](context: AppContext, value: number[] | string | null): void {
-        if (typeof value === 'string') {
-            value = value.split(',').map(val => {
-                return parseInt(val);
-            });
-        }
-        context.commit(Mutation.SET_TILE_INFO, value);
     }
 };
 
 // mutations
 const mutations = {
-    [Mutation.SET_CURRENT_VIEW](state: AppState, value: ViewType): void {
-        state.currentView = value;
-    },
-
     [Mutation.SET_TIME_PERIOD_ID](state: AppState, value: string): void {
         state.timePeriodId = value;
     },
@@ -406,18 +332,6 @@ const mutations = {
 
     [Mutation.SET_ZOOM_LEVEL](state: AppState, value: string | null): void {
         state.zoomLevel = value;
-    },
-
-    [Mutation.SET_CHART_RANGE](state: AppState, value: Range | null): void {
-        state.chartRange = value;
-    },
-
-    [Mutation.SET_CHART_SERIES](state: AppState, value: number[] | null): void {
-        state.chartSeries = value;
-    },
-
-    [Mutation.SET_TILE_INFO](state: AppState, value: number[] | null): void {
-        state.tileInfo = value;
     },
 
     [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {
