@@ -61,8 +61,8 @@ import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
 import sprintf from 'sprintf-js';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/throttleTime';
+import { Subject, race } from 'rxjs';
+import { takeUntil, throttleTime } from 'rxjs/operators';
 
 import api from './../api/';
 import { MapPoint } from './../store/';
@@ -74,8 +74,6 @@ import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapFineprint from './map-fineprint.vue';
 import { DatasetId } from '@/types';
-
-import { race } from 'rxjs/observable/race';
 
 interface Tooltips {
     'en-CA': {
@@ -407,7 +405,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // tslint:disable-next-line:no-unused-expression
         new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}/${this.configVersion}/ramp.en-CA.json`);
 
-        RZ.mapAdded.takeUntil(this.deactivate).subscribe(async (mapi: any) => {
+        RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
             this.switchLayers(true);
@@ -421,8 +419,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._mapi.identify = false;
 
             // subscribe to Tooltips events
-            this._mapi.ui.tooltip.mouseOver.takeUntil(this.deactivate).subscribe(this.tooltipMouseOverHandler);
-            this._mapi.ui.tooltip.mouseOut.takeUntil(this.deactivate).subscribe(this.tooltipMouseOutHandler);
+            this._mapi.ui.tooltip.mouseOver.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOverHandler);
+            this._mapi.ui.tooltip.mouseOut.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOutHandler);
 
             // subscribe to the center change stream to update the url and store with the current center point
             this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
@@ -431,15 +429,15 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // set the identify mode to 'highlight' to prevent the details panel from opening
             if (this.currentDataset === DatasetId.AHCCD) {
-                this._mapi.identifyMode = 'highlight';
+                this._mapi.layers.identifyMode = 'highlight';
                 // subscribe to identify events to track highlighted items
                 this._mapi.layers.identify.subscribe(this.pointIdentifyHandler);
             } else {
-                this._mapi.identifyMode = 'silent';
+                this._mapi.layers.identifyMode = 'silent';
                 this._mapi.click.subscribe(this.gridIdentifyHandler);
             }
 
-            this._mapi.mouseMove.throttleTime(30).subscribe((event: any) => {
+            this._mapi.mouseMove.pipe(throttleTime(30)).subscribe((event: any) => {
                 // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
                 if (!event.xy) {
                     return;
