@@ -62,6 +62,3 @@ const v = new Vue({
     render: h => h('app'),
     components: { app }
 });
-
-// supresses all DQV logs except errors
-api.DQV.loglevel.setLevel(4);

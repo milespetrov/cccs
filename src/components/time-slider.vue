@@ -13,10 +13,8 @@ import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from './../globals/mixin';
 import { Getter } from 'vuex-class/lib/bindings';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/sampleTime';
+import { Observable, fromEvent } from 'rxjs';
+import { filter, sampleTime } from 'rxjs/operators';
 
 @Component
 export default class TimeSlider extends mixins(UpdateRouteMixin) {
@@ -125,10 +123,10 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         const sliderHandle = this.slider.querySelector('.noUi-handle');
 
         // create event stream for the keyevents we want
-        const keydownEvents: Observable<KeyboardEvent> = Observable.fromEvent(sliderHandle, 'keydown').filter(
-            (event: KeyboardEvent) => {
+        const keydownEvents: Observable<KeyboardEvent> = fromEvent(sliderHandle, 'keydown').pipe(
+            filter((event: KeyboardEvent) => {
                 return Object.values(KEYCODES).indexOf(event.keyCode) !== -1;
-            }
+            })
         ) as Observable<KeyboardEvent>;
 
         // stop the default handlers for the events
@@ -139,7 +137,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         });
 
         // throttle the stream very slightly
-        keydownEvents.sampleTime(30).subscribe((event: KeyboardEvent) => {
+        keydownEvents.pipe(sampleTime(30)).subscribe((event: KeyboardEvent) => {
             if (event.keyCode === KEYCODES.RIGHT_ARROW) {
                 // Move one selection right (if not at the end)
                 if (this.timeSlice! < this.timeSliderLabels.length - 1) {
