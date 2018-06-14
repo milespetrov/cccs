@@ -254,8 +254,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     //async addCurrentVarLayer() {
-    async switchLayers(emptyMap?: boolean) {
-        if (!emptyMap) {
+    async switchLayers() {
+        if (this._mapi.layers.allLayers.length > 0) {
             // .slice() to clone the array, otherwise indices will be skipped
             this._mapi.layers.allLayers.slice().forEach((layer: any) => {
                 this._mapi.layers.removeLayer(layer.id);
@@ -408,7 +408,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
-            this.switchLayers(true);
+            this.switchLayers();
 
             // move cluster directly after the map so tab order is preserved
             $('.cip-control-cluster')
@@ -459,14 +459,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this.onZoomLevelChanged();
             } else {
                 this.mapZoomChangedHandler(this._mapi.zoom);
-            }
-
-            if (this.centerPoint) {
-                this.onCenterPointChanged();
-            } else {
-                const center = this._mapi.center;
-
-                this.mapInstanceCenterChangedHandler({ x: center.x, y: center.y });
             }
         });
     }
@@ -622,6 +614,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             this._mapi._fgpMap._map.enableScrollWheelZoom();
         }
+    }
+
+    beforeDestroy(): void {
+        // deactivate all subscriptions when the component is being destroyed
+        this.deactivate.next(true);
+        this.deactivate.unsubscribe();
     }
 
     removeGridHighlight(): void {
