@@ -126,6 +126,14 @@
     /* .rv-export {
         max-height: calc(100% - 17rem) !important;
     } */
+
+    @media (max-width: 991px) {
+        rv-mapnav {
+            > .rv-spacer:last-child {
+                flex: 5 1 50%;
+            }
+        }
+    }
 }
 
 #cip-mini-chart-section {

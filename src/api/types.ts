@@ -10,6 +10,5 @@ export class DatasetApi {
 
 export interface EnhancedWindow extends Window {
     $: typeof $;
-    DQV: any;
     RZ: any;
 }

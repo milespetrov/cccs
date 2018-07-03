@@ -1,55 +1,11 @@
 <template>
 
     <div id="cip-map-anchor" :class="currentDataset">
-        <div id="minichart"></div>
-
+        
         <div class="cip-scroll-guard" ref="scrollGuard">
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
         </div>
 
-        <!-- TODO: move all these extra map components into a single container to simplify their positioning -->
-        <!-- TODO: hide these components while the map loading/reloading since they are poking through the loading screen  -->
-        <!-- TODO: when RAMP api supports it, move them inside the ramp container  -->
-        <!-- TODO: fidn a way to hide these when a help/export dialog or datatable is opened as they are pokinig through them -->
-
-        <div class="cip-control-cluster" v-if="timeSliderLabels || colourRamp || legend">
-
-             <div class="row" v-if="legend">
-                <div class="col-md-4">
-                    <span class="cip-label">AHCCD Station:</span>
-                </div>
-                <div class="col-md-8">
-                    <span v-html="legend[currentVariable]"></span>
-                </div>
-            </div>
-
-            <div class="row" v-if="timeSliderLabels">
-                <div class="col-md-4">
-                    <span class="cip-label">Timeline:</span>
-                </div>
-                <div class="col-md-8">
-                    <time-slider></time-slider>
-                </div>
-            </div>
-
-            <!-- remove seprator if only one section is visible -->
-            <span class="cip-separator-vertical" v-if="colourRamp"></span>
-
-            <div class="row" v-if="colourRamp">
-                <div class="col-md-4">
-                    <span class="cip-label">{{ $t(`variableSelector.${currentVariable}.shortName`) }} change ({{$t(`units.${currentVariable}.shortName`)}}):</span>
-                </div>
-                <div class="col-md-8">
-                    <map-colour-ramp
-                        :labels="colourRamp.labels"
-                        :colours="colourRamp.colours">
-                    </map-colour-ramp>
-                </div>
-            </div>
-        </div>
-
-        <map-fineprint
-            :cursor-point="cursorPoint"></map-fineprint>
     </div>
 
 </template>
@@ -72,6 +28,7 @@ import { ColourRamp } from './../configs/datasets';
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
+import MapControlsCluster from './map-controls-cluster.vue';
 import MapFineprint from './map-fineprint.vue';
 import { DatasetId } from '@/types';
 
@@ -112,13 +69,7 @@ export interface IdentifySession {
 
 const centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
 
-@Component({
-    components: {
-        'time-slider': TimeSlider,
-        'map-colour-ramp': MapColourRamp,
-        'map-fineprint': MapFineprint
-    }
-})
+@Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
     tooltipTemplates: Tooltips = {
         'en-CA': {
@@ -297,8 +248,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.getLayerById(this.currentLayers[oldValue]).visibility = false;
         // set new layer visible
         this.getLayerById(this.currentLayers[newValue]).visibility = true;
-
-        // no need to update the mini-chart on timeslice change since the chart includes the data for the entire time range
     }
 
     getLayerById(searchId: string): any {
@@ -371,10 +320,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     deactivate: Subject<boolean> = new Subject<boolean>();
 
-    // id selectors for mini chart
-    private miniChartSectionId: string = 'cip-mini-chart-section';
-    private miniChartChartId: string = 'cip-mini-chart-chart';
-
     // TODO: link to a language choice; property, or stored value, or button
     lang: string = 'en-CA';
 
@@ -408,13 +353,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
+            this.injectCIPMapcomponents();
             this.switchLayers();
-
-            // move cluster directly after the map so tab order is preserved
-            $('.cip-control-cluster')
-                .first()
-                .insertAfter('rv-shell');
-
+            
             // turn off default identify behaviour
             this._mapi.identify = false;
 
@@ -450,7 +391,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 capture: true
             });
 
-            // if the current feature is already set, open the mini chart
+            // if the current feature is already set, draw grid
             if (this.featurePoint && this._mapi.identifyMode === 'silent') {
                 await this.drawGrid(this.featurePoint, -1);
             }
@@ -631,6 +572,44 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.setFeaturePoint(null);
         this.updateRoute();
     }
+
+    injectCIPMapcomponents(): void {
+        // TODO: when RAMP api supports it, move them inside the ramp container
+
+        // render component off DOM and inject it into the RAMP inner-shell container node
+        const controlClusterComponent = new Vue({
+            render: h =>
+                h('map-controls-cluster', {
+                    props: {
+                        'time-slider-labels': this.timeSliderLabels,
+                        'colour-ramp': this.colourRamp,
+                        legend: this.legend,
+                        'current-variable': this.currentVariable
+                    }
+                }),
+            components: {
+                'map-controls-cluster': MapControlsCluster
+            },
+            router: this.$router,
+            store: this.$store,
+            i18n: this.$i18n
+        }).$mount();
+
+        const fineprintComponent = new Vue({
+            render: h =>
+                h('map-fineprint', {
+                    props: { 'cursor-point': this.cursorPoint }
+                }),
+            components: {
+                'map-fineprint': MapFineprint
+            },
+            i18n: this.$i18n
+        }).$mount();
+
+        const innerShell = this.$el.querySelector('.rv-inner-shell')!;
+        innerShell.appendChild(controlClusterComponent.$el);
+        innerShell.appendChild(fineprintComponent.$el);
+    }
 }
 </script>
 
@@ -687,138 +666,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             transform: translateY(-50%);
         }
     }
-
-    .cip-control-cluster {
-        padding: 0.5rem 0;
-
-        position: absolute;
-        bottom: calc(#{$rv-bottom-offset} + 1rem);
-        left: $container-width / 4;
-        width: $container-width / 2;
-
-        background-color: #fff;
-
-        // TODO: create a shared variable for the box-shadow
-        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-            0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-
-        .row {
-            margin: 0;
-            min-height: 2.5rem;
-            display: flex;
-            align-items: center;
-
-            .cip-label {
-                font-size: 0.8em;
-                display: inline-block;
-                line-height: normal;
-            }
-        }
-    }
-
-    .cip-glance-chart-container {
-        background-color: #fff;
-
-        .cip-spinner {
-            position: absolute;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-
-            pointer-events: none;
-        }
-
-        [dv-chart] {
-            cursor: pointer;
-
-            // TODO: move to sass variable file
-            width: 250px;
-            height: 130px;
-
-            &.dv-loading {
-                cursor: none;
-
-                [dv-chart-container] {
-                    opacity: 0;
-                }
-
-                .cip-spinner {
-                    opacity: 1;
-                }
-            }
-        }
-
-        [dv-chart-container] {
-            opacity: 1;
-        }
-
-        .cip-spinner {
-            opacity: 0;
-        }
-
-        [dv-chart-container],
-        .cip-spinner {
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .cip-close-button {
-            font-size: 1em;
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-    }
-
-    .sk-circle {
-        width: 4rem;
-        height: 4rem;
-        position: relative;
-
-        .sk-child {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .sk-child:before {
-            content: '';
-            display: block;
-            margin: 0 auto;
-            width: 15%;
-            height: 15%;
-            background-color: #333;
-            border-radius: 100%;
-            animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
-        }
-
-        @for $i from 2 through 12 {
-            .sk-circle#{$i} {
-                transform: rotate(0deg + 30deg * ($i - 1));
-
-                &:before {
-                    animation-delay: -1.2s + ($i - 1) * 0.1s;
-                }
-            }
-        }
-    }
-
-    @keyframes sk-circleBounceDelay {
-        0%,
-        80%,
-        100% {
-            transform: scale(0);
-        }
-        40% {
-            transform: scale(1);
-        }
-    }
 }
 
 // specific CMIP5 styles to handle grid cell highlighting
@@ -835,14 +682,5 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             opacity: 0 !important;
         }
     }
-}
-
-// TODO: make a divider a shared component
-.cip-separator-vertical {
-    width: 100%;
-    height: 1px;
-    display: block;
-    background: rgba(0, 0, 0, 0.15);
-    margin: 0.5rem 0;
 }
 </style>

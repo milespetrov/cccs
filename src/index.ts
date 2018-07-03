@@ -5,7 +5,6 @@ import VueI18n from 'vue-i18n';
 
 import app from './app.vue';
 import { createStore, RootState } from './store';
-import api from './api/';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
