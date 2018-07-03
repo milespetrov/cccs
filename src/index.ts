@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue, { PluginFunction } from 'vue';
 import VueRouter from 'vue-router';
 import Vuex, { Store } from 'vuex';
 import VueI18n from 'vue-i18n';
@@ -54,7 +54,7 @@ loadLanguageAsync('en');
 
 // #endregion localization support
 
-const v = new Vue({
+new Vue({
     el: '#app',
     router,
     store,

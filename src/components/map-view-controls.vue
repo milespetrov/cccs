@@ -1,49 +1,70 @@
 <template>
     <div class="cip-view-controls">
 
-        <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
-            <component :is="controlRef"></component>
-        </div>
+        <button 
+            @click="showCollapse = !showCollapse" 
+            class="cip-controls-toggle btn btn-primary hidden-md hidden-lg">
 
-        <span class="separator"></span>
+            <span v-show="showCollapse"><i class="fas fa-times fa-fw"></i></span>
+            <span v-show="!showCollapse"><i class="fas fa-sliders-h fa-fw"></i></span>
+            <span class="cip-label">{{ $t('settings.title') }}</span>
 
-        <div class="menu-option">
-      
-            <b-dropdown variant="light" right class="cip-dropdown-right cip-selector">
-                <template slot="button-content">
-                    <div class="cip-content-wrap">
-                        <span class="cip-selected-value">Download</span>
-                    </div>
-                </template>
+        </button>
 
-                <div class="cip-dropdown-info">
-                    <span class="dropdown-header">Download</span>
-                    <div class="cip-dropdown-description">Dictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.</div>
+        <b-collapse class="cip-controls-wrapper" v-model="showCollapse">
+            
+            <div class="cip-controls">
+                <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
+                    <component :is="controlRef"></component>
                 </div>
 
-                <b-dropdown-divider></b-dropdown-divider>
+                <span class="separator hidden-sm hidden-xs"></span>
 
-                <div role="group" aria-lableledby="map-image-export" :key="`group-a`">
-                    <b-dropdown-header id="map-image-export">Map image</b-dropdown-header>
+                <div class="menu-option">
+            
+                    <b-dropdown variant="light" right class="cip-dropdown-right cip-selector">
+                        <template slot="button-content">
+                            <div class="cip-content-wrap">
+                                <span class="cip-selected-value">{{ $t(`${tDSPath}.title`) }}</span>
+                            </div>
+                        </template>
 
-                    <b-dropdown-item-button @click="downloadImage('png', true)">PNG picture</b-dropdown-item-button>
-                    <b-dropdown-item-button @click="downloadImage('jpg', true)">JPEG picure</b-dropdown-item-button>
+                        <div class="cip-dropdown-info">
+                            <span class="dropdown-header">{{ $t(`${tDSPath}.header`) }}</span>
+                            <div class="cip-dropdown-description">{{ $t(`${tDSPath}.description`) }}</div>
+                        </div>
+
+                        <b-dropdown-divider></b-dropdown-divider>
+
+                        <div role="group" aria-lableledby="map-image-export" :key="`group-a`">
+                            <b-dropdown-header id="map-image-export">{{ $t(`${tDSPath}.mapImage_group`) }}</b-dropdown-header>
+
+                            <b-dropdown-item-button @click="downloadImage('png', true)">{{ $t(`${tDSPath}.png.fullName`) }}</b-dropdown-item-button>
+                            <b-dropdown-item-button @click="downloadImage('jpg', true)">{{ $t(`${tDSPath}.jpeg.fullName`) }}</b-dropdown-item-button>
+                        </div>
+
+                        <b-dropdown-divider></b-dropdown-divider>
+
+                        <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
+                            <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
+
+                            <b-dropdown-item target="_blank" href="https://open.canada.ca/en/open-data">
+                                
+                                <i18n :path="`${tDSPath}.dataCatalogue.fullName`" tag="span" class="cip-name">
+                                    <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
+                                </i18n>
+
+                                <i class="fas fa-external-link-alt"></i>
+                            </b-dropdown-item>
+                        </div>
+                        
+                    </b-dropdown>
                 </div>
+            </div>
 
-                <b-dropdown-divider></b-dropdown-divider>
-
-                <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
-                    <b-dropdown-header id="map-data-export">Dataset</b-dropdown-header>
-
-                    <b-dropdown-item target="_blank" href="https://open.canada.ca/en/open-data">
-                        <span class="cip-name"><span class="wb-inv">Access full dataset in</span> Data Catalogue</span>
-                        <i class="fas fa-external-link-alt"></i>
-                    </b-dropdown-item>
-                </div>
-                
-            </b-dropdown>
-        </div>
+        </b-collapse>
     </div>
+
 </template>
 
 <script lang="ts">
@@ -60,6 +81,10 @@ import api from './../api/';
 })
 export default class MapViewControls extends Vue {
     @Getter getControls: string[];
+
+    showCollapse: boolean = false;
+
+    tDSPath: string = 'downloadSelector';
 
     downloadImage(type: string): void {
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);

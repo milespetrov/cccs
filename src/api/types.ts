@@ -11,6 +11,5 @@ export class DatasetApi {
 export interface EnhancedWindow extends Window {
     $: typeof $;
     DQV: any;
-    JSONGroupBy: any;
     RZ: any;
 }

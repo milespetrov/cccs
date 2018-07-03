@@ -41,8 +41,10 @@ import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
+import Collapse from 'bootstrap-vue/es/components/collapse';
 import FormSelect from 'bootstrap-vue/es/components/form-select';
 Vue.use(Dropdown);
+Vue.use(Collapse);
 Vue.use(FormSelect);
 
 import { MapPoint, Range } from './store';
