@@ -63,6 +63,7 @@ export default class MapFineprint extends Vue {
     padding: 0 1rem;
 
     .cip-map-fineprint-content {
+        width: 100%;
         display: flex;
 
         padding: 2px 0;
@@ -70,6 +71,10 @@ export default class MapFineprint extends Vue {
 
     .cip-separator {
         flex: 1;
+    }
+
+    @media (max-width: 991px) {
+        background: white;
     }
 }
 </style>

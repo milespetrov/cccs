@@ -11,7 +11,7 @@
 
         </button>
 
-        <b-collapse class="cip-controls-wrapper" v-model="showCollapse">
+        <b-collapse class="cip-controls-wrapper" v-model="showCollapse" id="cip-view-controls-collapse">
             
             <div class="cip-controls">
                 <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">

@@ -1,0 +1,141 @@
+<template>
+    <div class="cip-controls-cluster-container">
+        <div class="cip-controls-cluster" v-if="timeSliderLabels || colourRamp || legend">
+
+            <div class="cip-cluster-row" v-if="legend">
+                <div class="cip-row-label">
+                    <span class="cip-label">AHCCD Station:</span>
+                </div>
+                <div class="cip-row-content">
+                    <span v-html="legend[currentVariable]"></span>
+                </div>
+            </div>
+
+            <div class="cip-cluster-row" v-if="timeSliderLabels">
+                <div class="cip-row-label">
+                    <span class="cip-label">Timeline:</span>
+                </div>
+                <div class="cip-row-content">
+                    <time-slider></time-slider>
+                </div>
+            </div>
+
+            <!-- remove seprator if only one section is visible -->
+            <span class="cip-separator-vertical" v-if="colourRamp"></span>
+
+            <div class="cip-cluster-row" v-if="colourRamp">
+                <div class="cip-row-label">
+                    <span class="cip-label">{{ $t(`variableSelector.${currentVariable}.shortName`) }} change ({{$t(`units.${currentVariable}.shortName`)}}):</span>
+                </div>
+                <div class="cip-row-content">
+                    <map-colour-ramp
+                        :labels="colourRamp.labels"
+                        :colours="colourRamp.colours">
+                    </map-colour-ramp>
+                </div>
+            </div>
+
+            <span class="cip-separator-vertical visible-xs"></span>
+        </div>
+    </div>
+</template>
+
+<script lang="ts">
+import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+
+import TimeSlider from './time-slider.vue';
+import MapColourRamp from './map-colour-ramp.vue';
+
+@Component({
+    components: {
+        'time-slider': TimeSlider,
+        'map-colour-ramp': MapColourRamp
+    }
+})
+export default class MapControlsCluster extends Vue {
+    @Prop() timeSliderLabels: any;
+    @Prop() colourRamp: any;
+    @Prop() legend: any;
+    @Prop() currentVariable: any;
+}
+</script>
+
+<style lang="scss" scoped>
+@import './../styles/variables.scss';
+
+.cip-controls-cluster-container {
+    bottom: 4rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    font-size: 1.6rem;
+
+    .cip-controls-cluster {
+        padding: 0.5rem 0;
+
+        min-width: 500px;
+        width: 50%;
+        pointer-events: all;
+
+        background-color: #fff;
+
+        // TODO: create a shared variable for the box-shadow
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+            0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+
+        .cip-cluster-row {
+            margin: 3px 0;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+
+            .cip-row-label {
+                font-size: 0.8em;
+                flex: 1;
+            }
+
+            .cip-row-content {
+                flex: 2.9;
+            }
+
+            .cip-row-label,
+            .cip-row-content {
+                padding: 0 15px;
+                display: inline-block;
+                line-height: normal;
+            }
+        }
+    }
+
+    // TODO: make a divider a shared component
+    .cip-separator-vertical {
+        width: 100%;
+        height: 1px;
+        display: block;
+        background: rgba(0, 0, 0, 0.15);
+        margin: 0.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+        bottom: 24px;
+
+        .cip-controls-cluster {
+            width: 100%;
+            min-width: 300px;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 991px) {
+        bottom: 3.4rem;
+        left: 1rem;
+        right: 1rem;
+
+        .cip-controls-cluster {
+            width: 100%;
+        }
+    }
+}
+</style>
