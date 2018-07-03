@@ -18,6 +18,10 @@
             "The data consists of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment."
     },
 
+    "settings": {
+        "title": "Settings"
+    },
+
     "variableSelector": {
         "title": "Variable",
         "header": "Climate Data",
@@ -126,6 +130,31 @@
             "shortName": "DCS",
             "fullName": "Downscale Climate Scenario",
             "qualifier": "DCS"
+        }
+    },
+
+    "downloadSelector": {
+        "title": "Download",
+        "header": "Download",
+        "description":
+            "CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.",
+        "mapImage_group": "Map image",
+        "dataset_group": "Map image",
+        "png": {
+            "shortName": "",
+            "fullName": "PNG picutre",
+            "qualifier": ""
+        },
+        "jpeg": {
+            "shortName": "",
+            "fullName": "JPEG picture",
+            "qualifier": ""
+        },
+        "dataCatalogue": {
+            "shortName": "",
+            "fullName": "{0}Data Catalogue",
+            "access": "Access full dataset in ",
+            "qualifier": ""
         }
     },
 

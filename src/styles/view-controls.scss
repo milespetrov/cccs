@@ -1,33 +1,35 @@
 @import './variables.scss';
 
+$wet-primary-colour: #335075;
+$border-colour-one: #545353;
+
+%dropdown-toggle-highlight {
+    background-color: #fff !important;
+    border: 1px solid $border-colour-one;
+}
+
+%dropdown-menu-highlight {
+    &:before {
+        position: absolute;
+        top: 0;
+        left: -1px;
+        width: 6px;
+        height: 100%;
+
+        content: '';
+        background-color: $wet-primary-colour;
+    }
+}
+
 .cip-view-controls {
-    display: flex;
-    align-items: center;
+    .cip-controls {
+        display: flex;
+        align-items: center;
 
-    height: $view-controls-height;
+        height: $view-controls-height;
 
-    .separator {
-        flex: 1;
-    }
-
-    $wet-primary-colour: #335075;
-    $border-colour-one: #545353;
-
-    %dropdown-toggle-highlight {
-        background-color: #fff !important;
-        border: 1px solid $border-colour-one;
-    }
-
-    %dropdown-menu-highlight {
-        &:before {
-            position: absolute;
-            top: 0;
-            left: -1px;
-            width: 6px;
-            height: 100%;
-
-            content: '';
-            background-color: $wet-primary-colour;
+        .separator {
+            flex: 1;
         }
     }
 
@@ -39,7 +41,7 @@
 
                 border: none;
                 height: $view-controls-height;
-                padding: 0 1.7rem 0 3rem;
+                padding: 0.25em 1.5em;
                 background-color: transparent;
 
                 border: 1px solid transparent;
@@ -147,15 +149,16 @@
                     border: 1px solid #ccc;
                     font-size: 0.9em;
                     color: #444;
+
                     padding-left: 0;
                     padding-right: 0;
+
                     text-align: center;
 
                     width: auto;
 
                     &:first-child:nth-last-child(1) {
                         width: 100%;
-                        // margin: 0;
                     }
 
                     margin: 0.5rem;
@@ -211,6 +214,72 @@
 
                 > [role='group'] {
                     flex: 1;
+                }
+            }
+        }
+    }
+
+    // force-show view controls in medium and large layouts
+    @media (min-width: 990px) {
+        .cip-controls-wrapper {
+            display: block !important;
+        }
+    }
+
+    // flatten view controls and display them as stacked on small and extra small layouts
+    @media (max-width: 991px) {
+        // "settings" button which shows/collapses selectors on the small layouts
+        .cip-controls-toggle {
+            width: 100%;
+            border-radius: 0;
+            padding: 1em calc(1.25em + 1rem);
+
+            display: flex;
+            align-items: center;
+
+            .cip-label {
+                margin-left: 1.4rem;
+                text-align: left;
+                flex: 1;
+            }
+        }
+
+        .cip-controls {
+            flex-direction: column;
+            align-items: stretch;
+            height: auto;
+
+            padding: 10px;
+
+            .menu-option {
+                margin: 0rem 0;
+            }
+
+            .b-dropdown /deep/ {
+                width: 100%;
+
+                .dropdown-toggle {
+                    width: 100%;
+                }
+
+                .cip-content-wrap {
+                    flex: 1;
+                }
+
+                .dropdown-menu {
+                    position: relative !important;
+                    transform: none !important;
+
+                    margin-right: 0px !important;
+
+                    max-width: 100% !important;
+                }
+            }
+
+            .cip-selector {
+                .cip-name {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
             }
         }
