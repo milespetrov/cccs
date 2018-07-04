@@ -1,8 +1,5 @@
 @import './variables.scss';
 
-$wet-primary-colour: #335075;
-$border-colour-one: #545353;
-
 %dropdown-toggle-highlight {
     background-color: #fff !important;
     border: 1px solid $border-colour-one;
@@ -22,6 +19,8 @@ $border-colour-one: #545353;
 }
 
 .cip-view-controls {
+    border-top: 3px solid $border-colour-two;
+
     .cip-controls {
         display: flex;
         align-items: center;
@@ -228,11 +227,13 @@ $border-colour-one: #545353;
 
     // flatten view controls and display them as stacked on small and extra small layouts
     @media (max-width: 991px) {
+        border: none;
+
         // "settings" button which shows/collapses selectors on the small layouts
         .cip-controls-toggle {
             width: 100%;
             border-radius: 0;
-            padding: 1em calc(1.25em + 1rem);
+            padding: 0.8em calc(1.25em + 1rem);
 
             display: flex;
             align-items: center;
@@ -275,11 +276,18 @@ $border-colour-one: #545353;
                     max-width: 100% !important;
                 }
             }
+        }
 
-            .cip-selector {
-                .cip-name {
-                    text-overflow: ellipsis;
-                    overflow: hidden;
+        .cip-selector {
+            .cip-name {
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            // forces vertical stacking for selector groups on small layouts
+            &.cip-horizontal {
+                .cip-dropdown-content {
+                    flex-direction: column;
                 }
             }
         }
