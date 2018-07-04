@@ -1,7 +1,7 @@
 <template>
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope container">
         <div class="cip-header-container mrgn-bttm-lg">
-            <h1>Explore climate data</h1>
+            <h1>{{ $t(`title`) }}</h1>
         </div>
 
         <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">

@@ -45,6 +45,13 @@ module.exports = {
     extendWebpack(config) {
         // enable to see the bundle structure
         // config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin);
+
+        // add a loader for csv translation files
+        config.module
+            .rule('lint')
+            .test(/\.csv$/)
+            .use('eslint')
+            .loader('dsv-loader');
     },
     karma: {
         mime: {
