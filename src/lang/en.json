@@ -8,7 +8,8 @@
             "west": "W",
             "north": "N",
             "south": "S"
-        }
+        },
+        "scrollguard": "Use ctrl + scroll to zoom the map"
     },
 
     "map": {

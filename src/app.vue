@@ -4,13 +4,18 @@
             <h1>Explore climate data</h1>
         </div>
 
+        <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
+            <p>{{ $t(`map.${datasetId}_desc`) }}</p>
+        </aside>
+
         <div class="cip-strip cip-view-controls">
             <map-view-controls></map-view-controls>
         </div>
 
-        <section class="main">     
-            <map-view name="visualization"></map-view>
- 
+        <section class="main">
+
+            <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
+
             <section class="alert alert-info">
                 <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
                 <p> Look through the CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=scen-intromenu">resources overview</a> and <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=data-categories">data categories</a>. Contact CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=contact">here</a>.
@@ -77,11 +82,11 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     reloadKey: string = '';
 
-    @State('datasetId') currentDataset: string;
+    @State datasetId: string;
 
-    @Watch('currentDataset')
+    @Watch('datasetId')
     async onDatasetChange(newValue: string, oldValue: string) {
-        this.reloadKey = this.currentDataset;
+        this.reloadKey = this.datasetId;
 
         if (oldValue === null) {
             return;

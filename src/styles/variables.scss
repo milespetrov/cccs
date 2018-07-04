@@ -10,3 +10,7 @@ $container-width: 1170px;
 
 // the height of fineprint container (1rem + 4px)
 $rv-bottom-offset: calc(1rem + 4px);
+
+$wet-primary-colour: #335075;
+$border-colour-one: #545353;
+$border-colour-two: lighten($border-colour-one, 20%);

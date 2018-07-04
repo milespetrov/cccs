@@ -1,13 +1,10 @@
 <template>
     <div class="cip-map-view">
-        
+
         <div class="cip-strip cip-backdrop-map">
             <map-instance :key="`instance-${reloadKey}`"></map-instance>
         </div>
 
-        <aside class="cip-map-view mrgn-tp-md">
-            <p>{{ $t(`map.${datasetId}_desc`) }}</p>
-        </aside>
     </div>
 </template>
 
@@ -39,4 +36,8 @@ export default class MapView extends Vue {
 
 
 <style lang="scss" scoped>
+@import './../styles/variables.scss';
+.cip-map-view {
+    border-bottom: 3px solid $border-colour-two;
+}
 </style>

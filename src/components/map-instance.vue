@@ -1,12 +1,6 @@
 <template>
 
-    <div id="cip-map-anchor" :class="currentDataset">
-
-        <div class="cip-scroll-guard" ref="scrollGuard">
-            <p class="cip-label">Use ctrl + scroll to zoom the map</p>
-        </div>
-
-    </div>
+    <div id="cip-map-anchor" :class="currentDataset"></div>
 
 </template>
 
@@ -23,6 +17,7 @@ import { takeUntil, throttleTime } from 'rxjs/operators';
 import api from './../api/';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
+import { DatasetId } from '@/types';
 
 import { ColourRamp } from './../configs/datasets';
 
@@ -30,21 +25,7 @@ import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapControlsCluster from './map-controls-cluster.vue';
 import MapFineprint from './map-fineprint.vue';
-import { DatasetId } from '@/types';
-
-interface Tooltips {
-    'en-CA': {
-        [key: string]: {
-            [key: string]: {
-                [key: string]: string;
-            };
-        };
-    };
-    'fr-CA': { [key: string]: { [key: string]: { [key: string]: string } } };
-    [key: string]: {
-        [key: string]: { [key: string]: { [key: string]: string } };
-    };
-}
+import MapScrollguard from './map-scrollguard.vue';
 
 // TODO: import proper RAMP definitions
 export interface IdentifyResult {
@@ -71,55 +52,6 @@ const centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
 
 @Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
-    tooltipTemplates: Tooltips = {
-        'en-CA': {
-            ahccd: {
-                tmean: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel'
-                },
-                tmin: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel'
-                },
-                tmax: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />Trend (%(startYear)s-%(endYear)s): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel'
-                },
-                precip: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s</div>",
-                    value_key: 'Annual_Annuel'
-                }
-            }
-        },
-        'fr-CA': {
-            ahccd: {
-                tmean: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel'
-                },
-                tmin: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel'
-                },
-                tmax: {
-                    template:
-                        "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s<br />La valeur des tendances (%(startYear)s-%(endYear)s): %(value)s</span></div>",
-                    value_key: 'Annual_Annuel'
-                },
-                precip: {
-                    template: "<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>Station: %(name)s</div>",
-                    value_key: 'Annual_Annuel'
-                }
-            }
-        }
-    };
-
     get anchor(): HTMLElement {
         return document.getElementById('cip-map-anchor')!;
     }
@@ -326,10 +258,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     // TODO: link once dataSet selector is finalized
     dataSet: string = 'ahccd';
 
-    get scrollGuardNode(): HTMLElement {
-        return this.$refs.scrollGuard as HTMLElement;
-    }
-
     async mounted(): Promise<void> {
         const RZ = (<any>window).RZ;
         await $.getJSON(`./assets/configs/${this.currentDataset}/current.json`, data => {
@@ -359,10 +287,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // turn off default identify behaviour
             this._mapi.identify = false;
 
-            // subscribe to Tooltips events
-            this._mapi.ui.tooltip.mouseOver.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOverHandler);
-            this._mapi.ui.tooltip.mouseOut.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOutHandler);
-
             // subscribe to the center change stream to update the url and store with the current center point
             this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
 
@@ -385,10 +309,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 }
 
                 this.cursorPoint = new MapPoint(event.xy.x, event.xy.y);
-            });
-
-            document.querySelector('.rv-esri-map')!.addEventListener('wheel', this.scrollGuardHandler, {
-                capture: true
             });
 
             // if the current feature is already set, draw grid
@@ -430,44 +350,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     isMousedOver: boolean = false;
-
-    tooltipMouseOverHandler(z: any): void {
-        let tooltip;
-
-        this.isMousedOver = true;
-
-        z.event.preventDefault();
-        z.attribs.then((a: any) => {
-            if (!this.isMousedOver) {
-                return;
-            }
-
-            const currentTemplate = this.tooltipTemplates[this.lang][this.dataSet][this.currentVariable!];
-
-            const name = a.station_name_nom;
-            let value = Intl.NumberFormat(this.lang).format(a[currentTemplate.value_key]);
-
-            const startYear = a.beg_yr_annee_deb;
-            const endYear = a.end_yr_annee_fin;
-
-            if (parseFloat(value) > 0) {
-                value = '+' + value;
-            }
-
-            tooltip = z.add(
-                sprintf.sprintf(currentTemplate.template, <any>{
-                    name,
-                    value,
-                    startYear,
-                    endYear
-                })
-            );
-        });
-    }
-
-    tooltipMouseOutHandler(event: any): void {
-        this.isMousedOver = false;
-    }
 
     /**
      * Handle the identify sesssion, but updating the routes with the feature coordinates
@@ -527,36 +409,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.updateRoute();
     }
 
-    scrollGuardHandler(event: WheelEvent): void {
-        if (!this._mapi) {
-            return;
-        }
-
-        const scrollGuardClassList = this.scrollGuardNode.classList;
-
-        // prevent scroll unless ctrlKey is depressed
-        if (!event.ctrlKey) {
-            // this seems to be the only way to cancel wheel scroll in IE
-            // it's enough to `stopPropagation` in other browsers, but in IE, the esri listener fires before this one
-            // I couldn't find why this is happening, or how to stop it properly
-            // using this esri function seems to be the simplest solution
-            // TODO: use a proper API endpoint when it's created
-            this._mapi._fgpMap._map.disableScrollWheelZoom();
-
-            scrollGuardClassList.remove('cip-scrolling');
-            scrollGuardClassList.add('cip-active');
-
-            // proper use of timeout
-            // remove scroll guard notification after two seconds
-            window.setTimeout(() => scrollGuardClassList.remove('cip-active'), 2000);
-        } else {
-            scrollGuardClassList.remove('cip-active');
-            scrollGuardClassList.add('cip-scrolling');
-
-            this._mapi._fgpMap._map.enableScrollWheelZoom();
-        }
-    }
-
     beforeDestroy(): void {
         // deactivate all subscriptions when the component is being destroyed
         this.deactivate.next(true);
@@ -612,9 +464,25 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             i18n: this.$i18n
         }).$mount();
 
+        const scrollguardComponent = new Vue({
+            render: h =>
+                h('map-scrollguard', {
+                    props: { _mapi: this._mapi }
+                }),
+            components: {
+                'map-scrollguard': MapScrollguard
+            },
+            i18n: this.$i18n
+        }).$mount();
+
         const innerShell = this.$el.querySelector('.rv-inner-shell')!;
         innerShell.appendChild(controlClusterComponent.$el);
         innerShell.appendChild(fineprintComponent.$el);
+
+        // insert the scrollguard as the first child of the inner shell
+        // this will place the guard above the map, but below all other RAMP controls
+        // when the guard is active, it grays out the map, but not the controls
+        innerShell.insertBefore(scrollguardComponent.$el, innerShell.firstChild);
     }
 }
 </script>
@@ -634,43 +502,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         top: calc(50% - 11px);
         left: calc(50% - 11px);
         pointer-events: none;
-    }
-
-    .cip-scroll-guard {
-        transition: opacity ease-in-out;
-        background-color: rgba(0, 0, 0, 0.45);
-        text-align: center;
-
-        position: relative;
-        z-index: 2;
-        height: 100%;
-        width: 100%;
-        padding: 0px;
-        border-width: 0px;
-        margin: 0px;
-        left: 0px;
-        top: 0px;
-        opacity: 0;
-        transition-duration: 0.8s;
-        pointer-events: none;
-
-        &.cip-active {
-            opacity: 1;
-            transition-duration: 0.3s;
-        }
-
-        &.cip-scrolling {
-            transition-duration: 0.3s;
-        }
-
-        .cip-label {
-            font-size: 1em * 1.5;
-            color: white;
-            position: relative;
-            margin: 0;
-            top: 50% !important;
-            transform: translateY(-50%);
-        }
     }
 }
 
