@@ -15,7 +15,7 @@ const router = new VueRouter();
 // initialize a new app-wide store
 const store: Store<RootState> = createStore();
 
-Vue.config.ignoredElements = ['dv-section', 'dv-chart', 'dv-chart-table', 'rv-map'];
+Vue.config.ignoredElements = ['rv-map'];
 
 // TODO: move this to a separate module
 // TODO: check query string or url to to load the proper locale

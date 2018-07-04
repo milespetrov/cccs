@@ -29,7 +29,6 @@ const state: AppState = {
 
 enum Action {
     applyDatasetDefault = 'applyDatasetDefault',
-    clearChart = 'clearChart',
     clearFeature = 'clearFeature',
     setCenterPoint = 'setCenterPoint',
     setLocationPoint = 'setLocationPoint',

@@ -1,15 +1,9 @@
 <template>
     <div class="colour-ramp">
-        
+
         <span class="range-label range-left">{{ labels[0] }}</span>
 
-        <div class="colours" :style="{ background: backgroundGradient }">
-            <!-- <span class="range-label">-75</span>
-            <span class="range-label">-25</span> -->
-            <!-- <span class="range-label range-middle">0</span> -->
-            <!-- <span class="range-label">25</span>    
-            <span class="range-label">75</span> -->
-        </div>
+        <div class="colours" :style="{ background: backgroundGradient }"></div>
 
         <span class="range-label range-right">{{ labels[1] }}</span>
 

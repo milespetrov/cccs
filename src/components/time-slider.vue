@@ -120,7 +120,8 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
             HOME: 36
         };
 
-        const sliderHandle = this.slider.querySelector('.noUi-handle');
+        const sliderHandle = this.slider.querySelector('.noUi-handle') as HTMLElement;
+        sliderHandle.setAttribute('tabindex', '-2');
 
         // create event stream for the keyevents we want
         const keydownEvents: Observable<KeyboardEvent> = fromEvent(sliderHandle, 'keydown').pipe(

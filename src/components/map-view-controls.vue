@@ -1,8 +1,8 @@
 <template>
     <div class="cip-view-controls">
 
-        <button 
-            @click="showCollapse = !showCollapse" 
+        <button
+            @click="showCollapse = !showCollapse"
             class="cip-controls-toggle btn btn-primary hidden-md hidden-lg">
 
             <span v-show="showCollapse"><i class="fas fa-times fa-fw"></i></span>
@@ -12,7 +12,7 @@
         </button>
 
         <b-collapse class="cip-controls-wrapper" v-model="showCollapse" id="cip-view-controls-collapse">
-            
+
             <div class="cip-controls">
                 <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
                     <component :is="controlRef"></component>
@@ -21,7 +21,7 @@
                 <span class="separator hidden-sm hidden-xs"></span>
 
                 <div class="menu-option">
-            
+
                     <b-dropdown variant="light" right class="cip-dropdown-right cip-selector">
                         <template slot="button-content">
                             <div class="cip-content-wrap">
@@ -49,7 +49,7 @@
                             <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
 
                             <b-dropdown-item target="_blank" href="https://open.canada.ca/en/open-data">
-                                
+
                                 <i18n :path="`${tDSPath}.dataCatalogue.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
                                 </i18n>
@@ -57,7 +57,7 @@
                                 <i class="fas fa-external-link-alt"></i>
                             </b-dropdown-item>
                         </div>
-                        
+
                     </b-dropdown>
                 </div>
             </div>
@@ -87,6 +87,7 @@ export default class MapViewControls extends Vue {
     tDSPath: string = 'downloadSelector';
 
     downloadImage(type: string): void {
+        // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);
     }
 }

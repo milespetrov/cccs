@@ -23,19 +23,6 @@ class CMIP5Api extends DatasetApi {
     };
 
     /**
-     * Returns all 5 percentile lines for the current state
-     *
-     */
-    /* async getData(): Promise<any> {
-        const fetchUrl = `${BASE_API_URL}/time_series/${this.state.featureId}/${
-            this.DEMO_MAPPINGS[this.state.variableId!]
-        }/${this.state.rcpId}/${this.state.timePeriodId}`;
-        const data = await getJSON<any>(fetchUrl, DatasetId.CMIP5, 'getData');
-
-        return data;
-    } */
-
-    /**
      * Returns an array of coordinates for the cmip5 grid square that 'xy' is in
      * Also returns the gridId that contains the point
      *

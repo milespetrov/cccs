@@ -1,7 +1,7 @@
 <template>
 
     <div id="cip-map-anchor" :class="currentDataset">
-        
+
         <div class="cip-scroll-guard" ref="scrollGuard">
             <p class="cip-label">Use ctrl + scroll to zoom the map</p>
         </div>
@@ -355,7 +355,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             this.injectCIPMapcomponents();
             this.switchLayers();
-            
+
             // turn off default identify behaviour
             this._mapi.identify = false;
 
@@ -573,10 +573,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.updateRoute();
     }
 
+    /**
+     * Adds timeline and fineprint components inside the RAMP inner-shell node so they are included into the RAMP tab order.
+     * This also helps to position and align the components together with other RAMP components when the browser window is resized.
+     */
     injectCIPMapcomponents(): void {
         // TODO: when RAMP api supports it, move them inside the ramp container
 
         // render component off DOM and inject it into the RAMP inner-shell container node
+        // it's not possible to rendre just the component and pass them binding props;
+        // instead, a new Vue instance needs to be created with these components used it its template
         const controlClusterComponent = new Vue({
             render: h =>
                 h('map-controls-cluster', {

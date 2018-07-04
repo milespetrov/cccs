@@ -1,11 +1,6 @@
 import { DatasetApi } from './types';
-import { getJSON } from './util';
-import { DatasetId, VariableId } from '@/types';
 import { AppState } from '@/store';
-import mappings from '@/globals/mappings';
-import ahccdDataset from '@/configs/datasets/ahccd-dataset-config';
 
-const BASE_API_URL = 'http://ahccd-dev.azurewebsites.net';
 const BASE_MAP_URL = './assets/configs/AHCCD';
 
 /**
@@ -15,34 +10,6 @@ const BASE_MAP_URL = './assets/configs/AHCCD';
  * @method getTrend returns the trend value for the current feature/variable for the specified start and end years
  */
 class AHCCDApi extends DatasetApi {
-    /**
-     * Returns the chart data for the current feature and variable
-     */
-    /* async getData(): Promise<any> {
-        const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
-            mappings.periodToNum[this.state.timePeriodId!]
-        }`;
-        const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
-
-        return data;
-    } */
-
-    /**
-     * Returns the trend value for the period beginning at startYear and ending at endYear.
-     * The trend is for the current feature and variable
-     *
-     * @param startYear the beginning year for the trend calculation
-     * @param endYear the end year for the trend calculation
-     */
-    /* async getTrend(startYear: number, endYear: number): Promise<any> {
-        const fetchUrl = `${BASE_API_URL}/${this.state.featureId}/${this.state.variableId}/${
-            mappings.periodToNum[this.state.timePeriodId!]
-        }/trend/${startYear}/${endYear}`;
-        const data = await getJSON<any>(fetchUrl, DatasetId.AHCCD, 'getData');
-
-        return data;
-    } */
-
     /**
      * Returns an array of data layers for the current state.
      *
