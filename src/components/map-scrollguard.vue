@@ -63,7 +63,7 @@ export default class MapScrollguard extends Vue {
     background-color: rgba(0, 0, 0, 0.45);
     text-align: center;
 
-    position: relative;
+    position: absolute;
     padding: 0px;
     margin: 0px;
     border-width: 0px;
