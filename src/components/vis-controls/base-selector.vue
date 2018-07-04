@@ -59,10 +59,6 @@ export default class BaseSelectorV extends Vue {
 
     @Prop() tPath: string;
 
-    /* create() {
-        console.log('----', this.config, this.currentId);
-    } */
-
     /**
      * Returns a filtered set of selector groups.
      * Each group's items are filtered against the available items passed to the selector. Only groups with more than one item after filtering will be included in the selector.

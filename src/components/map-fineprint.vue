@@ -1,6 +1,6 @@
 <template>
     <div class="cip-map-fineprint-container">
-        <!-- WET's `container` class set the width of the div according to the current layout -->
+
         <div class="cip-map-fineprint-content container">
 
             <span class="cip-attribution">{{ $t('geo.attribution') }}</span>

@@ -79,6 +79,5 @@ export enum TimePeriodType {
 }
 
 export enum ViewType {
-    MapView = 'map-view',
-    ChartView = 'chart-view'
+    MapView = 'map-view'
 }

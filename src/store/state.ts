@@ -1,4 +1,4 @@
-import { ViewType, DatasetId } from '@/types';
+import { DatasetId } from '@/types';
 
 export interface AppState {
     timePeriodId: string | null;

@@ -6,7 +6,7 @@ interface StringToString {
     [key: string]: string;
 }
 
-// For displaying on the chart, tooltips, etc.
+// For displaying on the tooltips, etc.
 const periodToNames: StringToString = {
     Jan_Janv: 'January',
     Feb_Fev: 'February',
