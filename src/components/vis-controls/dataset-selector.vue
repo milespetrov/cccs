@@ -4,6 +4,7 @@
         :config="config"
         :currentId="datasetId"
         tPath="datasetSelector"
+        itemTPath="datasetSelector"
         @select="select">
     </base-selector>
     

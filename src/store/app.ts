@@ -1,6 +1,6 @@
 import { ActionContext, Store, StoreOptions, Module } from 'vuex';
 
-import { AppState, MapPoint, Range, RootState } from './index';
+import { AppState, MapPoint, RootState } from './index';
 
 import controls from './../globals/controls';
 
@@ -140,10 +140,6 @@ const getters = {
 
     datasetApi(state: AppState): DatasetApi {
         return datasetApis[state.datasetId!](state);
-    },
-
-    mapTableColumns(state: AppState): string[] {
-        return datasets[state.datasetId!].mapTableColumns;
     }
 };
 

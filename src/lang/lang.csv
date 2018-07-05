@@ -8,6 +8,14 @@ geo.coordinates.south,S,1,S,0
 geo.scrollguard,Use ctrl + scroll to zoom the map,1,Utilisez ctrl + scroll pour agrandir la carte,0
 map.cmip5_desc,"This map shows the seasonal and annual projected average change in surface wind speed, sea ice concentration, sea ice thickness, and snow depth between the years 2021-2100 for RCP 2.6, 4.5, and 8.5. The median projected change across the ensemble of CMIP5 climate models is shown.",1,"Cette carte montre la variation saisonnière et annuelle projetée de la vitesse du vent de surface, de la concentration de glace de mer, de l'épaisseur de la glace de mer et de la hauteur de neige entre 2021 et 2100 pour les RCP 2.6, 4.5 et 8.5. Le changement médian projeté à travers l'ensemble des modèles climatiques CMIP5 est montré.",0
 map.ahccd_desc,"The data consists of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment.",1,"Les données comprennent les moyennes mensuelles, saisonnières et annuelles des températures de l'air de surface maximales, minimales et moyennes quotidiennes homogénéisées pour plus de 330 emplacements au Canada; les totaux mensuels, saisonniers et annuels des précipitations journalières ajustées, des chutes de neige et des précipitations totales pour plus de 460 emplacements; les moyennes mensuelles, saisonnières et annuelles homogénéisées de la vitesse horaire du vent à plus de 110 endroits; Moyens mensuels, saisonniers et annuels de pression horaire au niveau de la station et de la mer ajustés pour plus de 630 emplacements. Les données sont données pour toute la période d'observation. Veuillez vous reporter aux documents ci-dessous pour des informations détaillées concernant les procédures d'homogénéisation et d'ajustement.",0
+map.dcs_desc,"This map shows Downscale Climate Scenarios data.",1,"Cette carte montre les données de Scénarios Climatiques Bas.",0
+map.cangrd_desc,"This map shows Canadian Gridded Temperature and Precipitation Anomalies data.",1,"Cette carte montre les données de l'Anomalies de la température et des précipitations au Canada.",0
+map.capa_desc,"This map shows Canadian Precipitation Analysis data.",1,"Cette carte montre les données de l'Analyse des précipitations canadiennes.",0
+map.cansips_desc,"This map shows Canadian Seasonal to Inter-annual Prediction System data.",1,"Cette carte montre les données de Système de prévision interannuelle et saisonnière canadien.",0
+map.hydro_desc,"This map shows Hydrometric station data.",1,"Cette carte montre les données de stations hydrométriques.",0
+map.daily_desc,"This map shows Daily Climate Summaries data.",1,"Cette carte montre les données de Résumés climatiques quotidiens.",0
+map.monthly_desc,"This map shows Monthly Climate Summaries data.",1,"Cette carte montre les données de Résumés climatiques mensuels.",0
+map.normal_desc,"This map shows Climate Normals data.",1,"Cette carte montre les données de Normales climatiques.",0
 map.controlsCluster.legend,Legend:,1,Légende:,0
 map.controlsCluster.timeline,Timeline:,1,Chronologie:,0
 settings.title,Settings,1,Paramètres,0
@@ -19,30 +27,7 @@ variableSelector.wind_group,Wind,1,Vent,0
 variableSelector.ice_group,Ice,1,La glace,0
 variableSelector.precipitation_group,Precipitation,1,Précipitation,0
 variableSelector.snow_depth_group,Snow Depth,1,Profondeur de neige,0
-variableSelector.tmean.fullName,Mean temperature,1,Température moyenne,0
-variableSelector.tmean.shortName,Mean temperature,1,Température moyenne,0
-variableSelector.tmean.qualifier,,1,,0
-variableSelector.tmin.fullName,Minimum temperature,1,Température minimale,0
-variableSelector.tmin.shortName,Minimum temperature,1,Température minimale,0
-variableSelector.tmin.qualifier,,1,,0
-variableSelector.tmax.fullName,Maximum temperature,1,Température maximale,0
-variableSelector.tmax.shortName,Maximum temperature,1,Température maximale,0
-variableSelector.tmax.qualifier,,1,,0
-variableSelector.precip.fullName,Precipitation,1,Précipitation,0
-variableSelector.precip.shortName,Precipitation,1,Précipitation,0
-variableSelector.precip.qualifier,,1,,0
-variableSelector.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
-variableSelector.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
-variableSelector.sfcwind.qualifier,,1,,0
-variableSelector.sit.fullName,Sea ice thickness,1,Épaisseur de glace,0
-variableSelector.sit.shortName,Sea ice thickness,1,Épaisseur de glace,0
-variableSelector.sit.qualifier,,1,,0
-variableSelector.sic.fullName,Sea ice concentration,1,Concentration de glace de mer,0
-variableSelector.sic.shortName,Sea ice concentration,1,Concentration de glace de mer,0
-variableSelector.sic.qualifier,,1,,0
-variableSelector.snd.fullName,Snow depth,1,Profondeur de neige,0
-variableSelector.snd.shortName,Snow depth,1,Profondeur de neige,0
-variableSelector.snd.qualifier,,1,,0
+variableSelector.pressure_group,Air Pressure,1,Pression de l'air,0
 variableSelector.historic,Historic,1,Historique,0
 variableSelector.future,Future,1,Avenir,0
 timePeriodSelector.title,Time Period,1,Période de temps,0
@@ -131,6 +116,24 @@ datasetSelector.cangrd.qualifier,CanGRD,1,CanGRD,0
 datasetSelector.dcs.shortName,DCS,1,DCS,0
 datasetSelector.dcs.fullName,Downscale Climate Scenario,1,Scénario climatique bas de gamme,0
 datasetSelector.dcs.qualifier,DCS,1,DCS,0
+datasetSelector.capa.shortName,CAPA,1,CAPA,0
+datasetSelector.capa.fullName,Canadian Precipitation Analysis,1,Scénario climatique bas de gamme,0
+datasetSelector.capa.qualifier,CAPA,1,CAPA,0
+datasetSelector.cansips.shortName,CanSIPS,1,SPISCan,0
+datasetSelector.cansips.fullName,Canadian Seasonal to Inter-annual Prediction System,1,Système de prévision interannuelle et saisonnière canadien,0
+datasetSelector.cansips.qualifier,CanSIPS,1,SPISCan,0
+datasetSelector.daily.shortName,Daily,1,Quotidien,0
+datasetSelector.daily.fullName,Daily Climate Summaries,1,Résumés climatiques quotidiens,0
+datasetSelector.daily.qualifier,Daily,1,Quotidien,0
+datasetSelector.monthly.shortName,Monthly,1,Mensuel,0
+datasetSelector.monthly.fullName,Monthly Climate Summaries,1,Résumés climatiques mensuels,0
+datasetSelector.monthly.qualifier,Monthly,1,Mensuel,0
+datasetSelector.normal.shortName,Normals,1,Normales,0
+datasetSelector.normal.fullName,Climate Normals,1,Normales climatiques,0
+datasetSelector.normal.qualifier,Normals,1,Normales,0
+datasetSelector.hydro.shortName,Hydrometric,1,Hydrométrique,0
+datasetSelector.hydro.fullName,Hydrometric station data,1,Données de stations hydrométriques,0
+datasetSelector.hydro.qualifier,Hydrometric,1,Hydrométrique,0
 downloadSelector.title,Download,1,Télécharger,0
 downloadSelector.header,Download,1,Télécharger,0
 downloadSelector.description,"CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.",1,"CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortur primis sodales ullamcorper vestibule, phasellus posuere purus metus cubilia vulputate ut.",0
@@ -170,6 +173,144 @@ units.tmin.qualifier,,1,,0
 units.precip.shortName,mm,1,mm,0
 units.precip.fullName,millimetres,1,millimètres,0
 units.precip.qualifier,,1,,0
+units.gustdir.shortName,,0,,0
+units.gustdir.fullName,,0,,0
+units.gustdir.qualifier,,0,,0
+units.gustspeed.shortName,,0,,0
+units.gustspeed.fullName,,0,,0
+units.gustspeed.qualifier,,0,,0
+units.hydro.shortName,,0,,0
+units.hydro.fullName,,0,,0
+units.hydro.qualifier,,0,,0
+units.hrdpa.shortName,,0,,0
+units.hrdpa.fullName,,0,,0
+units.hrdpa.qualifier,,0,,0
+units.rdpa.shortName,,0,,0
+units.rdpa.fullName,,0,,0
+units.rdpa.qualifier,,0,,0
+units.stnpress.shortName,,0,,0
+units.stnpress.fullName,,0,,0
+units.stnpress.qualifier,,0,,0
+units.seapress.shortName,,0,,0
+units.seapress.fullName,,0,,0
+units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
 page.needHelp.title,Need help,1,Besoin d'aide pour,0
 page.needHelp.body,Look through the CCDS resources overview and data categories. Contact CCDS here.,1,Parcourez l'aperçu des ressources CCDS et les catégories de données. Contactez CCDS ici.,0
+ahccd.tmean.fullName,Mean temperature,1,Température moyenne,0
+ahccd.tmean.shortName,Mean temperature,1,Température moyenne,0
+ahccd.tmean.qualifier,,1,,0
+ahccd.tmin.fullName,Minimum temperature,1,Température minimale,0
+ahccd.tmin.shortName,Minimum temperature,1,Température minimale,0
+ahccd.tmin.qualifier,,1,,0
+ahccd.tmax.fullName,Maximum temperature,1,Température maximale,0
+ahccd.tmax.shortName,Maximum temperature,1,Température maximale,0
+ahccd.tmax.qualifier,,1,,0
+ahccd.precip.fullName,Precipitation,1,Précipitation,0
+ahccd.precip.shortName,Precipitation,1,Précipitation,0
+ahccd.precip.qualifier,,1,,0
+ahccd.stnpress.fullName,Surface pressure,1,Pression de surface,0
+ahccd.stnpress.shortName,Surface pressure,1,Pression de surface,0
+ahccd.stnpress.qualifier,,1,,0
+ahccd.seapress.fullName,Sea level pressure,1,Pression de niveau,0
+ahccd.seapress.shortName,Sea level pressure,1,Pression de niveau,0
+ahccd.seapress.qualifier,,1,,0
+ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
+ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
+ahccd.sfcwind.qualifier,,1,,0
+cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
+cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
+cmip5.sfcwind.qualifier,,1,,0
+cmip5.sit.fullName,Sea ice thickness,1,Épaisseur de glace,0
+cmip5.sit.shortName,Sea ice thickness,1,Épaisseur de glace,0
+cmip5.sit.qualifier,,1,,0
+cmip5.sic.fullName,Sea ice concentration,1,Concentration de glace de mer,0
+cmip5.sic.shortName,Sea ice concentration,1,Concentration de glace de mer,0
+cmip5.sic.qualifier,,1,,0
+cmip5.snd.fullName,Snow depth,1,Profondeur de neige,0
+cmip5.snd.shortName,Snow depth,1,Profondeur de neige,0
+cmip5.snd.qualifier,,1,,0
+dcs.tmean.fullName,Mean Temperature,1,Température moyenne,0
+dcs.tmean.shortName,Mean Temperature,1,Température moyenne,0
+dcs.tmean.qualifier,,1,,0
+dcs.tmin.fullName,Minimum temperature,1,Température minimale,0
+dcs.tmin.shortName,Minimum temperature,1,Température minimale,0
+dcs.tmin.qualifier,,1,,0
+dcs.tmax.fullName,Maximum temperature,1,Température maximale,0
+dcs.tmax.shortName,Maximum temperature,1,Température maximale,0
+dcs.tmax.qualifier,,1,,0
+dcs.precip.fullName,Precipitation,1,Précipitation,0
+dcs.precip.shortName,Precipitation,1,Précipitation,0
+dcs.precip.qualifier,,1,,0
+cangrd.tmean.fullName,Mean Temperature,1,Température moyenne,0
+cangrd.tmean.shortName,Mean Temperature,1,Température moyenne,0
+cangrd.tmean.qualifier,,1,,0
+cangrd.tmin.fullName,Minimum temperature,1,Température minimale,0
+cangrd.tmin.shortName,Minimum temperature,1,Température minimale,0
+cangrd.tmin.qualifier,,1,,0
+cangrd.tmax.fullName,Maximum temperature,1,Température maximale,0
+cangrd.tmax.shortName,Maximum temperature,1,Température maximale,0
+cangrd.tmax.qualifier,,1,,0
+cangrd.precip.fullName,Precipitation,1,Précipitation,0
+cangrd.precip.shortName,Precipitation,1,Précipitation,0
+cangrd.precip.qualifier,,1,,0
+normal.tmean.fullName,Mean Daily Temperature,1,Température quotidienne moyenne,0
+normal.tmean.shortName,Mean Daily Temperature,1,Température quotidienne moyenne,0
+normal.tmean.qualifier,,1,,0
+normal.tmax.fullName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,0
+normal.tmax.shortName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,0
+normal.tmax.qualifier,,1,,0
+normal.tmin.fullName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,0
+normal.tmin.shortName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,0
+normal.tmin.qualifier,,1,,0
+normal.precip.fullName,Total precipitation,1,Précipitations totales,0
+normal.precip.shortName,Total precipitation,1,Précipitations totales,0
+normal.precip.qualifier,,1,,0
+normal.stnpress.fullName,Average station pressure,1,Pression moyenne de la station,0
+normal.stnpress.shortName,Average station pressure,1,Pression moyenne de la station,0
+normal.stnpress.qualifier,,1,,0
+normal.seapress.fullName,Average sea level pressure,1,Pression moyenne au niveau de la mer,0
+normal.seapress.shortName,Average sea level pressure,1,Pression moyenne au niveau de la mer,0
+normal.seapress.qualifier,,1,,0
+normal.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
+normal.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
+normal.sfcwind.qualifier,,1,,0
+normal.gustspeed.fullName,Maximum gust speed,1,Vitesse de rafale maximale,0
+normal.gustspeed.shortName,Maximum gust speed,1,Vitesse de rafale maximale,0
+normal.gustspeed.qualifier,,1,,0
+normal.gustdir.fullName,Direction of maximum gust,1,Direction de la rafale maximale,0
+normal.gustdir.shortName,Direction of maximum gust,1,Direction de la rafale maximale,0
+normal.gustdir.qualifier,,1,,0
+monthly.tmean.fullName,Mean temperature,1,Température moyenne,0
+monthly.tmean.shortName,Mean temperature,1,Température moyenne,0
+monthly.tmean.qualifier,,1,,0
+monthly.tmax.fullName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
+monthly.tmax.shortName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
+monthly.tmax.qualifier,,1,,0
+monthly.tmin.fullName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
+monthly.tmin.shortName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
+monthly.tmin.qualifier,,1,,0
+monthly.precip.fullName,Total precipitation,1,Précipitations totales,0
+monthly.precip.shortName,Total precipitation,1,Précipitations totales,0
+monthly.precip.qualifier,,1,,0
+daily.tmean.fullName,Mean temperature,1,Température moyenne,0
+daily.tmean.shortName,Mean temperature,1,Température moyenne,0
+daily.tmean.qualifier,,1,,0
+daily.tmax.fullName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
+daily.tmax.shortName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
+daily.tmax.qualifier,,1,,0
+daily.tmin.fullName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
+daily.tmin.shortName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
+daily.tmin.qualifier,,1,,0
+daily.precip.fullName,Total precipitation,1,Précipitations totales,0
+daily.precip.shortName,Total precipitation,1,Précipitations totales,0
+daily.precip.qualifier,,1,,0
+hydro.hydro.fullName,Hydrometric data,1,,0
+hydro.hydro.shortName,Hydrometric data,1,,0
+hydro.hydro.qualifier,,1,,0
+capa.hrdpa.fullName,High Resolution Deterministic Precipitation Analysis,1,Analyse déterministe de précipitation à haute résolution,0
+capa.hrdpa.shortName,High Resolution Deterministic Precipitation Analysis,1,Analyse déterministe de précipitation à haute résolution,0
+capa.hrdpa.qualifier,HRDPA,1,HRDPA,0
+capa.rdpa.fullName,Regional Deterministic Precipitation Analysis,1,Analyse régionale des précipitations déterministes,0
+capa.rdpa.shortName,Regional Deterministic Precipitation Analysis,1,Analyse régionale des précipitations déterministes,0
+capa.rdpa.qualifier,RDPA,1,RDPA,0

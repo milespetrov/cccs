@@ -5,6 +5,7 @@
         :available="available"
         :currentId="variableId"
         tPath="variableSelector"
+        :itemTPath="datasetId"
         @select="select">
     </base-selector>
 

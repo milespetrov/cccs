@@ -26,11 +26,3 @@ export class MapPoint {
         return `${this.x.toString()},${this.y.toString()}`;
     }
 }
-
-export class Range {
-    constructor(public min: number, public max: number) {}
-
-    get safeString(): string {
-        return `${this.min.toString()},${this.max.toString()}`;
-    }
-}

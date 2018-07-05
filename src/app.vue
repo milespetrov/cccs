@@ -51,7 +51,7 @@ Vue.use(Dropdown);
 Vue.use(Collapse);
 Vue.use(FormSelect);
 
-import { MapPoint, Range } from './store';
+import { MapPoint } from './store';
 import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
 

@@ -98,20 +98,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             `./assets/configs/${this.currentDataset}/${this.configVersion}/legend.json`
         );
 
-        //DEMO, REMOVE
-        const DEMO_MAPPINGS: { [key: string]: string } = {
-            tmean: 'sfcwind',
-            tmin: 'sic',
-            tmax: 'sit',
-            precip: 'sfcwind',
-            sfcwind: 'sfcwind',
-            sic: 'sic',
-            sit: 'sit',
-            snd: 'snd'
-        };
-
         // TODO: update legend settings layers and link them to actual reference layers
-        let legend = legends[DEMO_MAPPINGS[this.currentVariable]];
+        let legend = legends[this.currentVariable];
         if (!legend) {
             legend = [];
         } else {
@@ -260,9 +248,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         const RZ = (<any>window).RZ;
-        await $.getJSON(`./assets/configs/${this.currentDataset}/current.json`, data => {
-            this.configVersion = parseInt(data.version);
-        });
+        try {
+            await $.getJSON(`./assets/configs/${this.currentDataset}/current.json`, data => {
+                this.configVersion = parseInt(data.version);
+            });
+        } catch {
+            console.error(`Current version couldn't be found`);
+        }
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RZ) {
@@ -276,7 +268,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // tslint:disable-next-line:no-unused-expression
-        new RZ.Map(this.anchor, `./assets/configs/${this.currentDataset}/${this.configVersion}/ramp.en-CA.json`);
+        new RZ.Map(this.anchor, `./assets/configs/ramp.en-CA.json`);
 
         RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
@@ -442,7 +434,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                         'time-slider-labels': this.timeSliderLabels,
                         'colour-ramp': this.colourRamp,
                         legend: this.legend,
-                        'current-variable': this.currentVariable
+                        'current-variable': this.currentVariable,
+                        'current-dataset': this.currentDataset
                     }
                 }),
             components: {

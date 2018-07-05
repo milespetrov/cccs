@@ -5,6 +5,7 @@
         :available="available"
         :currentId="rcpId"
         tPath="rcpSelector"
+        itemTPath="rcpSelector"
         @select="select">
     </base-selector>
 

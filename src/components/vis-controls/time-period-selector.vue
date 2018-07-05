@@ -5,6 +5,7 @@
         :available="available"
         :currentId="timePeriodId"
         tPath="timePeriodSelector"
+        itemTPath="timePeriodSelector"
         @select="select">
     </base-selector>
 

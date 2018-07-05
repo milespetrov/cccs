@@ -10,12 +10,12 @@ export const variableSelectorConfig: VariableSelectorConfig = {
         },
         {
             id: 'wind_group',
-            items: [VariableId.SurfaceWind],
+            items: [VariableId.SurfaceWind, VariableId.GustDirection, VariableId.GustSpeed],
             showHeader: true
         },
         {
             id: 'precipitation_group',
-            items: [VariableId.Precipitation],
+            items: [VariableId.Precipitation, VariableId.HRDPA, VariableId.RDPA],
             showHeader: true
         },
         {
@@ -27,6 +27,15 @@ export const variableSelectorConfig: VariableSelectorConfig = {
             id: 'snow_depth_group',
             items: [VariableId.SnowDepth],
             showHeader: true
+        },
+        {
+            id: 'pressure_group',
+            items: [VariableId.SeaLevelPressure, VariableId.StationPressure],
+            showHeader: true
+        },
+        {
+            id: 'hydrometric_group',
+            items: [VariableId.Hydrometric]
         }
     ]
 };
