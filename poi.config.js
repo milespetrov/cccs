@@ -7,17 +7,20 @@ const minimize = false;
 
 module.exports = {
     vendor: false,
-    html: [{
-        title: pkg.productName || pkg.name,
-        description: pkg.description,
-        filename: 'climate-maps/index.html', // the name of the output file; the actual landing page will be named `index.html`
-        template: 'src/index.en.ejs'
-    },{
-        title: pkg.productName || pkg.name,
-        description: pkg.description,
-        filename: 'cartes-climatiques/index.html', // the name of the output file; the actual landing page will be named `index.html`
-        template: 'src/index.fr.ejs'
-    }],
+    html: [
+        {
+            title: pkg.productName || pkg.name,
+            description: pkg.description,
+            filename: 'climate-maps.html', // the name of the output file; the actual landing page will be named `index.html`
+            template: 'src/index.en.ejs'
+        },
+        {
+            title: pkg.productName || pkg.name,
+            description: pkg.description,
+            filename: 'cartes-climatiques.html', // the name of the output file; the actual landing page will be named `index.html`
+            template: 'src/index.fr.ejs'
+        }
+    ],
     filename: {
         js: `cip-sandbox${minimize ? '.min' : ''}.js`
     },
@@ -33,7 +36,7 @@ module.exports = {
         }
     ],
     // open the explore data page on localhost:3001 by default when running `npm run dev`
-   /*  devServer: {
+    /*  devServer: {
         index: 'explore-data-fr.html'
     }, */
     presets: [
