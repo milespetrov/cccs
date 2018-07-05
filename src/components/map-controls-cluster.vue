@@ -13,7 +13,7 @@
 
             <div class="cip-cluster-row" v-if="timeSliderLabels">
                 <div class="cip-row-label">
-                    <span class="cip-label">Timeline:</span>
+                    <span class="cip-label">{{ $t('timeSlider.title') }}:</span>
                 </div>
                 <div class="cip-row-content">
                     <time-slider></time-slider>
