@@ -17,14 +17,13 @@
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
 
             <section class="alert alert-info">
-                <h4 class="text-info mrgn-tp-sm"> Need help? </h4>
-                <p> Look through the CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=scen-intromenu">resources overview</a> and <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=data-categories">data categories</a>. Contact CCDS <a class="underline" href="http://climate-scenarios.canada.ca/index.php?page=contact">here</a>.
-                </p>
+                <h4 class="text-info mrgn-tp-sm"> {{ $t('page.needHelp.title') }}? </h4>
+                <p>{{ $t('page.needHelp.body') }}</p>
             </section>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
-                <dt>Date modified: </dt>
+                <dt>{{ $t('page.dateModified') }}: </dt>
                 <dd><time property="dateModified">2017-02-02</time></dd>
 
                 </dl>

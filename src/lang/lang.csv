@@ -43,6 +43,7 @@ variableSelector.snd.shortName,Snow depth,1,Profondeur de neige,0
 variableSelector.snd.qualifier,,1,,0
 variableSelector.historic,Historic,1,Historique,0
 variableSelector.future,Future,1,Avenir,0
+timeSlider.title,Timeline,1,Chronologie,0
 timePeriodSelector.title,Time Period,1,Période de temps,0
 timePeriodSelector.header,Time Period,1,Période de temps,0
 timePeriodSelector.description,"Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere ""behaves"" over relatively long periods of time.",1,"Les trois dernières anomalies moyennes de température et de précipitations pour les États-Unis. La différence entre le temps et le climat est une mesure du temps. Le temps est ce que les conditions de l'atmosphère sont sur une courte période de temps, et le climat est la façon dont l'atmosphère ""se comporte"" sur des périodes relativement longues.",0
@@ -168,3 +169,6 @@ units.tmin.qualifier,,1,,0
 units.precip.shortName,mm,1,mm,0
 units.precip.fullName,millimetres,1,millimètres,0
 units.precip.qualifier,,1,,0
+page.dateModified,Date modified,1,Date modifiée,0
+page.needHelp.title,Need help,1,Besoin d'aide pour,0
+page.needHelp.body,Look through the CCDS resources overview and data categories. Contact CCDS here.,1,Parcourez l'aperçu des ressources CCDS et les catégories de données. Contactez CCDS ici.,0
