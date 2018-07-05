@@ -4,7 +4,7 @@
 
             <div class="cip-cluster-row" v-if="legend">
                 <div class="cip-row-label">
-                    <span class="cip-label">AHCCD Station:</span>
+                    <span class="cip-label">{{ $t('map.controlsCluster.legend') }}</span>
                 </div>
                 <div class="cip-row-content">
                     <span v-html="legend[currentVariable]"></span>
@@ -13,7 +13,7 @@
 
             <div class="cip-cluster-row" v-if="timeSliderLabels">
                 <div class="cip-row-label">
-                    <span class="cip-label">{{ $t('timeSlider.title') }}:</span>
+                    <span class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
                 </div>
                 <div class="cip-row-content">
                     <time-slider></time-slider>
