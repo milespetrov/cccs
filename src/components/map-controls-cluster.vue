@@ -21,11 +21,11 @@
             </div>
 
             <!-- remove seprator if only one section is visible -->
-            <span class="cip-separator-vertical" v-if="colourRamp"></span>
+            <span class="cip-separator-vertical" v-if="colourRamp && timeSliderLabels"></span>
 
             <div class="cip-cluster-row" v-if="colourRamp">
                 <div class="cip-row-label">
-                    <span class="cip-label">{{ $t(`variableSelector.${currentVariable}.shortName`) }} change ({{$t(`units.${currentVariable}.shortName`)}}):</span>
+                    <span class="cip-label">{{ $t(`${currentDataset}.${currentVariable}.shortName`) }} change ({{$t(`units.${currentVariable}.shortName`)}}):</span>
                 </div>
                 <div class="cip-row-content">
                     <map-colour-ramp
@@ -57,6 +57,7 @@ export default class MapControlsCluster extends Vue {
     @Prop() colourRamp: any;
     @Prop() legend: any;
     @Prop() currentVariable: any;
+    @Prop() currentDataset: any;
 }
 </script>
 

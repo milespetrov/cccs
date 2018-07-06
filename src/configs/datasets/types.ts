@@ -184,8 +184,6 @@ export interface DatasetSource {
      */
     colourRamp?: DatasetColourRamp;
 
-    mapTableColumns: string[];
-
     /**
      * A path to them base map config.
      *

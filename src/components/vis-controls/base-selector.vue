@@ -5,7 +5,7 @@
         <template slot="button-content">
             <div class="cip-content-wrap">
                 <span class="cip-value-label">{{ $t(`${tPath}.title`) }}</span>
-                <span class="cip-selected-value">{{ $t(`${tPath}.${currentId}.shortName`) }}</span>
+                <span class="cip-selected-value">{{ $t(`${itemTPath}.${currentId}.shortName`) }}</span>
             </div>
         </template>
 
@@ -30,8 +30,8 @@
                         :class="{ 'cip-selected': item === currentId }"
                         @click="select(item)"
                         :key="`item-${ item }`">
-                            <span class="cip-name">{{ $t(`${tPath}.${item}.fullName`) }}</span>
-                            <span class="cip-qualifier">{{ $t(`${tPath}.${item}.qualifier`) }} </span>
+                            <span class="cip-name">{{ $t(`${itemTPath}.${item}.fullName`) }}</span>
+                            <span class="cip-qualifier">{{ $t(`${itemTPath}.${item}.qualifier`) }} </span>
                     </b-dropdown-item-button>
                 </div>
 
@@ -58,6 +58,7 @@ export default class BaseSelectorV extends Vue {
     @Prop() currentId: string;
 
     @Prop() tPath: string;
+    @Prop() itemTPath: string; // the translation path for the subitems in the selector (variable names, dataset names, etc.) Needed to allow different var names per dataset
 
     /**
      * Returns a filtered set of selector groups.

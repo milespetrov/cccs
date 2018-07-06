@@ -7,7 +7,13 @@ export enum DatasetId {
     AHCCD = 'ahccd',
     CMIP5 = 'cmip5',
     CANGRD = 'cangrd',
-    DCS = 'dcs'
+    DCS = 'dcs',
+    ClimateNormal = 'normal',
+    ClimateMonthly = 'monthly',
+    ClimateDaily = 'daily',
+    CanSIPS = 'cansips',
+    CAPA = 'capa',
+    Hydrometric = 'hydro'
 }
 
 /**
@@ -27,7 +33,14 @@ export enum VariableId {
     SurfaceWind = 'sfcwind',
     IceThickness = 'sit',
     IceConcentration = 'sic',
-    SnowDepth = 'snd'
+    SnowDepth = 'snd',
+    StationPressure = 'stnpress',
+    SeaLevelPressure = 'seapress',
+    GustSpeed = 'gustspeed',
+    GustDirection = 'gustdir',
+    Hydrometric = 'hydro',
+    HRDPA = 'hrdpa',
+    RDPA = 'rdpa'
 }
 
 /**

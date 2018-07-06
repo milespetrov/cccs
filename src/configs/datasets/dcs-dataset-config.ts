@@ -1,8 +1,8 @@
 import { DatasetSource } from './types';
 import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, ViewType } from '@/types';
 
-const cimp5Dataset: DatasetSource = {
-    id: DatasetId.CMIP5,
+const dcsDataset: DatasetSource = {
+    id: DatasetId.DCS,
 
     controls: {
         [VisualizationControlType.Time]: {
@@ -20,7 +20,7 @@ const cimp5Dataset: DatasetSource = {
         }
     },
 
-    variables: [VariableId.SurfaceWind, VariableId.IceConcentration, VariableId.IceThickness, VariableId.SnowDepth],
+    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
 
     timeSliderLabels: ['2021-2040', '2041-2060', '2061-2080', '2081-2100'],
 
@@ -33,4 +33,4 @@ const cimp5Dataset: DatasetSource = {
     layersConfigPath: 'config-snippets.json'
 };
 
-export default cimp5Dataset;
+export default dcsDataset;
