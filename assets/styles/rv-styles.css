@@ -17812,8 +17812,10 @@ Obviously you need some kind of rules and criteria:
       [is=rv-map] md-sidenav.site-sidenav .rv-touch md-icon, .fgpv md-sidenav.site-sidenav .rv-touch md-icon {
         margin: 6px 8px;
         float: right; }
-  [is=rv-map] .main-appbar.rv-appbar-collapsed, .fgpv .main-appbar.rv-appbar-collapsed {
-    flex: 0; }
+  [is=rv-map] .main-appbar, .fgpv .main-appbar {
+    overflow: hidden; }
+    [is=rv-map] .main-appbar.rv-appbar-collapsed, .fgpv .main-appbar.rv-appbar-collapsed {
+      flex: 0; }
   [is=rv-map] rv-geosearchbar, .fgpv rv-geosearchbar {
     position: absolute;
     top: 90px;
@@ -18320,6 +18322,10 @@ Obviously you need some kind of rules and criteria:
       background-color: #99aeb8; }
   [is=rv-map] .rv-legend-list.rv-reorder li[data-sort-group="1"] + li[data-sort-group="2"], .fgpv .rv-legend-list.rv-reorder li[data-sort-group="1"] + li[data-sort-group="2"] {
     margin-top: 36px; }
+  [is=rv-map] .rv-image-expand, .fgpv .rv-image-expand {
+    position: absolute;
+    top: 2.5px;
+    right: 2.5px; }
   [is=rv-map] .rv-legend-level-0 rv-legend-block, .fgpv .rv-legend-level-0 rv-legend-block {
     padding-left: 20px; }
   [is=rv-map] .rv-legend-level-1 rv-legend-block, .fgpv .rv-legend-level-1 rv-legend-block {
@@ -18479,6 +18485,14 @@ Obviously you need some kind of rules and criteria:
     [is=rv-map] rv-legend-block .rv-list-item-control .md-icon-button, .fgpv rv-legend-block rv-legend-control .md-icon-button,
     .fgpv rv-legend-block .rv-list-item-control .md-icon-button {
       margin: 0; }
+  [is=rv-map] .rv-expanded-dialog, .fgpv .rv-expanded-dialog {
+    border-radius: 0; }
+    [is=rv-map] .rv-expanded-dialog .expanded-content, .fgpv .rv-expanded-dialog .expanded-content {
+      display: inline-block;
+      margin: 0 auto; }
+    [is=rv-map] .rv-expanded-dialog .rv-expanded-image, .fgpv .rv-expanded-dialog .rv-expanded-image {
+      display: block;
+      margin: 0 auto; }
   [is=rv-map] .rv-basemap-selector .rv-basemap-header, .fgpv .rv-basemap-selector .rv-basemap-header {
     padding: 0 0 0 16px;
     min-height: 49px;
@@ -18693,6 +18707,9 @@ Obviously you need some kind of rules and criteria:
           padding: 4px 16px; }
           [is=rv-map] .rv-symbology-container .rv-symbol .rv-symbol-label-container span:empty, .fgpv .rv-symbology-container .rv-symbol .rv-symbol-label-container span:empty {
             display: none !important; }
+      [is=rv-map] .rv-symbology-container .rv-symbol .rv-image-expand, .fgpv .rv-symbology-container .rv-symbol .rv-image-expand {
+        right: -10px;
+        top: -5px; }
     [is=rv-map] .rv-symbology-container.rv-compound .rv-symbol:not(.rv-cover-icon), .fgpv .rv-symbology-container.rv-compound .rv-symbol:not(.rv-cover-icon) {
       width: 30px;
       height: 30px;
@@ -18932,6 +18949,9 @@ Obviously you need some kind of rules and criteria:
         word-break: break-word;
         white-space: pre-wrap;
         font-family: inherit;
+        padding: 8px 16px;
+        margin: 0; }
+      [is=rv-map] .rv-details .rv-details-data .rv-subcontent .rv-details-html, .fgpv .rv-details .rv-details-data .rv-subcontent .rv-details-html {
         padding: 8px 16px;
         margin: 0; }
       [is=rv-map] .rv-details .rv-details-data .rv-subcontent .rv-nothing, .fgpv .rv-details .rv-details-data .rv-subcontent .rv-nothing {

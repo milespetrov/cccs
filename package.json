@@ -1,7 +1,7 @@
 {
-    "name": "cip-sandbox",
+    "name": "cccs-sandbox",
     "version": "0.1.0",
-    "description": "CIP Sandbox",
+    "description": "CCCS Sandbox",
     "main": "index.js",
     "devDependencies": {
         "@types/chai": "^4.1.2",
