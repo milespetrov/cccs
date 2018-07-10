@@ -1,0 +1,182 @@
+{
+    "sfcwind": [
+        {
+            "infoType": "title",
+            "content": "Data"
+        },
+        {
+            "infoType": "text",
+            "content": "Projected changes in Surface wind from CMIP Phase 5. This change is measured in metres/second."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Surface Wind",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/PxK0hIe.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/GxOuSPL.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
+            "symbologyStack": []
+        }
+    ],
+    "sit": [
+        {
+            "infoType": "title",
+            "content": "Data"
+        },
+        {
+            "infoType": "text",
+            "content": "Projected changes in Sea ice thickness from CMIP Phase 5. This change is measured in metres."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Sea Ice Thickness",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/6DPiclK.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
+            "symbologyStack": []
+        }
+    ],
+    "sic": [
+        {
+            "infoType": "title",
+            "content": "Data"
+        },
+        {
+            "infoType": "text",
+            "content":
+                "Sea ice concentration is a useful variable for climate scientists and nautical navigators. It is defined as the area of sea ice relative to the total at a given point in the ocean. This article will deal primarily with its determination from remote sensing measurements."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Sea Ice Concentration",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/PxY25ix.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
+            "symbologyStack": []
+        }
+    ],
+    "snd": [
+        {
+            "infoType": "title",
+            "content": "Data"
+        },
+        {
+            "infoType": "text",
+            "content": "Projected changes in Snow depth from CMIP Phase 5. This change is measured in centimetres."
+        },
+        {
+            "infoType": "unboundLayer",
+            "layerName": "Snow Depth",
+            "description": "Layer description goes here ...",
+            "coverIcon": "//i.imgur.com/t3bQEuw.png",
+            "symbologyStack": [
+                {
+                    "image": "https://i.imgur.com/6DPiclK.png",
+                    "text": ""
+                }
+            ],
+            "symbologyRenderStyle": "images"
+        },
+
+        {
+            "infoType": "title",
+            "content": "Settings"
+        },
+        {
+            "layerId": "labels",
+            "layerName": "Labels",
+            "coverIcon": "//i.imgur.com/3gjOgxg.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "provinces",
+            "layerName": "Provinces",
+            "coverIcon": "//i.imgur.com/56bZPq2.png",
+            "symbologyStack": []
+        },
+        {
+            "layerId": "grid",
+            "layerName": "Grid",
+            "symbologyStack": []
+        }
+    ]
+}

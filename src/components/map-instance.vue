@@ -95,7 +95,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
      */
     async updateLegend(): Promise<void> {
         const legends: { [name: string]: object[] } = await $.getJSON(
-            `./assets/configs/${this.currentDataset}/${this.configVersion}/legend.json`
+            `./assets/configs/${this.currentDataset}/${this.configVersion}/legend.${this.$i18n.locale}-CA.json`
         );
 
         // TODO: update legend settings layers and link them to actual reference layers
@@ -277,7 +277,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.switchLayers();
 
             // turn off default identify behaviour
-            this._mapi.identify = false;
+            // this._mapi.identify = false;
 
             // subscribe to the center change stream to update the url and store with the current center point
             this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
@@ -286,11 +286,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // set the identify mode to 'highlight' to prevent the details panel from opening
             if (this.currentDataset === DatasetId.AHCCD) {
-                this._mapi.layers.identifyMode = 'highlight';
+                // this._mapi.layers.identifyMode = 'highlight';
                 // subscribe to identify events to track highlighted items
                 this._mapi.layers.identify.subscribe(this.pointIdentifyHandler);
             } else {
-                this._mapi.layers.identifyMode = 'silent';
+                // this._mapi.layers.identifyMode = 'silent';
                 this._mapi.click.subscribe(this.gridIdentifyHandler);
             }
 
