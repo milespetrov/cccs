@@ -23,10 +23,15 @@ class AHCCDApi extends DatasetApi {
     }
 
     /**
-     * AHCCD has no reference layers (currently), return an empty array
+     * Returns an array of reference layers for cmip5
+     *
+     * @param configVersion version grabbed from the config storage
      */
-    getReferenceLayers() {
-        return [];
+    async getReferenceLayers(configVersion: string): Promise<any[]> {
+        const fetchUrl = `${BASE_MAP_URL}/${configVersion}/reference-layers.json`;
+        const result = await $.getJSON(fetchUrl);
+
+        return result.layers;
     }
 }
 

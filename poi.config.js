@@ -22,7 +22,8 @@ module.exports = {
         }
     ],
     filename: {
-        js: `cip-sandbox${minimize ? '.min' : ''}.js`
+        js: `cccs-sandbox${minimize ? '.min' : ''}.js`,
+        css: `cccs-sandbox${minimize ? '.min' : ''}.css`
     },
     homepage: './',
     minimize: minimize,

@@ -2,7 +2,6 @@
     "precip": [
         {
             "id": "",
-            "name": "Precipitation",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/3",
@@ -15,7 +14,6 @@
     "tmin": [
         {
             "id": "",
-            "name": "Min Temperature",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/1",
@@ -28,7 +26,6 @@
     "tmean": [
         {
             "id": "",
-            "name": "Mean Temperature",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/0",
@@ -41,7 +38,42 @@
     "tmax": [
         {
             "id": "",
-            "name": "Max Temperature",
+            "nameField": "station_name_nom",
+            "layerType": "esriFeature",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
+        }
+    ],
+    "sfcwind": [
+        {
+            "id": "",
+            "nameField": "station_name_nom",
+            "layerType": "esriFeature",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
+        }
+    ],
+    "stnpress": [
+        {
+            "id": "",
+            "nameField": "station_name_nom",
+            "layerType": "esriFeature",
+            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
+            "controls": ["data"],
+            "state": {
+                "visibility": true
+            }
+        }
+    ],
+    "seapress": [
+        {
+            "id": "",
             "nameField": "station_name_nom",
             "layerType": "esriFeature",
             "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",

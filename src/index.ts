@@ -24,3 +24,6 @@ new Vue({
     render: h => h('app'),
     components: { app }
 });
+
+// TODO: include icon credits if ended up using them
+// https://www.flaticon.com/packs/weather-53
