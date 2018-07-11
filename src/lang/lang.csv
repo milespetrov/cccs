@@ -22,6 +22,7 @@ settings.title,Settings,1,Paramètres,0
 variableSelector.title,Variable,1,Variable,0
 variableSelector.header,Climate Data,1,Données climatiques,0
 variableSelector.description,"An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate",1,"Une variable climatique essentielle (ECV) est une variable physique, chimique ou biologique ou un groupe de variables liées qui contribue de manière critique à la caractérisation du climat de la Terre.",0
+variableSelector.stations_group,Stations,1,Stations,0
 variableSelector.temperature_group,Temperature,1,Température,0
 variableSelector.wind_group,Wind,1,Vent,0
 variableSelector.ice_group,Ice,1,La glace,0
@@ -197,6 +198,9 @@ units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
 page.needHelp.title,Need help,1,Besoin d'aide pour,0
 page.needHelp.body,Look through the CCDS resources overview and data categories. Contact CCDS here.,1,Parcourez l'aperçu des ressources CCDS et les catégories de données. Contactez CCDS ici.,0
+ahccd.stations.fullName,Climate stations,1,Stations climatiques,0
+ahccd.stations.shortName,Climate stations,1,Stations climatiques,0
+ahccd.stations.qualifier,,0,,0
 ahccd.tmean.fullName,Mean temperature,1,Température moyenne,0
 ahccd.tmean.shortName,Mean temperature,1,Température moyenne,0
 ahccd.tmean.qualifier,,1,,0
@@ -254,6 +258,9 @@ cangrd.tmax.qualifier,,1,,0
 cangrd.precip.fullName,Precipitation,1,Précipitation,0
 cangrd.precip.shortName,Precipitation,1,Précipitation,0
 cangrd.precip.qualifier,,1,,0
+normal.stations.fullName,Climate stations,1,Stations climatiques,0
+normal.stations.shortName,Climate stations,1,Stations climatiques,0
+normal.stations.qualifier,,0,,0
 normal.tmean.fullName,Mean Daily Temperature,1,Température quotidienne moyenne,0
 normal.tmean.shortName,Mean Daily Temperature,1,Température quotidienne moyenne,0
 normal.tmean.qualifier,,1,,0
@@ -281,6 +288,9 @@ normal.gustspeed.qualifier,,1,,0
 normal.gustdir.fullName,Direction of maximum gust,1,Direction de la rafale maximale,0
 normal.gustdir.shortName,Direction of maximum gust,1,Direction de la rafale maximale,0
 normal.gustdir.qualifier,,1,,0
+monthly.stations.fullName,Climate stations,1,Stations climatiques,0
+monthly.stations.shortName,Climate stations,1,Stations climatiques,0
+monthly.stations.qualifier,,0,,0
 monthly.tmean.fullName,Mean temperature,1,Température moyenne,0
 monthly.tmean.shortName,Mean temperature,1,Température moyenne,0
 monthly.tmean.qualifier,,1,,0
@@ -293,6 +303,9 @@ monthly.tmin.qualifier,,1,,0
 monthly.precip.fullName,Total precipitation,1,Précipitations totales,0
 monthly.precip.shortName,Total precipitation,1,Précipitations totales,0
 monthly.precip.qualifier,,1,,0
+daily.stations.fullName,Climate stations,1,Stations climatiques,0
+daily.stations.shortName,Climate stations,1,Stations climatiques,0
+daily.stations.qualifier,,0,,0
 daily.tmean.fullName,Mean temperature,1,Température moyenne,0
 daily.tmean.shortName,Mean temperature,1,Température moyenne,0
 daily.tmean.qualifier,,1,,0
@@ -305,8 +318,8 @@ daily.tmin.qualifier,,1,,0
 daily.precip.fullName,Total precipitation,1,Précipitations totales,0
 daily.precip.shortName,Total precipitation,1,Précipitations totales,0
 daily.precip.qualifier,,1,,0
-hydro.hydro.fullName,Hydrometric data,1,,0
-hydro.hydro.shortName,Hydrometric data,1,,0
+hydro.hydro.fullName,Hydrometric stations,1,,0
+hydro.hydro.shortName,Hydrometric stations,1,,0
 hydro.hydro.qualifier,,1,,0
 capa.hrdpa.fullName,High Resolution Deterministic Precipitation Analysis,1,Analyse déterministe de précipitation à haute résolution,0
 capa.hrdpa.shortName,High Resolution Deterministic Precipitation Analysis,1,Analyse déterministe de précipitation à haute résolution,0

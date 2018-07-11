@@ -91,7 +91,10 @@ const getters = {
         // filter out visualization control ids which corresponding configurations are set to be invisible
         const controls = Object.entries(options).reduce<VisualizationControlType[]>((map, [key, value]) => {
             if (value!.visible !== false) {
-                map.push(key as VisualizationControlType);
+                // filter out if control is specifically disabled for current variable
+                if (value!.disableOn && !value!.disableOn!.includes(state.variableId!)) {
+                    map.push(key as VisualizationControlType);
+                }
             }
             return map;
         }, []);

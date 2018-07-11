@@ -6,11 +6,13 @@ const normalDataset: DatasetSource = {
 
     controls: {
         [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual
+            default: TimePeriodType.Annual,
+            disableOn: [VariableId.ClimateStations]
         }
     },
 
     variables: [
+        VariableId.ClimateStations,
         VariableId.TMax,
         VariableId.TMean,
         VariableId.TMin,

@@ -11,6 +11,7 @@ export interface BaseDatasetSelectorSource {
     visible?: boolean;
     default: string;
     options?: string[];
+    disableOn?: string[];
 }
 
 /**
@@ -36,6 +37,8 @@ export interface DatasetTimeSelectorSource extends BaseDatasetSelectorSource {
      * @memberof DatasetTimeSelectorSource
      */
     options?: TimePeriodType[];
+
+    disableOn?: VariableId[];
 }
 
 /**
@@ -59,6 +62,8 @@ export interface DatasetRCPSelectorSource extends BaseDatasetSelectorSource {
      * @memberof DatasetRCPSelectorSource
      */
     options?: RCPType[];
+
+    disableOn?: VariableId[];
 }
 
 /**
