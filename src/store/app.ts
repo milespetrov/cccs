@@ -65,8 +65,9 @@ const getters = {
             t: state.timePeriodId,
             v: state.variableId,
             d: state.datasetId,
-            f: state.featureId,
-            fp: state.featurePoint ? state.featurePoint.safeString : null,
+            // NOTE: these allow to bookmark the selected feature/point
+            // f: state.featureId,
+            // fp: state.featurePoint ? state.featurePoint.safeString : null,
             r: state.rcpId,
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
@@ -142,6 +143,7 @@ const getters = {
     },
 
     datasetApi(state: AppState): DatasetApi {
+        // TODO: this seems to create a new instance of a Dataset API everytime it's retrieved; need to cache them once created
         return datasetApis[state.datasetId!](state);
     }
 };

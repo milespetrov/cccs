@@ -14,7 +14,7 @@ import sprintf from 'sprintf-js';
 import { Subject, race } from 'rxjs';
 import { takeUntil, throttleTime } from 'rxjs/operators';
 
-import api from './../api/';
+import api, { DatasetApi } from './../api/';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
 import { DatasetId } from '@/types';
@@ -59,24 +59,24 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State('variableId') currentVariable: string;
     @State('datasetId') currentDataset: string;
     @State('timePeriodId') currentTimePeriod: string;
-    @State('featureId') currentFeature: string;
+    //@State('featureId') currentFeature: string;
     @State('rcpId') currentRcp: string;
     @State timeSlice: number;
     @State centerPoint: MapPoint;
     @State locationPoint: MapPoint;
     @State zoomLevel: number;
-    @State featurePoint: MapPoint;
+    // @State featurePoint: MapPoint;
 
-    @Action setFeatureId: (value: string | null) => void;
+    //@Action setFeatureId: (value: string | null) => void;
     @Action setCenterPoint: (value: { x: number; y: number }) => void;
-    @Action setFeaturePoint: (value: { x: number; y: number } | null) => void;
+    // @Action setFeaturePoint: (value: { x: number; y: number } | null) => void;
     @Action setZoomLevel: (value: number) => void;
     @Action setTileInfo: (value: number[] | null) => void;
 
     @Getter timeSliderLabels: string[] | undefined;
     @Getter legend: { [index: string]: string } | undefined;
     @Getter colourRamp: ColourRamp | null;
-    @Getter datasetApi: any;
+    @Getter datasetApi: DatasetApi;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -90,30 +90,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.switchLayers();
     }
 
-    /**
-     * Updates the current legend based on the selected variable and its dataset.
-     */
-    async updateLegend(): Promise<void> {
-        const legends: { [name: string]: object[] } = await $.getJSON(
-            `./assets/configs/${this.currentDataset}/${this.configVersion}/legend.${this.$i18n.locale}-CA.json`
-        );
-
-        // TODO: update legend settings layers and link them to actual reference layers
-        let legend = legends[this.currentVariable];
-        if (!legend) {
-            legend = [];
-        } else {
-            legend.forEach((entry: any) => {
-                if (entry.layerId) {
-                    // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-                    entry.layerId += `_${this.counter}`;
-                }
-            });
-        }
-
-        this._mapi.legendConfig = legend;
-    }
-
     @Watch('currentRcp')
     onRcpChanged(newValue: string, oldValue: string) {
         this.switchLayers();
@@ -124,7 +100,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.switchLayers();
     }
 
-    //async addCurrentVarLayer() {
     async switchLayers() {
         if (this._mapi.layers.allLayers.length > 0) {
             // .slice() to clone the array, otherwise indices will be skipped
@@ -133,10 +108,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             });
         }
 
+        const source = await this.datasetApi.getDatasetSource(this.$i18n.locale);
+
         this.currentLayers = [];
         this.counter += 1;
-        const layers = await this.datasetApi.getDataLayers(this.configVersion);
-        layers.forEach((layer: any, index: number) => {
+
+        source.dataLayers.slice().forEach((layer: any, index: number) => {
             if (index === this.timeSlice) {
                 layer.state.visibility = true;
             }
@@ -146,17 +123,26 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             const addedLayer = this._mapi.layers.addLayer(layer);
             this.currentLayers[index] = layer.id;
         });
-        this.addReferenceLayers();
-        this.updateLegend();
-    }
 
-    async addReferenceLayers() {
-        const layers = await this.datasetApi.getReferenceLayers(this.configVersion);
-        layers.forEach((layer: any, index: number) => {
+        source.supportLayers.slice().forEach((layer: any, index: number) => {
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
             layer.id += `_${this.counter}`;
             this._mapi.layers.addLayer(layer);
         });
+
+        // TODO: update legend settings layers and link them to actual reference layers
+        // TODO: update layers in groups, make it recursive
+        // Updates the current legend based on the selected variable and its dataset.
+        const legend = source.legend.slice();
+        legend.forEach((legendEntry: any) => {
+            if (!legendEntry.layerId) {
+                return;
+            }
+
+            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            legendEntry.layerId += `_${this.counter}`;
+        }, []);
+        this._mapi.legendConfig = legend;
     }
 
     @Watch('timeSlice')
@@ -248,13 +234,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         const RZ = (<any>window).RZ;
-        try {
+        /* try {
             await $.getJSON(`./assets/configs/${this.currentDataset}/current.json`, data => {
                 this.configVersion = parseInt(data.version);
             });
         } catch {
             console.error(`Current version couldn't be found`);
-        }
+        } */
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RZ) {
@@ -276,23 +262,23 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.injectCIPMapcomponents();
             this.switchLayers();
 
-            // turn off default identify behaviour
-            // this._mapi.identify = false;
-
             // subscribe to the center change stream to update the url and store with the current center point
             this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
 
             this._mapi.zoomChanged.subscribe(this.mapZoomChangedHandler);
 
+            // NOTE: only default identify functionality is used as the moment
+            // turn off default identify behaviour
+            // this._mapi.identify = false;
             // set the identify mode to 'highlight' to prevent the details panel from opening
-            if (this.currentDataset === DatasetId.AHCCD) {
+            /* if (this.currentDataset === DatasetId.AHCCD) {
                 // this._mapi.layers.identifyMode = 'highlight';
                 // subscribe to identify events to track highlighted items
                 this._mapi.layers.identify.subscribe(this.pointIdentifyHandler);
             } else {
                 // this._mapi.layers.identifyMode = 'silent';
                 this._mapi.click.subscribe(this.gridIdentifyHandler);
-            }
+            } */
 
             this._mapi.mouseMove.pipe(throttleTime(30)).subscribe((event: any) => {
                 // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
@@ -304,9 +290,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             });
 
             // if the current feature is already set, draw grid
-            if (this.featurePoint && this._mapi.identifyMode === 'silent') {
+            // NOTE: reselecting the previously selected feature from a bookmar is disabled for now
+            /* if (this.featurePoint && this._mapi.identifyMode === 'silent') {
                 await this.drawGrid(this.featurePoint, -1);
-            }
+            } */
 
             if (this.zoomLevel) {
                 this.onZoomLevelChanged();
@@ -347,7 +334,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
      * Handle the identify sesssion, but updating the routes with the feature coordinates
      *
      */
-    async pointIdentifyHandler({ requests, event }: IdentifySession) {
+    /* async pointIdentifyHandler({ requests, event }: IdentifySession) {
         if (requests.length === 0) {
             return;
         }
@@ -370,11 +357,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.setFeatureId(stationId);
             this.updateRoute();
         });
-    }
+    } */
 
-    async gridIdentifyHandler(event: any) {
+    /* async gridIdentifyHandler(event: any) {
         await this.drawGrid(event.xy, 0);
-    }
+    } */
 
     /**
      * Draw the geometry for the grid square containing xy
@@ -382,9 +369,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
      * @param xy the latlong point to draw the grid around
      * @param requestNum (should probably be replaced) used as an id for the polygon
      */
-    async drawGrid(xy: { x: number; y: number }, requestNum: number) {
+    /* async drawGrid(xy: { x: number; y: number }, requestNum: number) {
         // retrieve the geometry points from the api
-        const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(xy);
+        // const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(xy);
+
+        // FIX: remove this
+        const { coordinates, gridId } = { coordinates: 1, gridId: '2' };
 
         // build the polygon
         const RZ = (<any>window).RZ;
@@ -399,7 +389,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.setFeatureId(gridId);
 
         this.updateRoute();
-    }
+    } */
 
     beforeDestroy(): void {
         // deactivate all subscriptions when the component is being destroyed
@@ -407,7 +397,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.deactivate.unsubscribe();
     }
 
-    removeGridHighlight(): void {
+    /* removeGridHighlight(): void {
         // TODO: AHCCD must be handled differently, it does not use geometry drawing
         // remove any geometry drawn on the map
         this._mapi.simpleLayer.removeGeometry();
@@ -415,7 +405,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.setFeatureId(null);
         this.setFeaturePoint(null);
         this.updateRoute();
-    }
+    } */
 
     /**
      * Adds timeline and fineprint components inside the RAMP inner-shell node so they are included into the RAMP tab order.

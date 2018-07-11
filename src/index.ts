@@ -27,3 +27,7 @@ new Vue({
 
 // TODO: include icon credits if ended up using them
 // https://www.flaticon.com/packs/weather-53
+// https://www.flaticon.com/free-icon/pressure_213976#term=air%20pressure%20weather&page=1&position=3
+// https://www.flaticon.com/free-icon/toronto_185286
+// https://www.flaticon.com/free-icon/map_854878
+// https://www.flaticon.com/free-icon/canada_330442#term=canada&page=1&position=8
