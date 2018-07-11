@@ -1,0 +1,186 @@
+{
+    "en": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Data"
+            },
+            {
+                "infoType": "text",
+                "content": "A short AHCCD dataset description goes here"
+            },
+            {
+                "layerId": "AHCCD_wind_JAN_en",
+                "description": "A short wind speed description goes here",
+                "coverIcon": "assets/images/sfcwind.svg",
+                "symbologyStack": [
+                    {
+                        "image":
+                            "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "images"
+            },
+            {
+                "infoType": "title",
+                "content": "Settings"
+            },
+            {
+                "layerId": "cities",
+                "coverIcon": "assets/images/cities.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "coverIcon": "assets/images/labels.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "coverIcon": "assets/images/provinces.svg",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "name": "Cities",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "name": "Labels",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            },
+            {
+                "id": "provinces",
+                "name": "Provinces",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "AHCCD_wind_JAN_en",
+                "name": "Wind speed",
+                "nameField": "station_name_nom",
+                "layerType": "esriFeature",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
+                "controls": ["data", "visibility", "opacity"],
+                "state": {
+                    "visibility": true
+                }
+            }
+        ]
+    },
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "[fr] Data"
+            },
+            {
+                "infoType": "text",
+                "content": "[fr] A short AHCCD dataset description goes here"
+            },
+            {
+                "layerId": "AHCCD_wind_JAN_fr",
+                "layerName": "[fr] Wind speed",
+                "description": "[fr] A short wind speed description goes here",
+                "coverIcon": "assets/images/wind.svg",
+                "symbologyStack": [
+                    {
+                        "image":
+                            "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "images"
+            },
+            {
+                "infoType": "title",
+                "content": "[fr] Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "[fr] Cities",
+                "coverIcon": "assets/images/cities.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "[fr] Labels",
+                "coverIcon": "assets/images/labels.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "layerName": "[fr] Provinces",
+                "coverIcon": "assets/images/provinces.svg",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            },
+            {
+                "id": "provinces",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "AHCCD_wind_JAN_en",
+                "nameField": "station_name_nom",
+                "layerType": "esriFeature",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
+                "controls": ["data"],
+                "state": {
+                    "visibility": true
+                }
+            }
+        ]
+    }
+}
