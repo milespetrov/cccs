@@ -40,7 +40,8 @@ export enum VariableId {
     GustDirection = 'gustdir',
     Hydrometric = 'hydro',
     HRDPA = 'hrdpa',
-    RDPA = 'rdpa'
+    RDPA = 'rdpa',
+    ClimateStations = 'stations'
 }
 
 /**

@@ -4,6 +4,11 @@ import { VariableSelectorConfig } from './types';
 export const variableSelectorConfig: VariableSelectorConfig = {
     groups: [
         {
+            id: 'stations_group',
+            items: [VariableId.ClimateStations],
+            showHeader: true
+        },
+        {
             id: 'temperature_group',
             items: [VariableId.TMean, VariableId.TMin, VariableId.TMax],
             showHeader: true

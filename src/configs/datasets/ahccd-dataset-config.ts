@@ -5,18 +5,17 @@ const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,
     controls: {
         [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual
+            default: TimePeriodType.Annual,
+            disableOn: [VariableId.ClimateStations]
         }
     },
 
     variables: [
+        VariableId.ClimateStations,
         VariableId.TMean,
         VariableId.TMax,
         VariableId.TMin,
-        VariableId.Precipitation,
-        VariableId.StationPressure,
-        VariableId.SeaLevelPressure,
-        VariableId.SurfaceWind
+        VariableId.Precipitation
     ],
 
     legend: {

@@ -4,13 +4,9 @@ import { VisualizationControlType, TimePeriodType, VariableId, DatasetId } from 
 const monthlyDataset: DatasetSource = {
     id: DatasetId.ClimateMonthly,
 
-    controls: {
-        [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual
-        }
-    },
+    controls: {},
 
-    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
+    variables: [VariableId.ClimateStations],
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'
