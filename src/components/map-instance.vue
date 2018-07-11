@@ -131,18 +131,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         });
 
         // TODO: update legend settings layers and link them to actual reference layers
-        // TODO: update layers in groups, make it recursive
         // Updates the current legend based on the selected variable and its dataset.
         const legend = source.legend.slice();
-        legend.forEach((legendEntry: any) => {
+        legend.forEach((legendEntry: any) => checkEntry(legendEntry, this.counter));
+        this._mapi.legendConfig = legend;
+
+        function checkEntry(legendEntry: any, counter: number) {
             if (!legendEntry.layerId) {
+                const items = legendEntry.exclusiveVisibility || legendEntry.children || [];
+                items.forEach((legendEntry: any) => checkEntry(legendEntry, counter));
+
                 return;
             }
 
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            legendEntry.layerId += `_${this.counter}`;
-        }, []);
-        this._mapi.legendConfig = legend;
+            legendEntry.layerId += `_${counter}`;
+        }
     }
 
     @Watch('timeSlice')
@@ -372,9 +376,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     /* async drawGrid(xy: { x: number; y: number }, requestNum: number) {
         // retrieve the geometry points from the api
         // const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(xy);
-
-        // FIX: remove this
-        const { coordinates, gridId } = { coordinates: 1, gridId: '2' };
 
         // build the polygon
         const RZ = (<any>window).RZ;
