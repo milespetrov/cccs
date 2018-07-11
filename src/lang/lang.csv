@@ -210,18 +210,9 @@ ahccd.tmin.qualifier,,1,,0
 ahccd.tmax.fullName,Maximum temperature,1,Température maximale,0
 ahccd.tmax.shortName,Maximum temperature,1,Température maximale,0
 ahccd.tmax.qualifier,,1,,0
-ahccd.precip.fullName,Precipitation,1,Précipitation,0
-ahccd.precip.shortName,Precipitation,1,Précipitation,0
+ahccd.precip.fullName,Total precipitation,1,Total des précipitations,0
+ahccd.precip.shortName,Total precipitation,1,Total des précipitations,0
 ahccd.precip.qualifier,,1,,0
-ahccd.stnpress.fullName,Surface pressure,1,Pression de surface,0
-ahccd.stnpress.shortName,Surface pressure,1,Pression de surface,0
-ahccd.stnpress.qualifier,,1,,0
-ahccd.seapress.fullName,Sea level pressure,1,Pression de niveau,0
-ahccd.seapress.shortName,Sea level pressure,1,Pression de niveau,0
-ahccd.seapress.qualifier,,1,,0
-ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
-ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
-ahccd.sfcwind.qualifier,,1,,0
 cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.qualifier,,1,,0
@@ -243,26 +234,20 @@ dcs.tmin.qualifier,,1,,0
 dcs.tmax.fullName,Maximum temperature,1,Température maximale,0
 dcs.tmax.shortName,Maximum temperature,1,Température maximale,0
 dcs.tmax.qualifier,,1,,0
-dcs.precip.fullName,Precipitation,1,Précipitation,0
-dcs.precip.shortName,Precipitation,1,Précipitation,0
+dcs.precip.fullName,Total precipitation,1,Total des précipitations,0
+dcs.precip.shortName,Total precipitation,1,Total des précipitations,0
 dcs.precip.qualifier,,1,,0
 cangrd.tmean.fullName,Mean Temperature,1,Température moyenne,0
 cangrd.tmean.shortName,Mean Temperature,1,Température moyenne,0
 cangrd.tmean.qualifier,,1,,0
-cangrd.tmin.fullName,Minimum temperature,1,Température minimale,0
-cangrd.tmin.shortName,Minimum temperature,1,Température minimale,0
-cangrd.tmin.qualifier,,1,,0
-cangrd.tmax.fullName,Maximum temperature,1,Température maximale,0
-cangrd.tmax.shortName,Maximum temperature,1,Température maximale,0
-cangrd.tmax.qualifier,,1,,0
-cangrd.precip.fullName,Precipitation,1,Précipitation,0
-cangrd.precip.shortName,Precipitation,1,Précipitation,0
+cangrd.precip.fullName,Total precipitation,1,Total des précipitations,0
+cangrd.precip.shortName,Total precipitation,1,Total des précipitations,0
 cangrd.precip.qualifier,,1,,0
 normal.stations.fullName,Climate stations,1,Stations climatiques,0
 normal.stations.shortName,Climate stations,1,Stations climatiques,0
 normal.stations.qualifier,,0,,0
-normal.tmean.fullName,Mean Daily Temperature,1,Température quotidienne moyenne,0
-normal.tmean.shortName,Mean Daily Temperature,1,Température quotidienne moyenne,0
+normal.tmean.fullName,Mean daily temperature,1,Température quotidienne moyenne,0
+normal.tmean.shortName,Mean daily temperature,1,Température quotidienne moyenne,0
 normal.tmean.qualifier,,1,,0
 normal.tmax.fullName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,0
 normal.tmax.shortName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,0
@@ -291,35 +276,11 @@ normal.gustdir.qualifier,,1,,0
 monthly.stations.fullName,Climate stations,1,Stations climatiques,0
 monthly.stations.shortName,Climate stations,1,Stations climatiques,0
 monthly.stations.qualifier,,0,,0
-monthly.tmean.fullName,Mean temperature,1,Température moyenne,0
-monthly.tmean.shortName,Mean temperature,1,Température moyenne,0
-monthly.tmean.qualifier,,1,,0
-monthly.tmax.fullName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
-monthly.tmax.shortName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
-monthly.tmax.qualifier,,1,,0
-monthly.tmin.fullName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
-monthly.tmin.shortName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
-monthly.tmin.qualifier,,1,,0
-monthly.precip.fullName,Total precipitation,1,Précipitations totales,0
-monthly.precip.shortName,Total precipitation,1,Précipitations totales,0
-monthly.precip.qualifier,,1,,0
 daily.stations.fullName,Climate stations,1,Stations climatiques,0
 daily.stations.shortName,Climate stations,1,Stations climatiques,0
 daily.stations.qualifier,,0,,0
-daily.tmean.fullName,Mean temperature,1,Température moyenne,0
-daily.tmean.shortName,Mean temperature,1,Température moyenne,0
-daily.tmean.qualifier,,1,,0
-daily.tmax.fullName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
-daily.tmax.shortName,Highest monthly maximum temperature,1,Température maximale mensuelle la plus élevée,0
-daily.tmax.qualifier,,1,,0
-daily.tmin.fullName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
-daily.tmin.shortName,Lowest monthly minimum temperature,1,Température minimale mensuelle la plus basse,0
-daily.tmin.qualifier,,1,,0
-daily.precip.fullName,Total precipitation,1,Précipitations totales,0
-daily.precip.shortName,Total precipitation,1,Précipitations totales,0
-daily.precip.qualifier,,1,,0
-hydro.hydro.fullName,Hydrometric stations,1,,0
-hydro.hydro.shortName,Hydrometric stations,1,,0
+hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,0
+hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.qualifier,,1,,0
 capa.hrdpa.fullName,High Resolution Deterministic Precipitation Analysis,1,Analyse déterministe de précipitation à haute résolution,0
 capa.hrdpa.shortName,High Resolution Deterministic Precipitation Analysis,1,Analyse déterministe de précipitation à haute résolution,0

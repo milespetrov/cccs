@@ -6,11 +6,18 @@ const canGrdDataset: DatasetSource = {
 
     controls: {
         [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual
+            default: TimePeriodType.Annual,
+            options: [
+                TimePeriodType.Annual,
+                TimePeriodType.Autumn,
+                TimePeriodType.Summer,
+                TimePeriodType.Winter,
+                TimePeriodType.Spring
+            ]   
         }
     },
 
-    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
+    variables: [VariableId.TMean, VariableId.Precipitation],
 
     colourRamp: {
         defaultColours: ['#733E05', '#D6AF67', '#EFF0ED', '#6BBFB1', '#023D32'],
