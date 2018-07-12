@@ -16,9 +16,9 @@ const ahccdDataset: DatasetSource = {
         VariableId.TMax,
         VariableId.TMin,
         VariableId.Precipitation,
-        VariableId.SurfaceWind,
         VariableId.StationPressure,
-        VariableId.SeaLevelPressure
+        VariableId.SeaLevelPressure,
+        VariableId.SurfaceWind
     ],
 
     legend: {

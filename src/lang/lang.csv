@@ -213,6 +213,15 @@ ahccd.tmax.qualifier,,1,,0
 ahccd.precip.fullName,Total precipitation,1,Total des précipitations,0
 ahccd.precip.shortName,Total precipitation,1,Total des précipitations,0
 ahccd.precip.qualifier,,1,,0
+ahccd.stnpress.fullName,Surface pressure,1,Pression de surface,0
+ahccd.stnpress.shortName,Surface pressure,1,Pression de surface,0
+ahccd.stnpress.qualifier,,1,,0
+ahccd.seapress.fullName,Sea level pressure,1,Pression de niveau,0
+ahccd.seapress.shortName,Sea level pressure,1,Pression de niveau,0
+ahccd.seapress.qualifier,,1,,0
+ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
+ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
+ahccd.sfcwind.qualifier,,1,,0
 cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.qualifier,,1,,0
