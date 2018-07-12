@@ -10,7 +10,8 @@
                 "content": "A short AHCCD dataset description goes here"
             },
             {
-                "layerId": "AHCCD_wind_JAN_en",
+                "layerId": "AHCCD_wind_ANN_en",
+                "layerName": "",
                 "description": "A short wind speed description goes here",
                 "coverIcon": "assets/images/sfcwind.svg",
                 "symbologyStack": [
@@ -28,16 +29,19 @@
             },
             {
                 "layerId": "cities",
+                "layerName": "Cities",
                 "coverIcon": "assets/images/cities.svg",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
+                "layerName": "Labels",
                 "coverIcon": "assets/images/labels.svg",
                 "symbologyStack": []
             },
             {
                 "layerId": "provinces",
+                "layerName": "Provinces",
                 "coverIcon": "assets/images/provinces.svg",
                 "symbologyStack": []
             }
@@ -45,10 +49,10 @@
         "supportLayers": [
             {
                 "id": "cities",
-                "name": "Cities",
                 "layerType": "esriTile",
                 "url":
                     "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "Cities",
                 "state": {
                     "opacity": 1,
                     "visibility": false
@@ -57,8 +61,8 @@
             {
                 "id": "labels",
                 "layerType": "esriTile",
-                "name": "Labels",
                 "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "Labels",
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -66,10 +70,10 @@
             },
             {
                 "id": "provinces",
-                "name": "Provinces",
                 "layerType": "esriTile",
                 "url":
                     "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "name": "Provinces",
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -78,16 +82,17 @@
         ],
         "dataLayers": [
             {
-                "id": "AHCCD_wind_JAN_en",
-                "name": "Wind speed",
-                "nameField": "station_name_nom",
-                "layerType": "esriFeature",
+                "id": "AHCCD_wind_ANN_en",
+                "layerType": "ogcWfs",
                 "url":
-                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
-                "controls": ["data", "visibility", "opacity"],
+                    "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=wind_speed&period=Ann",
+                "name": "Wind speed",
+                "nameField": "trend_value",
                 "state": {
+                    "opacity": 1,
                     "visibility": true
                 },
+                "controls": ["data", "visibility", "opacity"],
                 "details": {
                     "parser": "./assets/templates/test-script.js",
                     "template": "./assets/templates/test-template.html"
@@ -106,10 +111,10 @@
                 "content": "[fr] A short AHCCD dataset description goes here"
             },
             {
-                "layerId": "AHCCD_wind_JAN_fr",
-                "layerName": "[fr] Wind speed",
+                "layerId": "AHCCD_wind_ANN_fr",
+                "layerName": "",
                 "description": "[fr] A short wind speed description goes here",
-                "coverIcon": "assets/images/wind.svg",
+                "coverIcon": "assets/images/sfcwind.svg",
                 "symbologyStack": [
                     {
                         "image":
@@ -148,6 +153,7 @@
                 "layerType": "esriTile",
                 "url":
                     "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "[fr] Cities",
                 "state": {
                     "opacity": 1,
                     "visibility": false
@@ -157,6 +163,7 @@
                 "id": "labels",
                 "layerType": "esriTile",
                 "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "[fr] Labels",
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -167,6 +174,7 @@
                 "layerType": "esriTile",
                 "url":
                     "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "name": "[fr] Provinces",
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -175,15 +183,17 @@
         ],
         "dataLayers": [
             {
-                "id": "AHCCD_wind_JAN_en",
-                "nameField": "station_name_nom",
-                "layerType": "esriFeature",
+                "id": "AHCCD_wind_ANN_fr",
+                "layerType": "ogcWfs",
                 "url":
-                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/AHCCD/AHCCD_en/MapServer/2",
-                "controls": ["data"],
+                    "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=wind_speed&period=Ann",
+                "name": "[fr] Wind speed",
+                "nameField": "trend_value",
                 "state": {
+                    "opacity": 1,
                     "visibility": true
-                }
+                },
+                "controls": ["data", "visibility", "opacity"]
             }
         ]
     }
