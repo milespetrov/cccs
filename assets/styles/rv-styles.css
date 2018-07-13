@@ -16955,6 +16955,7 @@ Obviously you need some kind of rules and criteria:
     display: flex;
     position: relative;
     flex: 1;
+    width: 100%;
     transition: flex 0.1s cubic-bezier(0.35, 0, 0.25, 1); }
     [is=rv-map] .main-appbar button, [is=rv-map] .rv-geosearch-bar button, .fgpv .main-appbar button, .fgpv .rv-geosearch-bar button {
       margin: 0; }
@@ -17812,10 +17813,8 @@ Obviously you need some kind of rules and criteria:
       [is=rv-map] md-sidenav.site-sidenav .rv-touch md-icon, .fgpv md-sidenav.site-sidenav .rv-touch md-icon {
         margin: 6px 8px;
         float: right; }
-  [is=rv-map] .main-appbar, .fgpv .main-appbar {
-    overflow: hidden; }
-    [is=rv-map] .main-appbar.rv-appbar-collapsed, .fgpv .main-appbar.rv-appbar-collapsed {
-      flex: 0; }
+  [is=rv-map] .main-appbar.rv-appbar-collapsed, .fgpv .main-appbar.rv-appbar-collapsed {
+    flex: 0; }
   [is=rv-map] rv-geosearchbar, .fgpv rv-geosearchbar {
     position: absolute;
     top: 90px;
