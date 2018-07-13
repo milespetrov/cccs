@@ -156,8 +156,8 @@ units.sit.qualifier,,1,,0
 units.sic.shortName,%,1,%,0
 units.sic.fullName,%,1,%,0
 units.sic.qualifier,,1,,0
-units.sfcwind.shortName,m/s,1,Mme,0
-units.sfcwind.fullName,metres/second,1,mètres / seconde,0
+units.sfcwind.shortName,km/h,1,km/h,0
+units.sfcwind.fullName,kilometres per hour,1,kilomètres par heure,0
 units.sfcwind.qualifier,,1,,0
 units.snd.shortName,cm,1,cm,0
 units.snd.fullName,centimetres,1,centimètres,0
@@ -177,23 +177,23 @@ units.precip.qualifier,,1,,0
 units.gustdir.shortName,,0,,0
 units.gustdir.fullName,,0,,0
 units.gustdir.qualifier,,0,,0
-units.gustspeed.shortName,,0,,0
-units.gustspeed.fullName,,0,,0
+units.gustspeed.shortName,km/h,1,km/h,0
+units.gustspeed.fullName,kilometres per hour,1,kilomètres par heure,0
 units.gustspeed.qualifier,,0,,0
 units.hydro.shortName,,0,,0
 units.hydro.fullName,,0,,0
 units.hydro.qualifier,,0,,0
-units.hrdpa.shortName,,0,,0
-units.hrdpa.fullName,,0,,0
+units.hrdpa.shortName,mm,1,mm,0
+units.hrdpa.fullName,millimetres,1,millimètres,0
 units.hrdpa.qualifier,,0,,0
-units.rdpa.shortName,,0,,0
-units.rdpa.fullName,,0,,0
+units.rdpa.shortName,mm,1,mm,0
+units.rdpa.fullName,millimetres,1,millimètres,0
 units.rdpa.qualifier,,0,,0
-units.stnpress.shortName,,0,,0
-units.stnpress.fullName,,0,,0
+units.stnpress.shortName,kPa,1,kPa,0
+units.stnpress.fullName,kilopascal,1,kilopascal,0
 units.stnpress.qualifier,,0,,0
-units.seapress.shortName,,0,,0
-units.seapress.fullName,,0,,0
+units.seapress.shortName,kPa,1,kPa,0
+units.seapress.fullName,kilopascal,1,kilopascal,0
 units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
 page.needHelp.title,Need help,1,Besoin d'aide pour,0
