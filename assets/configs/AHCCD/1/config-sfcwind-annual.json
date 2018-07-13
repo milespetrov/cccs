@@ -87,6 +87,10 @@
                 "controls": ["data", "visibility", "opacity"],
                 "state": {
                     "visibility": true
+                },
+                "details": {
+                    "parser": "./assets/templates/test-script.js",
+                    "template": "./assets/templates/test-template.html"
                 }
             }
         ]
