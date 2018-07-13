@@ -1,0 +1,62 @@
+<div class="cmip5-details">
+
+    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.station_name }}</h4>
+    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.stationName }}</span>
+
+    <md-divider class="mrgn-bttm-md"></md-divider>
+
+    <dl>
+        <dt>
+            <span>{{ self.layer.tt.stationId }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.station_id }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.province.title }}</span>
+        </dt>
+        <dd>{{ self.layer.tt.province[self.layer.properties.province] }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.elevation }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.elevation }}</dd>
+
+        <!-- <dt>
+            <span>{{ self.layer.tt.coordinates }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.coordinates }}</dd> -->
+    </dl>
+
+    <!-- <md-divider class="mrgn-bttm-md"></md-divider>
+    <h5>{{ self.layer.tt.recordingPeriod }}</h5>
+    <dl>
+        <dt ng-repeat-start="measurementType in self.layer.tt.measurements">
+            <span>{{ self.layer.tt.measurementType[measurementType] }}</span>
+        </dt>
+        <dd ng-repeat-end>{{ self.layer.properties.start[measurementType] }}-{{ self.layer.properties.end[measurementType] }}</dd>
+    </dl> -->
+
+
+</div>
+
+<style>
+    .cmip5-details .sub-title {
+        display: block;
+    }
+
+    .cmip5-details md-divider {
+        border-top-style: dotted;
+    }
+
+    .cmip5-details dl dt {
+        font-weight: normal;
+    }
+
+    .cmip5-details dl dd {
+        font-weight: bold;
+    }
+
+    .cmip5-details dl dt span {
+        display: block;
+    }
+</style>
