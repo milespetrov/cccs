@@ -63,8 +63,11 @@ function parser(data, lang) {
 
     console.log(data, lang);
 
+    data.properties = {};
+
+    data.forEach(({ key, value }) => (data.properties[key] = value));
     // TODO: use sample data until ahccd wfs is fixed
-    data = sampleData;
+    // data = sampleData;
     data.tt = TRANSLATIONS[lang];
 
     return data;
