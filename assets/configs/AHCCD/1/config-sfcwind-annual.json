@@ -94,8 +94,8 @@
                 },
                 "controls": ["data", "visibility", "opacity"],
                 "details": {
-                    "parser": "./assets/templates/test-script.js",
-                    "template": "./assets/templates/test-template.html"
+                    "parser": "./assets/templates/ahccd/variables-script.js",
+                    "template": "./assets/templates/ahccd/variables-template.html"
                 }
             }
         ]
