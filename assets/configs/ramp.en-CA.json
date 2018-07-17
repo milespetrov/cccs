@@ -130,22 +130,7 @@
                 "hasNorthPole": "true"
             }
         ],
-        "layers": [
-            {
-                "id": "cmip5_grid",
-                "name": "CMIP5 Grid Layer",
-                "layerType": "esriDynamic",
-                "layerEntries": [
-                    {
-                        "index": 0
-                    }
-                ],
-                "state": {
-                    "opacity": 0
-                },
-                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CMIP5_Grid/MapServer"
-            }
-        ],
+        "layers": [],
         "baseMaps": [
             {
                 "id": "baseNrCan",

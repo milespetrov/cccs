@@ -126,9 +126,13 @@ export default class App extends mixins(UpdateRouteMixin) {
             r: this.setRcpId
         };
 
+        const defaultSettings: FunctionArray = {
+            d: 'dcs'
+        };
+
         // update the store
         Object.keys(storeFns).forEach(parameter => {
-            const value: string = this.$router.currentRoute.query[parameter];
+            const value: string = this.$router.currentRoute.query[parameter] || defaultSettings[parameter];
             if (!value) {
                 return;
             }

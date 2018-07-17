@@ -176,6 +176,10 @@ const actions = {
             return;
         }
 
+        if (!context.state.variableId) {
+            context.dispatch(Action.setVariableId, datasets[context.state.datasetId].variables[0]);
+        }
+
         //TODO: check why getters aren't typed
         const datasetControlOptions = context.getters.datasetControlOptions as DatasetViewSource;
 
