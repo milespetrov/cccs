@@ -9,41 +9,43 @@
       "infoType": "text",
       "content": "A short DCS dataset description goes here"
     },
-    "name": "Canadian Precipitation Analysis",
-    "expanded": true,
-    "controls": ["visibility"],
-    "children": [{
-      "exclusiveVisibility": [
-        {
-          "layerId": "CAPA_qp25_6_en",
-          "layerName": "",
-          "description": "A short 6 hour description goes here",
-          "coverIcon": "assets/images/06h.svg",
-          "symbologyStack": [
-            {
-              "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
+    {
+      "name": "Canadian Precipitation Analysis",
+      "expanded": true,
+      "controls": ["visibility"],
+      "children": [{
+        "exclusiveVisibility": [
+          {
+            "layerId": "CAPA_qp25_6_en",
+            "layerName": "",
+            "description": "A short 6 hour description goes here",
+            "coverIcon": "assets/images/06h.svg",
+            "symbologyStack": [
+              {
+                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
 
-        {
-          "layerId": "CAPA_qp25_24_en",
-          "layerName": "",
-          "description": "A short 24 hour description goes here",
-          "coverIcon": "assets/images/24h.svg",
-          "symbologyStack": [
-            {
-              "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        }
+          {
+            "layerId": "CAPA_qp25_24_en",
+            "layerName": "",
+            "description": "A short 24 hour description goes here",
+            "coverIcon": "assets/images/24h.svg",
+            "symbologyStack": [
+              {
+                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          }
 
-      ]
-    }]
+        ]
+      }]
+    },
     {
       "infoType": "title",
       "content": "Settings"
@@ -112,7 +114,8 @@
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.24F_PR" }],
-      "controls": ["data"]
+      "featureInfoMimeType": "text/plain",
+      "controls": ["data", "visibility"]
     },
     {
       "id": "CAPA_qp25_6_en",
@@ -125,7 +128,8 @@
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.6F_PR" }],
-      "controls": ["data"]
+      "featureInfoMimeType": "text/plain",
+      "controls": ["data", "visibility"]
     }
   ]
 },
@@ -139,41 +143,43 @@
       "infoType": "text",
       "content": "[fr] A short DCS dataset description goes here"
     },
-    "name": "[fr] Canadian Precipitation Analysis",
-    "expanded": true,
-    "controls": ["visibility"],
-    "children": [{
-      "exclusiveVisibility": [
-        {
-          "layerId": "CAPA_qp25_6_fr",
-          "layerName": "",
-          "description": "[fr] A short 6 hour description goes here",
-          "coverIcon": "assets/images/06h.svg",
-          "symbologyStack": [
-            {
-              "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
+    {
+      "name": "[fr] Canadian Precipitation Analysis",
+      "expanded": true,
+      "controls": ["visibility"],
+      "children": [{
+        "exclusiveVisibility": [
+          {
+            "layerId": "CAPA_qp25_6_fr",
+            "layerName": "",
+            "description": "[fr] A short 6 hour description goes here",
+            "coverIcon": "assets/images/06h.svg",
+            "symbologyStack": [
+              {
+                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
 
-        {
-          "layerId": "CAPA_qp25_24_fr",
-          "layerName": "",
-          "description": "[fr] A short 24 hour description goes here",
-          "coverIcon": "assets/images/24h.svg",
-          "symbologyStack": [
-            {
-              "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        }
+          {
+            "layerId": "CAPA_qp25_24_fr",
+            "layerName": "",
+            "description": "[fr] A short 24 hour description goes here",
+            "coverIcon": "assets/images/24h.svg",
+            "symbologyStack": [
+              {
+                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          }
 
-      ]
-    }]
+        ]
+      }]
+    },
     {
       "infoType": "title",
       "content": "[fr] Settings"
@@ -242,7 +248,8 @@
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.24F_PR" }],
-      "controls": ["data"]
+      "featureInfoMimeType": "text/plain",
+      "controls": ["data", "visibility"]
     },
     {
       "id": "CAPA_qp25_6_fr",
@@ -255,7 +262,8 @@
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.6F_PR" }],
-      "controls": ["data"]
+      "featureInfoMimeType": "text/plain",
+      "controls": ["data", "visibility"]
     }
   ]
 }

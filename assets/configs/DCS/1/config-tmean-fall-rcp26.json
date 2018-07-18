@@ -90,6 +90,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2021-2040_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     },
     {
@@ -103,6 +104,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2041-2060_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     },
     {
@@ -116,6 +118,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2061-2080_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     },
     {
@@ -129,6 +132,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2081-2100_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     }
   ]
@@ -224,6 +228,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2021-2040_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     },
     {
@@ -237,6 +242,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2041-2060_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     },
     {
@@ -250,6 +256,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2061-2080_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     },
     {
@@ -263,6 +270,7 @@
         "visibility": false
       },
       "layerEntries": [{"id": "DCS.TX.RCP26.FALL.2081-2100_PCTL50" }],
+      "featureInfoMimeType": "text/plain",
       "controls": ["data"]
     }
   ]
