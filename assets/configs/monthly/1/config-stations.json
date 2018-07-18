@@ -7,10 +7,10 @@
             },
             {
                 "infoType": "text",
-                "content": "A short Climate Normals dataset description goes here"
+                "content": "A short Monthly Climate Summaries dataset description goes here"
             },
             {
-                "layerId": "NORMAL_station_en",
+                "layerId": "MONTHLY_station_en",
                 "layerName": "",
                 "description": "A short station description goes here",
                 "coverIcon": "assets/images/cities.svg",
@@ -82,7 +82,7 @@
         ],
         "dataLayers": [
             {
-                "id": "NORMAL_station_en",
+                "id": "MONTHLY_station_en",
                 "layerType": "ogcWfs",
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
                 "name": "Stations",
@@ -93,8 +93,8 @@
                 },
                 "controls": ["data", "visibility", "opacity"],
                 "details": {
-                    "template": "./assets/templates/normal/stations-template.html",
-                    "parser": "./assets/templates/normal/stations-script.js"
+                    "template": "./assets/templates/MONTHLY/stations-template.html",
+                    "parser": "./assets/templates/monthly/stations-script.js"
                 }
             }
         ]
@@ -107,10 +107,10 @@
             },
             {
                 "infoType": "text",
-                "content": "[fr] A short Climate Normals dataset description goes here"
+                "content": "[fr] A short Monthly Climate Summaries dataset description goes here"
             },
             {
-                "layerId": "NORMAL_station_fr",
+                "layerId": "MONTHLY_station_fr",
                 "layerName": "",
                 "description": "[fr] A short station description goes here",
                 "coverIcon": "assets/images/cities.svg",

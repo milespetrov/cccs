@@ -7,10 +7,10 @@
             },
             {
                 "infoType": "text",
-                "content": "A short Climate Normals dataset description goes here"
+                "content": "A short AHCCD dataset description goes here"
             },
             {
-                "layerId": "NORMAL_station_en",
+                "layerId": "AHCCD_station_en",
                 "layerName": "",
                 "description": "A short station description goes here",
                 "coverIcon": "assets/images/cities.svg",
@@ -82,19 +82,19 @@
         ],
         "dataLayers": [
             {
-                "id": "NORMAL_station_en",
+                "id": "AHCCD_station_en",
                 "layerType": "ogcWfs",
-                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
                 "name": "Stations",
-                "nameField": "STATION_NAME",
+                "nameField": "station_name",
                 "state": {
                     "opacity": 1,
                     "visibility": true
                 },
                 "controls": ["data", "visibility", "opacity"],
                 "details": {
-                    "template": "./assets/templates/normal/stations-template.html",
-                    "parser": "./assets/templates/normal/stations-script.js"
+                    "template": "./assets/templates/ahccd/stations-template.html",
+                    "parser": "./assets/templates/ahccd/stations-script.js"
                 }
             }
         ]
@@ -107,10 +107,10 @@
             },
             {
                 "infoType": "text",
-                "content": "[fr] A short Climate Normals dataset description goes here"
+                "content": "[fr] A short AHCCD dataset description goes here"
             },
             {
-                "layerId": "NORMAL_station_fr",
+                "layerId": "AHCCD_station_fr",
                 "layerName": "",
                 "description": "[fr] A short station description goes here",
                 "coverIcon": "assets/images/cities.svg",
