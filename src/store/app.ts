@@ -1,12 +1,10 @@
-import { ActionContext, Store, StoreOptions, Module } from 'vuex';
+import { ActionContext, StoreOptions } from 'vuex';
 
 import { AppState, MapPoint, RootState } from './index';
 
-import controls from './../globals/controls';
-
-import { datasets, DatasetSource, DatasetViewSource, ColourRamp } from './../configs/datasets';
+import { datasets, DatasetViewSource, ColourRamp } from './../configs/datasets';
 import { defaultSelectors } from './../configs/selectors';
-import { VisualizationControlType, ViewType, DatasetId } from '@/types';
+import { VisualizationControlType, DatasetId } from '@/types';
 import { DatasetApi, datasetApis } from '@/api';
 
 type AppContext = ActionContext<AppState, RootState>;
@@ -93,7 +91,7 @@ const getters = {
         const controls = Object.entries(options).reduce<VisualizationControlType[]>((map, [key, value]) => {
             if (value!.visible !== false) {
                 // filter out if control is specifically disabled for current variable
-                if (value!.disableOn && !value!.disableOn!.includes(state.variableId!)) {
+                if (!value!.disableOn || !value!.disableOn!.includes(state.variableId!)) {
                     map.push(key as VisualizationControlType);
                 }
             }

@@ -21,9 +21,13 @@ class AHCCDApi extends DatasetApi {
      * @memberof AHCCDApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
-            this.state.timePeriodId
-        }.json`;
+        if (this.state.variableId === 'stations') {
+            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        } else {
+            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+                this.state.timePeriodId
+            }.json`;
+        }
     }
 }
 
@@ -78,9 +82,7 @@ class CAPAApi extends DatasetApi {
      * @memberof CAPAApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
-            this.state.rcpId
-        }.json`;
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -101,24 +103,6 @@ class CMIP5Api extends DatasetApi {
             this.state.rcpId
         }.json`;
     }
-
-    /**
-     * Returns an array of coordinates for the cmip5 grid square that 'xy' is in
-     * Also returns the gridId that contains the point
-     *
-     * @param xy the x and y (latlong) to find the geometry for
-     */
-    /* async getGeometryPoints(xy: { x: number; y: number }): Promise<{ coordinates: any; gridId: any }> {
-        const fetchUrl = `${BASE_API_URL}/grid_id/${xy.x},${xy.y}`;
-        const data = await getJSON<any>(fetchUrl, DatasetId.CMIP5, 'getGeometryPoints');
-
-        const result = {
-            coordinates: data.geometry.coordinates[0],
-            gridId: data.properties.grid_id
-        };
-
-        return result;
-    } */
 }
 
 class DailyApi extends DatasetApi {
@@ -134,9 +118,7 @@ class DailyApi extends DatasetApi {
      * @memberof DailyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
-            this.state.rcpId
-        }.json`;
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -153,9 +135,7 @@ class MonthlyApi extends DatasetApi {
      * @memberof MonthlyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
-            this.state.rcpId
-        }.json`;
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -191,9 +171,7 @@ class HydroApi extends DatasetApi {
      * @memberof HydroApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
-            this.state.rcpId
-        }.json`;
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -210,9 +188,13 @@ class NormalApi extends DatasetApi {
      * @memberof NormalApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
-            this.state.rcpId
-        }.json`;
+        if (this.state.variableId === 'stations') {
+            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        } else {
+            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+                this.state.timePeriodId
+            }.json`;
+        }
     }
 }
 
