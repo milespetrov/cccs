@@ -1,5 +1,5 @@
 ﻿key,enValue,enValid,frValue,frValid
-title,Explore climate data,1,Explorer les données climatiques,0
+title,Climate maps,1,Cartes climatiques,0
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,0
 geo.coordinates.east,E,1,E,0
 geo.coordinates.west,W,1,W,0
@@ -197,7 +197,7 @@ units.seapress.fullName,kilopascal,1,kilopascal,0
 units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
 page.needHelp.title,Need help,1,Besoin d'aide pour,0
-page.needHelp.body,Look through the CCDS resources overview and data categories. Contact CCDS here.,1,Parcourez l'aperçu des ressources CCDS et les catégories de données. Contactez CCDS ici.,0
+page.needHelp.body,Contact the <a href="https://climate-change.canada.ca/support-desk">Canadian Climate Change Services support desk</a>.,1,Communiquez avec <a href="https://climate-change.canada.ca/support-desk">le bureau de soutien des Services canadiens des changements climatiques</a>.,0
 ahccd.stations.fullName,Climate stations,1,Stations climatiques,0
 ahccd.stations.shortName,Climate stations,1,Stations climatiques,0
 ahccd.stations.qualifier,,0,,0

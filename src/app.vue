@@ -18,13 +18,13 @@
 
             <section class="alert alert-info">
                 <h4 class="text-info mrgn-tp-sm"> {{ $t('page.needHelp.title') }}? </h4>
-                <p>{{ $t('page.needHelp.body') }}</p>
+                <p v-html="$t('page.needHelp.body')"></p>
             </section>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
                 <dt>{{ $t('page.dateModified') }}: </dt>
-                <dd><time property="dateModified">2017-02-02</time></dd>
+                <dd><time property="dateModified">2018-07-18</time></dd>
 
                 </dl>
                 <!-- <div class="row">
