@@ -89,6 +89,11 @@
         "opacity": 1,
         "visibility": true
       },
+      "details": {
+        "template": "assets/templates/ahccd/variables-template.html",
+        "parser": "assets/templates/ahccd/variables-script.js"
+      },
+      "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
@@ -183,6 +188,11 @@
         "opacity": 1,
         "visibility": true
       },
+      "details": {
+        "template": "assets/templates/ahccd/variables-template.html",
+        "parser": "assets/templates/ahccd/variables-script.js"
+      },
+      "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
