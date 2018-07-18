@@ -8,10 +8,7 @@ const capaDataset: DatasetSource = {
 
     variables: [VariableId.HRDPA, VariableId.RDPA],
 
-    colourRamp: {
-        defaultColours: ['#733E05', '#D6AF67', '#EFF0ED', '#6BBFB1', '#023D32'],
-        defaultLabels: ['-100', '100']
-    },
+    legend: {},
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'
