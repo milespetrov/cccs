@@ -62,7 +62,9 @@ function setSessionItem(key: string, item: object): void {
  * @returns {Promise<T>}
  */
 export async function getJSON<T>(url: string, apiId: DatasetId, key: string, depth: number = CACHE_DEPTH): Promise<T> {
-    const itemKey = `${apiId}-${key}`;
+    // TODO: Add flag to better control when to cache, turning off because of how many config changes we have
+
+    /* const itemKey = `${apiId}-${key}`;
 
     // get cached responses for this `apiId` and `key` or create a new array of not defined yed
     const dataCache = getSessionItem<CachedResponce[]>(itemKey) || [];
@@ -71,17 +73,17 @@ export async function getJSON<T>(url: string, apiId: DatasetId, key: string, dep
     // if cached response is found, return it
     if (response) {
         return response.data as T;
-    }
+    } */
 
     const data: T = await $.getJSON(url);
 
-    // store response in the dataCache
+    /* // store response in the dataCache
     dataCache.unshift({ url, data });
     // keeps the number of cached responses under the limit
     dataCache.splice(depth);
 
     // save the cached responses in the session storage
-    setSessionItem(itemKey, dataCache);
+    setSessionItem(itemKey, dataCache); */
 
     return data;
 }

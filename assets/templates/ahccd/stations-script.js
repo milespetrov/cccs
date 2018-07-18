@@ -1,23 +1,26 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            stationName: 'AHHCD station',
-            stationId: 'Station ID',
+            stationName: 'Station Name',
+            stationId: 'AHCCD Station ID',
             province: {
                 title: 'Province',
-                ab: 'Alberta',
-                bc: 'British Columbia',
-                mb: 'Manitoba',
-                nb: 'New Brunswick',
-                nl: 'Newfoundland and Labrador',
-                ns: 'Nova Scotia',
-                nt: 'Northwest Territories',
-                nu: 'Nunavut',
-                on: 'Ontario',
-                pe: 'Prince Edward Island',
-                QUE: 'Quebec Québec',
-                sk: 'Saskatchewan',
-                yt: 'Yukon Yukon'
+                AB: 'Alberta',
+                BC: 'British Columbia',
+                MAN: 'Manitoba',
+                MB: 'Manitoba',
+                NB: 'New Brunswick',
+                NL: 'Newfoundland and Labrador',
+                NFLD: 'Newfoundland and Labrador',
+                NS: 'Nova Scotia',
+                NWT: 'Northwest Territories',
+                NU: 'Nunavut',
+                ON: 'Ontario',
+                PE: 'Prince Edward Island',
+                QUE: 'Quebec',
+                QC: 'Quebec',
+                SK: 'Saskatchewan',
+                YT: 'Yukon'
             },
             coordinates: 'Coordinates',
             elevation: 'Elevation',
@@ -55,49 +58,15 @@ function parser(data, lang) {
         'fr-CA': {}
     };
 
-    // TODO: remove sample data when ahccd wfs is fixed
-    const sampleData = {
-        properties: {
-            /* coordinates: '51.5074° N, 0.1278° W',
+    data.properties = {};
 
-            start: {
-                title: '1906',
-                total_precip: '1906',
-                rain: '1906',
-                temp_mean: '1906',
-                temp_max: '1906',
-                temp_min: '1906',
-                snow: '1906',
-                wind_speed: '1906',
-                pressure_station: '1906',
-                pressure_sea_level: '1906'
-            },
-            end: {
-                title: '2016',
-                total_precip: '2016',
-                rain: '2016',
-                temp_mean: '2016',
-                temp_max: '2016',
-                temp_min: '2016',
-                snow: '2016',
-                wind_speed: '2016',
-                pressure_station: '2016',
-                pressure_sea_level: '2016'
-            }, */
-
-            province: 'QUE',
-            elevation: '146.5',
-            joined: '0',
-            station_id: '7056616',
-            station_name: 'RIVIERE-DU-LOUP',
-            identifier: '7056616'
+    data.forEach(({ key, value }) => {
+        if (typeof value === 'string') {
+            value = value.trim();
         }
-    };
+        data.properties[key] = value;
+    });
 
-    console.log(data, lang);
-
-    // TODO: use sample data until ahccd wfs is fixed
-    data = sampleData;
     data.tt = TRANSLATIONS[lang];
 
     return data;
