@@ -52,6 +52,7 @@
                 "url":
                     "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
                 "name": "Cities",
+                "expectedResponseTime": 10000,
                 "state": {
                     "opacity": 1,
                     "visibility": false
@@ -62,6 +63,7 @@
                 "layerType": "esriTile",
                 "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
                 "name": "Labels",
+                "expectedResponseTime": 10000,
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -73,6 +75,7 @@
                 "url":
                     "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
                 "name": "Provinces",
+                "expectedResponseTime": 10000,
                 "state": {
                     "opacity": 1,
                     "visibility": true
