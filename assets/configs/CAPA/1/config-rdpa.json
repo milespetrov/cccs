@@ -273,7 +273,7 @@
                 "name": "[fr] Quantity of Precipitation, 10KM resolution 6H",
                 "state": {
                     "opacity": 1,
-                    "visibility": false
+                    "visibility": true
                 },
                 "layerEntries": [{ "id": "RDPA.6F_PR" }],
                 "featureInfoMimeType": "text/plain",
