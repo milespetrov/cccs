@@ -1,20 +1,8 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            latlong: 'X, Y',
+            latlong: 'Latitude, Longitude',
             trendValue: '50th ensemble 20-year average value',
-            measurementType: {
-                title: 'Measurement type',
-                total_precip: 'Total precipitation',
-                //rain: 'Rain ????',
-                temp_mean: 'Mean temperature',
-                temp_max: 'Maximum temperature',
-                temp_min: 'Minimum temperature',
-                //snow: 'Snow depth',
-                wind_speed: 'Wind speed',
-                pressure_station: 'Surface pressure',
-                pressure_sea_level: 'Sea level pressure'
-            },
             measurementUnit: {
                 total_precip: 'mm',
                 //rain: 'mm ????',
@@ -68,6 +56,11 @@ function parser(data, lang) {
             });
         result.properties[key] = value;
     }
+
+    result.properties.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, [
+        parseFloat(result.properties.x),
+        parseFloat(result.properties.y)
+    ]);
 
     return result;
 }

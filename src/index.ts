@@ -15,6 +15,8 @@ const router = new VueRouter();
 const store: Store<RootState> = createStore();
 
 Vue.config.ignoredElements = ['rv-map'];
+//TODO: re-enable and fix vue wanting to bind to everything in ramp again
+Vue.config.silent = true;
 
 new Vue({
     el: '#app',
