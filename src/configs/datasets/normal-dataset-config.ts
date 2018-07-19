@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, ViewType } from '@/types';
+import { VisualizationControlType, TimePeriodType, VariableId, DatasetId } from '@/types';
 
 const normalDataset: DatasetSource = {
     id: DatasetId.ClimateNormal,
@@ -23,6 +23,11 @@ const normalDataset: DatasetSource = {
         VariableId.GustSpeed,
         VariableId.GustDirection
     ],
+
+    legend: {
+        [VariableId.ClimateStations]:
+            'Station <img src="/assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
+    },
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'

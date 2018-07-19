@@ -20,7 +20,7 @@
                         "text": "Station"
                     }
                 ],
-                "symbologyRenderStyle": "images"
+                "symbologyRenderStyle": "icons"
             },
             {
                 "infoType": "title",
@@ -90,11 +90,12 @@
                     "opacity": 1,
                     "visibility": true
                 },
-                "controls": ["data", "visibility", "opacity"],
                 "details": {
-                    "template": "./assets/templates/normal/stations-template.html",
-                    "parser": "./assets/templates/normal/stations-script.js"
-                }
+                    "template": "assets/templates/normal/stations-template.html",
+                    "parser": "assets/templates/normal/stations-script.js"
+                },
+                "colour": "#0ca7f5",
+                "controls": ["data", "visibility", "opacity"]
             }
         ]
     },
