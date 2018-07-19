@@ -91,6 +91,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2021-2040_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     },
     {
@@ -105,6 +109,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2041-2060_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     },
     {
@@ -119,6 +127,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2061-2080_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     },
     {
@@ -133,6 +145,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2081-2100_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     }
   ]
@@ -229,6 +245,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2021-2040_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     },
     {
@@ -243,6 +263,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2041-2060_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     },
     {
@@ -257,6 +281,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2061-2080_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     },
     {
@@ -271,6 +299,10 @@
       },
       "layerEntries": [{"id": "DCS.TM.RCP26.YEAR.2081-2100_PCTL50" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/dcs/variables-template.html",
+        "parser": "assets/templates/dcs/variables-script.js"
+      },
       "controls": ["data"]
     }
   ]
