@@ -17,10 +17,10 @@
       "symbologyStack": [
         {
           "image": "assets/images/green-circle.svg",
-          "text": "Green Circle"
+          "text": "AHCCD Station"
         }
       ],
-      "symbologyRenderStyle": "images"
+      "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
@@ -116,10 +116,10 @@
       "symbologyStack": [
         {
           "image": "assets/images/green-circle.svg",
-          "text": "[fr] Green Circle"
+          "text": "[fr] AHCCD Station"
         }
       ],
-      "symbologyRenderStyle": "images"
+      "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
