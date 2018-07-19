@@ -76,6 +76,7 @@
       "layerType": "esriTile",
       "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
       "name": "Cities",
+      "expectedResponseTime": 10000,
       "state": {
         "opacity": 1,
         "visibility": false
@@ -86,6 +87,7 @@
       "layerType": "esriTile",
       "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
       "name": "Labels",
+      "expectedResponseTime": 10000,
       "state": {
         "opacity": 1,
         "visibility": true
@@ -96,6 +98,7 @@
       "layerType": "esriTile",
       "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
       "name": "Provinces",
+      "expectedResponseTime": 10000,
       "state": {
         "opacity": 1,
         "visibility": true
@@ -210,6 +213,7 @@
       "layerType": "esriTile",
       "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
       "name": "[fr] Cities",
+      "expectedResponseTime": 10000,
       "state": {
         "opacity": 1,
         "visibility": false
@@ -220,6 +224,7 @@
       "layerType": "esriTile",
       "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
       "name": "[fr] Labels",
+      "expectedResponseTime": 10000,
       "state": {
         "opacity": 1,
         "visibility": true
@@ -230,6 +235,7 @@
       "layerType": "esriTile",
       "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
       "name": "[fr] Provinces",
+      "expectedResponseTime": 10000,
       "state": {
         "opacity": 1,
         "visibility": true
