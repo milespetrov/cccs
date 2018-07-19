@@ -1,276 +1,284 @@
 {
-"en": {
-  "legend": [
-    {
-      "infoType": "title",
-      "content": "Data"
-    },
-    {
-      "infoType": "text",
-      "content": "A short DCS dataset description goes here"
-    },
-    {
-      "name": "Canadian Precipitation Analysis",
-      "expanded": true,
-      "controls": ["visibility"],
-      "children": [{
-        "exclusiveVisibility": [
-          {
-            "layerId": "CAPA_qp10_6_en",
-            "layerName": "",
-            "description": "A short 6 hour description goes here",
-            "coverIcon": "assets/images/06h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
+    "en": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Data"
+            },
+            {
+                "infoType": "text",
+                "content": "A short DCS dataset description goes here"
+            },
+            {
+                "name": "Canadian Precipitation Analysis",
+                "expanded": true,
+                "controls": ["visibility"],
+                "children": [
+                    {
+                        "exclusiveVisibility": [
+                            {
+                                "layerId": "CAPA_qp10_6_en",
+                                "layerName": "",
+                                "description": "A short 6 hour description goes here",
+                                "coverIcon": "assets/images/06h.svg",
+                                "symbologyStack": [
+                                    {
+                                        "image":
+                                            "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                                        "text": ""
+                                    }
+                                ],
+                                "symbologyRenderStyle": "images"
+                            },
 
-          {
-            "layerId": "CAPA_qp10_24_en",
-            "layerName": "",
-            "description": "A short 24 hour description goes here",
-            "coverIcon": "assets/images/24h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          }
-
+                            {
+                                "layerId": "CAPA_qp10_24_en",
+                                "layerName": "",
+                                "description": "A short 24 hour description goes here",
+                                "coverIcon": "assets/images/24h.svg",
+                                "symbologyStack": [
+                                    {
+                                        "image":
+                                            "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                                        "text": ""
+                                    }
+                                ],
+                                "symbologyRenderStyle": "images"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "infoType": "title",
+                "content": "Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "Cities",
+                "coverIcon": "assets/images/cities.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "Labels",
+                "coverIcon": "assets/images/labels.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "layerName": "Provinces",
+                "coverIcon": "assets/images/provinces.svg",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "Cities",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "Labels",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            },
+            {
+                "id": "provinces",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "name": "Provinces",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "CAPA_qp10_24_en",
+                "layerType": "ogcWms",
+                "suppressGetCapabilities": true,
+                "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=en",
+                "name": "Quantity of Precipitation, 10KM resolution 24H",
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                },
+                "layerEntries": [{ "id": "RDPA.24F_PR" }],
+                "featureInfoMimeType": "text/plain",
+                "controls": ["data", "visibility"]
+            },
+            {
+                "id": "CAPA_qp10_6_en",
+                "layerType": "ogcWms",
+                "suppressGetCapabilities": true,
+                "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=en",
+                "name": "Quantity of Precipitation, 10KM resolution 6H",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                },
+                "layerEntries": [{ "id": "RDPA.6F_PR" }],
+                "featureInfoMimeType": "text/plain",
+                "controls": ["data", "visibility"]
+            }
         ]
-      }]
     },
-    {
-      "infoType": "title",
-      "content": "Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Cities",
-      "coverIcon": "assets/images/cities.svg",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Labels",
-      "coverIcon": "assets/images/labels.svg",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.svg",
-      "symbologyStack": []
-    }
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "[fr] Data"
+            },
+            {
+                "infoType": "text",
+                "content": "[fr] A short DCS dataset description goes here"
+            },
+            {
+                "name": "[fr] Canadian Precipitation Analysis",
+                "expanded": true,
+                "controls": ["visibility"],
+                "children": [
+                    {
+                        "exclusiveVisibility": [
+                            {
+                                "layerId": "CAPA_qp10_6_fr",
+                                "layerName": "",
+                                "description": "[fr] A short 6 hour description goes here",
+                                "coverIcon": "assets/images/06h.svg",
+                                "symbologyStack": [
+                                    {
+                                        "image":
+                                            "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                                        "text": ""
+                                    }
+                                ],
+                                "symbologyRenderStyle": "images"
+                            },
 
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Cities",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "Labels",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "CAPA_qp10_24_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=en",
-      "name": "Quantity of Precipitation, 10KM resolution 24H",
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "RDPA.24F_PR" }],
-      "featureInfoMimeType": "text/plain",
-      "controls": ["data", "visibility"]
-    },
-    {
-      "id": "CAPA_qp10_6_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=en",
-      "name": "Quantity of Precipitation, 10KM resolution 6H",
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "RDPA.6F_PR" }],
-      "featureInfoMimeType": "text/plain",
-      "controls": ["data", "visibility"]
-    }
-  ]
-},
-"fr": {
-  "legend": [
-    {
-      "infoType": "title",
-      "content": "[fr] Data"
-    },
-    {
-      "infoType": "text",
-      "content": "[fr] A short DCS dataset description goes here"
-    },
-    {
-      "name": "[fr] Canadian Precipitation Analysis",
-      "expanded": true,
-      "controls": ["visibility"],
-      "children": [{
-        "exclusiveVisibility": [
-          {
-            "layerId": "CAPA_qp10_6_fr",
-            "layerName": "",
-            "description": "[fr] A short 6 hour description goes here",
-            "coverIcon": "assets/images/06h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-
-          {
-            "layerId": "CAPA_qp10_24_fr",
-            "layerName": "",
-            "description": "[fr] A short 24 hour description goes here",
-            "coverIcon": "assets/images/24h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          }
-
+                            {
+                                "layerId": "CAPA_qp10_24_fr",
+                                "layerName": "",
+                                "description": "[fr] A short 24 hour description goes here",
+                                "coverIcon": "assets/images/24h.svg",
+                                "symbologyStack": [
+                                    {
+                                        "image":
+                                            "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
+                                        "text": ""
+                                    }
+                                ],
+                                "symbologyRenderStyle": "images"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "infoType": "title",
+                "content": "[fr] Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "[fr] Cities",
+                "coverIcon": "assets/images/cities.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "[fr] Labels",
+                "coverIcon": "assets/images/labels.svg",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "layerName": "[fr] Provinces",
+                "coverIcon": "assets/images/provinces.svg",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "[fr] Cities",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "[fr] Labels",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            },
+            {
+                "id": "provinces",
+                "layerType": "esriTile",
+                "url":
+                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "name": "[fr] Provinces",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "CAPA_qp10_24_fr",
+                "layerType": "ogcWms",
+                "suppressGetCapabilities": true,
+                "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=fr",
+                "name": "[fr] Quantity of Precipitation, 10KM resolution 24H",
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                },
+                "layerEntries": [{ "id": "RDPA.24F_PR" }],
+                "featureInfoMimeType": "text/plain",
+                "controls": ["data", "visibility"]
+            },
+            {
+                "id": "CAPA_qp10_6_fr",
+                "layerType": "ogcWms",
+                "suppressGetCapabilities": true,
+                "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=fr",
+                "name": "[fr] Quantity of Precipitation, 10KM resolution 6H",
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                },
+                "layerEntries": [{ "id": "RDPA.6F_PR" }],
+                "featureInfoMimeType": "text/plain",
+                "controls": ["data", "visibility"]
+            }
         ]
-      }]
-    },
-    {
-      "infoType": "title",
-      "content": "[fr] Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.svg",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.svg",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "[fr] Provinces",
-      "coverIcon": "assets/images/provinces.svg",
-      "symbologyStack": []
     }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "[fr] Cities",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "[fr] Labels",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "[fr] Provinces",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "CAPA_qp10_24_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=fr",
-      "name": "[fr] Quantity of Precipitation, 10KM resolution 24H",
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "RDPA.24F_PR" }],
-      "featureInfoMimeType": "text/plain",
-      "controls": ["data", "visibility"]
-    },
-    {
-      "id": "CAPA_qp10_6_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=fr",
-      "name": "[fr] Quantity of Precipitation, 10KM resolution 6H",
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "RDPA.6F_PR" }],
-      "featureInfoMimeType": "text/plain",
-      "controls": ["data", "visibility"]
-    }
-  ]
-}
 }
