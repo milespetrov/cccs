@@ -132,7 +132,7 @@
                 "name": "Quantity of Precipitation, 2.5KM resolution 6H",
                 "state": {
                     "opacity": 1,
-                    "visibility": false
+                    "visibility": true
                 },
                 "layerEntries": [{ "id": "HRDPA.6F_PR" }],
                 "featureInfoMimeType": "text/plain",
