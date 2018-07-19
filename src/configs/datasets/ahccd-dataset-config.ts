@@ -32,7 +32,9 @@ const ahccdDataset: DatasetSource = {
         [VariableId.SeaLevelPressure]:
             'Pressure <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.ClimateStations]:
-            'Station <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
+            'Station <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.SurfaceWind]:
+            'Wind Speed <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">'
     },
 
     mapConfigPath: 'config-base.json',
