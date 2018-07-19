@@ -118,7 +118,7 @@ class DailyApi extends DatasetApi {
      * @memberof DailyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${DatasetId.ClimateNormal}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -135,7 +135,7 @@ class MonthlyApi extends DatasetApi {
      * @memberof MonthlyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${DatasetId.ClimateNormal}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 

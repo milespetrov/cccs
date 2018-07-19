@@ -17,6 +17,7 @@ function parser(data, lang) {
                 NU: 'Nunavut',
                 ON: 'Ontario',
                 PE: 'Prince Edward Island',
+                PEI: 'Prince Edward Island',
                 QUE: 'Quebec',
                 QC: 'Quebec',
                 SK: 'Saskatchewan',

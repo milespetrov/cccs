@@ -16,12 +16,11 @@
                 "coverIcon": "assets/images/cities.svg",
                 "symbologyStack": [
                     {
-                        "image":
-                            "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
-                        "text": ""
+                        "image": "assets/images/blue-circle.svg",
+                        "text": "Station"
                     }
                 ],
-                "symbologyRenderStyle": "images"
+                "symbologyRenderStyle": "icons"
             },
             {
                 "infoType": "title",
@@ -93,9 +92,10 @@
                 },
                 "controls": ["data", "visibility", "opacity"],
                 "details": {
-                    "template": "./assets/templates/ahccd/stations-template.html",
-                    "parser": "./assets/templates/ahccd/stations-script.js"
-                }
+                    "template": "assets/templates/ahccd/stations-template.html",
+                    "parser": "assets/templates/ahccd/stations-script.js"
+                },
+                "colour": "#0ca7f5"
             }
         ]
     },
@@ -121,7 +121,7 @@
                         "text": ""
                     }
                 ],
-                "symbologyRenderStyle": "images"
+                "symbologyRenderStyle": "icons"
             },
             {
                 "infoType": "title",
