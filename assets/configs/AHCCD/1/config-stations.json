@@ -17,7 +17,7 @@
                 "symbologyStack": [
                     {
                         "image": "assets/images/blue-circle.svg",
-                        "text": "Station"
+                        "text": "AHCCD Station"
                     }
                 ],
                 "symbologyRenderStyle": "icons"
