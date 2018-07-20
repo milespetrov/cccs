@@ -122,6 +122,10 @@
                 },
                 "layerEntries": [{ "id": "RDPA.24F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             },
             {
@@ -136,6 +140,10 @@
                 },
                 "layerEntries": [{ "id": "RDPA.6F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             }
         ]
@@ -263,6 +271,10 @@
                 },
                 "layerEntries": [{ "id": "RDPA.24F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             },
             {
@@ -277,6 +289,10 @@
                 },
                 "layerEntries": [{ "id": "RDPA.6F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             }
         ]
