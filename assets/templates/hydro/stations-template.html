@@ -1,0 +1,58 @@
+<div class="cmip5-details">
+
+    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.STATION_NAME }}</h4>
+    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.station_name }}</span>
+
+    <md-divider class="mrgn-bttm-md"></md-divider>
+
+    <dl>
+        <dt>
+            <span>{{ self.layer.tt.station_number }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.STATION_NUMBER }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.status }}</span>
+        </dt>
+        <dd ng-if="self.lang === 'en-CA'">{{ self.layer.properties.STATUS_EN }}</dd>
+        <dd ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.STATUS_FR }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.contributor }}</span>
+        </dt>
+        <dd ng-if="self.lang === 'en-CA'">{{ self.layer.properties.CONTRIBUTOR_EN }}</dd>
+        <dd ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.CONTRIBUTOR_FR }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.province.title }}</span>
+        </dt>
+        <dd>{{ self.layer.tt.province[self.layer.properties.PROV_TERR_STATE_LOC] }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.vertical_datum }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.VERTICAL_DATUM }}</dd>
+    </dl>
+</div>
+
+<style>
+    .cmip5-details .sub-title {
+        display: block;
+    }
+
+    .cmip5-details md-divider {
+        border-top-style: dotted;
+    }
+
+    .cmip5-details dl dt {
+        font-weight: normal;
+    }
+
+    .cmip5-details dl dd {
+        font-weight: bold;
+    }
+
+    .cmip5-details dl dt span {
+        display: block;
+    }
+</style>
