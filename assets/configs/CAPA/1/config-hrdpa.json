@@ -7,7 +7,7 @@
             },
             {
                 "infoType": "text",
-                "content": "A short DCS dataset description goes here"
+                "content": "A short CAPA dataset description goes here"
             },
             {
                 "name": "Canadian Precipitation Analysis",
@@ -122,6 +122,10 @@
                 },
                 "layerEntries": [{ "id": "HRDPA.24F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             },
             {
@@ -136,6 +140,10 @@
                 },
                 "layerEntries": [{ "id": "HRDPA.6F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             }
         ]
@@ -148,7 +156,7 @@
             },
             {
                 "infoType": "text",
-                "content": "[fr] A short DCS dataset description goes here"
+                "content": "[fr] A short capa dataset description goes here"
             },
             {
                 "name": "[fr] Canadian Precipitation Analysis",
@@ -263,6 +271,10 @@
                 },
                 "layerEntries": [{ "id": "HRDPA.24F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             },
             {
@@ -277,6 +289,10 @@
                 },
                 "layerEntries": [{ "id": "HRDPA.6F_PR" }],
                 "featureInfoMimeType": "text/plain",
+                "details": {
+                    "template": "assets/templates/capa/variables-template.html",
+                    "parser": "assets/templates/capa/variables-script.js"
+                },
                 "controls": ["data", "visibility"]
             }
         ]
