@@ -71,7 +71,7 @@ export default class MapControlsCluster extends Vue {
     right: 0;
     display: flex;
     justify-content: center;
-    pointer-events: none;
+    pointer-events: none !important;
     font-size: 1.6rem;
 
     .cip-controls-cluster {
