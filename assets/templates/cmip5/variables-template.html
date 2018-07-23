@@ -1,16 +1,15 @@
 <div class="cmip5-details">
 
-    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">51° 29' 48.6420" N, 115° 55' 40.9980" W</h4>
-    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">Location</span>
+    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.latlong[1].toFixed(6) }}, {{ self.layer.properties.latlong[0].toFixed(6) }}</h4>
+    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.latlong }}</span>
 
     <md-divider class="mrgn-bttm-md"></md-divider>
 
     <dl>
         <dt>
-            <span>Average maximum snow depth</span>
-            <span class="small">50th ensemble computed over a 20-year period (2001 - 2020)</span>
+            <span>{{ self.layer.tt.trendValue }}</span>
         </dt>
-        <dd>56 cm</dd>
+        <dd>{{ self.layer.properties.value_0 }}</dd>
     </dl>
 
 </div>
