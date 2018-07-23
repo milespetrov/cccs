@@ -8,7 +8,7 @@ const capaDataset: DatasetSource = {
 
     variables: [VariableId.HRDPA, VariableId.RDPA],
 
-    legend: {},
+    /*     legend: {}, */
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'

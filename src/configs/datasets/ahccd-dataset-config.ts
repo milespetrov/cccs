@@ -21,7 +21,7 @@ const ahccdDataset: DatasetSource = {
         VariableId.SurfaceWind
     ],
 
-    legend: {
+    /* legend: {
         [VariableId.TMax]: 'Temperature <img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.TMean]: 'Temperature <img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.TMin]: 'Temperature <img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
@@ -35,7 +35,7 @@ const ahccdDataset: DatasetSource = {
             'Station <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.SurfaceWind]:
             'Wind Speed <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">'
-    },
+    }, */
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'
