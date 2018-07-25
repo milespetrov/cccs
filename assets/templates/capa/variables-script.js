@@ -2,7 +2,8 @@ function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
             latlong: 'Latitude, Longitude',
-            value: 'Amount of precipitation (mm)'
+            value: 'Total precipitation amount analysis (mm)',
+            value2: 'Confidence index'
         },
 
         'fr-CA': {}
