@@ -37,12 +37,6 @@
                 "layerName": "Labels",
                 "coverIcon": "assets/images/labels.svg",
                 "symbologyStack": []
-            },
-            {
-                "layerId": "provinces",
-                "layerName": "Provinces",
-                "coverIcon": "assets/images/provinces.svg",
-                "symbologyStack": []
             }
         ],
         "supportLayers": [
@@ -63,18 +57,6 @@
                 "layerType": "esriTile",
                 "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
                 "name": "Labels",
-                "expectedResponseTime": 10000,
-                "state": {
-                    "opacity": 1,
-                    "visibility": true
-                }
-            },
-            {
-                "id": "provinces",
-                "layerType": "esriTile",
-                "url":
-                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
-                "name": "Provinces",
                 "expectedResponseTime": 10000,
                 "state": {
                     "opacity": 1,

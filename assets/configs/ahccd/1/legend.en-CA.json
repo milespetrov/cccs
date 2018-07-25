@@ -31,14 +31,7 @@
             "layerName": "Labels",
             "coverIcon": "//i.imgur.com/3gjOgxg.png",
             "symbologyStack": []
-        },
-        {
-            "layerId": "provinces",
-            "layerName": "Provinces",
-            "coverIcon": "//i.imgur.com/56bZPq2.png",
-            "symbologyStack": []
-        },
-
+        },    
         {
             "infoType": "title",
             "content": "Data"
