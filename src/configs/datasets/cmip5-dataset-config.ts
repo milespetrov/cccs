@@ -20,7 +20,14 @@ const cimp5Dataset: DatasetSource = {
         }
     },
 
-    variables: [VariableId.SurfaceWind, VariableId.IceConcentration, VariableId.IceThickness, VariableId.SnowDepth],
+    variables: [
+        VariableId.TMean,
+        VariableId.Precipitation,
+        VariableId.SurfaceWind,
+        VariableId.IceConcentration,
+        VariableId.IceThickness,
+        VariableId.SnowDepth
+    ],
 
     timeSliderLabels: ['2021-2040', '2041-2060', '2061-2080', '2081-2100'],
 
