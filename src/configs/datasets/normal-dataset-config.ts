@@ -24,10 +24,10 @@ const normalDataset: DatasetSource = {
         VariableId.GustDirection
     ],
 
-    /* legend: {
+    legend: {
         [VariableId.ClimateStations]:
             'Station <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
-    }, */
+    },
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'

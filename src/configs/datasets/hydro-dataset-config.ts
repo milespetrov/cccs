@@ -8,10 +8,10 @@ const hydroDataset: DatasetSource = {
 
     variables: [VariableId.Hydrometric],
 
-    /* legend: {
+    legend: {
         [VariableId.Hydrometric]:
             'Station <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">'
-    }, */
+    },
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json'
