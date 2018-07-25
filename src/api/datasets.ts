@@ -107,7 +107,7 @@ class CMIP5Api extends DatasetApi {
 
 class DailyApi extends DatasetApi {
     constructor(state: AppState) {
-        super(state, DatasetId.ClimateDaily);
+        super(state, DatasetId.ClimateNormal);
     }
 
     /**
@@ -124,7 +124,7 @@ class DailyApi extends DatasetApi {
 
 class MonthlyApi extends DatasetApi {
     constructor(state: AppState) {
-        super(state, DatasetId.ClimateMonthly);
+        super(state, DatasetId.ClimateNormal);
     }
 
     /**
