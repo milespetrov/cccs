@@ -44,8 +44,8 @@ class CanGrdApi extends DatasetApi {
      * @memberof CanGrdApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
-            this.state.rcpId
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+            this.state.timePeriodId
         }.json`;
     }
 }
@@ -107,7 +107,7 @@ class CMIP5Api extends DatasetApi {
 
 class DailyApi extends DatasetApi {
     constructor(state: AppState) {
-        super(state, DatasetId.ClimateDaily);
+        super(state, DatasetId.ClimateNormal);
     }
 
     /**
@@ -124,7 +124,7 @@ class DailyApi extends DatasetApi {
 
 class MonthlyApi extends DatasetApi {
     constructor(state: AppState) {
-        super(state, DatasetId.ClimateMonthly);
+        super(state, DatasetId.ClimateNormal);
     }
 
     /**

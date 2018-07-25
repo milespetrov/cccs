@@ -222,6 +222,12 @@ ahccd.seapress.qualifier,,1,,0
 ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
 ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
 ahccd.sfcwind.qualifier,,1,,0
+cmip5.tmean.fullName,Mean temperature,1,Température moyenne,0
+cmip5.tmean.shortName,Mean temperature,1,Température moyenne,0
+cmip5.tmean.qualifier,,1,,0
+cmip5.precip.fullName,Total precipitation,1,Total des précipitations,0
+cmip5.precip.shortName,Total precipitation,1,Total des précipitations,0
+cmip5.precip.qualifier,,1,,0
 cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.qualifier,,1,,0
