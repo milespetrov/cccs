@@ -37,12 +37,6 @@
       "layerName": "Labels",
       "coverIcon": "assets/images/labels.svg",
       "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.svg",
-      "symbologyStack": []
     }
 
   ],
@@ -68,17 +62,6 @@
         "opacity": 1,
         "visibility": true
       }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
     }
   ],
   "dataLayers": [
@@ -87,7 +70,7 @@
       "layerType": "ogcWfs",
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=total_precip&period=Nov",
       "name": "Precipitation",
-      "nameField": "trend_value",
+      "nameField": "station_name",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -139,12 +122,6 @@
       "layerName": "[fr] Labels",
       "coverIcon": "assets/images/labels.svg",
       "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "[fr] Provinces",
-      "coverIcon": "assets/images/provinces.svg",
-      "symbologyStack": []
     }
 
   ],
@@ -170,17 +147,6 @@
         "opacity": 1,
         "visibility": true
       }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "[fr] Provinces",
-      "expectedResponseTime": 10000,
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
     }
   ],
   "dataLayers": [
@@ -189,7 +155,7 @@
       "layerType": "ogcWfs",
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=total_precip&period=Nov",
       "name": "[fr] Precipitation",
-      "nameField": "trend_value",
+      "nameField": "station_name",
       "state": {
         "opacity": 1,
         "visibility": true

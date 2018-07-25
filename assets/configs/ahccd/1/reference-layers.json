@@ -1,15 +1,6 @@
 {
     "layers": [
         {
-            "id": "provinces",
-            "name": "Provinces",
-            "controls": ["visibility", "opacity", "reload", "settings"],
-            "layerType": "esriTile",
-			"expectedResponseTime": 10000,
-            "url":
-                "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer"
-        },
-        {
             "id": "labels",
             "name": "Labels",
             "controls": ["visibility", "opacity", "reload", "settings"],
