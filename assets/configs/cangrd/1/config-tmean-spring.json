@@ -94,6 +94,10 @@
       },
       "layerEntries": [{"id": "CANGRID.TREND.TM_SPRING" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/cangrd/variables-template.html",
+        "parser": "assets/templates/cangrd/variables-script.js"
+      },
       "controls": ["data"]
     }
   ]
@@ -193,6 +197,10 @@
       },
       "layerEntries": [{"id": "CANGRID.TREND.TM_SPRING" }],
       "featureInfoMimeType": "text/plain",
+      "details": {
+        "template": "assets/templates/cangrd/variables-template.html",
+        "parser": "assets/templates/cangrd/variables-script.js"
+      },
       "controls": ["data"]
     }
   ]
