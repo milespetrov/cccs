@@ -3,11 +3,11 @@
         <div class="cip-controls-cluster" v-if="timeSliderLabels || colourRamp || legend">
 
             <div class="cip-cluster-row" v-if="legend">
-                <div class="cip-row-label">
+                <!--div class="cip-row-label">
                     <span class="cip-label">{{ $t('map.controlsCluster.legend') }}</span>
-                </div>
-                <div class="cip-row-content">
-                    <span v-html="legend[currentVariable]"></span>
+                </div-->
+                <div class="cip-row-content cip-row-legend">
+                    <span v-html="legend[currentVariable]"></span><span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
                 </div>
             </div>
 
@@ -100,6 +100,13 @@ export default class MapControlsCluster extends Vue {
 
             .cip-row-content {
                 flex: 2.9;
+                span {
+                    margin: 3px;
+                }
+
+                &.cip-row-legend {
+                    text-align: center;
+                }
             }
 
             .cip-row-label,
