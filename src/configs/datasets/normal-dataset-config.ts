@@ -7,6 +7,20 @@ const normalDataset: DatasetSource = {
     controls: {
         [VisualizationControlType.Time]: {
             default: TimePeriodType.Annual,
+            options: [
+                TimePeriodType.Annual,
+                TimePeriodType.January,
+                TimePeriodType.February,
+                TimePeriodType.March,
+                TimePeriodType.May,
+                TimePeriodType.June,
+                TimePeriodType.July,
+                TimePeriodType.August,
+                TimePeriodType.September,
+                TimePeriodType.October,
+                TimePeriodType.November,
+                TimePeriodType.December
+            ],
             disableOn: [VariableId.ClimateStations]
         }
     },
