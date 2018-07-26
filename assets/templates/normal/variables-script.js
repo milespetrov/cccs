@@ -55,8 +55,8 @@ function parser(data, lang) {
 
     data.properties = {};
 
-    data.forEach(function({ key, value }) {
-        data.properties[key] = value;
+    data.forEach(function(el) {
+        data.properties[el.key] = el.value;
     });
     data.tt = TRANSLATIONS[lang];
 

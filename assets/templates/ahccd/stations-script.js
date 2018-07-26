@@ -61,11 +61,11 @@ function parser(data, lang) {
 
     data.properties = {};
 
-    data.forEach(function({ key, value }) {
-        if (typeof value === 'string') {
-            value = value.trim();
+    data.forEach(function(el) {
+        if (typeof el.value === 'string') {
+            el.value = el.value.trim();
         }
-        data.properties[key] = value;
+        data.properties[el.key] = el.value;
     });
 
     data.tt = TRANSLATIONS[lang];
