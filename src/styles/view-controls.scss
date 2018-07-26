@@ -193,7 +193,7 @@
         }
 
         .cip-name {
-            flex: 1;
+            flex: 1 1 auto;
             margin-right: 3rem;
         }
 
@@ -212,7 +212,9 @@
                 display: flex;
 
                 > [role='group'] {
-                    flex: 1;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    flex-basis: auto;
                 }
             }
         }
@@ -274,6 +276,7 @@
                     margin-right: 0px !important;
 
                     max-width: 100% !important;
+                    min-width: 200px !important;
                 }
             }
         }
@@ -288,6 +291,10 @@
             &.cip-horizontal {
                 .cip-dropdown-content {
                     flex-direction: column;
+
+                    > [role='group'] {
+                        flex: none;
+                    }
                 }
             }
         }
