@@ -55,14 +55,10 @@ function parser(data, lang) {
 
     data.properties = {};
 
-    data.forEach(({ key, value }) => (data.properties[key] = value));
+    data.forEach(function(el) {
+        data.properties[el.key] = el.value;
+    });
     data.tt = TRANSLATIONS[lang];
 
     return data;
-
-    /* return stuff.split('\n').reduce((map, line) => {
-        const [key, value] = line.split('=');
-        map[(key || '').trim()] = (value || '').trim().replace(`'`, '');
-        return map;
-    }, {}); */
 }

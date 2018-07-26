@@ -22,19 +22,14 @@ const ahccdDataset: DatasetSource = {
     ],
 
     legend: {
-        [VariableId.TMax]: 'Temperature <img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.TMean]: 'Temperature <img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.TMin]: 'Temperature <img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.Precipitation]:
-            'Precipitation <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.StationPressure]:
-            'Pressure <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.SeaLevelPressure]:
-            'Pressure <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.ClimateStations]:
-            'Station <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
-        [VariableId.SurfaceWind]:
-            'Wind Speed <img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">'
+        [VariableId.TMax]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.TMean]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.TMin]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.Precipitation]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.StationPressure]: '<img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.SeaLevelPressure]: '<img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.ClimateStations]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.SurfaceWind]: '<img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">'
     },
 
     mapConfigPath: 'config-base.json',

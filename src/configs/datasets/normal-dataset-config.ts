@@ -7,6 +7,20 @@ const normalDataset: DatasetSource = {
     controls: {
         [VisualizationControlType.Time]: {
             default: TimePeriodType.Annual,
+            options: [
+                TimePeriodType.Annual,
+                TimePeriodType.January,
+                TimePeriodType.February,
+                TimePeriodType.March,
+                TimePeriodType.May,
+                TimePeriodType.June,
+                TimePeriodType.July,
+                TimePeriodType.August,
+                TimePeriodType.September,
+                TimePeriodType.October,
+                TimePeriodType.November,
+                TimePeriodType.December
+            ],
             disableOn: [VariableId.ClimateStations]
         }
     },
@@ -25,8 +39,7 @@ const normalDataset: DatasetSource = {
     ],
 
     legend: {
-        [VariableId.ClimateStations]:
-            'Station <img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
+        [VariableId.ClimateStations]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
     },
 
     mapConfigPath: 'config-base.json',
