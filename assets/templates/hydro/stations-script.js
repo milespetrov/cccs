@@ -29,7 +29,7 @@ function parser(data, lang) {
 
     data.properties = {};
 
-    data.forEach(({ key, value }) => {
+    data.forEach(function({ key, value }) {
         if (typeof value === 'string') {
             value = value.trim();
         }
