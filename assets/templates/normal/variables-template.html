@@ -1,26 +1,27 @@
 <div class="cmip5-details">
 
-    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.station_id }}</h4>
+    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.STN_ID }}</h4>
     <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.stationId }}</span>
 
     <md-divider class="mrgn-bttm-md"></md-divider>
 
     <dl>
         <dt>
-            <span>{{ self.layer.tt.timePeriod.title }}</span>
+            <span>{{ self.layer.tt.timePeriod }}</span>
         </dt>
-        <dd>{{ self.layer.tt.timePeriod[self.layer.properties.period] }}</dd>
+        <dd>{{ self.layer.properties.FIRST_YEAR_NORMAL_PERIOD }} - {{ self.layer.properties.LAST_YEAR_NORMAL_PERIOD }}</dd>
 
         <dt>
-            <span>{{ self.layer.tt.measurementType.title }}</span>
+            <span>{{ self.layer.tt.measurementType }}</span>
         </dt>
-        <dd>{{ self.layer.tt.measurementType[self.layer.properties.measurement_type] }}</dd>
+        <dd ng-if="self.lang === 'en-CA'">{{ self.layer.properties.ENG_PUB_NAME }}</dd>
+        <dd ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.FRE_PUB_NAME }}</dd>
 
         <dt>
-            <span>{{ self.layer.tt.trendValue }}</span>
+            <span>{{ self.layer.tt.climateValue }}</span>
         </dt>
-        <dd>{{ self.layer.properties.trend_value.toFixed(3) }} {{ self.layer.tt.measurementUnit[self.layer.properties.measurement_type]
-            }}</dd>
+        <dd>{{ self.layer.properties.VALUE }}
+        </dd>
     </dl>
 
 </div>

@@ -30,12 +30,7 @@ const normalDataset: DatasetSource = {
         VariableId.TMax,
         VariableId.TMean,
         VariableId.TMin,
-        VariableId.Precipitation,
-        VariableId.StationPressure,
-        VariableId.SeaLevelPressure,
-        VariableId.SurfaceWind,
-        VariableId.GustSpeed,
-        VariableId.GustDirection
+        VariableId.Precipitation
     ],
 
     legend: {
