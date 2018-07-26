@@ -16,7 +16,10 @@
             "items": [["basemap", "layers"], ["touch", "help", "about"]]
         },
         "help": {
-            "folderName": "default"
+            "folderName": "cccs"
+        },
+        "about": {
+            "folderName": "cccs"
         },
         "legend": {
             "allowImport": false,
