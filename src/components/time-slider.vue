@@ -14,7 +14,9 @@ import { UpdateRouteMixin } from './../globals/mixin';
 import { Getter } from 'vuex-class/lib/bindings';
 
 import { Observable, fromEvent } from 'rxjs';
-import { filter, sampleTime } from 'rxjs/operators';
+
+import { filter } from 'rxjs/internal/operators/filter';
+import { sampleTime } from 'rxjs/internal/operators/sampleTime';
 
 @Component
 export default class TimeSlider extends mixins(UpdateRouteMixin) {
@@ -120,6 +122,8 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
             HOME: 36
         };
 
+        // to have an element focusable inside the RAMP container, its tabindex must not be 0;
+        // tabindex 0 is controlled by the browser; RAMP focus manager will ignore such elements and not set focus to them;
         const sliderHandle = this.slider.querySelector('.noUi-handle') as HTMLElement;
         sliderHandle.setAttribute('tabindex', '-2');
 

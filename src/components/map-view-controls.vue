@@ -5,8 +5,8 @@
             @click="showCollapse = !showCollapse"
             class="cip-controls-toggle btn btn-primary hidden-md hidden-lg">
 
-            <span v-show="showCollapse"><i class="fas fa-times fa-fw"></i></span>
-            <span v-show="!showCollapse"><i class="fas fa-sliders-h fa-fw"></i></span>
+            <span v-show="showCollapse"><font-awesome-icon icon="times" fixed-width /></span>
+            <span v-show="!showCollapse"><font-awesome-icon icon="sliders-h" fixed-width /></span>
             <span class="cip-label">{{ $t('settings.title') }}</span>
 
         </button>
@@ -54,7 +54,7 @@
                                     <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
                                 </i18n>
 
-                                <i class="fas fa-external-link-alt"></i>
+                                <font-awesome-icon icon="external-link-alt" />
                             </b-dropdown-item>
                         </div>
 

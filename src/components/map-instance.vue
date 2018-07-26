@@ -11,8 +11,11 @@ import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
 import sprintf from 'sprintf-js';
+
 import { Subject, race } from 'rxjs';
-import { takeUntil, throttleTime } from 'rxjs/operators';
+
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { throttleTime } from 'rxjs/internal/operators/throttleTime';
 
 import api, { DatasetApi } from './../api/';
 import { MapPoint } from './../store/';

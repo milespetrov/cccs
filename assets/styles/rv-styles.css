@@ -18530,6 +18530,9 @@ Obviously you need some kind of rules and criteria:
       padding-top: 66.66667%; }
     [is=rv-map] rv-basemap-item .rv-body-button:focus, .fgpv rv-basemap-item .rv-body-button:focus {
       border: 2px solid #4d90fe; }
+    [is=rv-map] rv-basemap-item .rv-basemap-thumb, .fgpv rv-basemap-item .rv-basemap-thumb {
+      position: absolute;
+      display: flex; }
   [is=rv-map] .rv-wkid, .fgpv .rv-wkid {
     position: absolute;
     top: 0; }
