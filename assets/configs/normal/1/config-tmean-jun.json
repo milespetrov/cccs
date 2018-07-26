@@ -1,0 +1,164 @@
+{
+"en": {
+  "legend": [
+    {
+      "infoType": "title",
+      "content": "Data"
+    },
+    {
+      "infoType": "text",
+      "content": "A short Normals dataset description goes here"
+    },
+    {
+      "layerId": "Normals_tmean_JUN_en",
+      "layerName": "",
+      "description": "A short mean temperature description goes here",
+      "coverIcon": "assets/images/tmean.svg",
+      "symbologyStack": [
+        {
+          "image": "",
+          "text": ""
+        }
+      ],
+      "symbologyRenderStyle": "images"
+    },
+    {
+      "infoType": "title",
+      "content": "Settings"
+    },
+    {
+      "layerId": "cities",
+      "layerName": "Cities",
+      "coverIcon": "assets/images/cities.svg",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "labels",
+      "layerName": "Labels",
+      "coverIcon": "assets/images/labels.svg",
+      "symbologyStack": []
+    }
+
+  ],
+  "supportLayers": [
+    {
+      "id": "cities",
+      "layerType": "esriTile",
+      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+      "name": "Cities",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": false
+      }
+    },
+    {
+      "id": "labels",
+      "layerType": "esriTile",
+      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "name": "Labels",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    }
+  ],
+  "dataLayers": [
+    {
+      "id": "Normals_tmean_JUN_en",
+      "layerType": "ogcWfs",
+      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=6",
+      "name": "Mean daily temperature",
+      "nameField": "ID",
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      },
+      "colour": "#0cf03a",
+      "controls": ["data", "visibility", "opacity"]
+    }
+  ]
+},
+"fr": {
+  "legend": [
+    {
+      "infoType": "title",
+      "content": "[fr] Data"
+    },
+    {
+      "infoType": "text",
+      "content": "[fr] A short Normals dataset description goes here"
+    },
+    {
+      "layerId": "Normals_tmean_JUN_fr",
+      "layerName": "",
+      "description": "[fr] A short mean temperature description goes here",
+      "coverIcon": "assets/images/tmean.svg",
+      "symbologyStack": [
+        {
+          "image": "",
+          "text": ""
+        }
+      ],
+      "symbologyRenderStyle": "images"
+    },
+    {
+      "infoType": "title",
+      "content": "[fr] Settings"
+    },
+    {
+      "layerId": "cities",
+      "layerName": "[fr] Cities",
+      "coverIcon": "assets/images/cities.svg",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "labels",
+      "layerName": "[fr] Labels",
+      "coverIcon": "assets/images/labels.svg",
+      "symbologyStack": []
+    }
+
+  ],
+  "supportLayers": [
+    {
+      "id": "cities",
+      "layerType": "esriTile",
+      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+      "name": "[fr] Cities",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": false
+      }
+    },
+    {
+      "id": "labels",
+      "layerType": "esriTile",
+      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "name": "[fr] Labels",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    }
+  ],
+  "dataLayers": [
+    {
+      "id": "Normals_tmean_JUN_fr",
+      "layerType": "ogcWfs",
+      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=6",
+      "name": "[fr] Mean temperature",
+      "nameField": "ID",
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      },
+      "colour": "#0cf03a",
+      "controls": ["data", "visibility", "opacity"]
+    }
+  ]
+}
+}
