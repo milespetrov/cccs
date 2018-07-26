@@ -16,7 +16,7 @@
       "coverIcon": "assets/images/tmin.svg",
       "symbologyStack": [
         {
-          "image": "",
+          "image": "assets/images/red-circle.svg",
           "text": ""
         }
       ],
@@ -75,7 +75,11 @@
         "opacity": 1,
         "visibility": true
       },
-      "colour": "#0cf03a",
+      "details": {
+        "template": "assets/templates/normal/variables-template.html",
+        "parser": "assets/templates/normal/variables-script.js"
+      },
+      "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
@@ -97,7 +101,7 @@
       "coverIcon": "assets/images/tmin.svg",
       "symbologyStack": [
         {
-          "image": "",
+          "image": "assets/images/red-circle.svg",
           "text": ""
         }
       ],
@@ -156,7 +160,11 @@
         "opacity": 1,
         "visibility": true
       },
-      "colour": "#0cf03a",
+      "details": {
+        "template": "assets/templates/normal/variables-template.html",
+        "parser": "assets/templates/normal/variables-script.js"
+      },
+      "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
