@@ -287,6 +287,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this._mapi.click.subscribe(this.gridIdentifyHandler);
             } */
 
+            // subscribe to Tooltips events
+            this._mapi.ui.tooltip.mouseOver.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOverHandler);
+            this._mapi.ui.tooltip.mouseOut.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOutHandler);
+
             this._mapi.mouseMove.pipe(throttleTime(30)).subscribe((event: any) => {
                 // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
                 if (!event.xy) {
@@ -308,6 +312,56 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this.mapZoomChangedHandler(this._mapi.zoom);
             }
         });
+    }
+
+    isMousedOver: boolean = false;
+
+    tooltipMouseOverHandler(z: any): void {
+        let tooltip;
+
+        this.isMousedOver = true;
+
+        if (!this.datasetApi.tooltip) {
+            return;
+        }
+
+        z.event.preventDefault();
+        z.attribs.then((a: any) => {
+            if (!this.isMousedOver) {
+                return;
+            }
+
+            const currentTemplate = this.datasetApi.getTooltip(a);
+            if (!currentTemplate) {
+                return;
+            }
+
+            console.log(a);
+
+            /* const name = a.station_name_nom;
+            let value = Intl.NumberFormat(this.lang).format(a[currentTemplate.value_key]);
+
+            const startYear = a.beg_yr_annee_deb;
+            const endYear = a.end_yr_annee_fin;
+
+            if (parseFloat(value) > 0) {
+                value = '+' + value;
+            } */
+
+            tooltip = z.add(
+                currentTemplate
+                /* sprintf.sprintf(currentTemplate.template, <any>{
+                    name,
+                    value,
+                    startYear,
+                    endYear
+                }) */
+            );
+        });
+    }
+
+    tooltipMouseOutHandler(event: any): void {
+        this.isMousedOver = false;
     }
 
     mapInstanceCenterChangedHandler(event: any): void {
@@ -334,8 +388,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.setZoomLevel(event);
         this.updateRoute();
     }
-
-    isMousedOver: boolean = false;
 
     /**
      * Handle the identify sesssion, but updating the routes with the feature coordinates

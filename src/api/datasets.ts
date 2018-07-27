@@ -29,6 +29,14 @@ class AHCCDApi extends DatasetApi {
             }.json`;
         }
     }
+
+    tooltip = true;
+
+    getTooltip(data: any): string {
+        return `<div class=' rv-tooltip-content'><span class='rv-tooltip-text'>AHCCD station: ${
+            data.station_name
+        }<br />Trend value: ${data.trend_value || 'No trend calculated'}</span></div>`;
+    }
 }
 
 class CanGrdApi extends DatasetApi {
