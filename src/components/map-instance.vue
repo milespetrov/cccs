@@ -1,6 +1,6 @@
 <template>
 
-    <div id="cip-map-anchor" :class="currentDataset"></div>
+    <div id="cip-map-anchor" rv-langs='["en-CA", "fr-CA"]' :class="currentDataset"></div>
 
 </template>
 
@@ -261,7 +261,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // tslint:disable-next-line:no-unused-expression
-        new RZ.Map(this.anchor, `./assets/configs/ramp.en-CA.json`);
+        new RZ.Map(this.anchor, `./assets/configs/ramp.[lang].json`);
 
         RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
