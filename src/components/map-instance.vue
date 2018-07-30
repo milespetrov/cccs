@@ -336,27 +336,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 return;
             }
 
-            console.log(a);
-
-            /* const name = a.station_name_nom;
-            let value = Intl.NumberFormat(this.lang).format(a[currentTemplate.value_key]);
-
-            const startYear = a.beg_yr_annee_deb;
-            const endYear = a.end_yr_annee_fin;
-
-            if (parseFloat(value) > 0) {
-                value = '+' + value;
-            } */
-
-            tooltip = z.add(
-                currentTemplate
-                /* sprintf.sprintf(currentTemplate.template, <any>{
-                    name,
-                    value,
-                    startYear,
-                    endYear
-                }) */
-            );
+            tooltip = z.add(currentTemplate);
         });
     }
 
