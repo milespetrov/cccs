@@ -19,10 +19,10 @@
         <dt>
             <span>{{ self.layer.tt.trendValue }}</span>
         </dt>
-        <dd ng-if="self.layer.properties.trend_value">{{ self.layer.properties.trend_value.toFixed(3) }} {{ self.layer.tt.measurementUnit[self.layer.properties.measurement_type]
+        <dd ng-if="self.layer.properties.trend_value">{{ self.layer.properties.trend_value }} {{ self.layer.tt.measurementUnit[self.layer.properties.measurement_type]
             }}
         </dd>
-        <dd ng-else>{{ self.layer.tt.no_trend }}</dd>
+        <dd ng-if="!self.layer.properties.trend_value">{{ self.layer.tt.no_trend }}</dd>
     </dl>
 
 </div>
