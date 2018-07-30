@@ -1,0 +1,233 @@
+{
+    "ui": {
+        "title": "Climate maps",
+        "appBar": {
+            "sideMenu": true,
+            "basemap": false,
+            "layers": true,
+            "geoSearch": true
+        },
+        "navBar": {
+            "zoom": "buttons",
+            "extra": ["home", "help", "fullscreen"]
+        },
+        "sideMenu": {
+            "logo": true,
+            "items": [["basemap", "layers"], ["touch", "help", "about"]]
+        },
+        "help": {
+            "folderName": "cccs"
+        },
+        "about": {
+            "folderName": "cccs"
+        },
+        "legend": {
+            "allowImport": false,
+            "isOpen": {
+                "large": false,
+                "medium": false,
+                "small": false
+            }
+        }
+    },
+    "version": "2.0",
+    "language": "fr",
+    "services": {
+        "corsEverywhere": true,
+        "exportMapUrl":
+            "http://section917.cloudapp.net/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+        "export": {
+            "title": {
+                "value": "Climate maps"
+            },
+            "map": {},
+            "mapElements": {},
+            "legend": {
+                "showInfoSymbology": true
+            },
+            "footnote": {
+                "value": ""
+            }
+        },
+        "search": {
+            "serviceUrls": {
+                "geoNames": "http://geogratis.gc.ca/services/geoname/en/geonames.json",
+                "geoLocation": "http://geogratis.gc.ca/services/geolocation/en/locate?q=",
+                "geoSuggest": "http://geogratis.gc.ca/services/geolocation/en/suggest?q=",
+                "provinces": "http://geogratis.gc.ca/services/geoname/en/codes/province.json",
+                "types": "http://geogratis.gc.ca/services/geoname/en/codes/concise.json"
+            }
+        }
+    },
+    "map": {
+        "initialBasemapId": "baseCBMT_CBCT_GEOM_3978",
+        "components": {
+            "geoSearch": {
+                "enabled": true,
+                "showGraphic": true,
+                "showInfo": true
+            },
+            "mouseInfo": {
+                "enabled": false,
+                "spatialReference": {
+                    "wkid": 4326
+                }
+            },
+            "northArrow": {
+                "enabled": true
+            },
+            "basemap": {
+                "enabled": true
+            },
+            "overviewMap": {
+                "enabled": true,
+                "layerType": "imagery"
+            },
+            "scaleBar": {
+                "enabled": false
+            }
+        },
+        "extentSets": [
+            {
+                "id": "EXT_NRCAN_Lambert_3978",
+                "default": {
+                    "xmax": 4480496.94713038,
+                    "xmin": -4568271.150405815,
+                    "ymax": 3875960.2989751343,
+                    "ymin": -1537425.52779652
+                },
+                "spatialReference": {
+                    "wkid": 3978
+                }
+            }
+        ],
+        "lodSets": [
+            {
+                "id": "LOD_NRCAN_Lambert_3978",
+                "lods": [
+                    { "level": 0, "resolution": 38364.660062653464, "scale": 145000000 },
+                    { "level": 1, "resolution": 22489.62831258996, "scale": 85000000 },
+                    { "level": 2, "resolution": 13229.193125052918, "scale": 50000000 },
+                    { "level": 3, "resolution": 7937.5158750317505, "scale": 30000000 },
+                    { "level": 4, "resolution": 4630.2175937685215, "scale": 17500000 },
+                    { "level": 5, "resolution": 2645.8386250105837, "scale": 10000000 },
+                    { "level": 6, "resolution": 1587.5031750063501, "scale": 6000000 },
+                    { "level": 7, "resolution": 926.0435187537042, "scale": 3500000 },
+                    { "level": 8, "resolution": 529.1677250021168, "scale": 2000000 }
+                ]
+            }
+        ],
+        "legend": {
+            "type": "structured",
+            "root": {
+                "name": "root",
+                "children": []
+            }
+        },
+        "tileSchemas": [
+            {
+                "id": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "name": "Lambert Maps",
+                "extentSetId": "EXT_NRCAN_Lambert_3978",
+                "lodSetId": "LOD_NRCAN_Lambert_3978",
+                "hasNorthPole": "true"
+            }
+        ],
+        "layers": [],
+        "baseMaps": [
+            {
+                "id": "baseNrCan",
+                "name": "Canada Base Map - Transportation (CBMT)",
+                "description":
+                    "The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
+                "altText": "altText - The Canada Base Map - Transportation (CBMT)",
+                "layers": [
+                    {
+                        "id": "CBMT",
+                        "layerType": "esriFeature",
+                        "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer"
+                    }
+                ],
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
+            },
+            {
+                "id": "baseSimple",
+                "name": "Canada Base Map - Simple",
+                "description": "Canada Base Map - Simple",
+                "altText": "altText - Canada base map - Simple",
+                "layers": [
+                    {
+                        "id": "SMR",
+                        "layerType": "esriFeature",
+                        "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer"
+                    }
+                ],
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
+            },
+            {
+                "id": "baseCBME_CBCE_HS_RO_3978",
+                "name": "Canada Base Map - Elevation (CBME)",
+                "description":
+                    "The Canada Base Map - Elevation (CBME) web mapping services of the Earth Sciences Sector at Natural Resources Canada, is intended primarily for online mapping application users and developers.",
+                "altText": "altText - Canada Base Map - Elevation (CBME)",
+                "layers": [
+                    {
+                        "id": "CBME_CBCE_HS_RO_3978",
+                        "layerType": "esriFeature",
+                        "url":
+                            "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
+                    }
+                ],
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
+            },
+            {
+                "id": "baseCBMT_CBCT_GEOM_3978",
+                "name": "Canada Base Map - Transportation (CBMT)",
+                "description":
+                    " The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
+                "altText": "altText - Canada Base Map - Transportation (CBMT)",
+                "layers": [
+                    {
+                        "id": "CBMT_CBCT_GEOM_3978",
+                        "layerType": "esriFeature",
+                        "url":
+                            "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
+                    }
+                ],
+                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                "attribution": {
+                    "text": {
+                        "enabled": false
+                    },
+                    "logo": {
+                        "enabled": false
+                    }
+                }
+            }
+        ]
+    }
+}
