@@ -1,6 +1,7 @@
 import { DatasetApi } from './types';
 import { AppState } from '@/store';
 import { DatasetId, VariableId } from '@/types';
+import { i18n } from '@/lang';
 
 /**
  *
@@ -32,16 +33,13 @@ class AHCCDApi extends DatasetApi {
 
     tooltip = true;
 
+    /**
+     * Returns a string to be displayed on a tooltip in ramp
+     *
+     * @param data the data returned by ramp on-hover
+     * @returns {string} the tooltip string to be displayed
+     */
     getTooltip(data: any): string {
-        const TRANSLATIONS = {
-            en: {
-                station_title: 'AHCCD station',
-                trend_title: 'Trend value',
-                no_trend: 'No trend calculated'
-            },
-            fr: {}
-        };
-
         // unsure if this should be done, leaving it here for after clarification
         /* if (data.trend_value) {
             if (data.trend_value > 0) {
@@ -50,13 +48,14 @@ class AHCCDApi extends DatasetApi {
         } */
 
         const tooltips = {
-            variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${
-                TRANSLATIONS.en.station_title
-            }: ${data.station_name}<br />${TRANSLATIONS.en.trend_title}: ${data.trend_value ||
-                TRANSLATIONS.en.no_trend}</span></div>`,
-            stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${
-                TRANSLATIONS.en.station_title
-            }: ${data.station_name}</span></div>`
+            variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
+                ${i18n.t('ahccd.tooltips.station_title')}: ${data.station_name}
+                <br />${i18n.t('ahccd.tooltips.value_title')}: ${data.trend_value ||
+                i18n.t('ahccd.tooltips.no_trend')}</span></div>`,
+
+            stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
+                'ahccd.tooltips.station_title'
+            )}: ${data.station_name}</span></div>`
         };
 
         return this.state.variableId === VariableId.ClimateStations ? tooltips.stations : tooltips.variables;
