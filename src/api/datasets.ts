@@ -1,6 +1,7 @@
 import { DatasetApi } from './types';
 import { AppState } from '@/store';
-import { DatasetId } from '@/types';
+import { DatasetId, VariableId } from '@/types';
+import { i18n } from '@/lang';
 
 /**
  *
@@ -28,6 +29,36 @@ class AHCCDApi extends DatasetApi {
                 this.state.timePeriodId
             }.json`;
         }
+    }
+
+    tooltip = true;
+
+    /**
+     * Returns a string to be displayed on a tooltip in ramp
+     *
+     * @param data the data returned by ramp on-hover
+     * @returns {string} the tooltip string to be displayed
+     */
+    getTooltip(data: any): string {
+        // unsure if this should be done, leaving it here for after clarification
+        /* if (data.trend_value) {
+            if (data.trend_value > 0) {
+                data.trend_value = '+' + data.trend_value;
+            }
+        } */
+
+        const tooltips = {
+            variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
+                ${i18n.t('ahccd.tooltips.station_title')}: ${data.station_name}
+                <br />${i18n.t('ahccd.tooltips.value_title')}: ${data.trend_value ||
+                i18n.t('ahccd.tooltips.no_trend')}</span></div>`,
+
+            stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
+                'ahccd.tooltips.station_title'
+            )}: ${data.station_name}</span></div>`
+        };
+
+        return this.state.variableId === VariableId.ClimateStations ? tooltips.stations : tooltips.variables;
     }
 }
 

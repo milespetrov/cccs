@@ -21,6 +21,8 @@ export class DatasetApi {
     protected version: string;
 
     isReady: Promise<any>;
+    // turn off custom tooltips by default
+    tooltip: boolean = false;
 
     constructor(state: AppState, id: DatasetId) {
         this.state = state;
@@ -36,6 +38,8 @@ export class DatasetApi {
     get fetchUrl(): string {
         throw new Error('fetchUrl is not implemented');
     }
+
+    getTooltip(data: any): string | void {}
 
     async getDatasetSource(lang: string): Promise<DatasetSource> {
         await this.isReady;

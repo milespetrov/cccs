@@ -303,3 +303,6 @@ capa.hrdpa.qualifier,HRDPA,1,HRDPA,0
 capa.rdpa.fullName,Regional Deterministic Precipitation Analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.shortName,Regional Deterministic Precipitation Analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.qualifier,RDPA,1,RDPA,0
+ahccd.tooltips.station_title,AHCCD station name,1,,0
+ahccd.tooltips.value_title,Trend value,1,,0
+ahccd.tooltips.no_trend,No trend calculated,1,,0
