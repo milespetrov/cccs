@@ -40,18 +40,23 @@ class AHCCDApi extends DatasetApi {
      * @returns {string} the tooltip string to be displayed
      */
     getTooltip(data: any): string {
-        // unsure if this should be done, leaving it here for after clarification
-        /* if (data.trend_value) {
+        // trend value formatting
+        let displayTrend;
+        if (data.trend_value) {
             if (data.trend_value > 0) {
-                data.trend_value = '+' + data.trend_value;
+                displayTrend = '+' + data.trend_value;
+            } else {
+                displayTrend = data.trend_value;
             }
-        } */
+            displayTrend += ' ' + i18n.t(`units.${this.state.variableId}.shortName`);
+        } else {
+            displayTrend = i18n.t('ahccd.tooltips.no_trend');
+        }
 
         const tooltips = {
             variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
                 ${i18n.t('ahccd.tooltips.station_title')}: ${data.station_name}
-                <br />${i18n.t('ahccd.tooltips.value_title')}: ${data.trend_value ||
-                i18n.t('ahccd.tooltips.no_trend')}</span></div>`,
+                <br />${i18n.t('ahccd.tooltips.value_title')}: ${displayTrend}</span></div>`,
 
             stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
                 'ahccd.tooltips.station_title'

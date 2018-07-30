@@ -3,6 +3,7 @@ function parser(data, lang) {
         'en-CA': {
             stationId: 'AHCCD station ID',
             trendValue: 'Trend value',
+            no_trend: 'No trend calculated',
             measurementType: {
                 title: 'Measurement type',
                 total_precip: 'Total precipitation',
