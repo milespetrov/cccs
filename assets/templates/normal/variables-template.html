@@ -6,22 +6,52 @@
     <md-divider class="mrgn-bttm-md"></md-divider>
 
     <dl>
-        <dt>
-            <span>{{ self.layer.tt.timePeriod }}</span>
-        </dt>
-        <dd>{{ self.layer.properties.FIRST_YEAR_NORMAL_PERIOD }} - {{ self.layer.properties.LAST_YEAR_NORMAL_PERIOD }}</dd>
 
         <dt>
-            <span>{{ self.layer.tt.measurementType }}</span>
+            <span>{{ self.layer.tt.month }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.MONTH }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.measurement_type }}</span>
         </dt>
         <dd ng-if="self.lang === 'en-CA'">{{ self.layer.properties.ENG_PUB_NAME }}</dd>
         <dd ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.FRE_PUB_NAME }}</dd>
 
         <dt>
-            <span>{{ self.layer.tt.climateValue }}</span>
+            <span>{{ self.layer.tt.climate_value }}</span>
         </dt>
-        <dd>{{ self.layer.properties.VALUE }}
-        </dd>
+        <dd>{{ self.layer.properties.VALUE }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.period }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.PERIOD_BEGIN }} - {{ self.layer.properties.PERIOD_END }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.normal_period }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.FIRST_YEAR_NORMAL_PERIOD }} - {{ self.layer.properties.LAST_YEAR_NORMAL_PERIOD }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.obs_count }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.TOTAL_OBS_COUNT }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.obs_percent }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.PERCENT_OF_POSSIBLE_OBS }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.date_calculated }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.DATE_CALCULATED }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.normal_code }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.NORMAL_CODE }}</dd>
     </dl>
 
 </div>

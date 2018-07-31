@@ -306,3 +306,9 @@ capa.rdpa.qualifier,RDPA,1,RDPA,0
 ahccd.tooltips.station_title,AHCCD station name,1,,0
 ahccd.tooltips.value_title,Trend value,1,,0
 ahccd.tooltips.no_trend,No trend calculated,1,,0
+normal.tooltips.station_id_title,MSC station ID,1,,0
+normal.tooltips.station_name_title,MSC station name,1,,0
+normal.tooltips.value_title,Climate value,1,,0
+normal.tooltips.prov_title,Province/Territory,1,,0
+normal.tooltips.wmo_title,WMO identifier,1,,0
+normal.tooltips.tc_title,TC identifier,1,,0

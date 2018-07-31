@@ -1,32 +1,18 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            station_name: 'Station Name',
-            stn_id: 'MSC Station ID',
-            province: {
-                title: 'Province',
-                AB: 'Alberta',
-                BC: 'British Columbia',
-                MB: 'Manitoba',
-                NB: 'New Brunswick',
-                NL: 'Newfoundland and Labrador',
-                NS: 'Nova Scotia',
-                NT: 'Northwest Territories',
-                NU: 'Nunavut',
-                ON: 'Ontario',
-                PE: 'Prince Edward Island',
-                QC: 'Quebec',
-                SK: 'Saskatchewan',
-                YT: 'Yukon'
-            },
-            coordinates: 'Coordinates',
+            station_name: 'Station name',
+            stn_id: 'MSC station ID',
+            station_type: 'Station type',
+            province: 'Province/Territory',
             latitude: 'Latitude',
             longitude: 'Longitude',
             elevation: 'Elevation',
-
-            recordingPeriod: 'Data years',
-            startDate: 'Start date',
-            endDate: 'End date'
+            timezone: 'Time zone',
+            station_operator: 'Station operator',
+            tc_identifier: 'Transport Canada identifier',
+            wmo_identifier: 'WMO identifier',
+            climate_identifier: 'Climate identifier'
         },
 
         'fr-CA': {}

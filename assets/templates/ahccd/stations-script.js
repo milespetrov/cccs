@@ -1,28 +1,8 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            stationName: 'Station Name',
-            stationId: 'AHCCD Station ID',
-            province: {
-                title: 'Province',
-                AB: 'Alberta',
-                BC: 'British Columbia',
-                MAN: 'Manitoba',
-                MB: 'Manitoba',
-                NB: 'New Brunswick',
-                NL: 'Newfoundland and Labrador',
-                NFLD: 'Newfoundland and Labrador',
-                NS: 'Nova Scotia',
-                NWT: 'Northwest Territories',
-                NU: 'Nunavut',
-                ON: 'Ontario',
-                PE: 'Prince Edward Island',
-                PEI: 'Prince Edward Island',
-                QUE: 'Quebec',
-                QC: 'Quebec',
-                SK: 'Saskatchewan',
-                YT: 'Yukon'
-            },
+            stationName: 'Station name',
+            stationId: 'AHCCD station ID',
             coordinates: 'Coordinates',
             elevation: 'Elevation',
 

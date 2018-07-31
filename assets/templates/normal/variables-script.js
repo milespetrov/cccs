@@ -2,9 +2,15 @@ function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
             stationId: 'MSC station ID',
-            climateValue: 'Climate value',
-            measurementType: 'Measurement type',
-            timePeriod: 'Normal period'
+            climate_value: 'Climate value',
+            measurement_type: 'Measurement type',
+            normal_period: 'First-last year of normal period',
+            period: 'Period beginning-end',
+            obs_count: 'Total observations count',
+            obs_percent: 'Percentage of possible observations',
+            date_calculated: 'Date calculated',
+            normal_code: 'Normal code',
+            month: 'Month'
         },
 
         'fr-CA': {}

@@ -232,6 +232,34 @@ class NormalApi extends DatasetApi {
             }.json`;
         }
     }
+
+    tooltip = true;
+
+    /**
+     * Returns a string to be displayed on a tooltip in ramp
+     *
+     * @param data the data returned by ramp on-hover
+     * @returns {string} the tooltip string to be displayed
+     */
+    getTooltip(data: any): string {
+        const tooltips = {
+            variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
+                ${i18n.t('normal.tooltips.station_id_title')}: ${data.STN_ID}
+                <br />${i18n.t('normal.tooltips.value_title')}: ${data.VALUE} ${i18n.t(
+                `units.${this.state.variableId}.shortName`
+            )}</span></div>`,
+
+            stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
+                'normal.tooltips.station_name_title'
+            )}: ${data.STATION_NAME}<br />${i18n.t('normal.tooltips.prov_title')}: ${
+                i18n.locale === 'en' ? data.ENG_PROV_NAME : data.FRE_PROV_NAME
+            }<br />${i18n.t('normal.tooltips.wmo_title')}: ${data.WMO_IDENTIFIER || '-'}<br />${i18n.t(
+                'normal.tooltips.tc_title'
+            )}: ${data.TC_IDENTIFIER || '-'}</span></div>`
+        };
+
+        return this.state.variableId === VariableId.ClimateStations ? tooltips.stations : tooltips.variables;
+    }
 }
 
 /**
