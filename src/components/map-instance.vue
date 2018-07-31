@@ -313,6 +313,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             } else {
                 this.mapZoomChangedHandler(this._mapi.zoom);
             }
+
+            if (this.centerPoint) {
+                this.onCenterPointChanged();
+            }
         });
     }
 
