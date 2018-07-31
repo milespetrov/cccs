@@ -17,22 +17,22 @@ map.daily_desc,"This map shows Daily Climate Summaries data.",1,"Cette carte mon
 map.monthly_desc,"This map shows Monthly Climate Summaries data.",1,"Cette carte montre les données de Résumés climatiques mensuels.",0
 map.normal_desc,"This map shows Climate Normals data.",1,"Cette carte montre les données de Normales climatiques.",0
 map.controlsCluster.legend,Legend:,1,Légende:,0
-map.controlsCluster.timeline,Timeline:,1,Chronologie:,0
+map.controlsCluster.timeline,Time period:,1,Chronologie:,0
 settings.title,Settings,1,Paramètres,0
 variableSelector.title,Variable,1,Variable,0
-variableSelector.header,Climate Data,1,Données climatiques,0
+variableSelector.header,Climate data,1,Données climatiques,0
 variableSelector.description,"An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate",1,"Une variable climatique essentielle (ECV) est une variable physique, chimique ou biologique ou un groupe de variables liées qui contribue de manière critique à la caractérisation du climat de la Terre.",0
 variableSelector.stations_group,Stations,1,Stations,0
 variableSelector.temperature_group,Temperature,1,Température,0
 variableSelector.wind_group,Wind,1,Vent,0
 variableSelector.ice_group,Ice,1,La glace,0
 variableSelector.precipitation_group,Precipitation,1,Précipitation,0
-variableSelector.snow_depth_group,Snow Depth,1,Profondeur de neige,0
-variableSelector.pressure_group,Air Pressure,1,Pression de l'air,0
+variableSelector.snow_depth_group,Snow depth,1,Profondeur de neige,0
+variableSelector.pressure_group,Air pressure,1,Pression de l'air,0
 variableSelector.historic,Historic,1,Historique,0
 variableSelector.future,Future,1,Avenir,0
-timePeriodSelector.title,Time Period,1,Période de temps,0
-timePeriodSelector.header,Time Period,1,Période de temps,0
+timePeriodSelector.title,Time of year,1,Période de temps,0
+timePeriodSelector.header,Time of year,1,Période de temps,0
 timePeriodSelector.description,"Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere ""behaves"" over relatively long periods of time.",1,"Les trois dernières anomalies moyennes de température et de précipitations pour les États-Unis. La différence entre le temps et le climat est une mesure du temps. Le temps est ce que les conditions de l'atmosphère sont sur une courte période de temps, et le climat est la façon dont l'atmosphère ""se comporte"" sur des périodes relativement longues.",0
 timePeriodSelector.monthly_group,Monthly,1,Mensuel,0
 timePeriodSelector.season_group,Seasonal,1,Saisonnier,0
@@ -88,18 +88,18 @@ timePeriodSelector.fall.qualifier,Sep - Nov,1,Sep - Nov,0
 timePeriodSelector.annual.fullName,Annual,1,Annuel,0
 timePeriodSelector.annual.shortName,Annual,1,Annuel,0
 timePeriodSelector.annual.qualifier,,1,,0
-rcpSelector.title,Model,1,Modèle,0
-rcpSelector.header,RCP,1,RCP,0
+rcpSelector.title,Emission scenario,1,Modèle,0
+rcpSelector.header,Emission scenario,1,RCP,0
 rcpSelector.description,"The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",1,"Les projections de la phase 5 du projet d'intercomparaison de modèles couplés (CMIP5) utilisent des voies de concentration représentatives (RCP), qui sont conçues pour fournir des scénarios futurs plausibles de forçage anthropique.",0
 rcpSelector.all_rcp_models,,1,,0
 rcpSelector.rcp26.shortName,RCP 2.6,1,RCP 2.6,0
-rcpSelector.rcp26.fullName, Representative Concentration Pathway 2.6,1,Voie de concentration représentative 2.6,0
+rcpSelector.rcp26.fullName,Low emission scenario (RCP 2.6),1,Voie de concentration représentative 2.6,0
 rcpSelector.rcp26.qualifier,RCP 2.6,1,RCP 2.6,0
 rcpSelector.rcp45.shortName,RCP 4.5,1,RCP 4.5,0
-rcpSelector.rcp45.fullName,Representative Concentration Pathway 4.5,1,Voie de concentration représentative 4.5,0
+rcpSelector.rcp45.fullName,Moderate emission scenario (RCP 4.5),1,Voie de concentration représentative 4.5,0
 rcpSelector.rcp45.qualifier,RCP 4.5,1,RCP 4.5,0
 rcpSelector.rcp85.shortName,RCP 8.5,1,RCP 8.5,0
-rcpSelector.rcp85.fullName,Representative Concentration Pathway 8.5,1,"Voie de concentration représentative 8,5",0
+rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Voie de concentration représentative 8,5",0
 rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,0
 datasetSelector.title,Dataset,1,Dataset,0
 datasetSelector.header,Datasets,1,Jeux de données,0
