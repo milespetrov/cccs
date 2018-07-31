@@ -9,7 +9,6 @@ Les commandes de navigation suivantes se trouvent dans le coin inférieur droit 
 |![](navigation/fullscreen.png)| Plein écran | | Le plein écran présente le contenu de la carte en utilisant la page entière. L'option « Plein écran » n'est disponible que lorsque la carte est incorporée dans une autre page  |
 |![](navigation/zoomin.png)| Zoom avant | Plus (+) | Zoom avant d'un niveau sur la carte pour afficher un contenu plus détaillé |
 |![](navigation/zoomout.png)| Zoom arrière | Moins (-) | Zoom arrière d'un niveau sur la carte pour afficher un contenu moins détaillé |
-|![](navigation/geolocation.png)| Géolocalisation | | Zoom et se déplace à votre position géographique actuelle |
 |![](navigation/canada.png)| Étendue initiale | | Zoom et déplace la carte afin que l'étendue initiale soit visible |
 |![](navigation/help.png)| Aide | | Ouvre la fenêtre d'aide |
 
@@ -35,13 +34,6 @@ __Pour ouvrir le sélecteur de cartes de base:__
 Ouvrez d'abord le panneau des couches en sélectionnant le bouton « Couches » (montré ci-dessus en rouge). Vous verrez alors le sélecteur de cartes de base apparaître à gauche du bouton couche (montré ci-dessus en bleu). Vous pouvez également ouvrir le sélecteur de cartes de base à partir du menu principal.
 
 Vous aurez à choisir parmi une ou plusieurs cartes de base, groupées par type de projection (Mercator ou Lambert). La carte sera chargée de nouveau si vous modifiez la projection, mais elle ne le sera pas si vous sélectionnez une carte de base de la même projection.
-
-
-# Carte d'aperçu
-
-La carte d'aperçu affiche une vue générale de la carte principale à une plus petite échelle. Elle se trouve dans le coin supérieur droit de la carte.
-
-Cliquez sur la carte d'aperçu et faites-la glisser pour modifier l'étendue de la carte principale. En cliquant sur l'icône de bascule (![](overview/toggle.png)) dans le coin supérieur droit de la carte d'aperçu, vous pouvez l'afficher ou la masquer.
 
 
 # Menu principal
@@ -119,27 +111,8 @@ Fournit des options supplémentaires lorsque la liste déroulante « Couches » 
 |Symbol|Nom|Description|
 |----|----|----|
 | ![](layer_submenu/add.png) | Ajouter une couche | Ajouter une couche basée sur un fichier ou un service |
-| ![](layer_submenu/reorder.png) | Réorganiser les couches | Fournit une solution de remplacement à l'utilisation de la souris pour réorganiser les couches. Lorsque cette option est sélectionnée, les couches ne peuvent être réorganisées avec la souris qu'en maintenant l'icône de poignée à côté de chaque couche. Utile pour les appareils tactiles et les utilisateurs du clavier |
 | ![](layer_submenu/expand.png) | Basculer les groupes | Ouvre ou ferme tous les groupes |
 | ![](layer_submenu/view.png) | Basculer la visibilité | Active ou désactive la visibilité de toutes les couches |
-
-
-# Ajouter une couche
-
-Des couches supplémentaires peuvent être ajoutées au visualiseur de carte. Les formats pris en charge sont les suivants: couche d'éléments d'ESRI, couche dynamique d'ESRI, couche de tuiles d'ESRI, couche d'images d'ESRI, couche WMS de l'OGC ou couche Raster. Le bouton « + » en haut du menu Légende lance le menu « Ajouter une couche ».
-
-Utilisation:
-- Sélectionnez l'option « Importer un fichier » ou « Importer un service ».
-- Lorsqu' « Importer un service » est sélectionné, cliquez sur le bouton « Choisir un fichier » pour sélectionner un fichier à l'aide d'un utilitaire de recherche de fichier ou saisissez dans la zone d'édition une adresse URL pointant sur le fichier désiré.
-- Lorsque vous sélectionnez « Importer un service », vous aurez la possibilité d'entrer l'adresse URL d'un service dans une zone d'édition.
-- Cliquez sur le bouton « Continuer » pour continuer.
-- Le visualiseur essaiera de prédire le type de jeu de données. S'il est incorrect, sélectionnez manuellement le type correspondant à l'aide du menu déroulant.
-- Cliquez sur le bouton « Continuer » pour continuer.
-- Selon le type d'ensemble de données chargé, différents paramètres peuvent être définis dans cette phase finale.
-- Un service d'éléments permet le choix d'un attribut principal, qui détermine l'attribut utilisé pour identifier un élément (enregistrement) dans le tableau de données et les étiquettes correspondantes sur la carte. Toutes les autres informations proviennent des métadonnées du service.
-- Un service WMS permet le choix du nom de la couche, qui détermine la couche dans le WMS à utiliser comme source pour le jeu de données. Toutes les autres informations sont dérivées des métadonnées du service.
-- Les jeux de données basés sur des fichiers permettent le choix des attributs suivants: un nom de jeu de données qui sera affiché dans le sélecteur de couche; Un attribut principal qui agit de la même façon que dans le service d'élément; Une couleur de symbole qui détermine la couleur des points /lignes/polygones sur la carte. Les fichiers CSV permettent également la spécification des colonnes qui contiennent les valeurs de positionnement (Latitude et Longitude) utilisées pour déterminer l'emplacement des éléments sur la carte.
-- Cliquez sur le bouton « Continuer » pour ajouter la couche à la carte et fermer le menu « Ajouter une couche ».
 
 
 # Exporter l'image
