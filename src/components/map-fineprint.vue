@@ -47,7 +47,11 @@ export default class MapFineprint extends Vue {
         return formatLatLong(long, lat);
     }
 
+    /**
+     * Calculates a scale bar for the current resolution.
+     */
     get scale(): { label: string; width: string } {
+        // the starting length of the scale line in pixels
         const factor = 70;
 
         // distance in meters
@@ -57,10 +61,11 @@ export default class MapFineprint extends Vue {
         const len = Math.round(distance).toString().length;
         const div = Math.pow(10, len - 1);
 
-        // rounded distance
+        // we want to round the distance to the highest position and display a nice number
+        // 45637m => 50000m; 4368m => 4000m
         const num = Math.ceil(distance / div) * div;
 
-        // length of the scale line
+        // calcualte length of the scale line in pixels based on the round distance
         const pixels = num / this.resolution;
 
         return { width: `${pixels}px`, label: `${num / 1000}km` };
