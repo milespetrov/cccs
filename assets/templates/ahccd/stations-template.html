@@ -14,29 +14,13 @@
         <dt>
             <span>{{ self.layer.tt.province.title }}</span>
         </dt>
-        <dd>{{ self.layer.tt.province[self.layer.properties.province] }}</dd>
+        <dd>{{ self.layer.properties.province }}</dd>
 
         <dt>
             <span>{{ self.layer.tt.elevation }}</span>
         </dt>
         <dd>{{ self.layer.properties.elevation }}</dd>
-
-        <!-- <dt>
-            <span>{{ self.layer.tt.coordinates }}</span>
-        </dt>
-        <dd>{{ self.layer.properties.coordinates }}</dd> -->
     </dl>
-
-    <!-- <md-divider class="mrgn-bttm-md"></md-divider>
-    <h5>{{ self.layer.tt.recordingPeriod }}</h5>
-    <dl>
-        <dt ng-repeat-start="measurementType in self.layer.tt.measurements">
-            <span>{{ self.layer.tt.measurementType[measurementType] }}</span>
-        </dt>
-        <dd ng-repeat-end>{{ self.layer.properties.start[measurementType] }}-{{ self.layer.properties.end[measurementType] }}</dd>
-    </dl> -->
-
-
 </div>
 
 <style>
