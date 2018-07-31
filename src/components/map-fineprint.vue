@@ -7,6 +7,12 @@
 
             <span class="cip-separator"></span>
 
+            <!-- TODO: find out if any ARIA attributes are needed for the map scale -->
+            <span class="cip-scale">
+                <span class="cip-scale-line" :style="{ width: scale.width }"></span>
+                {{ scale.label }}
+            </span>
+
             <span class="cip-coordinates" v-if="cursorPoint.y !== 0 || cursorPoint.x !== 0">
                 {{ cursorPointDMS.y }} {{ $t(`${tPath}.${ cursorPoint.y > 0 ? 'north' : 'south' }`) }} |
                 {{ cursorPointDMS.x }} {{ $t(`${tPath}.${ 0 > cursorPoint.x ? 'west' : 'east' }`) }}
@@ -28,6 +34,7 @@ import { formatLatLong } from '@/globals/utils';
 export default class MapFineprint extends Vue {
     // TODO: use proper type for map instance
     @Prop() cursorPoint: MapPoint;
+    @Prop() resolution: number;
 
     tPath: string = 'geo.coordinates';
 
@@ -38,6 +45,25 @@ export default class MapFineprint extends Vue {
     get cursorPointDMS(): { x: string; y: string } {
         const { y: lat, x: long } = this.cursorPoint;
         return formatLatLong(long, lat);
+    }
+
+    get scale(): { label: string; width: string } {
+        const factor = 70;
+
+        // distance in meters
+        const distance = this.resolution * factor;
+
+        // length of the distance number
+        const len = Math.round(distance).toString().length;
+        const div = Math.pow(10, len - 1);
+
+        // rounded distance
+        const num = Math.ceil(distance / div) * div;
+
+        // length of the scale line
+        const pixels = num / this.resolution;
+
+        return { width: `${pixels}px`, label: `${num / 1000}km` };
     }
 }
 </script>
@@ -71,6 +97,15 @@ export default class MapFineprint extends Vue {
 
     .cip-separator {
         flex: 1;
+    }
+
+    .cip-scale {
+        margin-right: 1.5rem;
+
+        .cip-scale-line {
+            display: inline-block;
+            border-top: $border-colour-one 2px solid;
+        }
     }
 
     @media (max-width: 991px) {

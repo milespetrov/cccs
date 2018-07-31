@@ -230,6 +230,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     // the last coordinates of the mouse cursor
     cursorPoint: MapPoint = new MapPoint(0, 0);
+    // current resolution of the map
+    resolution: number = 0;
 
     deactivate: Subject<boolean> = new Subject<boolean>();
 
@@ -357,6 +359,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // update zoom if we're out of sync
         if (this._mapi.zoom !== this.zoomLevel) {
             this.localZoomLevelUpdate = true;
+            // TODO: ask Miles to add resolution to the API
+            this.resolution = this._mapi.mapI._map.getResolution();
             this.setZoomLevel(this._mapi.zoom);
         }
         this.updateRoute();
@@ -365,6 +369,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     mapZoomChangedHandler(event: any): void {
         this.localZoomLevelUpdate = true;
 
+        this.resolution = this._mapi.mapI._map.getResolution();
         this.setZoomLevel(event);
         this.updateRoute();
     }
@@ -475,7 +480,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         const fineprintComponent = new Vue({
             render: h =>
                 h('map-fineprint', {
-                    props: { 'cursor-point': this.cursorPoint }
+                    props: { 'cursor-point': this.cursorPoint, resolution: this.resolution }
                 }),
             components: {
                 'map-fineprint': MapFineprint
