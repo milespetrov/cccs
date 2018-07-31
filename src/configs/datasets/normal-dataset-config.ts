@@ -34,7 +34,11 @@ const normalDataset: DatasetSource = {
     ],
 
     legend: {
-        [VariableId.ClimateStations]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
+        [VariableId.ClimateStations]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.TMax]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.TMean]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.TMin]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.Precipitation]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">'
     },
 
     mapConfigPath: 'config-base.json',
