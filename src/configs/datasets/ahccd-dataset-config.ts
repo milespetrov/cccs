@@ -33,7 +33,11 @@ const ahccdDataset: DatasetSource = {
     },
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/adjusted-station-data',
+        fr: '/donnees-climatiques-ajustees'
+    }
 };
 
 export default ahccdDataset;

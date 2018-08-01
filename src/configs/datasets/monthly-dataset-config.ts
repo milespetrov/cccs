@@ -13,7 +13,11 @@ const monthlyDataset: DatasetSource = {
     },
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/monthly-climate-summaries',
+        fr: '/sommaires-climatiques-mensuels'
+    }
 };
 
 export default monthlyDataset;

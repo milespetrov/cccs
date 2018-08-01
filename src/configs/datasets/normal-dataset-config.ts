@@ -42,7 +42,11 @@ const normalDataset: DatasetSource = {
     },
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/climate-normals',
+        fr: '/normales-climatiques'
+    }
 };
 
 export default normalDataset;

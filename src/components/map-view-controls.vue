@@ -56,6 +56,15 @@
 
                                 <font-awesome-icon icon="external-link-alt" />
                             </b-dropdown-item>
+
+                            <b-dropdown-item target="_blank" :href="`${queryToolBaseUrl}${queryToolRoute}`">
+
+                                <i18n :path="`${tDSPath}.queryTool.fullName`" tag="span" class="cip-name">
+                                    <span class="wb-inv">{{ $t(`${tDSPath}.queryTool.access`) }}</span>
+                                </i18n>
+
+                                <font-awesome-icon icon="external-link-alt" />
+                            </b-dropdown-item>
                         </div>
 
                     </b-dropdown>
@@ -75,16 +84,28 @@ import BaseSelectorV from 'src/components/vis-controls/base-selector.vue';
 import selectors from './vis-controls/selectors';
 
 import api from './../api/';
+import { datasets } from '@/configs/datasets';
+import { DatasetId } from '@/types';
+import { i18n } from '@/lang';
 
 @Component({
     components: selectors
 })
 export default class MapViewControls extends Vue {
     @Getter getControls: string[];
+    @State datasetId: DatasetId;
 
     showCollapse: boolean = false;
 
     tDSPath: string = 'downloadSelector';
+
+    // TODO: update before going to production
+    // TODO: we might want to move this to a config file if this url changes often
+    queryToolBaseUrl: string = 'http://climate-change.dev.ec.gc.ca/climate-data/#';
+
+    get queryToolRoute(): string {
+        return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
+    }
 
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
