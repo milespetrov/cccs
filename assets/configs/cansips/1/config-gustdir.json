@@ -95,8 +95,8 @@
       "layerEntries": [{"id": "CANSIPS.MEM.PRES_UU.200.10" }],
       "featureInfoMimeType": "text/plain",
       "details": {
-        "template": "assets/templates/capa/variables-template.html",
-        "parser": "assets/templates/capa/variables-script.js"
+        "template": "assets/templates/cansips/variables-template.html",
+        "parser": "assets/templates/cansips/variables-script.js"
       },
       "controls": ["data"]
     }
@@ -198,8 +198,8 @@
       "layerEntries": [{"id": "CANSIPS.MEM.PRES_UU.200.10" }],
       "featureInfoMimeType": "text/plain",
       "details": {
-        "template": "assets/templates/capa/variables-template.html",
-        "parser": "assets/templates/capa/variables-script.js"
+        "template": "assets/templates/cansips/variables-template.html",
+        "parser": "assets/templates/cansips/variables-script.js"
       },
       "controls": ["data"]
     }
