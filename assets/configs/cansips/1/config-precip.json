@@ -1,0 +1,200 @@
+{
+"en": {
+  "legend": [
+    {
+      "infoType": "title",
+      "content": "Data"
+    },
+    {
+      "infoType": "text",
+      "content": "A short CanSIPS dataset description goes here"
+    },
+    {
+      "layerId": "CanSIPS_itpr__en",
+      "layerName": "",
+      "description": "A short instantaneous precipitation rate description goes here",
+      "coverIcon": "assets/images/precip.svg",
+      "symbologyStack": [
+        {
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=CANSIPS.MEM.ETA_RT.10&format=image/png&STYLE=default",
+          "text": ""
+        }
+      ],
+      "symbologyRenderStyle": "images"
+    },
+    {
+      "infoType": "title",
+      "content": "Settings"
+    },
+    {
+      "layerId": "cities",
+      "layerName": "Cities",
+      "coverIcon": "assets/images/cities.svg",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "labels",
+      "layerName": "Labels",
+      "coverIcon": "assets/images/labels.svg",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "provinces",
+      "layerName": "Provinces",
+      "coverIcon": "assets/images/provinces.svg",
+      "symbologyStack": []
+    }
+
+  ],
+  "supportLayers": [
+    {
+      "id": "cities",
+      "layerType": "esriTile",
+      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+      "name": "Cities",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": false
+      }
+    },
+    {
+      "id": "labels",
+      "layerType": "esriTile",
+      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "name": "Labels",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    },
+    {
+      "id": "provinces",
+      "layerType": "esriTile",
+      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+      "name": "Provinces",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    }
+  ],
+  "dataLayers": [
+    {
+      "id": "CanSIPS_itpr__en",
+      "layerType": "ogcWms",
+      "suppressGetCapabilities": true,
+      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
+      "name": "Instantaneous precipitation rate",
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      },
+      "layerEntries": [{"id": "CANSIPS.MEM.ETA_RT.10" }],
+      "featureInfoMimeType": "text/plain",
+      "controls": ["data"]
+    }
+  ]
+},
+"fr": {
+  "legend": [
+    {
+      "infoType": "title",
+      "content": "[fr] Data"
+    },
+    {
+      "infoType": "text",
+      "content": "[fr] A short CanSIPS dataset description goes here"
+    },
+    {
+      "layerId": "CanSIPS_itpr__fr",
+      "layerName": "",
+      "description": "[fr] A short instantaneous precipitation rate description goes here",
+      "coverIcon": "assets/images/precip.svg",
+      "symbologyStack": [
+        {
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=CANSIPS.MEM.ETA_RT.10&format=image/png&STYLE=default",
+          "text": ""
+        }
+      ],
+      "symbologyRenderStyle": "images"
+    },
+    {
+      "infoType": "title",
+      "content": "[fr] Settings"
+    },
+    {
+      "layerId": "cities",
+      "layerName": "[fr] Cities",
+      "coverIcon": "assets/images/cities.svg",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "labels",
+      "layerName": "[fr] Labels",
+      "coverIcon": "assets/images/labels.svg",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "provinces",
+      "layerName": "[fr] Provinces",
+      "coverIcon": "assets/images/provinces.svg",
+      "symbologyStack": []
+    }
+
+  ],
+  "supportLayers": [
+    {
+      "id": "cities",
+      "layerType": "esriTile",
+      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+      "name": "[fr] Cities",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": false
+      }
+    },
+    {
+      "id": "labels",
+      "layerType": "esriTile",
+      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "name": "[fr] Labels",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    },
+    {
+      "id": "provinces",
+      "layerType": "esriTile",
+      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+      "name": "[fr] Provinces",
+      "expectedResponseTime": 10000,
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    }
+  ],
+  "dataLayers": [
+    {
+      "id": "CanSIPS_itpr__fr",
+      "layerType": "ogcWms",
+      "suppressGetCapabilities": true,
+      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
+      "name": "[fr] Instantaneous precipitation rate",
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      },
+      "layerEntries": [{"id": "CANSIPS.MEM.ETA_RT.10" }],
+      "featureInfoMimeType": "text/plain",
+      "controls": ["data"]
+    }
+  ]
+}
+}
