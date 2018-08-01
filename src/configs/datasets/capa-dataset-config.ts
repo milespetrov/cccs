@@ -11,7 +11,11 @@ const capaDataset: DatasetSource = {
     /*     legend: {}, */
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/regional-deterministic-precipitation-analysis',
+        fr: '/analyse-regionale-deterministe-precipitation'
+    }
 };
 
 export default capaDataset;

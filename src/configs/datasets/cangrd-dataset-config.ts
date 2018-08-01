@@ -25,7 +25,11 @@ const canGrdDataset: DatasetSource = {
     }, */
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/historical-gridded-data',
+        fr: '/donnees-maillees-historiques'
+    }
 };
 
 export default canGrdDataset;

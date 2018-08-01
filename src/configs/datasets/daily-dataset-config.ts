@@ -13,7 +13,11 @@ const dailyDataset: DatasetSource = {
     },
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/daily-climate-data',
+        fr: '/donnees-climatiques-quotidennes'
+    }
 };
 
 export default dailyDataset;

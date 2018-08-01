@@ -139,7 +139,7 @@ downloadSelector.title,Download,1,Télécharger,0
 downloadSelector.header,Download,1,Télécharger,0
 downloadSelector.description,"CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.",1,"CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortur primis sodales ullamcorper vestibule, phasellus posuere purus metus cubilia vulputate ut.",0
 downloadSelector.mapImage_group,Map image,1,Image de la carte,0
-downloadSelector.dataset_group,Map image,1,Image de la carte,0
+downloadSelector.dataset_group,Source data,1,Image de la carte,0
 downloadSelector.png.shortName,,1,,0
 downloadSelector.png.fullName,PNG picutre,1,PNG picutre,0
 downloadSelector.png.qualifier,,1,,0
@@ -147,9 +147,13 @@ downloadSelector.jpeg.shortName,,1,,0
 downloadSelector.jpeg.fullName,JPEG picture,1,Image JPEG,0
 downloadSelector.jpeg.qualifier,,1,,0
 downloadSelector.dataCatalogue.shortName,,1,,0
-downloadSelector.dataCatalogue.fullName,{0}Data Catalogue,1,{0} Catalogue de données,0
+downloadSelector.dataCatalogue.fullName,{0}Data catalogue,1,{0} Catalogue de données,0
 downloadSelector.dataCatalogue.access,Access full dataset in ,1,Accéder à l'ensemble de données complet dans,0
 downloadSelector.dataCatalogue.qualifier,,1,,0
+downloadSelector.queryTool.shortName,,1,,0
+downloadSelector.queryTool.fullName,{0}Climate data extraction tool,1,{0} Catalogue de données,0
+downloadSelector.queryTool.access,Download source data using ,1,Accéder à l'ensemble de données complet dans,0
+downloadSelector.queryTool.qualifier,,1,,0
 units.sit.shortName,m,1,m,0
 units.sit.fullName,metres,1,mètres,0
 units.sit.qualifier,,1,,0

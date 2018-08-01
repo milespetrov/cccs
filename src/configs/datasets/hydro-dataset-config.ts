@@ -13,7 +13,11 @@ const hydroDataset: DatasetSource = {
     },
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/water-quantity-data',
+        fr: '/donnees-quantite-eau'
+    }
 };
 
 export default hydroDataset;

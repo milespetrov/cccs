@@ -13,7 +13,11 @@ const canSipsDataset: DatasetSource = {
     variables: [],
 
     mapConfigPath: 'config-base.json',
-    layersConfigPath: 'config-snippets.json'
+    layersConfigPath: 'config-snippets.json',
+    queryToolRoute: {
+        en: '/seasonal-forecasts',
+        fr: '/previsions-saisonnieres'
+    }
 };
 
 export default canSipsDataset;
