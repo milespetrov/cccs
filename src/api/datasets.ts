@@ -242,7 +242,7 @@ class NormalApi extends DatasetApi {
     getTooltip(data: any): string {
         const tooltips = {
             variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
-                ${i18n.t('normal.tooltips.station_id_title')}: ${data.STN_ID}
+                ${i18n.t('normal.tooltips.station_name_title')}: ${data.STATION_NAME}
                 <br />${i18n.t('normal.tooltips.value_title')}: ${data.VALUE} ${i18n.t(
                 `units.${this.state.variableId}.shortName`
             )}</span></div>`,

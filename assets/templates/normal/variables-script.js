@@ -1,7 +1,7 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            stationId: 'MSC station ID',
+            station_name: 'MSC station name',
             climate_value: 'Climate value',
             measurement_type: 'Measurement type',
             normal_period: 'First-last year of normal period',
