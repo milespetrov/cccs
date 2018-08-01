@@ -13,7 +13,7 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
                 DatasetId.ClimateNormal,
                 DatasetId.ClimateMonthly,
                 DatasetId.ClimateDaily,
-                //DatasetId.CanSIPS,
+                DatasetId.CanSIPS,
                 DatasetId.CAPA,
                 DatasetId.Hydrometric
             ],

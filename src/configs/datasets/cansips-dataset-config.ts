@@ -1,16 +1,21 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, ViewType } from '@/types';
+import { VariableId, DatasetId } from '@/types';
 
 const canSipsDataset: DatasetSource = {
     id: DatasetId.CanSIPS,
 
-    controls: {
-        [VisualizationControlType.Time]: {
-            default: TimePeriodType.Annual
-        }
-    },
+    controls: {},
 
-    variables: [],
+    variables: [
+        VariableId.SeaLevelPressure,
+        VariableId.Precipitation,
+        VariableId.TMean,
+        VariableId.SurfaceTemp,
+        VariableId.WaterTemp,
+        VariableId.GustDirection,
+        VariableId.GustDirection850,
+        VariableId.Geopotential
+    ],
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json',

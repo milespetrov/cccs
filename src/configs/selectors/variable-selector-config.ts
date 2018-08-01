@@ -10,12 +10,17 @@ export const variableSelectorConfig: VariableSelectorConfig = {
         },
         {
             id: 'temperature_group',
-            items: [VariableId.TMean, VariableId.TMin, VariableId.TMax],
+            items: [VariableId.TMean, VariableId.TMin, VariableId.TMax, VariableId.SurfaceTemp, VariableId.WaterTemp],
             showHeader: true
         },
         {
             id: 'wind_group',
-            items: [VariableId.SurfaceWind, VariableId.GustDirection, VariableId.GustSpeed],
+            items: [
+                VariableId.SurfaceWind,
+                VariableId.GustDirection,
+                VariableId.GustDirection850,
+                VariableId.GustSpeed
+            ],
             showHeader: true
         },
         {
@@ -41,6 +46,11 @@ export const variableSelectorConfig: VariableSelectorConfig = {
         {
             id: 'hydrometric_group',
             items: [VariableId.Hydrometric]
+        },
+        {
+            id: 'geopotential_group',
+            items: [VariableId.Geopotential],
+            showHeader: true
         }
     ]
 };

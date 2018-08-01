@@ -24,10 +24,6 @@ export enum DatasetId {
 export enum VariableId {
     TMin = 'tmin',
     TMax = 'tmax',
-
-    /**
-     * Mean temperature.
-     */
     TMean = 'tmean',
     Precipitation = 'precip',
     SurfaceWind = 'sfcwind',
@@ -41,7 +37,11 @@ export enum VariableId {
     Hydrometric = 'hydro',
     HRDPA = 'hrdpa',
     RDPA = 'rdpa',
-    ClimateStations = 'stations'
+    ClimateStations = 'stations',
+    SurfaceTemp = 'tsurface',
+    WaterTemp = 'twater',
+    Geopotential = 'geopotential',
+    GustDirection850 = 'gustdir850'
 }
 
 /**
