@@ -93,12 +93,12 @@
         "visibility": true
       },
       "layerEntries": [{"id": "CANGRID.TREND.PR_WINTER" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cangrd/variables-template.html",
         "parser": "assets/templates/cangrd/variables-script.js"
       },
-      "controls": ["data"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 },
@@ -196,12 +196,12 @@
         "visibility": true
       },
       "layerEntries": [{"id": "CANGRID.TREND.PR_WINTER" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cangrd/variables-template.html",
         "parser": "assets/templates/cangrd/variables-script.js"
       },
-      "controls": ["data"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 }

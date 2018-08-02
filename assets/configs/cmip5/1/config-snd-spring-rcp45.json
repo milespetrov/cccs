@@ -138,12 +138,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2021-2040_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CMIP5_snow_MAM_rcp45_2041_en",
@@ -156,12 +156,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2041-2060_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CMIP5_snow_MAM_rcp45_2061_en",
@@ -174,12 +174,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2061-2080_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CMIP5_snow_MAM_rcp45_2081_en",
@@ -192,12 +192,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2081-2100_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 },
@@ -340,12 +340,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2021-2040_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CMIP5_snow_MAM_rcp45_2041_fr",
@@ -358,12 +358,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2041-2060_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CMIP5_snow_MAM_rcp45_2061_fr",
@@ -376,12 +376,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2061-2080_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CMIP5_snow_MAM_rcp45_2081_fr",
@@ -394,12 +394,12 @@
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.SND.RCP45.SPRING.2081-2100_PCTL50" }],
-      "featureInfoMimeType": "text/plain",
+      "featureInfoMimeType": "application/json ",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
         "parser": "assets/templates/cmip5/variables-script.js"
       },
-      "controls": ["data", "visibility", "opacity", "settings"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 }
