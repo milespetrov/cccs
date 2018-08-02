@@ -122,7 +122,7 @@
         "template": "assets/templates/capa/variables-template.html",
         "parser": "assets/templates/capa/variables-script.js"
       },
-      "controls": ["data", "visibility"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CAPA_qp10_6_en",
@@ -140,7 +140,7 @@
         "template": "assets/templates/capa/variables-template.html",
         "parser": "assets/templates/capa/variables-script.js"
       },
-      "controls": ["data", "visibility"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 },
@@ -267,7 +267,7 @@
         "template": "assets/templates/capa/variables-template.html",
         "parser": "assets/templates/capa/variables-script.js"
       },
-      "controls": ["data", "visibility"]
+      "controls": ["visibility", "opacity", "settings"]
     },
     {
       "id": "CAPA_qp10_6_fr",
@@ -285,7 +285,7 @@
         "template": "assets/templates/capa/variables-template.html",
         "parser": "assets/templates/capa/variables-script.js"
       },
-      "controls": ["data", "visibility"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 }

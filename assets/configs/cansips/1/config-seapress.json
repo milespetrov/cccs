@@ -98,7 +98,7 @@
         "template": "assets/templates/cansips/variables-template.html",
         "parser": "assets/templates/cansips/variables-script.js"
       },
-      "controls": ["data"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 },
@@ -201,7 +201,7 @@
         "template": "assets/templates/cansips/variables-template.html",
         "parser": "assets/templates/cansips/variables-script.js"
       },
-      "controls": ["data"]
+      "controls": ["visibility", "opacity", "settings"]
     }
   ]
 }
