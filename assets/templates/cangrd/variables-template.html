@@ -1,6 +1,6 @@
 <div class="cmip5-details">
 
-    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.latlong[1].toFixed(6) }}, {{ self.layer.properties.latlong[0].toFixed(6) }}</h4>
+    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.latlong[1].toFixed(6) }}, {{ self.layer.latlong[0].toFixed(6) }}</h4>
     <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.latlong }}</span>
 
     <md-divider class="mrgn-bttm-md"></md-divider>
@@ -9,7 +9,7 @@
         <dt>
             <span>{{ self.layer.tt.trendValue }}</span>
         </dt>
-        <dd>{{ self.layer.properties.value_0 }}</dd>
+        <dd>{{ self.layer.value }}</dd>
     </dl>
 
 </div>

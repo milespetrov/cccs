@@ -61,5 +61,11 @@ function parser(data, lang) {
     });
     data.tt = TRANSLATIONS[lang];
 
+    if (data.properties.trend_value) {
+        if (parseFloat(data.properties.trend_value) > 0) {
+            data.properties.trend_prefix = '+';
+        }
+    }
+
     return data;
 }
