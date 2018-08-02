@@ -40,27 +40,12 @@ function parser(data, lang) {
     };
 
     console.log(data, lang);
-    var result = {
-        properties: {}
-    };
+    var result = {};
 
-    result.data = data.split('Feature 0:')[1].split('\n');
+    result.value = data.features[0].properties.value;
+    result.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, data.features[0].geometry.coordinates);
+
     result.tt = TRANSLATIONS[lang];
-
-    for (var i = 1; i < result.data.length; i++) {
-        var splitResult = result.data[i]
-            .trim()
-            .split(' = ')
-            .map(function(val) {
-                return val.replace(/'/g, '');
-            });
-        result.properties[splitResult[0]] = splitResult[1];
-    }
-
-    result.properties.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, [
-        parseFloat(result.properties.x),
-        parseFloat(result.properties.y)
-    ]);
 
     return result;
 }
