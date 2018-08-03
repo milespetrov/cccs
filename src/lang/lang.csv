@@ -142,7 +142,7 @@ downloadSelector.description,"CDictumst curae nibh lectus massa torquent nisl ac
 downloadSelector.mapImage_group,Map image,1,Image de la carte,0
 downloadSelector.dataset_group,Source data,1,Image de la carte,0
 downloadSelector.png.shortName,,1,,0
-downloadSelector.png.fullName,PNG picutre,1,PNG picutre,0
+downloadSelector.png.fullName,PNG picture,1,PNG picture,0
 downloadSelector.png.qualifier,,1,,0
 downloadSelector.jpeg.shortName,,1,,0
 downloadSelector.jpeg.fullName,JPEG picture,1,Image JPEG,0

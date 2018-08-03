@@ -2,7 +2,7 @@ function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
             latlong: 'Latitude, Longitude',
-            trendValue: '50th ensemble 20-year average value'
+            trendValue: 'Projected 20-year average changes'
         },
 
         'fr-CA': {}
