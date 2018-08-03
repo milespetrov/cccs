@@ -251,13 +251,13 @@ $max-layers: 4;
     .cip-time-slider-container.layers-#{$i} /deep/ {
         margin: 0 calc(100% / #{$i} / 2);
 
-        // make handle a tiny bit wider than a label, so the bottom border of the handle protrudes beyoned the label boundaries
-        $handle-width: calc(100% / #{$i} + 1rem);
+        // make handle a tiny bit wider than a label, so the bottom border of the handle protrudes beyond the label boundaries
+        $handle-width: 100% / #{$i} + 1rem;
 
         // set the width of the handle (and move it correctly over the labels)
         .noUi-origin .noUi-handle {
-            width: $handle-width;
-            right: calc(#{$handle-width} / -2) !important;
+            width: calc(#{$handle-width});
+            right: calc((#{$handle-width}) / -2) !important;
         }
     }
 }
