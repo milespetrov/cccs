@@ -6,10 +6,10 @@ geo.coordinates.west,W,1,W,0
 geo.coordinates.north,N,1,N,0
 geo.coordinates.south,S,1,S,0
 geo.scrollguard,Use ctrl + scroll to zoom the map,1,Utilisez ctrl + scroll pour agrandir la carte,0
-map.cmip5_desc,"This map shows the seasonal and annual projected average change in surface wind speed, sea ice concentration, sea ice thickness, and snow depth between the years 2021-2100 for RCP 2.6, 4.5, and 8.5. The median projected change across the ensemble of CMIP5 climate models is shown.",1,"Cette carte montre la variation saisonnière et annuelle projetée de la vitesse du vent de surface, de la concentration de glace de mer, de l'épaisseur de la glace de mer et de la hauteur de neige entre 2021 et 2100 pour les RCP 2.6, 4.5 et 8.5. Le changement médian projeté à travers l'ensemble des modèles climatiques CMIP5 est montré.",0
-map.ahccd_desc,"The data consists of monthly, seasonal and annual means of homogenized daily maximum, minimum and mean surface air temperatures for more than 330 locations in Canada; monthly, seasonal and annual totals of adjusted daily rainfall, snowfall and total precipitation for more than 460 locations; homogenized monthly, seasonal and annual means of hourly surface wind speed at more than 110 locations; monthly, seasonal and annual means of hourly station and sea level pressure adjusted for more than 630 locations. The data are given for the entire period of observation. Please refer to the papers below for detailed information regarding the procedures for homogenization and adjustment.",1,"Les données comprennent les moyennes mensuelles, saisonnières et annuelles des températures de l'air de surface maximales, minimales et moyennes quotidiennes homogénéisées pour plus de 330 emplacements au Canada; les totaux mensuels, saisonniers et annuels des précipitations journalières ajustées, des chutes de neige et des précipitations totales pour plus de 460 emplacements; les moyennes mensuelles, saisonnières et annuelles homogénéisées de la vitesse horaire du vent à plus de 110 endroits; Moyens mensuels, saisonniers et annuels de pression horaire au niveau de la station et de la mer ajustés pour plus de 630 emplacements. Les données sont données pour toute la période d'observation. Veuillez vous reporter aux documents ci-dessous pour des informations détaillées concernant les procédures d'homogénéisation et d'ajustement.",0
-map.dcs_desc,"This map shows Downscale Climate Scenarios data.",1,"Cette carte montre les données de Scénarios Climatiques Bas.",0
-map.cangrd_desc,"This map shows Canadian Gridded Temperature and Precipitation Anomalies data.",1,"Cette carte montre les données de l'Anomalies de la température et des précipitations au Canada.",0
+map.cmip5_desc,"Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Projected changes in climate, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 1x1 degree grid resolution. The median projected changes across the multi-model ensemble are shown.",1,"Des scénarios climatiques basés sur un ensemble de projections de modèles climatiques mondiaux issus de la phase 5 du projet d'intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements de climat prévus par rapport à la période de référence de 1986-2005 sont fournis pour trois scénarios d’émission avec une résolution de grille de 1 x 1 degré. Les changements projetés médians dans l'ensemble multi-modèles sont affichés.",0
+map.ahccd_desc,"Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Extract a subset of the dataset for one or more stations using the Climate Data and Extraction Tool.",1,"Les données comprennent les moyennes mensuelles, saisonnières et annuelles des températures de l'air de surface maximales, minimales et moyennes quotidiennes homogénéisées pour plus de 330 emplacements au Canada; les totaux mensuels, saisonniers et annuels des précipitations journalières ajustées, des chutes de neige et des précipitations totales pour plus de 460 emplacements; les moyennes mensuelles, saisonnières et annuelles homogénéisées de la vitesse horaire du vent à plus de 110 endroits; Moyens mensuels, saisonniers et annuels de pression horaire au niveau de la station et de la mer ajustés pour plus de 630 emplacements. Les données sont données pour toute la période d'observation. Veuillez vous reporter aux documents ci-dessous pour des informations détaillées concernant les procédures d'homogénéisation et d'ajustement.",0
+map.dcs_desc,"Statistically downscaled climate scenarios of projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",1,"Cette carte montre les données de Scénarios Climatiques Bas.",0
+map.cangrd_desc,"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Shown here are seasonal and annual trends from 1948 to the present, which represent the departure from a mean reference period (1961-1990).",1,"Les données climatiques historiques maillées, également appelées données maillées canadiennes (CANGRD), sont des ensembles de données sur les anomalies historiques de température et de précipitations, interpolées à partir de données de stations climatiques ajustées et homogénéisées à une résolution de 50 km au Canada. On trouvera ici les tendances saisonnières et annuelles de 1948 à nos jours, qui représentent l’écart par rapport à une période de référence moyenne (1961-1990).",0
 map.capa_desc,"This map shows Canadian Precipitation Analysis data.",1,"Cette carte montre les données de l'Analyse des précipitations canadiennes.",0
 map.cansips_desc,"This map shows Canadian Seasonal to Inter-annual Prediction System data.",1,"Cette carte montre les données de Système de prévision interannuelle et saisonnière canadien.",0
 map.hydro_desc,"This map shows Hydrometric station data.",1,"Cette carte montre les données de stations hydrométriques.",0
@@ -89,18 +89,18 @@ timePeriodSelector.fall.qualifier,Sep - Nov,1,Sep - Nov,0
 timePeriodSelector.annual.fullName,Annual,1,Annuel,0
 timePeriodSelector.annual.shortName,Annual,1,Annuel,0
 timePeriodSelector.annual.qualifier,,1,,0
-rcpSelector.title,Emission scenario,1,Modèle,0
-rcpSelector.header,Emission scenario,1,RCP,0
-rcpSelector.description,"The Coupled Model Intercomparison Project Phase 5 (CMIP5) projections make use of Representative Concentration Pathways (RCPs), which are designed to provide plausible future scenarios of anthropogenic forcing.",1,"Les projections de la phase 5 du projet d'intercomparaison de modèles couplés (CMIP5) utilisent des voies de concentration représentatives (RCP), qui sont conçues pour fournir des scénarios futurs plausibles de forçage anthropique.",0
+rcpSelector.title,Emission scenario,1,Scénario d'émission,0
+rcpSelector.header,Emission scenario,1,Scénario d'émission,0
+rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Une série de scénarios dénommés Voies de concentration représentatives (RCP) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP sont conçus pour fournir des scénarios futurs plausibles des caractéristiques des émissions humaines.",0
 rcpSelector.all_rcp_models,,1,,0
 rcpSelector.rcp26.shortName,RCP 2.6,1,RCP 2.6,0
-rcpSelector.rcp26.fullName,Low emission scenario (RCP 2.6),1,Voie de concentration représentative 2.6,0
+rcpSelector.rcp26.fullName,Low emission scenario (RCP 2.6),1,"Scénario de faible émission (RCP 2,6)",0
 rcpSelector.rcp26.qualifier,RCP 2.6,1,RCP 2.6,0
 rcpSelector.rcp45.shortName,RCP 4.5,1,RCP 4.5,0
-rcpSelector.rcp45.fullName,Moderate emission scenario (RCP 4.5),1,Voie de concentration représentative 4.5,0
+rcpSelector.rcp45.fullName,Moderate emission scenario (RCP 4.5),1,"Scénario d'émission modérée (RCP 4,5)",0
 rcpSelector.rcp45.qualifier,RCP 4.5,1,RCP 4.5,0
 rcpSelector.rcp85.shortName,RCP 8.5,1,RCP 8.5,0
-rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Voie de concentration représentative 8,5",0
+rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Scénario d'émission élevée (RCP 8,5)",0
 rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,0
 datasetSelector.title,Dataset,1,Dataset,0
 datasetSelector.header,Datasets,1,Jeux de données,0
@@ -110,14 +110,14 @@ datasetSelector.ahccd.shortName,AHCCD,1,AHCCD,0
 datasetSelector.ahccd.fullName,Adjusted and homogenized Canadian Climate Data,1,Données climatiques canadiennes ajustées et homogénéisées,0
 datasetSelector.ahccd.qualifier,AHCCD,1,AHCCD,0
 datasetSelector.cmip5.shortName,CMIP Phase 5,1,Phase 5 du CMIP,0
-datasetSelector.cmip5.fullName,Coupled Model Intercomparison Project Phase 5,1,"Projet d'intercomparaison de modèles couplés, phase 5",0
+datasetSelector.cmip5.fullName,Global climate model scenarios,1,"Scénarios de modèles climatiques globaux",0
 datasetSelector.cmip5.qualifier,CMIP5,1,CMIP5,0
 datasetSelector.cangrd.shortName,CanGRD,1,CanGRD,0
-datasetSelector.cangrd.fullName,Canadian Gridded Temperature and Precipitation Anomalies,1,Anomalies de la température et des précipitations au Canada,0
+datasetSelector.cangrd.fullName,Gridded Historical Climate Data,1,Données climatiques historiques maillées,0
 datasetSelector.cangrd.qualifier,CanGRD,1,CanGRD,0
-datasetSelector.dcs.shortName,DCS,1,DCS,0
-datasetSelector.dcs.fullName,Downscale Climate Scenario,1,Scénario climatique bas de gamme,0
-datasetSelector.dcs.qualifier,DCS,1,DCS,0
+datasetSelector.dcs.shortName,Downscaled,1,Réduit,0
+datasetSelector.dcs.fullName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,0
+datasetSelector.dcs.qualifier,Downscaled,1,Réduit,0
 datasetSelector.capa.shortName,CAPA,1,CAPA,0
 datasetSelector.capa.fullName,Canadian Precipitation Analysis,1,Scénario climatique bas de gamme,0
 datasetSelector.capa.qualifier,CAPA,1,CAPA,0
@@ -218,8 +218,8 @@ ahccd.tmax.qualifier,,1,,0
 ahccd.precip.fullName,Total precipitation,1,Total des précipitations,0
 ahccd.precip.shortName,Total precipitation,1,Total des précipitations,0
 ahccd.precip.qualifier,,1,,0
-ahccd.stnpress.fullName,Surface pressure,1,Pression de surface,0
-ahccd.stnpress.shortName,Surface pressure,1,Pression de surface,0
+ahccd.stnpress.fullName,Station pressure,1,Pression de la station,0
+ahccd.stnpress.shortName,Station pressure,1,Pression de la station,0
 ahccd.stnpress.qualifier,,1,,0
 ahccd.seapress.fullName,Sea level pressure,1,Pression de niveau,0
 ahccd.seapress.shortName,Sea level pressure,1,Pression de niveau,0
@@ -230,8 +230,8 @@ ahccd.sfcwind.qualifier,,1,,0
 cmip5.tmean.fullName,Mean temperature,1,Température moyenne,0
 cmip5.tmean.shortName,Mean temperature,1,Température moyenne,0
 cmip5.tmean.qualifier,,1,,0
-cmip5.precip.fullName,Total precipitation,1,Total des précipitations,0
-cmip5.precip.shortName,Total precipitation,1,Total des précipitations,0
+cmip5.precip.fullName,Mean precipitation,1,Précipitation moyenne,0
+cmip5.precip.shortName,Mean precipitation,1,Précipitation moyenne,0
 cmip5.precip.qualifier,,1,,0
 cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
 cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
