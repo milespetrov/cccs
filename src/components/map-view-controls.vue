@@ -98,10 +98,7 @@ export default class MapViewControls extends Vue {
     showCollapse: boolean = false;
 
     tDSPath: string = 'downloadSelector';
-
-    // TODO: update before going to production
-    // TODO: we might want to move this to a config file if this url changes often
-    queryToolBaseUrl: string = 'http://climate-change.dev.ec.gc.ca/climate-data/#';
+    queryToolBaseUrl: string = '';
 
     get queryToolRoute(): string {
         return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
@@ -110,6 +107,12 @@ export default class MapViewControls extends Vue {
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);
+    }
+
+    async mounted(): Promise<void> {
+        await $.getJSON('assets/configs/app-config.json', data => {
+            this.queryToolBaseUrl = data.queryToolUrl;
+        });
     }
 }
 </script>
