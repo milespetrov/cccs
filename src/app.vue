@@ -22,7 +22,7 @@
                 <h4 class="text-info mrgn-tp-sm"> {{ $t('page.needHelp.title') }}? </h4>
                 
                 <i18n :path="'page.needHelp.body'" tag="p">
-                    <a :href="$t(`page.needHelp.serviceDeskUrl`)">{{ $t(`page.needHelp.serviceDeskName`) }}</a>
+                    <a :href="serviceDeskUrl">{{ $t(`page.needHelp.serviceDeskName`) }}</a>
                     <a href="" role="button" 
                         @click.prevent="openRampHelp" 
                         @keyup.space="openRampHelp">{{ $t(`page.needHelp.ramphelp`) }}</a>
@@ -104,7 +104,8 @@ export default class App extends mixins(UpdateRouteMixin) {
         this.updateRoute();
     }
 
-    queryToolBaseUrl: string;
+    queryToolBaseUrl: string = '';
+    serviceDeskUrl: string = '';
 
     get queryToolRoute(): string {
         return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
@@ -113,6 +114,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     async created(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', data => {
             this.queryToolBaseUrl = data.queryToolUrl;
+            this.serviceDeskUrl = data.serviceDeskUrl;
         });
         // This is to allow the back/forward browser functions to update the store
         // We flag internal updates with `internalRouteUpdate` in the store so that

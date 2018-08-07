@@ -204,7 +204,6 @@ units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
 page.needHelp.title,Need help,1,Besoin d'aide pour,0
 page.needHelp.body,Contact the {0} support desk or consult the {1} documentation.,1,Communiquez avec <a href="https://climate-change.canada.ca/support-desk">le bureau de soutien des Services canadiens des changements climatiques</a>.,0
-page.needHelp.serviceDeskUrl,https://climate-change.canada.ca/support-desk,1,,0
 page.needHelp.serviceDeskName,Canadian Climate Change Services,1,,0
 page.needHelp.ramphelp,map viewer help,1,,0
 ahccd.stations.fullName,Climate stations,1,Stations climatiques,0
