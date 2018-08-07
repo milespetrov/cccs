@@ -48,7 +48,7 @@
                         <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
                             <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
 
-                            <b-dropdown-item target="_blank" href="https://open.canada.ca/en/open-data">
+                            <b-dropdown-item target="_blank" :href="dataCatalogueUrl">
 
                                 <i18n :path="`${tDSPath}.dataCatalogue.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
@@ -98,10 +98,8 @@ export default class MapViewControls extends Vue {
     showCollapse: boolean = false;
 
     tDSPath: string = 'downloadSelector';
-
-    // TODO: update before going to production
-    // TODO: we might want to move this to a config file if this url changes often
-    queryToolBaseUrl: string = 'http://climate-change.dev.ec.gc.ca/climate-data/#';
+    queryToolBaseUrl: string = '';
+    dataCatalogueUrl: string = '';
 
     get queryToolRoute(): string {
         return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
@@ -110,6 +108,13 @@ export default class MapViewControls extends Vue {
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);
+    }
+
+    async mounted(): Promise<void> {
+        await $.getJSON('assets/configs/app-config.json', data => {
+            this.queryToolBaseUrl = data.queryToolUrl;
+            this.dataCatalogueUrl = data.dataCatalogueUrl;
+        });
     }
 }
 </script>

@@ -5,7 +5,9 @@
         </div>
 
         <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-            <p>{{ $t(`map.${datasetId}_desc`) }}</p>
+            <i18n :path="`map.${datasetId}_desc`" tag="p">
+                <a :href="`${queryToolBaseUrl}${queryToolRoute}`" target="_blank">{{ $t(`map.extractTool`) }}</a>
+            </i18n>
         </aside>
 
         <div class="cip-strip cip-view-controls">
@@ -20,7 +22,7 @@
                 <h4 class="text-info mrgn-tp-sm"> {{ $t('page.needHelp.title') }}? </h4>
                 
                 <i18n :path="'page.needHelp.body'" tag="p">
-                    <a :href="$t(`page.needHelp.serviceDeskUrl`)">{{ $t(`page.needHelp.serviceDeskName`) }}</a>
+                    <a :href="serviceDeskUrl">{{ $t(`page.needHelp.serviceDeskName`) }}</a>
                     <a href="" role="button" 
                         @click.prevent="openRampHelp" 
                         @keyup.space="openRampHelp">{{ $t(`page.needHelp.ramphelp`) }}</a>
@@ -61,9 +63,11 @@ import { MapPoint } from './store';
 import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
 
-import { ViewType } from '@/types';
+import { ViewType, DatasetId } from '@/types';
 import MapView from './components/map-view.vue';
 import MapViewControls from './components/map-view-controls.vue';
+import { datasets } from '@/configs/datasets';
+import { i18n } from './lang';
 
 @Component({
     components: {
@@ -87,7 +91,7 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     reloadKey: string = '';
 
-    @State datasetId: string;
+    @State datasetId: DatasetId;
 
     @Watch('datasetId')
     async onDatasetChange(newValue: string, oldValue: string) {
@@ -100,7 +104,18 @@ export default class App extends mixins(UpdateRouteMixin) {
         this.updateRoute();
     }
 
-    created(): void {
+    queryToolBaseUrl: string = '';
+    serviceDeskUrl: string = '';
+
+    get queryToolRoute(): string {
+        return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
+    }
+
+    async created(): Promise<void> {
+        await $.getJSON('assets/configs/app-config.json', data => {
+            this.queryToolBaseUrl = data.queryToolUrl;
+            this.serviceDeskUrl = data.serviceDeskUrl;
+        });
         // This is to allow the back/forward browser functions to update the store
         // We flag internal updates with `internalRouteUpdate` in the store so that
         // we don't double up on internal state commits
