@@ -18,7 +18,14 @@
 
             <section class="alert alert-info">
                 <h4 class="text-info mrgn-tp-sm"> {{ $t('page.needHelp.title') }}? </h4>
-                <p v-html="$t('page.needHelp.body')"></p>
+                
+                <i18n :path="'page.needHelp.body'" tag="p">
+                    <a :href="$t(`page.needHelp.serviceDeskUrl`)">{{ $t(`page.needHelp.serviceDeskName`) }}</a>
+                    <a href="" role="button" 
+                        @click.prevent="openRampHelp" 
+                        @keyup.space="openRampHelp">{{ $t(`page.needHelp.ramphelp`) }}</a>
+                </i18n>
+
             </section>
 
             <div class="pagedetails">
@@ -139,6 +146,10 @@ export default class App extends mixins(UpdateRouteMixin) {
 
             storeFns[parameter](value);
         });
+    }
+
+    openRampHelp(): void {
+        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.help();
     }
 }
 </script>
