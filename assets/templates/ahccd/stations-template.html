@@ -1,18 +1,7 @@
 <div class="cmip5-details">
-
-    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.station_name }}</h4>
-    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.stationName }}</span>
-
-    <md-divider class="mrgn-bttm-md"></md-divider>
-
     <dl>
         <dt>
-            <span>{{ self.layer.tt.stationId }}</span>
-        </dt>
-        <dd>{{ self.layer.properties.station_id }}</dd>
-
-        <dt>
-            <span>{{ self.layer.tt.province.title }}</span>
+            <span>{{ self.layer.tt.province }}</span>
         </dt>
         <dd>{{ self.layer.properties.province }}</dd>
 
@@ -20,6 +9,11 @@
             <span>{{ self.layer.tt.elevation }}</span>
         </dt>
         <dd>{{ self.layer.properties.elevation }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.stationId }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.station_id }}</dd>
     </dl>
 </div>
 

@@ -2,37 +2,13 @@ function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
             latlong: 'Latitude, Longitude',
-            trendValue: 'Climate value',
-            measurementUnit: {
-                total_precip: 'mm',
-                //rain: 'mm ????',
-                temp_mean: '°C',
-                temp_max: '°C',
-                temp_min: '°C',
-                //snow: 'mm ??',
-                wind_speed: 'km/h',
-                pressure_station: 'kPa',
-                pressure_sea_level: 'kPa'
+            trendValue: {
+                precip: 'Trend of relative total precipitation change (%) over 1948-2012',
+                tmean: 'Trend of temperature change (°C) over 1948-2016'
             },
-            timePeriod: {
-                title: 'Time period',
-                Jan: 'January',
-                Feb: 'February',
-                Mar: 'March',
-                Apr: 'April',
-                May: 'May',
-                Jun: 'June',
-                Jul: 'July',
-                Aug: 'August',
-                Sep: 'September',
-                Oct: 'October',
-                Nov: 'November',
-                Dec: 'December',
-                Win: 'Winter',
-                Spr: 'Spring',
-                Sum: 'Summer',
-                Fal: 'Autumn',
-                Ann: 'Annual'
+            learnMore: {
+                precip: 'Learn more about CANGRD total precipitation trend for 1948–2012',
+                tmean: 'Learn more about CANGRD mean temperature trend for 1948–2016'
             }
         },
 
@@ -41,6 +17,8 @@ function parser(data, lang) {
 
     console.log(data, lang);
     var result = {};
+
+    result.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
     result.value = data.features[0].properties.value;
     result.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, data.features[0].geometry.coordinates);

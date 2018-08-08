@@ -7,11 +7,12 @@
 
     <dl>
         <dt>
-            <span>{{ self.layer.tt.trendValue }}</span>
+            <span>{{ self.layer.tt.trendValue.default }} {{ self.layer.tt.trendValue[self.layer.variable] }}</span>
         </dt>
         <dd>{{ self.layer.value }}</dd>
     </dl>
 
+    <a href=#>{{ self.layer.tt.learnMore.default }} {{ self.layer.tt.learnMore[self.layer.variable] }}</a>
 </div>
 
 <style>

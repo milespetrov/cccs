@@ -2,37 +2,23 @@ function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
             latlong: 'Latitude, Longitude',
-            trendValue: '50th ensemble 20-year average value',
-            measurementUnit: {
-                total_precip: 'mm',
-                //rain: 'mm ????',
-                temp_mean: '°C',
-                temp_max: '°C',
-                temp_min: '°C',
-                //snow: 'mm ??',
-                wind_speed: 'km/h',
-                pressure_station: 'kPa',
-                pressure_sea_level: 'kPa'
+            trendValue: {
+                default: 'Projected 20-year average changes in',
+                tmean: 'mean temperature (degree Celsius)',
+                sic: 'sea ice concentration (%)',
+                sit: 'sea ice thickness (%)',
+                precip: 'mean precipitation (%)',
+                sfcwind: 'wind speed (%)',
+                snd: 'snow depth (%)'
             },
-            timePeriod: {
-                title: 'Time period',
-                Jan: 'January',
-                Feb: 'February',
-                Mar: 'March',
-                Apr: 'April',
-                May: 'May',
-                Jun: 'June',
-                Jul: 'July',
-                Aug: 'August',
-                Sep: 'September',
-                Oct: 'October',
-                Nov: 'November',
-                Dec: 'December',
-                Win: 'Winter',
-                Spr: 'Spring',
-                Sum: 'Summer',
-                Fal: 'Autumn',
-                Ann: 'Annual'
+            learnMore: {
+                default: 'Learn more about projected',
+                tmean: 'mean temperature change',
+                precip: 'mean precipitation change',
+                sic: 'sea ice concentration change',
+                sit: 'sea ice thickness change',
+                sfcwind: 'wind speed change',
+                snd: 'snow depth change'
             }
         },
 
@@ -45,6 +31,8 @@ function parser(data, lang) {
     }
 
     var result = {};
+
+    result.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
     result.value = data.features[0].properties.value;
     result.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, data.features[0].geometry.coordinates);
