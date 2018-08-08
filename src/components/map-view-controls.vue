@@ -31,7 +31,7 @@
 
                         <div class="cip-dropdown-info">
                             <span class="dropdown-header">{{ $t(`${tDSPath}.header`) }}</span>
-                            <div class="cip-dropdown-description">{{ $t(`${tDSPath}.description`) }}</div>
+                            <!--div class="cip-dropdown-description">{{ $t(`${tDSPath}.description`) }}</div-->
                         </div>
 
                         <b-dropdown-divider></b-dropdown-divider>
