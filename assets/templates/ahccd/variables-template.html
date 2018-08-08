@@ -1,20 +1,15 @@
 <div class="cmip5-details">
 
-    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.station_id }}</h4>
-    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.stationId }}</span>
-
-    <md-divider class="mrgn-bttm-md"></md-divider>
-
     <dl>
+        <dt>
+            <span>{{ self.layer.tt.province }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.province }}</dd>
+
         <dt>
             <span>{{ self.layer.tt.timePeriod.title }}</span>
         </dt>
         <dd>{{ self.layer.tt.timePeriod[self.layer.properties.period] }}</dd>
-
-        <dt>
-            <span>{{ self.layer.tt.measurementType.title }}</span>
-        </dt>
-        <dd>{{ self.layer.tt.measurementType[self.layer.properties.measurement_type] }}</dd>
 
         <dt>
             <span>{{ self.layer.tt.trendValue }}</span>
@@ -24,6 +19,22 @@
         </dd>
         <dd ng-if="!self.layer.properties.trend_value">{{ self.layer.tt.no_trend }}</dd>
     </dl>
+
+    <md-divider class="mrgn-bttm-md"></md-divider>
+
+    <dl>
+        <dt>
+            <span>{{ self.layer.tt.elevation }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.elevation }}</dd>
+
+        <dt>
+            <span>{{ self.layer.tt.stationId }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.station_id }}</dd>
+    </dl>
+
+    <a href=#>{{ self.layer.tt.learnMore.default }} {{ self.layer.tt.learnMore[self.layer.properties.variable] }}</a>
 
 </div>
 

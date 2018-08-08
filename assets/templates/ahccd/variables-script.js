@@ -4,25 +4,13 @@ function parser(data, lang) {
             stationId: 'AHCCD station ID',
             trendValue: 'Trend value',
             no_trend: 'No trend calculated',
-            measurementType: {
-                title: 'Measurement type',
-                total_precip: 'Total precipitation',
-                //rain: 'Rain ????',
-                temp_mean: 'Mean temperature',
-                temp_max: 'Maximum temperature',
-                temp_min: 'Minimum temperature',
-                //snow: 'Snow depth',
-                wind_speed: 'Wind speed',
-                pressure_station: 'Surface pressure',
-                pressure_sea_level: 'Sea level pressure'
-            },
+            elevation: 'Elevation',
+            province: 'Province/Territory',
             measurementUnit: {
                 total_precip: 'mm',
-                //rain: 'mm ????',
                 temp_mean: '°C',
                 temp_max: '°C',
                 temp_min: '°C',
-                //snow: 'mm ??',
                 wind_speed: 'km/h',
                 pressure_station: 'kPa',
                 pressure_sea_level: 'kPa'
@@ -43,9 +31,19 @@ function parser(data, lang) {
                 Dec: 'December',
                 Win: 'Winter',
                 Spr: 'Spring',
-                Sum: 'Summer',
+                Smr: 'Summer',
                 Fal: 'Autumn',
                 Ann: 'Annual'
+            },
+            learnMore: {
+                default: 'Learn more about',
+                tmean: 'homogenized mean temperature',
+                tmin: 'homogenized minimum temperature',
+                tmax: 'homogenized maximum temperature',
+                precip: 'adjusted total precipitation',
+                sfcwind: 'homogenized wind speed',
+                stnpress: 'homogenized station pressure',
+                seapress: 'homogenized sea level pressure'
             }
         },
 
@@ -55,6 +53,8 @@ function parser(data, lang) {
     console.log(data, lang);
 
     data.properties = {};
+
+    data.properties.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
     data.forEach(function(el) {
         data.properties[el.key] = el.value;
