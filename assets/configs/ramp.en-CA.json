@@ -38,7 +38,7 @@
             "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
             "title": {
-                "value": "Climate maps"
+                "value": ""
             },
             "map": {},
             "mapElements": {},
@@ -46,7 +46,7 @@
                 "showInfoSymbology": true
             },
             "footnote": {
-                "value": ""
+                "value": "Generated using the Climate Maps viewer at http://climate-change.canada.ca/climate-maps."
             }
         },
         "search": {
