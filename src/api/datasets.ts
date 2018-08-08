@@ -86,23 +86,6 @@ class CanGrdApi extends DatasetApi {
     }
 }
 
-class CanSIPSApi extends DatasetApi {
-    constructor(state: AppState) {
-        super(state, DatasetId.CanSIPS);
-    }
-
-    /**
-     * Returns a dataset config url based on the curent state.
-     *
-     * @readonly
-     * @type {string}
-     * @memberof CanSIPSApi
-     */
-    get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
-    }
-}
-
 class CAPAApi extends DatasetApi {
     constructor(state: AppState) {
         super(state, DatasetId.CAPA);
@@ -274,7 +257,6 @@ function wrap(datasetType: new (state: AppState) => DatasetApi) {
 export default {
     [DatasetId.AHCCD]: wrap(AHCCDApi),
     [DatasetId.CANGRD]: wrap(CanGrdApi),
-    [DatasetId.CanSIPS]: wrap(CanSIPSApi),
     [DatasetId.CAPA]: wrap(CAPAApi),
     [DatasetId.ClimateDaily]: wrap(DailyApi),
     [DatasetId.ClimateMonthly]: wrap(MonthlyApi),

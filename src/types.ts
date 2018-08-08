@@ -11,7 +11,6 @@ export enum DatasetId {
     ClimateNormal = 'normal',
     ClimateMonthly = 'monthly',
     ClimateDaily = 'daily',
-    CanSIPS = 'cansips',
     CAPA = 'capa',
     Hydrometric = 'hydro'
 }

@@ -12,7 +12,6 @@ map.extractTool,Climate Data and Extraction Tool
 map.dcs_desc,"Statistically downscaled climate scenarios of projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown. Extract a subset of this dataset, or from monthly, seasonal and annual statistically downscaled ensembles, using the {0}.",1,"Cette carte montre les données de Scénarios Climatiques Bas. {0}",0
 map.cangrd_desc,"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Shown here are seasonal and annual trends from 1948 to the present, which represent the departure from a mean reference period (1961-1990). Extract a subset of this dataset, or from monthly, seasonal and annual CANGRD anomalies, using the {0}.",1,"Les données climatiques historiques maillées, également appelées données maillées canadiennes (CANGRD), sont des ensembles de données sur les anomalies historiques de température et de précipitations, interpolées à partir de données de stations climatiques ajustées et homogénéisées à une résolution de 50 km au Canada. On trouvera ici les tendances saisonnières et annuelles de 1948 à nos jours, qui représentent l’écart par rapport à une période de référence moyenne (1961-1990). {0}",0
 map.capa_desc,"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of precipitation amounts that occurred over a period of 6 and 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at a horizontal resolution of 10 km. The 6 hour analysis is produced 4 times a day and is valid at 00, 06, 12 and 18 UTC. The 24 hour analysis is produced only once a day and is valid at 12 UTC. A preliminary analysis is available approximately 1 hour after the end of the accumulation period and a final one is generated 6 hours later in order to assimilate more gauge data.",1,"L'Analyse régionale déterministe de précipitation (ARPD) produit une estimation optimale de la quantité de précipitation survenue au cours d’une période de 6 et 24 heures. Cet estimé intègre des relevés provenant de capteurs de précipitation, de radars météos et de modèles de prévision numérique du temps. La couverture géographique est l'Amérique du Nord (Canada, États-Unis et le Mexique). Les données sont disponibles à une résolution spatiale horizontale de 10 km. L'analyse 6 heures est produite 4 fois par jour et est valide à 00, 06, 12 et 18 UTC. L’analyse 24 heures est produite qu'une fois par jour et est valide à 12 UTC. Une analyse préliminaire est disponible environ 1 heure après la fin de la période d’accumulation et une analyse finale est générée 6 heures plus tard dans le but d’assimiler plus de relevés pluviométriques.",0
-map.cansips_desc,"This map shows Canadian Seasonal to Inter-annual Prediction System data.",1,"Cette carte montre les données de Système de prévision interannuelle et saisonnière canadien.",0
 map.hydro_desc,"This map shows Hydrometric station data.",1,"Cette carte montre les données de stations hydrométriques.",0
 map.daily_desc,"Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les données quotidiennes proviennent de deux sources de données; Stations climatiques quotidiennes produisant une ou deux observations par jour de température, de précipitations et de stations horaires (voir les séries de données horaires) qui produisent généralement plus d'éléments météorologiques, par ex. vent ou neige au sol.",0
 map.monthly_desc,"A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.",1,"Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours.",1
@@ -24,7 +23,6 @@ map.controlsCluster.timeline,Time period:,1,Chronologie:,0
 settings.title,Settings,1,Paramètres,0
 variableSelector.title,Variable,1,Variable,0
 variableSelector.header,Climate data,1,Données climatiques,0
-variableSelector.description,"An essential climate variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’ s climate",1,"Une variable climatique essentielle (ECV) est une variable physique, chimique ou biologique ou un groupe de variables liées qui contribue de manière critique à la caractérisation du climat de la Terre.",0
 variableSelector.stations_group,Stations,1,Stations,0
 variableSelector.temperature_group,Temperature,1,Température,0
 variableSelector.wind_group,Wind,1,Vent,0
@@ -37,7 +35,6 @@ variableSelector.historic,Historic,1,Historique,0
 variableSelector.future,Future,1,Avenir,0
 timePeriodSelector.title,Time of year,1,Période de temps,0
 timePeriodSelector.header,Time of year,1,Période de temps,0
-timePeriodSelector.description,"Latest three month average temperature and precipitation anomalies for the United States. The difference between weather and climate is a measure of time. Weather is what conditions of the atmosphere are over a short period of time, and climate is how the atmosphere ""behaves"" over relatively long periods of time.",1,"Les trois dernières anomalies moyennes de température et de précipitations pour les États-Unis. La différence entre le temps et le climat est une mesure du temps. Le temps est ce que les conditions de l'atmosphère sont sur une courte période de temps, et le climat est la façon dont l'atmosphère ""se comporte"" sur des périodes relativement longues.",0
 timePeriodSelector.monthly_group,Monthly,1,Mensuel,0
 timePeriodSelector.season_group,Seasonal,1,Saisonnier,0
 timePeriodSelector.annual_group,Annual,1,Annuel,0
@@ -92,8 +89,8 @@ timePeriodSelector.fall.qualifier,Sep - Nov,1,Sep - Nov,0
 timePeriodSelector.annual.fullName,Annual,1,Annuel,0
 timePeriodSelector.annual.shortName,Annual,1,Annuel,0
 timePeriodSelector.annual.qualifier,,1,,0
-rcpSelector.title,Emission scenario,1,Scénario d'émission,0
-rcpSelector.header,Emission scenario,1,Scénario d'émission,0
+rcpSelector.title,Scenarios,1,Scénario,0
+rcpSelector.header,Scenarios,1,Scénario,0
 rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Une série de scénarios dénommés Voies de concentration représentatives (RCP) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP sont conçus pour fournir des scénarios futurs plausibles des caractéristiques des émissions humaines.",0
 rcpSelector.all_rcp_models,,1,,0
 rcpSelector.rcp26.shortName,RCP 2.6,1,RCP 2.6,0
@@ -107,7 +104,6 @@ rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Scénario d'émis
 rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,0
 datasetSelector.title,Dataset,1,Dataset,0
 datasetSelector.header,Datasets,1,Jeux de données,0
-datasetSelector.description,"Climate models use quantitative methods to simulate the interactions of the important drivers of climate, including atmosphere, oceans, land surface and ice. They are used for a variety of purposes from study of the dynamics of the climate system to projections of future climate.",1,"Les modèles climatiques utilisent des méthodes quantitatives pour simuler les interactions des facteurs importants du climat, y compris l'atmosphère, les océans, la surface terrestre et la glace. Ils sont utilisés à diverses fins, depuis l'étude de la dynamique du système climatique jusqu'aux projections du climat futur.",0
 datasetSelector.all_datasets,,1,,0
 datasetSelector.ahccd.shortName,AHCCD,1,AHCCD,0
 datasetSelector.ahccd.fullName,Adjusted and homogenized Canadian Climate Data,1,Données climatiques canadiennes ajustées et homogénéisées,0
@@ -124,24 +120,20 @@ datasetSelector.dcs.qualifier,Downscaled,1,Réduit,0
 datasetSelector.capa.shortName,RDPA,1,ARDP,0
 datasetSelector.capa.fullName,Regional Deterministic Precipitation Analysis,1,Analyse Régionale Déterministe de précipitation,0
 datasetSelector.capa.qualifier,RDPA,1,ARDP,0
-datasetSelector.cansips.shortName,CanSIPS,1,SPISCan,0
-datasetSelector.cansips.fullName,Canadian Seasonal to Inter-annual Prediction System,1,Système de prévision interannuelle et saisonnière canadien,0
-datasetSelector.cansips.qualifier,CanSIPS,1,SPISCan,0
 datasetSelector.daily.shortName,Daily,1,Quotidien,0
-datasetSelector.daily.fullName,Daily Data,1,Données quotidiennes,0
+datasetSelector.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,0
 datasetSelector.daily.qualifier,Daily,1,Quotidien,0
 datasetSelector.monthly.shortName,Monthly,1,Mensuel,0
-datasetSelector.monthly.fullName,Monthly Summaries,1,Résumés mensuels,0
+datasetSelector.monthly.fullName,Monthly climate observation summaries,1,Résumés mensuels d'observations climatiques,0
 datasetSelector.monthly.qualifier,Monthly,1,Mensuel,0
 datasetSelector.normal.shortName,Normals,1,Normales,0
-datasetSelector.normal.fullName,1981-2010 Normals,1,1981-2010 Normales,0
+datasetSelector.normal.fullName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
 datasetSelector.normal.qualifier,Normals,1,Normales,0
 datasetSelector.hydro.shortName,Hydrometric,1,Hydrométrique,0
 datasetSelector.hydro.fullName,Hydrometric station data,1,Données de stations hydrométriques,0
 datasetSelector.hydro.qualifier,Hydrometric,1,Hydrométrique,0
 downloadSelector.title,Download,1,Télécharger,0
 downloadSelector.header,Download,1,Télécharger,0
-downloadSelector.description,"CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortor primis sodales ullamcorper vestibulum, phasellus posuere purus metus cubilia vulputate ut.",1,"CDictumst curae nibh lectus massa torquent nisl ac tempus, risus gravida tortur primis sodales ullamcorper vestibule, phasellus posuere purus metus cubilia vulputate ut.",0
 downloadSelector.mapImage_group,Map image,1,Image de la carte,0
 downloadSelector.dataset_group,Source data,1,Image de la carte,0
 downloadSelector.png.shortName,,1,,0
@@ -313,30 +305,6 @@ capa.hrdpa.qualifier,HRDPA,1,HRDPA,0
 capa.rdpa.fullName,Regional Deterministic Precipitation Analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.shortName,Regional Deterministic Precipitation Analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.qualifier,RDPA,1,RDPA,0
-cansips.seapress.fullName,Sea level pressure,1,,0
-cansips.seapress.shortName,Sea level pressure,1,,0
-cansips.seapress.qualifier,,1,,0
-cansips.precip.fullName,Instantaneous precipitation rate,1,,0
-cansips.precip.shortName,Instantaneous precipitation rate,1,,0
-cansips.precip.qualifier,,1,,0
-cansips.tsurface.fullName,Surface temperature,1,,0
-cansips.tsurface.shortName,Surface temperature,1,,0
-cansips.tsurface.qualifier,,1,,0
-cansips.twater.fullName,Water temperature,1,,0
-cansips.twater.shortName,Water temperature,1,,0
-cansips.twater.qualifier,,1,,0
-cansips.geopotential.fullName,Geopotential height at 500mb,1,,0
-cansips.geopotential.shortName,Geopotential height at 500mb,1,,0
-cansips.geopotential.qualifier,,1,,0
-cansips.tmean.fullName,Temperature at 850mb,1,,0
-cansips.tmean.shortName,Temperature at 850mb,1,,0
-cansips.tmean.qualifier,,1,,0
-cansips.gustdir.fullName,Wind direction at 200mb,1,,0
-cansips.gustdir.shortName,Wind direction at 200mb,1,,0
-cansips.gustdir.qualifier,,1,,0
-cansips.gustdir850.fullName,Wind direction at 850mb,1,,0
-cansips.gustdir850.shortName,Wind direction at 850mb,1,,0
-cansips.gustdir850.qualifier,,1,,0
 ahccd.tooltips.station_title,AHCCD station name,1,,0
 ahccd.tooltips.value_title,Trend value,1,,0
 ahccd.tooltips.no_trend,No trend calculated,1,,0

@@ -11,7 +11,7 @@
 
         <div class="cip-dropdown-info">
             <span class="dropdown-header">{{ $t(`${tPath}.header`) }}</span>
-            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
+            <div class="cip-dropdown-description" v-if="tPath === 'rcpSelector'">{{ $t(`${tPath}.description`) }}</div>
         </div>
 
         <b-dropdown-divider></b-dropdown-divider>
