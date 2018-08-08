@@ -95,7 +95,7 @@
     {
       "id": "cities",
       "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
       "name": "Cities",
       "expectedResponseTime": 10000,
       "state": {
@@ -117,7 +117,7 @@
     {
       "id": "provinces",
       "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
       "name": "Provinces",
       "expectedResponseTime": 10000,
       "state": {
@@ -297,7 +297,7 @@
     {
       "id": "cities",
       "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
       "name": "[fr] Cities",
       "expectedResponseTime": 10000,
       "state": {
@@ -319,7 +319,7 @@
     {
       "id": "provinces",
       "layerType": "esriTile",
-      "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer",
+      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
       "name": "[fr] Provinces",
       "expectedResponseTime": 10000,
       "state": {

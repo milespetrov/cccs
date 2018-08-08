@@ -5,14 +5,14 @@
             "name": "Grid",
             "controls": ["visibility", "opacity", "reload", "settings"],
             "layerType": "esriTile",
-            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/CMIP5_Grid/MapServer"
+            "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/CMIP5_Grid/MapServer"
         },
         {
             "id": "provinces",
             "name": "Provinces",
             "controls": ["visibility", "opacity", "reload", "settings"],
             "layerType": "esriTile",
-            "url": "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Provinces/MapServer"
+            "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
         },
         {
             "id": "labels",

@@ -44,7 +44,7 @@
                 "id": "cities",
                 "layerType": "esriTile",
                 "url":
-                    "http://vmarcgisdev01.canadaeast.cloudapp.azure.com/arcgis/rest/services/Overlays/Cities/MapServer",
+                    "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
                 "name": "Cities",
                 "expectedResponseTime": 10000,
                 "state": {
