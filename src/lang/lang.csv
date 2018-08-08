@@ -11,12 +11,14 @@ map.ahccd_desc,"Adjusted and Homogenized Canadian Climate Data (AHCCD) are clima
 map.extractTool,Climate Data and Extraction Tool
 map.dcs_desc,"Statistically downscaled climate scenarios of projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown. Extract a subset of this dataset, or from monthly, seasonal and annual statistically downscaled ensembles, using the {0}.",1,"Cette carte montre les données de Scénarios Climatiques Bas. {0}",0
 map.cangrd_desc,"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Shown here are seasonal and annual trends from 1948 to the present, which represent the departure from a mean reference period (1961-1990). Extract a subset of this dataset, or from monthly, seasonal and annual CANGRD anomalies, using the {0}.",1,"Les données climatiques historiques maillées, également appelées données maillées canadiennes (CANGRD), sont des ensembles de données sur les anomalies historiques de température et de précipitations, interpolées à partir de données de stations climatiques ajustées et homogénéisées à une résolution de 50 km au Canada. On trouvera ici les tendances saisonnières et annuelles de 1948 à nos jours, qui représentent l’écart par rapport à une période de référence moyenne (1961-1990). {0}",0
-map.capa_desc,"This map shows Canadian Precipitation Analysis data.",1,"Cette carte montre les données de l'Analyse des précipitations canadiennes.",0
+map.capa_desc,"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of precipitation amounts that occurred over a period of 6 and 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at a horizontal resolution of 10 km. The 6 hour analysis is produced 4 times a day and is valid at 00, 06, 12 and 18 UTC. The 24 hour analysis is produced only once a day and is valid at 12 UTC. A preliminary analysis is available approximately 1 hour after the end of the accumulation period and a final one is generated 6 hours later in order to assimilate more gauge data.",1,"L'Analyse régionale déterministe de précipitation (ARPD) produit une estimation optimale de la quantité de précipitation survenue au cours d’une période de 6 et 24 heures. Cet estimé intègre des relevés provenant de capteurs de précipitation, de radars météos et de modèles de prévision numérique du temps. La couverture géographique est l'Amérique du Nord (Canada, États-Unis et le Mexique). Les données sont disponibles à une résolution spatiale horizontale de 10 km. L'analyse 6 heures est produite 4 fois par jour et est valide à 00, 06, 12 et 18 UTC. L’analyse 24 heures est produite qu'une fois par jour et est valide à 12 UTC. Une analyse préliminaire est disponible environ 1 heure après la fin de la période d’accumulation et une analyse finale est générée 6 heures plus tard dans le but d’assimiler plus de relevés pluviométriques.",0
 map.cansips_desc,"This map shows Canadian Seasonal to Inter-annual Prediction System data.",1,"Cette carte montre les données de Système de prévision interannuelle et saisonnière canadien.",0
 map.hydro_desc,"This map shows Hydrometric station data.",1,"Cette carte montre les données de stations hydrométriques.",0
-map.daily_desc,"This map shows Daily Climate Summaries data.",1,"Cette carte montre les données de Résumés climatiques quotidiens.",0
-map.monthly_desc,"This map shows Monthly Climate Summaries data.",1,"Cette carte montre les données de Résumés climatiques mensuels.",0
-map.normal_desc,"This map shows Climate Normals data.",1,"Cette carte montre les données de Normales climatiques.",0
+map.daily_desc,"Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les données quotidiennes proviennent de deux sources de données; Stations climatiques quotidiennes produisant une ou deux observations par jour de température, de précipitations et de stations horaires (voir les séries de données horaires) qui produisent généralement plus d'éléments météorologiques, par ex. vent ou neige au sol.",0
+map.monthly_desc,"A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.",1,"Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours.",1
+map.normal_desc,"Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location.
+At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",1,"Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné.
+À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010.",1
 map.controlsCluster.legend,Legend:,1,Légende:,0
 map.controlsCluster.timeline,Time period:,1,Chronologie:,0
 settings.title,Settings,1,Paramètres,0
@@ -119,20 +121,20 @@ datasetSelector.cangrd.qualifier,CanGRD,1,CanGRD,0
 datasetSelector.dcs.shortName,Downscaled,1,Réduit,0
 datasetSelector.dcs.fullName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,0
 datasetSelector.dcs.qualifier,Downscaled,1,Réduit,0
-datasetSelector.capa.shortName,CAPA,1,CAPA,0
-datasetSelector.capa.fullName,Canadian Precipitation Analysis,1,Scénario climatique bas de gamme,0
-datasetSelector.capa.qualifier,CAPA,1,CAPA,0
+datasetSelector.capa.shortName,RDPA,1,ARDP,0
+datasetSelector.capa.fullName,Regional Deterministic Precipitation Analysis,1,Analyse Régionale Déterministe de précipitation,0
+datasetSelector.capa.qualifier,RDPA,1,ARDP,0
 datasetSelector.cansips.shortName,CanSIPS,1,SPISCan,0
 datasetSelector.cansips.fullName,Canadian Seasonal to Inter-annual Prediction System,1,Système de prévision interannuelle et saisonnière canadien,0
 datasetSelector.cansips.qualifier,CanSIPS,1,SPISCan,0
 datasetSelector.daily.shortName,Daily,1,Quotidien,0
-datasetSelector.daily.fullName,Daily Climate Summaries,1,Résumés climatiques quotidiens,0
+datasetSelector.daily.fullName,Daily Data,1,Données quotidiennes,0
 datasetSelector.daily.qualifier,Daily,1,Quotidien,0
 datasetSelector.monthly.shortName,Monthly,1,Mensuel,0
-datasetSelector.monthly.fullName,Monthly Climate Summaries,1,Résumés climatiques mensuels,0
+datasetSelector.monthly.fullName,Monthly Summaries,1,Résumés mensuels,0
 datasetSelector.monthly.qualifier,Monthly,1,Mensuel,0
 datasetSelector.normal.shortName,Normals,1,Normales,0
-datasetSelector.normal.fullName,Climate Normals,1,Normales climatiques,0
+datasetSelector.normal.fullName,1981-2010 Normals,1,1981-2010 Normales,0
 datasetSelector.normal.qualifier,Normals,1,Normales,0
 datasetSelector.hydro.shortName,Hydrometric,1,Hydrométrique,0
 datasetSelector.hydro.fullName,Hydrometric station data,1,Données de stations hydrométriques,0

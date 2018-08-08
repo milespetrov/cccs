@@ -12,7 +12,8 @@
             {
                 "layerId": "NORMAL_station_en",
                 "layerName": "",
-                "description": "A short station description goes here",
+                "description":
+                    "These are Canadian climate stations during the Normals period (1981-2010) that either have records of 25 years or better during that period, or have shorter records but are needed to represent several major centres.",
                 "coverIcon": "assets/images/cities.svg",
                 "symbologyStack": [
                     {
@@ -43,8 +44,7 @@
             {
                 "id": "cities",
                 "layerType": "esriTile",
-                "url":
-                    "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
                 "name": "Cities",
                 "expectedResponseTime": 10000,
                 "state": {
@@ -97,7 +97,8 @@
             {
                 "layerId": "NORMAL_station_fr",
                 "layerName": "",
-                "description": "[fr] A short station description goes here",
+                "description":
+                    "Ce sont des stations climatiques canadiennes au cours de la période des Normales (1981-2010) qui ont des records de 25 ans ou plus au cours de cette période, ou qui ont des enregistrements plus courts mais sont nécessaires pour représenter plusieurs grands centres.",
                 "coverIcon": "assets/images/cities.svg",
                 "symbologyStack": [
                     {
