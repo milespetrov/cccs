@@ -7,12 +7,12 @@
     },
     {
       "infoType": "text",
-      "content": "A short AHCCD dataset description goes here"
+      "content": "Adjusted and homogenized station data incorporate adjustments to the original station data to account for discontinuities from non-climatic factors."
     },
     {
       "layerId": "AHCCD_tmin_JJA_en",
       "layerName": "",
-      "description": "A short minimum temperature description goes here",
+      "description": "A short homogenized minimum temperature description goes here",
       "coverIcon": "assets/images/tmin.svg",
       "symbologyStack": [
         {
@@ -69,7 +69,7 @@
       "id": "AHCCD_tmin_JJA_en",
       "layerType": "ogcWfs",
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_min&period=Smr",
-      "name": "Minimum temperature",
+      "name": "Homogenized minimum temperature",
       "nameField": "station_name",
       "state": {
         "opacity": 1,

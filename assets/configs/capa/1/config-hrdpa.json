@@ -113,7 +113,7 @@
       "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
       "name": "Quantity of Precipitation, 2.5KM resolution 24H",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.24F_PR" }],
@@ -131,7 +131,7 @@
       "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
       "name": "Quantity of Precipitation, 2.5KM resolution 6H",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.6F_PR" }],
@@ -258,7 +258,7 @@
       "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Quantity of Precipitation, 2.5KM resolution 24H",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.24F_PR" }],
@@ -276,7 +276,7 @@
       "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Quantity of Precipitation, 2.5KM resolution 6H",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "HRDPA.6F_PR" }],
