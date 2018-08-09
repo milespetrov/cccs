@@ -2,13 +2,12 @@
     <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope container">
         <div class="cip-header-container mrgn-bttm-lg">
             <h1>{{ $t(`title`) }}</h1>
+            <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
+                <i18n :path="`description`" tag="p">
+                    <a href="" role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`helpFile`) }}</a>
+                </i18n>
+            </aside>
         </div>
-
-        <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-            <i18n :path="`map.${datasetId}_desc`" tag="p">
-                <a :href="`${queryToolBaseUrl}${queryToolRoute}`" target="_blank">{{ $t(`map.extractTool`) }}</a>
-            </i18n>
-        </aside>
 
         <div class="cip-strip cip-view-controls">
             <map-view-controls></map-view-controls>
@@ -18,17 +17,11 @@
 
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
 
-            <section class="alert alert-info">
-                <h4 class="text-info mrgn-tp-sm"> {{ $t('page.needHelp.title') }}? </h4>
-                
-                <i18n :path="'page.needHelp.body'" tag="p">
-                    <a :href="serviceDeskUrl">{{ $t(`page.needHelp.serviceDeskName`) }}</a>
-                    <a href="" role="button" 
-                        @click.prevent="openRampHelp" 
-                        @keyup.space="openRampHelp">{{ $t(`page.needHelp.ramphelp`) }}</a>
+            <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
+                <i18n :path="`map.${datasetId}_desc`" tag="p">
+                    <a :href="`${queryToolBaseUrl}${queryToolRoute}`" target="_blank">{{ $t(`map.extractTool`) }}</a>
                 </i18n>
-
-            </section>
+            </aside>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
