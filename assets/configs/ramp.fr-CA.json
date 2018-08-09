@@ -1,6 +1,6 @@
 {
     "ui": {
-        "title": "Outil de visualisation de données",
+        "title": "Visualiseur de données climatiques",
         "appBar": {
             "sideMenu": true,
             "basemap": false,
