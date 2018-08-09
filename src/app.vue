@@ -26,7 +26,7 @@
             <div class="pagedetails">
                 <dl id="wb-dtmd">
                 <dt>{{ $t('page.dateModified') }}: </dt>
-                <dd><time property="dateModified">2018-07-18</time></dd>
+                <dd><time property="dateModified">{{ timestamp }}</time></dd>
 
                 </dl>
                 <!-- <div class="row">
@@ -83,6 +83,8 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setInternalRouteUpdate: (value: boolean) => void;
 
     reloadKey: string = '';
+
+    timestamp: string = (<any>window).PageTimestamp;
 
     @State datasetId: DatasetId;
 

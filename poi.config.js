@@ -2,6 +2,7 @@ const pkg = require('./package.json');
 
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const VersionPlugin = require('./assets/webpack/version_plugin.js');
 
 const minimize = false;
 
@@ -54,6 +55,8 @@ module.exports = {
     extendWebpack(config) {
         // enable to see the bundle structure
         // config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin);
+
+        config.plugin('versionPlugin').use(VersionPlugin);
 
         // add a loader for csv translation files
         config.module
