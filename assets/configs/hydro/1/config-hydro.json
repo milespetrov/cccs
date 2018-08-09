@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "A short Hydro dataset description goes here"
+      "content": "This map indicates the location of over 1800 locations where hydro metric data is collected across Canada."
     },
     {
       "layerId": "Hydro_en",

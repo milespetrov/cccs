@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "A short Normals dataset description goes here"
+      "content": "These are Canadian climate stations during the Normals period (1981-2010) that either have records of 25 years or better during that period, or have shorter records but are needed to represent several major centres."
     },
     {
       "layerId": "Normals_tmax_OCT_en",

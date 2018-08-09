@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "A short CMIP5 dataset description goes here"
+      "content": "Projected changes in mean temperature (°C) are with respect to the reference period of 1986-2005."
     },
     {
       "collapse": true,
@@ -15,7 +15,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2021_en",
       "layerName": "",
-      "description": "A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -28,7 +28,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2041_en",
       "layerName": "",
-      "description": "A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -41,7 +41,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2061_en",
       "layerName": "",
-      "description": "A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -54,7 +54,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2081_en",
       "layerName": "",
-      "description": "A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -134,7 +134,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2021-2040_PCTL50" }],
@@ -152,7 +152,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2041-2060_PCTL50" }],
@@ -170,7 +170,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2061-2080_PCTL50" }],
@@ -188,7 +188,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2081-2100_PCTL50" }],
@@ -209,7 +209,7 @@
     },
     {
       "infoType": "text",
-      "content": "[fr] A short CMIP5 dataset description goes here"
+      "content": "[fr] A short mean temperature description goes here"
     },
     {
       "collapse": true,
@@ -217,7 +217,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2021_fr",
       "layerName": "",
-      "description": "[fr] A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -230,7 +230,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2041_fr",
       "layerName": "",
-      "description": "[fr] A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -243,7 +243,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2061_fr",
       "layerName": "",
-      "description": "[fr] A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -256,7 +256,7 @@
     {
       "layerId": "CMIP5_tmean_DJF_rcp26_2081_fr",
       "layerName": "",
-      "description": "[fr] A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -336,7 +336,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2021-2040_PCTL50" }],
@@ -354,7 +354,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2041-2060_PCTL50" }],
@@ -372,7 +372,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2061-2080_PCTL50" }],
@@ -390,7 +390,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": false
       },
       "layerEntries": [{"id": "CMIP5.TM.RCP26.WINTER.2081-2100_PCTL50" }],

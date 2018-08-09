@@ -7,12 +7,12 @@
     },
     {
       "infoType": "text",
-      "content": "A short CanGRID dataset description goes here"
+      "content": "CANGRD trends of temperature change (°C) over 1948-2016 represent the departure from the 1961-1990 reference period."
     },
     {
       "layerId": "CanGRID_tmean_MAM_en",
       "layerName": "",
-      "description": "A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -89,7 +89,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": true
       },
       "layerEntries": [{"id": "CANGRID.TREND.TM_SPRING" }],
@@ -110,12 +110,12 @@
     },
     {
       "infoType": "text",
-      "content": "[fr] A short CanGRID dataset description goes here"
+      "content": "[fr] A short mean temperature description goes here"
     },
     {
       "layerId": "CanGRID_tmean_MAM_fr",
       "layerName": "",
-      "description": "[fr] A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -192,7 +192,7 @@
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Mean temperature",
       "state": {
-        "opacity": 1,
+        "opacity": 0.85,
         "visibility": true
       },
       "layerEntries": [{"id": "CANGRID.TREND.TM_SPRING" }],

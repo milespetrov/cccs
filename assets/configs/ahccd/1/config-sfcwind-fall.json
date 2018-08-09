@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "A short AHCCD dataset description goes here"
+      "content": "Adjusted and homogenized station data incorporate adjustments to the original station data to account for discontinuities from non-climatic factors."
     },
     {
       "layerId": "AHCCD_wind_SON_en",
