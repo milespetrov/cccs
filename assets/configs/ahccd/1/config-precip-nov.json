@@ -12,7 +12,7 @@
     {
       "layerId": "AHCCD_prec_NOV_en",
       "layerName": "",
-      "description": "A short adjusted total precipitation description goes here",
+      "description": "",
       "coverIcon": "assets/images/precip.svg",
       "symbologyStack": [
         {
@@ -97,7 +97,7 @@
     {
       "layerId": "AHCCD_prec_NOV_fr",
       "layerName": "",
-      "description": "[fr] A short precipitation description goes here",
+      "description": "",
       "coverIcon": "assets/images/precip.svg",
       "symbologyStack": [
         {
