@@ -1,5 +1,7 @@
 ﻿key,enValue,enValid,frValue,frValid
-title,Climate maps,1,Cartes climatiques,0
+title,Data viewer tool,1,Outil de visualisation de données,0
+description,"Use the data viewer tool to view climate data on the map below. First, choose one of the available datasets. There is a detailed description of the selected dataset below the map. The map displays the selected dataset and you can zoom to a specific geographic location. You can specify date ranges, variables, download format and other options using the drop-down menus at the top of the map. For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Utilisez l'outil de visualisation des données pour afficher les données climatiques sur la carte ci-dessous. Choisissez d'abord l'un des jeux de données disponibles. Il y a une description détaillée du jeu de données sélectionné sous la carte. La carte affiche le jeu de données sélectionné et vous pouvez zoomer sur un emplacement géographique spécifique. Vous pouvez spécifier des plages de dates, des variables, un format de téléchargement et d'autres options à l'aide des menus déroulants situés en haut de la carte. Pour obtenir de l'aide, consultez {0} ou cliquez sur l'icône ‘?’ Dans le coin inférieur droit de la carte.",0
+helpFile,help file,1,le fichier d'aide,0
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,0
 geo.coordinates.east,E,1,E,0
 geo.coordinates.west,W,1,W,0
