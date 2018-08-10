@@ -50,7 +50,7 @@
     {
       "id": "cities",
       "layerType": "esriTile",
-      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
       "name": "Cities",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -62,7 +62,7 @@
     {
       "id": "labels",
       "layerType": "esriTile",
-      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
       "name": "Labels",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -74,7 +74,7 @@
     {
       "id": "provinces",
       "layerType": "esriTile",
-      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
       "name": "Provinces",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -156,7 +156,7 @@
     {
       "id": "cities",
       "layerType": "esriTile",
-      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
       "name": "[fr] Cities",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -168,7 +168,7 @@
     {
       "id": "labels",
       "layerType": "esriTile",
-      "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
       "name": "[fr] Labels",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -180,7 +180,7 @@
     {
       "id": "provinces",
       "layerType": "esriTile",
-      "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
       "name": "[fr] Provinces",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],

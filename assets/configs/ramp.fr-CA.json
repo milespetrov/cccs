@@ -35,7 +35,7 @@
     "services": {
         "corsEverywhere": true,
         "exportMapUrl":
-            "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+            "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
             "title": {
                 "value": ""
@@ -52,11 +52,11 @@
         },
         "search": {
             "serviceUrls": {
-                "geoNames": "http://geogratis.gc.ca/services/geoname/en/geonames.json",
-                "geoLocation": "http://geogratis.gc.ca/services/geolocation/en/locate?q=",
-                "geoSuggest": "http://geogratis.gc.ca/services/geolocation/en/suggest?q=",
-                "provinces": "http://geogratis.gc.ca/services/geoname/en/codes/province.json",
-                "types": "http://geogratis.gc.ca/services/geoname/en/codes/concise.json"
+                "geoNames": "https://geogratis.gc.ca/services/geoname/en/geonames.json",
+                "geoLocation": "https://geogratis.gc.ca/services/geolocation/en/locate?q=",
+                "geoSuggest": "https://geogratis.gc.ca/services/geolocation/en/suggest?q=",
+                "provinces": "https://geogratis.gc.ca/services/geoname/en/codes/province.json",
+                "types": "https://geogratis.gc.ca/services/geoname/en/codes/concise.json"
             }
         }
     },
@@ -146,7 +146,7 @@
                     {
                         "id": "CBMT",
                         "layerType": "esriFeature",
-                        "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer"
+                        "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
@@ -168,7 +168,7 @@
                     {
                         "id": "SMR",
                         "layerType": "esriFeature",
-                        "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer"
+                        "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
@@ -192,7 +192,7 @@
                         "id": "CBME_CBCE_HS_RO_3978",
                         "layerType": "esriFeature",
                         "url":
-                            "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
+                            "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
@@ -216,7 +216,7 @@
                         "id": "CBMT_CBCT_GEOM_3978",
                         "layerType": "esriFeature",
                         "url":
-                            "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
+                            "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
