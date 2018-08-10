@@ -12,7 +12,7 @@
     {
       "layerId": "Hydro_en",
       "layerName": "",
-      "description": "A short hydro description goes here (maybe)",
+      "description": "",
       "coverIcon": "assets/images/green-circle.svg",
       "symbologyStack": [
         {
@@ -79,7 +79,7 @@
         "template": "assets/templates/hydro/stations-template.html",
         "parser": "assets/templates/hydro/stations-script.js"
       },
-      "colour": "#0cf03a",
+      "colour": "#0cb8f0",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
@@ -97,7 +97,7 @@
     {
       "layerId": "Hydro_fr",
       "layerName": "",
-      "description": "[fr] A short hydro description goes here (maybe)",
+      "description": "",
       "coverIcon": "assets/images/green-circle.svg",
       "symbologyStack": [
         {
@@ -164,7 +164,7 @@
         "template": "assets/templates/hydro/stations-template.html",
         "parser": "assets/templates/hydro/stations-script.js"
       },
-      "colour": "#0cf03a",
+      "colour": "#0cb8f0",
       "controls": ["data", "visibility", "opacity"]
     }
   ]

@@ -7,12 +7,12 @@
     },
     {
       "infoType": "text",
-      "content": "These are Canadian climate stations during the Normals period (1981-2010) that either have records of 25 years or better during that period, or have shorter records but are needed to represent several major centres."
+      "content": "Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location.\n\nAt the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
     },
     {
       "layerId": "Normals_tmax_ANN_en",
       "layerName": "",
-      "description": "A short maximum temperature description goes here",
+      "description": "The average of the maximum temperature in degrees Celsius (°C) observed at the location for that month.",
       "coverIcon": "assets/images/tmax.svg",
       "symbologyStack": [
         {
@@ -92,12 +92,12 @@
     },
     {
       "infoType": "text",
-      "content": "[fr] A short Normals dataset description goes here"
+      "content": "Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné.\n\nÀ la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
     },
     {
       "layerId": "Normals_tmax_ANN_fr",
       "layerName": "",
-      "description": "[fr] A short maximum temperature description goes here",
+      "description": "Moyenne de la température maximale en degrés Celsius (°C) observée à un endroit donné au cours du mois.",
       "coverIcon": "assets/images/tmax.svg",
       "symbologyStack": [
         {
@@ -154,7 +154,7 @@
       "id": "Normals_tmax_ANN_fr",
       "layerType": "ogcWfs",
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=13",
-      "name": "[fr] Maximum temperature",
+      "name": "Température maximale moyenne",
       "nameField": "ID",
       "state": {
         "opacity": 1,

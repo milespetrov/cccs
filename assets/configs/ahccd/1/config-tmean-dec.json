@@ -12,7 +12,7 @@
     {
       "layerId": "AHCCD_tmean_DEC_en",
       "layerName": "",
-      "description": "A short homogenized mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {
@@ -97,7 +97,7 @@
     {
       "layerId": "AHCCD_tmean_DEC_fr",
       "layerName": "",
-      "description": "[fr] A short mean temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmean.svg",
       "symbologyStack": [
         {

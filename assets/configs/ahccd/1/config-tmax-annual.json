@@ -12,7 +12,7 @@
     {
       "layerId": "AHCCD_tmax_ANN_en",
       "layerName": "",
-      "description": "A short homogenized maximum temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmax.svg",
       "symbologyStack": [
         {
@@ -97,7 +97,7 @@
     {
       "layerId": "AHCCD_tmax_ANN_fr",
       "layerName": "",
-      "description": "[fr] A short maximum temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmax.svg",
       "symbologyStack": [
         {

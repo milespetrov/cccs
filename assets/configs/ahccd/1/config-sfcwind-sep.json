@@ -12,7 +12,7 @@
     {
       "layerId": "AHCCD_wind_SEP_en",
       "layerName": "",
-      "description": "A short wind speed description goes here",
+      "description": "",
       "coverIcon": "assets/images/sfcwind.svg",
       "symbologyStack": [
         {
@@ -97,7 +97,7 @@
     {
       "layerId": "AHCCD_wind_SEP_fr",
       "layerName": "",
-      "description": "[fr] A short wind speed description goes here",
+      "description": "",
       "coverIcon": "assets/images/sfcwind.svg",
       "symbologyStack": [
         {

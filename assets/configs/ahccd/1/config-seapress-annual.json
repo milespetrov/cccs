@@ -12,7 +12,7 @@
     {
       "layerId": "AHCCD_slpr_ANN_en",
       "layerName": "",
-      "description": "A short homogenized sea level pressure description goes here",
+      "description": "",
       "coverIcon": "assets/images/seapress.svg",
       "symbologyStack": [
         {
@@ -97,7 +97,7 @@
     {
       "layerId": "AHCCD_slpr_ANN_fr",
       "layerName": "",
-      "description": "[fr] A short sea level pressure description goes here",
+      "description": "",
       "coverIcon": "assets/images/seapress.svg",
       "symbologyStack": [
         {

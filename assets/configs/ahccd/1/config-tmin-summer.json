@@ -12,7 +12,7 @@
     {
       "layerId": "AHCCD_tmin_JJA_en",
       "layerName": "",
-      "description": "A short homogenized minimum temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmin.svg",
       "symbologyStack": [
         {
@@ -97,7 +97,7 @@
     {
       "layerId": "AHCCD_tmin_JJA_fr",
       "layerName": "",
-      "description": "[fr] A short minimum temperature description goes here",
+      "description": "",
       "coverIcon": "assets/images/tmin.svg",
       "symbologyStack": [
         {
