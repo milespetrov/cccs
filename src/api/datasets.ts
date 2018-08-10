@@ -124,7 +124,7 @@ class CMIP5Api extends DatasetApi {
 
 class DailyApi extends DatasetApi {
     constructor(state: AppState) {
-        super(state, DatasetId.ClimateNormal);
+        super(state, DatasetId.ClimateDaily);
     }
 
     /**
@@ -135,13 +135,25 @@ class DailyApi extends DatasetApi {
      * @memberof DailyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${DatasetId.ClimateNormal}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${DatasetId.ClimateDaily}/${this.version}/config-${this.state.variableId}.json`;
+    }
+
+    tooltip = true;
+
+    getTooltip(data: any): string {
+        return `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
+            'normal.tooltips.station_name_title'
+        )}: ${data.STATION_NAME}<br />${i18n.t('normal.tooltips.prov_title')}: ${
+            i18n.locale === 'en' ? data.ENG_PROV_NAME : data.FRE_PROV_NAME
+        }<br />${i18n.t('normal.tooltips.wmo_title')}: ${data.WMO_IDENTIFIER || '-'}<br />${i18n.t(
+            'normal.tooltips.tc_title'
+        )}: ${data.TC_IDENTIFIER || '-'}</span></div>`;
     }
 }
 
 class MonthlyApi extends DatasetApi {
     constructor(state: AppState) {
-        super(state, DatasetId.ClimateNormal);
+        super(state, DatasetId.ClimateMonthly);
     }
 
     /**
@@ -152,7 +164,19 @@ class MonthlyApi extends DatasetApi {
      * @memberof MonthlyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${DatasetId.ClimateNormal}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${DatasetId.ClimateMonthly}/${this.version}/config-${this.state.variableId}.json`;
+    }
+
+    tooltip = true;
+
+    getTooltip(data: any): string {
+        return `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
+            'normal.tooltips.station_name_title'
+        )}: ${data.STATION_NAME}<br />${i18n.t('normal.tooltips.prov_title')}: ${
+            i18n.locale === 'en' ? data.ENG_PROV_NAME : data.FRE_PROV_NAME
+        }<br />${i18n.t('normal.tooltips.wmo_title')}: ${data.WMO_IDENTIFIER || '-'}<br />${i18n.t(
+            'normal.tooltips.tc_title'
+        )}: ${data.TC_IDENTIFIER || '-'}</span></div>`;
     }
 }
 
