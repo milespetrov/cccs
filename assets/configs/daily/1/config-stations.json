@@ -47,6 +47,7 @@
                 "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
                 "name": "Cities",
                 "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
                 "state": {
                     "opacity": 1,
                     "visibility": false
@@ -58,6 +59,7 @@
                 "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
                 "name": "Labels",
                 "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
                 "state": {
                     "opacity": 1,
                     "visibility": true
