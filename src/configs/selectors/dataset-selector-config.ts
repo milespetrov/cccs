@@ -7,8 +7,8 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
             id: 'all_datasets',
             items: [
                 DatasetId.AHCCD,
-                DatasetId.CMIP5,
                 DatasetId.CANGRD,
+                DatasetId.CMIP5,
                 DatasetId.DCS,
                 DatasetId.ClimateNormal,
                 DatasetId.ClimateMonthly,
