@@ -26,7 +26,7 @@ variableSelector.header,Climate data,1,Données climatiques,0
 variableSelector.stations_group,Stations,1,Stations,0
 variableSelector.temperature_group,Temperature,1,Température,0
 variableSelector.wind_group,Wind,1,Vent,0
-variableSelector.ice_group,Sea Ice,1,Glace de mer,0
+variableSelector.ice_group,Sea ice,1,Glace de mer,0
 variableSelector.precipitation_group,Precipitation,1,Précipitation,0
 variableSelector.snow_depth_group,Snow,1,Neige,0
 variableSelector.pressure_group,Pressure,1,Pression,0
