@@ -27,6 +27,14 @@ module.exports = {
         css: `cccs-sandbox${minimize ? '.min' : ''}.css`
     },
     homepage: './',
+    devServer: {
+        historyApiFallback: {
+            disableDotRule: true
+        },
+        historyApiFallback: {
+            rewrites: [{ from: /./, to: '/pages/404.html' }]
+        }
+    },
     minimize: minimize,
     sourceMap: false,
     // copy the `assets` folder into `dist`
@@ -35,6 +43,10 @@ module.exports = {
             from: path.resolve(__dirname, 'assets'),
             to: path.resolve(__dirname, 'dist/assets'),
             ignore: ['.*']
+        },
+        {
+            from: path.resolve(__dirname, 'assets/404.html'),
+            to: path.resolve(__dirname, 'dist/pages')
         }
     ],
     // open the explore data page on localhost:3001 by default when running `npm run dev`
