@@ -26,9 +26,9 @@ variableSelector.header,Climate data,1,Données climatiques,0
 variableSelector.stations_group,Stations,1,Stations,0
 variableSelector.temperature_group,Temperature,1,Température,0
 variableSelector.wind_group,Wind,1,Vent,0
-variableSelector.ice_group,Ice,1,La glace,0
+variableSelector.ice_group,Sea Ice,1,Glace de mer,0
 variableSelector.precipitation_group,Precipitation,1,Précipitation,0
-variableSelector.snow_depth_group,Snow depth,1,Profondeur de neige,0
+variableSelector.snow_depth_group,Snow,1,Neige,0
 variableSelector.pressure_group,Pressure,1,Pression,0
 variableSelector.geopotential_group,Geopotential,1,,0
 variableSelector.historic,Historic,1,Historique,0
@@ -108,7 +108,7 @@ datasetSelector.all_datasets,,1,,0
 datasetSelector.ahccd.shortName,AHCCD,1,AHCCD,0
 datasetSelector.ahccd.fullName,Adjusted and homogenized Canadian climate data,1,Données climatiques Canadiennes ajustées et homogénéisées,0
 datasetSelector.ahccd.qualifier,AHCCD,1,AHCCD,0
-datasetSelector.cmip5.shortName,CMIP Phase 5,1,Phase 5 du CMIP,0
+datasetSelector.cmip5.shortName,CMIP5,1,CMIP5,0
 datasetSelector.cmip5.fullName,Global climate model scenarios,1,"Scénarios de modèles climatiques globaux",0
 datasetSelector.cmip5.qualifier,CMIP5,1,CMIP5,0
 datasetSelector.cangrd.shortName,CanGRD,1,CanGRD,0

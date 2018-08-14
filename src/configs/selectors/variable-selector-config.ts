@@ -14,6 +14,11 @@ export const variableSelectorConfig: VariableSelectorConfig = {
             showHeader: true
         },
         {
+            id: 'precipitation_group',
+            items: [VariableId.Precipitation, VariableId.HRDPA, VariableId.RDPA],
+            showHeader: true
+        },
+        {
             id: 'wind_group',
             items: [
                 VariableId.SurfaceWind,
@@ -21,11 +26,6 @@ export const variableSelectorConfig: VariableSelectorConfig = {
                 VariableId.GustDirection850,
                 VariableId.GustSpeed
             ],
-            showHeader: true
-        },
-        {
-            id: 'precipitation_group',
-            items: [VariableId.Precipitation, VariableId.HRDPA, VariableId.RDPA],
             showHeader: true
         },
         {
