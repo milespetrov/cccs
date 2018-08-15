@@ -1,12 +1,25 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, ViewType } from '@/types';
+import { VisualizationControlType, VariableId, DatasetId, AnalysisPeriodType } from '@/types';
 
 const capaDataset: DatasetSource = {
     id: DatasetId.CAPA,
 
-    controls: {},
+    controls: {
+        [VisualizationControlType.Analysis]: {
+            default: AnalysisPeriodType.Six
+        }
+    },
 
-    variables: [VariableId.HRDPA, VariableId.RDPA],
+    variables: [VariableId.RDPA],
+
+    dateSlider: {
+        [AnalysisPeriodType.Six]: {
+            range: 7
+        },
+        [AnalysisPeriodType.TwentyFour]: {
+            range: 30
+        }
+    },
 
     /*     legend: {}, */
 

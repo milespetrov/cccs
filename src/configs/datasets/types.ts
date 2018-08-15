@@ -177,6 +177,8 @@ export interface DatasetSource {
 
     timeSliderLabels?: string[];
 
+    dateSlider?: any;
+
     legend?: {
         [index: string]: string;
     };

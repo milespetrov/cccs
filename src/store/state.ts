@@ -11,6 +11,7 @@ export interface AppState {
     locationPoint: MapPoint | null;
     zoomLevel: string | null;
     timeSlice: number | null;
+    analysisPeriod: string | null;
 
     internalRouteUpdate: boolean;
 }

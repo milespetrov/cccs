@@ -99,7 +99,9 @@ class CAPAApi extends DatasetApi {
      * @memberof CAPAApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+            this.state.analysisPeriod
+        }.json`;
     }
 }
 

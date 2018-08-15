@@ -20,6 +20,7 @@ const state: AppState = {
     locationPoint: null,
     zoomLevel: null,
     timeSlice: null,
+    analysisPeriod: null,
 
     // Does not belong
     internalRouteUpdate: false
@@ -38,7 +39,8 @@ enum Action {
     setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
-    setZoomLevel = 'setZoomLevel'
+    setZoomLevel = 'setZoomLevel',
+    setAnalysisPeriod = 'setAnalysisPeriod'
 }
 
 enum Mutation {
@@ -52,7 +54,8 @@ enum Mutation {
     SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
-    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL'
+    SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL',
+    SET_ANALYSIS_PERIOD = 'SET_ANALYSIS_PERIOD'
 }
 
 // getters
@@ -69,7 +72,8 @@ const getters = {
             r: state.rcpId,
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
-            ts: state.timeSlice !== null ? state.timeSlice.toString() : null
+            ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
+            ap: state.analysisPeriod
         };
 
         // remove null values from the query object
@@ -107,6 +111,10 @@ const getters = {
 
     timeSliderLabels: (state: AppState): string[] | undefined => {
         return datasets[state.datasetId!].timeSliderLabels;
+    },
+
+    dateSlider: (state: AppState): any | undefined => {
+        return datasets[state.datasetId!].dateSlider;
     },
 
     legend: (state: AppState): { [index: string]: string } | undefined => {
@@ -157,6 +165,7 @@ const actions = {
     },
 
     [Action.setDatasetId](context: AppContext, value: DatasetId) {
+        context.commit(Mutation.SET_RCP_TIME_SLICE, null);
         context.commit(Mutation.SET_DATASET_ID, value);
 
         context.dispatch(Action.applyDatasetDefault);
@@ -289,6 +298,10 @@ const actions = {
         context.commit(Mutation.SET_FEATURE_POINT, null);
     },
 
+    [Action.setAnalysisPeriod](context: AppContext, value: string | null): void {
+        context.commit(Mutation.SET_ANALYSIS_PERIOD, value);
+    },
+
     [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
         context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
     }
@@ -334,6 +347,10 @@ const mutations = {
 
     [Mutation.SET_ZOOM_LEVEL](state: AppState, value: string | null): void {
         state.zoomLevel = value;
+    },
+
+    [Mutation.SET_ANALYSIS_PERIOD](state: AppState, value: string | null): void {
+        state.analysisPeriod = value;
     },
 
     [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {

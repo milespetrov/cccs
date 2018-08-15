@@ -162,6 +162,14 @@ downloadSelector.queryTool.shortName,,1,,0
 downloadSelector.queryTool.fullName,{0}Climate data extraction tool,1,{0} Outil d'extraction de données climatiques,0
 downloadSelector.queryTool.access,Download source data using ,1,Accéder à l'ensemble de données complet dans,0
 downloadSelector.queryTool.qualifier,,1,,0
+analysisSelector.title,Analysis period,1,,0
+analysisSelector.header,,1,,0
+analysisSelector.6.shortName,6 hour,1,6 heur,0
+analysisSelector.6.fullName,6 hour periods,1,,0
+analysisSelector.6.qualifier,,1,,1
+analysisSelector.24.shortName,24 hour,1,6 heur,0
+analysisSelector.24.fullName,24 hour periods,1,,0
+analysisSelector.24.qualifier,,1,,1
 units.sit.shortName,m,1,m,0
 units.sit.fullName,metres,1,mètres,0
 units.sit.qualifier,,1,,0

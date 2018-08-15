@@ -52,7 +52,8 @@ export enum VisualizationControlType {
     Variable = 'variable-selector',
     Dataset = 'dataset-selector',
     RCP = 'rcp-selector',
-    Time = 'time-period-selector'
+    Time = 'time-period-selector',
+    Analysis = 'analysis-period-selector'
 }
 
 /**
@@ -89,6 +90,11 @@ export enum TimePeriodType {
     Summer = 'summer',
     Autumn = 'fall',
     Annual = 'annual'
+}
+
+export enum AnalysisPeriodType {
+    TwentyFour = '24',
+    Six = '6'
 }
 
 export enum ViewType {
