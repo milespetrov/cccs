@@ -171,8 +171,8 @@ units.tmax.qualifier,,1,,0
 units.tmin.shortName,°C,1,° C,0
 units.tmin.fullName,degrees Celsius,1,degré Celsius,0
 units.tmin.qualifier,,1,,0
-units.precip.shortName,mm,1,mm,0
-units.precip.fullName,millimetres,1,millimètres,0
+units.precip.shortName,%,1,%,1
+units.precip.fullName,percent,1,pour cent,0
 units.precip.qualifier,,1,,0
 units.gustdir.shortName,,0,,0
 units.gustdir.fullName,,0,,0

@@ -51,6 +51,7 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
     }
 
     select(item: VariableId) {
+        $('rv-details rv-details-header .rv-close').click(); // close the details panel
         this.setVariableId(item);
         this.updateRoute();
     }
