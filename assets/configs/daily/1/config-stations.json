@@ -128,7 +128,30 @@
                 "symbologyStack": []
             }
         ],
-        "supportLayers": [],
+        "supportLayers": [{
+            "id": "cities",
+            "layerType": "esriTile",
+            "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+            "name": "[fr] Cities",
+            "expectedResponseTime": 10000,
+            "controls": ["visibility", "opacity", "settings"],
+            "state": {
+                "opacity": 1,
+                "visibility": false
+            }
+        },
+        {
+            "id": "labels",
+            "layerType": "esriTile",
+            "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+            "name": "[fr] Labels",
+            "expectedResponseTime": 10000,
+            "controls": ["visibility", "opacity", "settings"],
+            "state": {
+                "opacity": 1,
+                "visibility": true
+            }
+        }],
         "dataLayers": [
             {
                 "id": "DAILY_station_fr",

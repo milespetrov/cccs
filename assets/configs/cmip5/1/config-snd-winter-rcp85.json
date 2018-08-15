@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "Projected changes in snow depth are with respect to the reference period of 1986-2005 and expressed as percentage chance (%)."
+      "content": "Projected changes in snow depth are with respect to the reference period of 1986-2005 and expressed as percentage change (%)."
     },
     {
       "collapse": true,
@@ -312,7 +312,7 @@
     {
       "id": "labels",
       "layerType": "esriTile",
-      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
       "name": "[fr] Labels",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
