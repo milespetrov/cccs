@@ -10,41 +10,17 @@
       "content": "A short RDPA dataset description goes here"
     },
     {
-      "name": "Canadian Precipitation Analysis",
-      "expanded": true,
-      "controls": ["visibility"],
-      "children": [{
-        "exclusiveVisibility": [
-          {
-            "layerId": "CAPA_qp25_6_en",
-            "layerName": "",
-            "description": "A short 6 hour description goes here",
-            "coverIcon": "assets/images/06h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-
-          {
-            "layerId": "CAPA_qp25_24_en",
-            "layerName": "",
-            "description": "A short 24 hour description goes here",
-            "coverIcon": "assets/images/24h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          }
-
-        ]
-      }]
+      "layerId": "CAPA_qp10_24_en",
+      "layerName": "",
+      "description": "",
+      "coverIcon": "assets/images/24h.svg",
+      "symbologyStack": [
+        {
+          "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=RDPA.6F_PR&format=image/png&STYLE=default",
+          "text": "A short Quantity of Precipitation, 10KM resolution description goes here"
+        }
+      ],
+      "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
@@ -110,34 +86,16 @@
   ],
   "dataLayers": [
     {
-      "id": "CAPA_qp25_24_en",
+      "id": "CAPA_qp10_24_en",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Quantity of Precipitation, 2.5KM resolution 24H",
+      "name": "Quantity of Precipitation, 10KM resolution 24H",
       "state": {
         "opacity": 0.85,
-        "visibility": false
+        "visibility": true
       },
-      "layerEntries": [{"id": "HRDPA.24F_PR" }],
-      "featureInfoMimeType": "text/plain",
-      "details": {
-        "template": "assets/templates/capa/variables-template.html",
-        "parser": "assets/templates/capa/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "CAPA_qp25_6_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Quantity of Precipitation, 2.5KM resolution 6H",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "HRDPA.6F_PR" }],
+      "layerEntries": [{"id": "RDPA.24F_PR" }],
       "featureInfoMimeType": "text/plain",
       "details": {
         "template": "assets/templates/capa/variables-template.html",
@@ -158,41 +116,17 @@
       "content": "[fr] A short RDPA dataset description goes here"
     },
     {
-      "name": "[fr] Canadian Precipitation Analysis",
-      "expanded": true,
-      "controls": ["visibility"],
-      "children": [{
-        "exclusiveVisibility": [
-          {
-            "layerId": "CAPA_qp25_6_fr",
-            "layerName": "",
-            "description": "[fr] A short 6 hour description goes here",
-            "coverIcon": "assets/images/06h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-
-          {
-            "layerId": "CAPA_qp25_24_fr",
-            "layerName": "",
-            "description": "[fr] A short 24 hour description goes here",
-            "coverIcon": "assets/images/24h.svg",
-            "symbologyStack": [
-              {
-                "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=HRDPA.6F_PR&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          }
-
-        ]
-      }]
+      "layerId": "CAPA_qp10_24_fr",
+      "layerName": "",
+      "description": "",
+      "coverIcon": "assets/images/24h.svg",
+      "symbologyStack": [
+        {
+          "image": "http://geo.weather.gc.ca/geomet?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=RDPA.6F_PR&format=image/png&STYLE=default",
+          "text": "[fr] A short Quantity of Precipitation, 10KM resolution description goes here"
+        }
+      ],
+      "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
@@ -258,34 +192,16 @@
   ],
   "dataLayers": [
     {
-      "id": "CAPA_qp25_24_fr",
+      "id": "CAPA_qp10_24_fr",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Quantity of Precipitation, 2.5KM resolution 24H",
+      "name": "[fr] Quantity of Precipitation, 10KM resolution 24H",
       "state": {
         "opacity": 0.85,
-        "visibility": false
+        "visibility": true
       },
-      "layerEntries": [{"id": "HRDPA.24F_PR" }],
-      "featureInfoMimeType": "text/plain",
-      "details": {
-        "template": "assets/templates/capa/variables-template.html",
-        "parser": "assets/templates/capa/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "CAPA_qp25_6_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Quantity of Precipitation, 2.5KM resolution 6H",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "HRDPA.6F_PR" }],
+      "layerEntries": [{"id": "RDPA.24F_PR" }],
       "featureInfoMimeType": "text/plain",
       "details": {
         "template": "assets/templates/capa/variables-template.html",
