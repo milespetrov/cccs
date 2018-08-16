@@ -20,7 +20,7 @@
           "text": "A short Quantity of Precipitation, 10KM resolution description goes here"
         }
       ],
-      "symbologyRenderStyle": "icons"
+      "symbologyRenderStyle": "images"
     },
     {
       "infoType": "title",
@@ -126,7 +126,7 @@
           "text": "[fr] A short Quantity of Precipitation, 10KM resolution description goes here"
         }
       ],
-      "symbologyRenderStyle": "icons"
+      "symbologyRenderStyle": "images"
     },
     {
       "infoType": "title",
