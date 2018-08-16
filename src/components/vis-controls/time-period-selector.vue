@@ -49,6 +49,7 @@ export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
     }
 
     select(value: TimePeriodType) {
+        $('rv-details rv-details-header .rv-close').click(); // close the details panel
         this.setTimePeriodId(value);
         this.updateRoute();
     }
