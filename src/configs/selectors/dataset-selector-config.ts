@@ -4,19 +4,22 @@ import { DatasetId } from '@/types';
 export const datasetSelectorConfig: DatasetSelectorConfig = {
     groups: [
         {
-            id: 'all_datasets',
+            id: 'future_projections',
+            items: [DatasetId.CMIP5, DatasetId.DCS]
+        },
+        {
+            id: 'historical_stations',
             items: [
-                DatasetId.AHCCD,
-                DatasetId.CANGRD,
-                DatasetId.CMIP5,
-                DatasetId.DCS,
                 DatasetId.ClimateNormal,
                 DatasetId.ClimateMonthly,
                 DatasetId.ClimateDaily,
                 DatasetId.CAPA,
-                DatasetId.Hydrometric
-            ],
-            showHeader: false
+                DatasetId.AHCCD
+            ]
+        },
+        {
+            id: 'historical_grids',
+            items: [DatasetId.CANGRD, DatasetId.Hydrometric]
         }
     ]
 };

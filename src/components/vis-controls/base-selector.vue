@@ -1,6 +1,6 @@
 <template>
 
-    <b-dropdown variant="light" class="cip-selector">
+    <b-dropdown variant="light" class="cip-selector" :disabled="hasSingleOption()" no-flip>
 
         <template slot="button-content">
             <div class="cip-content-wrap">
@@ -9,12 +9,12 @@
             </div>
         </template>
 
-        <div class="cip-dropdown-info">
+        <div class="cip-dropdown-info" v-if="hasTranslation(`${tPath}.description`)">
             <span class="dropdown-header">{{ $t(`${tPath}.header`) }}</span>
-            <div class="cip-dropdown-description" v-if="tPath === 'rcpSelector'">{{ $t(`${tPath}.description`) }}</div>
+            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
         </div>
 
-        <b-dropdown-divider></b-dropdown-divider>
+        <b-dropdown-divider v-if="hasTranslation(`${tPath}.description`)"></b-dropdown-divider>
 
         <div class="cip-dropdown-content">
             <template v-for="(group, index) in filteredGroups">
@@ -30,7 +30,14 @@
                         :class="{ 'cip-selected': item === currentId }"
                         @click="select(item)"
                         :key="`item-${ item }`">
-                            <span class="cip-name">{{ $t(`${itemTPath}.${item}.fullName`) }}</span>
+                            <span class="cip-name">
+                                <span class="cip-first">{{ $t(`${itemTPath}.${item}.fullName`) }}</span>
+                                <span 
+                                    class="cip-second"
+                                    v-if="hasTranslation(`${itemTPath}.${item}.subName`)">
+                                    {{ $t(`${itemTPath}.${item}.subName`) }}</span>
+                            </span>
+                            
                             <span class="cip-qualifier">{{ $t(`${itemTPath}.${item}.qualifier`) }} </span>
                     </b-dropdown-item-button>
                 </div>
@@ -99,6 +106,14 @@ export default class BaseSelectorV extends Vue {
         } else {
             return group.showHeader;
         }
+    }
+
+    hasSingleOption(): boolean {
+        return this.filteredGroups.reduce((map: string[], group) => map.concat(group.items), []).length === 1;
+    }
+
+    hasTranslation(key: string): boolean {
+        return this.$i18n.t(key) !== key;
     }
 }
 </script>
