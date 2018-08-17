@@ -22,19 +22,19 @@
 
                 <div class="menu-option">
 
-                    <b-dropdown variant="light" right class="cip-dropdown-right cip-selector">
+                    <b-dropdown variant="light" right class="cip-dropdown-right cip-selector" no-flip>
                         <template slot="button-content">
                             <div class="cip-content-wrap">
                                 <span class="cip-selected-value">{{ $t(`${tDSPath}.title`) }}</span>
                             </div>
                         </template>
 
-                        <div class="cip-dropdown-info">
+                        <!-- <div class="cip-dropdown-info">
                             <span class="dropdown-header">{{ $t(`${tDSPath}.header`) }}</span>
-                            <!--div class="cip-dropdown-description">{{ $t(`${tDSPath}.description`) }}</div-->
+                            <div class="cip-dropdown-description">{{ $t(`${tDSPath}.description`) }}</div>
                         </div>
 
-                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-divider></b-dropdown-divider> -->
 
                         <div role="group" aria-lableledby="map-image-export" :key="`group-a`">
                             <b-dropdown-header id="map-image-export">{{ $t(`${tDSPath}.mapImage_group`) }}</b-dropdown-header>
@@ -48,16 +48,17 @@
                         <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
                             <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
 
-                            <b-dropdown-item target="_blank" :href="dataCatalogueUrl">
+                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="dataCatalogueUrl">
 
                                 <i18n :path="`${tDSPath}.dataCatalogue.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
                                 </i18n>
 
                                 <font-awesome-icon icon="external-link-alt" />
+                                
                             </b-dropdown-item>
 
-                            <b-dropdown-item target="_blank" :href="`${queryToolBaseUrl}${queryToolRoute}`">
+                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${queryToolBaseUrl}${queryToolRoute}`">
 
                                 <i18n :path="`${tDSPath}.queryTool.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.queryTool.access`) }}</span>

@@ -62,8 +62,20 @@
                 box-shadow: none;
 
                 min-width: 400px;
+                max-width: 900px;
 
                 @extend %dropdown-menu-highlight;
+            }
+
+            .dropdown-header {
+                font-size: 0.975em;
+
+                padding: 1rem 1.5rem * 1.6 0.25rem * 1.6 1.5rem * 1.6;
+                text-align: center;
+            }
+
+            .dropdown-item {
+                padding: 0.45em 1.5em;
             }
         }
 
@@ -95,6 +107,13 @@
             &.cip-selected {
                 background-color: $wet-primary-colour;
                 color: white;
+            }
+
+            &.cip-selected,
+            &:active {
+                .cip-second {
+                    color: darken(#fff, 20%) !important;
+                }
             }
         }
 
@@ -195,6 +214,14 @@
         .cip-name {
             flex: 1 1 auto;
             margin-right: 3rem;
+
+            display: flex;
+            flex-direction: column;
+
+            .cip-second {
+                font-size: 0.8em;
+                color: lighten(#212529, 20%);
+            }
         }
 
         .cip-short-name {
@@ -204,7 +231,7 @@
 
         .cip-qualifier {
             font-size: 0.7em;
-            font-weight: 100;
+            font-weight: 500;
         }
 
         &.cip-horizontal {
@@ -224,6 +251,17 @@
     @media (min-width: 990px) {
         .cip-controls-wrapper {
             display: block !important;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .dropdown-item:not(.cip-nowrap) {
+            flex-direction: column;
+            align-items: flex-start !important;
+
+            .cip-first {
+                white-space: pre-line;
+            }
         }
     }
 
@@ -277,6 +315,7 @@
 
                     max-width: 100% !important;
                     min-width: 200px !important;
+                    width: 100% !important;
                 }
             }
         }
