@@ -201,32 +201,38 @@ const actions = {
             [VisualizationControlType.RCP]: {
                 action: (value: string) => context.dispatch(Action.setRcpId, value),
                 state: context.state.rcpId
+            },
+            [VisualizationControlType.Analysis]: {
+                action: (value: string) => context.dispatch(Action.setAnalysisPeriod, value),
+                state: context.state.analysisPeriod
             }
         };
 
-        [VisualizationControlType.Time, VisualizationControlType.RCP].forEach(type => {
-            // if the selector is not defined for this dataset/view combination, reset the value to null
-            const selectorSource = datasetControlOptions[type];
-            if (!selectorSource) {
-                map[type].action(null);
-                return;
-            }
+        [VisualizationControlType.Time, VisualizationControlType.RCP, VisualizationControlType.Analysis].forEach(
+            type => {
+                // if the selector is not defined for this dataset/view combination, reset the value to null
+                const selectorSource = datasetControlOptions[type];
+                if (!selectorSource) {
+                    map[type].action(null);
+                    return;
+                }
 
-            const newValue = map[type].state;
-            // falsy options specified on the dataset configuration indicate that all available selector options will be used
-            // leave the newly selected option in place
-            if (newValue && !selectorSource.options) {
-                return;
-            }
+                const newValue = map[type].state;
+                // falsy options specified on the dataset configuration indicate that all available selector options will be used
+                // leave the newly selected option in place
+                if (newValue && !selectorSource.options) {
+                    return;
+                }
 
-            // if the newly set value is one of the options specified on the dataset config, leave it in place
-            if (newValue && (<string[]>selectorSource.options).includes(newValue)) {
-                return;
-            }
+                // if the newly set value is one of the options specified on the dataset config, leave it in place
+                if (newValue && (<string[]>selectorSource.options).includes(newValue)) {
+                    return;
+                }
 
-            // set the value to the default specified in the selector source
-            map[type].action(selectorSource.default);
-        });
+                // set the value to the default specified in the selector source
+                map[type].action(selectorSource.default);
+            }
+        );
     },
 
     [Action.setFeatureId](context: AppContext, value: string | null) {
