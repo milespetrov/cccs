@@ -90,12 +90,6 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
             }
         });
 
-        // add a click handler to each 'pip' (the labels)
-        const pips = this.slider.querySelectorAll('.noUi-value');
-        pips.forEach((pip: any) => {
-            pip.addEventListener('click', this.clickOnPip);
-        });
-
         /**
          * update is fired when:
          *  - slider is dragged over a value
@@ -131,13 +125,6 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
         // timeslice was changed by something else, update the slider
         this.slider.noUiSlider.set(this.timeSlice);
-    }
-
-    clickOnPip(event: any): void {
-        // set the slider value to the clicked pip's value
-        // will move the slider to that pip
-        const value = parseInt(event.path[0].getAttribute('data-value'));
-        this.slider.noUiSlider.set(value);
     }
 
     // based on a subset of our DQV keyboard support
@@ -290,7 +277,6 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         top: -2.3rem;
         .noUi-value {
             top: 2rem;
-            cursor: pointer;
             left: 9% !important;
         }
 
