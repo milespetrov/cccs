@@ -116,7 +116,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
     }
 
     @Watch('timeSlice')
-    thing(newValue: number, oldValue: number): void {
+    onTimeSliceChange(newValue: number, oldValue: number): void {
         if (this.internalTimeSliceChange) {
             // Flag set in 'on update' subscription, skip setting the slider again
             this.internalTimeSliceChange = false;

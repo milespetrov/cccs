@@ -112,10 +112,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.switchLayers();
     }
 
-    async getCapabilities(layerConfig: any): Promise<void> {
+    getCapabilities(layerConfig: any): void {
         const getCapabilitiesUrl =
             layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.layerEntries[0].id;
-        await $.get({
+        $.get({
             url: getCapabilitiesUrl,
             success: this.parseTimeParam
         });
