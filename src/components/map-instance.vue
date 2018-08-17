@@ -68,6 +68,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @State centerPoint: MapPoint;
     @State locationPoint: MapPoint;
     @State zoomLevel: number;
+    @State analysisPeriod: string;
     // @State featurePoint: MapPoint;
 
     //@Action setFeatureId: (value: string | null) => void;
@@ -80,6 +81,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Getter legend: { [index: string]: string } | undefined;
     @Getter colourRamp: ColourRamp | null;
     @Getter datasetApi: DatasetApi;
+    @Getter dateSlider: any;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -87,6 +89,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     currentLayers: any[];
 
     configVersion: number;
+
+    wmsTime: any = { start: '', end: '', step: '' };
 
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
@@ -101,6 +105,29 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Watch('currentTimePeriod')
     onTimePeriodChange() {
         this.switchLayers();
+    }
+
+    @Watch('analysisPeriod')
+    async onAnalysisPeriodChange() {
+        this.switchLayers();
+    }
+
+    getCapabilities(layerConfig: any): void {
+        const getCapabilitiesUrl =
+            layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.layerEntries[0].id;
+        $.get({
+            url: getCapabilitiesUrl,
+            success: this.parseTimeParam
+        });
+    }
+
+    parseTimeParam(data: any): void {
+        const timeDimension = $(data).find('Dimension[name=time]')[0];
+
+        this.wmsTime.default = (<any>timeDimension.attributes).default.value;
+        [, this.wmsTime.start, this.wmsTime.end, this.wmsTime.step] = /(.*Z)\/(.*Z)\/PT(\d\d?)H/.exec(
+            timeDimension.innerHTML
+        )!;
     }
 
     async switchLayers() {
@@ -125,6 +152,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             layer.id += `_${this.counter}`;
             const addedLayer = this._mapi.layers.addLayer(layer);
             this.currentLayers[index] = layer.id;
+
+            if (this.dateSlider) {
+                this.getCapabilities(layer);
+            }
         });
 
         source.supportLayers.slice().forEach((layer: any, index: number) => {
@@ -154,13 +185,21 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('timeSlice')
     onTimeSliceChanged(newValue: number, oldValue: number) {
-        if (!this.timeSliderLabels) {
-            return;
+        if (this.timeSliderLabels) {
+            // turn off old layer
+            this.getLayerById(this.currentLayers[oldValue]).visibility = false;
+            // set new layer visible
+            this.getLayerById(this.currentLayers[newValue]).visibility = true;
+        } else if (this.dateSlider) {
+            // removes the '.000' milliseconds from the string and reappends the 'Z'
+            // having the milliseconds breaks the layers
+            const timeString = new Date(this.timeSlice).toISOString().split('.')[0] + 'Z';
+            // set the TIME param and reload
+            this.currentLayers.forEach(layerId => {
+                this.getLayerById(layerId)._viewerLayer._layer.customLayerParameters.TIME = timeString;
+                this.getLayerById(layerId)._viewerLayer._layer.refresh();
+            });
         }
-        // turn off old layer
-        this.getLayerById(this.currentLayers[oldValue]).visibility = false;
-        // set new layer visible
-        this.getLayerById(this.currentLayers[newValue]).visibility = true;
     }
 
     getLayerById(searchId: string): any {
@@ -470,7 +509,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                         'colour-ramp': this.colourRamp,
                         legend: this.legend,
                         'current-variable': this.currentVariable,
-                        'current-dataset': this.currentDataset
+                        'current-dataset': this.currentDataset,
+                        'date-slider': this.dateSlider,
+                        wmsTime: this.wmsTime
                     }
                 }),
             components: {

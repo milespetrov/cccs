@@ -105,28 +105,28 @@ rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,0
 datasetSelector.title,Dataset,1,Dataset,0
 datasetSelector.header,Datasets,1,Jeux de données,0
 datasetSelector.all_datasets,,1,,0
-datasetSelector.future_projections,Future climate projections,1,???,0
-datasetSelector.historical_stations,Historical station observations,1,???,0
-datasetSelector.historical_grids,Historical gridded climate data,1,???,0
+datasetSelector.future_projections,Future climate projections,1,Projections climatiques futures,0
+datasetSelector.historical_stations,Historical station observations,1,Observations historiques de la station,0
+datasetSelector.historical_grids,Historical gridded climate data,1,Données climatiques quadrillées historiques,0
 datasetSelector.ahccd.shortName,AHCCD,1,AHCCD,0
 datasetSelector.ahccd.fullName,Adjusted and homogenized Canadian climate data,1,Données climatiques Canadiennes ajustées et homogénéisées,0
-datasetSelector.ahccd.subName,Long-term climate trends,1,???,0
+datasetSelector.ahccd.subName,Long-term climate trends,1,Tendances climatiques à long terme,0
 datasetSelector.ahccd.qualifier,AHCCD,1,AHCCD,0
 datasetSelector.cmip5.shortName,CMIP5,1,CMIP5,0
 datasetSelector.cmip5.fullName,Global climate model scenarios,1,"Scénarios de modèles climatiques globaux",0
-datasetSelector.cmip5.subName,Low-resolution climate projections,1,???,0
+datasetSelector.cmip5.subName,Low-resolution climate projections,1,Projections climatiques basse résolution,0
 datasetSelector.cmip5.qualifier,CMIP5,1,CMIP5,0
 datasetSelector.cangrd.shortName,CanGRD,1,CanGRD,0
 datasetSelector.cangrd.fullName,Gridded historical climate data,1,Données climatiques historiques maillées,0
-datasetSelector.cangrd.subName,Long-term climate trends,1,???,0
+datasetSelector.cangrd.subName,Long-term climate trends,1,Tendances climatiques à long terme,0
 datasetSelector.cangrd.qualifier,CanGRD,1,CanGRD,0
 datasetSelector.dcs.shortName,Downscaled,1,Réduit,0
 datasetSelector.dcs.fullName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,0
-datasetSelector.dcs.subName,High-resolution climate projections,1,???,0
+datasetSelector.dcs.subName,High-resolution climate projections,1,Projections climatiques à haute résolution,0
 datasetSelector.dcs.qualifier,Downscaled,1,Réduit,0
 datasetSelector.capa.shortName,RDPA,1,ARDP,0
 datasetSelector.capa.fullName,Regional deterministic precipitation analysis,1,Analyse régionale déterministe de précipitation,0
-datasetSelector.capa.subName,Historical precipitation,1,???,0
+datasetSelector.capa.subName,Historical precipitation,1,Précipitation historique,0
 datasetSelector.capa.qualifier,RDPA,1,ARDP,0
 datasetSelector.daily.shortName,Daily,1,Quotidien,0
 datasetSelector.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,0
@@ -162,6 +162,14 @@ downloadSelector.queryTool.shortName,,1,,0
 downloadSelector.queryTool.fullName,{0}Climate data extraction tool,1,{0} Outil d'extraction de données climatiques,0
 downloadSelector.queryTool.access,Download source data using ,1,Accéder à l'ensemble de données complet dans,0
 downloadSelector.queryTool.qualifier,,1,,0
+analysisSelector.title,Analysis period,1,Période d'analyse,0
+analysisSelector.header,,1,,0
+analysisSelector.6.shortName,6 hours,1,6 heures,0
+analysisSelector.6.fullName,Every 6 hours,1,Toutes les 6 heures,0
+analysisSelector.6.qualifier,,1,,1
+analysisSelector.24.shortName,24 hours,1,24 heures,0
+analysisSelector.24.fullName,Every 24 hours,1,Toutes les 24 heures,0
+analysisSelector.24.qualifier,,1,,1
 units.sit.shortName,m,1,m,0
 units.sit.fullName,metres,1,mètres,0
 units.sit.qualifier,,1,,0
@@ -313,12 +321,12 @@ capa.hrdpa.qualifier,HRDPA,1,HRDPA,0
 capa.rdpa.fullName,Regional deterministic precipitation analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.shortName,Regional deterministic precipitation analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.qualifier,RDPA,1,ARDP,0
-ahccd.tooltips.station_title,AHCCD station name,1,,0
-ahccd.tooltips.value_title,Trend value,1,,0
-ahccd.tooltips.no_trend,No trend calculated,1,,0
-normal.tooltips.station_id_title,MSC station ID,1,,0
-normal.tooltips.station_name_title,MSC station name,1,,0
-normal.tooltips.value_title,Climate value,1,,0
-normal.tooltips.prov_title,Province/Territory,1,,0
-normal.tooltips.wmo_title,WMO identifier,1,,0
-normal.tooltips.tc_title,TC identifier,1,,0
+ahccd.tooltips.station_title,AHCCD station name,1,Nom de la station AHCCD,0
+ahccd.tooltips.value_title,Trend value,1,Valeur de tendance,0
+ahccd.tooltips.no_trend,No trend calculated,1,Aucune tendance calculée,0
+normal.tooltips.station_id_title,MSC station ID,1,ID de la station MSC,0
+normal.tooltips.station_name_title,MSC station name,1,Nom de la station MSC,0
+normal.tooltips.value_title,Climate value,1,Valeur climatique,0
+normal.tooltips.prov_title,Province/Territory,1,Province / Territoire,0
+normal.tooltips.wmo_title,WMO identifier,1,Identifiant WMS,0
+normal.tooltips.tc_title,TC identifier,1,Identifiant TC,0

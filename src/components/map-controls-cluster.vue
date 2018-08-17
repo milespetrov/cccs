@@ -1,6 +1,6 @@
 <template>
     <div class="cip-controls-cluster-container">
-        <div class="cip-controls-cluster" v-if="timeSliderLabels || colourRamp || legend">
+        <div class="cip-controls-cluster" v-if="timeSliderLabels || colourRamp || legend || dateSlider">
 
             <div class="cip-cluster-row" v-if="legend">
                 <!--div class="cip-row-label">
@@ -17,6 +17,15 @@
                 </div>
                 <div class="cip-row-content">
                     <time-slider></time-slider>
+                </div>
+            </div>
+
+            <div class="cip-cluster-row" v-if="dateSlider">
+                <div class="cip-row-label">
+                    <span class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
+                </div>
+                <div class="cip-row-content">
+                    <date-slider v-bind="wmsTime"></date-slider>
                 </div>
             </div>
 
@@ -45,11 +54,13 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
+import DateSlider from './date-slider.vue';
 
 @Component({
     components: {
         'time-slider': TimeSlider,
-        'map-colour-ramp': MapColourRamp
+        'map-colour-ramp': MapColourRamp,
+        'date-slider': DateSlider
     }
 })
 export default class MapControlsCluster extends Vue {
@@ -58,6 +69,8 @@ export default class MapControlsCluster extends Vue {
     @Prop() legend: any;
     @Prop() currentVariable: any;
     @Prop() currentDataset: any;
+    @Prop() dateSlider: any;
+    @Prop() wmsTime: any;
 }
 </script>
 

@@ -78,6 +78,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     @Action setTimeSlice: (value: number | null) => void;
     @Action setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
     @Action setRcpId: (value: string | null) => void;
+    @Action setAnalysisPeriod: (value: string | null) => void;
 
     @State internalRouteUpdate: boolean;
     @Action setInternalRouteUpdate: (value: boolean) => void;
@@ -140,7 +141,8 @@ export default class App extends mixins(UpdateRouteMixin) {
             z: this.setZoomLevel,
             ts: this.setTimeSlice,
             fp: this.setFeaturePoint,
-            r: this.setRcpId
+            r: this.setRcpId,
+            ap: this.setAnalysisPeriod
         };
 
         const defaultSettings: FunctionArray = {
