@@ -61,8 +61,6 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         });
     }
 
-    async buildConfig(stuff: any): Promise<void> {}
-
     mounted(): void {
         this.slider = this.$el.querySelector('.noUi-target');
     }
@@ -188,8 +186,8 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         });
     }
 
-    formatDate(datetime: number): string {
-        if (!this.timeSlice) {
+    formatDate(datetime: number | undefined): string {
+        if (!datetime) {
             return '';
         }
         const months = [
