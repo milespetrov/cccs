@@ -126,7 +126,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         this.wmsTime.default = (<any>timeDimension.attributes).default.value;
         [, this.wmsTime.start, this.wmsTime.end, this.wmsTime.step] = /(.*Z)\/(.*Z)\/PT(\d\d?)H/.exec(
-            timeDimension.innerHTML
+            (timeDimension.innerHTML || timeDimension.textContent)!
         )!;
     }
 
