@@ -34,7 +34,10 @@ function parser(data, lang) {
 
     result.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
-    result.value = data.features[0].properties.value;
+    var tempVal = data.features[0].properties.value;
+    var parsedVal = Number.parseFloat(tempVal).toFixed(2); // seems to not error if gargabe is passed in
+    
+    result.value = isNaN(parsedVal) ? tempVal : parsedVal;
     result.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, data.features[0].geometry.coordinates);
 
     result.tt = TRANSLATIONS[lang];

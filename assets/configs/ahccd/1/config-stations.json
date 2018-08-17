@@ -7,7 +7,7 @@
             },
             {
                 "infoType": "text",
-                "content": "A short AHCCD dataset description goes here"
+                "content": "Climate IDs are digit numbers assigned by the Meteorological Service of Canada (MSC) to a site where official weather observations are taken, and serves as a permanent, unique identifier. For AHCCD records for non-joined stations, the MSC’s climate ID is used as the AHCCD ID. For AHCCD records with joined stations, the last joined MSC’s Climate ID is used as the AHCCD ID. This allows users to compare the raw data with the adjusted and homogenized data."
             },
             {
                 "layerId": "AHCCD_station_en",

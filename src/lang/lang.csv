@@ -321,7 +321,7 @@ capa.hrdpa.qualifier,HRDPA,1,HRDPA,0
 capa.rdpa.fullName,Regional deterministic precipitation analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.shortName,Regional deterministic precipitation analysis,1,Analyse régionale des précipitations déterministes,0
 capa.rdpa.qualifier,RDPA,1,ARDP,0
-ahccd.tooltips.station_title,AHCCD station name,1,Nom de la station AHCCD,0
+ahccd.tooltips.station_title,Station name,1,Nom de la station,0
 ahccd.tooltips.value_title,Trend value,1,Valeur de tendance,0
 ahccd.tooltips.no_trend,No trend calculated,1,Aucune tendance calculée,0
 normal.tooltips.station_id_title,MSC station ID,1,ID de la station MSC,0

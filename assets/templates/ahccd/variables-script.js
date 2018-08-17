@@ -15,6 +15,8 @@ function parser(data, lang) {
                 pressure_station: 'kPa',
                 pressure_sea_level: 'kPa'
             },
+            yearRange: 'Trend period',
+            noYearRange: 'No trend period',
             timePeriod: {
                 title: 'Time period',
                 Jan: 'January',
@@ -57,6 +59,13 @@ function parser(data, lang) {
     data.properties.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
     data.forEach(function(el) {
+        if (el.key === 'trend_value') {
+            // round the trend value. if not parsable, keep orig value.
+            var parsedVal = Number.parseFloat(el.value).toFixed(2); // seems to not error if gargabe is passed in
+            if (!isNaN(parsedVal)) {
+                el.value = parsedVal;
+            }
+        }
         data.properties[el.key] = el.value;
     });
     data.tt = TRANSLATIONS[lang];
