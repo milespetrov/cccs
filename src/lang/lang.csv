@@ -3,10 +3,10 @@ title,Climate data viewer,1,Visualiseur de données climatiques,0
 description,"Use the data viewer tool to view climate data on the map below. Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify date ranges, variables and other options using the drop-down menus at the top of the map.",1,"Utilisez l'outil de visualisation des données pour afficher les données climatiques sur la carte ci-dessous. Commencez par choisir l'un des jeux de données disponibles. Il y a une description détaillée du jeu de données sélectionné sous la carte. Vous pouvez zoomer sur un emplacement géographique spécifique ou cliquer sur les données pour obtenir des informations supplémentaires. Vous pouvez spécifier des plages de dates, des variables et d'autres options à l'aide des menus déroulants en haut de la carte.",0
 description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l'aide, consultez {0} ou cliquez sur l'icône ‘?’ Dans le coin inférieur droit de la carte.",0
 description.help.helpFile,help file,1,le fichier d'aide,0
-description.supportDesk,"If you have questions, contact the {0}.",1,,0
-description.supportDesk.link,Climate Services Support Desk,1,,0
-description.resources,"If you are looking for other datasets, explore the {0}.",1,,0
-description.resources.link,library of climate resources,1,,0
+description.supportDesk,"If you have questions, contact the {0}.",1,"Si vous avez des questions, contactez le {0}.",0
+description.supportDesk.link,Climate Services Support Desk,1,Bureau de soutien des services climatologiques,0
+description.resources,"If you are looking for other datasets, explore the {0}.",1,"Si vous recherchez d'autres jeux de données, explorer la {0}.",0
+description.resources.link,library of climate resources,1,"bibliothèque des ressources climatiques",0
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,0
 geo.coordinates.east,E,1,E,0
 geo.coordinates.west,W,1,W,0
