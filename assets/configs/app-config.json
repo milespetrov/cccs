@@ -1,5 +1,6 @@
 {
     "queryToolUrl": "http://climate-change.dev.ec.gc.ca/climate-data/#",
-    "serviceDeskUrl": "https://climate-change.canada.ca/support-desk",
-    "dataCatalogueUrl": "https://open.canada.ca/en/open-data"
+    "supportDeskUrl": "https://climate-change.canada.ca/support-desk",
+    "dataCatalogueUrl": "https://open.canada.ca/en/open-data",
+    "climateResourcesUrl": ""
 }
