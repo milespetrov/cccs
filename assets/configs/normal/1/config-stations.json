@@ -71,6 +71,7 @@
             {
                 "id": "NORMAL_station_en",
                 "layerType": "ogcWfs",
+                "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
                 "name": "Climate normals 1981-2010",
                 "nameField": "STATION_NAME",
@@ -158,6 +159,7 @@
             {
                 "id": "NORMAL_station_fr",
                 "layerType": "ogcWfs",
+                "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
                 "name": "Normales climatiques 1981-2010",
                 "nameField": "STATION_NAME",

@@ -70,6 +70,7 @@
     {
       "id": "Normals_tmax_JUL_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=7",
       "name": "Mean daily maximum temperature",
       "nameField": "ID",
@@ -157,6 +158,7 @@
     {
       "id": "Normals_tmax_JUL_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=7",
       "name": "Température maximale moyenne",
       "nameField": "ID",

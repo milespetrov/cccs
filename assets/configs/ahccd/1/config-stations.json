@@ -68,6 +68,7 @@
             {
                 "id": "AHCCD_station_en",
                 "layerType": "ogcWfs",
+                "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
                 "name": "Stations",
                 "nameField": "station_name",

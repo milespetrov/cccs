@@ -70,6 +70,7 @@
     {
       "id": "AHCCD_tmean_ANN_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_mean&period=Ann",
       "name": "Homogenized mean temperature",
       "nameField": "station_name",
@@ -157,6 +158,7 @@
     {
       "id": "AHCCD_tmean_ANN_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_mean&period=Ann",
       "name": "[fr] Mean temperature",
       "nameField": "station_name",

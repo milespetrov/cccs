@@ -70,6 +70,7 @@
     {
       "id": "AHCCD_wind_MAY_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=wind_speed&period=May",
       "name": "Wind speed",
       "nameField": "station_name",
@@ -157,6 +158,7 @@
     {
       "id": "AHCCD_wind_MAY_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=wind_speed&period=May",
       "name": "[fr] Wind speed",
       "nameField": "station_name",

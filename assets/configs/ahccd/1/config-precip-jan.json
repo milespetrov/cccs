@@ -70,6 +70,7 @@
     {
       "id": "AHCCD_prec_JAN_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=total_precip&period=Jan",
       "name": "Adjusted total precipitation",
       "nameField": "station_name",
@@ -81,7 +82,7 @@
         "template": "assets/templates/ahccd/variables-template.html",
         "parser": "assets/templates/ahccd/variables-script.js"
       },
-      "colour": "#0ca7f5",
+      "colour": "#0cb8f0",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
@@ -157,6 +158,7 @@
     {
       "id": "AHCCD_prec_JAN_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=total_precip&period=Jan",
       "name": "[fr] Precipitation",
       "nameField": "station_name",
@@ -168,7 +170,7 @@
         "template": "assets/templates/ahccd/variables-template.html",
         "parser": "assets/templates/ahccd/variables-script.js"
       },
-      "colour": "#0ca7f5",
+      "colour": "#0cb8f0",
       "controls": ["data", "visibility", "opacity"]
     }
   ]
