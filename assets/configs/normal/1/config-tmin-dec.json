@@ -73,7 +73,7 @@
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=8&MONTH=12",
       "name": "Mean daily minimum temperature",
-      "nameField": "ID",
+      "nameField": "STN_ID",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,7 +161,7 @@
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=8&MONTH=12",
       "name": "Température minimale moyenne",
-      "nameField": "ID",
+      "nameField": "STN_ID",
       "state": {
         "opacity": 1,
         "visibility": true
