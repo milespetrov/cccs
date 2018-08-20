@@ -70,6 +70,7 @@
     {
       "id": "AHCCD_tmin_APR_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_min&period=Apr",
       "name": "Homogenized minimum temperature",
       "nameField": "station_name",
@@ -157,6 +158,7 @@
     {
       "id": "AHCCD_tmin_APR_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_min&period=Apr",
       "name": "[fr] Minimum temperature",
       "nameField": "station_name",

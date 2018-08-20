@@ -13,7 +13,7 @@
       "layerId": "Hydro_en",
       "layerName": "",
       "description": "",
-      "coverIcon": "assets/images/green-circle.svg",
+      "coverIcon": "assets/images/blue-circle.svg",
       "symbologyStack": [
         {
           "image": "",
@@ -70,6 +70,7 @@
     {
       "id": "Hydro_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
       "name": "Hydrometric stations",
       "nameField": "STATION_NAME",
@@ -100,7 +101,7 @@
       "layerId": "Hydro_fr",
       "layerName": "",
       "description": "",
-      "coverIcon": "assets/images/green-circle.svg",
+      "coverIcon": "assets/images/blue-circle.svg",
       "symbologyStack": [
         {
           "image": "",
@@ -157,6 +158,7 @@
     {
       "id": "Hydro_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
       "name": "[fr] Hydrometric stations",
       "nameField": "STATION_NAME",

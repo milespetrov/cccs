@@ -70,6 +70,7 @@
     {
       "id": "Normals_tmean_NOV_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=11",
       "name": "Mean daily temperature",
       "nameField": "ID",
@@ -157,6 +158,7 @@
     {
       "id": "Normals_tmean_NOV_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=11",
       "name": "Température moyenne",
       "nameField": "ID",

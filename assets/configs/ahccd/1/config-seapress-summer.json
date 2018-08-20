@@ -70,6 +70,7 @@
     {
       "id": "AHCCD_slpr_JJA_en",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Smr",
       "name": "Homogenized sea level pressure",
       "nameField": "station_name",
@@ -157,6 +158,7 @@
     {
       "id": "AHCCD_slpr_JJA_fr",
       "layerType": "ogcWfs",
+      "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Smr",
       "name": "[fr] Sea level pressure",
       "nameField": "station_name",
