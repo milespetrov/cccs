@@ -3,9 +3,10 @@
         <div class="cip-header-container mrgn-bttm-lg">
             <h1>{{ $t(`title`) }}</h1>
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-                <i18n :path="`description`" tag="p">
-                    <a href="" role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`helpFile`) }}</a>
-                </i18n>
+                <p>{{ $t(`description`) }}</p>
+                <i18n :path="`description.help`" tag="p">
+                    <a href="" role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`description.help.helpFile`) }}</a>
+                </i18n> 
             </aside>
         </div>
 
@@ -22,6 +23,14 @@
                     <a :href="`${queryToolBaseUrl}${queryToolRoute}`" target="_blank">{{ $t(`map.extractTool`) }}</a>
                 </i18n>
             </aside>
+
+            <i18n path="description.supportDesk" tag="p">
+                <a :href="`${supportDeskUrl}`">{{ $t('description.supportDesk.link') }}</a>
+            </i18n>
+
+            <i18n path="description.resources" tag="p">
+                <a href="">{{ $t('description.resources.link') }}</a>
+            </i18n>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
@@ -101,7 +110,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     }
 
     queryToolBaseUrl: string = '';
-    serviceDeskUrl: string = '';
+    supportDeskUrl: string = '';
 
     get queryToolRoute(): string {
         return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
@@ -110,7 +119,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     async created(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', data => {
             this.queryToolBaseUrl = data.queryToolUrl;
-            this.serviceDeskUrl = data.serviceDeskUrl;
+            this.supportDeskUrl = data.supportDeskUrl;
         });
         // This is to allow the back/forward browser functions to update the store
         // We flag internal updates with `internalRouteUpdate` in the store so that
