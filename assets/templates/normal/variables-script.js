@@ -10,20 +10,27 @@ function parser(data, lang) {
             obs_percent: 'Percentage of possible observations',
             date_calculated: 'Date calculated',
             normal_code: 'Normal code',
-            month: 'Month'
+            month: 'Month',
+            annual: 'Annual'
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            annual: 'Annuel'
+        }
     };
 
     console.log(data, lang);
 
     data.properties = {};
+    data.tt = TRANSLATIONS[lang];
 
     data.forEach(function(el) {
-        data.properties[el.key] = el.value;
+        if (el.key === 'MONTH' && el.value === 13) {
+            data.properties[el.key] = data.tt.annual;
+        } else {
+            data.properties[el.key] = el.value;
+        }
     });
-    data.tt = TRANSLATIONS[lang];
 
     return data;
 }
