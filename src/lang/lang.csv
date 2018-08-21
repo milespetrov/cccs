@@ -160,7 +160,7 @@ downloadSelector.jpeg.shortName,,1,,0
 downloadSelector.jpeg.fullName,JPEG picture,1,Image JPEG,0
 downloadSelector.jpeg.qualifier,,1,,0
 downloadSelector.dataCatalogue.shortName,,1,,0
-downloadSelector.dataCatalogue.fullName,{0}Data catalogue,1,{0} Catalogue de données,0
+downloadSelector.dataCatalogue.fullName,{0} Open Data metadata record,1,{0} Enregistrement de métadonnées Open Data,0
 downloadSelector.dataCatalogue.access,Access full dataset in ,1,Accéder à l'ensemble de données complet dans,0
 downloadSelector.dataCatalogue.qualifier,,1,,0
 downloadSelector.queryTool.shortName,,1,,0
