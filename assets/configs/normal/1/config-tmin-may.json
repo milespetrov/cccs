@@ -20,7 +20,7 @@
           "text": ""
         }
       ],
-      "symbologyRenderStyle": "images"
+      "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
@@ -108,7 +108,7 @@
           "text": ""
         }
       ],
-      "symbologyRenderStyle": "images"
+      "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
