@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+rv-table-setting-cluster {
+    display: none;
+}
+
 .cip-scope {
     // import the bootstrap .scss files to be scoped under `.cip-scope`
     // if not scoped, bootstrap rules interfere with WET's modified bootstrap version
