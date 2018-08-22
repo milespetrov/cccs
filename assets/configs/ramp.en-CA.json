@@ -34,8 +34,7 @@
     "language": "en",
     "services": {
         "corsEverywhere": true,
-        "exportMapUrl":
-            "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+        "exportMapUrl": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
             "title": {
                 "value": ""
@@ -43,7 +42,8 @@
             "map": {},
             "mapElements": {},
             "legend": {
-                "showInfoSymbology": true
+                "showInfoSymbology": true,
+                "columnWidth": 2000
             },
             "footnote": {
                 "value": "Generated using the Climate Maps viewer at http://climate-change.canada.ca/climate-maps."
@@ -138,8 +138,7 @@
             {
                 "id": "baseNrCan",
                 "name": "Canada Base Map - Transportation (CBMT)",
-                "description":
-                    "The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
+                "description": "The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
                 "altText": "altText - The Canada Base Map - Transportation (CBMT)",
                 "layers": [
                     {
@@ -183,15 +182,13 @@
             {
                 "id": "baseCBME_CBCE_HS_RO_3978",
                 "name": "Canada Base Map - Elevation (CBME)",
-                "description":
-                    "The Canada Base Map - Elevation (CBME) web mapping services of the Earth Sciences Sector at Natural Resources Canada, is intended primarily for online mapping application users and developers.",
+                "description": "The Canada Base Map - Elevation (CBME) web mapping services of the Earth Sciences Sector at Natural Resources Canada, is intended primarily for online mapping application users and developers.",
                 "altText": "altText - Canada Base Map - Elevation (CBME)",
                 "layers": [
                     {
                         "id": "CBME_CBCE_HS_RO_3978",
                         "layerType": "esriFeature",
-                        "url":
-                            "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
+                        "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
@@ -207,15 +204,13 @@
             {
                 "id": "baseCBMT_CBCT_GEOM_3978",
                 "name": "Canada Base Map - Transportation (CBMT)",
-                "description":
-                    " The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
+                "description": " The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
                 "altText": "altText - Canada Base Map - Transportation (CBMT)",
                 "layers": [
                     {
                         "id": "CBMT_CBCT_GEOM_3978",
                         "layerType": "esriFeature",
-                        "url":
-                            "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
+                        "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
                     }
                 ],
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
