@@ -13,10 +13,10 @@
                 "layerId": "AHCCD_station_en",
                 "layerName": "",
                 "description": "A short station description goes here",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image": "assets/images/blue-circle.svg",
+                        "image": "assets/images/blue-circle.png",
                         "text": "AHCCD Station"
                     }
                 ],
@@ -29,13 +29,13 @@
             {
                 "layerId": "cities",
                 "layerName": "Cities",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
                 "layerName": "Labels",
-                "coverIcon": "assets/images/labels.svg",
+                "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             }
         ],
@@ -99,7 +99,7 @@
                 "layerId": "AHCCD_station_fr",
                 "layerName": "",
                 "description": "[fr] A short station description goes here",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
                         "image":
@@ -116,19 +116,19 @@
             {
                 "layerId": "cities",
                 "layerName": "[fr] Cities",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
                 "layerName": "[fr] Labels",
-                "coverIcon": "assets/images/labels.svg",
+                "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "provinces",
                 "layerName": "[fr] Provinces",
-                "coverIcon": "assets/images/provinces.svg",
+                "coverIcon": "assets/images/provinces.png",
                 "symbologyStack": []
             }
         ],

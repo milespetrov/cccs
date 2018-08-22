@@ -13,7 +13,7 @@
       "layerId": "CanGRID_tmean_DJF_en",
       "layerName": "",
       "description": "",
-      "coverIcon": "assets/images/tmean.svg",
+      "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
           "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRID.TREND.TM_ANNUAL&format=image/png&STYLE=default",
@@ -29,19 +29,19 @@
     {
       "layerId": "cities",
       "layerName": "Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     },
     {
       "layerId": "provinces",
       "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.svg",
+      "coverIcon": "assets/images/provinces.png",
       "symbologyStack": []
     }
 
@@ -119,7 +119,7 @@
       "layerId": "CanGRID_tmean_DJF_fr",
       "layerName": "",
       "description": "",
-      "coverIcon": "assets/images/tmean.svg",
+      "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
           "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRID.TREND.TM_ANNUAL&format=image/png&STYLE=default",
@@ -135,19 +135,19 @@
     {
       "layerId": "cities",
       "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     },
     {
       "layerId": "provinces",
       "layerName": "[fr] Provinces",
-      "coverIcon": "assets/images/provinces.svg",
+      "coverIcon": "assets/images/provinces.png",
       "symbologyStack": []
     }
 

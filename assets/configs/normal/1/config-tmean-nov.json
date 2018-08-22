@@ -13,10 +13,10 @@
       "layerId": "Normals_tmean_NOV_en",
       "layerName": "",
       "description": "The mean temperature in degrees Celsius (°C) is defined as the average of the maximum and minimum temperature at a location for a specified time interval.",
-      "coverIcon": "assets/images/tmean.svg",
+      "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "assets/images/red-circle.svg",
+          "image": "assets/images/red-circle.png",
           "text": ""
         }
       ],
@@ -29,13 +29,13 @@
     {
       "layerId": "cities",
       "layerName": "Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 
@@ -101,10 +101,10 @@
       "layerId": "Normals_tmean_NOV_fr",
       "layerName": "",
       "description": "Température moyenne en degrés Celsius (°C) définie comme moyenne de la température maximale et de la température minimale à un endroit donné au cours d'un intervalle de temps déterminé.",
-      "coverIcon": "assets/images/tmean.svg",
+      "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "assets/images/red-circle.svg",
+          "image": "assets/images/red-circle.png",
           "text": ""
         }
       ],
@@ -117,13 +117,13 @@
     {
       "layerId": "cities",
       "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 

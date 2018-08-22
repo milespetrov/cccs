@@ -15,10 +15,10 @@
                 "layerName": "",
                 "description":
                     "These are Canadian climate stations during the Normals period (1981-2010) that either have records of 25 years or better during that period, or have shorter records but are needed to represent several major centres.",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image": "assets/images/blue-circle.svg",
+                        "image": "assets/images/blue-circle.png",
                         "text": "Station"
                     }
                 ],
@@ -31,13 +31,13 @@
             {
                 "layerId": "cities",
                 "layerName": "Cities",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
                 "layerName": "Labels",
-                "coverIcon": "assets/images/labels.svg",
+                "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             }
         ],
@@ -104,7 +104,7 @@
                 "layerName": "",
                 "description":
                     "Ce sont des stations climatiques canadiennes au cours de la période des Normales (1981-2010) qui ont des records de 25 ans ou plus au cours de cette période, ou qui ont des enregistrements plus courts mais sont nécessaires pour représenter plusieurs grands centres.",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
                         "image":
@@ -121,13 +121,13 @@
             {
                 "layerId": "cities",
                 "layerName": "[fr] Cities",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
                 "layerName": "[fr] Labels",
-                "coverIcon": "assets/images/labels.svg",
+                "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             }
         ],

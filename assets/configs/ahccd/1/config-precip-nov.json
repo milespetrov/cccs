@@ -13,10 +13,10 @@
       "layerId": "AHCCD_prec_NOV_en",
       "layerName": "",
       "description": "",
-      "coverIcon": "assets/images/precip.svg",
+      "coverIcon": "assets/images/precip.png",
       "symbologyStack": [
         {
-          "image": "assets/images/blue-circle.svg",
+          "image": "assets/images/blue-circle.png",
           "text": "AHCCD Station"
         }
       ],
@@ -29,13 +29,13 @@
     {
       "layerId": "cities",
       "layerName": "Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 
@@ -101,10 +101,10 @@
       "layerId": "AHCCD_prec_NOV_fr",
       "layerName": "",
       "description": "",
-      "coverIcon": "assets/images/precip.svg",
+      "coverIcon": "assets/images/precip.png",
       "symbologyStack": [
         {
-          "image": "assets/images/blue-circle.svg",
+          "image": "assets/images/blue-circle.png",
           "text": "[fr] AHCCD Station"
         }
       ],
@@ -117,13 +117,13 @@
     {
       "layerId": "cities",
       "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 

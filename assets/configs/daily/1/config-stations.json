@@ -14,10 +14,10 @@
                 "layerName": "",
                 "description":
                     "These are the total stations with daily observations compiled during any set time period.",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image": "assets/images/blue-circle.svg",
+                        "image": "assets/images/blue-circle.png",
                         "text": "Station"
                     }
                 ],
@@ -30,13 +30,13 @@
             {
                 "layerId": "cities",
                 "layerName": "Cities",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
                 "layerName": "Labels",
-                "coverIcon": "assets/images/labels.svg",
+                "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             }
         ],
@@ -101,10 +101,10 @@
                 "layerName": "",
                 "description":
                     "[fr] These are the total stations with daily observations compiled during any set time period.",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image": "assets/images/blue-circle.svg",
+                        "image": "assets/images/blue-circle.png",
                         "text": "[fr] Station"
                     }
                 ],
@@ -117,13 +117,13 @@
             {
                 "layerId": "cities",
                 "layerName": "[fr] Cities",
-                "coverIcon": "assets/images/cities.svg",
+                "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
                 "layerName": "[fr] Labels",
-                "coverIcon": "assets/images/labels.svg",
+                "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             }
         ],
