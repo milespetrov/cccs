@@ -13,10 +13,10 @@
       "layerId": "Normals_tmin_MAY_en",
       "layerName": "",
       "description": "The average of the minimum temperature in degrees Celsius (°C) observed at the location for that month.",
-      "coverIcon": "assets/images/tmin.svg",
+      "coverIcon": "assets/images/tmin.png",
       "symbologyStack": [
         {
-          "image": "assets/images/red-circle.svg",
+          "image": "assets/images/red-circle.png",
           "text": ""
         }
       ],
@@ -29,13 +29,13 @@
     {
       "layerId": "cities",
       "layerName": "Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 
@@ -101,10 +101,10 @@
       "layerId": "Normals_tmin_MAY_fr",
       "layerName": "",
       "description": "Moyenne de la température minimale en degrés Celsius (°C) observée à un endroit donné au cours du mois.",
-      "coverIcon": "assets/images/tmin.svg",
+      "coverIcon": "assets/images/tmin.png",
       "symbologyStack": [
         {
-          "image": "assets/images/red-circle.svg",
+          "image": "assets/images/red-circle.png",
           "text": ""
         }
       ],
@@ -117,13 +117,13 @@
     {
       "layerId": "cities",
       "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 

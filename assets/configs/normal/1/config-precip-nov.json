@@ -13,10 +13,10 @@
       "layerId": "Normals_prec_NOV_en",
       "layerName": "",
       "description": "The sum of the total rainfall and the water equivalent of the total snowfall in millimetres (mm), observed at the location during a specified time interval.",
-      "coverIcon": "assets/images/precip.svg",
+      "coverIcon": "assets/images/precip.png",
       "symbologyStack": [
         {
-          "image": "assets/images/blue-circle.svg",
+          "image": "assets/images/blue-circle.png",
           "text": ""
         }
       ],
@@ -29,13 +29,13 @@
     {
       "layerId": "cities",
       "layerName": "Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 
@@ -101,10 +101,10 @@
       "layerId": "Normals_prec_NOV_fr",
       "layerName": "",
       "description": "Somme de la pluie totale et de l'équivalent en eau de la neige totale en millimètres (mm), observée à un endroit donné au cours d'un intervalle de temps déterminé.",
-      "coverIcon": "assets/images/precip.svg",
+      "coverIcon": "assets/images/precip.png",
       "symbologyStack": [
         {
-          "image": "assets/images/blue-circle.svg",
+          "image": "assets/images/blue-circle.png",
           "text": ""
         }
       ],
@@ -117,13 +117,13 @@
     {
       "layerId": "cities",
       "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.svg",
+      "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
       "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.svg",
+      "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
 
