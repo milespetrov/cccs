@@ -23,9 +23,9 @@ Nunc ut nulla sagittis, convallis tellus in, tempor ipsum. Sed est magna, portti
 
 ##### Asset credits
 
--   https://www.flaticon.com/packs/weather-53
--   https://www.flaticon.com/free-icon/pressure_213976#term=air%20pressure%20weather&page=1&position=3
--   https://www.flaticon.com/free-icon/toronto_185286
--   https://www.flaticon.com/free-icon/map_854878
--   https://www.flaticon.com/free-icon/canada_330442#term=canada&page=1&position=8
--   https://visualpharm.com/free-icons/last%2024%20hours-595b40b75ba036ed117d853a
+-   Freepik; https://www.flaticon.com/packs/weather-53
+-   Swifticons; https://www.flaticon.com/free-icon/pressure_213976#term=air%20pressure%20weather&page=1&position=3
+-   Freepik; https://www.flaticon.com/free-icon/toronto_185286
+-   Freepik; https://www.flaticon.com/free-icon/map_854878
+-   Freepik; https://www.flaticon.com/free-icon/canada_330442#term=canada&page=1&position=8
+-   icons8; https://visualpharm.com/free-icons/last%2024%20hours-595b40b75ba036ed117d853a
