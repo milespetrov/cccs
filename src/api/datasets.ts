@@ -206,6 +206,18 @@ class HydroApi extends DatasetApi {
         super(state, DatasetId.Hydrometric);
     }
 
+    tooltip = true;
+
+    /**
+     * Returns a string to be displayed on a tooltip in ramp
+     *
+     * @param data the data returned by ramp on-hover
+     * @returns {string} the tooltip string to be displayed
+     */
+    getTooltip(data: any): string {
+        return `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${data.STATION_NAME} (${data.PROV_TERR_STATE_LOC})</span></div>`;
+    }
+
     /**
      * Returns a dataset config url based on the curent state.
      *
