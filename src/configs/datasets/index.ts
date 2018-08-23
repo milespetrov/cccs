@@ -4,8 +4,6 @@ import cmip5 from './cmip5-dataset-config';
 import capa from './capa-dataset-config';
 import canGrd from './cangrd-dataset-config';
 import dcs from './dcs-dataset-config';
-import daily from './daily-dataset-config';
-import monthly from './monthly-dataset-config';
 import normal from './normal-dataset-config';
 import hydro from './hydro-dataset-config';
 
@@ -17,8 +15,6 @@ export const datasets = {
     [DatasetId.CAPA]: capa,
     [DatasetId.CANGRD]: canGrd,
     [DatasetId.DCS]: dcs,
-    [DatasetId.ClimateDaily]: daily,
-    [DatasetId.ClimateMonthly]: monthly,
     [DatasetId.ClimateNormal]: normal,
     [DatasetId.Hydrometric]: hydro
 };

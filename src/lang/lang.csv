@@ -28,7 +28,7 @@ map.controlsCluster.timeline,Time period:,1,Période de temps:,0
 settings.title,Settings,1,Paramètres,0
 variableSelector.title,Variable,1,Variable,0
 variableSelector.header,Climate data,1,Données climatiques,0
-variableSelector.stations_group,Stations,1,Stations,0
+variableSelector.stations_group,Metadata,1,Métadonnées,0
 variableSelector.temperature_group,Temperature,1,Température,0
 variableSelector.wind_group,Wind,1,Vent,0
 variableSelector.ice_group,Sea ice,1,Glace de mer,0
@@ -111,7 +111,7 @@ datasetSelector.title,Dataset,1,Dataset,0
 datasetSelector.header,Datasets,1,Jeux de données,0
 datasetSelector.all_datasets,,1,,0
 datasetSelector.future_projections,Future climate projections,1,Projections climatiques futures,0
-datasetSelector.historical_stations,Historical station observations,1,Observations historiques de la station,0
+datasetSelector.historical_stations,Historical station data,1,Données de la station historique,0
 datasetSelector.historical_grids,Historical gridded climate data,1,Données climatiques quadrillées historiques,0
 datasetSelector.ahccd.shortName,AHCCD,1,AHCCD,0
 datasetSelector.ahccd.fullName,Adjusted and homogenized Canadian climate data,1,Données climatiques Canadiennes ajustées et homogénéisées,0
@@ -131,23 +131,15 @@ datasetSelector.dcs.subName,High-resolution climate projections,1,Projections cl
 datasetSelector.dcs.qualifier,Downscaled,1,Réduit,0
 datasetSelector.capa.shortName,RDPA,1,ARDP,0
 datasetSelector.capa.fullName,Regional deterministic precipitation analysis,1,Analyse régionale déterministe de précipitation,0
-datasetSelector.capa.subName,Historical precipitation,1,Précipitation historique,0
+datasetSelector.capa.subName,High-resolution precipitation data,1,Données de précipitation à haute résolution,0
 datasetSelector.capa.qualifier,RDPA,1,ARDP,0
-datasetSelector.daily.shortName,Daily,1,Quotidien,0
-datasetSelector.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,0
-datasetSelector.daily.subName,[placeholder subtitle],1,???,0
-datasetSelector.daily.qualifier,Daily,1,Quotidien,0
-datasetSelector.monthly.shortName,Monthly,1,Mensuel,0
-datasetSelector.monthly.fullName,Monthly climate observation summaries,1,Résumés mensuels d'observations climatiques,0
-datasetSelector.monthly.subName,[placeholder subtitle],1,???,0
-datasetSelector.monthly.qualifier,Monthly,1,Mensuel,0
-datasetSelector.normal.shortName,Normals,1,Normales,0
-datasetSelector.normal.fullName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
-datasetSelector.normal.subName,[placeholder subtitle],1,???,0
-datasetSelector.normal.qualifier,Normals,1,Normales,0
+datasetSelector.normal.shortName,Stations,1,Stations,0
+datasetSelector.normal.fullName,Climate station data,1,Données de la station climatique,0
+datasetSelector.normal.subName,"Daily, monthly, and long-term averages",1,"Moyennes quotidiennes, mensuelles et à long terme",0
+datasetSelector.normal.qualifier,Stations,1,Stations,0
 datasetSelector.hydro.shortName,Hydrometric,1,Hydrométrique,0
 datasetSelector.hydro.fullName,Hydrometric station data,1,Données de stations hydrométriques,0
-datasetSelector.hydro.subName,[placeholder subtitle],1,???,0
+datasetSelector.hydro.subName,Water levels and streamflow data,1,Niveaux d'eau et données de débit,0
 datasetSelector.hydro.qualifier,Hydrometric,1,Hydrométrique,0
 downloadSelector.title,Download,1,Télécharger,0
 downloadSelector.header,Download,1,Télécharger,0
@@ -218,8 +210,8 @@ units.seapress.shortName,kPa,1,kPa,0
 units.seapress.fullName,kilopascal,1,kilopascal,0
 units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
-ahccd.stations.fullName,Climate stations,1,Stations climatiques,0
-ahccd.stations.shortName,Climate stations,1,Stations climatiques,0
+ahccd.stations.fullName,AHCCD station metadata,1,Métadonnées de la station AHCCD,0
+ahccd.stations.shortName,AHCCD station metadata,1,Métadonnées de la station AHCCD,0
 ahccd.stations.qualifier,,0,,0
 ahccd.tmean.fullName,Mean temperature,1,Température moyenne,0
 ahccd.tmean.shortName,Mean temperature,1,Température moyenne,0
@@ -278,9 +270,15 @@ cangrd.tmean.qualifier,,1,,0
 cangrd.precip.fullName,Total precipitation,1,Total des précipitations,0
 cangrd.precip.shortName,Total precipitation,1,Total des précipitations,0
 cangrd.precip.qualifier,,1,,0
-normal.stations.fullName,Climate stations,1,Stations climatiques,0
-normal.stations.shortName,Climate stations,1,Stations climatiques,0
+normal.stations.fullName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
+normal.stations.shortName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
 normal.stations.qualifier,,0,,0
+normal.monthly.fullName,Monthly climate observation summaries,1,Résumés mensuels d'observations climatiques,0
+normal.monthly.shortName,Monthly climate observation summaries,1,Résumés mensuels d'observations climatiques,0
+normal.monthly.qualifier,,0,,0
+normal.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,0
+normal.daily.shortName,Daily climate observations,1,Observations climatiques quotidiennes,0
+normal.daily.qualifier,,0,,0
 normal.tmean.fullName,Mean daily temperature,1,Température quotidienne moyenne,0
 normal.tmean.shortName,Mean daily temperature,1,Température quotidienne moyenne,0
 normal.tmean.qualifier,,1,,0
@@ -308,12 +306,6 @@ normal.gustspeed.qualifier,,1,,0
 normal.gustdir.fullName,Direction of maximum gust,1,Direction de la rafale maximale,0
 normal.gustdir.shortName,Direction of maximum gust,1,Direction de la rafale maximale,0
 normal.gustdir.qualifier,,1,,0
-monthly.stations.fullName,Climate stations,1,Stations climatiques,0
-monthly.stations.shortName,Climate stations,1,Stations climatiques,0
-monthly.stations.qualifier,,0,,0
-daily.stations.fullName,Climate stations,1,Stations climatiques,0
-daily.stations.shortName,Climate stations,1,Stations climatiques,0
-daily.stations.qualifier,,0,,0
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.qualifier,,1,,0

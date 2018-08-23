@@ -243,7 +243,11 @@ class NormalApi extends DatasetApi {
      * @memberof NormalApi
      */
     get fetchUrl(): string {
-        if (this.state.variableId === 'stations') {
+        if (
+            this.state.variableId === 'stations' ||
+            this.state.variableId === 'monthly' ||
+            this.state.variableId === 'daily'
+        ) {
             return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
         } else {
             return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${

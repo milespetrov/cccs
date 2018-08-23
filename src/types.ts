@@ -38,6 +38,8 @@ export enum VariableId {
     RDPA6 = 'rdpa6',
     RDPA24 = 'rdpa24',
     ClimateStations = 'stations',
+    Monthly = 'monthly',
+    Daily = 'daily',
     SurfaceTemp = 'tsurface',
     WaterTemp = 'twater',
     Geopotential = 'geopotential',

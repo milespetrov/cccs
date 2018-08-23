@@ -9,13 +9,7 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
         },
         {
             id: 'historical_stations',
-            items: [
-                DatasetId.ClimateNormal,
-                DatasetId.ClimateMonthly,
-                DatasetId.ClimateDaily,
-                DatasetId.Hydrometric,
-                DatasetId.AHCCD
-            ]
+            items: [DatasetId.ClimateNormal, DatasetId.Hydrometric, DatasetId.AHCCD]
         },
         {
             id: 'historical_grids',
