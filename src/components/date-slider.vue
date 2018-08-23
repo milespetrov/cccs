@@ -27,7 +27,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
     @Action setTimeSlice: (value: number) => void;
     @State timeSlice: number;
-    @State analysisPeriod: string;
+    @State variableId: string;
 
     @Getter dateSlider: any;
     @Prop() step: string;
@@ -39,7 +39,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
     }
     get startDate(): Date {
         const date = new Date(this.end);
-        date.setDate(date.getDate() - this.dateSlider[this.analysisPeriod].range);
+        date.setDate(date.getDate() - this.dateSlider[this.variableId].range);
         return date;
     }
 

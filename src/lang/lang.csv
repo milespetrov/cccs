@@ -169,12 +169,6 @@ downloadSelector.queryTool.access,Download source data using ,1,Accéder à l'en
 downloadSelector.queryTool.qualifier,,1,,0
 analysisSelector.title,Analysis period,1,Période d'analyse,0
 analysisSelector.header,,1,,0
-analysisSelector.6.shortName,6 hours,1,6 heures,0
-analysisSelector.6.fullName,Every 6 hours,1,Toutes les 6 heures,0
-analysisSelector.6.qualifier,,1,,1
-analysisSelector.24.shortName,24 hours,1,24 heures,0
-analysisSelector.24.fullName,Every 24 hours,1,Toutes les 24 heures,0
-analysisSelector.24.qualifier,,1,,1
 units.sit.shortName,m,1,m,0
 units.sit.fullName,metres,1,mètres,0
 units.sit.qualifier,,1,,0
@@ -320,12 +314,12 @@ daily.stations.qualifier,,0,,0
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.qualifier,,1,,0
-capa.hrdpa.fullName,High resolution deterministic precipitation analysis,1,Analyse déterministe de précipitation à haute résolution,0
-capa.hrdpa.shortName,High resolution deterministic precipitation analysis,1,Analyse déterministe de précipitation à haute résolution,0
-capa.hrdpa.qualifier,HRDPA,1,HRDPA,0
-capa.rdpa.fullName,Regional deterministic precipitation analysis,1,Analyse régionale des précipitations déterministes,0
-capa.rdpa.shortName,Regional deterministic precipitation analysis,1,Analyse régionale des précipitations déterministes,0
-capa.rdpa.qualifier,RDPA,1,ARDP,0
+capa.rdpa6.shortName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,0
+capa.rdpa6.fullName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,0
+capa.rdpa6.qualifier,,1,,1
+capa.rdpa24.shortName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,0
+capa.rdpa24.fullName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,0
+capa.rdpa24.qualifier,,1,,1
 ahccd.tooltips.station_title,Station name,1,Nom de la station,0
 ahccd.tooltips.value_title,Trend value,1,Valeur de tendance,0
 ahccd.tooltips.no_trend,No trend calculated,1,Aucune tendance calculée,0

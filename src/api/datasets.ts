@@ -99,9 +99,7 @@ class CAPAApi extends DatasetApi {
      * @memberof CAPAApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
-            this.state.analysisPeriod
-        }.json`;
+        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -215,7 +213,9 @@ class HydroApi extends DatasetApi {
      * @returns {string} the tooltip string to be displayed
      */
     getTooltip(data: any): string {
-        return `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${data.STATION_NAME} (${data.PROV_TERR_STATE_LOC})</span></div>`;
+        return `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${data.STATION_NAME} (${
+            data.PROV_TERR_STATE_LOC
+        })</span></div>`;
     }
 
     /**

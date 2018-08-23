@@ -15,7 +15,7 @@ export const variableSelectorConfig: VariableSelectorConfig = {
         },
         {
             id: 'precipitation_group',
-            items: [VariableId.Precipitation, VariableId.HRDPA, VariableId.RDPA],
+            items: [VariableId.Precipitation, VariableId.HRDPA, VariableId.RDPA6, VariableId.RDPA24],
             showHeader: true
         },
         {
