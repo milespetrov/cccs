@@ -205,9 +205,12 @@ units.hydro.qualifier,,0,,0
 units.hrdpa.shortName,mm,1,mm,0
 units.hrdpa.fullName,millimetres,1,millimètres,0
 units.hrdpa.qualifier,,0,,0
-units.rdpa.shortName,mm,1,mm,0
-units.rdpa.fullName,millimetres,1,millimètres,0
-units.rdpa.qualifier,,0,,0
+units.rdpa6.shortName,mm,1,mm,0
+units.rdpa6.fullName,millimetres,1,millimètres,0
+units.rdpa6.qualifier,,0,,0
+units.rdpa24.shortName,mm,1,mm,0
+units.rdpa24.fullName,millimetres,1,millimètres,0
+units.rdpa24.qualifier,,0,,0
 units.stnpress.shortName,kPa,1,kPa,0
 units.stnpress.fullName,kilopascal,1,kilopascal,0
 units.stnpress.qualifier,,0,,0
