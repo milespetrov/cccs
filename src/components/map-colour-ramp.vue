@@ -21,13 +21,18 @@ export default class MapColourRamp extends Vue {
     @Prop({
         default: ['#fff', '#000']
     })
-    colours: string[];
+    colours: string[] | string[][];
 
     /**
      * Returns the value for the background of the colour ramp using the colours provided in the dataset config.
      */
     get backgroundGradient(): string {
-        return `linear-gradient(to right, ${this.colours.join(',')})`;
+        if (typeof this.colours[0] === 'string') {
+            return `linear-gradient(to right, ${this.colours.join(',')})`;
+        }
+        return `linear-gradient(to right, ${(<string[][]>this.colours)
+            .map(value => `${value[0]} ${value[1]}%`)
+            .join(',')})`;
     }
 }
 </script>
