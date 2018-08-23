@@ -7,6 +7,7 @@
         "outDir": "./dist/",
         "noImplicitAny": true,
         "noImplicitThis": true,
+        "suppressImplicitAnyIndexErrors": true,
         "strictNullChecks": true,
         "removeComments": false,
         "module": "esnext",
