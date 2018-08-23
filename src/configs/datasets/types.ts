@@ -113,7 +113,7 @@ export interface ColourRamp {
      * @type {string[]}
      * @memberof ColourRamp
      */
-    colours?: string[];
+    colours?: string[] | string[][];
     /**
      * A list of colour ramp labels to be used.
      * Right now only two labels are supported on either sides of the colour ramp representing extreme values.
@@ -137,7 +137,7 @@ export interface DatasetColourRamp {
      * @type {string[]}
      * @memberof DatasetColourRamp
      */
-    defaultColours: string[];
+    defaultColours: string[] | string[][];
     /**
      * A list of default colour ramp labels to be used. They can be overwritten by variable-specific colour ramp configurations.
      * Right now only two labels are supported on either sides of the colour ramp representing extreme values.
