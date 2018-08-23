@@ -30,11 +30,13 @@
             </div>
 
             <!-- remove seprator if only one section is visible -->
-            <span class="cip-separator-vertical" v-if="colourRamp && timeSliderLabels"></span>
+            <span class="cip-separator-vertical" v-if="colourRamp && (timeSliderLabels || dateSlider)"></span>
 
             <div class="cip-cluster-row" v-if="colourRamp">
                 <div class="cip-row-label">
-                    <span class="cip-label">{{ $t(`${currentDataset}.${currentVariable}.shortName`) }} change ({{$t(`units.${currentVariable}.shortName`)}}):</span>
+                     <i18n :path="`colourRamp.${currentDataset}`" tag="span" class="cip-label">
+                         <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
+                     </i18n> <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}}):</span>
                 </div>
                 <div class="cip-row-content">
                     <map-colour-ramp
