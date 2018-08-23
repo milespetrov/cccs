@@ -107,11 +107,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.switchLayers();
     }
 
-    @Watch('analysisPeriod')
-    async onAnalysisPeriodChange() {
-        this.switchLayers();
-    }
-
     getCapabilities(layerConfig: any): void {
         const getCapabilitiesUrl =
             layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.layerEntries[0].id;

@@ -4,19 +4,15 @@ import { VisualizationControlType, VariableId, DatasetId, AnalysisPeriodType } f
 const capaDataset: DatasetSource = {
     id: DatasetId.CAPA,
 
-    controls: {
-        [VisualizationControlType.Analysis]: {
-            default: AnalysisPeriodType.Six
-        }
-    },
+    controls: {},
 
-    variables: [VariableId.RDPA],
+    variables: [VariableId.RDPA6, VariableId.RDPA24],
 
     dateSlider: {
-        [AnalysisPeriodType.Six]: {
+        [VariableId.RDPA6]: {
             range: 7
         },
-        [AnalysisPeriodType.TwentyFour]: {
+        [VariableId.RDPA24]: {
             range: 30
         }
     },
