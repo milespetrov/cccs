@@ -16,7 +16,7 @@
       "coverIcon": "assets/images/blue-circle.png",
       "symbologyStack": [
         {
-          "image": "",
+          "image": "assets/images/blue-circle.png",
           "text": "Hydrometric Station"
         }
       ],
@@ -104,7 +104,7 @@
       "coverIcon": "assets/images/blue-circle.png",
       "symbologyStack": [
         {
-          "image": "",
+          "image": "assets/images/blue-circle.png",
           "text": "[fr] Hydrometric Station"
         }
       ],
