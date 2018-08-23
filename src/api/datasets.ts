@@ -48,7 +48,7 @@ class AHCCDApi extends DatasetApi {
             } else {
                 displayTrend = data.trend_value;
             }
-            displayTrend += ' ' + i18n.t(`units.${this.state.variableId}.shortName`);
+            displayTrend += ' ' + i18n.t(`units.ahccd.${this.state.variableId}.shortName`);
         } else {
             displayTrend = i18n.t('ahccd.tooltips.no_trend');
         }
@@ -269,7 +269,7 @@ class NormalApi extends DatasetApi {
             variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
                 ${i18n.t('normal.tooltips.station_name_title')}: ${data.STATION_NAME}
                 <br />${i18n.t('normal.tooltips.value_title')}: ${data.VALUE} ${i18n.t(
-                `units.${this.state.variableId}.shortName`
+                `units.normal.${this.state.variableId}.shortName`
             )}</span></div>`,
 
             stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(

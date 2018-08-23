@@ -1,12 +1,12 @@
 ﻿key,enValue,enValid,frValue,frValid
 title,Climate data viewer,1,Visualiseur de données climatiques,0
-description,"Use the data viewer tool to view climate data on the map below. Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify date ranges, variables and other options using the drop-down menus at the top of the map.",1,"Utilisez l'outil de visualisation des données pour afficher les données climatiques sur la carte ci-dessous. Commencez par choisir l'un des jeux de données disponibles. Il y a une description détaillée du jeu de données sélectionné sous la carte. Vous pouvez zoomer sur un emplacement géographique spécifique ou cliquer sur les données pour obtenir des informations supplémentaires. Vous pouvez spécifier des plages de dates, des variables et d'autres options à l'aide des menus déroulants en haut de la carte.",0
-description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l'aide, consultez {0} ou cliquez sur l'icône ‘?’ Dans le coin inférieur droit de la carte.",0
-description.help.helpFile,help file,1,le fichier d'aide,0
-description.supportDesk,"If you have questions, contact the {0}.",1,"Si vous avez des questions, contactez le {0}.",0
-description.supportDesk.link,Climate Services Support Desk,1,Bureau de soutien des services climatologiques,0
-description.resources,"If you are looking for other datasets, explore the {0}.",1,"Si vous recherchez d'autres jeux de données, explorer la {0}.",0
-description.resources.link,library of climate resources,1,"bibliothèque des ressources climatiques",0
+description,"Use the data viewer tool to view climate data on the map below. Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify date ranges, variables and other options using the drop-down menus at the top of the map.",1,"Utilisez l’outil de visualisation des données pour voir les données climatiques sur la carte ci-dessous. Commencez par choisir l’un des ensembles de données offerts. Sous la carte, vous trouverez une description détaillée de l’ensemble de données sélectionné. Vous pouvez zoomer sur un lieu géographique précis ou cliquer sur les données pour obtenir des renseignements supplémentaires. Vous pouvez préciser la période, les variables et d’autres options à l’aide des menus déroulants en haut de la carte.",1
+description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l’aide, consultez le {0} ou cliquez sur l’icône « ? » dans le coin inférieur droit de la carte.",1
+description.help.helpFile,help file,1,fichier d’aide,1
+description.supportDesk,"If you have questions, {0}.",1,"Si vous avez des questions, {0}.",1
+description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec l’équipe de soutien des services climatiques,1
+description.resources,"If you are looking for other datasets, explore the {0}.",1,"Si vous cherchez d’autres ensembles de données, explorez la {0}.",1
+description.resources.link,library of climate resources,1,"bibliothèque de ressources sur le climat",1
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,0
 geo.coordinates.east,E,1,E,0
 geo.coordinates.west,W,1,W,0
@@ -25,6 +25,10 @@ map.monthly_desc,"A cross-country summary of the averages and extremes for the m
 map.normal_desc,"Climate normals and averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The climate normals, averages and extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",1,"Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010.",1
 map.controlsCluster.legend,Legend:,1,Légende:,0
 map.controlsCluster.timeline,Time period:,1,Période de temps:,0
+colourRamp.cmip5,{0} change,1,Changement de {0},0
+colourRamp.dcs,{0} change,1,Changement de {0},0
+colourRamp.cangrd,{0} change,1,Changement de{0},0
+colourRamp.capa,Total precipitation amount analysis,1,Analyse de la quantité totale de précipitation,0
 settings.title,Settings,1,Paramètres,0
 variableSelector.title,Variable,1,Variable,0
 variableSelector.header,Climate data,1,Données climatiques,0
@@ -161,54 +165,6 @@ downloadSelector.queryTool.access,Download source data using ,1,Accéder à l'en
 downloadSelector.queryTool.qualifier,,1,,0
 analysisSelector.title,Analysis period,1,Période d'analyse,0
 analysisSelector.header,,1,,0
-units.sit.shortName,m,1,m,0
-units.sit.fullName,metres,1,mètres,0
-units.sit.qualifier,,1,,0
-units.sic.shortName,%,1,%,0
-units.sic.fullName,%,1,%,0
-units.sic.qualifier,,1,,0
-units.sfcwind.shortName,km/h,1,km/h,0
-units.sfcwind.fullName,kilometres per hour,1,kilomètres par heure,0
-units.sfcwind.qualifier,,1,,0
-units.snd.shortName,cm,1,cm,0
-units.snd.fullName,centimetres,1,centimètres,0
-units.snd.qualifier,,1,,0
-units.tmean.shortName,°C,1,° C,0
-units.tmean.fullName,degrees Celsius,1,degré Celsius,0
-units.tmean.qualifier,,1,,0
-units.tmax.shortName,°C,1,° C,0
-units.tmax.fullName,degrees Celsius,1,degré Celsius,0
-units.tmax.qualifier,,1,,0
-units.tmin.shortName,°C,1,° C,0
-units.tmin.fullName,degrees Celsius,1,degré Celsius,0
-units.tmin.qualifier,,1,,0
-units.precip.shortName,%,1,%,1
-units.precip.fullName,percent,1,pour cent,0
-units.precip.qualifier,,1,,0
-units.gustdir.shortName,,0,,0
-units.gustdir.fullName,,0,,0
-units.gustdir.qualifier,,0,,0
-units.gustspeed.shortName,km/h,1,km/h,0
-units.gustspeed.fullName,kilometres per hour,1,kilomètres par heure,0
-units.gustspeed.qualifier,,0,,0
-units.hydro.shortName,,0,,0
-units.hydro.fullName,,0,,0
-units.hydro.qualifier,,0,,0
-units.hrdpa.shortName,mm,1,mm,0
-units.hrdpa.fullName,millimetres,1,millimètres,0
-units.hrdpa.qualifier,,0,,0
-units.rdpa6.shortName,mm,1,mm,0
-units.rdpa6.fullName,millimetres,1,millimètres,0
-units.rdpa6.qualifier,,0,,0
-units.rdpa24.shortName,mm,1,mm,0
-units.rdpa24.fullName,millimetres,1,millimètres,0
-units.rdpa24.qualifier,,0,,0
-units.stnpress.shortName,kPa,1,kPa,0
-units.stnpress.fullName,kilopascal,1,kilopascal,0
-units.stnpress.qualifier,,0,,0
-units.seapress.shortName,kPa,1,kPa,0
-units.seapress.fullName,kilopascal,1,kilopascal,0
-units.seapress.qualifier,,0,,0
 page.dateModified,Date modified,1,Date modifiée,0
 ahccd.stations.fullName,AHCCD station metadata,1,Métadonnées de la station AHCCD,0
 ahccd.stations.shortName,AHCCD station metadata,1,Métadonnées de la station AHCCD,0
@@ -234,6 +190,20 @@ ahccd.seapress.qualifier,,1,,0
 ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
 ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
 ahccd.sfcwind.qualifier,,1,,0
+units.ahccd.tmean.shortName,°C,1,° C,0
+units.ahccd.tmean.fullName,degrees Celsius,1,degré Celsius,0
+units.ahccd.tmax.shortName,°C,1,° C,0
+units.ahccd.tmax.fullName,degrees Celsius,1,degré Celsius,0
+units.ahccd.tmin.shortName,°C,1,° C,0
+units.ahccd.tmin.fullName,degrees Celsius,1,degré Celsius,0
+units.ahccd.precip.shortName,mm,1,mm,0
+units.ahccd.precip.fullName,millimetres,1,millimètres,0
+units.ahccd.sfcwind.shortName,km/h,1,km/h,0
+units.ahccd.sfcwind.fullName,kilometres per hour,1,kilomètres par heure,0
+units.ahccd.stnpress.shortName,kPa,1,kPa,0
+units.ahccd.stnpress.fullName,kilopascal,1,kilopascal,0
+units.ahccd.seapress.shortName,kPa,1,kPa,0
+units.ahccd.seapress.fullName,kilopascal,1,kilopascal,0
 cmip5.tmean.fullName,Mean temperature,1,Température moyenne,0
 cmip5.tmean.shortName,Mean temperature,1,Température moyenne,0
 cmip5.tmean.qualifier,,1,,0
@@ -252,6 +222,18 @@ cmip5.sic.qualifier,,1,,0
 cmip5.snd.fullName,Snow depth,1,Profondeur de neige,0
 cmip5.snd.shortName,Snow depth,1,Profondeur de neige,0
 cmip5.snd.qualifier,,1,,0
+units.cmip5.tmean.shortName,°C,1,° C,0
+units.cmip5.tmean.fullName,degrees Celsius,1,degré Celsius,0
+units.cmip5.precip.shortName,%,1,%,1
+units.cmip5.precip.fullName,percent,1,pour cent,0
+units.cmip5.sfcwind.shortName,%,1,%,1
+units.cmip5.sfcwind.fullName,percent,1,pour cent,0
+units.cmip5.sit.shortName,%,1,%,1
+units.cmip5.sit.fullName,percent,1,pour cent,0
+units.cmip5.sic.shortName,%,1,%,1
+units.cmip5.sic.fullName,percent,1,pour cent,0
+units.cmip5.snd.shortName,%,1,%,1
+units.cmip5.snd.fullName,percent,1,pour cent,0
 dcs.tmean.fullName,Mean temperature,1,Température moyenne,0
 dcs.tmean.shortName,Mean temperature,1,Température moyenne,0
 dcs.tmean.qualifier,,1,,0
@@ -264,12 +246,24 @@ dcs.tmax.qualifier,,1,,0
 dcs.precip.fullName,Total precipitation,1,Total des précipitations,0
 dcs.precip.shortName,Total precipitation,1,Total des précipitations,0
 dcs.precip.qualifier,,1,,0
+units.dcs.tmean.shortName,°C,1,° C,0
+units.dcs.tmean.fullName,degrees Celsius,1,degré Celsius,0
+units.dcs.tmax.shortName,°C,1,° C,0
+units.dcs.tmax.fullName,degrees Celsius,1,degré Celsius,0
+units.dcs.tmin.shortName,°C,1,° C,0
+units.dcs.tmin.fullName,degrees Celsius,1,degré Celsius,0
+units.dcs.precip.shortName,%,1,%,1
+units.dcs.precip.fullName,percent,1,pour cent,0
 cangrd.tmean.fullName,Mean temperature,1,Température moyenne,0
 cangrd.tmean.shortName,Mean temperature,1,Température moyenne,0
 cangrd.tmean.qualifier,,1,,0
 cangrd.precip.fullName,Total precipitation,1,Total des précipitations,0
 cangrd.precip.shortName,Total precipitation,1,Total des précipitations,0
 cangrd.precip.qualifier,,1,,0
+units.cangrd.tmean.shortName,°C,1,° C,0
+units.cangrd.tmean.fullName,degrees Celsius,1,degré Celsius,0
+units.cangrd.precip.shortName,%,1,%,1
+units.cangrd.precip.fullName,percent,1,pour cent,0
 normal.stations.fullName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
 normal.stations.shortName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
 normal.stations.qualifier,,0,,0
@@ -306,6 +300,24 @@ normal.gustspeed.qualifier,,1,,0
 normal.gustdir.fullName,Direction of maximum gust,1,Direction de la rafale maximale,0
 normal.gustdir.shortName,Direction of maximum gust,1,Direction de la rafale maximale,0
 normal.gustdir.qualifier,,1,,0
+units.normal.tmean.shortName,°C,1,° C,0
+units.normal.tmean.fullName,degrees Celsius,1,degré Celsius,0
+units.normal.tmax.shortName,°C,1,° C,0
+units.normal.tmax.fullName,degrees Celsius,1,degré Celsius,0
+units.normal.tmin.shortName,°C,1,° C,0
+units.normal.tmin.fullName,degrees Celsius,1,degré Celsius,0
+units.normal.precip.shortName,mm,1,mm,0
+units.normal.precip.fullName,millimetres,1,millimètres,0
+units.normal.sfcwind.shortName,km/h,1,km/h,0
+units.normal.sfcwind.fullName,kilometres per hour,1,kilomètres par heure,0
+units.normal.stnpress.shortName,kPa,1,kPa,0
+units.normal.stnpress.fullName,kilopascal,1,kilopascal,0
+units.normal.seapress.shortName,kPa,1,kPa,0
+units.normal.seapress.fullName,kilopascal,1,kilopascal,0
+units.normal.gustdir.shortName,,0,,0
+units.normal.gustdir.fullName,,0,,0
+units.normal.gustspeed.shortName,km/h,1,km/h,0
+units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres par heure,0
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,0
 hydro.hydro.qualifier,,1,,0
@@ -315,6 +327,10 @@ capa.rdpa6.qualifier,,1,,1
 capa.rdpa24.shortName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,0
 capa.rdpa24.fullName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,0
 capa.rdpa24.qualifier,,1,,1
+units.capa.rdpa6.shortName,mm,1,mm,0
+units.capa.rdpa6.fullName,millimetres,1,millimètres,0
+units.capa.rdpa24.shortName,mm,1,mm,0
+units.capa.rdpa24.fullName,millimetres,1,millimètres,0
 ahccd.tooltips.station_title,Station name,1,Nom de la station,0
 ahccd.tooltips.value_title,Trend value,1,Valeur de tendance,0
 ahccd.tooltips.no_trend,No trend calculated,1,Aucune tendance calculée,0
