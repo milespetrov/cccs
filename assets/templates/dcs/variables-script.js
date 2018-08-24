@@ -20,7 +20,20 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
+            latlong: '[fr] Latitude, Longitude',
+            trendValue: {
+                default: '[fr] Projected 20-year average changes in',
+                tmean: 'mean temperature (degree Celsius)',
+                tmin: 'minimum temperature (degree Celsius)',
+                tmax: 'maximum temperature (degree Celsius)',
+                precip: 'total precipitation (%)'
+            },
             learnMore: {
+                default: '[fr] Learn more about statistically downscaled scenarios of projected',
+                tmean: 'mean temperature change',
+                tmin: 'minimum temperature change',
+                tmax: 'maximum temperature change',
+                precip: 'total precipitation change',
                 link: 'http://scenarios-climatiques.canada.ca/index.php?page=downscaling'
             }
         }

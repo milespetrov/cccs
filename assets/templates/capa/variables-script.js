@@ -6,7 +6,11 @@ function parser(data, lang) {
             value2: 'Confidence index'
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            latlong: '[fr] Latitude, Longitude',
+            value: '[fr] Total precipitation amount analysis (mm)',
+            value2: '[fr] Confidence index'
+        }
     };
 
     console.log(data, lang);

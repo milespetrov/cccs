@@ -51,7 +51,51 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
+            stationId: '[fr] AHCCD station ID',
+            trendValue: '[fr] Trend value',
+            no_trend: '[fr] No trend calculated',
+            elevation: '[fr] Elevation',
+            province: '[fr] Province/Territory',
+            measurementUnit: {
+                total_precip: 'mm',
+                temp_mean: '°C',
+                temp_max: '°C',
+                temp_min: '°C',
+                wind_speed: 'km/h',
+                pressure_station: 'kPa',
+                pressure_sea_level: 'kPa'
+            },
+            yearRange: '[fr] Trend period',
+            noYearRange: '[fr] No trend period',
+            timePeriod: {
+                title: '[fr] Time period',
+                Jan: 'Janvier',
+                Feb: 'Février',
+                Mar: 'Mars',
+                Apr: 'Avril',
+                May: 'Mai',
+                Jun: 'Juin',
+                Jul: 'Juillet',
+                Aug: 'Août',
+                Sep: 'Septembre',
+                Oct: 'Octobre',
+                Nov: 'Novembre',
+                Dec: 'Décembre',
+                Win: 'Hiver',
+                Spr: 'Printemps',
+                Smr: 'Été',
+                Fal: "L'automne",
+                Ann: 'Annuel'
+            },
             learnMore: {
+                default: '[fr] Learn more about',
+                tmean: 'homogenized mean temperature',
+                tmin: 'homogenized minimum temperature',
+                tmax: 'homogenized maximum temperature',
+                precip: 'adjusted total precipitation',
+                sfcwind: 'homogenized wind speed',
+                stnpress: 'homogenized station pressure',
+                seapress: 'homogenized sea level pressure',
                 link: 'https://ouvert.canada.ca/data/fr/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d'
             }
         }

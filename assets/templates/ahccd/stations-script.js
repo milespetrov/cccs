@@ -8,7 +8,13 @@ function parser(data, lang) {
             province: 'Province/Territory'
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            stationName: '[fr] Station name',
+            stationId: '[fr] AHCCD station ID',
+            coordinates: '[fr] Coordinates',
+            elevation: '[fr] Elevation',
+            province: '[fr] Province/Territory'
+        }
     };
 
     console.log(data);

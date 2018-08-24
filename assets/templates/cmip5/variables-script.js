@@ -24,7 +24,24 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
+            latlong: '[fr] Latitude, Longitude',
+            trendValue: {
+                default: '[fr] Projected 20-year average changes in',
+                tmean: 'mean temperature (degree Celsius)',
+                sic: 'sea ice concentration (%)',
+                sit: 'sea ice thickness (%)',
+                precip: 'mean precipitation (%)',
+                sfcwind: 'wind speed (%)',
+                snd: 'snow depth (%)'
+            },
             learnMore: {
+                default: '[fr] Learn more about projected',
+                tmean: 'mean temperature change',
+                precip: 'mean precipitation change',
+                sic: 'sea ice concentration change',
+                sit: 'sea ice thickness change',
+                sfcwind: 'wind speed change',
+                snd: 'snow depth change',
                 link: 'http://scenarios-climatiques.canada.ca/index.php?page=technical-notes'
             }
         }
