@@ -24,7 +24,29 @@ function parser(data, lang) {
             }
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            station_name: '[fr] Station Name',
+            station_number: '[fr] Station Number',
+            contributor: '[fr] Contributor',
+            vertical_datum: '[fr] Vertical Datum',
+            status: '[fr] Status',
+            province: {
+                title: 'Province',
+                AB: 'Alberta',
+                BC: 'British Columbia',
+                MB: 'Manitoba',
+                NB: 'New Brunswick',
+                NL: 'Newfoundland and Labrador',
+                NS: 'Nova Scotia',
+                NT: 'Northwest Territories',
+                NU: 'Nunavut',
+                ON: 'Ontario',
+                PE: 'Prince Edward Island',
+                QC: 'Québec',
+                SK: 'Saskatchewan',
+                YT: 'Yukon'
+            }
+        }
     };
 
     data.properties = {};

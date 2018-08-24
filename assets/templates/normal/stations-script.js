@@ -15,7 +15,20 @@ function parser(data, lang) {
             climate_identifier: 'Climate identifier'
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            station_name: '[fr] Station name',
+            stn_id: '[fr] MSC station ID',
+            station_type: '[fr] Station type',
+            province: '[fr] Province/Territory',
+            latitude: '[fr] Latitude',
+            longitude: '[fr] Longitude',
+            elevation: '[fr] Elevation',
+            timezone: '[fr] Time zone',
+            station_operator: '[fr] Station operator',
+            tc_identifier: '[fr] Transport Canada identifier',
+            wmo_identifier: '[fr] WMO identifier',
+            climate_identifier: '[fr] Climate identifier'
+        }
     };
 
     data.properties = {};

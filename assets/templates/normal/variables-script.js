@@ -15,6 +15,16 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
+            station_name: '[fr] MSC station name',
+            climate_value: '[fr] Climate value',
+            measurement_type: '[fr] Measurement type',
+            normal_period: '[fr] First-last year of normal period',
+            period: '[fr] Period beginning-end',
+            obs_count: '[fr] Total observations count',
+            obs_percent: '[fr] Percentage of possible observations',
+            date_calculated: '[fr] Date calculated',
+            normal_code: '[fr] Normal code',
+            month: '[fr] Month',
             annual: 'Annuel'
         }
     };
