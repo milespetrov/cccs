@@ -23,9 +23,9 @@ class AHCCDApi extends DatasetApi {
      */
     get fetchUrl(): string {
         if (this.state.variableId === 'stations') {
-            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
         } else {
-            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
                 this.state.timePeriodId
             }.json`;
         }
@@ -80,7 +80,7 @@ class CanGrdApi extends DatasetApi {
      * @memberof CanGrdApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
             this.state.timePeriodId
         }.json`;
     }
@@ -99,7 +99,7 @@ class CAPAApi extends DatasetApi {
      * @memberof CAPAApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -116,7 +116,7 @@ class CMIP5Api extends DatasetApi {
      * @memberof CMIP5Api
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}-${
             this.state.rcpId
         }.json`;
     }
@@ -135,7 +135,7 @@ class DailyApi extends DatasetApi {
      * @memberof DailyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${DatasetId.ClimateDaily}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${DatasetId.ClimateDaily}/config-${this.state.variableId}.json`;
     }
 
     tooltip = true;
@@ -164,7 +164,7 @@ class MonthlyApi extends DatasetApi {
      * @memberof MonthlyApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${DatasetId.ClimateMonthly}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${DatasetId.ClimateMonthly}/config-${this.state.variableId}.json`;
     }
 
     tooltip = true;
@@ -193,7 +193,7 @@ class DCSApi extends DatasetApi {
      * @memberof DCSApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${this.state.timePeriodId}-${
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}-${
             this.state.rcpId
         }.json`;
     }
@@ -226,7 +226,7 @@ class HydroApi extends DatasetApi {
      * @memberof HydroApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
     }
 }
 
@@ -248,9 +248,9 @@ class NormalApi extends DatasetApi {
                 this.state.variableId
             ))
         ) {
-            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
+            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
         } else {
-            return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}-${
+            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
                 this.state.timePeriodId
             }.json`;
         }

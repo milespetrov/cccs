@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Vuex, { Store } from 'vuex';
 
 import app from './app.vue';
+import breadcrumbs from './breadcrumbs.vue';
 import { createStore, RootState } from './store';
 import { i18n } from './lang';
 
@@ -34,6 +35,12 @@ new Vue({
     i18n,
     render: h => h('app'),
     components: { app }
+});
+
+new Vue({
+    el: '#breadcrumbs',
+    render: h => h('breadcrumbs'),
+    components: { breadcrumbs }
 });
 
 // TODO: include icon credits if ended up using them
