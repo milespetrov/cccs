@@ -61,7 +61,7 @@ function parser(data, lang) {
     data.forEach(function(el) {
         if (el.key === 'trend_value') {
             // round the trend value. if not parsable, keep orig value.
-            var parsedVal = Number.parseFloat(el.value).toFixed(2); // seems to not error if gargabe is passed in
+            var parsedVal = parseFloat(el.value).toFixed(2); // seems to not error if gargabe is passed in
             if (!isNaN(parsedVal)) {
                 el.value = parsedVal;
             }

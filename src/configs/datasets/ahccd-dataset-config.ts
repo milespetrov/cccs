@@ -11,14 +11,14 @@ const ahccdDataset: DatasetSource = {
     },
 
     variables: [
-        VariableId.ClimateStations,
-        VariableId.TMean,
         VariableId.TMax,
+        VariableId.TMean,
         VariableId.TMin,
         VariableId.Precipitation,
         VariableId.StationPressure,
         VariableId.SeaLevelPressure,
-        VariableId.SurfaceWind
+        VariableId.SurfaceWind,
+        VariableId.ClimateStations
     ],
 
     legend: {

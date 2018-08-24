@@ -244,9 +244,9 @@ class NormalApi extends DatasetApi {
      */
     get fetchUrl(): string {
         if (
-            this.state.variableId === 'stations' ||
-            this.state.variableId === 'monthly' ||
-            this.state.variableId === 'daily'
+            [VariableId.ClimateStations, VariableId.Daily, VariableId.Monthly].includes(<VariableId>(
+                this.state.variableId
+            ))
         ) {
             return `${this.baseUrl}/${this.id}/${this.version}/config-${this.state.variableId}.json`;
         } else {
@@ -281,7 +281,11 @@ class NormalApi extends DatasetApi {
             )}: ${data.TC_IDENTIFIER || '-'}</span></div>`
         };
 
-        return this.state.variableId === VariableId.ClimateStations ? tooltips.stations : tooltips.variables;
+        return [VariableId.ClimateStations, VariableId.Daily, VariableId.Monthly].includes(<VariableId>(
+            this.state.variableId
+        ))
+            ? tooltips.stations
+            : tooltips.variables;
     }
 }
 

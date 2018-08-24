@@ -26,13 +26,13 @@ const normalDataset: DatasetSource = {
     },
 
     variables: [
-        VariableId.Monthly,
-        VariableId.Daily,
-        VariableId.ClimateStations,
         VariableId.TMax,
         VariableId.TMean,
         VariableId.TMin,
-        VariableId.Precipitation
+        VariableId.Precipitation,
+        VariableId.Monthly,
+        VariableId.Daily,
+        VariableId.ClimateStations
     ],
 
     legend: {
