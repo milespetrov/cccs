@@ -45,11 +45,16 @@ function parser(data, lang) {
                 precip: 'adjusted total precipitation',
                 sfcwind: 'homogenized wind speed',
                 stnpress: 'homogenized station pressure',
-                seapress: 'homogenized sea level pressure'
+                seapress: 'homogenized sea level pressure',
+                link: 'https://open.canada.ca/data/en/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d'
             }
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            learnMore: {
+                link: 'https://ouvert.canada.ca/data/fr/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d'
+            }
+        }
     };
 
     console.log(data, lang);

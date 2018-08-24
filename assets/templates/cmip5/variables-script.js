@@ -18,11 +18,16 @@ function parser(data, lang) {
                 sic: 'sea ice concentration change',
                 sit: 'sea ice thickness change',
                 sfcwind: 'wind speed change',
-                snd: 'snow depth change'
+                snd: 'snow depth change',
+                link: 'http://climate-scenarios.canada.ca/?page=technical-notes'
             }
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            learnMore: {
+                link: 'http://scenarios-climatiques.canada.ca/index.php?page=technical-notes'
+            }
+        }
     };
 
     console.log(data, lang);

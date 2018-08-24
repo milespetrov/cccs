@@ -14,11 +14,16 @@ function parser(data, lang) {
                 tmean: 'mean temperature change',
                 tmin: 'minimum temperature change',
                 tmax: 'maximum temperature change',
-                precip: 'total precipitation change'
+                precip: 'total precipitation change',
+                link: 'http://climate-scenarios.canada.ca/?page=downscaling'
             }
         },
 
-        'fr-CA': {}
+        'fr-CA': {
+            learnMore: {
+                link: 'http://scenarios-climatiques.canada.ca/index.php?page=downscaling'
+            }
+        }
     };
 
     console.log(data, lang);
