@@ -18,21 +18,12 @@ export class DatasetApi {
     protected baseUrl: string = './assets/configs';
     protected id: DatasetId;
 
-    protected version: string;
-
-    isReady: Promise<any>;
     // turn off custom tooltips by default
     tooltip: boolean = false;
 
     constructor(state: AppState, id: DatasetId) {
         this.state = state;
         this.id = id;
-
-        // get the current version number of the dataset
-        // return the dataset class instance as the `isReady` Promise is resolved
-        this.isReady = getJSON<{ version: string }>(`${this.baseUrl}/${this.id}/current.json`, this.id, 'version').then(
-            data => (this.version = data.version)
-        );
     }
 
     get fetchUrl(): string {
@@ -42,8 +33,6 @@ export class DatasetApi {
     getTooltip(data: any): string | void {}
 
     async getDatasetSource(lang: string): Promise<DatasetSource> {
-        await this.isReady;
-
         const source = await getJSON<DatasetSourceWrapper>(this.fetchUrl, this.id, 'datasetSource', 10);
         return source[<'en' | 'fr'>lang];
     }

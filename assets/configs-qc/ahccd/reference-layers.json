@@ -1,0 +1,12 @@
+{
+    "layers": [
+        {
+            "id": "labels",
+            "name": "Labels",
+            "controls": ["visibility", "opacity", "reload", "settings"],
+            "layerType": "esriTile",
+			"expectedResponseTime": 10000,
+            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
+        }
+    ]
+}
