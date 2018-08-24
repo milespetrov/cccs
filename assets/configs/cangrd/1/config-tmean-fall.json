@@ -1,214 +1,212 @@
 {
-"en": {
-  "legend": [
-    {
-      "infoType": "title",
-      "content": "Data"
+    "en": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Data"
+            },
+            {
+                "infoType": "text",
+                "content": "Trend of mean temperature change (°C)"
+            },
+            {
+                "layerId": "CanGRID_tmean_SON_en",
+                "layerName": "",
+                "description": "",
+                "coverIcon": "assets/images/tmean.png",
+                "symbologyStack": [
+                    {
+                        "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.TM_ANNUAL&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "images"
+            },
+            {
+                "infoType": "title",
+                "content": "Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "Cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "Labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "layerName": "Provinces",
+                "coverIcon": "assets/images/provinces.png",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "Cities",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "Labels",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            },
+            {
+                "id": "provinces",
+                "layerType": "esriTile",
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "name": "Provinces",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "CanGRID_tmean_SON_en",
+                "layerType": "ogcWms",
+                "suppressGetCapabilities": true,
+                "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+                "name": "Mean temperature",
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": true
+                },
+                "layerEntries": [{ "id": "CANGRD.TREND.TM_FALL" }],
+                "featureInfoMimeType": "application/json",
+                "details": {
+                    "template": "assets/templates/cangrd/variables-template.html",
+                    "parser": "assets/templates/cangrd/variables-script.js"
+                },
+                "controls": ["visibility", "opacity", "settings"]
+            }
+        ]
     },
-    {
-      "infoType": "text",
-      "content": "CANGRD trends of temperature change (°C) over 1948-2016 represent the departure from the 1961-1990 reference period."
-    },
-    {
-      "layerId": "CanGRID_tmean_SON_en",
-      "layerName": "",
-      "description": "",
-      "coverIcon": "assets/images/tmean.png",
-      "symbologyStack": [
-        {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.TM_ANNUAL&format=image/png&STYLE=default",
-          "text": ""
-        }
-      ],
-      "symbologyRenderStyle": "images"
-    },
-    {
-      "infoType": "title",
-      "content": "Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Cities",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Labels",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "[fr] Data"
+            },
+            {
+                "infoType": "text",
+                "content": "[fr] A short mean temperature description goes here"
+            },
+            {
+                "layerId": "CanGRID_tmean_SON_fr",
+                "layerName": "",
+                "description": "",
+                "coverIcon": "assets/images/tmean.png",
+                "symbologyStack": [
+                    {
+                        "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.TM_ANNUAL&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "images"
+            },
+            {
+                "infoType": "title",
+                "content": "[fr] Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "[fr] Cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "[fr] Labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "layerName": "[fr] Provinces",
+                "coverIcon": "assets/images/provinces.png",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "[fr] Cities",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+                "name": "[fr] Labels",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            },
+            {
+                "id": "provinces",
+                "layerType": "esriTile",
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+                "name": "[fr] Provinces",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "CanGRID_tmean_SON_fr",
+                "layerType": "ogcWms",
+                "suppressGetCapabilities": true,
+                "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+                "name": "[fr] Mean temperature",
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": true
+                },
+                "layerEntries": [{ "id": "CANGRD.TREND.TM_FALL" }],
+                "featureInfoMimeType": "application/json",
+                "details": {
+                    "template": "assets/templates/cangrd/variables-template.html",
+                    "parser": "assets/templates/cangrd/variables-script.js"
+                },
+                "controls": ["visibility", "opacity", "settings"]
+            }
+        ]
     }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Cities",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "Labels",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "CanGRID_tmean_SON_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Mean temperature",
-      "state": {
-        "opacity": 0.85,
-        "visibility": true
-      },
-      "layerEntries": [{"id": "CANGRD.TREND.TM_FALL" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/cangrd/variables-template.html",
-        "parser": "assets/templates/cangrd/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-},
-"fr": {
-  "legend": [
-    {
-      "infoType": "title",
-      "content": "[fr] Data"
-    },
-    {
-      "infoType": "text",
-      "content": "[fr] A short mean temperature description goes here"
-    },
-    {
-      "layerId": "CanGRID_tmean_SON_fr",
-      "layerName": "",
-      "description": "",
-      "coverIcon": "assets/images/tmean.png",
-      "symbologyStack": [
-        {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.TM_ANNUAL&format=image/png&STYLE=default",
-          "text": ""
-        }
-      ],
-      "symbologyRenderStyle": "images"
-    },
-    {
-      "infoType": "title",
-      "content": "[fr] Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "[fr] Cities",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "[fr] Labels",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "[fr] Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "[fr] Cities",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "[fr] Labels",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "[fr] Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "CanGRID_tmean_SON_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Mean temperature",
-      "state": {
-        "opacity": 0.85,
-        "visibility": true
-      },
-      "layerEntries": [{"id": "CANGRD.TREND.TM_FALL" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/cangrd/variables-template.html",
-        "parser": "assets/templates/cangrd/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-}
 }
