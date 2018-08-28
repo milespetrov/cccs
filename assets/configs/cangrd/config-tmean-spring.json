@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "CANGRD trends of temperature change (°C) over 1948-2016 represent the departure from the 1961-1990 reference period."
+      "content": "Trend of mean temperature change (°C)"
     },
     {
       "layerId": "CanGRID_tmean_MAM_en",
