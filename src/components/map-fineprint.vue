@@ -8,17 +8,16 @@
             <span class="cip-separator"></span>
 
             <!-- TODO: find out if any ARIA attributes are needed for the map scale -->
-            <span class="cip-scale">
-                <span class="cip-scale-line" :style="{ width: scale.width }"></span>
-                {{ scale.label }}
-            </span>
-
+            
             <span class="cip-coordinates" v-if="cursorPoint.y !== 0 || cursorPoint.x !== 0">
                 {{ cursorPointDMS.y }} {{ $t(`${tPath}.${ cursorPoint.y > 0 ? 'north' : 'south' }`) }} |
                 {{ cursorPointDMS.x }} {{ $t(`${tPath}.${ 0 > cursorPoint.x ? 'west' : 'east' }`) }}
             </span>
 
-            <!-- TODO: add scale line -->
+            <span class="cip-scale">
+                <span class="cip-scale-line" :style="{ width: scale.width }"></span>
+                {{ scale.label }}
+            </span>
 
         </div>
     </div>
@@ -105,7 +104,7 @@ export default class MapFineprint extends Vue {
     }
 
     .cip-scale {
-        margin-right: 1.5rem;
+        margin-left: 1.5rem;
 
         .cip-scale-line {
             display: inline-block;
