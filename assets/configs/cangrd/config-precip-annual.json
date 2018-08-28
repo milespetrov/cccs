@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "CANGRD trends of relative total precipitation change (%) over 1948-2012 reflect the percentage change in total precipitation over the 1961-1990 reference period."
+      "content": "Trend of relative total precipitation change (%)"
     },
     {
       "layerId": "CanGRID_prec_ANN_en",
