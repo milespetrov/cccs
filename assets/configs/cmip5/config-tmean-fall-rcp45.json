@@ -19,7 +19,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -32,7 +32,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -45,7 +45,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -58,7 +58,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -140,7 +140,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2021-2040_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2021-2040_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -158,7 +158,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2041-2060_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2041-2060_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -176,7 +176,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2061-2080_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2061-2080_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -194,7 +194,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2081-2100_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2081-2100_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -224,7 +224,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -237,7 +237,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -250,7 +250,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -263,7 +263,7 @@
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TM.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.TT.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -345,7 +345,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2021-2040_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2021-2040_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -363,7 +363,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2041-2060_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2041-2060_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -381,7 +381,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2061-2080_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2061-2080_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
@@ -399,7 +399,7 @@
         "opacity": 0.85,
         "visibility": false
       },
-      "layerEntries": [{"id": "CMIP5.TM.RCP45.FALL.2081-2100_PCTL50" }],
+      "layerEntries": [{"id": "CMIP5.TT.RCP45.FALL.2081-2100_PCTL50" }],
       "featureInfoMimeType": "application/json",
       "details": {
         "template": "assets/templates/cmip5/variables-template.html",
