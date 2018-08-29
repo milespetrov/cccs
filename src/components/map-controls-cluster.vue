@@ -36,7 +36,7 @@
                 <div class="cip-row-label">
                      <i18n :path="`colourRamp.${currentDataset}`" tag="span" class="cip-label">
                          <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
-                     </i18n> <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}}):</span>
+                     </i18n> <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
                 </div>
                 <div class="cip-row-content">
                     <map-colour-ramp
@@ -45,8 +45,6 @@
                     </map-colour-ramp>
                 </div>
             </div>
-
-            <span class="cip-separator-vertical visible-xs"></span>
         </div>
     </div>
 </template>
@@ -111,6 +109,7 @@ export default class MapControlsCluster extends Vue {
             .cip-row-label {
                 font-size: 0.8em;
                 flex: 1;
+                color: $wet-secondary-text-colour;
             }
 
             .cip-row-content {
@@ -148,6 +147,20 @@ export default class MapControlsCluster extends Vue {
         .cip-controls-cluster {
             width: 100%;
             min-width: 300px;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .cip-cluster-row {
+            flex-direction: column;
+
+            .cip-row-label {
+                padding: 0.3rem 1.5rem 0.8rem 1.5rem !important;
+            }
+
+            .cip-row-content {
+                width: 100%;
+            }
         }
     }
 
