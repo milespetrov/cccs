@@ -171,6 +171,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 
     font-family: Helvetica, Arial, sans-serif;
     font-size: 0.9em;
+    padding: 0.5rem 0;
 
     cursor: pointer;
 
