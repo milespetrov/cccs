@@ -8,12 +8,12 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
             items: [DatasetId.CMIP5, DatasetId.DCS]
         },
         {
-            id: 'historical_stations',
-            items: [DatasetId.ClimateNormal, DatasetId.Hydrometric, DatasetId.AHCCD]
+            id: 'historical_changes',
+            items: [DatasetId.AHCCD, DatasetId.CANGRD]
         },
         {
-            id: 'historical_grids',
-            items: [DatasetId.CANGRD, DatasetId.CAPA]
+            id: 'historical_other',
+            items: [DatasetId.ClimateNormal, DatasetId.Hydrometric, DatasetId.CAPA]
         }
     ]
 };

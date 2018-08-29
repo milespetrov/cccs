@@ -4,9 +4,9 @@ description,"Use the data viewer tool to view climate data on the map below. Beg
 description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l’aide, consultez le {0} ou cliquez sur l’icône « ? » dans le coin inférieur droit de la carte.",1
 description.help.helpFile,help file,1,fichier d’aide,1
 description.supportDesk,"If you have questions, {0}.",1,"Si vous avez des questions, {0}.",1
-description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec l’équipe de soutien des services climatiques,1
-description.resources,"If you are looking for other datasets, explore the {0}.",1,"Si vous cherchez d’autres ensembles de données, explorez la {0}.",1
-description.resources.link,library of climate resources,1,"bibliothèque de ressources sur le climat",1
+description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec le Centre d’aide des Services climatiques,1
+description.resources,"If you are looking for other datasets, explore the {0}.",1,"Si vous cherchez d’autres ensembles de données, explorez le {0}.",1
+description.resources.link,library of climate resources,1,"répertoire de ressources climatiques",1
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,0
 geo.coordinates.east,E,1,E,0
 geo.coordinates.west,W,1,W,0
@@ -114,37 +114,37 @@ rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,0
 datasetSelector.title,Dataset,1,Dataset,0
 datasetSelector.header,Datasets,1,Jeux de données,0
 datasetSelector.all_datasets,,1,,0
-datasetSelector.future_projections,Future climate projections,1,Projections climatiques futures,0
-datasetSelector.historical_stations,Historical station data,1,Données de la station historique,0
-datasetSelector.historical_grids,Historical gridded climate data,1,Données climatiques quadrillées historiques,0
-datasetSelector.ahccd.shortName,AHCCD,1,AHCCD,0
-datasetSelector.ahccd.fullName,Adjusted and homogenized Canadian climate data,1,Données climatiques Canadiennes ajustées et homogénéisées,0
-datasetSelector.ahccd.subName,Long-term climate trends,1,Tendances climatiques à long terme,0
-datasetSelector.ahccd.qualifier,AHCCD,1,AHCCD,0
-datasetSelector.cmip5.shortName,CMIP5,1,CMIP5,0
-datasetSelector.cmip5.fullName,Global climate model scenarios,1,"Scénarios de modèles climatiques globaux",0
-datasetSelector.cmip5.subName,Low-resolution climate projections,1,Projections climatiques basse résolution,0
-datasetSelector.cmip5.qualifier,CMIP5,1,CMIP5,0
-datasetSelector.cangrd.shortName,CanGRD,1,CanGRD,0
-datasetSelector.cangrd.fullName,Gridded historical climate data,1,Données climatiques historiques maillées,0
-datasetSelector.cangrd.subName,Long-term climate trends,1,Tendances climatiques à long terme,0
-datasetSelector.cangrd.qualifier,CanGRD,1,CanGRD,0
-datasetSelector.dcs.shortName,Downscaled,1,Réduit,0
-datasetSelector.dcs.fullName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,0
-datasetSelector.dcs.subName,High-resolution climate projections,1,Projections climatiques à haute résolution,0
-datasetSelector.dcs.qualifier,Downscaled,1,Réduit,0
-datasetSelector.capa.shortName,RDPA,1,ARDP,0
-datasetSelector.capa.fullName,Regional deterministic precipitation analysis,1,Analyse régionale déterministe de précipitation,0
-datasetSelector.capa.subName,High-resolution precipitation data,1,Données de précipitation à haute résolution,0
-datasetSelector.capa.qualifier,RDPA,1,ARDP,0
-datasetSelector.normal.shortName,Stations,1,Stations,0
-datasetSelector.normal.fullName,Climate station data,1,Données de la station climatique,0
-datasetSelector.normal.subName,"Daily, monthly, and long-term averages",1,"Moyennes quotidiennes, mensuelles et à long terme",0
-datasetSelector.normal.qualifier,Stations,1,Stations,0
-datasetSelector.hydro.shortName,Hydrometric,1,Hydrométrique,0
-datasetSelector.hydro.fullName,Hydrometric station data,1,Données de stations hydrométriques,0
-datasetSelector.hydro.subName,Water levels and streamflow data,1,Niveaux d'eau et données de débit,0
-datasetSelector.hydro.qualifier,Hydrometric,1,Hydrométrique,0
+datasetSelector.future_projections,Future changes in climate,1,Changements futurs du climat,0
+datasetSelector.historical_changes,Historical changes in climate,1,Changements historiques du climat,0
+datasetSelector.historical_other,Other historical datasets,1,Autres ensembles de données historiques,0
+datasetSelector.ahccd.shortName,Historical changes at stations,1,Changements historiques dans les stations,0
+datasetSelector.ahccd.fullName,Historical changes at stations,1,Changements historiques dans les stations,0
+datasetSelector.ahccd.subName,Adjusted and homogenized Canadian climate data (AHCCD),1,Données climatiques canadiennes ajustées et homogénéisées (AHCCD),0
+datasetSelector.ahccd.qualifier,,1,,0
+datasetSelector.cmip5.shortName,Future changes,1,Changement futurs,0
+datasetSelector.cmip5.fullName,Future changes,1,Changement futurs,0
+datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,"Scénarios de modèles climatiques globaux (CMIP5)",0
+datasetSelector.cmip5.qualifier,,1,,0
+datasetSelector.cangrd.shortName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,0
+datasetSelector.cangrd.fullName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,0
+datasetSelector.cangrd.subName,Gridded historical climate data (CANGRD),1,Données climatiques historiques maillées (CANGRD),0
+datasetSelector.cangrd.qualifier,,1,,0
+datasetSelector.dcs.shortName,Downscaled future changes,1,Changements futurs réduits,0
+datasetSelector.dcs.fullName,Downscaled future changes,1,Changements futurs réduits,0
+datasetSelector.dcs.subName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,0
+datasetSelector.dcs.qualifier,,1,,0
+datasetSelector.capa.shortName,Canada-wide precipitation,1,Précipitation pancanadienne,0
+datasetSelector.capa.fullName,Canada-wide precipitation,1,Précipitation pancanadienne,0
+datasetSelector.capa.subName,Regional deterministic precipitation analysis (RDPA),1,Analyse de précipitation déterministe régionale (RDPA),0
+datasetSelector.capa.qualifier,,1,,0
+datasetSelector.normal.shortName,Climate observations,1,Observations climatiques,0
+datasetSelector.normal.fullName,Climate observations,1,Observations climatiques,0
+datasetSelector.normal.subName,"Long-term averages, monthly data and daily data",1,"Moyennes à long terme, données mensuelles et données quotidiennes",0
+datasetSelector.normal.qualifier,,1,,0
+datasetSelector.hydro.shortName,River levels and flow,1,Niveaux et débit de la rivière,0
+datasetSelector.hydro.fullName,River levels and flow,1,Niveaux et débit de la rivière,0
+datasetSelector.hydro.subName,Hydrometric station data,1,Données de la station hydrométrique,0
+datasetSelector.hydro.qualifier,,1,,0
 downloadSelector.title,Download,1,Télécharger,0
 downloadSelector.header,Download,1,Télécharger,0
 downloadSelector.mapImage_group,Map image,1,Image de la carte,0
