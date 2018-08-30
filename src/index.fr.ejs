@@ -51,6 +51,27 @@
 
         window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
     </script>
+    <script>
+        window.webtrendsAsyncInit = function () {
+            var dcs = new Webtrends.dcs().init({
+                dcsid: "dcsewwnwt00000ggjmkochl53_3d3i",
+                domain: "sdc.ncr.ec.gc.ca",
+                timezone: -5,
+                i18n: true,
+                fpcdom: ".climate-change.canada.ca",
+                plugins: {
+                }
+            }).track();
+        };
+        (function () {
+            var s = document.createElement("script"); s.async = true; s.src = "./assets/scripts/webtrends.min.js";
+            var s2 = document.getElementsByTagName("script")[0]; s2.parentNode.insertBefore(s, s2);
+        }());
+    </script>
+
+    <noscript><img alt="dcsimg" id="dcsimg" width="1" height="1" src="//sdc.ncr.ec.gc.ca/dcsewwnwt00000ggjmkochl53_3d3i/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.23&amp;dcssip=www.climate-change.canada.ca"
+        /></noscript>
+
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
