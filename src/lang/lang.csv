@@ -29,7 +29,7 @@ colourRamp.cmip5,{0} change,1,Changement de {0},0
 colourRamp.dcs,{0} change,1,Changement de {0},0
 colourRamp.cangrd,{0} change,1,Changement de{0},0
 colourRamp.capa,Total precipitation amount analysis,1,Analyse de la quantité totale de précipitation,0
-settings.title,Settings,1,Paramètres,0
+settings.title,Climate viewer options,1,Options de visualisation du climat,0
 variableSelector.title,Variable,1,Variable,0
 variableSelector.header,Climate data,1,Données climatiques,0
 variableSelector.stations_group,Metadata,1,Métadonnées,0

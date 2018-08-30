@@ -10,8 +10,24 @@ function parser(data, lang) {
             obs_percent: 'Percentage of possible observations',
             date_calculated: 'Date calculated',
             normal_code: 'Normal code',
-            month: 'Month',
-            annual: 'Annual'
+            time_of_year: {
+                title: 'Time of year',
+                times: [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December',
+                    'Annual'
+                ]
+            }
         },
 
         'fr-CA': {
@@ -25,7 +41,28 @@ function parser(data, lang) {
             date_calculated: '[fr] Date calculated',
             normal_code: '[fr] Normal code',
             month: '[fr] Month',
-            annual: 'Annuel'
+            time_of_year: {
+                title: "Période de l'année",
+                times: [
+                    'Janvier',
+                    'Février',
+                    'Mars',
+                    'Avril',
+                    'Mai',
+                    'Juin',
+                    'Juillet',
+                    'Août',
+                    'Septembre',
+                    'Octobre',
+                    'Novembre',
+                    'Décembre',
+                    'Hiver',
+                    'Printemps',
+                    'Été',
+                    "L'automne",
+                    'Annuel'
+                ]
+            }
         }
     };
 
@@ -35,11 +72,7 @@ function parser(data, lang) {
     data.tt = TRANSLATIONS[lang];
 
     data.forEach(function(el) {
-        if (el.key === 'MONTH' && el.value === 13) {
-            data.properties[el.key] = data.tt.annual;
-        } else {
-            data.properties[el.key] = el.value;
-        }
+        data.properties[el.key] = el.value;
     });
 
     return data;
