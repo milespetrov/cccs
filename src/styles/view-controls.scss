@@ -23,12 +23,14 @@
 
     .cip-controls {
         display: flex;
-        align-items: center;
+        align-items: stretch;
 
-        height: $view-controls-height;
+        min-height: $view-controls-height;
+        height: auto;
 
         .separator {
             flex: 1;
+            min-width: 10rem;
         }
     }
 
@@ -39,7 +41,11 @@
                 align-items: center;
 
                 border: none;
-                height: $view-controls-height;
+                min-height: $view-controls-height;
+
+                width: 100%;
+                height: 100%;
+
                 padding: 0.25em 1.5em;
                 background-color: transparent;
 
@@ -128,17 +134,23 @@
         }
 
         .cip-content-wrap {
+            text-align: left;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
 
         .cip-value-label {
+            display: block;
+            white-space: nowrap;
             font-size: 0.8em;
             line-height: 1.3em;
         }
 
         .cip-selected-value {
+            display: block;
+            width: 100%;
             font-size: 0.9em;
             font-weight: bold;
             line-height: 1.3em;
@@ -206,6 +218,9 @@
     }
 
     .cip-selector {
+        height: 100%;
+        width: 100%;
+
         .dropdown-item {
             display: flex;
             align-items: center;
@@ -299,10 +314,6 @@
             .b-dropdown /deep/ {
                 width: 100%;
 
-                .dropdown-toggle {
-                    width: 100%;
-                }
-
                 .cip-content-wrap {
                     flex: 1;
                 }
@@ -321,6 +332,10 @@
         }
 
         .cip-selector {
+            height: auto;
+            display: flex !important;
+            flex-direction: column;
+
             .cip-name {
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -335,6 +350,14 @@
                         flex: none;
                     }
                 }
+            }
+        }
+    }
+
+    @media (min-width: 991px) and (max-width: 1199px) {
+        .cip-controls {
+            .menu-option {
+                -ms-flex-preferred-size: 100%;
             }
         }
     }
