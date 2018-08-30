@@ -3,10 +3,10 @@ const pkg = require('./package.json');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const VersionPlugin = require('./assets/webpack/version_plugin.js');
+const jsonminify = require('jsonminify');
+const htmlminify = require('html-minifier').minify;
 
-const minimize = false;
-
-module.exports = {
+module.exports = options => ({
     vendor: false,
     html: [
         {
@@ -23,8 +23,8 @@ module.exports = {
         }
     ],
     filename: {
-        js: `cccs-sandbox${minimize ? '.min' : ''}.js`,
-        css: `cccs-sandbox${minimize ? '.min' : ''}.css`
+        js: `cccs-sandbox.min.js`,
+        css: `cccs-sandbox.min.css`
     },
     homepage: './',
     devServer: {
@@ -35,18 +35,29 @@ module.exports = {
             rewrites: [{ from: /./, to: '/pages/404.html' }]
         }
     },
-    minimize: minimize,
     sourceMap: false,
-    // copy the `assets` folder into `dist`
     copy: [
         {
             from: path.resolve(__dirname, 'assets'),
             to: path.resolve(__dirname, 'dist/assets'),
-            ignore: ['.*']
-        },
-        {
-            from: path.resolve(__dirname, 'assets/404.html'),
-            to: path.resolve(__dirname, 'dist/pages')
+            transform(content, path) {
+                // minify files only for a production build
+                if (options.mode !== 'production') {
+                    return content;
+                }
+
+                // minify .json files
+                if (/\.json$/gi.test(path)) {
+                    return jsonminify(content.toString());
+                }
+
+                // minify .html files
+                if (/\.html$/gi.test(path)) {
+                    return htmlminify(content.toString(), { collapseWhitespace: true, minifyCSS: true });
+                }
+
+                return content;
+            }
         }
     ],
     // open the explore data page on localhost:3001 by default when running `npm run dev`
@@ -85,4 +96,4 @@ module.exports = {
             'test/unit/*.ts': ['webpack', 'sourcemap']
         }
     }
-};
+});

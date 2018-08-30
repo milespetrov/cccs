@@ -161,6 +161,12 @@ export default class MapControlsCluster extends Vue {
             .cip-row-content {
                 width: 100%;
             }
+
+            // IE flex bug: https://github.com/philipwalton/flexbugs#flexbug-7
+            .cip-row-content,
+            .cip-row-label {
+                flex-basis: auto !important;
+            }
         }
     }
 
