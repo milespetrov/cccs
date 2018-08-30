@@ -8,9 +8,9 @@
     <dl>
 
         <dt>
-            <span>{{ self.layer.tt.month }}</span>
+            <span>{{ self.layer.tt.time_of_year.title }}</span>
         </dt>
-        <dd>{{ self.layer.properties.MONTH }}</dd>
+        <dd>{{ self.layer.tt.time_of_year.times[self.layer.properties.MONTH - 1] }}</dd>
 
         <dt>
             <span>{{ self.layer.tt.measurement_type }}</span>
