@@ -17,6 +17,17 @@
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
     <link href="./assets/styles/rv-styles.css" rel="stylesheet">
+
+    <script>
+        document.createTouch = (view, target, identifier, pageX, pageY, screenX, screenY) => {
+            console.error('aha');
+            const t = new Touch({
+                target: target,
+                identifier: identifier
+            });
+            return t;
+        };
+    </script>
     <!--<![endif]-->
     <!--[if lt IE 9]>
             <link href="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="shortcut icon" />
