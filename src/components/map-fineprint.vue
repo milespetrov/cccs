@@ -51,7 +51,8 @@ export default class MapFineprint extends Vue {
      */
     get scale(): { label: string; width: string } {
         // the starting length of the scale line in pixels
-        const factor = 70;
+        // reduce the length of the bar on extra small layouts
+        const factor = window.innerWidth > 600 ? 70 : 35;
 
         // distance in meters
         const distance = this.resolution * factor;
