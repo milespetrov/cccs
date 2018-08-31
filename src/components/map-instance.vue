@@ -310,6 +310,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             this._mapi.zoomChanged.subscribe(this.mapZoomChangedHandler);
 
+            // use `boundsChanged` pipe to update resolution/scale because `zoomChanged` fires before the map has actually zoomed
+            this._mapi.boundsChanged.subscribe(this.mapBoundsChangeHandler);
+
             // NOTE: only default identify functionality is used as the moment
             // turn off default identify behaviour
             // this._mapi.identify = false;
@@ -397,8 +400,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // update zoom if we're out of sync
         if (this._mapi.zoom !== this.zoomLevel) {
             this.localZoomLevelUpdate = true;
-            // TODO: ask Miles to add resolution to the API
-            this.resolution = this._mapi.mapI._map.getResolution();
             this.setZoomLevel(this._mapi.zoom);
         }
         this.updateRoute();
@@ -407,9 +408,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     mapZoomChangedHandler(event: any): void {
         this.localZoomLevelUpdate = true;
 
-        this.resolution = this._mapi.mapI._map.getResolution();
         this.setZoomLevel(event);
         this.updateRoute();
+    }
+
+    mapBoundsChangeHandler(): void {
+        // TODO: ask Miles to add resolution to the API
+        this.resolution = this._mapi.mapI._map.getResolution();
     }
 
     /**
