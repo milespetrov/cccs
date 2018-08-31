@@ -14,10 +14,15 @@
                 {{ cursorPointDMS.x }} {{ $t(`${tPath}.${ 0 > cursorPoint.x ? 'west' : 'east' }`) }}
             </span>
 
-            <span class="cip-scale">
+            <button 
+                class="cip-scale" 
+                @click="isImperialScale = !isImperialScale"
+                :aria-pressed="isImperialScale"
+                :aria-label="$t('map.toggleScaleUnits')">
+
                 <span class="cip-scale-line" :style="{ width: scale.width }"></span>
                 {{ scale.label }}
-            </span>
+            </button>
 
         </div>
     </div>
@@ -46,6 +51,8 @@ export default class MapFineprint extends Vue {
         return formatLatLong(long, lat);
     }
 
+    isImperialScale: boolean = false;
+
     /**
      * Calculates a scale bar for the current resolution.
      */
@@ -55,20 +62,29 @@ export default class MapFineprint extends Vue {
         const factor = window.innerWidth > 600 ? 70 : 35;
 
         // distance in meters
-        const distance = this.resolution * factor;
+        const meters = this.resolution * factor;
+        const metersInAMile = 1609.34;
+
+        // get the distance in units, either miles or kilometers
+        const units = this.resolution * factor / (this.isImperialScale ? metersInAMile : 1000);
+        const unit = this.isImperialScale ? 'mi' : 'km';
 
         // length of the distance number
-        const len = Math.round(distance).toString().length;
+        const len = Math.round(units).toString().length;
         const div = Math.pow(10, len - 1);
 
-        // we want to round the distance to the highest position and display a nice number
-        // 45637m => 50000m; 4368m => 4000m
-        const num = Math.ceil(distance / div) * div;
+        // we want to round the distance to the ceiling of the highest position and display a nice number
+        // 45.637km => 50.00km; 4.368km => 5.00km
+        // 28.357mi => 30.00mi; 2.714mi => 3.00mi
+        const distance = Math.ceil(units / div) * div;
 
         // calcualte length of the scale line in pixels based on the round distance
-        const pixels = num / this.resolution;
+        const pixels = distance * (this.isImperialScale ? metersInAMile : 1000) / this.resolution;
 
-        return { width: `${pixels}px`, label: `${num / 1000}km` };
+        return {
+            width: `${pixels}px`,
+            label: `${distance}${unit}`
+        };
     }
 }
 </script>
@@ -105,6 +121,13 @@ export default class MapFineprint extends Vue {
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        position: relative;
+        top: 1px;
+    }
+
+    .cip-coordinates {
+        position: relative;
+        top: 1px;
     }
 
     .cip-scale,
@@ -118,11 +141,22 @@ export default class MapFineprint extends Vue {
     }
 
     .cip-scale {
+        cursor: pointer;
+        white-space: nowrap;
+        outline-offset: -1px;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        height: 20px;
+
         margin-left: 1.5rem;
 
         .cip-scale-line {
             display: inline-block;
-            border-top: $border-colour-one 2px solid;
+            border: $border-colour-one 2px solid;
+            border-top: none;
+            height: 5px;
+            margin-right: 2px;
         }
     }
 

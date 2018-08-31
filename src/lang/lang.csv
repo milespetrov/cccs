@@ -25,6 +25,7 @@ map.monthly_desc,"A cross-country summary of the averages and extremes for the m
 map.normal_desc,"Climate normals and averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The climate normals, averages and extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",1,"Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010.",1
 map.controlsCluster.legend,Legend,1,Légende,0
 map.controlsCluster.timeline,Time period,1,Période de temps,0
+map.toggleScaleUnits,Toggle between imperial and metric map scale,1,[fr] Toggle between imperial and metric map scale,0
 colourRamp.cmip5,{0} change,1,Changement de {0},0
 colourRamp.dcs,{0} change,1,Changement de {0},0
 colourRamp.cangrd,{0} change,1,Changement de{0},0
