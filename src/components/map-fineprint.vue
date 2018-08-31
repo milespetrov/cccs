@@ -99,8 +99,21 @@ export default class MapFineprint extends Vue {
         padding: 2px 0;
     }
 
+    // clip the attribution line keeping the coordinates and scale intact
+    .cip-attribution {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .cip-scale,
+    .cip-coordinates {
+        flex-shrink: 0;
+    }
+
     .cip-separator {
         flex: 1;
+        min-width: 15px;
     }
 
     .cip-scale {

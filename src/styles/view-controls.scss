@@ -269,6 +269,7 @@
         }
     }
 
+    // extra small layout
     @media (max-width: 600px) {
         .dropdown-item:not(.cip-nowrap) {
             flex-direction: column;

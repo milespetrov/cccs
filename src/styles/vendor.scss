@@ -95,50 +95,70 @@ rv-table-setting-cluster {
     }
 }
 
-.cip-backdrop-map rv-shell .rv-inner-shell {
-    // these will disable shadows and event on certain elemnts of the structuted legend
-    // TODO: clean up after the demo
-    rv-toc {
-        // hide the tools row with expand/collapse-all, hide/show-all options
-        .rv-toc-tools {
-            display: none;
+.cip-backdrop-map {
+    rv-shell .rv-inner-shell {
+        // these will disable shadows and event on certain elemnts of the structuted legend
+        // TODO: clean up after the demo
+        rv-toc {
+            // hide the tools row with expand/collapse-all, hide/show-all options
+            .rv-toc-tools {
+                display: none;
+            }
+
+            .rv-symbol {
+                // padding: 2px;
+            }
+
+            .rv-cover-icon {
+                // background-color: transparent;
+            }
+            .rv-cover-icon .rv-symbol-graphic {
+                // box-shadow: none !important;
+                // background-color: transparent;
+            }
+
+            .rv-symbol:not(.rv-cover-icon) {
+                pointer-events: none;
+                box-shadow: none !important;
+            }
+
+            // make the heading in the structured legend bigger
+            .md-subhead {
+                font-size: 20px;
+                font-weight: 500;
+                letter-spacing: 0.005em;
+                margin: 1rem 0;
+                margin: 2rem 0 1rem;
+            }
         }
 
-        .rv-symbol {
-            // padding: 2px;
-        }
-
-        .rv-cover-icon {
-            // background-color: transparent;
-        }
-        .rv-cover-icon .rv-symbol-graphic {
-            // box-shadow: none !important;
-            // background-color: transparent;
-        }
-
-        .rv-symbol:not(.rv-cover-icon) {
-            pointer-events: none;
-            box-shadow: none !important;
-        }
-
-        // make the heading in the structured legend bigger
-        .md-subhead {
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: 0.005em;
-            margin: 1rem 0;
-            margin: 2rem 0 1rem;
-        }
-    }
-
-    /* .rv-export {
+        /* .rv-export {
         max-height: calc(100% - 17rem) !important;
     } */
 
-    @media (max-width: 991px) {
         rv-mapnav {
+            bottom: 0;
             > .rv-spacer:last-child {
-                flex: 5 1 50%;
+                height: calc(4rem - 2px);
+                flex: none;
+            }
+        }
+
+        // small and extra samll layout
+        @media (max-width: 991px) {
+            rv-mapnav {
+                > .rv-spacer:first-child {
+                    height: 8px + 48px + 20px;
+                    flex: none;
+                }
+            }
+        }
+    }
+
+    .rv-small rv-shell .rv-inner-shell {
+        rv-mapnav {
+            > .rv-spacer:first-child {
+                height: 48px + 20px;
             }
         }
     }
