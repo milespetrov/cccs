@@ -11,6 +11,7 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import api from './../api/';
 
 import MapInstance from './map-instance.vue';
 
@@ -28,7 +29,8 @@ export default class MapView extends Vue {
     reloadKey: string = '';
 
     @Watch('datasetId')
-    onDatasetChange() {
+    onDatasetChange(newValue: string) {
+        api.dcsMultiTrack('DCSext.cccs_dataset_selected', newValue);
         this.reloadKey = this.datasetId;
     }
 }
