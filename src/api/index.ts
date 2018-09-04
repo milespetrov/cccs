@@ -5,10 +5,12 @@ export * from './types';
 
 const $: any = (<EnhancedWindow>window).$;
 const RZ: any = (<EnhancedWindow>window).RZ;
+const dcsMultiTrack: any = (<any>window).dcsMultiTrack;
 
 export default {
     $,
-    RZ
+    RZ,
+    dcsMultiTrack
 };
 
 export { datasets as datasetApis };
