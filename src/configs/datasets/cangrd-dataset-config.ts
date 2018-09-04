@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, VariableId, DatasetId } from '@/types';
+import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode } from '@/types';
 
 const canGrdDataset: DatasetSource = {
     id: DatasetId.CANGRD,
@@ -78,7 +78,9 @@ const canGrdDataset: DatasetSource = {
     queryToolRoute: {
         en: '/historical-gridded-data',
         fr: '/donnees-maillees-historiques'
-    }
+    },
+
+    identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };
 
 export default canGrdDataset;

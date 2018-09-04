@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, ViewType, DatasetId, VariableId } from '@/types';
+import { VisualizationControlType, TimePeriodType, DatasetId, VariableId, IdentifyMode } from '@/types';
 
 const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,
@@ -37,7 +37,15 @@ const ahccdDataset: DatasetSource = {
     queryToolRoute: {
         en: '/adjusted-station-data',
         fr: '/donnees-climatiques-ajustees'
-    }
+    },
+
+    identifyMode: [
+        IdentifyMode.Query,
+        IdentifyMode.Marker,
+        IdentifyMode.Highlight,
+        IdentifyMode.Haze,
+        IdentifyMode.Details
+    ]
 };
 
 export default ahccdDataset;

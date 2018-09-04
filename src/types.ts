@@ -103,3 +103,40 @@ export enum AnalysisPeriodType {
 export enum ViewType {
     MapView = 'map-view'
 }
+
+/**
+ * Identify mode can be set to none, one, or more options. If no options are provided, no part of the identify workflow is executed
+ *
+ * @export
+ * @enum {string}
+ */
+export enum IdentifyMode {
+    /**
+     * Runs the identify query and pipes the available results through the `identify` API endpoint.
+     */
+    Query = 'query',
+
+    /**
+     * Adds a graphic marker at the point of a mouse click.
+     * Only works when `Query` is set.
+     */
+    Marker = 'marker',
+
+    /**
+     * Highlight the identify results on the map. If the `Marker` mode is set, highlighted features will supplant the marker.
+     * Only works when `Query` is set.
+     */
+    Highlight = 'highlight',
+
+    /**
+     * Dehighlights all other layers and features except the identify results (if `Highlight` is set) or the marker (if `Marker` is set`).
+     * The haze will not be applied if neither `Marker` nor `Highlight` is set.
+     */
+    Haze = 'haze',
+
+    /**
+     * Display the identify results in the details panel.
+     * This option only works in conjunction with the `Query` option. Without `Query`, there will be no results to display in the details panel.
+     */
+    Details = 'details'
+}

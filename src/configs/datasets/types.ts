@@ -1,4 +1,4 @@
-import { VariableId, TimePeriodType, RCPType, VisualizationControlType, ViewType } from '@/types';
+import { VariableId, TimePeriodType, RCPType, VisualizationControlType, IdentifyMode } from '@/types';
 
 export interface BaseDatasetSelectorSource {
     /**
@@ -219,4 +219,12 @@ export interface DatasetSource {
         en: string;
         fr: string;
     };
+
+    /**
+     * Specifies the RAMP identify mode.
+     *
+     * @type {IdentifyMode[]}
+     * @memberof DatasetSource
+     */
+    identifyMode: IdentifyMode[];
 }

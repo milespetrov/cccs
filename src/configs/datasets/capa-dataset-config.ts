@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VariableId, DatasetId } from '@/types';
+import { VariableId, DatasetId, IdentifyMode } from '@/types';
 
 const capaDataset: DatasetSource = {
     id: DatasetId.CAPA,
@@ -44,7 +44,9 @@ const capaDataset: DatasetSource = {
     queryToolRoute: {
         en: '/regional-deterministic-precipitation-analysis',
         fr: '/analyse-regionale-deterministe-precipitation'
-    }
+    },
+
+    identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };
 
 export default capaDataset;
