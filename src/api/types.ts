@@ -3,11 +3,11 @@ import { getJSON } from '@/api/util';
 import { DatasetId } from '@/types';
 
 interface DatasetSourceWrapper {
-    en: DatasetSource;
-    fr: DatasetSource;
+    en: RAMPDatasetSource;
+    fr: RAMPDatasetSource;
 }
 
-interface DatasetSource {
+interface RAMPDatasetSource {
     legend: any;
     supportLayers: any;
     dataLayers: any;
@@ -32,7 +32,7 @@ export class DatasetApi {
 
     getTooltip(data: any): string | void {}
 
-    async getDatasetSource(lang: string): Promise<DatasetSource> {
+    async getDatasetSource(lang: string): Promise<RAMPDatasetSource> {
         const source = await getJSON<DatasetSourceWrapper>(this.fetchUrl, this.id, 'datasetSource', 10);
         return source[<'en' | 'fr'>lang];
     }

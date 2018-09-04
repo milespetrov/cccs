@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VariableId, DatasetId } from '@/types';
+import { VariableId, DatasetId, IdentifyMode } from '@/types';
 
 const hydroDataset: DatasetSource = {
     id: DatasetId.Hydrometric,
@@ -17,7 +17,14 @@ const hydroDataset: DatasetSource = {
     queryToolRoute: {
         en: '/water-quantity-data',
         fr: '/donnees-quantite-eau'
-    }
+    },
+    identifyMode: [
+        IdentifyMode.Query,
+        IdentifyMode.Marker,
+        IdentifyMode.Highlight,
+        IdentifyMode.Haze,
+        IdentifyMode.Details
+    ]
 };
 
 export default hydroDataset;

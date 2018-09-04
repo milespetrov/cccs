@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId } from '@/types';
+import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, IdentifyMode } from '@/types';
 
 const dcsDataset: DatasetSource = {
     id: DatasetId.DCS,
@@ -84,7 +84,9 @@ const dcsDataset: DatasetSource = {
     queryToolRoute: {
         en: '/downscaled-data',
         fr: '/donnees-echelle-reduite'
-    }
+    },
+
+    identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };
 
 export default dcsDataset;

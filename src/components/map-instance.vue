@@ -1,6 +1,6 @@
 <template>
 
-    <div id="cip-map-anchor" :class="currentDataset"></div>
+    <div id="cip-map-anchor" :class="datasetId"></div>
 
 </template>
 
@@ -20,9 +20,9 @@ import { throttleTime } from 'rxjs/internal/operators/throttleTime';
 import api, { DatasetApi } from './../api/';
 import { MapPoint } from './../store/';
 import { UpdateRouteMixin } from '../globals/mixin';
-import { DatasetId } from '@/types';
+import { DatasetId, VariableId } from '@/types';
 
-import { ColourRamp } from './../configs/datasets';
+import { datasets, ColourRamp, DatasetSource } from './../configs/datasets';
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
@@ -59,8 +59,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         return document.getElementById('cip-map-anchor')!;
     }
 
-    @State('variableId') currentVariable: string;
-    @State('datasetId') currentDataset: string;
+    @State('variableId') currentVariable: VariableId;
+    @State datasetId: DatasetId;
     @State('timePeriodId') currentTimePeriod: string;
     //@State('featureId') currentFeature: string;
     @State('rcpId') currentRcp: string;
@@ -106,6 +106,19 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Watch('currentTimePeriod')
     onTimePeriodChange() {
         this.switchLayers();
+    }
+
+    @Watch('datasetId')
+    onDatasetChanged(newValue: DatasetSource) {
+        this.updateIdentifyMode();
+    }
+
+    /**
+     * Update the identify based on the currently selected dataset.
+     */
+    updateIdentifyMode() {
+        const dataset = datasets[this.datasetId] as DatasetSource;
+        this._mapi.layers.identifyMode = dataset.identifyMode;
     }
 
     getCapabilities(layerConfig: any): void {
@@ -278,13 +291,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         const RZ = (<any>window).RZ;
-        /* try {
-            await $.getJSON(`./assets/configs/${this.currentDataset}/current.json`, data => {
-                this.configVersion = parseInt(data.version);
-            });
-        } catch {
-            console.error(`Current version couldn't be found`);
-        } */
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RZ) {
@@ -292,7 +298,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        if (this.currentVariable === null || this.currentDataset === null) {
+        if (this.currentVariable === null || this.datasetId === null) {
             console.log('cannot create the map - either variable or dataset is not set');
             return;
         }
@@ -303,6 +309,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
+            this.updateIdentifyMode();
             this.injectCIPMapcomponents();
             this.switchLayers();
 
@@ -313,19 +320,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // use `boundsChanged` pipe to update resolution/scale because `zoomChanged` fires before the map has actually zoomed
             this._mapi.boundsChanged.subscribe(this.mapBoundsChangeHandler);
-
-            // NOTE: only default identify functionality is used as the moment
-            // turn off default identify behaviour
-            // this._mapi.identify = false;
-            // set the identify mode to 'highlight' to prevent the details panel from opening
-            /* if (this.currentDataset === DatasetId.AHCCD) {
-                // this._mapi.layers.identifyMode = 'highlight';
-                // subscribe to identify events to track highlighted items
-                this._mapi.layers.identify.subscribe(this.pointIdentifyHandler);
-            } else {
-                // this._mapi.layers.identifyMode = 'silent';
-                this._mapi.click.subscribe(this.gridIdentifyHandler);
-            } */
 
             // subscribe to Tooltips events
             this._mapi.ui.tooltip.mouseOver.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOverHandler);
@@ -510,7 +504,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                         'colour-ramp': this.colourRamp,
                         legend: this.legend,
                         'current-variable': this.currentVariable,
-                        'current-dataset': this.currentDataset,
+                        'current-dataset': this.datasetId,
                         'date-slider': this.dateSlider,
                         wmsTime: this.wmsTime
                     }

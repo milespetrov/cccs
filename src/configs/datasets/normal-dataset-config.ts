@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, VariableId, DatasetId } from '@/types';
+import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode } from '@/types';
 
 const normalDataset: DatasetSource = {
     id: DatasetId.ClimateNormal,
@@ -50,7 +50,15 @@ const normalDataset: DatasetSource = {
     queryToolRoute: {
         en: '/climate-normals',
         fr: '/normales-climatiques'
-    }
+    },
+
+    identifyMode: [
+        IdentifyMode.Query,
+        IdentifyMode.Marker,
+        IdentifyMode.Highlight,
+        IdentifyMode.Haze,
+        IdentifyMode.Details
+    ]
 };
 
 export default normalDataset;
