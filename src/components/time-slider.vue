@@ -32,7 +32,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 
     mounted(): void {
         if (!this.timeSlice) {
-            this.setTimeSlice(0);
+            this.setTimeSlice(3);
         }
         this.slider = this.$el.querySelector('.noUi-target');
         noUiSlider.create(this.slider, {
