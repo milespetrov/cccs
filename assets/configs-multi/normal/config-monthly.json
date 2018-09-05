@@ -71,7 +71,7 @@
                 "id": "MONTHLY_station_en",
                 "layerType": "ogcWfs",
                 "xyInAttribs": true,
-                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+                "url": "#GEOMETWFS#/collections/climate-stations/items",
                 "name": "Monthly climate observation summaries",
                 "nameField": "STATION_NAME",
                 "state": {
@@ -157,7 +157,7 @@
                 "id": "MONTHLY_station_fr",
                 "layerType": "ogcWfs",
                 "xyInAttribs": true,
-                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+                "url": "#GEOMETWFS#/collections/climate-stations/items",
                 "name": "[fr] Monthly climate observation summaries",
                 "nameField": "STATION_NAME",
                 "state": {

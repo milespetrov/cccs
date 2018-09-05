@@ -71,7 +71,7 @@
       "id": "AHCCD_tmean_APR_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_mean&period=Apr",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_mean&period=Apr",
       "name": "Homogenized mean temperature",
       "nameField": "station_name",
       "state": {
@@ -159,7 +159,7 @@
       "id": "AHCCD_tmean_APR_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_mean&period=Apr",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_mean&period=Apr",
       "name": "[fr] Mean temperature",
       "nameField": "station_name",
       "state": {

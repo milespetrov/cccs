@@ -71,7 +71,7 @@
       "id": "AHCCD_tmean_DEC_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_mean&period=Dec",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_mean&period=Dec",
       "name": "Homogenized mean temperature",
       "nameField": "station_name",
       "state": {
@@ -159,7 +159,7 @@
       "id": "AHCCD_tmean_DEC_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=temp_mean&period=Dec",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_mean&period=Dec",
       "name": "[fr] Mean temperature",
       "nameField": "station_name",
       "state": {

@@ -71,7 +71,7 @@
       "id": "AHCCD_prec_AUG_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=total_precip&period=Aug",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=total_precip&period=Aug",
       "name": "Adjusted total precipitation",
       "nameField": "station_name",
       "state": {
@@ -159,7 +159,7 @@
       "id": "AHCCD_prec_AUG_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=total_precip&period=Aug",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=total_precip&period=Aug",
       "name": "[fr] Precipitation",
       "nameField": "station_name",
       "state": {

@@ -71,7 +71,7 @@
       "id": "Normals_tmax_AUG_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=8",
+      "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=5&MONTH=8",
       "name": "Mean daily maximum temperature",
       "nameField": "STN_ID",
       "state": {
@@ -159,7 +159,7 @@
       "id": "Normals_tmax_AUG_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=8",
+      "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=5&MONTH=8",
       "name": "Température maximale moyenne",
       "nameField": "STN_ID",
       "state": {

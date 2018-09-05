@@ -71,7 +71,7 @@
       "id": "AHCCD_slpr_FEB_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Feb",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Feb",
       "name": "Homogenized sea level pressure",
       "nameField": "station_name",
       "state": {
@@ -159,7 +159,7 @@
       "id": "AHCCD_slpr_FEB_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Feb",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Feb",
       "name": "[fr] Sea level pressure",
       "nameField": "station_name",
       "state": {

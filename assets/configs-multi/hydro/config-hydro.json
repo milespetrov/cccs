@@ -71,7 +71,7 @@
       "id": "Hydro_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
+      "url": "#GEOMETWFS#/collections/hydrometric-stations/items?STATUS_EN=Active",
       "name": "Hydrometric stations",
       "nameField": "STATION_NAME",
       "state": {
@@ -159,7 +159,7 @@
       "id": "Hydro_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
+      "url": "#GEOMETWFS#/collections/hydrometric-stations/items?STATUS_EN=Active",
       "name": "[fr] Hydrometric stations",
       "nameField": "STATION_NAME",
       "state": {

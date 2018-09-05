@@ -70,7 +70,7 @@
             {
                 "id": "DAILY_station_en",
                 "layerType": "ogcWfs",
-                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+                "url": "#GEOMETWFS#/collections/climate-stations/items",
                 "name": "Daily climate observations",
                 "nameField": "STATION_NAME",
                 "state": {
@@ -155,7 +155,7 @@
             {
                 "id": "DAILY_station_fr",
                 "layerType": "ogcWfs",
-                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+                "url": "#GEOMETWFS#/collections/climate-stations/items",
                 "name": "[fr] Daily climate observations",
                 "nameField": "STATION_NAME",
                 "state": {

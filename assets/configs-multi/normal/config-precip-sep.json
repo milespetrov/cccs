@@ -71,7 +71,7 @@
       "id": "Normals_prec_SEP_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=9",
+      "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=56&MONTH=9",
       "name": "Total precipitation",
       "nameField": "STN_ID",
       "state": {
@@ -159,7 +159,7 @@
       "id": "Normals_prec_SEP_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=9",
+      "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=56&MONTH=9",
       "name": "Précipitations totales",
       "nameField": "STN_ID",
       "state": {

@@ -19,7 +19,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -32,7 +32,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -45,7 +45,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -58,7 +58,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -134,7 +134,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2021_en",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "Snow depth",
       "state": {
         "opacity": 0.85,
@@ -152,7 +152,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2041_en",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "Snow depth",
       "state": {
         "opacity": 0.85,
@@ -170,7 +170,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2061_en",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "Snow depth",
       "state": {
         "opacity": 0.85,
@@ -188,7 +188,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2081_en",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "Snow depth",
       "state": {
         "opacity": 0.85,
@@ -224,7 +224,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -237,7 +237,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -250,7 +250,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -263,7 +263,7 @@
       "coverIcon": "assets/images/snd.png",
       "symbologyStack": [
         {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+          "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.SND.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
           "text": ""
         }
       ],
@@ -339,7 +339,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2021_fr",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Snow depth",
       "state": {
         "opacity": 0.85,
@@ -357,7 +357,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2041_fr",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Snow depth",
       "state": {
         "opacity": 0.85,
@@ -375,7 +375,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2061_fr",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Snow depth",
       "state": {
         "opacity": 0.85,
@@ -393,7 +393,7 @@
       "id": "CMIP5_snow_DJF_rcp26_2081_fr",
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
       "name": "[fr] Snow depth",
       "state": {
         "opacity": 0.85,

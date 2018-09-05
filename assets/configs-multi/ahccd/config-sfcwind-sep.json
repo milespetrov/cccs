@@ -71,7 +71,7 @@
       "id": "AHCCD_wind_SEP_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=wind_speed&period=Sep",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=wind_speed&period=Sep",
       "name": "Wind speed",
       "nameField": "station_name",
       "state": {
@@ -159,7 +159,7 @@
       "id": "AHCCD_wind_SEP_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=wind_speed&period=Sep",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=wind_speed&period=Sep",
       "name": "[fr] Wind speed",
       "nameField": "station_name",
       "state": {
