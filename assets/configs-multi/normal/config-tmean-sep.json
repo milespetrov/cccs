@@ -1,0 +1,178 @@
+{
+"en": {
+  "legend": [
+    {
+      "infoType": "title",
+      "content": "Data"
+    },
+    {
+      "infoType": "text",
+      "content": "Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location.\n\nAt the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
+    },
+    {
+      "layerId": "Normals_tmean_SEP_en",
+      "layerName": "",
+      "description": "The mean temperature in degrees Celsius (°C) is defined as the average of the maximum and minimum temperature at a location for a specified time interval.",
+      "coverIcon": "assets/images/tmean.png",
+      "symbologyStack": [
+        {
+          "image": "assets/images/red-circle.png",
+          "text": ""
+        }
+      ],
+      "symbologyRenderStyle": "icons"
+    },
+    {
+      "infoType": "title",
+      "content": "Settings"
+    },
+    {
+      "layerId": "cities",
+      "layerName": "Cities",
+      "coverIcon": "assets/images/cities.png",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "labels",
+      "layerName": "Labels",
+      "coverIcon": "assets/images/labels.png",
+      "symbologyStack": []
+    }
+
+  ],
+  "supportLayers": [
+    {
+      "id": "cities",
+      "layerType": "esriTile",
+      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+      "name": "Cities",
+      "expectedResponseTime": 10000,
+      "controls": ["visibility", "opacity", "settings"],
+      "state": {
+        "opacity": 1,
+        "visibility": false
+      }
+    },
+    {
+      "id": "labels",
+      "layerType": "esriTile",
+      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "name": "Labels",
+      "expectedResponseTime": 10000,
+      "controls": ["visibility", "opacity", "settings"],
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    }
+  ],
+  "dataLayers": [
+    {
+      "id": "Normals_tmean_SEP_en",
+      "layerType": "ogcWfs",
+      "xyInAttribs": true,
+      "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=1&MONTH=9",
+      "name": "Mean daily temperature",
+      "nameField": "STN_ID",
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      },
+      "details": {
+        "template": "assets/templates/normal/variables-template.html",
+        "parser": "assets/templates/normal/variables-script.js"
+      },
+      "colour": "#f04116",
+      "controls": ["data", "visibility", "opacity"]
+    }
+  ]
+},
+"fr": {
+  "legend": [
+    {
+      "infoType": "title",
+      "content": "[fr] Data"
+    },
+    {
+      "infoType": "text",
+      "content": "Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné.\n\nÀ la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
+    },
+    {
+      "layerId": "Normals_tmean_SEP_fr",
+      "layerName": "",
+      "description": "Température moyenne en degrés Celsius (°C) définie comme moyenne de la température maximale et de la température minimale à un endroit donné au cours d'un intervalle de temps déterminé.",
+      "coverIcon": "assets/images/tmean.png",
+      "symbologyStack": [
+        {
+          "image": "assets/images/red-circle.png",
+          "text": ""
+        }
+      ],
+      "symbologyRenderStyle": "icons"
+    },
+    {
+      "infoType": "title",
+      "content": "[fr] Settings"
+    },
+    {
+      "layerId": "cities",
+      "layerName": "[fr] Cities",
+      "coverIcon": "assets/images/cities.png",
+      "symbologyStack": []
+    },
+    {
+      "layerId": "labels",
+      "layerName": "[fr] Labels",
+      "coverIcon": "assets/images/labels.png",
+      "symbologyStack": []
+    }
+
+  ],
+  "supportLayers": [
+    {
+      "id": "cities",
+      "layerType": "esriTile",
+      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+      "name": "[fr] Cities",
+      "expectedResponseTime": 10000,
+      "controls": ["visibility", "opacity", "settings"],
+      "state": {
+        "opacity": 1,
+        "visibility": false
+      }
+    },
+    {
+      "id": "labels",
+      "layerType": "esriTile",
+      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+      "name": "[fr] Labels",
+      "expectedResponseTime": 10000,
+      "controls": ["visibility", "opacity", "settings"],
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      }
+    }
+  ],
+  "dataLayers": [
+    {
+      "id": "Normals_tmean_SEP_fr",
+      "layerType": "ogcWfs",
+      "xyInAttribs": true,
+      "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=1&MONTH=9",
+      "name": "Température moyenne",
+      "nameField": "STN_ID",
+      "state": {
+        "opacity": 1,
+        "visibility": true
+      },
+      "details": {
+        "template": "assets/templates/normal/variables-template.html",
+        "parser": "assets/templates/normal/variables-script.js"
+      },
+      "colour": "#f04116",
+      "controls": ["data", "visibility", "opacity"]
+    }
+  ]
+}
+}

@@ -1,0 +1,176 @@
+{
+    "en": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Data"
+            },
+            {
+                "infoType": "text",
+                "content": "A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data."
+            },
+            {
+                "layerId": "MONTHLY_station_en",
+                "layerName": "",
+                "description":
+                    "These are stations reporting monthly summary data that correspond to stations used in past Normals series (1961-1990, 1971-2000, 1981-2010).",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png",
+                        "text": "Station"
+                    }
+                ],
+                "symbologyRenderStyle": "icons"
+            },
+            {
+                "infoType": "title",
+                "content": "Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "Cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "Labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "Cities",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "Labels",
+                "expectedResponseTime": 10000,
+                "controls": ["visibility", "opacity", "settings"],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "MONTHLY_station_en",
+                "layerType": "ogcWfs",
+                "xyInAttribs": true,
+                "url": "#GEOMETWFS#/collections/climate-stations/items",
+                "name": "Monthly climate observation summaries",
+                "nameField": "STATION_NAME",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                },
+                "details": {
+                    "template": "assets/templates/normal/stations-template.html",
+                    "parser": "assets/templates/normal/stations-script.js"
+                },
+                "colour": "#0ca7f5",
+                "controls": ["data", "visibility", "opacity"]
+            }
+        ]
+    },
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "[fr] Data"
+            },
+            {
+                "infoType": "text",
+                "content": "Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
+            },
+            {
+                "layerId": "MONTHLY_station_fr",
+                "layerName": "",
+                "description":
+                    "[fr] These are stations reporting monthly summary data that correspond to stations used in past Normals series (1961-1990, 1971-2000, 1981-2010)",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png",
+                        "text": "[fr] Station"
+                    }
+                ],
+                "symbologyRenderStyle": "icons"
+            },
+            {
+                "infoType": "title",
+                "content": "[fr] Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "[fr] Cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "[fr] Labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [{
+            "id": "cities",
+            "layerType": "esriTile",
+            "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+            "name": "[fr] Cities",
+            "expectedResponseTime": 10000,
+            "controls": ["visibility", "opacity", "settings"],
+            "state": {
+                "opacity": 1,
+                "visibility": false
+            }
+        },
+        {
+            "id": "labels",
+            "layerType": "esriTile",
+            "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+            "name": "[fr] Labels",
+            "expectedResponseTime": 10000,
+            "controls": ["visibility", "opacity", "settings"],
+            "state": {
+                "opacity": 1,
+                "visibility": true
+            }
+        }],
+        "dataLayers": [
+            {
+                "id": "MONTHLY_station_fr",
+                "layerType": "ogcWfs",
+                "xyInAttribs": true,
+                "url": "#GEOMETWFS#/collections/climate-stations/items",
+                "name": "[fr] Monthly climate observation summaries",
+                "nameField": "STATION_NAME",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                },
+                "details": {
+                    "template": "assets/templates/normal/stations-template.html",
+                    "parser": "assets/templates/normal/stations-script.js"
+                },
+                "colour": "#0ca7f5",
+                "controls": ["data", "visibility", "opacity"]
+            }
+        ]
+    }
+}

@@ -1,0 +1,160 @@
+{
+    "en": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Data"
+            },
+            {
+                "infoType": "text",
+                "content": "Climate IDs are digit numbers assigned by the Meteorological Service of Canada (MSC) to a site where official weather observations are taken, and serves as a permanent, unique identifier. For AHCCD records for non-joined stations, the MSC’s climate ID is used as the AHCCD ID. For AHCCD records with joined stations, the last joined MSC’s Climate ID is used as the AHCCD ID. This allows users to compare the raw data with the adjusted and homogenized data."
+            },
+            {
+                "layerId": "AHCCD_station_en",
+                "layerName": "",
+                "description": "A short station description goes here",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png",
+                        "text": "AHCCD Station"
+                    }
+                ],
+                "symbologyRenderStyle": "icons"
+            },
+            {
+                "infoType": "title",
+                "content": "Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "Cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "Labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url":
+                    "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "Cities",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "name": "Labels",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
+            }
+        ],
+        "dataLayers": [
+            {
+                "id": "AHCCD_station_en",
+                "layerType": "ogcWfs",
+                "xyInAttribs": true,
+                "url": "#GEOMETWFS#/collections/ahccd-stations/items",
+                "name": "Stations",
+                "nameField": "station_name",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                },
+                "controls": ["data", "visibility", "opacity"],
+                "details": {
+                    "template": "assets/templates/ahccd/stations-template.html",
+                    "parser": "assets/templates/ahccd/stations-script.js"
+                },
+                "colour": "#0ca7f5"
+            }
+        ]
+    },
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "[fr] Data"
+            },
+            {
+                "infoType": "text",
+                "content": "[fr] A short AHCCD dataset description goes here"
+            },
+            {
+                "layerId": "AHCCD_station_fr",
+                "layerName": "",
+                "description": "[fr] A short station description goes here",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": [
+                    {
+                        "image":
+                            "#GEOMETCLIMATEWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "icons"
+            },
+            {
+                "infoType": "title",
+                "content": "[fr] Settings"
+            },
+            {
+                "layerId": "cities",
+                "layerName": "[fr] Cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "labels",
+                "layerName": "[fr] Labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": []
+            },
+            {
+                "layerId": "provinces",
+                "layerName": "[fr] Provinces",
+                "coverIcon": "assets/images/provinces.png",
+                "symbologyStack": []
+            }
+        ],
+        "supportLayers": [{
+            "id": "cities",
+            "layerType": "esriTile",
+            "url":
+                "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+            "name": "[fr] Cities",
+            "expectedResponseTime": 10000,
+            "state": {
+                "opacity": 1,
+                "visibility": false
+            }
+        },
+        {
+            "id": "labels",
+            "layerType": "esriTile",
+            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+            "name": "[fr] Labels",
+            "expectedResponseTime": 10000,
+            "state": {
+                "opacity": 1,
+                "visibility": true
+            }
+        }],
+        "dataLayers": []
+    }
+}
