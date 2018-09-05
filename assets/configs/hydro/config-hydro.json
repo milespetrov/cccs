@@ -7,7 +7,7 @@
     },
     {
       "infoType": "text",
-      "content": "This map indicates the location of over 1800 locations where hydro metric data is collected across Canada."
+      "content": "This map provides the location of over 1800 hydrometric (water quantity) stations on rivers, streams, and lakes across Canada."
     },
     {
       "layerId": "Hydro_en",
