@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">
-                    <li v-for="bc in breadcrumbs">
+                    <li v-for="bc in breadcrumbs"  :key="bc.name">
                         <a :href="bc.url">{{ bc.name }}</a>
                     </li>
                 </ol>
@@ -19,15 +19,12 @@ import page from './page-values';
 
 @Component
 export default class BreadCrumbs extends Vue {
-
-    breadcrumbs: Array<{url:string; name:string}> = [];
+    breadcrumbs: { url: string; name: string }[] = [];
 
     async created(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', data => {
-            this.breadcrumbs = data.breadcrumbs[page.lang];
+            this.breadcrumbs = data.climateviewerapp[page.lang].breadcrumbs;
         });
     }
-
 }
-
 </script>
