@@ -1,62 +1,72 @@
 {
-    "queryToolUrl": "http://climate-change.dev.ec.gc.ca/climate-data/#",
-    "supportDeskUrl": "https://climate-change.canada.ca/support-desk",
-    "dataCatalogueUrl": "https://open.canada.ca/en/open-data",
-    "climateResourcesUrl": "",
-    "breadcrumbs": {
-        "en": [
-            { "url": "https://canada-preview.adobecqms.net/en.html", "name": "Home" },
-            {
-                "url": "https://canada-preview.adobecqms.net/en/services/environment.html",
-                "name": "Environment and natural resources"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/en/services/environment/weather.html",
-                "name": "Weather, climate and hazards"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/en/services/environment/weather/climatechange.html",
-                "name": "Climate change"
-            },
-            {
-                "url": "https://www.canada.ca/en/environment-climate-change/services/climate-change/adapting.html",
-                "name": "Adapting to climate change in Canada"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/en/environment-climate-change/services/climate-change/canadian-centre-climate-services.html",
-                "name": "Canadian Centre for Climate Services"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download.html",
-                "name": "Display and download climate data"
-            }
-        ],
-        "fr": [
-            { "url": "https://canada-preview.adobecqms.net/fr.html", "name": "Accueil" },
-            {
-                "url": "https://canada-preview.adobecqms.net/fr/services/environnement.html",
-                "name": "Environnement et ressources naturelles"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/fr/services/environnement/meteo.html",
-                "name": "Météo, climat et catastrophes naturelles"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/fr/services/environnement/meteo/changementsclimatiques.html",
-                "name": "Changements climatiques"
-            },
-            {
-                "url": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/adapter.html",
-                "name": "S'adapter aux changements climatiques au Canada"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques.html",
-                "name": "Centre Canadien des Services Climatiques"
-            },
-            {
-                "url": "https://canada-preview.adobecqms.net/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger.html",
-                "name": "Afficher et télécharger les données climatiques"
-            }
-        ]
+    "climateviewerapp": {
+        "en": {
+            "queryToolUrl": "http://climate-change.dev.ec.gc.ca/climate-data/#",
+            "supportDeskUrl": "https://climate-change.canada.ca/support-desk",
+            "dataCatalogueUrl": "https://open.canada.ca/en/open-data",
+            "climateResourcesUrl": "https://climate-change.canada.ca/climate-library ",
+            "climateBasicsUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics.html",
+            "breadcrumbs": [
+                { "url": "https://canada-preview.adobecqms.net/en.html", "name": "Home" },
+                {
+                    "url": "https://canada-preview.adobecqms.net/en/services/environment.html",
+                    "name": "Environment and natural resources"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/en/services/environment/weather.html",
+                    "name": "Weather, climate and hazards"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/en/services/environment/weather/climatechange.html",
+                    "name": "Climate change"
+                },
+                {
+                    "url": "https://www.canada.ca/en/environment-climate-change/services/climate-change/adapting.html",
+                    "name": "Adapting to climate change in Canada"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/en/environment-climate-change/services/climate-change/canadian-centre-climate-services.html",
+                    "name": "Canadian Centre for Climate Services"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download.html",
+                    "name": "Display and download climate data"
+                }
+            ]
+        },
+        "fr": {
+            "queryToolUrl": "http://climate-change.dev.ec.gc.ca/donnees-climatiques/#",
+            "supportDeskUrl": "https://changements-climatiques.canada.ca/centre-aide ",
+            "dataCatalogueUrl": "https://ouvert.canada.ca/fr/donnees-ouvertes",
+            "climateResourcesUrl": "https://changements-climatiques.canada.ca/repertoire-climatique",
+            "climateBasicsUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels.html",
+            "breadcrumbs": [
+                { "url": "https://canada-preview.adobecqms.net/fr.html", "name": "Accueil" },
+                {
+                    "url": "https://canada-preview.adobecqms.net/fr/services/environnement.html",
+                    "name": "Environnement et ressources naturelles"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/fr/services/environnement/meteo.html",
+                    "name": "Météo, climat et catastrophes naturelles"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/fr/services/environnement/meteo/changementsclimatiques.html",
+                    "name": "Changements climatiques"
+                },
+                {
+                    "url": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/adapter.html",
+                    "name": "S'adapter aux changements climatiques au Canada"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques.html",
+                    "name": "Centre Canadien des Services Climatiques"
+                },
+                {
+                    "url": "https://canada-preview.adobecqms.net/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger.html",
+                    "name": "Afficher et télécharger les données climatiques"
+                }
+            ]
+        }
     }
 }

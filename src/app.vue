@@ -19,9 +19,18 @@
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
 
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-                <i18n :path="`map.${datasetId}_desc`" tag="p">
+                <i18n v-if="datasetId !== 'normal'"  :path="`map.${datasetId}_desc`" tag="p">
                     <a :href="`${queryToolBaseUrl}${queryToolRoute}`" target="_blank">{{ $t(`map.extractTool`) }}</a>
                 </i18n>
+
+                <div v-else>
+                    <h2>{{$t(`normal.stations.fullName`)}}</h2>
+                    <p> {{$t(`map.normal_desc`)}} </p>
+                    <h2> {{$t(`normal.monthly.fullName`)}}</h2>
+                    <p> {{$t(`map.monthly_desc`)}} </p>
+                    <h2> {{$t(`normal.daily.fullName`)}} </h2>
+                    <p> {{$t(`map.daily_desc`)}} </p>
+                </div>
             </aside>
 
             <i18n path="description.supportDesk" tag="p">
@@ -29,7 +38,11 @@
             </i18n>
 
             <i18n path="description.resources" tag="p">
-                <a href="">{{ $t('description.resources.link') }}</a>
+                <a :href="`${climateResourcesUrl}`">{{ $t('description.resources.link') }}</a>
+            </i18n>
+
+            <i18n path="description.climateBasics" tag="p">
+                <a :href="`${climateBasicsUrl}`">{{ $t('description.climateBasics.link') }}</a>
             </i18n>
 
             <div class="pagedetails">
@@ -111,6 +124,8 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     queryToolBaseUrl: string = '';
     supportDeskUrl: string = '';
+    climateResourcesUrl: string = '';
+    climateBasicsUrl: string = '';
 
     get queryToolRoute(): string {
         return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
@@ -118,8 +133,11 @@ export default class App extends mixins(UpdateRouteMixin) {
 
     async created(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', data => {
-            this.queryToolBaseUrl = data.queryToolUrl;
-            this.supportDeskUrl = data.supportDeskUrl;
+            const currentLinks = data.climateviewerapp[<'en' | 'fr'>i18n.locale];
+            this.queryToolBaseUrl = currentLinks.queryToolUrl;
+            this.supportDeskUrl = currentLinks.supportDeskUrl;
+            this.climateResourcesUrl = currentLinks.climateResourcesUrl;
+            this.climateBasicsUrl = currentLinks.climateBasicsUrl;
         });
         // This is to allow the back/forward browser functions to update the store
         // We flag internal updates with `internalRouteUpdate` in the store so that

@@ -113,8 +113,8 @@ export default class MapViewControls extends Vue {
 
     async mounted(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', data => {
-            this.queryToolBaseUrl = data.queryToolUrl;
-            this.dataCatalogueUrl = data.dataCatalogueUrl;
+            this.queryToolBaseUrl = data.climateviewerapp[<'en' | 'fr'>i18n.locale].queryToolUrl;
+            this.dataCatalogueUrl = data.climateviewerapp[<'en' | 'fr'>i18n.locale].dataCatalogueUrl;
         });
     }
 }
