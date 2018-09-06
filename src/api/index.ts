@@ -5,7 +5,11 @@ export * from './types';
 
 const $: any = (<EnhancedWindow>window).$;
 const RZ: any = (<EnhancedWindow>window).RZ;
-const dcsMultiTrack: any = (<any>window).dcsMultiTrack;
+const dcsMultiTrack: any =
+    (<any>window).dcsMultiTrack ||
+    function() {
+        console.warn('dcsMultiTrack is not available, possibly blocked.');
+    };
 
 export default {
     $,
