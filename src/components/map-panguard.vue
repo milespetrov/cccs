@@ -17,36 +17,49 @@ export default class MapPanguard extends Vue {
     @Prop() _mapi: any;
     mapElem: HTMLElement;
     msgShown: boolean = false;
+    panGuardClassList: DOMTokenList;
 
     mounted(): void {
         this.mapElem = this._mapi.mapDiv[0].querySelector('.rv-esri-map')!;
+        this.panGuardClassList = this.$el.classList;
 
-        this.mapElem.addEventListener('touchmove', this.ontouchmoveHandler, {
+        this.mapElem.addEventListener('touchstart', this.ontouchstartHandler, {
             capture: true
         });
 
-        this.mapElem.addEventListener('touchend', (event: TouchEvent) => {
-            this._mapi._fgpMap._map.enableMapNavigation();
+        this.mapElem.addEventListener('touchmove', this.ontouchstartHandler, {
+            capture: true
+        });
+
+        this.mapElem.addEventListener('touchend', this.ontouchendHandler, {
+            capture: true
         });
 
         this._mapi.mapDiv[0].querySelector('svg[style*="touch-action: none"]').style.touchAction = '';
     }
 
-    ontouchmoveHandler(event: TouchEvent): void {
-        const panGuardClassList = this.$el.classList;
-        if (event.touches.length === 1 && !this.msgShown) {
-            event.stopPropagation();
-            this.msgShown = true;
+    ontouchendHandler(event: TouchEvent): void {
+        this._mapi._fgpMap._map.enableMapNavigation();
+        this.panGuardClassList.remove('cip-active');
+        this.panGuardClassList.remove('cip-hidden-scroll');
+    }
 
-            panGuardClassList.remove('cip-paning');
+    ontouchstartHandler(event: TouchEvent): void {
+        const panGuardClassList = this.$el.classList;
+
+        if (event.touches.length === 1 && !this.msgShown) {
+            this.msgShown = true;
             panGuardClassList.add('cip-active');
+
             window.setTimeout(() => {
                 panGuardClassList.remove('cip-active');
                 panGuardClassList.add('cip-paning');
             }, 2000);
         } else if (event.touches.length === 2) {
-            panGuardClassList.add('cip-paning');
-            panGuardClassList.remove('cip-active');
+            this._mapi._fgpMap._map.disableMapNavigation();
+            event.stopPropagation();
+            panGuardClassList.add('cip-active');
+            panGuardClassList.add('cip-hidden-scroll');
         }
     }
 }
@@ -77,6 +90,10 @@ export default class MapPanguard extends Vue {
     &.cip-active {
         opacity: 1;
         transition-duration: 0.3s;
+    }
+
+    &.cip-hidden-scroll {
+        opacity: 0;
     }
 
     &.cip-paning {
