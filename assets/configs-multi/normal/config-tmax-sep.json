@@ -44,7 +44,7 @@
     {
       "id": "cities",
       "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+      "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
       "name": "Cities",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -132,7 +132,7 @@
     {
       "id": "cities",
       "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+      "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
       "name": "[fr] Cities",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
