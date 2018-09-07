@@ -47,7 +47,8 @@
             },
             "footnote": {
                 "value": "Generated using the Climate Maps viewer at http://climate-change.canada.ca/climate-maps."
-            }
+            },
+            "timeout": 60000
         },
         "search": {
             "serviceUrls": {

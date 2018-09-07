@@ -47,7 +47,8 @@
             },
             "footnote": {
                 "value": "Générées au moyen de la Visionneuse des cartes climatiques à http://climate-change.canada.ca/climate-maps."
-            }
+            },
+            "timeout": 60000
         },
         "search": {
             "serviceUrls": {
