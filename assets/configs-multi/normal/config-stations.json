@@ -2,6 +2,7 @@
     "en": {
         "legend": [
             {
+                "export": false,
                 "infoType": "title",
                 "content": "Data"
             },
@@ -91,6 +92,7 @@
     "fr": {
         "legend": [
             {
+                "export": false,
                 "infoType": "title",
                 "content": "[fr] Data"
             },
