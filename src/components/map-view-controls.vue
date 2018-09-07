@@ -48,7 +48,7 @@
                         <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
                             <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
 
-                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="dataCatalogueUrl">
+                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${dataCatalogueUrl}${metadataUUID}`" :v-if="urlSuffixes">
 
                                 <i18n :path="`${tDSPath}.dataCatalogue.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
@@ -58,7 +58,7 @@
                                 
                             </b-dropdown-item>
 
-                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${queryToolBaseUrl}${queryToolRoute}`">
+                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${queryToolBaseUrl}${queryToolRoute}`" :v-if="urlSuffixes">
 
                                 <i18n :path="`${tDSPath}.queryTool.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.queryTool.access`) }}</span>
@@ -86,7 +86,7 @@ import selectors from './vis-controls/selectors';
 
 import api from './../api/';
 import { datasets } from '@/configs/datasets';
-import { DatasetId } from '@/types';
+import { DatasetId, VariableId } from '@/types';
 import { i18n } from '@/lang';
 
 @Component({
@@ -95,6 +95,7 @@ import { i18n } from '@/lang';
 export default class MapViewControls extends Vue {
     @Getter getControls: string[];
     @State datasetId: DatasetId;
+    @State variableId: VariableId;
 
     showCollapse: boolean = false;
 
@@ -102,8 +103,20 @@ export default class MapViewControls extends Vue {
     queryToolBaseUrl: string = '';
     dataCatalogueUrl: string = '';
 
+    urlSuffixes: object | null = null;
+
     get queryToolRoute(): string {
-        return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
+        if (!this.urlSuffixes) {
+            return '';
+        }
+        return this.urlSuffixes[this.datasetId].dataQuery[<'en' | 'fr'>i18n.locale];
+    }
+
+    get metadataUUID(): string {
+        if (!this.urlSuffixes) {
+            return '';
+        }
+        return this.urlSuffixes[this.datasetId].metadata[this.variableId];
     }
 
     downloadImage(type: string): void {
@@ -115,6 +128,10 @@ export default class MapViewControls extends Vue {
         await $.getJSON('assets/configs/app-config.json', data => {
             this.queryToolBaseUrl = data.climateviewerapp[<'en' | 'fr'>i18n.locale].queryToolUrl;
             this.dataCatalogueUrl = data.climateviewerapp[<'en' | 'fr'>i18n.locale].dataCatalogueUrl;
+        });
+
+        await $.getJSON('assets/configs/url-suffix-config.json', data => {
+            this.urlSuffixes = data.urlSuffixes;
         });
     }
 }

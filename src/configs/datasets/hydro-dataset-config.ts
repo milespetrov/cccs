@@ -14,10 +14,6 @@ const hydroDataset: DatasetSource = {
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json',
-    queryToolRoute: {
-        en: '/water-quantity-data',
-        fr: '/donnees-quantite-eau'
-    },
     identifyMode: [
         IdentifyMode.Query,
         IdentifyMode.Marker,

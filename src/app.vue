@@ -20,7 +20,7 @@
 
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
                 <i18n v-if="datasetId !== 'normal'"  :path="`map.${datasetId}_desc`" tag="p">
-                    <a :href="`${queryToolBaseUrl}${queryToolRoute}`" target="_blank">{{ $t(`map.extractTool`) }}</a>
+                    <a :href="`${queryToolBaseUrl}${queryToolRoute}`">{{ $t(`map.extractTool`) }}</a>
                 </i18n>
 
                 <div v-else>
@@ -126,9 +126,13 @@ export default class App extends mixins(UpdateRouteMixin) {
     supportDeskUrl: string = '';
     climateResourcesUrl: string = '';
     climateBasicsUrl: string = '';
+    urlSuffixes: object | null = null;
 
     get queryToolRoute(): string {
-        return datasets[this.datasetId].queryToolRoute[<'en' | 'fr'>i18n.locale];
+        if (!this.urlSuffixes) {
+            return '';
+        }
+        return this.urlSuffixes[this.datasetId].dataQuery[<'en' | 'fr'>i18n.locale];
     }
 
     async created(): Promise<void> {
@@ -139,6 +143,11 @@ export default class App extends mixins(UpdateRouteMixin) {
             this.climateResourcesUrl = currentLinks.climateResourcesUrl;
             this.climateBasicsUrl = currentLinks.climateBasicsUrl;
         });
+
+        await $.getJSON('assets/configs/url-suffix-config.json', data => {
+            this.urlSuffixes = data.urlSuffixes;
+        });
+
         // This is to allow the back/forward browser functions to update the store
         // We flag internal updates with `internalRouteUpdate` in the store so that
         // we don't double up on internal state commits

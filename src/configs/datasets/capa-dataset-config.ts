@@ -41,10 +41,6 @@ const capaDataset: DatasetSource = {
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json',
-    queryToolRoute: {
-        en: '/regional-deterministic-precipitation-analysis',
-        fr: '/analyse-regionale-deterministe-precipitation'
-    },
 
     identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };
