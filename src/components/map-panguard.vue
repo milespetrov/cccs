@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
-import { MapPoint } from '../store/index';
+import { MapPoint } from '@/store/modules/app';
 import { formatLatLong } from '@/globals/utils';
 
 @Component

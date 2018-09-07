@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { app } from './app';
+import { app } from './modules/app';
+import { data } from './modules/data';
 import { RootState } from './state';
 
 Vue.use(Vuex);
@@ -11,6 +12,8 @@ const debug: boolean = true; //process.env.NODE_ENV !== 'production'
 
 export const createStore = () =>
     new Vuex.Store<RootState>({
-        ...app,
-        modules: {}
+        modules: {
+            app,
+            data
+        }
     });

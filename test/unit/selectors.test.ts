@@ -12,11 +12,11 @@ import Dropdown from 'bootstrap-vue/es/components/dropdown';
 
 // Import the module we're testing
 import baseSelectorV from 'src/components/vis-controls/base-selector.vue';
-import { BaseSelectorConfig, BaseSelectorGroupConfig } from './../../src/configs/selectors';
+import { BaseSelectorConfig, BaseSelectorGroupConfig } from '@/configs/selectors';
 
-import { AppState, createStore } from '../../src/store';
+import { AppState } from '@/store/modules/app/app-state';
 
-import { app } from './../../src/store/app';
+import { app } from '@/store/modules/app/app';
 import { ViewType, DatasetId, VisualizationControlType, TimePeriodType, RCPType } from '@/types';
 
 // Allows us to spy on functions

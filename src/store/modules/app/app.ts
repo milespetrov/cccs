@@ -1,9 +1,10 @@
 import { ActionContext, StoreOptions } from 'vuex';
 
-import { AppState, MapPoint, RootState } from './index';
+import { AppState, MapPoint } from './app-state';
+import { RootState } from '@/store';
 
-import { datasets, DatasetViewSource, ColourRamp } from './../configs/datasets';
-import { defaultSelectors } from './../configs/selectors';
+import { datasets, DatasetViewSource, ColourRamp } from '@/configs/datasets';
+import { defaultSelectors } from '@/configs/selectors';
 import { VisualizationControlType, DatasetId } from '@/types';
 import { DatasetApi, datasetApis } from '@/api';
 
@@ -89,6 +90,9 @@ const getters = {
      * @returns {VisualizationControlType[]}
      */
     getControls: (state: AppState): VisualizationControlType[] => {
+        if (!state.datasetId) {
+            return [];
+        }
         const options = getters.datasetControlOptions(state);
 
         // filter out visualization control ids which corresponding configurations are set to be invisible
@@ -364,7 +368,8 @@ const mutations = {
     }
 };
 
-export const app: StoreOptions<AppState> = {
+export const app = {
+    namespaced: true,
     state,
     getters,
     actions,

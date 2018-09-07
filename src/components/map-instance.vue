@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
+import { State, Getter, Action, namespace } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
@@ -18,7 +18,7 @@ import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { throttleTime } from 'rxjs/internal/operators/throttleTime';
 
 import api, { DatasetApi } from './../api/';
-import { MapPoint } from './../store/';
+import { MapPoint } from '@/store/modules/app';
 import { UpdateRouteMixin } from '../globals/mixin';
 import { DatasetId, VariableId } from '@/types';
 
@@ -53,6 +53,9 @@ export interface IdentifySession {
 }
 
 const centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
 
 @Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
@@ -60,29 +63,29 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         return document.getElementById('cip-map-anchor')!;
     }
 
-    @State('variableId') currentVariable: VariableId;
-    @State datasetId: DatasetId;
-    @State('timePeriodId') currentTimePeriod: string;
-    //@State('featureId') currentFeature: string;
-    @State('rcpId') currentRcp: string;
-    @State timeSlice: number;
-    @State centerPoint: MapPoint;
-    @State locationPoint: MapPoint;
-    @State zoomLevel: number;
-    @State analysisPeriod: string;
-    // @State featurePoint: MapPoint;
+    @StateApp('variableId') currentVariable: VariableId;
+    @StateApp datasetId: DatasetId;
+    @StateApp('timePeriodId') currentTimePeriod: string;
+    //@StateApp('featureId') currentFeature: string;
+    @StateApp('rcpId') currentRcp: string;
+    @StateApp timeSlice: number;
+    @StateApp centerPoint: MapPoint;
+    @StateApp locationPoint: MapPoint;
+    @StateApp zoomLevel: number;
+    @StateApp analysisPeriod: string;
+    // @StateApp featurePoint: MapPoint;
 
-    //@Action setFeatureId: (value: string | null) => void;
-    @Action setCenterPoint: (value: { x: number; y: number }) => void;
-    // @Action setFeaturePoint: (value: { x: number; y: number } | null) => void;
-    @Action setZoomLevel: (value: number) => void;
-    @Action setTileInfo: (value: number[] | null) => void;
+    //@ActionApp setFeatureId: (value: string | null) => void;
+    @ActionApp setCenterPoint: (value: { x: number; y: number }) => void;
+    // @ActionApp setFeaturePoint: (value: { x: number; y: number } | null) => void;
+    @ActionApp setZoomLevel: (value: number) => void;
+    @ActionApp setTileInfo: (value: number[] | null) => void;
 
-    @Getter timeSliderLabels: string[] | undefined;
-    @Getter legend: { [index: string]: string } | undefined;
-    @Getter colourRamp: ColourRamp | null;
-    @Getter datasetApi: DatasetApi;
-    @Getter dateSlider: any;
+    @GetterApp timeSliderLabels: string[] | undefined;
+    @GetterApp legend: { [index: string]: string } | undefined;
+    @GetterApp colourRamp: ColourRamp | null;
+    @GetterApp datasetApi: DatasetApi;
+    @GetterApp dateSlider: any;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;

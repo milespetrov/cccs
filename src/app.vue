@@ -20,7 +20,7 @@
 
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
                 <i18n v-if="datasetId !== 'normal'"  :path="`map.${datasetId}_desc`" tag="p">
-                    <a :href="`${queryToolBaseUrl}${queryToolRoute}`">{{ $t(`map.extractTool`) }}</a>
+                    <a :href="`${dataQueryUrl}${queryToolRoute}`">{{ $t(`map.extractTool`) }}</a>
                 </i18n>
 
                 <div v-else>
@@ -64,7 +64,7 @@
 
 <script lang="ts">
 import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
-import { Getter, Action, State } from 'vuex-class';
+import { Getter, Action, State, namespace } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
@@ -74,7 +74,7 @@ import Collapse from 'bootstrap-vue/es/components/collapse';
 Vue.use(Dropdown);
 Vue.use(Collapse);
 
-import { MapPoint } from './store';
+import { MapPoint } from './store/modules/app/app-state';
 import api from './api/';
 import { UpdateRouteMixin } from './globals/mixin';
 
@@ -84,6 +84,12 @@ import MapViewControls from './components/map-view-controls.vue';
 import { datasets } from '@/configs/datasets';
 import { i18n } from './lang';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+const StateData = namespace('data', State);
+const ActionData = namespace('data', Action);
+
 @Component({
     components: {
         MapView,
@@ -91,25 +97,31 @@ import { i18n } from './lang';
     }
 })
 export default class App extends mixins(UpdateRouteMixin) {
-    @Action setTimePeriodId: (value: string | null) => void;
-    @Action setVariableId: (value: string | null) => void;
-    @Action setDatasetId: (value: string | null) => void;
-    @Action setFeatureId: (value: string | null) => void;
-    @Action setCenterPoint: (value: string | null) => void;
-    @Action setZoomLevel: (value: string | null) => void;
-    @Action setTimeSlice: (value: number | null) => void;
-    @Action setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
-    @Action setRcpId: (value: string | null) => void;
-    @Action setAnalysisPeriod: (value: string | null) => void;
+    @ActionApp setTimePeriodId: (value: string | null) => void;
+    @ActionApp setVariableId: (value: string | null) => void;
+    @ActionApp setDatasetId: (value: string | null) => void;
+    @ActionApp setFeatureId: (value: string | null) => void;
+    @ActionApp setCenterPoint: (value: string | null) => void;
+    @ActionApp setZoomLevel: (value: string | null) => void;
+    @ActionApp setTimeSlice: (value: number | null) => void;
+    @ActionApp setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
+    @ActionApp setRcpId: (value: string | null) => void;
+    @ActionApp setAnalysisPeriod: (value: string | null) => void;
+    @ActionApp setInternalRouteUpdate: (value: boolean) => void;
 
-    @State internalRouteUpdate: boolean;
-    @Action setInternalRouteUpdate: (value: boolean) => void;
+    @StateApp internalRouteUpdate: boolean;
+    @StateApp datasetId: DatasetId;
+
+    @ActionData setUrlSuffixes: (value: object) => void;
+    @ActionData setDataCatalogueUrl: (value: string) => void;
+    @ActionData setDataQueryUrl: (value: string) => void;
+
+    @StateData urlSuffixes: object | null;
+    @StateData dataQueryUrl: string | null;
 
     reloadKey: string = '';
 
     timestamp: string = (<any>window).PageTimestamp;
-
-    @State datasetId: DatasetId;
 
     @Watch('datasetId')
     async onDatasetChange(newValue: string, oldValue: string) {
@@ -122,11 +134,9 @@ export default class App extends mixins(UpdateRouteMixin) {
         this.updateRoute();
     }
 
-    queryToolBaseUrl: string = '';
     supportDeskUrl: string = '';
     climateResourcesUrl: string = '';
     climateBasicsUrl: string = '';
-    urlSuffixes: object | null = null;
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes) {
@@ -138,14 +148,15 @@ export default class App extends mixins(UpdateRouteMixin) {
     async created(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', data => {
             const currentLinks = data.climateviewerapp[<'en' | 'fr'>i18n.locale];
-            this.queryToolBaseUrl = currentLinks.queryToolUrl;
+            this.setDataQueryUrl(currentLinks.queryToolUrl);
+            this.setDataCatalogueUrl(currentLinks.dataCatalogueUrl);
             this.supportDeskUrl = currentLinks.supportDeskUrl;
             this.climateResourcesUrl = currentLinks.climateResourcesUrl;
             this.climateBasicsUrl = currentLinks.climateBasicsUrl;
         });
 
         await $.getJSON('assets/configs/url-suffix-config.json', data => {
-            this.urlSuffixes = data.urlSuffixes;
+            this.setUrlSuffixes(data.urlSuffixes);
         });
 
         // This is to allow the back/forward browser functions to update the store

@@ -48,7 +48,7 @@
                         <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
                             <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
 
-                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${dataCatalogueUrl}${metadataUUID}`" :v-if="urlSuffixes">
+                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${dataCatalogueUrl}${metadataUUID}`">
 
                                 <i18n :path="`${tDSPath}.dataCatalogue.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.dataCatalogue.access`) }}</span>
@@ -58,7 +58,7 @@
                                 
                             </b-dropdown-item>
 
-                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${queryToolBaseUrl}${queryToolRoute}`" :v-if="urlSuffixes">
+                            <b-dropdown-item class="cip-nowrap" target="_blank" :href="`${dataQueryUrl}${queryToolRoute}`">
 
                                 <i18n :path="`${tDSPath}.queryTool.fullName`" tag="span" class="cip-name">
                                     <span class="wb-inv">{{ $t(`${tDSPath}.queryTool.access`) }}</span>
@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
+import { State, Getter, Action, namespace } from 'vuex-class';
 
 import BaseSelectorV from 'src/components/vis-controls/base-selector.vue';
 import selectors from './vis-controls/selectors';
@@ -89,21 +89,26 @@ import { datasets } from '@/configs/datasets';
 import { DatasetId, VariableId } from '@/types';
 import { i18n } from '@/lang';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+const StateData = namespace('data', State);
+
 @Component({
     components: selectors
 })
 export default class MapViewControls extends Vue {
-    @Getter getControls: string[];
-    @State datasetId: DatasetId;
-    @State variableId: VariableId;
+    @GetterApp getControls: string[];
+    @StateApp datasetId: DatasetId;
+    @StateApp variableId: VariableId;
+
+    @StateData urlSuffixes: object | null;
+    @StateData dataQueryUrl: string | null;
+    @StateData dataCatalogueUrl: string | null;
 
     showCollapse: boolean = false;
 
     tDSPath: string = 'downloadSelector';
-    queryToolBaseUrl: string = '';
-    dataCatalogueUrl: string = '';
-
-    urlSuffixes: object | null = null;
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes) {
@@ -122,17 +127,6 @@ export default class MapViewControls extends Vue {
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);
-    }
-
-    async mounted(): Promise<void> {
-        await $.getJSON('assets/configs/app-config.json', data => {
-            this.queryToolBaseUrl = data.climateviewerapp[<'en' | 'fr'>i18n.locale].queryToolUrl;
-            this.dataCatalogueUrl = data.climateviewerapp[<'en' | 'fr'>i18n.locale].dataCatalogueUrl;
-        });
-
-        await $.getJSON('assets/configs/url-suffix-config.json', data => {
-            this.urlSuffixes = data.urlSuffixes;
-        });
     }
 }
 </script>

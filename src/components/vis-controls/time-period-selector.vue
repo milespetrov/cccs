@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
+import { State, Getter, Action, namespace } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
 import BaseSelectorV from './base-selector.vue';
@@ -23,16 +23,20 @@ import { TimePeriodSelectorConfig, timePeriodSelectorConfig } from '../../config
 import { DatasetViewSource } from './../../configs/datasets';
 import { TimePeriodType, VisualizationControlType } from '@/types';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+
 @Component({
     components: {
         'base-selector': BaseSelectorV
     }
 })
 export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
-    @State timePeriodId: string;
-    @State datasetId: string;
-    @Getter datasetControlOptions: DatasetViewSource;
-    @Action setTimePeriodId: (value: string) => void;
+    @StateApp timePeriodId: string;
+    @StateApp datasetId: string;
+    @GetterApp datasetControlOptions: DatasetViewSource;
+    @ActionApp setTimePeriodId: (value: string) => void;
 
     config: TimePeriodSelectorConfig = timePeriodSelectorConfig;
 
