@@ -1,6 +1,10 @@
-import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
-import { Getter, Action, State } from 'vuex-class';
+import { Vue, Component } from 'vue-property-decorator';
+import { Getter, Action, State, namespace } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
+
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
 
 /**
  * to use:
@@ -9,9 +13,11 @@ import { Dictionary } from 'vue-router/types/router';
  */
 @Component
 export class UpdateRouteMixin extends Vue {
-    @Getter getQuery: Dictionary<string>;
+    @GetterApp
+    getQuery: Dictionary<string>;
 
-    @Action setInternalRouteUpdate: (value: boolean) => void;
+    @ActionApp
+    setInternalRouteUpdate: (value: boolean) => void;
 
     // Updates the router using the in-store view and query variables
     updateRoute(): void {

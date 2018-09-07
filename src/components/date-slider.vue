@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import noUiSlider from 'nouislider';
-import { Action, State } from 'vuex-class';
+import { Action, State, namespace } from 'vuex-class';
 import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from './../globals/mixin';
 import { Getter } from 'vuex-class/lib/bindings';
@@ -21,15 +21,19 @@ import { sampleTime } from 'rxjs/internal/operators/sampleTime';
 import { i18n } from '@/lang';
 import { TimePeriodType } from '@/types';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+
 @Component
 export default class DateSlider extends mixins(UpdateRouteMixin) {
     slider: any;
 
-    @Action setTimeSlice: (value: number) => void;
-    @State timeSlice: number;
-    @State variableId: string;
+    @ActionApp setTimeSlice: (value: number) => void;
+    @StateApp timeSlice: number;
+    @StateApp variableId: string;
 
-    @Getter dateSlider: any;
+    @GetterApp dateSlider: any;
     @Prop() step: string;
 
     @Prop() end: string;

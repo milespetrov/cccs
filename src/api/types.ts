@@ -1,4 +1,4 @@
-import { AppState } from '@/store';
+import { AppState } from '@/store/modules/app';
 import { getJSON } from '@/api/util';
 import { DatasetId } from '@/types';
 

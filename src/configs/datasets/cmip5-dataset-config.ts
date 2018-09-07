@@ -105,10 +105,6 @@ const cimp5Dataset: DatasetSource = {
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json',
-    queryToolRoute: {
-        en: '/cmip5-data',
-        fr: '/simulations-cmip5'
-    },
 
     identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };

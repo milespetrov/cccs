@@ -207,20 +207,6 @@ export interface DatasetSource {
     layersConfigPath: string; // file2.json
 
     /**
-     * Route names to the corresponding dataset in the the data extraction query tool.
-     *
-     * @type {{
-     *         en: string;
-     *         fr: string;
-     *     }}
-     * @memberof DatasetSource
-     */
-    queryToolRoute: {
-        en: string;
-        fr: string;
-    };
-
-    /**
      * Specifies the RAMP identify mode.
      *
      * @type {IdentifyMode[]}

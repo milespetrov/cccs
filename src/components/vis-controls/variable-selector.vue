@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
+import { State, Getter, Action, namespace } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
 import BaseSelectorV from './base-selector.vue';
@@ -23,6 +23,10 @@ import { variableSelectorConfig, VariableSelectorConfig } from './../../configs/
 import { DatasetId, VariableId } from '@/types';
 import { datasets } from '@/configs/datasets';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+
 @Component({
     components: {
         'base-selector': BaseSelectorV
@@ -31,10 +35,10 @@ import { datasets } from '@/configs/datasets';
 export default class VariableSelector extends mixins(UpdateRouteMixin) {
     config: VariableSelectorConfig = variableSelectorConfig;
 
-    @Action setVariableId: (value: string) => void;
+    @ActionApp setVariableId: (value: string) => void;
 
-    @State variableId: VariableId;
-    @State datasetId: DatasetId;
+    @StateApp variableId: VariableId;
+    @StateApp datasetId: DatasetId;
 
     @Watch('datasetId')
     onDatasetChange() {

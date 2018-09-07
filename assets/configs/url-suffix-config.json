@@ -1,0 +1,90 @@
+{
+    "urlSuffixes": {
+        "ahccd": {
+            "dataQuery": {
+                "en": "/adjusted-station-data",
+                "fr": "/donnees-climatiques-ajustees"
+            },
+            "metadata": {
+                "tmin": "/min-temp",
+                "tmean": "/mean-temp",
+                "tmax": "/max-temp",
+                "precip": "/precip",
+                "sfcwind": "/wind-speed",
+                "seapress": "/sea-level-pressure",
+                "stnpress": "/station-pressure",
+                "stations": "/stations"
+            }
+        },
+        "cangrd": {
+            "dataQuery": {
+                "en": "/historical-gridded-data",
+                "fr": "/donnees-maillees-historiques"
+            },
+            "metadata": {
+                "tmean": "/mean-temp",
+                "precip": "/precip"
+            }
+        },
+        "capa": {
+            "dataQuery": {
+                "en": "/regional-deterministic-precipitation-analysis",
+                "fr": "/analyse-regionale-deterministe-precipitation"
+            },
+            "metadata": {
+                "rdpa6": "/rdpa6",
+                "rdpa24": "/rdpa24"
+            }
+        },
+        "cmip5": {
+            "dataQuery": {
+                "en": "/cmip5-data",
+                "fr": "/simulations-cmip5"
+            },
+            "metadata": {
+                "tmean": "/mean-temp",
+                "precip": "/precip",
+                "sfcwind": "/wind-speed",
+                "sic": "/sea-ice-concentration",
+                "sit": "/sea-ice-thickness",
+                "snd": "/snow-depth"
+            }
+        },
+        "dcs": {
+            "dataQuery": {
+                "en": "/downscaled-data",
+                "fr": "/donnees-echelle-reduite"
+            },
+            "metadata": {
+                "tmax": "/max-temp",
+                "tmean": "/mean-temp",
+                "tmin": "/min-temp",
+                "precip": "/precip"
+            }
+        },
+        "hydro": {
+            "dataQuery": {
+                "en": "/water-quantity-data",
+                "fr": "/donnees-quantite-eau"
+            },
+            "metadata": {
+                "hydro": "/hydro-stations"
+            }
+        },
+        "normal": {
+            "dataQuery": {
+                "en": "/climate-normals",
+                "fr": "/normales-climatiques"
+            },
+            "metadata": {
+                "tmax": "/max-temp",
+                "tmin": "/min-temp",
+                "tmean": "/mean-temp",
+                "precip": "/precip",
+                "monthly": "/monthly-stations",
+                "daily": "/daily-stations",
+                "stations": "/normal-stations"
+            }
+        }
+    }
+}

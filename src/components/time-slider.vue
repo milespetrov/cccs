@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import noUiSlider from 'nouislider';
-import { Action, State } from 'vuex-class';
+import { Action, State, namespace } from 'vuex-class';
 import { mixins } from 'vue-class-component/lib/util';
 import { UpdateRouteMixin } from './../globals/mixin';
 import { Getter } from 'vuex-class/lib/bindings';
@@ -18,14 +18,18 @@ import { Observable, fromEvent } from 'rxjs';
 import { filter } from 'rxjs/internal/operators/filter';
 import { sampleTime } from 'rxjs/internal/operators/sampleTime';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+
 @Component
 export default class TimeSlider extends mixins(UpdateRouteMixin) {
     slider: any;
 
-    @Getter timeSliderLabels: string[];
+    @GetterApp timeSliderLabels: string[];
 
-    @Action setTimeSlice: (value: number) => void;
-    @State timeSlice: number;
+    @ActionApp setTimeSlice: (value: number) => void;
+    @StateApp timeSlice: number;
 
     internalTimeSliceChange = false;
     pipSelector = '.noUi-value-large[data-value="';

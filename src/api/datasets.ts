@@ -1,5 +1,5 @@
 import { DatasetApi } from './types';
-import { AppState } from '@/store';
+import { AppState } from '@/store/modules/app';
 import { DatasetId, VariableId } from '@/types';
 import { i18n } from '@/lang';
 
@@ -25,9 +25,7 @@ class AHCCDApi extends DatasetApi {
         if (this.state.variableId === 'stations') {
             return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
         } else {
-            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
-                this.state.timePeriodId
-            }.json`;
+            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}.json`;
         }
     }
 
@@ -80,9 +78,7 @@ class CanGrdApi extends DatasetApi {
      * @memberof CanGrdApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
-            this.state.timePeriodId
-        }.json`;
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}.json`;
     }
 }
 
@@ -250,9 +246,7 @@ class NormalApi extends DatasetApi {
         ) {
             return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
         } else {
-            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
-                this.state.timePeriodId
-            }.json`;
+            return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}.json`;
         }
     }
 

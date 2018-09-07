@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
+import { State, Getter, Action, namespace } from 'vuex-class';
 
 import BaseSelectorV from './base-selector.vue';
 import { Dictionary } from 'vue-router/types/router';
@@ -25,15 +25,19 @@ import { RCPSelectorConfig, analysisperiodSelectorConfig } from './../../configs
 import { DatasetViewSource } from './../../configs/datasets';
 import { VisualizationControlType, AnalysisPeriodType } from '@/types';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+
 @Component({
     components: {
         'base-selector': BaseSelectorV
     }
 })
 export default class AnalysisPeriodSelector extends mixins(UpdateRouteMixin) {
-    @State analysisPeriod: string;
-    @Getter datasetControlOptions: DatasetViewSource;
-    @Action setAnalysisPeriod: (value: AnalysisPeriodType) => void;
+    @StateApp analysisPeriod: string;
+    @GetterApp datasetControlOptions: DatasetViewSource;
+    @ActionApp setAnalysisPeriod: (value: AnalysisPeriodType) => void;
 
     config: RCPSelectorConfig = analysisperiodSelectorConfig;
 

@@ -10,10 +10,12 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State } from 'vuex-class';
+import { State, namespace } from 'vuex-class';
 import api from './../api/';
 
 import MapInstance from './map-instance.vue';
+
+const StateApp = namespace('app', State);
 
 @Component({
     components: {
@@ -21,7 +23,7 @@ import MapInstance from './map-instance.vue';
     }
 })
 export default class MapView extends Vue {
-    @State datasetId: string;
+    @StateApp datasetId: string;
 
     /**
      * The table component will be force-reloaded on the `reloadKey` change.

@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action } from 'vuex-class';
+import { State, Getter, Action, namespace } from 'vuex-class';
 
 import BaseSelectorV from './base-selector.vue';
 import { Dictionary } from 'vue-router/types/router';
@@ -25,15 +25,19 @@ import { rcpSelectorConfig, RCPSelectorConfig } from './../../configs/selectors'
 import { DatasetViewSource } from './../../configs/datasets';
 import { VisualizationControlType, RCPType } from '@/types';
 
+const StateApp = namespace('app', State);
+const GetterApp = namespace('app', Getter);
+const ActionApp = namespace('app', Action);
+
 @Component({
     components: {
         'base-selector': BaseSelectorV
     }
 })
 export default class RcpSelector extends mixins(UpdateRouteMixin) {
-    @State rcpId: string;
-    @Getter datasetControlOptions: DatasetViewSource;
-    @Action setRcpId: (value: RCPType) => void;
+    @StateApp rcpId: string;
+    @GetterApp datasetControlOptions: DatasetViewSource;
+    @ActionApp setRcpId: (value: RCPType) => void;
 
     config: RCPSelectorConfig = rcpSelectorConfig;
 

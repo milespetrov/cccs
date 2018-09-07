@@ -81,10 +81,6 @@ const dcsDataset: DatasetSource = {
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json',
-    queryToolRoute: {
-        en: '/downscaled-data',
-        fr: '/donnees-echelle-reduite'
-    },
 
     identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };

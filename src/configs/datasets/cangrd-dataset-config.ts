@@ -75,10 +75,6 @@ const canGrdDataset: DatasetSource = {
 
     mapConfigPath: 'config-base.json',
     layersConfigPath: 'config-snippets.json',
-    queryToolRoute: {
-        en: '/historical-gridded-data',
-        fr: '/donnees-maillees-historiques'
-    },
 
     identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };
