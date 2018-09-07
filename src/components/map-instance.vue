@@ -29,6 +29,7 @@ import MapColourRamp from './map-colour-ramp.vue';
 import MapControlsCluster from './map-controls-cluster.vue';
 import MapFineprint from './map-fineprint.vue';
 import MapScrollguard from './map-scrollguard.vue';
+import MapPanguard from './map-panguard.vue';
 
 // TODO: import proper RAMP definitions
 export interface IdentifyResult {
@@ -539,6 +540,17 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             i18n: this.$i18n
         }).$mount();
 
+        const panguardComponent = new Vue({
+            render: h =>
+                h('map-panguard', {
+                    props: { _mapi: this._mapi }
+                }),
+            components: {
+                'map-panguard': MapPanguard
+            },
+            i18n: this.$i18n
+        }).$mount();
+
         const innerShell = this.$el.querySelector('.rv-inner-shell')!;
         innerShell.appendChild(controlClusterComponent.$el);
         innerShell.appendChild(fineprintComponent.$el);
@@ -547,6 +559,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // this will place the guard above the map, but below all other RAMP controls
         // when the guard is active, it grays out the map, but not the controls
         innerShell.insertBefore(scrollguardComponent.$el, innerShell.firstChild);
+
+        innerShell.insertBefore(panguardComponent.$el, innerShell.firstChild);
     }
 }
 </script>
