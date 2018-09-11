@@ -72,9 +72,9 @@
       "id": "AHCCD_wind_JAN_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=wind_speed&period=Jan",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=wind_speed&period__periode=Jan",
       "name": "Wind speed",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_wind_JAN_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=wind_speed&period=Jan",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=wind_speed&period__periode=Jan",
       "name": "[fr] Wind speed",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true

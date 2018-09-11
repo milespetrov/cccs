@@ -72,9 +72,9 @@
       "id": "AHCCD_tmin_MAY_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_min&period=May",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=May",
       "name": "Homogenized minimum temperature",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_tmin_MAY_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_min&period=May",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=May",
       "name": "[fr] Minimum temperature",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true

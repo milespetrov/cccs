@@ -72,9 +72,9 @@
       "id": "AHCCD_tmax_AUG_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_max&period=Aug",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_max&period__periode=Aug",
       "name": "Homogenized maximum temperature",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_tmax_AUG_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_max&period=Aug",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_max&period__periode=Aug",
       "name": "[fr] Maximum temperature",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true

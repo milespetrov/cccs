@@ -72,9 +72,9 @@
       "id": "AHCCD_supr_AUG_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=pressure_station&period=Aug",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Aug",
       "name": "Homogenized station pressure",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_supr_AUG_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=pressure_station&period=Aug",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Aug",
       "name": "[fr] Surface pressure",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
