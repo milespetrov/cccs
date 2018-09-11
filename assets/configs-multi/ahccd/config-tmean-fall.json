@@ -72,9 +72,9 @@
       "id": "AHCCD_tmean_SON_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_mean&period=Fal",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Fal",
       "name": "Homogenized mean temperature",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_tmean_SON_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=temp_mean&period=Fal",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Fal",
       "name": "[fr] Mean temperature",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true

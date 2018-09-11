@@ -72,9 +72,9 @@
       "id": "AHCCD_prec_SON_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=total_precip&period=Fal",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Fal",
       "name": "Adjusted total precipitation",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_prec_SON_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=total_precip&period=Fal",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Fal",
       "name": "[fr] Precipitation",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true

@@ -72,9 +72,9 @@
       "id": "AHCCD_slpr_OCT_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Oct",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_sea_level&period__periode=Oct",
       "name": "Homogenized sea level pressure",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_slpr_OCT_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type=pressure_sea_level&period=Oct",
+      "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_sea_level&period__periode=Oct",
       "name": "[fr] Sea level pressure",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true

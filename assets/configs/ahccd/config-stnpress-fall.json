@@ -72,9 +72,9 @@
       "id": "AHCCD_supr_SON_en",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=pressure_station&period=Fal",
+      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Fal",
       "name": "Homogenized station pressure",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -161,9 +161,9 @@
       "id": "AHCCD_supr_SON_fr",
       "layerType": "ogcWfs",
       "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type=pressure_station&period=Fal",
+      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Fal",
       "name": "[fr] Surface pressure",
-      "nameField": "station_name",
+      "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
         "visibility": true
