@@ -6,14 +6,14 @@
                 "fr": "/donnees-climatiques-ajustees"
             },
             "metadata": {
-                "tmin": "/min-temp",
-                "tmean": "/mean-temp",
-                "tmax": "/max-temp",
-                "precip": "/precip",
-                "sfcwind": "/wind-speed",
-                "seapress": "/sea-level-pressure",
-                "stnpress": "/station-pressure",
-                "stations": "/stations"
+                "tmin": "/c35cca21-87fd-44ba-88c4-32635875193c",
+                "tmean": "/c35cca21-87fd-44ba-88c4-32635875193c",
+                "tmax": "/c35cca21-87fd-44ba-88c4-32635875193c",
+                "precip": "/befc3f91-09d7-4c9f-8b29-7818f3726094",
+                "sfcwind": "/bc80747f-9d6f-46d4-bc4d-8e17a8321702",
+                "seapress": "/580e116e-a6f1-43b7-bb5a-ba290f2c9581",
+                "stnpress": "/580e116e-a6f1-43b7-bb5a-ba290f2c9581",
+                "stations": "/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d"
             }
         },
         "cangrd": {
@@ -22,8 +22,8 @@
                 "fr": "/donnees-maillees-historiques"
             },
             "metadata": {
-                "tmean": "/mean-temp",
-                "precip": "/precip"
+                "tmean": "/23563e04-467a-496f-a71c-fb0aad0171a8",
+                "precip": "/92297600-fa37-454a-b45e-a4516d4d4ee2"
             }
         },
         "capa": {
@@ -32,8 +32,8 @@
                 "fr": "/analyse-regionale-deterministe-precipitation"
             },
             "metadata": {
-                "rdpa6": "/rdpa6",
-                "rdpa24": "/rdpa24"
+                "rdpa6": "/fdd3446a-dc20-5bad-9755-0855e3ec9b19",
+                "rdpa24": "/fdd3446a-dc20-5bad-9755-0855e3ec9b19"
             }
         },
         "cmip5": {
@@ -42,12 +42,12 @@
                 "fr": "/simulations-cmip5"
             },
             "metadata": {
-                "tmean": "/mean-temp",
-                "precip": "/precip",
-                "sfcwind": "/wind-speed",
-                "sic": "/sea-ice-concentration",
-                "sit": "/sea-ice-thickness",
-                "snd": "/snow-depth"
+                "tmean": "/1e86f4f7-da88-403e-bd44-92065c0fd568",
+                "precip": "/eddd6eaf-34d7-4452-a994-3d928115a68b",
+                "sfcwind": "/e0c71149-db7a-4700-acfd-1c8f9d778354",
+                "sic": "/78f9e3e0-3a12-4321-99dd-eed047c31e5e",
+                "sit": "/b6a68b05-58f3-4d71-89d8-25b5a5277796",
+                "snd": "/0933f0dc-3625-4583-828a-86d032e4b737"
             }
         },
         "dcs": {
@@ -56,10 +56,10 @@
                 "fr": "/donnees-echelle-reduite"
             },
             "metadata": {
-                "tmax": "/max-temp",
-                "tmean": "/mean-temp",
-                "tmin": "/min-temp",
-                "precip": "/precip"
+                "tmax": "/57fee0af-40ec-4aad-89da-6c0d39a6424d",
+                "tmean": "/958b8357-3690-414d-8bec-d65951041636",
+                "tmin": "/3156e7bf-6f11-46f7-b70a-51b6d4e3835b",
+                "precip": "/286dd106-b507-472a-9a26-f72dceffb475"
             }
         },
         "hydro": {
@@ -68,7 +68,7 @@
                 "fr": "/donnees-quantite-eau"
             },
             "metadata": {
-                "hydro": "/hydro-stations"
+                "hydro": "/1ee9e14d-0814-5201-a3be-705809d8ee0e"
             }
         },
         "normal": {
@@ -77,13 +77,13 @@
                 "fr": "/normales-climatiques"
             },
             "metadata": {
-                "tmax": "/max-temp",
-                "tmin": "/min-temp",
-                "tmean": "/mean-temp",
-                "precip": "/precip",
-                "monthly": "/monthly-stations",
-                "daily": "/daily-stations",
-                "stations": "/normal-stations"
+                "tmax": "/746f9469-ab78-5dcc-b165-4b51e8ab8652",
+                "tmin": "/746f9469-ab78-5dcc-b165-4b51e8ab8652",
+                "tmean": "/746f9469-ab78-5dcc-b165-4b51e8ab8652",
+                "precip": "/746f9469-ab78-5dcc-b165-4b51e8ab8652",
+                "monthly": "/b24efb37-11b6-5d03-ab19-5759f83db546",
+                "daily": "/5f963c2d-d4ed-5a79-8a31-c9c582ca5098",
+                "stations": "/746f9469-ab78-5dcc-b165-4b51e8ab8652"
             }
         }
     }
