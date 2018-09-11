@@ -3,8 +3,8 @@
         "en": {
             "queryToolUrl": "http://climate-change.dev.ec.gc.ca/climate-data/#",
             "supportDeskUrl": "https://climate-change.canada.ca/support-desk",
-            "dataCatalogueUrl": "https://open.canada.ca/en/open-data",
-            "climateResourcesUrl": "https://climate-change.canada.ca/climate-library ",
+            "dataCatalogueUrl": "https://open.canada.ca/data/en/dataset",
+            "climateResourcesUrl": "https://climate-change.canada.ca/climate-library",
             "climateBasicsUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics.html",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/en.html", "name": "Home" },
@@ -37,7 +37,7 @@
         "fr": {
             "queryToolUrl": "http://climate-change.dev.ec.gc.ca/donnees-climatiques/#",
             "supportDeskUrl": "https://changements-climatiques.canada.ca/centre-aide ",
-            "dataCatalogueUrl": "https://ouvert.canada.ca/fr/donnees-ouvertes",
+            "dataCatalogueUrl": "https://ouvert.canada.ca/data/fr/dataset",
             "climateResourcesUrl": "https://changements-climatiques.canada.ca/repertoire-climatique",
             "climateBasicsUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels.html",
             "breadcrumbs": [
