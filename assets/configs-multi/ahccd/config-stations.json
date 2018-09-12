@@ -95,12 +95,12 @@
             },
             {
                 "infoType": "text",
-                "content": "[fr] A short AHCCD dataset description goes here"
+                "content": "ID climatique sont les numéros de chiffres attribué par le Service météorologique du Canada (SMC) à un site où des observations météorologiques officielles sont prises, et sert à titre de résident, identificateur unique. Pour les dossiers de DCCAH non-joined stations, le climat du SMC ID est utilisé comme DCCAH SI. Pour les dossiers DCCAH avec joint stations, la dernière joint le climat du SMC ID est utilisé comme DCCAH SI. Cela permet aux utilisateurs de comparer les données brutes avec le ajusté et homogénéisés données."
             },
             {
                 "layerId": "AHCCD_station_fr",
                 "layerName": "",
-                "description": "[fr] A short station description goes here",
+                "description": "",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {

@@ -96,18 +96,18 @@
             },
             {
                 "infoType": "text",
-                "content": "[fr] Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
+                "content": "Données quotidiennes proviennent de deux sources de données; les stations climatiques quotidiennes de produire une ou deux observations par jour de la température, les précipitations et les stations horaire (voir des ensembles de données horaires) qui produisent plus généralement les éléments météorologiques comme le vent ou de neige au sol."
             },
             {
                 "layerId": "DAILY_station_fr",
                 "layerName": "",
                 "description":
-                    "[fr] These are the total stations with daily observations compiled during any set time period.",
+                    "Ce sont les stations totales avec observations quotidiennes compilée au cours de toute période de temps établies.",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
                         "image": "assets/images/blue-circle.png",
-                        "text": "[fr] Station"
+                        "text": "Station"
                     }
                 ],
                 "symbologyRenderStyle": "icons"
@@ -158,7 +158,7 @@
                 "id": "DAILY_station_fr",
                 "layerType": "ogcWfs",
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
-                "name": "[fr] Daily climate observations",
+                "name": "Les observations climatiques quotidiennes",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
