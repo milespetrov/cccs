@@ -139,7 +139,7 @@ export default class App extends mixins(UpdateRouteMixin) {
     climateBasicsUrl: string = '';
 
     get queryToolRoute(): string {
-        if (!this.urlSuffixes) {
+        if (!this.urlSuffixes || !this.datasetId) {
             return '';
         }
         return this.urlSuffixes[this.datasetId].dataQuery[<'en' | 'fr'>i18n.locale];
