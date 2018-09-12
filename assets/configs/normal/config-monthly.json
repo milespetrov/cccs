@@ -103,12 +103,12 @@
                 "layerId": "MONTHLY_station_fr",
                 "layerName": "",
                 "description":
-                    "[fr] These are stations reporting monthly summary data that correspond to stations used in past Normals series (1961-1990, 1971-2000, 1981-2010)",
+                    "Ces stations sont des rapports mensuels des données sommaires qui correspondent aux stations utilisées au cours de la série normales (de 1961 à 1990, 1971-2000, 1981-2010).",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
                         "image": "assets/images/blue-circle.png",
-                        "text": "[fr] Station"
+                        "text": "Station"
                     }
                 ],
                 "symbologyRenderStyle": "icons"
@@ -160,7 +160,7 @@
                 "layerType": "ogcWfs",
                 "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
-                "name": "[fr] Monthly climate observation summaries",
+                "name": "Observation climatiques mensuelles des résumés",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
