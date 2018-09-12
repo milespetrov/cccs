@@ -15,8 +15,8 @@
         <dt>
             <span>{{ self.layer.tt.trendValue }}</span>
         </dt>
-        <dd ng-if="self.layer.properties.trend_value">{{ self.layer.properties.trend_prefix }}{{ self.layer.properties.trend_value
-            }} {{ self.layer.tt.measurementUnit[self.layer.properties.measurement_type] }}
+        <dd ng-if="self.layer.properties.trend_value">{{ self.layer.properties.trend_prefix }}{{ self.layer.properties.trend_value__valeur_tendance
+            }} {{ self.layer.tt.measurementUnit[self.layer.properties.measurement_type__type_mesure] }}
         </dd>
         <dd ng-if="!self.layer.properties.trend_value">{{ self.layer.tt.no_trend }}</dd>
     </dl>
@@ -27,17 +27,17 @@
         <dt>
             <span>{{ self.layer.tt.province }}</span>
         </dt>
-        <dd>{{ self.layer.properties.province }}</dd>
+        <dd>{{ self.layer.properties.province__province }}</dd>
 
         <dt>
             <span>{{ self.layer.tt.elevation }}</span>
         </dt>
-        <dd>{{ self.layer.properties.elevation }} m</dd>
+        <dd>{{ self.layer.properties.elevation__elevation }} m</dd>
 
         <dt>
             <span>{{ self.layer.tt.stationId }}</span>
         </dt>
-        <dd>{{ self.layer.properties.station_id }}</dd>
+        <dd>{{ self.layer.properties.station_id__id_station }}</dd>
     </dl>
 
     <a href='{{ self.layer.tt.learnMore.link }}' target=_blank>{{ self.layer.tt.learnMore.default }} {{ self.layer.tt.learnMore[self.layer.properties.variable]

@@ -108,7 +108,7 @@ function parser(data, lang) {
     data.properties.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
     data.forEach(function(el) {
-        if (el.key === 'trend_value') {
+        if (el.key === 'trend_value__valeur_tendance') {
             // round the trend value. if not parsable, keep orig value.
             var parsedVal = parseFloat(el.value).toFixed(2); // seems to not error if gargabe is passed in
             if (!isNaN(parsedVal)) {
@@ -119,8 +119,8 @@ function parser(data, lang) {
     });
     data.tt = TRANSLATIONS[lang];
 
-    if (data.properties.trend_value) {
-        if (parseFloat(data.properties.trend_value) > 0) {
+    if (data.properties.trend_value__valeur_tendance) {
+        if (parseFloat(data.properties.trend_value__valeur_tendance) > 0) {
             data.properties.trend_prefix = '+';
         }
     }
