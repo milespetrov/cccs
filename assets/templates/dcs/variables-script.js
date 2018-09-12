@@ -1,7 +1,7 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            latlong: 'Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             trendValue: {
                 default: 'Projected 20-year average changes in',
                 tmean: 'mean temperature (degree Celsius)',
@@ -20,20 +20,21 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            latlong: '[fr] Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             trendValue: {
-                default: '[fr] Projected 20-year average changes in',
-                tmean: 'mean temperature (degree Celsius)',
-                tmin: 'minimum temperature (degree Celsius)',
-                tmax: 'maximum temperature (degree Celsius)',
-                precip: 'total precipitation (%)'
+                default: 'Changements projetés des moyennes sur 20 ans',
+                tmean: 'température moyenne (degrés Celsius)',
+                tmin: 'température minimale (degrés Celsius)',
+                tmax: 'température maximale (degrés Celsius)',
+                precip: 'précipitations totales (%)'
             },
             learnMore: {
-                default: '[fr] Learn more about statistically downscaled scenarios of projected',
-                tmean: 'mean temperature change',
-                tmin: 'minimum temperature change',
-                tmax: 'maximum temperature change',
-                precip: 'total precipitation change',
+                default:
+                    "En savoir plus sur les scénarios de mis à l'echelle de maniere statistique des changements projetés",
+                tmean: 'variations de la température moyenne',
+                tmin: 'variations de la température minimale ',
+                tmax: 'variations de la température maximale',
+                precip: 'variations des précipitations moyennes',
                 link: 'http://scenarios-climatiques.canada.ca/index.php?page=downscaling'
             }
         }

@@ -51,11 +51,11 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            stationId: '[fr] AHCCD station ID',
-            trendValue: '[fr] Trend value',
-            no_trend: '[fr] No trend calculated',
-            elevation: '[fr] Elevation',
-            province: '[fr] Province/Territory',
+            stationId: 'Numéro de la station DCCAH',
+            trendValue: 'Valeur de la tendance',
+            no_trend: 'Aucune tendance calculée',
+            elevation: 'Altitude',
+            province: 'Province / Territoire',
             measurementUnit: {
                 total_precip: 'mm',
                 temp_mean: '°C',
@@ -65,10 +65,10 @@ function parser(data, lang) {
                 pressure_station: 'kPa',
                 pressure_sea_level: 'kPa'
             },
-            yearRange: '[fr] Trend period',
-            noYearRange: '[fr] No trend period',
+            yearRange: 'Période de tendance',
+            noYearRange: 'Aucune période de tendance',
             timePeriod: {
-                title: '[fr] Time period',
+                title: 'Période',
                 Jan: 'Janvier',
                 Feb: 'Février',
                 Mar: 'Mars',
@@ -84,18 +84,18 @@ function parser(data, lang) {
                 Win: 'Hiver',
                 Spr: 'Printemps',
                 Smr: 'Été',
-                Fal: "L'automne",
+                Fal: 'Automne',
                 Ann: 'Annuel'
             },
             learnMore: {
-                default: '[fr] Learn more about',
-                tmean: 'homogenized mean temperature',
-                tmin: 'homogenized minimum temperature',
-                tmax: 'homogenized maximum temperature',
-                precip: 'adjusted total precipitation',
-                sfcwind: 'homogenized wind speed',
-                stnpress: 'homogenized station pressure',
-                seapress: 'homogenized sea level pressure',
+                default: 'En savoir plus sur',
+                tmean: 'température moyenne homogénéisée',
+                tmin: 'température minimale homogénéisée',
+                tmax: 'température maximale homogénéisée',
+                precip: 'précipitations totales ajustées',
+                sfcwind: 'vitesse du vent homogénéisée',
+                stnpress: 'pression homogénéisée à la station',
+                seapress: 'pression au niveau de la mer homogénéisée ',
                 link: 'https://ouvert.canada.ca/data/fr/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d'
             }
         }

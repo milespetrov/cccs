@@ -16,18 +16,18 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            station_name: '[fr] Station name',
-            stn_id: '[fr] MSC station ID',
-            station_type: '[fr] Station type',
-            province: '[fr] Province/Territory',
-            latitude: '[fr] Latitude',
-            longitude: '[fr] Longitude',
-            elevation: '[fr] Elevation',
-            timezone: '[fr] Time zone',
-            station_operator: '[fr] Station operator',
-            tc_identifier: '[fr] Transport Canada identifier',
-            wmo_identifier: '[fr] WMO identifier',
-            climate_identifier: '[fr] Climate identifier'
+            station_name: 'Nom de la station',
+            stn_id: 'Numéro de la station du SMC',
+            station_type: 'Type de station',
+            province: 'Province / Territoire',
+            latitude: 'Latitude',
+            longitude: 'Longitude',
+            elevation: 'Altitude',
+            timezone: 'Fuseau horaire',
+            station_operator: 'Opérateur de la station',
+            tc_identifier: 'Identifiant de Transports Canada',
+            wmo_identifier: "Identifiant de l'OMM",
+            climate_identifier: 'Identifiant climatique'
         }
     };
 

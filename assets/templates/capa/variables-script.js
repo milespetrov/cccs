@@ -1,15 +1,15 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            latlong: 'Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             value: 'Total precipitation amount analysis (mm)',
             value2: 'Confidence index'
         },
 
         'fr-CA': {
-            latlong: '[fr] Latitude, Longitude',
-            value: '[fr] Total precipitation amount analysis (mm)',
-            value2: '[fr] Confidence index'
+            latlong: 'Latitude, longitude',
+            value: 'Analyse de la quantité totale de précipitations (mm)',
+            value2: 'Indice de confiance'
         }
     };
 

@@ -31,18 +31,17 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            station_name: '[fr] MSC station name',
-            climate_value: '[fr] Climate value',
-            measurement_type: '[fr] Measurement type',
-            normal_period: '[fr] First-last year of normal period',
-            period: '[fr] Period beginning-end',
-            obs_count: '[fr] Total observations count',
-            obs_percent: '[fr] Percentage of possible observations',
-            date_calculated: '[fr] Date calculated',
-            normal_code: '[fr] Normal code',
-            month: '[fr] Month',
+            station_name: 'Nom de la station du SMC',
+            climate_value: 'Valeur climatique',
+            measurement_type: 'Type de mesure',
+            normal_period: 'Prmière et dernière années de la période pour les normales',
+            period: 'Début et fin de la période',
+            obs_count: "Nombre total d'observations",
+            obs_percent: "Pourcentage d'observations possibles",
+            date_calculated: 'Date du calcul',
+            normal_code: 'Code de la normale',
             time_of_year: {
-                title: "Période de l'année",
+                title: "Temps de l'année",
                 times: [
                     'Janvier',
                     'Février',
@@ -59,7 +58,7 @@ function parser(data, lang) {
                     'Hiver',
                     'Printemps',
                     'Été',
-                    "L'automne",
+                    'Automne',
                     'Annuel'
                 ]
             }

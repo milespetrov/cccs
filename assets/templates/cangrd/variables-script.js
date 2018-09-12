@@ -1,7 +1,7 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            latlong: 'Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             trendValue: {
                 precip: 'Trend of relative total precipitation change (%) over 1948-2012',
                 tmean: 'Trend of temperature change (°C) over 1948-2016'
@@ -14,14 +14,14 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            latlong: '[fr] Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             trendValue: {
-                precip: '[fr] Trend of relative total precipitation change (%) over 1948-2012',
-                tmean: '[fr] Trend of temperature change (°C) over 1948-2016'
+                precip: 'Tendance de la variation relative des précipitations totales (%) de 1948 à 2012',
+                tmean: 'Tendance de la variation de température (°C) de 1948 à 2016'
             },
             learnMore: {
-                precip: '[fr] Learn more about CANGRD total precipitation trend for 1948–2012',
-                tmean: '[fr] Learn more about CANGRD mean temperature trend for 1948–2016',
+                precip: 'En savoir plus sur la tendance des précipitations totales CANGRD de 1948 à 2012',
+                tmean: 'En savoir plus sur la tendance de la température moyenne CANGRD de 1948 à 2016',
                 link: 'https://ouvert.canada.ca/data/fr/dataset/3d4b68a5-13bc-48bb-ad10-801128aa6604'
             }
         }

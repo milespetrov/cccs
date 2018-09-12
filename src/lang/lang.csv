@@ -1,346 +1,346 @@
 ﻿key,enValue,enValid,frValue,frValid
-title,Climate data viewer,1,Visualiseur de données climatiques,0
-description,"Use the data viewer tool to view climate data on the map below. Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify datasets, variables and other options using the drop-down menus at the top of the map.",1,"Utilisez l'outil de visualisation des données pour afficher les données climatiques sur la carte ci-dessous. Commencez par choisir l'un des jeux de données disponibles. Il y a une description détaillée du jeu de données sélectionné sous la carte. Vous pouvez zoomer sur un emplacement géographique spécifique ou cliquer sur les données pour obtenir des informations supplémentaires. Vous pouvez spécifier des jeux de données, des variables et d'autres options à l'aide des menus déroulants situés en haut de la carte.",0
+title,Climate data viewer,1,Visualiseur de données climatiques,1
+description,"Use the data viewer tool to view climate data on the map below. Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify datasets, variables and other options using the drop-down menus at the top of the map.",1,"Utilisez l'outil de visualisation de données pour afficher les données climatiques sur la carte ci-dessous. Commencez en choisissant un des ensembles de données disponibles. Une description détaillée de l'ensemble de données choisi est affichée sous la carte. Vous pouvez faire un zoom sur un endroit précis ou cliquer sur les données pour obtenir plus d'information.",1
 description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l’aide, consultez le {0} ou cliquez sur l’icône « ? » dans le coin inférieur droit de la carte.",1
 description.help.helpFile,help file,1,fichier d’aide,1
 description.supportDesk,"If you have questions, {0}.",1,"Si vous avez des questions, {0}.",1
-description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec le Centre d’aide des Services climatiques,1
+description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec le Centre d’aide des Services climatiques.,1
 description.resources,"If you are looking for other datasets, {0}.",1,"Si vous cherchez d’autres ensembles de données, {0}.",1
 description.resources.link,explore the library of climate resources,1,"explorez le répertoire de ressources climatiques",1
-description.climateBasics,"For guidance understanding climate change, climate change trends and climate information, {0}.",1,"Pour obtenir des conseils sur le changement climatique, les tendances en matière de changement climatique et les informations sur le climat, {0}.",0
-description.climateBasics.link,"visit the climate information basics pages",1,consultez les pages de base sur les informations climatiques,0
-geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,0
-geo.coordinates.east,E,1,E,0
-geo.coordinates.west,W,1,W,0
-geo.coordinates.north,N,1,N,0
-geo.coordinates.south,S,1,S,0
-geo.scrollguard,Use ctrl + scroll to zoom the map,1,Utilisez ctrl + scroll pour agrandir la carte,0
-geo.panguard,Use two fingers to scroll the map,1,Utilisez deux doigts pour faire défiler la carte,0
-map.cmip5_desc,"Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Projected changes in climate, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 1x1 degree grid resolution. The median projected changes across the multi-model ensemble are shown. Extract a subset of this dataset, or from monthly, seasonal and annual CMIP5 ensembles, using the {0}.",1,"Des scénarios climatiques basés sur un ensemble de projections de modèles climatiques mondiaux issus de la phase 5 du projet d'intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements de climat prévus par rapport à la période de référence de 1986-2005 sont fournis pour trois scénarios d’émission avec une résolution de grille de 1 x 1 degré. Les changements projetés médians dans l'ensemble multi-modèles sont affichés. Extrayez un sous-ensemble de cet ensemble de données ou d’ensembles CMIP5 mensuels, saisonniers et annuels à l’aide de {0}.",0
-map.ahccd_desc,"Adjusted and homogenized Canadian climate data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Extract a subset of the dataset for one or more stations using the {0}.",1,"Les données climatiques Canadiennes ajustées et homogénéisées (AHCCD) sont des ensembles de données de station climatique qui intègrent des ajustements (dérivés des procédures statistiques) aux données historiques historiques de la station pour prendre en compte les discontinuités liées à des facteurs non climatiques, tels que Extrayez un sous-ensemble du jeu de données pour une ou plusieurs stations à l'aide du {0}.",0
-map.extractTool,Climate data extraction tool,1,Outil d'extraction de données climatiques,0
-map.dcs_desc,"Statistically downscaled climate scenarios of projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown. Extract a subset of this dataset, or from monthly, seasonal and annual statistically downscaled ensembles, using the {0}.",1,"Des scénarios climatiques de réduction prévisionnelle de la température et des précipitations, établis sur une base statistique, par rapport à la période de référence 1986-2005, sont fournis pour trois scénarios d’émission à une résolution de 10 km. Les données de réduction d'échelle sont basées sur les projections du modèle climatique mondial issues du Projet d'intercomparaison de modèles couplés, phase 5 (CMIP5). Les changements projetés médians dans l'ensemble multi-modèle réduit sont présentés. Extrayez un sous-ensemble de cet ensemble de données, ou d’ensembles mensuels, saisonniers et annuels à échelle réduite, à l’aide de {0}.",0
-map.cangrd_desc,"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Shown here are seasonal and annual trends from 1948 to the present, which represent the departure from a mean reference period (1961-1990). Extract a subset of this dataset, or from monthly, seasonal and annual CANGRD anomalies, using the {0}.",1,"Les données climatiques historiques maillées, également appelées données maillées Canadiennes (CANGRD), sont des ensembles de données sur les anomalies historiques de température et de précipitations, interpolées à partir de données de stations climatiques ajustées et homogénéisées à une résolution de 50 km au Canada. On trouvera ici les tendances saisonnières et annuelles de 1948 à nos jours, qui représentent l’écart par rapport à une période de référence moyenne (1961-1990). Extrayez un sous-ensemble de cet ensemble de données, ou des anomalies mensuelles, saisonnières et annuelles de CANGRD, en utilisant le {0}.",0
-map.capa_desc,"The regional deterministic precipitation analysis (RDPA) produces a best estimate of precipitation amounts that occurred over a period of 6 and 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at a horizontal resolution of 10 km. The 6 hour analysis is produced 4 times a day and is valid at 00, 06, 12 and 18 UTC. The 24 hour analysis is produced only once a day and is valid at 12 UTC. A preliminary analysis is available approximately 1 hour after the end of the accumulation period and a final one is generated 6 hours later in order to assimilate more gauge data.",1,"L'Analyse régionale déterministe de précipitation (ARPD) produit une estimation optimale de la quantité de précipitation survenue au cours d’une période de 6 et 24 heures. Cet estimé intègre des relevés provenant de capteurs de précipitation, de radars météos et de modèles de prévision numérique du temps. La couverture géographique est l'Amérique du Nord (Canada, États-Unis et le Mexique). Les données sont disponibles à une résolution spatiale horizontale de 10 km. L'analyse 6 heures est produite 4 fois par jour et est valide à 00, 06, 12 et 18 UTC. L’analyse 24 heures est produite qu'une fois par jour et est valide à 12 UTC. Une analyse préliminaire est disponible environ 1 heure après la fin de la période d’accumulation et une analyse finale est générée 6 heures plus tard dans le but d’assimiler plus de relevés pluviométriques.",0
+description.climateBasics,"For guidance understanding climate change, climate change trends and climate information, {0}.",1,"Afin d'obtenir des conseils pour comprendre les changements climatiques, les tendances des changements climatiques et l'information sur le climat, {0}.",1
+description.climateBasics.link,"visit the climate information basics pages",1,consultez les pages sur les principes de base de l'information sur le climat,1
+geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,1
+geo.coordinates.east,E,1,E,1
+geo.coordinates.west,W,1,O,1
+geo.coordinates.north,N,1,N,1
+geo.coordinates.south,S,1,S,1
+geo.scrollguard,Use ctrl + scroll to zoom the map,1,Utilisez les touches Ctrl et + pour faire un zoom de la carte,1
+geo.panguard,Use two fingers to scroll the map,1,Utiliser deux doigts pour faire défiler la carte,0
+map.cmip5_desc,"Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Projected changes in climate, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 1x1 degree grid resolution. The median projected changes across the multi-model ensemble are shown. Extract a subset of this dataset, or from monthly, seasonal and annual CMIP5 ensembles, using the {0}.",1,"Des scénarios climatiques basés sur un ensemble de projections du modèle climatique mondial provenant de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements climatiques projetés, relativement à la période de référence de 1986 à 2005, sont fournis pour trois scénarios d’émissions à une résolution de grille de 1 par 1 degré. Les changements projetés médians pour l’ensemble multimodèles sont indiqués. Procédez à l’extraction d’un sous-ensemble de cet ensemble de données ou des ensembles mensuels, saisonniers et annuels CMIP5 à l’aide de {0}.",1
+map.ahccd_desc,"Adjusted and homogenized Canadian climate data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Extract a subset of the dataset for one or more stations using the {0}.",1,"Les données climatiques canadiennes ajustées et homogénéisées (DCCAH) sont des ensembles de données de station climatique qui comprennent les ajustements (dérivés de procédures statistiques) des données historiques d’origine de station pour tenir compte des discontinuités issues de facteurs non climatiques, comme les changements d’instruments ou les déplacements de station. Procédez à l’extraction d’un sous-ensemble de l’ensemble de données d’au moins une station à l’aide de {0}.",1
+map.extractTool,Climate data extraction tool,1,l’outil d’extraction des données climatiques,1
+map.dcs_desc,"Statistically downscaled climate scenarios of projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, are provided for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown. Extract a subset of this dataset, or from monthly, seasonal and annual statistically downscaled ensembles, using the {0}.",1,"Les scénarios climatiques statistiquement réduits des changements projetés de la température et des précipitations, relativement à la période de référence de 1986 à 2005, sont fournis pour trois scénarios d’émissions à une résolution de 10 km. Les données réduites sont basées sur des projections du modèle climatique mondial de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5). Les changements projetés médians pour l’ensemble multimodèles réduit sont indiqués. Procédez à l’extraction d’un sous-ensemble de cet ensemble de données ou des ensembles mensuels, saisonniers et annuels statistiquement réduits à l’aide de {0}.",1
+map.cangrd_desc,"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Shown here are seasonal and annual trends from 1948 to the present, which represent the departure from a mean reference period (1961-1990). Extract a subset of this dataset, or from monthly, seasonal and annual CANGRD anomalies, using the {0}.",1,"Les données climatiques maillées historiques, qu’on appelle aussi données maillées canadiennes (CANGRD), sont des ensembles de données d’anomalies historiques maillées de température et de précipitations, interpolées à partir de données de station climatique ajustées et homogénéisées à une résolution de 50 km à l’échelle du Canada. Les tendances saisonnières et annuelles, de 1948 à aujourd’hui, sont indiquées ici et représentent l’écart avec la moyenne d’une période de référence (de 1961 à 1990). Procédez à l’extraction d’un sous-ensemble de cet ensemble de données ou des anomalies mensuelles, saisonnières et annuelles des CANGRD à l’aide de {0}.",1
+map.capa_desc,"The regional deterministic precipitation analysis (RDPA) produces a best estimate of precipitation amounts that occurred over a period of 6 and 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at a horizontal resolution of 10 km. The 6 hour analysis is produced 4 times a day and is valid at 00, 06, 12 and 18 UTC. The 24 hour analysis is produced only once a day and is valid at 12 UTC. A preliminary analysis is available approximately 1 hour after the end of the accumulation period and a final one is generated 6 hours later in order to assimilate more gauge data.",1,"L'Analyse régionale déterministe de précipitation (ARPD) produit une estimation optimale de la quantité de précipitation qui est survenue au cours de périodes passées récentes de 6 h ou 24 h. Cette estimation intègre des données de pluviomètres, de radars météo et de modèles de prévision numérique du temps. La couverture géographique est l'Amérique du Nord (Canada, États-Unis et le Mexique). Les données sont disponibles à une résolution spatiale horizontale de 10 km. Les données ne sont disponibles qu'au niveau de la surface. Les données d'analyse sont rendues disponibles quatre fois par jour pour les intervalles de 6 h et une fois par jour pour l'intervalle de 24 h. Une estimation préliminaire est disponible environ 1 h après la fin de la période d'accumulation et révisée 6 h plus tard afin d'intégrer plus de données de pluviomètres.",1
 map.hydro_desc,"Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.",1,"Les données hydrométriques historiques sont des données et des informations normalisées sur les ressources en eau. Elles sont recueillies, interprétées et diffusées par Relevés hydrologiques du Canada (RHC) en partenariat avec les provinces, les territoires et d’autres organismes par l’intermédiaire du Programme national de relevés hydrométriques. Ces ensembles de données comprennent les valeurs moyennes quotidiennes et mensuelles, les valeurs moyennes quotidiennes minimales et maximales par année et les valeurs des débits et des niveaux d’eau de pointe et instantanés pour plus de 2 700 stations de surveillance hydrométrique actives et 5 080 stations fermées au Canada.",1
-map.daily_desc,"Daily data is derived from two sources of data; daily climate stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les données quotidiennes proviennent de deux sources de données; Stations climatiques quotidiennes produisant une ou deux observations par jour de température, de précipitations et de stations horaires (voir les séries de données horaires) qui produisent généralement plus d'éléments météorologiques, par ex. vent ou neige au sol.",0
+map.daily_desc,"Daily data is derived from two sources of data; daily climate stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol.",1
 map.monthly_desc,"A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.",1,"Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours.",1
 map.normal_desc,"Climate normals and averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The climate normals, averages and extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",1,"Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010.",1
-map.controlsCluster.legend,Legend,1,Légende,0
-map.controlsCluster.timeline,Time period,1,Période de temps,0
-map.toggleScaleUnits,Toggle between imperial and metric map scale,1,[fr] Toggle between imperial and metric map scale,0
-colourRamp.cmip5,{0} change,1,Changement de {0},0
-colourRamp.dcs,{0} change,1,Changement de {0},0
-colourRamp.cangrd,{0} change,1,Changement de{0},0
-colourRamp.capa,Total precipitation amount analysis,1,Analyse de la quantité totale de précipitation,0
-settings.title,Climate viewer options,1,Options de visualisation du climat,0
-variableSelector.title,Variable,1,Variable,0
-variableSelector.header,Climate data,1,Données climatiques,0
-variableSelector.stations_group,Metadata,1,Métadonnées,0
-variableSelector.temperature_group,Temperature,1,Température,0
-variableSelector.wind_group,Wind,1,Vent,0
-variableSelector.ice_group,Sea ice,1,Glace de mer,0
-variableSelector.precipitation_group,Precipitation,1,Précipitation,0
-variableSelector.snow_depth_group,Snow,1,Neige,0
-variableSelector.pressure_group,Pressure,1,Pression,0
-variableSelector.geopotential_group,Geopotential,1,,0
-variableSelector.historic,Historic,1,Historique,0
-variableSelector.future,Future,1,Avenir,0
-timePeriodSelector.title,Time of year,1,Période de temps,0
-timePeriodSelector.header,Time of year,1,Période de temps,0
-timePeriodSelector.monthly_group,Monthly,1,Mensuel,0
-timePeriodSelector.season_group,Seasonal,1,Saisonnier,0
-timePeriodSelector.annual_group,Annual,1,Annuel,0
-timePeriodSelector.jan.fullName,January,1,Janvier,0
-timePeriodSelector.jan.shortName,January,1,Janvier,0
-timePeriodSelector.jan.qualifier,,1,,0
-timePeriodSelector.feb.fullName,February,1,Février,0
-timePeriodSelector.feb.shortName,February,1,Février,0
-timePeriodSelector.feb.qualifier,,1,,0
-timePeriodSelector.mar.fullName,March,1,Mars,0
-timePeriodSelector.mar.shortName,March,1,Mars,0
-timePeriodSelector.mar.qualifier,,1,,0
-timePeriodSelector.apr.fullName,April,1,Avril,0
-timePeriodSelector.apr.shortName,April,1,Avril,0
-timePeriodSelector.apr.qualifier,,1,,0
-timePeriodSelector.may.fullName,May,1,Mai,0
-timePeriodSelector.may.shortName,May,1,Mai,0
-timePeriodSelector.may.qualifier,,1,,0
-timePeriodSelector.jun.fullName,June,1,Juin,0
-timePeriodSelector.jun.shortName,June,1,Juin,0
-timePeriodSelector.jun.qualifier,,1,,0
-timePeriodSelector.jul.fullName,July,1,Juillet,0
-timePeriodSelector.jul.shortName,July,1,Juillet,0
-timePeriodSelector.jul.qualifier,,1,,0
-timePeriodSelector.aug.fullName,August,1,Août,0
-timePeriodSelector.aug.shortName,August,1,Août,0
-timePeriodSelector.aug.qualifier,,1,,0
-timePeriodSelector.sep.fullName,September,1,Septembre,0
-timePeriodSelector.sep.shortName,September,1,Septembre,0
-timePeriodSelector.sep.qualifier,,1,,0
-timePeriodSelector.oct.fullName,October,1,Octobre,0
-timePeriodSelector.oct.shortName,October,1,Octobre,0
-timePeriodSelector.oct.qualifier,,1,,0
-timePeriodSelector.nov.fullName,November,1,Novembre,0
-timePeriodSelector.nov.shortName,November,1,Novembre,0
-timePeriodSelector.nov.qualifier,,1,,0
-timePeriodSelector.dec.fullName,December,1,Décembre,0
-timePeriodSelector.dec.shortName,December,1,Décembre,0
-timePeriodSelector.dec.qualifier,,1,,0
-timePeriodSelector.winter.fullName,Winter,1,Hiver,0
-timePeriodSelector.winter.shortName,Winter,1,Hiver,0
-timePeriodSelector.winter.qualifier,Dec - Feb,1,Dec - Fév,0
-timePeriodSelector.spring.fullName,Spring,1,Printemps,0
-timePeriodSelector.spring.shortName,Spring,1,Printemps,0
-timePeriodSelector.spring.qualifier,Mar - May,1,Mar - Mai,0
-timePeriodSelector.summer.fullName,Summer,1,Été,0
-timePeriodSelector.summer.shortName,Summer,1,Été,0
-timePeriodSelector.summer.qualifier,Jun - Aug,1,Juin - Août,0
-timePeriodSelector.fall.fullName,Autumn,1,L'automne,0
-timePeriodSelector.fall.shortName,Autumn,1,L'automne,0
-timePeriodSelector.fall.qualifier,Sep - Nov,1,Sep - Nov,0
-timePeriodSelector.annual.fullName,Annual,1,Annuel,0
-timePeriodSelector.annual.shortName,Annual,1,Annuel,0
-timePeriodSelector.annual.qualifier,Jan - Dec,1,Jan - Dec,0
-rcpSelector.title,Scenarios,1,Scénario,0
-rcpSelector.header,Scenarios,1,Scénario,0
-rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Une série de scénarios dénommés Voies de concentration représentatives (RCP) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP sont conçus pour fournir des scénarios futurs plausibles des caractéristiques des émissions humaines.",0
-rcpSelector.all_rcp_models,,1,,0
-rcpSelector.rcp26.shortName,RCP 2.6,1,RCP 2.6,0
-rcpSelector.rcp26.fullName,Low emission scenario,1,"Scénario de faible émission (RCP 2,6)",0
-rcpSelector.rcp26.qualifier,RCP 2.6,1,RCP 2.6,0
-rcpSelector.rcp45.shortName,RCP 4.5,1,RCP 4.5,0
-rcpSelector.rcp45.fullName,Moderate emission scenario,1,"Scénario d'émission modérée (RCP 4,5)",0
-rcpSelector.rcp45.qualifier,RCP 4.5,1,RCP 4.5,0
-rcpSelector.rcp85.shortName,RCP 8.5,1,RCP 8.5,0
-rcpSelector.rcp85.fullName,High emission scenario,1,"Scénario d'émission élevée (RCP 8,5)",0
-rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,0
-datasetSelector.title,Dataset,1,Dataset,0
-datasetSelector.header,Datasets,1,Jeux de données,0
-datasetSelector.all_datasets,,1,,0
-datasetSelector.future_projections,Future changes in climate,1,Changements futurs du climat,0
-datasetSelector.historical_changes,Historical changes in climate,1,Changements historiques du climat,0
-datasetSelector.historical_other,Other historical datasets,1,Autres ensembles de données historiques,0
-datasetSelector.ahccd.shortName,Historical changes at stations,1,Changements historiques dans les stations,0
-datasetSelector.ahccd.fullName,Historical changes at stations,1,Changements historiques dans les stations,0
-datasetSelector.ahccd.subName,Adjusted and homogenized Canadian climate data (AHCCD),1,Données climatiques canadiennes ajustées et homogénéisées (AHCCD),0
-datasetSelector.ahccd.qualifier,,1,,0
-datasetSelector.cmip5.shortName,Future changes,1,Changement futurs,0
-datasetSelector.cmip5.fullName,Future changes,1,Changement futurs,0
-datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,"Scénarios de modèles climatiques globaux (CMIP5)",0
-datasetSelector.cmip5.qualifier,,1,,0
-datasetSelector.cangrd.shortName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,0
-datasetSelector.cangrd.fullName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,0
-datasetSelector.cangrd.subName,Gridded historical climate data (CANGRD),1,Données climatiques historiques maillées (CANGRD),0
-datasetSelector.cangrd.qualifier,,1,,0
-datasetSelector.dcs.shortName,Downscaled future changes,1,Changements futurs réduits,0
-datasetSelector.dcs.fullName,Downscaled future changes,1,Changements futurs réduits,0
-datasetSelector.dcs.subName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,0
-datasetSelector.dcs.qualifier,,1,,0
-datasetSelector.capa.shortName,Canada-wide precipitation,1,Précipitation pancanadienne,0
-datasetSelector.capa.fullName,Canada-wide precipitation,1,Précipitation pancanadienne,0
-datasetSelector.capa.subName,Regional deterministic precipitation analysis (RDPA),1,Analyse de précipitation déterministe régionale (RDPA),0
-datasetSelector.capa.qualifier,,1,,0
-datasetSelector.normal.shortName,Climate observations,1,Observations climatiques,0
-datasetSelector.normal.fullName,Climate observations,1,Observations climatiques,0
-datasetSelector.normal.subName,"Long-term averages, monthly data and daily data",1,"Moyennes à long terme, données mensuelles et données quotidiennes",0
-datasetSelector.normal.qualifier,,1,,0
-datasetSelector.hydro.shortName,River levels and flow,1,Niveaux et débit de la rivière,0
-datasetSelector.hydro.fullName,River levels and flow,1,Niveaux et débit de la rivière,0
-datasetSelector.hydro.subName,Hydrometric station data,1,Données de la station hydrométrique,0
-datasetSelector.hydro.qualifier,,1,,0
-downloadSelector.title,Download,1,Télécharger,0
-downloadSelector.header,Download,1,Télécharger,0
-downloadSelector.mapImage_group,Map image,1,Image de la carte,0
-downloadSelector.dataset_group,Source data,1,Image de la carte,0
-downloadSelector.png.shortName,,1,,0
-downloadSelector.png.fullName,PNG picture,1,PNG picture,0
-downloadSelector.png.qualifier,,1,,0
-downloadSelector.jpeg.shortName,,1,,0
-downloadSelector.jpeg.fullName,JPEG picture,1,Image JPEG,0
-downloadSelector.jpeg.qualifier,,1,,0
-downloadSelector.dataCatalogue.shortName,,1,,0
-downloadSelector.dataCatalogue.fullName,{0} Open Data metadata record,1,{0} Enregistrement de métadonnées Open Data,0
-downloadSelector.dataCatalogue.access,Access full dataset in ,1,Accéder à l'ensemble de données complet dans,0
-downloadSelector.dataCatalogue.qualifier,,1,,0
-downloadSelector.queryTool.shortName,,1,,0
-downloadSelector.queryTool.fullName,{0}Climate data extraction tool,1,{0} Outil d'extraction de données climatiques,0
-downloadSelector.queryTool.access,Download source data using ,1,Accéder à l'ensemble de données complet dans,0
-downloadSelector.queryTool.qualifier,,1,,0
-analysisSelector.title,Analysis period,1,Période d'analyse,0
-analysisSelector.header,,1,,0
-page.dateModified,Date modified,1,Date modifiée,0
-ahccd.stations.fullName,AHCCD station metadata,1,Métadonnées de la station AHCCD,0
-ahccd.stations.shortName,AHCCD station metadata,1,Métadonnées de la station AHCCD,0
-ahccd.stations.qualifier,,0,,0
-ahccd.tmean.fullName,Mean temperature,1,Température moyenne,0
-ahccd.tmean.shortName,Mean temperature,1,Température moyenne,0
-ahccd.tmean.qualifier,,1,,0
-ahccd.tmin.fullName,Minimum temperature,1,Température minimale,0
-ahccd.tmin.shortName,Minimum temperature,1,Température minimale,0
-ahccd.tmin.qualifier,,1,,0
-ahccd.tmax.fullName,Maximum temperature,1,Température maximale,0
-ahccd.tmax.shortName,Maximum temperature,1,Température maximale,0
-ahccd.tmax.qualifier,,1,,0
-ahccd.precip.fullName,Total precipitation,1,Total des précipitations,0
-ahccd.precip.shortName,Total precipitation,1,Total des précipitations,0
-ahccd.precip.qualifier,,1,,0
-ahccd.stnpress.fullName,Station pressure,1,Pression de la station,0
-ahccd.stnpress.shortName,Station pressure,1,Pression de la station,0
-ahccd.stnpress.qualifier,,1,,0
-ahccd.seapress.fullName,Sea level pressure,1,Pression de niveau,0
-ahccd.seapress.shortName,Sea level pressure,1,Pression de niveau,0
-ahccd.seapress.qualifier,,1,,0
-ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
-ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
-ahccd.sfcwind.qualifier,,1,,0
-units.ahccd.tmean.shortName,°C,1,° C,0
-units.ahccd.tmean.fullName,degrees Celsius,1,degré Celsius,0
-units.ahccd.tmax.shortName,°C,1,° C,0
-units.ahccd.tmax.fullName,degrees Celsius,1,degré Celsius,0
-units.ahccd.tmin.shortName,°C,1,° C,0
-units.ahccd.tmin.fullName,degrees Celsius,1,degré Celsius,0
-units.ahccd.precip.shortName,mm,1,mm,0
-units.ahccd.precip.fullName,millimetres,1,millimètres,0
-units.ahccd.sfcwind.shortName,km/h,1,km/h,0
-units.ahccd.sfcwind.fullName,kilometres per hour,1,kilomètres par heure,0
-units.ahccd.stnpress.shortName,kPa,1,kPa,0
-units.ahccd.stnpress.fullName,kilopascal,1,kilopascal,0
-units.ahccd.seapress.shortName,kPa,1,kPa,0
-units.ahccd.seapress.fullName,kilopascal,1,kilopascal,0
-cmip5.tmean.fullName,Mean temperature,1,Température moyenne,0
-cmip5.tmean.shortName,Mean temperature,1,Température moyenne,0
-cmip5.tmean.qualifier,,1,,0
-cmip5.precip.fullName,Mean precipitation,1,Précipitation moyenne,0
-cmip5.precip.shortName,Mean precipitation,1,Précipitation moyenne,0
-cmip5.precip.qualifier,,1,,0
-cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent de surface,0
-cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent de surface,0
-cmip5.sfcwind.qualifier,,1,,0
-cmip5.sit.fullName,Sea ice thickness,1,Épaisseur de glace,0
-cmip5.sit.shortName,Sea ice thickness,1,Épaisseur de glace,0
-cmip5.sit.qualifier,,1,,0
-cmip5.sic.fullName,Sea ice concentration,1,Concentration de glace de mer,0
-cmip5.sic.shortName,Sea ice concentration,1,Concentration de glace de mer,0
-cmip5.sic.qualifier,,1,,0
-cmip5.snd.fullName,Snow depth,1,Profondeur de neige,0
-cmip5.snd.shortName,Snow depth,1,Profondeur de neige,0
-cmip5.snd.qualifier,,1,,0
-units.cmip5.tmean.shortName,°C,1,° C,0
-units.cmip5.tmean.fullName,degrees Celsius,1,degré Celsius,0
+map.controlsCluster.legend,Legend,1,Légende,1
+map.controlsCluster.timeline,Time period,1,Période,0
+map.toggleScaleUnits,Toggle between imperial and metric map scale,1,Basculer entre métriques et impériales Échelle cartographique,0
+colourRamp.cmip5,{0} change,1,{0} changement,1
+colourRamp.dcs,{0} change,1,{0} changement,1
+colourRamp.cangrd,{0} change,1,{0} changement,1
+colourRamp.capa,Total precipitation amount analysis,1,Analyse de la quantité totale de précipitations,1
+settings.title,Climate viewer options,1,Options du visualiseur de données climatiques,1
+variableSelector.title,Variable,1,Variable,1
+variableSelector.header,Climate data,1,Données climatiques,1
+variableSelector.stations_group,Metadata,1,Métadonnées,1
+variableSelector.temperature_group,Temperature,1,Température,1
+variableSelector.wind_group,Wind,1,Vent,1
+variableSelector.ice_group,Sea ice,1,Glace de mer,1
+variableSelector.precipitation_group,Precipitation,1,Précipitations,1
+variableSelector.snow_depth_group,Snow,1,Neige,1
+variableSelector.pressure_group,Pressure,1,Pression,1
+variableSelector.geopotential_group,Geopotential,1,Géopotentiel,1
+variableSelector.historic,Historic,1,Historique,1
+variableSelector.future,Future,1,Futur,1
+timePeriodSelector.title,Time of year,1,Temps de l'année,1
+timePeriodSelector.header,Time of year,1,Temps de l'année,1
+timePeriodSelector.monthly_group,Monthly,1,Mensuel,1
+timePeriodSelector.season_group,Seasonal,1,Saisonnier,1
+timePeriodSelector.annual_group,Annual,1,Annuel,1
+timePeriodSelector.jan.fullName,January,1,Janvier,1
+timePeriodSelector.jan.shortName,January,1,Janvier,1
+timePeriodSelector.jan.qualifier,,1,,1
+timePeriodSelector.feb.fullName,February,1,Février,1
+timePeriodSelector.feb.shortName,February,1,Février,1
+timePeriodSelector.feb.qualifier,,1,,1
+timePeriodSelector.mar.fullName,March,1,Mars,1
+timePeriodSelector.mar.shortName,March,1,Mars,1
+timePeriodSelector.mar.qualifier,,1,,1
+timePeriodSelector.apr.fullName,April,1,Avril,1
+timePeriodSelector.apr.shortName,April,1,Avril,1
+timePeriodSelector.apr.qualifier,,1,,1
+timePeriodSelector.may.fullName,May,1,Mai,1
+timePeriodSelector.may.shortName,May,1,Mai,1
+timePeriodSelector.may.qualifier,,1,,1
+timePeriodSelector.jun.fullName,June,1,Juin,1
+timePeriodSelector.jun.shortName,June,1,Juin,1
+timePeriodSelector.jun.qualifier,,1,,1
+timePeriodSelector.jul.fullName,July,1,Juillet,1
+timePeriodSelector.jul.shortName,July,1,Juillet,1
+timePeriodSelector.jul.qualifier,,1,,1
+timePeriodSelector.aug.fullName,August,1,Août,1
+timePeriodSelector.aug.shortName,August,1,Août,1
+timePeriodSelector.aug.qualifier,,1,,1
+timePeriodSelector.sep.fullName,September,1,Septembre,1
+timePeriodSelector.sep.shortName,September,1,Septembre,1
+timePeriodSelector.sep.qualifier,,1,,1
+timePeriodSelector.oct.fullName,October,1,Octobre,1
+timePeriodSelector.oct.shortName,October,1,Octobre,1
+timePeriodSelector.oct.qualifier,,1,,1
+timePeriodSelector.nov.fullName,November,1,Novembre,1
+timePeriodSelector.nov.shortName,November,1,Novembre,1
+timePeriodSelector.nov.qualifier,,1,,1
+timePeriodSelector.dec.fullName,December,1,Décembre,1
+timePeriodSelector.dec.shortName,December,1,Décembre,1
+timePeriodSelector.dec.qualifier,,1,,1
+timePeriodSelector.winter.fullName,Winter,1,Hiver,1
+timePeriodSelector.winter.shortName,Winter,1,Hiver,1
+timePeriodSelector.winter.qualifier,Dec - Feb,1,Déc. à fév.,1
+timePeriodSelector.spring.fullName,Spring,1,Printemps,1
+timePeriodSelector.spring.shortName,Spring,1,Printemps,1
+timePeriodSelector.spring.qualifier,Mar - May,1,Mars à mai,1
+timePeriodSelector.summer.fullName,Summer,1,Été,1
+timePeriodSelector.summer.shortName,Summer,1,Été,1
+timePeriodSelector.summer.qualifier,Jun - Aug,1,Juin à août,1
+timePeriodSelector.fall.fullName,Autumn,1,Automne,1
+timePeriodSelector.fall.shortName,Autumn,1,Automne,1
+timePeriodSelector.fall.qualifier,Sep - Nov,1,Sept. à nov.,1
+timePeriodSelector.annual.fullName,Annual,1,Annuel,1
+timePeriodSelector.annual.shortName,Annual,1,Annuel,1
+timePeriodSelector.annual.qualifier,Jan - Dec,1,Jan. à déc.,1
+rcpSelector.title,Scenarios,1,Scénarios,1
+rcpSelector.header,Scenarios,1,Scénarios,1
+rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP définissent des scénarios futurs plausibles des émissions anthropiques.",1
+rcpSelector.all_rcp_models,,1,,1
+rcpSelector.rcp26.shortName,RCP 2.6,1,RCP 2.6,1
+rcpSelector.rcp26.fullName,Low emission scenario,1,"Scénario d'émissions faibles",1
+rcpSelector.rcp26.qualifier,RCP 2.6,1,RCP 2.6,1
+rcpSelector.rcp45.shortName,RCP 4.5,1,RCP 4.5,1
+rcpSelector.rcp45.fullName,Moderate emission scenario,1,"Scénario d'émissions modérées",1
+rcpSelector.rcp45.qualifier,RCP 4.5,1,RCP 4.5,1
+rcpSelector.rcp85.shortName,RCP 8.5,1,RCP 8.5,1
+rcpSelector.rcp85.fullName,High emission scenario,1,"Scénario d'émissions élevées",1
+rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,1
+datasetSelector.title,Dataset,1,Ensemble de données,1
+datasetSelector.header,Datasets,1,Ensembles des données,1
+datasetSelector.all_datasets,,1,,1
+datasetSelector.future_projections,Future changes in climate,1,Changements climatiques futurs,1
+datasetSelector.historical_changes,Historical changes in climate,1,Changements climatiques historiques,1
+datasetSelector.historical_other,Other historical datasets,1,Autres ensembles de données historiques,1
+datasetSelector.ahccd.shortName,Historical changes at stations,1,Changements historiques aux stations,1
+datasetSelector.ahccd.fullName,Historical changes at stations,1,Changements historiques aux stations,1
+datasetSelector.ahccd.subName,Adjusted and homogenized Canadian climate data (AHCCD),1,Les données climatiques canadiennes ajustées et homogénéisées (DCCAH),1
+datasetSelector.ahccd.qualifier,,1,,1
+datasetSelector.cmip5.shortName,Future changes,1,Changements futurs,1
+datasetSelector.cmip5.fullName,Future changes,1,Changements futurs,1
+datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,Le projet d’intercomparaison de modèles couplés (CMIP5),1
+datasetSelector.cmip5.qualifier,,1,,1
+datasetSelector.cangrd.shortName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,1
+datasetSelector.cangrd.fullName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,1
+datasetSelector.cangrd.subName,Gridded historical climate data (CANGRD),1,Anomalies de température et précipitation interpolées pour le Canada (CANGRD),1
+datasetSelector.cangrd.qualifier,,1,,1
+datasetSelector.dcs.shortName,Downscaled future changes,1,Changements futurs mis à l'échelle,1
+datasetSelector.dcs.fullName,Downscaled future changes,1,Changements futurs mis à l'échelle,1
+datasetSelector.dcs.subName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,1
+datasetSelector.dcs.qualifier,,1,,1
+datasetSelector.capa.shortName,Canada-wide precipitation,1,Précipitations à l'échelle du Canada,1
+datasetSelector.capa.fullName,Canada-wide precipitation,1,Précipitations à l'échelle du Canada,1
+datasetSelector.capa.subName,Regional deterministic precipitation analysis (RDPA),1,Analyse régionale déterministe de précipitation (ARDP),1
+datasetSelector.capa.qualifier,,1,,1
+datasetSelector.normal.shortName,Climate observations,1,Observations climatiques,1
+datasetSelector.normal.fullName,Climate observations,1,Observations climatiques,1
+datasetSelector.normal.subName,"Long-term averages, monthly data and daily data",1,"Moyennes à long terme, données mensuelles et données quotidiennes",1
+datasetSelector.normal.qualifier,,1,,1
+datasetSelector.hydro.shortName,River levels and flow,1,Niveaux et débit des rivières,1
+datasetSelector.hydro.fullName,River levels and flow,1,Niveaux et débit des rivières,1
+datasetSelector.hydro.subName,Hydrometric station data,1,Données des stations hydrométriques,1
+datasetSelector.hydro.qualifier,,1,,1
+downloadSelector.title,Download,1,Télécharger,1
+downloadSelector.header,Download,1,Télécharger,1
+downloadSelector.mapImage_group,Map image,1,Carte,1
+downloadSelector.dataset_group,Source data,1,Données sources,1
+downloadSelector.png.shortName,,1,,1
+downloadSelector.png.fullName,PNG picture,1,Image PNG,1
+downloadSelector.png.qualifier,,1,,1
+downloadSelector.jpeg.shortName,,1,,1
+downloadSelector.jpeg.fullName,JPEG picture,1,Image JPEG,1
+downloadSelector.jpeg.qualifier,,1,,1
+downloadSelector.dataCatalogue.shortName,,1,,1
+downloadSelector.dataCatalogue.fullName,{0} Open Data metadata record,1,{0} Dossier de métadonnées de Données ouvertes,1
+downloadSelector.dataCatalogue.access,Access full dataset in ,1,Accéder à l'ensemble de données complet ,1
+downloadSelector.dataCatalogue.qualifier,,1,,1
+downloadSelector.queryTool.shortName,,1,,1
+downloadSelector.queryTool.fullName,{0}Climate data extraction tool,1,{0} Outil d'extraction de données climatiques,1
+downloadSelector.queryTool.access,Download source data using ,1,Télécharger les données sources au moyen de ,1
+downloadSelector.queryTool.qualifier,,1,,1
+analysisSelector.title,Analysis period,1,Période d'analyse,1
+analysisSelector.header,,1,,1
+page.dateModified,Date modified,1,Date de modification,1
+ahccd.stations.fullName,AHCCD station metadata,1,Métadonnées sur la station DCCAH,1
+ahccd.stations.shortName,AHCCD station metadata,1,Métadonnées sur la station DCCAH,1
+ahccd.stations.qualifier,,1,,1
+ahccd.tmean.fullName,Mean temperature,1,Température moyenne,1
+ahccd.tmean.shortName,Mean temperature,1,Température moyenne,1
+ahccd.tmean.qualifier,,1,,1
+ahccd.tmin.fullName,Minimum temperature,1,Température minimale,1
+ahccd.tmin.shortName,Minimum temperature,1,Température minimale,1
+ahccd.tmin.qualifier,,1,,1
+ahccd.tmax.fullName,Maximum temperature,1,Température maximale,1
+ahccd.tmax.shortName,Maximum temperature,1,Température maximale,1
+ahccd.tmax.qualifier,,1,,1
+ahccd.precip.fullName,Total precipitation,1,Précipitations totales,1
+ahccd.precip.shortName,Total precipitation,1,Précipitations totales,1
+ahccd.precip.qualifier,,1,,1
+ahccd.stnpress.fullName,Station pressure,1,Pression à la station,1
+ahccd.stnpress.shortName,Station pressure,1,Pression à la station,1
+ahccd.stnpress.qualifier,,1,,1
+ahccd.seapress.fullName,Sea level pressure,1,Pression au niveau de la mer,1
+ahccd.seapress.shortName,Sea level pressure,1,Pression au niveau de la mer,1
+ahccd.seapress.qualifier,,1,,1
+ahccd.sfcwind.fullName,Wind speed,1,Vitesse du vent,1
+ahccd.sfcwind.shortName,Wind speed,1,Vitesse du vent,1
+ahccd.sfcwind.qualifier,,1,,1
+units.ahccd.tmean.shortName,°C,1,°C,1
+units.ahccd.tmean.fullName,degrees Celsius,1,degrés Celsius,1
+units.ahccd.tmax.shortName,°C,1,°C,1
+units.ahccd.tmax.fullName,degrees Celsius,1,degrés Celsius,1
+units.ahccd.tmin.shortName,°C,1,°C,1
+units.ahccd.tmin.fullName,degrees Celsius,1,degrés Celsius,1
+units.ahccd.precip.shortName,mm,1,mm,1
+units.ahccd.precip.fullName,millimetres,1,millimètres,1
+units.ahccd.sfcwind.shortName,km/h,1,km/h,1
+units.ahccd.sfcwind.fullName,kilometres per hour,1,kilomètres à l'heure,1
+units.ahccd.stnpress.shortName,kPa,1,kPa,1
+units.ahccd.stnpress.fullName,kilopascal,1,kilopascal,1
+units.ahccd.seapress.shortName,kPa,1,kPa,1
+units.ahccd.seapress.fullName,kilopascal,1,kilopascal,1
+cmip5.tmean.fullName,Mean temperature,1,Température moyenne,1
+cmip5.tmean.shortName,Mean temperature,1,Température moyenne,1
+cmip5.tmean.qualifier,,1,,1
+cmip5.precip.fullName,Mean precipitation,1,Moyenne des précipitations,1
+cmip5.precip.shortName,Mean precipitation,1,Moyenne des précipitations,1
+cmip5.precip.qualifier,,1,,1
+cmip5.sfcwind.fullName,Surface wind speed,1,Vitesse du vent à la surface,1
+cmip5.sfcwind.shortName,Surface wind speed,1,Vitesse du vent à la surface,1
+cmip5.sfcwind.qualifier,,1,,1
+cmip5.sit.fullName,Sea ice thickness,1,Épaisseur des glaces de mer,1
+cmip5.sit.shortName,Sea ice thickness,1,Épaisseur des glaces de mer,1
+cmip5.sit.qualifier,,1,,1
+cmip5.sic.fullName,Sea ice concentration,1,Concentration des glaces de mer,1
+cmip5.sic.shortName,Sea ice concentration,1,Concentration des glaces de mer,1
+cmip5.sic.qualifier,,1,,1
+cmip5.snd.fullName,Snow depth,1,Épaisseur de la neige,1
+cmip5.snd.shortName,Snow depth,1,Épaisseur de la neige,1
+cmip5.snd.qualifier,,1,,1
+units.cmip5.tmean.shortName,°C,1,°C,1
+units.cmip5.tmean.fullName,degrees Celsius,1,degrés Celsius,1
 units.cmip5.precip.shortName,%,1,%,1
-units.cmip5.precip.fullName,percent,1,pour cent,0
+units.cmip5.precip.fullName,percent,1,pourcentage,1
 units.cmip5.sfcwind.shortName,%,1,%,1
-units.cmip5.sfcwind.fullName,percent,1,pour cent,0
+units.cmip5.sfcwind.fullName,percent,1,pourcentage,1
 units.cmip5.sit.shortName,%,1,%,1
-units.cmip5.sit.fullName,percent,1,pour cent,0
+units.cmip5.sit.fullName,percent,1,pourcentage,1
 units.cmip5.sic.shortName,%,1,%,1
-units.cmip5.sic.fullName,percent,1,pour cent,0
+units.cmip5.sic.fullName,percent,1,pourcentage,1
 units.cmip5.snd.shortName,%,1,%,1
-units.cmip5.snd.fullName,percent,1,pour cent,0
-dcs.tmean.fullName,Mean temperature,1,Température moyenne,0
-dcs.tmean.shortName,Mean temperature,1,Température moyenne,0
-dcs.tmean.qualifier,,1,,0
-dcs.tmin.fullName,Minimum temperature,1,Température minimale,0
-dcs.tmin.shortName,Minimum temperature,1,Température minimale,0
-dcs.tmin.qualifier,,1,,0
-dcs.tmax.fullName,Maximum temperature,1,Température maximale,0
-dcs.tmax.shortName,Maximum temperature,1,Température maximale,0
-dcs.tmax.qualifier,,1,,0
-dcs.precip.fullName,Total precipitation,1,Total des précipitations,0
-dcs.precip.shortName,Total precipitation,1,Total des précipitations,0
-dcs.precip.qualifier,,1,,0
-units.dcs.tmean.shortName,°C,1,° C,0
-units.dcs.tmean.fullName,degrees Celsius,1,degré Celsius,0
-units.dcs.tmax.shortName,°C,1,° C,0
-units.dcs.tmax.fullName,degrees Celsius,1,degré Celsius,0
-units.dcs.tmin.shortName,°C,1,° C,0
-units.dcs.tmin.fullName,degrees Celsius,1,degré Celsius,0
+units.cmip5.snd.fullName,percent,1,pourcentage,1
+dcs.tmean.fullName,Mean temperature,1,Température moyenne,1
+dcs.tmean.shortName,Mean temperature,1,Température moyenne,1
+dcs.tmean.qualifier,,1,,1
+dcs.tmin.fullName,Minimum temperature,1,Température minimale,1
+dcs.tmin.shortName,Minimum temperature,1,Température minimale,1
+dcs.tmin.qualifier,,1,,1
+dcs.tmax.fullName,Maximum temperature,1,Température maximale,1
+dcs.tmax.shortName,Maximum temperature,1,Température maximale,1
+dcs.tmax.qualifier,,1,,1
+dcs.precip.fullName,Total precipitation,1,Précipitations totales,1
+dcs.precip.shortName,Total precipitation,1,Précipitations totales,1
+dcs.precip.qualifier,,1,,1
+units.dcs.tmean.shortName,°C,1,°C,1
+units.dcs.tmean.fullName,degrees Celsius,1,degrés Celsius,1
+units.dcs.tmax.shortName,°C,1,°C,1
+units.dcs.tmax.fullName,degrees Celsius,1,degrés Celsius,1
+units.dcs.tmin.shortName,°C,1,°C,1
+units.dcs.tmin.fullName,degrees Celsius,1,degrés Celsius,1
 units.dcs.precip.shortName,%,1,%,1
-units.dcs.precip.fullName,percent,1,pour cent,0
-cangrd.tmean.fullName,Mean temperature,1,Température moyenne,0
-cangrd.tmean.shortName,Mean temperature,1,Température moyenne,0
-cangrd.tmean.qualifier,,1,,0
-cangrd.precip.fullName,Total precipitation,1,Total des précipitations,0
-cangrd.precip.shortName,Total precipitation,1,Total des précipitations,0
-cangrd.precip.qualifier,,1,,0
-units.cangrd.tmean.shortName,°C,1,° C,0
-units.cangrd.tmean.fullName,degrees Celsius,1,degré Celsius,0
+units.dcs.precip.fullName,percent,1,pourcentage,1
+cangrd.tmean.fullName,Mean temperature,1,Température moyenne,1
+cangrd.tmean.shortName,Mean temperature,1,Température moyenne,1
+cangrd.tmean.qualifier,,1,,1
+cangrd.precip.fullName,Total precipitation,1,Précipitations totales,1
+cangrd.precip.shortName,Total precipitation,1,Précipitations totales,1
+cangrd.precip.qualifier,,1,,1
+units.cangrd.tmean.shortName,°C,1,°C,1
+units.cangrd.tmean.fullName,degrees Celsius,1,degrés Celsius,1
 units.cangrd.precip.shortName,%,1,%,1
-units.cangrd.precip.fullName,percent,1,pour cent,0
-normal.stations.fullName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
-normal.stations.shortName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,0
-normal.stations.qualifier,,0,,0
-normal.monthly.fullName,Monthly climate observation summaries,1,Résumés mensuels d'observations climatiques,0
-normal.monthly.shortName,Monthly climate observation summaries,1,Résumés mensuels d'observations climatiques,0
-normal.monthly.qualifier,,0,,0
-normal.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,0
-normal.daily.shortName,Daily climate observations,1,Observations climatiques quotidiennes,0
-normal.daily.qualifier,,0,,0
-normal.tmean.fullName,Mean daily temperature,1,Température quotidienne moyenne,0
-normal.tmean.shortName,Mean daily temperature,1,Température quotidienne moyenne,0
-normal.tmean.qualifier,,1,,0
-normal.tmax.fullName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,0
-normal.tmax.shortName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,0
-normal.tmax.qualifier,,1,,0
-normal.tmin.fullName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,0
-normal.tmin.shortName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,0
-normal.tmin.qualifier,,1,,0
-normal.precip.fullName,Total precipitation,1,Précipitations totales,0
-normal.precip.shortName,Total precipitation,1,Précipitations totales,0
-normal.precip.qualifier,,1,,0
-normal.stnpress.fullName,Average station pressure,1,Pression moyenne de la station,0
-normal.stnpress.shortName,Average station pressure,1,Pression moyenne de la station,0
-normal.stnpress.qualifier,,1,,0
-normal.seapress.fullName,Average sea level pressure,1,Pression moyenne au niveau de la mer,0
-normal.seapress.shortName,Average sea level pressure,1,Pression moyenne au niveau de la mer,0
-normal.seapress.qualifier,,1,,0
-normal.sfcwind.fullName,Wind speed,1,Vitesse du vent,0
-normal.sfcwind.shortName,Wind speed,1,Vitesse du vent,0
-normal.sfcwind.qualifier,,1,,0
-normal.gustspeed.fullName,Maximum gust speed,1,Vitesse de rafale maximale,0
-normal.gustspeed.shortName,Maximum gust speed,1,Vitesse de rafale maximale,0
-normal.gustspeed.qualifier,,1,,0
-normal.gustdir.fullName,Direction of maximum gust,1,Direction de la rafale maximale,0
-normal.gustdir.shortName,Direction of maximum gust,1,Direction de la rafale maximale,0
-normal.gustdir.qualifier,,1,,0
-units.normal.tmean.shortName,°C,1,° C,0
-units.normal.tmean.fullName,degrees Celsius,1,degré Celsius,0
-units.normal.tmax.shortName,°C,1,° C,0
-units.normal.tmax.fullName,degrees Celsius,1,degré Celsius,0
-units.normal.tmin.shortName,°C,1,° C,0
-units.normal.tmin.fullName,degrees Celsius,1,degré Celsius,0
-units.normal.precip.shortName,mm,1,mm,0
-units.normal.precip.fullName,millimetres,1,millimètres,0
-units.normal.sfcwind.shortName,km/h,1,km/h,0
-units.normal.sfcwind.fullName,kilometres per hour,1,kilomètres par heure,0
-units.normal.stnpress.shortName,kPa,1,kPa,0
-units.normal.stnpress.fullName,kilopascal,1,kilopascal,0
-units.normal.seapress.shortName,kPa,1,kPa,0
-units.normal.seapress.fullName,kilopascal,1,kilopascal,0
-units.normal.gustdir.shortName,,0,,0
-units.normal.gustdir.fullName,,0,,0
-units.normal.gustspeed.shortName,km/h,1,km/h,0
-units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres par heure,0
-hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,0
-hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,0
-hydro.hydro.qualifier,,1,,0
-capa.rdpa6.shortName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,0
-capa.rdpa6.fullName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,0
+units.cangrd.precip.fullName,percent,1,pourcentage,1
+normal.stations.fullName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,1
+normal.stations.shortName,Climate normals 1981-2010,1,Normales climatiques 1981-2010,1
+normal.stations.qualifier,,1,,1
+normal.monthly.fullName,Monthly climate observation summaries,1,Sommaires des observations climatiques mensuelles,1
+normal.monthly.shortName,Monthly climate observation summaries,1,Sommaires des observations climatiques mensuelles,1
+normal.monthly.qualifier,,1,,1
+normal.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,1
+normal.daily.shortName,Daily climate observations,1,Observations climatiques quotidiennes,1
+normal.daily.qualifier,,1,,1
+normal.tmean.fullName,Mean daily temperature,1,Température quotidienne moyenne,1
+normal.tmean.shortName,Mean daily temperature,1,Température quotidienne moyenne,1
+normal.tmean.qualifier,,1,,1
+normal.tmax.fullName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,1
+normal.tmax.shortName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,1
+normal.tmax.qualifier,,1,,1
+normal.tmin.fullName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,1
+normal.tmin.shortName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,1
+normal.tmin.qualifier,,1,,1
+normal.precip.fullName,Total precipitation,1,Précipitations totales,1
+normal.precip.shortName,Total precipitation,1,Précipitations totales,1
+normal.precip.qualifier,,1,,1
+normal.stnpress.fullName,Average station pressure,1,Pression moyenne à la station,1
+normal.stnpress.shortName,Average station pressure,1,Pression moyenne à la station,1
+normal.stnpress.qualifier,,1,,1
+normal.seapress.fullName,Average sea level pressure,1,Pression moyenne au niveau de la mer,1
+normal.seapress.shortName,Average sea level pressure,1,Pression moyenne au niveau de la mer,1
+normal.seapress.qualifier,,1,,1
+normal.sfcwind.fullName,Wind speed,1,Vitesse du vent,1
+normal.sfcwind.shortName,Wind speed,1,Vitesse du vent,1
+normal.sfcwind.qualifier,,1,,1
+normal.gustspeed.fullName,Maximum gust speed,1,Vitesse de la rafale maximale,1
+normal.gustspeed.shortName,Maximum gust speed,1,Vitesse de la rafale maximale,1
+normal.gustspeed.qualifier,,1,,1
+normal.gustdir.fullName,Direction of maximum gust,1,Direction de la rafale maximale,1
+normal.gustdir.shortName,Direction of maximum gust,1,Direction de la rafale maximale,1
+normal.gustdir.qualifier,,1,,1
+units.normal.tmean.shortName,°C,1,°C,1
+units.normal.tmean.fullName,degrees Celsius,1,degrés Celsius,1
+units.normal.tmax.shortName,°C,1,°C,1
+units.normal.tmax.fullName,degrees Celsius,1,degrés Celsius,1
+units.normal.tmin.shortName,°C,1,°C,1
+units.normal.tmin.fullName,degrees Celsius,1,degrés Celsius,1
+units.normal.precip.shortName,mm,1,mm,1
+units.normal.precip.fullName,millimetres,1,millimètres,1
+units.normal.sfcwind.shortName,km/h,1,km/h,1
+units.normal.sfcwind.fullName,kilometres per hour,1,kilomètres à l'heure,1
+units.normal.stnpress.shortName,kPa,1,kPa,1
+units.normal.stnpress.fullName,kilopascal,1,kilopascal,1
+units.normal.seapress.shortName,kPa,1,kPa,1
+units.normal.seapress.fullName,kilopascal,1,kilopascal,1
+units.normal.gustdir.shortName,,1,,1
+units.normal.gustdir.fullName,,1,,1
+units.normal.gustspeed.shortName,km/h,1,km/h,1
+units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres à l'heure,1
+hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,1
+hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,1
+hydro.hydro.qualifier,,1,,1
+capa.rdpa6.shortName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,1
+capa.rdpa6.fullName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,1
 capa.rdpa6.qualifier,,1,,1
-capa.rdpa24.shortName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,0
-capa.rdpa24.fullName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,0
+capa.rdpa24.shortName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,1
+capa.rdpa24.fullName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,1
 capa.rdpa24.qualifier,,1,,1
-units.capa.rdpa6.shortName,mm,1,mm,0
-units.capa.rdpa6.fullName,millimetres,1,millimètres,0
-units.capa.rdpa24.shortName,mm,1,mm,0
-units.capa.rdpa24.fullName,millimetres,1,millimètres,0
-ahccd.tooltips.station_title,Station name,1,Nom de la station,0
-ahccd.tooltips.value_title,Trend value,1,Valeur de tendance,0
-ahccd.tooltips.no_trend,No trend calculated,1,Aucune tendance calculée,0
-normal.tooltips.station_id_title,MSC station ID,1,ID de la station MSC,0
-normal.tooltips.station_name_title,MSC station name,1,Nom de la station MSC,0
-normal.tooltips.value_title,Climate value,1,Valeur climatique,0
-normal.tooltips.prov_title,Province/Territory,1,Province / Territoire,0
-normal.tooltips.wmo_title,WMO identifier,1,Identifiant WMS,0
-normal.tooltips.tc_title,TC identifier,1,Identifiant TC,0
+units.capa.rdpa6.shortName,mm,1,mm,1
+units.capa.rdpa6.fullName,millimetres,1,millimètres,1
+units.capa.rdpa24.shortName,mm,1,mm,1
+units.capa.rdpa24.fullName,millimetres,1,millimètres,1
+ahccd.tooltips.station_title,Station name,1,Nom de la station,1
+ahccd.tooltips.value_title,Trend value,1,Valeur de la tendance,1
+ahccd.tooltips.no_trend,No trend calculated,1,Aucune tendance calculée,1
+normal.tooltips.station_id_title,MSC station ID,1,ID de la station du SMC,1
+normal.tooltips.station_name_title,MSC station name,1,Nom de la station du SMC,1
+normal.tooltips.value_title,Climate value,1,Valeur climatique,1
+normal.tooltips.prov_title,Province/Territory,1,Province / Territoire,1
+normal.tooltips.wmo_title,WMO identifier,1,Identifiant OMM,1
+normal.tooltips.tc_title,TC identifier,1,Identifiant TC,1
