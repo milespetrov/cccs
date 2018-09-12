@@ -92,7 +92,7 @@
             {
                 "export": false,
                 "infoType": "title",
-                "content": "[fr] Data"
+                "content": "Données"
             },
             {
                 "infoType": "text",
@@ -114,17 +114,17 @@
             },
             {
                 "infoType": "title",
-                "content": "[fr] Settings"
+                "content": "Paramètres"
             },
             {
                 "layerId": "cities",
-                "layerName": "[fr] Cities",
+                "layerName": "Villes",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": []
             },
             {
                 "layerId": "labels",
-                "layerName": "[fr] Labels",
+                "layerName": "Étiquettes",
                 "coverIcon": "assets/images/labels.png",
                 "symbologyStack": []
             }
@@ -133,7 +133,7 @@
             "id": "cities",
             "layerType": "esriTile",
             "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-            "name": "[fr] Cities",
+            "name": "Villes",
             "expectedResponseTime": 10000,
             "controls": ["visibility", "opacity", "settings"],
             "state": {
@@ -145,7 +145,7 @@
             "id": "labels",
             "layerType": "esriTile",
             "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-            "name": "[fr] Labels",
+            "name": "Étiquettes",
             "expectedResponseTime": 10000,
             "controls": ["visibility", "opacity", "settings"],
             "state": {

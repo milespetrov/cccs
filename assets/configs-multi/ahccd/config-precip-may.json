@@ -93,11 +93,11 @@
     {
       "export": false,
       "infoType": "title",
-      "content": "[fr] Data"
+      "content": "Données"
     },
     {
       "infoType": "text",
-      "content": "[fr] A short AHCCD dataset description goes here"
+      "content": "Les données pour les stations climatiques ont été ajustées et homogénéisées pour tenir compte des discontinuités attribuables à des facteurs non climatiques."
     },
     {
       "layerId": "AHCCD_prec_MAY_fr",
@@ -107,24 +107,24 @@
       "symbologyStack": [
         {
           "image": "assets/images/blue-circle.png",
-          "text": "[fr] AHCCD Station"
+          "text": "Station DCCAH"
         }
       ],
       "symbologyRenderStyle": "icons"
     },
     {
       "infoType": "title",
-      "content": "[fr] Settings"
+      "content": "Paramètres"
     },
     {
       "layerId": "cities",
-      "layerName": "[fr] Cities",
+      "layerName": "Villes",
       "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
-      "layerName": "[fr] Labels",
+      "layerName": "Étiquettes",
       "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
@@ -135,7 +135,7 @@
       "id": "cities",
       "layerType": "esriTile",
       "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-      "name": "[fr] Cities",
+      "name": "Villes",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -147,7 +147,7 @@
       "id": "labels",
       "layerType": "esriTile",
       "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "[fr] Labels",
+      "name": "Étiquettes",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=May",
-      "name": "[fr] Precipitation",
+      "name": "Précipitations totales ajustées",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,

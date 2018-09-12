@@ -210,11 +210,11 @@
     {
       "export": false,
       "infoType": "title",
-      "content": "[fr] Data"
+      "content": "Données"
     },
     {
       "infoType": "text",
-      "content": "[fr] A short precipitation description goes here"
+      "content": "Les changements projetés dans les précipitations totales statistiquement mises à l'échelle sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005."
     },
     {
       "collapse": true,
@@ -276,23 +276,23 @@
     },
     {
       "infoType": "title",
-      "content": "[fr] Settings"
+      "content": "Paramètres"
     },
     {
       "layerId": "cities",
-      "layerName": "[fr] Cities",
+      "layerName": "Villes",
       "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
-      "layerName": "[fr] Labels",
+      "layerName": "Étiquettes",
       "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     },
     {
       "layerId": "provinces",
-      "layerName": "[fr] Provinces",
+      "layerName": "Provinces",
       "coverIcon": "assets/images/provinces.png",
       "symbologyStack": []
     }
@@ -303,7 +303,7 @@
       "id": "cities",
       "layerType": "esriTile",
       "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-      "name": "[fr] Cities",
+      "name": "Villes",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -315,7 +315,7 @@
       "id": "labels",
       "layerType": "esriTile",
       "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "[fr] Labels",
+      "name": "Étiquettes",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -327,7 +327,7 @@
       "id": "provinces",
       "layerType": "esriTile",
       "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-      "name": "[fr] Provinces",
+      "name": "Provinces",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -342,7 +342,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Precipitation",
+      "name": "Précipitations",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -360,7 +360,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Precipitation",
+      "name": "Précipitations",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -378,7 +378,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Precipitation",
+      "name": "Précipitations",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -396,7 +396,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "[fr] Precipitation",
+      "name": "Précipitations",
       "state": {
         "opacity": 0.85,
         "visibility": false

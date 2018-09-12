@@ -93,16 +93,16 @@
     {
       "export": false,
       "infoType": "title",
-      "content": "[fr] Data"
+      "content": "Données"
     },
     {
       "infoType": "text",
-      "content": "Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné.\n\nÀ la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
+      "content": "Les normales et moyennes climatiques sont utilisées pour résumer ou décrire les conditions climatiques moyennes d'un endroit donné.\n\nÀ la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour autant d'endroits et autant de caractéristiques climatiques que possible. Les  normales, moyennes et extrêmes climatiques présentées ici sont fondées sur les données des stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 et 2010."
     },
     {
       "layerId": "Normals_tmean_ANN_fr",
       "layerName": "",
-      "description": "Température moyenne en degrés Celsius (°C) définie comme moyenne de la température maximale et de la température minimale à un endroit donné au cours d'un intervalle de temps déterminé.",
+      "description": "La température moyenne en degrés Celsius (°C) est définie comme la moyenne des températures maximale et minimale à un endroit durant une période précise.",
       "coverIcon": "assets/images/tmean.png",
       "symbologyStack": [
         {
@@ -114,17 +114,17 @@
     },
     {
       "infoType": "title",
-      "content": "[fr] Settings"
+      "content": "Paramètres"
     },
     {
       "layerId": "cities",
-      "layerName": "[fr] Cities",
+      "layerName": "Villes",
       "coverIcon": "assets/images/cities.png",
       "symbologyStack": []
     },
     {
       "layerId": "labels",
-      "layerName": "[fr] Labels",
+      "layerName": "Étiquettes",
       "coverIcon": "assets/images/labels.png",
       "symbologyStack": []
     }
@@ -135,7 +135,7 @@
       "id": "cities",
       "layerType": "esriTile",
       "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "[fr] Cities",
+      "name": "Villes",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -147,7 +147,7 @@
       "id": "labels",
       "layerType": "esriTile",
       "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "[fr] Labels",
+      "name": "Étiquettes",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
       "state": {
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=13",
-      "name": "Température moyenne",
+      "name": "Température quotidienne moyenne",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,
