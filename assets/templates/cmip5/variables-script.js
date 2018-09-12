@@ -1,7 +1,7 @@
 function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
-            latlong: 'Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             trendValue: {
                 default: 'Projected 20-year average changes in',
                 tmean: 'mean temperature (degree Celsius)',
@@ -24,24 +24,24 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            latlong: '[fr] Latitude, Longitude',
+            latlong: 'Latitude, longitude',
             trendValue: {
-                default: '[fr] Projected 20-year average changes in',
-                tmean: 'mean temperature (degree Celsius)',
-                sic: 'sea ice concentration (%)',
-                sit: 'sea ice thickness (%)',
-                precip: 'mean precipitation (%)',
-                sfcwind: 'wind speed (%)',
-                snd: 'snow depth (%)'
+                default: 'Changements projetés des moyennes sur 20 ans',
+                tmean: 'température moyenne (degrés Celsius)',
+                sic: 'concentration de la glace de mer (%)',
+                sit: 'épaisseur de la glace de mer (%)',
+                precip: 'précipitations moyennes (%)',
+                sfcwind: 'vitesse du vent (%)',
+                snd: 'épaisseur de la neige (%)'
             },
             learnMore: {
-                default: '[fr] Learn more about projected',
-                tmean: 'mean temperature change',
-                precip: 'mean precipitation change',
-                sic: 'sea ice concentration change',
-                sit: 'sea ice thickness change',
-                sfcwind: 'wind speed change',
-                snd: 'snow depth change',
+                default: 'En savoir plus sur les changements projetés',
+                tmean: 'variation de la température moyenne',
+                precip: 'variations des précipitations moyennes',
+                sic: 'variation de la concentration des glaces de mer',
+                sit: "variation de l'épaisseur de la glace de mer",
+                sfcwind: 'variation de la vitesse du vent',
+                snd: "variation de l'épaisseur de la neige",
                 link: 'http://scenarios-climatiques.canada.ca/index.php?page=technical-notes'
             }
         }

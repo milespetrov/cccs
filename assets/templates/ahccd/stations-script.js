@@ -9,11 +9,11 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            stationName: '[fr] Station name',
-            stationId: '[fr] AHCCD station ID',
-            coordinates: '[fr] Coordinates',
-            elevation: '[fr] Elevation',
-            province: '[fr] Province/Territory'
+            stationName: 'Nom de la station',
+            stationId: 'Numéro de la station DCCAH',
+            coordinates: 'Coordonnées',
+            elevation: 'Altitude',
+            province: 'Province / Territoire'
         }
     };
 
