@@ -12,13 +12,13 @@ module.exports = options => ({
         {
             title: pkg.productName || pkg.name,
             description: pkg.description,
-            filename: 'climate-maps.html', // the name of the output file; the actual landing page will be named `index.html`
+            filename: 'climate-maps.html', // the name of the output file
             template: 'src/index.en.ejs'
         },
         {
             title: pkg.productName || pkg.name,
             description: pkg.description,
-            filename: 'cartes-climatiques.html', // the name of the output file; the actual landing page will be named `index.html`
+            filename: 'cartes-climatiques.html', // the name of the output file
             template: 'src/index.fr.ejs'
         }
     ],

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">
-                    <li v-for="bc in breadcrumbs"  :key="bc.name">
+                    <li v-for="bc in breadCrumbUrls" :key="bc.name">
                         <a :href="bc.url">{{ bc.name }}</a>
                     </li>
                 </ol>
@@ -15,16 +15,12 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+
 import page from './page-values';
+import { mixins } from 'vue-class-component';
+import { BreadCrumbEntity } from '@/types';
+import { StoreDataMixin } from './globals/mixin';
 
 @Component
-export default class BreadCrumbs extends Vue {
-    breadcrumbs: { url: string; name: string }[] = [];
-
-    async created(): Promise<void> {
-        await $.getJSON('assets/configs/app-config.json', data => {
-            this.breadcrumbs = data.climateviewerapp[page.lang].breadcrumbs;
-        });
-    }
-}
+export default class BreadCrumbs extends mixins(StoreDataMixin) {}
 </script>
