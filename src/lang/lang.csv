@@ -134,11 +134,11 @@ datasetSelector.historical_changes,Historical changes in climate,1,Changements c
 datasetSelector.historical_other,Other historical datasets,1,Autres ensembles de données historiques,1
 datasetSelector.ahccd.shortName,Historical changes at stations,1,Changements historiques aux stations,1
 datasetSelector.ahccd.fullName,Historical changes at stations,1,Changements historiques aux stations,1
-datasetSelector.ahccd.subName,Adjusted and homogenized Canadian climate data (AHCCD),1,Les données climatiques canadiennes ajustées et homogénéisées (DCCAH),1
+datasetSelector.ahccd.subName,Adjusted and homogenized Canadian climate data (AHCCD),1,Données climatiques canadiennes ajustées et homogénéisées (DCCAH),1
 datasetSelector.ahccd.qualifier,,1,,1
 datasetSelector.cmip5.shortName,Future changes,1,Changements futurs,1
 datasetSelector.cmip5.fullName,Future changes,1,Changements futurs,1
-datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,Scénarios du modèle climatique mondial (CMIP5) ,1
+datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,Scénarios basés sur des modèles climatiques globaux (CMIP5),1
 datasetSelector.cmip5.qualifier,,1,,1
 datasetSelector.cangrd.shortName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,1
 datasetSelector.cangrd.fullName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,1
@@ -146,7 +146,7 @@ datasetSelector.cangrd.subName,Gridded historical climate data (CANGRD),1,Donné
 datasetSelector.cangrd.qualifier,,1,,1
 datasetSelector.dcs.shortName,Downscaled future changes,1,Changements futurs mis à l'échelle,1
 datasetSelector.dcs.fullName,Downscaled future changes,1,Changements futurs mis à l'échelle,1
-datasetSelector.dcs.subName,Statistically downscaled climate scenarios,1,Scénarios climatiques statistiquement réduits,1
+datasetSelector.dcs.subName,Statistically downscaled climate scenarios,1,Scénarios climatiques mis à l'échelle de manière statistique,1
 datasetSelector.dcs.qualifier,,1,,1
 datasetSelector.capa.shortName,Canada-wide precipitation,1,Précipitations à l'échelle du Canada,1
 datasetSelector.capa.fullName,Canada-wide precipitation,1,Précipitations à l'échelle du Canada,1
