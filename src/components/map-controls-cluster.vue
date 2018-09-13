@@ -34,9 +34,8 @@
 
             <div class="cip-cluster-row" v-if="colourRamp">
                 <div class="cip-row-label">
-                     <i18n :path="`colourRamp.${currentDataset}`" tag="span" class="cip-label">
-                         <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
-                     </i18n> <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
+                     <span>{{ $t(`colourRamp.${currentDataset}.${currentVariable}`) }}</span>
+                     <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
                 </div>
                 <div class="cip-row-content">
                     <map-colour-ramp

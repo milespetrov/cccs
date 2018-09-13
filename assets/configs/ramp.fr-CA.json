@@ -46,7 +46,7 @@
                 "columnWidth": 2000
             },
             "footnote": {
-                "value": "Générées au moyen de la Visionneuse des cartes climatiques à http://climate-change.canada.ca/climate-maps."
+                "value": "Générées au moyen du Visualiseur de cartes climatiques à https://visualiseur-climatique.canada.ca/cartes-climatiques.html."
             },
             "timeout": 60000
         },
