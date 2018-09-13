@@ -96,13 +96,13 @@
             },
             {
                 "infoType": "text",
-                "content": "Données quotidiennes proviennent de deux sources de données; les stations climatiques quotidiennes de produire une ou deux observations par jour de la température, les précipitations et les stations horaire (voir des ensembles de données horaires) qui produisent plus généralement les éléments météorologiques comme le vent ou de neige au sol."
+                "content": "Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
             },
             {
                 "layerId": "DAILY_station_fr",
                 "layerName": "",
                 "description":
-                    "Ce sont les stations totales avec observations quotidiennes compilée au cours de toute période de temps établies.",
+                    "Il s'agit de toutes les stations avec des observations quotidiennes compilées au cours de n'importe quelle période donnée.",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
@@ -158,7 +158,7 @@
                 "id": "DAILY_station_fr",
                 "layerType": "ogcWfs",
                 "url": "#GEOMETWFS#/collections/climate-stations/items",
-                "name": "Les observations climatiques quotidiennes",
+                "name": "Observations climatiques quotidiennes",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
