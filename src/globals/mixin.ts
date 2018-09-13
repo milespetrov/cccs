@@ -93,6 +93,9 @@ export class StoreDataMixin extends Vue {
     setDataQueryUrl: (value: string) => void;
 
     @ActionData
+    setLanguageToggleDomain: (value: string) => void;
+
+    @ActionData
     setBreadCrumbUrls: (value: BreadCrumbEntity[]) => void;
 
     @StateData
@@ -100,4 +103,10 @@ export class StoreDataMixin extends Vue {
 
     @StateData
     dataQueryUrl: string | null;
+
+    @StateData
+    languageToggleDomain: string | null;
+
+    @StateData
+    breadCrumbUrls: BreadCrumbEntity[];
 }

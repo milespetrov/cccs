@@ -15,14 +15,12 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { State, namespace } from 'vuex-class';
-import page from './page-values';
-import { BreadCrumbEntity } from '@/types';
 
-const StateData = namespace('data', State);
+import page from './page-values';
+import { mixins } from 'vue-class-component';
+import { BreadCrumbEntity } from '@/types';
+import { StoreDataMixin } from './globals/mixin';
 
 @Component
-export default class BreadCrumbs extends Vue {
-    @StateData breadCrumbUrls: BreadCrumbEntity[];
-}
+export default class BreadCrumbs extends mixins(StoreDataMixin) {}
 </script>

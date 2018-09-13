@@ -211,6 +211,14 @@ export interface ClimateViewerAppConfig {
     climateBasicsUrl: string;
 
     /**
+     * A domain name of the main viewer page.
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    languageToggleDomain: string;
+
+    /**
      * A collection of breadcrumbs to display at the top of the page.
      *
      * @type {BreadCrumbEntity[]}

@@ -123,6 +123,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 
             this.setDataQueryUrl(currentLinks.queryToolUrl);
             this.setDataCatalogueUrl(currentLinks.dataCatalogueUrl);
+            this.setLanguageToggleDomain(currentLinks.languageToggleDomain);
             this.setBreadCrumbUrls(currentLinks.breadcrumbs);
             this.supportDeskUrl = currentLinks.supportDeskUrl;
             this.climateResourcesUrl = currentLinks.climateResourcesUrl;

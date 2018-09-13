@@ -4,6 +4,7 @@ import Vuex, { Store } from 'vuex';
 
 import app from './app.vue';
 import breadcrumbs from './breadcrumbs.vue';
+import languageToggle from './language-toggle.vue';
 import { createStore, RootState } from './store';
 import { i18n } from './lang';
 
@@ -43,4 +44,12 @@ new Vue({
     i18n,
     render: h => h('breadcrumbs'),
     components: { breadcrumbs }
+});
+
+new Vue({
+    el: '#lng',
+    store,
+    i18n,
+    render: h => h('languageToggle'),
+    components: { languageToggle }
 });

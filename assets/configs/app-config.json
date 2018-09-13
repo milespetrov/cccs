@@ -6,6 +6,7 @@
             "dataCatalogueUrl": "https://open.canada.ca/data/en/dataset",
             "climateResourcesUrl": "https://climate-change.canada.ca/climate-library",
             "climateBasicsUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics.html",
+            "languageToggleDomain": "",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/en.html", "name": "Home" },
                 {
@@ -40,6 +41,7 @@
             "dataCatalogueUrl": "https://ouvert.canada.ca/data/fr/dataset",
             "climateResourcesUrl": "https://changements-climatiques.canada.ca/repertoire-climatique",
             "climateBasicsUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels.html",
+            "languageToggleDomain": "",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/fr.html", "name": "Accueil" },
                 {
