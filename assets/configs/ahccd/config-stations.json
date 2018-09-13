@@ -151,6 +151,25 @@
                 "visibility": true
             }
         }],
-        "dataLayers": []
+        "dataLayers": [
+            {
+                "id": "AHCCD_station_fr",
+                "layerType": "ogcWfs",
+                "xyInAttribs": true,
+                "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
+                "name": "Stations",
+                "nameField": "station_name",
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                },
+                "controls": ["data", "visibility", "opacity"],
+                "details": {
+                    "template": "assets/templates/ahccd/stations-template.html",
+                    "parser": "assets/templates/ahccd/stations-script.js"
+                },
+                "colour": "#0ca7f5"
+            }
+        ]
     }
 }
