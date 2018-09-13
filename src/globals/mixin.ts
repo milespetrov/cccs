@@ -1,6 +1,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { Getter, Action, State, namespace } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
+import { DatasetId, BreadCrumbEntity } from '@/types';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -33,4 +34,70 @@ export class UpdateRouteMixin extends Vue {
             query: this.getQuery
         });
     }
+}
+
+@Component
+export class StoreAppMixin extends Vue {
+    @ActionApp
+    setTimePeriodId: (value: string | null) => void;
+
+    @ActionApp
+    setVariableId: (value: string | null) => void;
+
+    @ActionApp
+    setDatasetId: (value: string | null) => void;
+
+    @ActionApp
+    setFeatureId: (value: string | null) => void;
+
+    @ActionApp
+    setCenterPoint: (value: string | null) => void;
+
+    @ActionApp
+    setZoomLevel: (value: string | null) => void;
+
+    @ActionApp
+    setTimeSlice: (value: number | null) => void;
+
+    @ActionApp
+    setFeaturePoint: (value: { x: number; y: number } | string | null) => void;
+
+    @ActionApp
+    setRcpId: (value: string | null) => void;
+
+    @ActionApp
+    setAnalysisPeriod: (value: string | null) => void;
+
+    @ActionApp
+    setInternalRouteUpdate: (value: boolean) => void;
+
+    @StateApp
+    internalRouteUpdate: boolean;
+
+    @StateApp
+    datasetId: DatasetId;
+}
+
+const StateData = namespace('data', State);
+const ActionData = namespace('data', Action);
+
+@Component
+export class StoreDataMixin extends Vue {
+    @ActionData
+    setUrlSuffixes: (value: object) => void;
+
+    @ActionData
+    setDataCatalogueUrl: (value: string) => void;
+
+    @ActionData
+    setDataQueryUrl: (value: string) => void;
+
+    @ActionData
+    setBreadCrumbUrls: (value: BreadCrumbEntity[]) => void;
+
+    @StateData
+    urlSuffixes: object | null;
+
+    @StateData
+    dataQueryUrl: string | null;
 }

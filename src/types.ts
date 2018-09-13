@@ -140,3 +140,92 @@ export enum IdentifyMode {
      */
     Details = 'details'
 }
+
+/**
+ * A global app configuration.
+ *
+ * @export
+ * @interface AppConfig
+ */
+export interface AppConfig {
+    /**
+     * Configuration section for the viewer app.
+     *
+     * @type {{
+     *         en: ClimateViewerAppConfig;
+     *         fr: ClimateViewerAppConfig;
+     *     }}
+     * @memberof AppConfig
+     */
+    climateviewerapp: {
+        en: ClimateViewerAppConfig;
+        fr: ClimateViewerAppConfig;
+    };
+}
+
+/**
+ * Language-specific app configuration section.
+ *
+ * @export
+ * @interface ClimateViewerAppConfig
+ */
+export interface ClimateViewerAppConfig {
+    /**
+     * A url to hte query tool page.
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    queryToolUrl: string;
+
+    /**
+     * A url to the support desk page.
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    supportDeskUrl: string;
+
+    /**
+     * A url to the data catalogue page.
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    dataCatalogueUrl: string;
+
+    /**
+     * A url to the climate resources page.
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    climateResourcesUrl: string;
+
+    /**
+     * A url to the climate basics page.
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    climateBasicsUrl: string;
+
+    /**
+     * A collection of breadcrumbs to display at the top of the page.
+     *
+     * @type {BreadCrumbEntity[]}
+     * @memberof ClimateViewerAppConfig
+     */
+    breadcrumbs: BreadCrumbEntity[];
+}
+
+/**
+ * A single breadcrumb.
+ *
+ * @export
+ * @interface BreadCrumbEntity
+ */
+export interface BreadCrumbEntity {
+    url: string;
+    name: string;
+}

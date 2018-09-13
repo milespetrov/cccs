@@ -2,25 +2,29 @@ import { ActionContext, StoreOptions } from 'vuex';
 
 import { DataState } from './data-state';
 import { RootState } from '@/store';
+import { BreadCrumbEntity } from '@/types';
 
 type DataContext = ActionContext<DataState, RootState>;
 
 const state: DataState = {
     urlSuffixes: null,
     dataCatalogueUrl: null,
-    dataQueryUrl: null
+    dataQueryUrl: null,
+    breadCrumbUrls: []
 };
 
 enum Action {
     setUrlSuffixes = 'setUrlSuffixes',
     setDataCatalogueUrl = 'setDataCatalogueUrl',
-    setDataQueryUrl = 'setDataQueryUrl'
+    setDataQueryUrl = 'setDataQueryUrl',
+    setBreadCrumbUrls = 'setBreadCrumbUrls'
 }
 
 enum Mutation {
     SET_URL_SUFFIXES = 'SET_URL_SUFFIXES',
     SET_DATA_CATALOGUE_URL = 'SET_DATA_CATALOGUE_URL',
-    SET_DATA_QUERY_URL = 'SET_DATA_QUERY_URL'
+    SET_DATA_QUERY_URL = 'SET_DATA_QUERY_URL',
+    SET_BREAD_CRUMB_URLS = 'SET_BREAD_CRUMB_URLS'
 }
 
 // getters
@@ -36,6 +40,9 @@ const actions = {
     },
     [Action.setDataQueryUrl](context: DataContext, value: string): void {
         context.commit(Mutation.SET_DATA_QUERY_URL, value);
+    },
+    [Action.setBreadCrumbUrls](context: DataContext, value: BreadCrumbEntity[]): void {
+        context.commit(Mutation.SET_BREAD_CRUMB_URLS, value);
     }
 };
 
@@ -49,6 +56,9 @@ const mutations = {
     },
     [Mutation.SET_DATA_QUERY_URL](state: DataState, value: string): void {
         state.dataQueryUrl = value;
+    },
+    [Mutation.SET_BREAD_CRUMB_URLS](state: DataState, value: BreadCrumbEntity[]): void {
+        state.breadCrumbUrls = value;
     }
 };
 
