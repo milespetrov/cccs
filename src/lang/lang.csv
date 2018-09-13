@@ -27,7 +27,7 @@ map.daily_desc,"Daily data is derived from two sources of data; daily climate st
 map.monthly_desc,"A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.",1,"Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours.",1
 map.normal_desc,"Climate normals and averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The climate normals, averages and extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",1,"Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010.",1
 map.controlsCluster.legend,Legend,1,Légende,1
-map.controlsCluster.timeline,Time period,1,Période,0
+map.controlsCluster.timeline,Time period,1,Période,1
 map.toggleScaleUnits,Toggle between imperial and metric map scale,1,Basculer entre métriques et impériales Échelle cartographique,0
 colourRamp.cmip5,{0} change,1,{0} changement,1
 colourRamp.dcs,{0} change,1,{0} changement,1
@@ -103,18 +103,18 @@ timePeriodSelector.annual.fullName,Annual,1,Annuel,1
 timePeriodSelector.annual.shortName,Annual,1,Annuel,1
 timePeriodSelector.annual.qualifier,Jan - Dec,1,Jan. à déc.,1
 rcpSelector.title,Scenarios,1,Scénarios,1
-rcpSelector.header,Scenarios,1,Scénarios,1
+rcpSelector.header,Global emmission scenarios,1,Scénarios d'émissions mondiales,1
 rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP définissent des scénarios futurs plausibles des émissions anthropiques.",1
 rcpSelector.all_rcp_models,,1,,1
-rcpSelector.rcp26.shortName,RCP 2.6,1,RCP 2.6,1
-rcpSelector.rcp26.fullName,Low emission scenario,1,"Scénario d'émissions faibles",1
-rcpSelector.rcp26.qualifier,RCP 2.6,1,RCP 2.6,1
-rcpSelector.rcp45.shortName,RCP 4.5,1,RCP 4.5,1
-rcpSelector.rcp45.fullName,Moderate emission scenario,1,"Scénario d'émissions modérées",1
-rcpSelector.rcp45.qualifier,RCP 4.5,1,RCP 4.5,1
-rcpSelector.rcp85.shortName,RCP 8.5,1,RCP 8.5,1
-rcpSelector.rcp85.fullName,High emission scenario,1,"Scénario d'émissions élevées",1
-rcpSelector.rcp85.qualifier,RCP 8.5,1,RCP 8.5,1
+rcpSelector.rcp26.shortName,Low emission,1,Émissions faibles,1
+rcpSelector.rcp26.fullName,Low emission scenario (RCP 2.6),1,"Scénario d'émissions faibles (RCP 2.6)",1
+rcpSelector.rcp26.qualifier,,1,,1
+rcpSelector.rcp45.shortName,Moderate emission,1,Émissions modérées,1
+rcpSelector.rcp45.fullName,Moderate emission scenario (RCP 4.5),1,"Scénario d'émissions modérées (RCP 4.5)",1
+rcpSelector.rcp45.qualifier,,1,,1
+rcpSelector.rcp85.shortName,High emission,1,Émissions élevées,1
+rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Scénario d'émissions élevées (RCP 8.5)",1
+rcpSelector.rcp85.qualifier,,1,,1
 datasetSelector.title,Dataset,1,Ensemble de données,1
 datasetSelector.header,Datasets,1,Ensembles des données,1
 datasetSelector.all_datasets,,1,,1
@@ -127,11 +127,11 @@ datasetSelector.ahccd.subName,Adjusted and homogenized Canadian climate data (AH
 datasetSelector.ahccd.qualifier,,1,,1
 datasetSelector.cmip5.shortName,Future changes,1,Changements futurs,1
 datasetSelector.cmip5.fullName,Future changes,1,Changements futurs,1
-datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,Le projet d’intercomparaison de modèles couplés (CMIP5),1
+datasetSelector.cmip5.subName,Global climate model scenarios (CMIP5),1,Scénarios du modèle climatique mondial (CMIP5) ,1
 datasetSelector.cmip5.qualifier,,1,,1
 datasetSelector.cangrd.shortName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,1
 datasetSelector.cangrd.fullName,Canada-wide historical changes,1,Changements historiques à l'échelle du Canada,1
-datasetSelector.cangrd.subName,Gridded historical climate data (CANGRD),1,Anomalies de température et précipitation interpolées pour le Canada (CANGRD),1
+datasetSelector.cangrd.subName,Gridded historical climate data (CANGRD),1,Données climatiques maillées historiques (CANGRD),1
 datasetSelector.cangrd.qualifier,,1,,1
 datasetSelector.dcs.shortName,Downscaled future changes,1,Changements futurs mis à l'échelle,1
 datasetSelector.dcs.fullName,Downscaled future changes,1,Changements futurs mis à l'échelle,1
