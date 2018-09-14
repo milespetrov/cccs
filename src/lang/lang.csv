@@ -114,7 +114,7 @@ timePeriodSelector.annual.fullName,Annual,1,Annuel,1
 timePeriodSelector.annual.shortName,Annual,1,Annuel,1
 timePeriodSelector.annual.qualifier,Jan - Dec,1,Jan. à déc.,1
 rcpSelector.title,Scenarios,1,Scénarios,1
-rcpSelector.header,Global emmission scenarios,1,Scénarios d'émissions mondiales,1
+rcpSelector.header,Global emission scenarios,1,Scénarios d'émissions mondiales,1
 rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP définissent des scénarios futurs plausibles des émissions anthropiques.",1
 rcpSelector.all_rcp_models,,1,,1
 rcpSelector.rcp26.shortName,Low emission,1,Émissions faibles,1
