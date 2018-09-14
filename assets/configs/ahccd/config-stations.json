@@ -44,8 +44,7 @@
             {
                 "id": "cities",
                 "layerType": "esriTile",
-                "url":
-                    "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
                 "name": "Cities",
                 "expectedResponseTime": 10000,
                 "state": {
@@ -72,7 +71,7 @@
                 "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
                 "name": "Stations",
-                "nameField": "station_name",
+                "nameField": "station_name__nom_station",
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -104,8 +103,7 @@
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image":
-                            "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
+                        "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
                         "text": ""
                     }
                 ],
@@ -128,29 +126,30 @@
                 "symbologyStack": []
             }
         ],
-        "supportLayers": [{
-            "id": "cities",
-            "layerType": "esriTile",
-            "url":
-                "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-            "name": "Villes",
-            "expectedResponseTime": 10000,
-            "state": {
-                "opacity": 1,
-                "visibility": false
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+                "name": "Villes",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+                "name": "Étiquettes",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
             }
-        },
-        {
-            "id": "labels",
-            "layerType": "esriTile",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-            "name": "Étiquettes",
-            "expectedResponseTime": 10000,
-            "state": {
-                "opacity": 1,
-                "visibility": true
-            }
-        }],
+        ],
         "dataLayers": [
             {
                 "id": "AHCCD_station_fr",
@@ -158,7 +157,7 @@
                 "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
                 "name": "Stations",
-                "nameField": "station_name",
+                "nameField": "station_name__nom_station",
                 "state": {
                     "opacity": 1,
                     "visibility": true

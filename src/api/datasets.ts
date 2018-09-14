@@ -40,11 +40,11 @@ class AHCCDApi extends DatasetApi {
     getTooltip(data: any): string {
         // trend value formatting
         let displayTrend;
-        if (data.trend_value) {
-            if (data.trend_value > 0) {
-                displayTrend = '+' + data.trend_value;
+        if (data.trend_value__valeur_tendance) {
+            if (data.trend_value__valeur_tendance > 0) {
+                displayTrend = '+' + data.trend_value__valeur_tendance;
             } else {
-                displayTrend = data.trend_value;
+                displayTrend = data.trend_value__valeur_tendance;
             }
             displayTrend += ' ' + i18n.t(`units.ahccd.${this.state.variableId}.shortName`);
         } else {
@@ -53,12 +53,12 @@ class AHCCDApi extends DatasetApi {
 
         const tooltips = {
             variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
-                ${i18n.t('ahccd.tooltips.station_title')}: ${data.station_name}
+                ${i18n.t('ahccd.tooltips.station_title')}: ${data.station_name__nom_station}
                 <br />${i18n.t('ahccd.tooltips.value_title')}: ${displayTrend}</span></div>`,
 
             stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
                 'ahccd.tooltips.station_title'
-            )}: ${data.station_name}</span></div>`
+            )}: ${data.station_name__nom_station}</span></div>`
         };
 
         return this.state.variableId === VariableId.ClimateStations ? tooltips.stations : tooltips.variables;

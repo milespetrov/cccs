@@ -4,21 +4,21 @@
         <dt>
             <span>{{ self.layer.tt.timePeriod.title }}</span>
         </dt>
-        <dd>{{ self.layer.tt.timePeriod[self.layer.properties.period] }}</dd>
+        <dd>{{ self.layer.tt.timePeriod[self.layer.properties.period__periode] }}</dd>
 
         <dt>
             <span>{{ self.layer.tt.yearRange }}</span>
         </dt>
-        <dd ng-if="self.layer.properties.year_range"> {{ self.layer.properties.year_range }}</dd>
-        <dd ng-if="!self.layer.properties.year_range"> {{ self.layer.tt.noYearRange }}</dd>
+        <dd ng-if="self.layer.properties.year_range__annees"> {{ self.layer.properties.year_range__annees }}</dd>
+        <dd ng-if="!self.layer.properties.year_range__annees"> {{ self.layer.tt.noYearRange }}</dd>
 
         <dt>
             <span>{{ self.layer.tt.trendValue }}</span>
         </dt>
-        <dd ng-if="self.layer.properties.trend_value">{{ self.layer.properties.trend_prefix }}{{ self.layer.properties.trend_value__valeur_tendance
+        <dd ng-if="self.layer.properties.trend_value__valeur_tendance">{{ self.layer.properties.trend_prefix }}{{ self.layer.properties.trend_value__valeur_tendance
             }} {{ self.layer.tt.measurementUnit[self.layer.properties.measurement_type__type_mesure] }}
         </dd>
-        <dd ng-if="!self.layer.properties.trend_value">{{ self.layer.tt.no_trend }}</dd>
+        <dd ng-if="!self.layer.properties.trend_value__valeur_tendance">{{ self.layer.tt.no_trend }}</dd>
     </dl>
 
     <md-divider class="mrgn-bttm-md"></md-divider>
