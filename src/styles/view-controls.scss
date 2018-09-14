@@ -208,9 +208,6 @@
             }
         }
 
-        .cip-dropdown-info {
-        }
-
         .cip-dropdown-description {
             padding: 0.25rem * 1.6 1.5rem * 1.6;
             font-size: 0.8em;
@@ -266,6 +263,7 @@
     @media (min-width: 990px) {
         .cip-controls-wrapper {
             display: block !important;
+            visibility: visible !important;
         }
     }
 
