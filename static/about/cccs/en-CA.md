@@ -1,6 +1,6 @@
 ##### Climate data viewer
 
-Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify date ranges, variables and other options using the drop-down menus at the top of the map.
+Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify datasets, variables and other options using the drop-down menus at the top of the map.
 
 For help, click the ‘?’ icon in the bottom right corner of the map.
 
