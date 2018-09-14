@@ -65,8 +65,6 @@ function parser(data, lang) {
         }
     };
 
-    console.log(data, lang);
-
     data.properties = {};
     data.tt = TRANSLATIONS[lang];
 

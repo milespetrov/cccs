@@ -40,7 +40,6 @@ function parser(data, lang) {
         }
     };
 
-    console.log(data, lang);
     var result = {};
 
     result.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];

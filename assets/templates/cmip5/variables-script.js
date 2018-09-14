@@ -47,7 +47,6 @@ function parser(data, lang) {
         }
     };
 
-    console.log(data, lang);
     if (typeof data === 'undefined') {
         return null;
     }

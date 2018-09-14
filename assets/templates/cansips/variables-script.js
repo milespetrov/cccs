@@ -39,7 +39,6 @@ function parser(data, lang) {
         'fr-CA': {}
     };
 
-    console.log(data, lang);
     var result = {
         properties: {}
     };

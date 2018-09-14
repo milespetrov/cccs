@@ -26,10 +26,13 @@ const ActionApp = namespace('app', Action);
 export default class TimeSlider extends mixins(UpdateRouteMixin) {
     slider: any;
 
-    @GetterApp timeSliderLabels: string[];
+    @GetterApp
+    timeSliderLabels: string[];
 
-    @ActionApp setTimeSlice: (value: number) => void;
-    @StateApp timeSlice: number;
+    @ActionApp
+    setTimeSlice: (value: number) => void;
+    @StateApp
+    timeSlice: number;
 
     internalTimeSliceChange = false;
     pipSelector = '.noUi-value-large[data-value="';
@@ -96,7 +99,9 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
     @Watch('timeSlice')
     onTimeSliceChange(newValue: number, oldValue: number): void {
         // Update the selected css class on the old and new selections
-        this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove('selected');
+        if (oldValue !== null) {
+            this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove('selected');
+        }
         this.$el.querySelector(this.pipSelector + `${newValue}"]`)!.classList.add('selected');
 
         if (this.internalTimeSliceChange) {
