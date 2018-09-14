@@ -72,5 +72,7 @@ function parser(data, lang) {
         data.properties[el.key] = el.value;
     });
 
+    data.properties.VALUE = parseFloat(data.properties.VALUE).toFixed(1);
+
     return data;
 }
