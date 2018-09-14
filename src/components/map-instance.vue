@@ -98,7 +98,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentVariable')
     onVarChanged(newValue: string, oldValue: string) {
-        api.dcsMultiTrack('DCSext.cccs_variable_selected', newValue);
+        api.dcsMultiTrack(
+            'DCSext.cccs_variable_selected',
+            newValue,
+            'DCSext.cccs_datavar_set',
+            `${this.datasetId}-${newValue}`,
+            'WT.ti',
+            `${newValue} selected on ${this.datasetId}.`
+        );
         this.switchLayers();
     }
 
