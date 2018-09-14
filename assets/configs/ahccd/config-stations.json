@@ -103,8 +103,8 @@
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=AHCCD.STATIONS&format=image/png&STYLE=default",
-                        "text": ""
+                        "image": "assets/images/blue-circle.png",
+                        "text": "Station DCCAH"
                     }
                 ],
                 "symbologyRenderStyle": "icons"
