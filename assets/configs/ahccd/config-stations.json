@@ -13,7 +13,7 @@
             {
                 "layerId": "AHCCD_station_en",
                 "layerName": "",
-                "description": "A short station description goes here",
+                "description": "",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
