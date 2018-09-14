@@ -63,29 +63,46 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         return document.getElementById('cip-map-anchor')!;
     }
 
-    @StateApp('variableId') currentVariable: VariableId;
-    @StateApp datasetId: DatasetId;
-    @StateApp('timePeriodId') currentTimePeriod: string;
+    @StateApp('variableId')
+    currentVariable: VariableId;
+    @StateApp
+    datasetId: DatasetId;
+    @StateApp('timePeriodId')
+    currentTimePeriod: string;
     //@StateApp('featureId') currentFeature: string;
-    @StateApp('rcpId') currentRcp: string;
-    @StateApp timeSlice: number;
-    @StateApp centerPoint: MapPoint;
-    @StateApp locationPoint: MapPoint;
-    @StateApp zoomLevel: number;
-    @StateApp analysisPeriod: string;
+    @StateApp('rcpId')
+    currentRcp: string;
+    @StateApp
+    timeSlice: number;
+    @StateApp
+    centerPoint: MapPoint;
+    @StateApp
+    locationPoint: MapPoint;
+    @StateApp
+    zoomLevel: number;
+    @StateApp
+    analysisPeriod: string;
     // @StateApp featurePoint: MapPoint;
 
     //@ActionApp setFeatureId: (value: string | null) => void;
-    @ActionApp setCenterPoint: (value: { x: number; y: number }) => void;
+    @ActionApp
+    setCenterPoint: (value: { x: number; y: number }) => void;
     // @ActionApp setFeaturePoint: (value: { x: number; y: number } | null) => void;
-    @ActionApp setZoomLevel: (value: number) => void;
-    @ActionApp setTileInfo: (value: number[] | null) => void;
+    @ActionApp
+    setZoomLevel: (value: number) => void;
+    @ActionApp
+    setTileInfo: (value: number[] | null) => void;
 
-    @GetterApp timeSliderLabels: string[] | undefined;
-    @GetterApp legend: { [index: string]: string } | undefined;
-    @GetterApp colourRamp: ColourRamp | null;
-    @GetterApp datasetApi: DatasetApi;
-    @GetterApp dateSlider: any;
+    @GetterApp
+    timeSliderLabels: string[] | undefined;
+    @GetterApp
+    legend: { [index: string]: string } | undefined;
+    @GetterApp
+    colourRamp: ColourRamp | null;
+    @GetterApp
+    datasetApi: DatasetApi;
+    @GetterApp
+    dateSlider: any;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -144,6 +161,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     async switchLayers() {
+        if (!this._mapi) {
+            return;
+        }
+
         if (this._mapi.layers.allLayers.length > 0) {
             // .slice() to clone the array, otherwise indices will be skipped
             this._mapi.layers.allLayers.slice().forEach((layer: any) => {
@@ -200,7 +221,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     onTimeSliceChanged(newValue: number, oldValue: number) {
         if (this.timeSliderLabels) {
             // turn off old layer
-            this.getLayerById(this.currentLayers[oldValue]).visibility = false;
+            if (oldValue !== null) {
+                this.getLayerById(this.currentLayers[oldValue]).visibility = false;
+            }
             // set new layer visible
             this.getLayerById(this.currentLayers[newValue]).visibility = true;
         } else if (this.dateSlider) {
@@ -436,8 +459,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             const stationId = feature ? feature.value.toString() : '';
 
             // features.find(feature => )
-
-            console.log(features);
 
             this.setFeaturePoint(event.xy);
             this.setFeatureId(stationId);

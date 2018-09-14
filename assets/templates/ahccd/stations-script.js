@@ -17,8 +17,6 @@ function parser(data, lang) {
         }
     };
 
-    console.log(data);
-
     data.properties = {};
 
     data.forEach(function(el) {

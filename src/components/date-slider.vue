@@ -29,15 +29,22 @@ const ActionApp = namespace('app', Action);
 export default class DateSlider extends mixins(UpdateRouteMixin) {
     slider: any;
 
-    @ActionApp setTimeSlice: (value: number) => void;
-    @StateApp timeSlice: number;
-    @StateApp variableId: string;
+    @ActionApp
+    setTimeSlice: (value: number) => void;
+    @StateApp
+    timeSlice: number;
+    @StateApp
+    variableId: string;
 
-    @GetterApp dateSlider: any;
-    @Prop() step: string;
+    @GetterApp
+    dateSlider: any;
+    @Prop()
+    step: string;
 
-    @Prop() end: string;
-    @Prop() default: string;
+    @Prop()
+    end: string;
+    @Prop()
+    default: string;
     get stepAmount(): number {
         return 1000 * 60 * 60 * parseInt(this.step);
     }
@@ -128,7 +135,9 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         }
 
         // timeslice was changed by something else, update the slider
-        this.slider.noUiSlider.set(this.timeSlice);
+        if (this.slider.noUiSlider) {
+            this.slider.noUiSlider.set(this.timeSlice);
+        }
     }
 
     // based on a subset of our DQV keyboard support

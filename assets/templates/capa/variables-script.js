@@ -13,7 +13,6 @@ function parser(data, lang) {
         }
     };
 
-    console.log(data, lang);
     var result = {
         properties: {}
     };

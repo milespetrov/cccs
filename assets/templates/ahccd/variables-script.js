@@ -101,8 +101,6 @@ function parser(data, lang) {
         }
     };
 
-    console.log(data, lang);
-
     data.properties = {};
 
     data.properties.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
