@@ -44,8 +44,7 @@
             {
                 "id": "cities",
                 "layerType": "esriTile",
-                "url":
-                    "#ECCCARCGIS#/Overlays/Cities/MapServer",
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
                 "name": "Cities",
                 "expectedResponseTime": 10000,
                 "state": {
@@ -72,7 +71,7 @@
                 "xyInAttribs": true,
                 "url": "#GEOMETWFS#/collections/ahccd-stations/items",
                 "name": "Stations",
-                "nameField": "station_name",
+                "nameField": "station_name__nom_station",
                 "state": {
                     "opacity": 1,
                     "visibility": true
@@ -104,8 +103,7 @@
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
-                        "image":
-                            "assets/images/blue-circle.png",
+                        "image": "assets/images/blue-circle.png",
                         "text": "Station DCCAH"
                     }
                 ],
@@ -128,29 +126,30 @@
                 "symbologyStack": []
             }
         ],
-        "supportLayers": [{
-            "id": "cities",
-            "layerType": "esriTile",
-            "url":
-                "#ECCCARCGIS#/Overlays/Cities/MapServer",
-            "name": "Villes",
-            "expectedResponseTime": 10000,
-            "state": {
-                "opacity": 1,
-                "visibility": false
+        "supportLayers": [
+            {
+                "id": "cities",
+                "layerType": "esriTile",
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+                "name": "Villes",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": false
+                }
+            },
+            {
+                "id": "labels",
+                "layerType": "esriTile",
+                "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+                "name": "Étiquettes",
+                "expectedResponseTime": 10000,
+                "state": {
+                    "opacity": 1,
+                    "visibility": true
+                }
             }
-        },
-        {
-            "id": "labels",
-            "layerType": "esriTile",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-            "name": "Étiquettes",
-            "expectedResponseTime": 10000,
-            "state": {
-                "opacity": 1,
-                "visibility": true
-            }
-        }],
+        ],
         "dataLayers": [
             {
                 "id": "AHCCD_station_fr",
@@ -158,7 +157,7 @@
                 "xyInAttribs": true,
                 "url": "#GEOMETWFS#/collections/ahccd-stations/items",
                 "name": "Stations",
-                "nameField": "station_name",
+                "nameField": "station_name__nom_station",
                 "state": {
                     "opacity": 1,
                     "visibility": true

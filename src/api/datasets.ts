@@ -42,9 +42,9 @@ class AHCCDApi extends DatasetApi {
         let displayTrend;
         if (data.trend_value__valeur_tendance) {
             if (data.trend_value__valeur_tendance > 0) {
-                displayTrend = '+' + data.trend_value__valeur_tendance;
+                displayTrend = '+' + parseFloat(data.trend_value__valeur_tendance).toFixed(1);
             } else {
-                displayTrend = data.trend_value__valeur_tendance;
+                displayTrend = parseFloat(data.trend_value__valeur_tendance).toFixed(1);
             }
             displayTrend += ' ' + i18n.t(`units.ahccd.${this.state.variableId}.shortName`);
         } else {
@@ -262,7 +262,7 @@ class NormalApi extends DatasetApi {
         const tooltips = {
             variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
                 ${i18n.t('normal.tooltips.station_name_title')}: ${data.STATION_NAME}
-                <br />${i18n.t('normal.tooltips.value_title')}: ${data.VALUE} ${i18n.t(
+                <br />${i18n.t('normal.tooltips.value_title')}: ${parseFloat(data.VALUE).toFixed(1)} ${i18n.t(
                 `units.normal.${this.state.variableId}.shortName`
             )}</span></div>`,
 
