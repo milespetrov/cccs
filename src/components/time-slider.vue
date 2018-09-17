@@ -1,5 +1,5 @@
 <template>
-    <div class="cip-time-slider-container" :class="`layers-${timeSliderLabels.length}`">
+    <div class="cip-time-slider-container" :class="`layers-${timeSliderLabels ? timeSliderLabels.length : 0}`">
         <div class="cip-time-slider-backdrop"></div>
         <div class="noUi-target noUiSlider"></div>
     </div>
@@ -102,7 +102,9 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         if (oldValue !== null) {
             this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove('selected');
         }
-        this.$el.querySelector(this.pipSelector + `${newValue}"]`)!.classList.add('selected');
+        if (newValue !== null) {
+            this.$el.querySelector(this.pipSelector + `${newValue}"]`)!.classList.add('selected');
+        }
 
         if (this.internalTimeSliceChange) {
             // Flag set in 'on update' subscription, skip setting the slider again
