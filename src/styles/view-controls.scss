@@ -33,6 +33,10 @@
         }
     }
 
+    .cip-controls-wrapper {
+        visibility: visible;
+    }
+
     .b-dropdown {
         /deep/ {
             .dropdown-toggle {
@@ -262,7 +266,6 @@
     @media (min-width: 990px) {
         .cip-controls-wrapper {
             display: block !important;
-            visibility: visible !important;
         }
     }
 
