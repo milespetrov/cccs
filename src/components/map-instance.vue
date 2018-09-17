@@ -228,11 +228,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     onTimeSliceChanged(newValue: number, oldValue: number) {
         if (this.timeSliderLabels) {
             // turn off old layer
-            if (oldValue !== null) {
+            if (oldValue !== null && this.currentLayers) {
                 this.getLayerById(this.currentLayers[oldValue]).visibility = false;
             }
             // set new layer visible
-            this.getLayerById(this.currentLayers[newValue]).visibility = true;
+            if (newValue !== null && this.currentLayers) {
+                this.getLayerById(this.currentLayers[newValue]).visibility = true;
+            }
         } else if (this.dateSlider) {
             // removes the '.000' milliseconds from the string and reappends the 'Z'
             // having the milliseconds breaks the layers
