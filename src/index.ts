@@ -13,8 +13,6 @@ import { faTimes, faSlidersH, faExternalLinkAlt } from '@fortawesome/free-solid-
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import './patches';
-
 library.add(faTimes, faSlidersH, faExternalLinkAlt);
 
 Vue.use(VueRouter);
