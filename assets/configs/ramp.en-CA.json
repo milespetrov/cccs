@@ -128,7 +128,7 @@
         "tileSchemas": [
             {
                 "id": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
-                "name": "Lambert Maps",
+                "name": "Lambert maps",
                 "extentSetId": "EXT_NRCAN_Lambert_3978",
                 "lodSetId": "LOD_NRCAN_Lambert_3978",
                 "hasNorthPole": "true"
@@ -138,9 +138,9 @@
         "baseMaps": [
             {
                 "id": "baseNrCan",
-                "name": "Canada Base Map - Transportation (CBMT)",
-                "description": "The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
-                "altText": "altText - The Canada Base Map - Transportation (CBMT)",
+                "name": "Canada base map - transportation (CBMT)",
+                "description": "The Canada base map - transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
+                "altText": "Canada base map - transportation (CBMT)",
                 "layers": [
                     {
                         "id": "CBMT",
@@ -160,9 +160,9 @@
             },
             {
                 "id": "baseSimple",
-                "name": "Canada Base Map - Simple",
-                "description": "Canada Base Map - Simple",
-                "altText": "altText - Canada base map - Simple",
+                "name": "Canada base map - simple",
+                "description": "Canada base map - simple",
+                "altText": "Canada base map - simple",
                 "layers": [
                     {
                         "id": "SMR",
@@ -182,9 +182,9 @@
             },
             {
                 "id": "baseCBME_CBCE_HS_RO_3978",
-                "name": "Canada Base Map - Elevation (CBME)",
-                "description": "The Canada Base Map - Elevation (CBME) web mapping services of the Earth Sciences Sector at Natural Resources Canada, is intended primarily for online mapping application users and developers.",
-                "altText": "altText - Canada Base Map - Elevation (CBME)",
+                "name": "Canada base map - elevation (CBME)",
+                "description": "The Canada base map - elevation (CBME) web mapping services of the Earth Sciences Sector at Natural Resources Canada, is intended primarily for online mapping application users and developers.",
+                "altText": "Canada base map - elevation (CBME)",
                 "layers": [
                     {
                         "id": "CBME_CBCE_HS_RO_3978",
@@ -204,9 +204,9 @@
             },
             {
                 "id": "baseCBMT_CBCT_GEOM_3978",
-                "name": "Canada Base Map - Transportation (CBMT)",
-                "description": " The Canada Base Map - Transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
-                "altText": "altText - Canada Base Map - Transportation (CBMT)",
+                "name": "Canada base map - transportation (CBMT)",
+                "description": "The Canada base map - transportation (CBMT) web mapping services of the Earth Sciences Sector at Natural Resources Canada, are intended primarily for online mapping application users and developers.",
+                "altText": "Canada base map - transportation (CBMT)",
                 "layers": [
                     {
                         "id": "CBMT_CBCT_GEOM_3978",
