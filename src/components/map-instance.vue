@@ -348,6 +348,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.updateIdentifyMode();
             this.injectCIPMapcomponents();
             this.switchLayers();
+            this.mapBoundsChangeHandler();
 
             // subscribe to the center change stream to update the url and store with the current center point
             this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
