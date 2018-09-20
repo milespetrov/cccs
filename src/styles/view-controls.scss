@@ -236,7 +236,6 @@
             .cip-second {
                 font-size: 0.8em;
                 color: lighten(#212529, 20%);
-                white-space: normal;
             }
         }
 
@@ -276,7 +275,8 @@
             flex-direction: column;
             align-items: flex-start !important;
 
-            .cip-first {
+            .cip-first,
+            .cip-second {
                 white-space: pre-line;
             }
         }
