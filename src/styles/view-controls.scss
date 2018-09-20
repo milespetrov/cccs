@@ -275,8 +275,13 @@
             flex-direction: column;
             align-items: flex-start !important;
 
-            .cip-first {
+            .cip-first,
+            .cip-second {
                 white-space: pre-line;
+            }
+
+            .cip-name {
+                max-width: 100%;
             }
         }
     }

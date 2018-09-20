@@ -34,8 +34,7 @@
                                 <span class="cip-first">{{ $t(`${itemTPath}.${item}.fullName`) }}</span>
                                 <span 
                                     class="cip-second"
-                                    v-if="hasTranslation(`${itemTPath}.${item}.subName`)">
-                                    {{ $t(`${itemTPath}.${item}.subName`) }}</span>
+                                    v-if="hasTranslation(`${itemTPath}.${item}.subName`)">{{ $t(`${itemTPath}.${item}.subName`) }}</span>
                             </span>
                             
                             <span class="cip-qualifier">{{ $t(`${itemTPath}.${item}.qualifier`) }} </span>
@@ -59,13 +58,17 @@ export default class BaseSelectorV extends Vue {
     @Emit()
     select(value: string) {}
 
-    @Prop() config: BaseSelectorConfig;
+    @Prop()
+    config: BaseSelectorConfig;
     @Prop({ default: undefined })
     available: string[]; // an array of item ids/names which can be rendered in this selector; all other value will not be shown
-    @Prop() currentId: string;
+    @Prop()
+    currentId: string;
 
-    @Prop() tPath: string;
-    @Prop() itemTPath: string; // the translation path for the subitems in the selector (variable names, dataset names, etc.) Needed to allow different var names per dataset
+    @Prop()
+    tPath: string;
+    @Prop()
+    itemTPath: string; // the translation path for the subitems in the selector (variable names, dataset names, etc.) Needed to allow different var names per dataset
 
     /**
      * Returns a filtered set of selector groups.
