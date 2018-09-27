@@ -5,7 +5,7 @@ description,"Use the data viewer tool to view climate data on the map below. Beg
 description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l’aide, consultez le {0} ou cliquez sur l’icône « ? » dans le coin inférieur droit de la carte.",1
 description.help.helpFile,help file,1,fichier d’aide,1
 description.supportDesk,"If you have questions, {0}.",1,"Si vous avez des questions, {0}.",1
-description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec le Centre d’aide des Services climatiques.,1
+description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec le Centre d’aide des Services climatiques,1
 description.resources,"If you are looking for other datasets, {0}.",1,"Si vous cherchez d’autres ensembles de données, {0}.",1
 description.resources.link,explore the library of climate resources,1,"explorez le répertoire de ressources climatiques",1
 description.climateBasics,"For guidance understanding climate change, climate change trends and climate information, {0}.",1,"Afin d'obtenir des conseils pour comprendre les changements climatiques, les tendances des changements climatiques et l'information sur le climat, {0}.",1

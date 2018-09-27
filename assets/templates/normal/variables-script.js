@@ -55,10 +55,6 @@ function parser(data, lang) {
                     'Octobre',
                     'Novembre',
                     'Décembre',
-                    'Hiver',
-                    'Printemps',
-                    'Été',
-                    'Automne',
                     'Annuel'
                 ]
             }
