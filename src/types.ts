@@ -211,6 +211,22 @@ export interface ClimateViewerAppConfig {
     climateBasicsUrl: string;
 
     /**
+     * A url to the CCCS about page
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    aboutUrl: string;
+
+    /**
+     * A url to the CCCS display and download page
+     *
+     * @type {string}
+     * @memberof ClimateViewerAppConfig
+     */
+    displayDownloadUrl: string;
+
+    /**
      * A domain name of the main viewer page.
      *
      * @type {string}

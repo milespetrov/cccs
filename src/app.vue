@@ -33,17 +33,23 @@
                 </div>
             </aside>
 
-            <i18n path="description.supportDesk" tag="p">
-                <a :href="`${supportDeskUrl}`">{{ $t('description.supportDesk.link') }}</a>
-            </i18n>
+            <section class="panel panel-info">
+                <header class="panel-heading">
+                    <h2 class="panel-title">{{$t(`info.header`)}}</h2>
+                </header>
 
-            <i18n path="description.resources" tag="p">
-                <a :href="`${climateResourcesUrl}`">{{ $t('description.resources.link') }}</a>
-            </i18n>
-
-            <i18n path="description.climateBasics" tag="p">
-                <a :href="`${climateBasicsUrl}`">{{ $t('description.climateBasics.link') }}</a>
-            </i18n>
+                <div class="panel-body">
+                    <div class="section">
+                        <ul>
+                            <li><a :href="`${climateBasicsUrl}`">{{$t(`info.basics`)}}</a>{{$t(`info.basics.description`)}}</li>
+                            <li><a :href="`${climateResourcesUrl}`">{{$t(`info.library`)}}</a>{{$t(`info.library.description`)}}</li>
+                            <li><a :href="`${displayDownloadUrl}`">{{$t(`info.displayDownload`)}}</a>{{$t(`info.displayDownload.description`)}}</li>
+                            <li><a :href="`${supportDeskUrl}`">{{$t(`info.supportDesk`)}}</a>{{$t(`info.supportDesk.description`)}}</li>
+                            <li><a :href="`${aboutUrl}`">{{$t(`info.about`)}}</a>{{$t(`info.about.description`)}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
@@ -109,6 +115,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     supportDeskUrl: string = '';
     climateResourcesUrl: string = '';
     climateBasicsUrl: string = '';
+    aboutUrl: string = '';
+    displayDownloadUrl: string = '';
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes || !this.datasetId) {
@@ -128,6 +136,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             this.supportDeskUrl = currentLinks.supportDeskUrl;
             this.climateResourcesUrl = currentLinks.climateResourcesUrl;
             this.climateBasicsUrl = currentLinks.climateBasicsUrl;
+            this.aboutUrl = currentLinks.aboutUrl;
+            this.displayDownloadUrl = currentLinks.displayDownloadUrl;
         });
 
         await $.getJSON('assets/configs/url-suffix-config.json', data => {

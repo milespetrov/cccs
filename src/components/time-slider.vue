@@ -119,7 +119,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
     clickOnPip(event: any): void {
         // set the slider value to the clicked pip's value
         // will move the slider to that pip
-        const value = parseInt(event.path[0].getAttribute('data-value'));
+        const value = parseInt(event.target.getAttribute('data-value'));
         this.slider.noUiSlider.set(value);
         //this.slider.noUiSlider.set(value);
     }
