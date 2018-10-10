@@ -6,6 +6,8 @@
             "dataCatalogueUrl": "https://open.canada.ca/data/en/dataset",
             "climateResourcesUrl": "https://climate-change.canada.ca/climate-library",
             "climateBasicsUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics.html",
+            "aboutUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/about.html",
+            "displayDownloadUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download.html",
             "languageToggleDomain": "",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/en.html", "name": "Home" },
@@ -41,6 +43,8 @@
             "dataCatalogueUrl": "https://ouvert.canada.ca/data/fr/dataset",
             "climateResourcesUrl": "https://changements-climatiques.canada.ca/repertoire-climatique",
             "climateBasicsUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels.html",
+            "aboutUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/a-propos.html",
+            "displayDownloadUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger.html",
             "languageToggleDomain": "",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/fr.html", "name": "Accueil" },

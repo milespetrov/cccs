@@ -4,12 +4,17 @@ lang.toggle,Français,1,English,1
 description,"Use the data viewer tool to view climate data on the map below. Begin by choosing one of the available datasets. There is a detailed description of the selected dataset below the map. You can zoom to a specific geographic location or click on the data for additional information. You can specify datasets, variables and other options using the drop-down menus at the top of the map.",1,"Utilisez l'outil de visualisation de données pour afficher les données climatiques sur la carte ci-dessous. Commencez en choisissant un des ensembles de données disponibles. Une description détaillée de l'ensemble de données choisi est affichée sous la carte. Vous pouvez faire un zoom sur un endroit précis ou cliquer sur les données pour obtenir plus d'information.",1
 description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l’aide, consultez le {0} ou cliquez sur l’icône « ? » dans le coin inférieur droit de la carte.",1
 description.help.helpFile,help file,1,fichier d’aide,1
-description.supportDesk,"If you have questions, {0}.",1,"Si vous avez des questions, {0}.",1
-description.supportDesk.link,contact the Climate Services Support Desk,1,communiquez avec le Centre d’aide des Services climatiques,1
-description.resources,"If you are looking for other datasets, {0}.",1,"Si vous cherchez d’autres ensembles de données, {0}.",1
-description.resources.link,explore the library of climate resources,1,"explorez le répertoire de ressources climatiques",1
-description.climateBasics,"For guidance understanding climate change, climate change trends and climate information, {0}.",1,"Afin d'obtenir des conseils pour comprendre les changements climatiques, les tendances des changements climatiques et l'information sur le climat, {0}.",1
-description.climateBasics.link,"visit the climate information basics pages",1,consultez les pages sur les principes de base de l'information sur le climat,1
+info.header,"More resources from the Canadian Centre for Climate Services",1,"Plus de ressources du Centre canadien des services climatiques",1
+info.supportDesk.description," to get help finding, understanding and using climate information",1," pour obtenir de l’aide afin de trouver, comprendre et utiliser des renseignements climatiques.",1
+info.supportDesk,Contact the Climate Services Support Desk,1,Communiquez avec le Centre d’aide des Services climatiques,1
+info.library.description," for links to data, tools and resources",1," pour des liens vers des ensembles de données climatiques, d’outils, de conseils et de ressources connexes.",1
+info.library,Library of climate resources,1,"Répertoire de ressources climatiques",1
+info.basics.description," for guidance understanding climate change, climate change trends and climate information",1," pour des conseils sur les changements climatiques, les tendances du changement climatique et les informations climatiques.",1
+info.basics,"Climate information basics",1,"Renseignements essentiels sur le climat",1
+info.displayDownload,"Display and download climate data",1,"Afficher et télécharger les données climatiques",1
+info.displayDownload.description," to search, explore and visualize climate data",1," pour chercher, explorer et voir des données climatiques.",1
+info.about,"About the Canadian Centre for Climate Services",1,"À propos du Centre canadien des services climatiques",1
+info.about.description," for more information about the Canadian Centre for Climate Services (CCCS)",1," pour plus de renseignements à propos du Centre canadien des services climatiques (CCSC).",1
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,1
 geo.coordinates.east,E,1,E,1
 geo.coordinates.west,W,1,O,1
