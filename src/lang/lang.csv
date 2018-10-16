@@ -41,14 +41,14 @@ colourRamp.cmip5.sfcwind,Surface wind speed change,1,Variation de vitesse du ven
 colourRamp.cmip5.sit,Sea ice thickness change,1,Variation d’épaisseur de glace de mer,1
 colourRamp.cmip5.sic,Sea ice concentration change,1,Variation de concentration de la glace de mer,1
 colourRamp.cmip5.snd,Snow depth change,1,Variation d’épaisseur de neige,1
-colourRamp.dcs.tmax,Maximum temperature change,1,Variation de température maximale,1
-colourRamp.dcs.tmin,Minimum temperature change,1,Variation de température minimale,1
+colourRamp.dcs.tmax,Daily maximum temperature change,1,Variation de température maximale quotidienne,1
+colourRamp.dcs.tmin,Daily minimum temperature change,1,Variation de température minimale quotidienne,1
 colourRamp.dcs.tmean,Mean temperature change,1,Variation de température moyenne,1
 colourRamp.dcs.precip,Total precipitation change,1,Variations des précipitations totales,1
 colourRamp.cangrd.tmean,Mean temperature change,1,Variation de température moyenne,1
 colourRamp.cangrd.precip,Total precipitation change,1,Variations des précipitations totales,1
-colourRamp.capa.rdpa6,Total precipitation amount analysis,1,Analyse de la quantité totale de précipitations,1
-colourRamp.capa.rdpa24,Total precipitation amount analysis,1,Analyse de la quantité totale de précipitations,1
+colourRamp.capa.rdpa6,6 hour precipitation,1,Précipitations sur 6 heures,1
+colourRamp.capa.rdpa24,24 hour precipitation,1,Précipitations sur 24 heures,1
 settings.title,Climate viewer options,1,Options du visualiseur de données climatiques,1
 variableSelector.title,Variable,1,Variable,1
 variableSelector.header,Climate data,1,Données climatiques,1
@@ -192,11 +192,11 @@ ahccd.stations.qualifier,,1,,1
 ahccd.tmean.fullName,Mean temperature,1,Température moyenne,1
 ahccd.tmean.shortName,Mean temperature,1,Température moyenne,1
 ahccd.tmean.qualifier,,1,,1
-ahccd.tmin.fullName,Minimum temperature,1,Température minimale,1
-ahccd.tmin.shortName,Minimum temperature,1,Température minimale,1
+ahccd.tmin.fullName,Daily minimum temperature,1,Température minimale quotidienne,1
+ahccd.tmin.shortName,Daily minimum temperature,1,Température minimale quotidienne,1
 ahccd.tmin.qualifier,,1,,1
-ahccd.tmax.fullName,Maximum temperature,1,Température maximale,1
-ahccd.tmax.shortName,Maximum temperature,1,Température maximale,1
+ahccd.tmax.fullName,Daily maximum temperature,1,Température maximale quotidienne,1
+ahccd.tmax.shortName,Daily maximum temperature,1,Température maximale quotidienne,1
 ahccd.tmax.qualifier,,1,,1
 ahccd.precip.fullName,Total precipitation,1,Précipitations totales,1
 ahccd.precip.shortName,Total precipitation,1,Précipitations totales,1
@@ -257,11 +257,11 @@ units.cmip5.snd.fullName,percent,1,pourcentage,1
 dcs.tmean.fullName,Mean temperature,1,Température moyenne,1
 dcs.tmean.shortName,Mean temperature,1,Température moyenne,1
 dcs.tmean.qualifier,,1,,1
-dcs.tmin.fullName,Minimum temperature,1,Température minimale,1
-dcs.tmin.shortName,Minimum temperature,1,Température minimale,1
+dcs.tmin.fullName,Daily minimum temperature,1,Température minimale quotidienne,1
+dcs.tmin.shortName,Daily minimum temperature,1,Température minimale quotidienne,1
 dcs.tmin.qualifier,,1,,1
-dcs.tmax.fullName,Maximum temperature,1,Température maximale,1
-dcs.tmax.shortName,Maximum temperature,1,Température maximale,1
+dcs.tmax.fullName,Daily maximum temperature,1,Température maximale quotidienne,1
+dcs.tmax.shortName,Daily maximum temperature,1,Température maximale quotidienne,1
 dcs.tmax.qualifier,,1,,1
 dcs.precip.fullName,Total precipitation,1,Précipitations totales,1
 dcs.precip.shortName,Total precipitation,1,Précipitations totales,1
@@ -293,14 +293,14 @@ normal.monthly.qualifier,,1,,1
 normal.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,1
 normal.daily.shortName,Daily climate observations,1,Observations climatiques quotidiennes,1
 normal.daily.qualifier,,1,,1
-normal.tmean.fullName,Mean daily temperature,1,Température quotidienne moyenne,1
-normal.tmean.shortName,Mean daily temperature,1,Température quotidienne moyenne,1
+normal.tmean.fullName,Mean temperature,1,Température moyenne,1
+normal.tmean.shortName,Mean temperature,1,Température moyenne,1
 normal.tmean.qualifier,,1,,1
-normal.tmax.fullName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,1
-normal.tmax.shortName,Mean daily maximum temperature,1,Température maximale quotidienne moyenne,1
+normal.tmax.fullName,Daily maximum temperature,1,Température maximale quotidienne,1
+normal.tmax.shortName,Daily maximum temperature,1,Température maximale quotidienne,1
 normal.tmax.qualifier,,1,,1
-normal.tmin.fullName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,1
-normal.tmin.shortName,Mean daily minimum temperature,1,Température minimale quotidienne moyenne,1
+normal.tmin.fullName,Daily minimum temperature,1,Température minimale quotidienne,1
+normal.tmin.shortName,Daily minimum temperature,1,Température minimale quotidienne,1
 normal.tmin.qualifier,,1,,1
 normal.precip.fullName,Total precipitation,1,Précipitations totales,1
 normal.precip.shortName,Total precipitation,1,Précipitations totales,1
@@ -341,11 +341,11 @@ units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres à l'heure,1
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.qualifier,,1,,1
-capa.rdpa6.shortName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,1
-capa.rdpa6.fullName,6 hour precipitation analysis,1,Analyse des précipitations sur 6 heures,1
+capa.rdpa6.shortName,6 hour precipitation,1,Précipitations sur 6 heures,1
+capa.rdpa6.fullName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.qualifier,,1,,1
-capa.rdpa24.shortName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,1
-capa.rdpa24.fullName,24 hour precipitation analysis,1,Analyse des précipitations sur 24 heures,1
+capa.rdpa24.shortName,24 hour precipitation,1,Précipitations sur 24 heures,1
+capa.rdpa24.fullName,24 hour precipitation,1,Précipitations sur 24 heures,1
 capa.rdpa24.qualifier,,1,,1
 units.capa.rdpa6.shortName,mm,1,mm,1
 units.capa.rdpa6.fullName,millimetres,1,millimètres,1
