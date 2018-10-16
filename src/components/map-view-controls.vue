@@ -36,14 +36,15 @@
 
                         <b-dropdown-divider></b-dropdown-divider> -->
 
-                        <div role="group" aria-lableledby="map-image-export" :key="`group-a`">
+                        <!-- TODO: remove `v-if="datasetId !== 'capa'"` after upgrading to RAMP local printing; http://tfs.int.ec.gc.ca:8080/tfs/DC/CCCS_Viewer/_workitems?_a=edit&id=46168 -->
+                        <div role="group" aria-lableledby="map-image-export" :key="`group-a`" v-if="datasetId !== 'capa'">
                             <b-dropdown-header id="map-image-export">{{ $t(`${tDSPath}.mapImage_group`) }}</b-dropdown-header>
 
                             <b-dropdown-item-button @click="downloadImage('png', true)">{{ $t(`${tDSPath}.png.fullName`) }}</b-dropdown-item-button>
                             <b-dropdown-item-button @click="downloadImage('jpg', true)">{{ $t(`${tDSPath}.jpeg.fullName`) }}</b-dropdown-item-button>
                         </div>
 
-                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-divider v-if="datasetId !== 'capa'"></b-dropdown-divider>
 
                         <div role="group" aria-lableledby="map-data-export" :key="`group-b`">
                             <b-dropdown-header id="map-data-export">{{ $t(`${tDSPath}.dataset_group`) }}</b-dropdown-header>
@@ -98,13 +99,19 @@ const StateData = namespace('data', State);
     components: selectors
 })
 export default class MapViewControls extends Vue {
-    @GetterApp getControls: string[];
-    @StateApp datasetId: DatasetId;
-    @StateApp variableId: VariableId;
+    @GetterApp
+    getControls: string[];
+    @StateApp
+    datasetId: DatasetId;
+    @StateApp
+    variableId: VariableId;
 
-    @StateData urlSuffixes: object | null;
-    @StateData dataQueryUrl: string | null;
-    @StateData dataCatalogueUrl: string | null;
+    @StateData
+    urlSuffixes: object | null;
+    @StateData
+    dataQueryUrl: string | null;
+    @StateData
+    dataCatalogueUrl: string | null;
 
     showCollapse: boolean = false;
 
