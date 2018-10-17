@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=May",
-      "name": "Homogenized station pressure",
+      "name": "Station pressure",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=May",
-      "name": "Pression homogénéisée à la station",
+      "name": "Pression à la station",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,

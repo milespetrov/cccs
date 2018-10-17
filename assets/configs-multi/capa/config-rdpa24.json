@@ -91,7 +91,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "#GEOMETWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Quantity of Precipitation, 10KM resolution 24H",
+      "name": "24 hour precipitation",
       "state": {
         "opacity": 0.85,
         "visibility": true
@@ -198,7 +198,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "#GEOMETWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Quantité de précipitations, résolution de 10 km 24H",
+      "name": "Précipitations sur 24 heures",
       "state": {
         "opacity": 0.85,
         "visibility": true

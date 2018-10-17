@@ -70,7 +70,7 @@
                 "layerType": "ogcWfs",
                 "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
-                "name": "Stations",
+                "name": "AHCCD station metadata",
                 "nameField": "station_name__nom_station",
                 "state": {
                     "opacity": 1,
@@ -156,7 +156,7 @@
                 "layerType": "ogcWfs",
                 "xyInAttribs": true,
                 "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
-                "name": "Stations",
+                "name": "Métadonnées sur la station DCCAH",
                 "nameField": "station_name__nom_station",
                 "state": {
                     "opacity": 1,

@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=5&MONTH=6",
-      "name": "Mean daily maximum temperature",
+      "name": "Daily maximum temperature",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=5&MONTH=6",
-      "name": "Température maximale quotidienne moyenne",
+      "name": "Température maximale quotidienne",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,

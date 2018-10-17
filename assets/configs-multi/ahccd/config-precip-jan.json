@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Jan",
-      "name": "Adjusted total precipitation",
+      "name": "Total precipitation",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Jan",
-      "name": "Précipitations totales ajustées",
+      "name": "Précipitations totales",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,

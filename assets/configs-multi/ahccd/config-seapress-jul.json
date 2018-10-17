@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_sea_level&period__periode=Jul",
-      "name": "Homogenized sea level pressure",
+      "name": "Sea level pressure",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_sea_level&period__periode=Jul",
-      "name": "Pression homogénéisée au niveau de la mer",
+      "name": "Pression au niveau de la mer",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
