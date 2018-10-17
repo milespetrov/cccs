@@ -5,16 +5,18 @@ description,"Use the data viewer tool to view climate data on the map below. Beg
 description.help,"For help, see the {0} or click the ‘?’ icon in the bottom right corner of the map.",1,"Pour obtenir de l’aide, consultez le {0} ou cliquez sur l’icône « ? » dans le coin inférieur droit de la carte.",1
 description.help.helpFile,help file,1,fichier d’aide,1
 info.header,"More resources from the Canadian Centre for Climate Services",1,"Plus de ressources du Centre canadien des services climatiques",1
-info.supportDesk.description," to get help finding, understanding and using climate information",1," pour obtenir de l’aide afin de trouver, comprendre et utiliser des renseignements climatiques.",1
-info.supportDesk,Contact the Climate Services Support Desk,1,Communiquez avec le Centre d’aide des Services climatiques,1
-info.library.description," for links to data, tools and resources",1," pour des liens vers des ensembles de données climatiques, d’outils, de conseils et de ressources connexes.",1
-info.library,Library of climate resources,1,"Répertoire de ressources climatiques",1
-info.basics.description," for guidance understanding climate change, climate change trends and climate information",1," pour des conseils sur les changements climatiques, les tendances du changement climatique et les informations climatiques.",1
-info.basics,"Climate information basics",1,"Renseignements essentiels sur le climat",1
-info.displayDownload,"Display and download climate data",1,"Afficher et télécharger les données climatiques",1
-info.displayDownload.description," to search, explore and visualize climate data",1," pour chercher, explorer et voir des données climatiques.",1
-info.about,"About the Canadian Centre for Climate Services",1,"À propos du Centre canadien des services climatiques",1
-info.about.description," for more information about the Canadian Centre for Climate Services (CCCS)",1," pour plus de renseignements à propos du Centre canadien des services climatiques (CCSC).",1
+info.library.icon,3book-icon-tr.png,1,3book-icon-tr.png,1
+info.basics.icon,book-icon-tr.png,1,book-icon-tr.png,1
+info.supportDesk.icon,help-icon-tr.png,1,help-icon-tr.png,1
+info.display.icon,graph-icon-tr.png,1,graph-icon-tr.png,1
+info.library.title,Library of climate resources,1,Répertoire de ressources climatiques,1
+info.basics.title,Climate information basics,1,Renseignements essentiels sur le climat,1
+info.supportDesk.title,Contact the Climate Services Support Desk,1,Communiquez avec le Centre d`aide des Services climatiques,1
+info.display.title,Display and download climate data,1,Afficher et télécharger les données climatiques,1
+info.library.description,"links to datasets, tools, guidance and related resources",1,"liens vers des ensembles de données, des outils, des conseils et des ressources connexes",1
+info.basics.description,"climate change trends, climate science, climate services",1,"tendances  des changements climatiques, science climatique, services climatiques",1
+info.supportDesk.description,"1-833-517-0376; get help finding, understanding and using climate information",1,"1-833-517-0376; obtenir de l`aide afin de trouver, comprendre et utiliser des renseignements climatiques",1
+info.display.description,"search, explore and visualize climate data",1,"chercher, explorer et visualiser des données climatiques",1
 geo.attribution,© Natural Resources Canada,1,© Ressources naturelles Canada,1
 geo.coordinates.east,E,1,E,1
 geo.coordinates.west,W,1,O,1

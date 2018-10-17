@@ -40,15 +40,19 @@
 
                 <div class="panel-body">
                     <div class="section">
-                        <ul>
-                            <li><a :href="`${climateBasicsUrl}`">{{$t(`info.basics`)}}</a>{{$t(`info.basics.description`)}}</li>
-                            <li><a :href="`${climateResourcesUrl}`">{{$t(`info.library`)}}</a>{{$t(`info.library.description`)}}</li>
-                            <li><a :href="`${displayDownloadUrl}`">{{$t(`info.displayDownload`)}}</a>{{$t(`info.displayDownload.description`)}}</li>
-                            <li><a :href="`${supportDeskUrl}`">{{$t(`info.supportDesk`)}}</a>{{$t(`info.supportDesk.description`)}}</li>
-                            <li><a :href="`${aboutUrl}`">{{$t(`info.about`)}}</a>{{$t(`info.about.description`)}}</li>
+                        <ul class="list-unstyled">
+
+                            <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" v-for="item in infoItems" :key="`${item}`">
+                                <a :href="`${aboutUrls[item]}`" class="btn-default well text-left" style="display: block; text-decoration: none;">
+                                    <img :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`" alt="" width="30" height="30" class="mrgn-rght-md"><strong>{{ $t(`info.${item}.title`) }}
+                                    </strong>: {{ $t(`info.${item}.description`) }}
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
+
             </section>
 
             <div class="pagedetails">
@@ -112,11 +116,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
         this.updateRoute();
     }
 
-    supportDeskUrl: string = '';
-    climateResourcesUrl: string = '';
-    climateBasicsUrl: string = '';
-    aboutUrl: string = '';
-    displayDownloadUrl: string = '';
+    infoItems: string[] = ['library', 'basics', 'supportDesk', 'display'];
+    aboutUrls: {[name: string]: string} = {}
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes || !this.datasetId) {
@@ -133,11 +134,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             this.setDataCatalogueUrl(currentLinks.dataCatalogueUrl);
             this.setLanguageToggleDomain(currentLinks.languageToggleDomain);
             this.setBreadCrumbUrls(currentLinks.breadcrumbs);
-            this.supportDeskUrl = currentLinks.supportDeskUrl;
-            this.climateResourcesUrl = currentLinks.climateResourcesUrl;
-            this.climateBasicsUrl = currentLinks.climateBasicsUrl;
-            this.aboutUrl = currentLinks.aboutUrl;
-            this.displayDownloadUrl = currentLinks.displayDownloadUrl;
+
+            this.aboutUrls = currentLinks.aboutUrls;
         });
 
         await $.getJSON('assets/configs/url-suffix-config.json', data => {

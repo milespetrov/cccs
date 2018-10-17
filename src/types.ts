@@ -171,6 +171,44 @@ export interface AppConfig {
  */
 export interface ClimateViewerAppConfig {
     /**
+     * A collection of URLs used in the info section at the bottom of the page.
+     *
+     * @type {{
+     *         library: string;
+     *         basics: string;
+     *         supportDesk: string;
+     *         display: string;
+     *     }}
+     * @memberof ClimateViewerAppConfig
+     */
+    aboutUrls: {
+        /**
+         * A url to the climate resources page.
+         *
+         * @type {string}
+         */
+        library: string;
+        /**
+         * A url to the climate basics page.
+         *
+         * @type {string}
+         */
+        basics: string;
+        /**
+         * A url to the support desk page.
+         *
+         * @type {string}
+         */
+        supportDesk: string;
+        /**
+         * A url to the CCCS display and download page
+         *
+         * @type {string}
+         */
+        display: string;
+    };
+
+    /**
      * A url to hte query tool page.
      *
      * @type {string}
@@ -179,52 +217,12 @@ export interface ClimateViewerAppConfig {
     queryToolUrl: string;
 
     /**
-     * A url to the support desk page.
-     *
-     * @type {string}
-     * @memberof ClimateViewerAppConfig
-     */
-    supportDeskUrl: string;
-
-    /**
      * A url to the data catalogue page.
      *
      * @type {string}
      * @memberof ClimateViewerAppConfig
      */
     dataCatalogueUrl: string;
-
-    /**
-     * A url to the climate resources page.
-     *
-     * @type {string}
-     * @memberof ClimateViewerAppConfig
-     */
-    climateResourcesUrl: string;
-
-    /**
-     * A url to the climate basics page.
-     *
-     * @type {string}
-     * @memberof ClimateViewerAppConfig
-     */
-    climateBasicsUrl: string;
-
-    /**
-     * A url to the CCCS about page
-     *
-     * @type {string}
-     * @memberof ClimateViewerAppConfig
-     */
-    aboutUrl: string;
-
-    /**
-     * A url to the CCCS display and download page
-     *
-     * @type {string}
-     * @memberof ClimateViewerAppConfig
-     */
-    displayDownloadUrl: string;
 
     /**
      * A domain name of the main viewer page.
