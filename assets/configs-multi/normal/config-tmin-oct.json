@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=8&MONTH=10",
-      "name": "Mean daily minimum temperature",
+      "name": "Daily minimum temperature",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=8&MONTH=10",
-      "name": "Température minimale quotidienne moyenne",
+      "name": "Température minimale quotidienne",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,

@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=8",
-      "name": "Mean daily temperature",
+      "name": "Mean temperature",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=1&MONTH=8",
-      "name": "Température quotidienne moyenne",
+      "name": "Température moyenne",
       "nameField": "STN_ID",
       "state": {
         "opacity": 1,

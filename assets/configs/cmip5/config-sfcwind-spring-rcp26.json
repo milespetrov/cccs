@@ -136,7 +136,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Wind speed",
+      "name": "Surface wind speed",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -154,7 +154,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Wind speed",
+      "name": "Surface wind speed",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -172,7 +172,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Wind speed",
+      "name": "Surface wind speed",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -190,7 +190,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Wind speed",
+      "name": "Surface wind speed",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -342,7 +342,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Vitesse du vent",
+      "name": "Vitesse du vent à la surface",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -360,7 +360,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Vitesse du vent",
+      "name": "Vitesse du vent à la surface",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -378,7 +378,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Vitesse du vent",
+      "name": "Vitesse du vent à la surface",
       "state": {
         "opacity": 0.85,
         "visibility": false
@@ -396,7 +396,7 @@
       "layerType": "ogcWms",
       "suppressGetCapabilities": true,
       "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Vitesse du vent",
+      "name": "Vitesse du vent à la surface",
       "state": {
         "opacity": 0.85,
         "visibility": false

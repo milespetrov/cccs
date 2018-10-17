@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_max&period__periode=Ann",
-      "name": "Homogenized maximum temperature",
+      "name": "Daily maximum temperature",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_max&period__periode=Ann",
-      "name": "Température maximale homogénéisée",
+      "name": "Température maximale quotidienne",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,

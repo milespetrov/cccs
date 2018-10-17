@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Sep",
-      "name": "Homogenized minimum temperature",
+      "name": "Daily minimum temperature",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Sep",
-      "name": "Température minimale homogénéisée",
+      "name": "Température minimale quotidienne",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,

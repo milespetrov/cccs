@@ -73,7 +73,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Apr",
-      "name": "Homogenized mean temperature",
+      "name": "Mean temperature",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
@@ -162,7 +162,7 @@
       "layerType": "ogcWfs",
       "xyInAttribs": true,
       "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Apr",
-      "name": "Température moyenne homogénéisée",
+      "name": "Température moyenne",
       "nameField": "station_name__nom_station",
       "state": {
         "opacity": 1,
