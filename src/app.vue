@@ -44,8 +44,7 @@
 
                             <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" v-for="item in infoItems" :key="`${item}`">
                                 <a :href="`${aboutUrls[item]}`" class="btn-default well text-left" style="display: block; text-decoration: none;">
-                                    <img :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`" alt="" width="30" height="30" class="mrgn-rght-md"><strong>{{ $t(`info.${item}.title`) }}
-                                    </strong>: {{ $t(`info.${item}.description`) }}
+                                    <img :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`" alt="" width="30" height="30" class="mrgn-rght-md"><strong>{{ $t(`info.${item}.title`) }}</strong>: {{ $t(`info.${item}.description`) }}
                                 </a>
                             </li>
 
@@ -117,7 +116,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     }
 
     infoItems: string[] = ['library', 'basics', 'supportDesk', 'display'];
-    aboutUrls: {[name: string]: string} = {}
+    aboutUrls: { [name: string]: string } = {};
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes || !this.datasetId) {
