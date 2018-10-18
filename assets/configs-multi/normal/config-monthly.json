@@ -160,7 +160,7 @@
                 "layerType": "ogcWfs",
                 "xyInAttribs": true,
                 "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
-                "name": "Résumés mensuels des observation climatiques",
+                "name": "Sommaires des observations climatiques mensuelles",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
