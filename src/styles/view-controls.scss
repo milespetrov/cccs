@@ -360,9 +360,17 @@
         }
     }
 
-    @media (min-width: 991px) and (max-width: 1199px) {
+    @media (min-width: 991px) {
         .cip-controls {
             .menu-option {
+                -ms-flex-preferred-size: 100%;
+            }
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .cip-controls {
+            .separator {
                 -ms-flex-preferred-size: 100%;
             }
         }
