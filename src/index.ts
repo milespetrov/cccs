@@ -48,6 +48,7 @@ new Vue({
 
 new Vue({
     el: '#lng',
+    router,
     store,
     i18n,
     render: h => h('languageToggle'),
