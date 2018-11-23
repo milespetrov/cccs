@@ -48,7 +48,7 @@ const dcsDataset: DatasetSource = {
             '#6E0028',
             '#6E0045'
         ],
-        defaultLabels: ['-2.5', '13'],
+        defaultLabels: ['<= -2.5', '>= 13'],
         variables: {
             [VariableId.Precipitation]: {
                 colours: [
@@ -74,7 +74,7 @@ const dcsDataset: DatasetSource = {
                     '#1B4869',
                     '#133A59'
                 ],
-                labels: ['-100', '100']
+                labels: ['<= -100', '>= 100']
             }
         }
     },

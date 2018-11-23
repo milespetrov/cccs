@@ -15,7 +15,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 @Component
 export default class MapColourRamp extends Vue {
-    @Prop({ default: ['-100', '100'] })
+    @Prop({ default: ['<= -100', '>= 100'] })
     labels: [string, string];
 
     @Prop({
@@ -88,5 +88,3 @@ export default class MapColourRamp extends Vue {
     }
 }
 </style>
-
-
