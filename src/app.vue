@@ -19,9 +19,7 @@
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
 
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-                <i18n v-if="datasetId !== 'normal'"  :path="`map.${datasetId}_desc`" tag="p">
-                    <a :href="`${dataQueryUrl}${queryToolRoute}`">{{ $t(`map.extractTool`) }}</a>
-                </i18n>
+                <p v-if="datasetId !== 'normal'">{{$t(`map.${datasetId}_desc`)}}</p>
 
                 <div v-else>
                     <h2>{{$t(`normal.stations.fullName`)}}</h2>

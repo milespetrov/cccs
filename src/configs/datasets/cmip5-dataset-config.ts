@@ -39,7 +39,7 @@ const cimp5Dataset: DatasetSource = {
     // colour ramps are the same for ice thickness and snow depth, so it's set as the default to avoid duplication
     colourRamp: {
         defaultColours: ['#66001F', '#D65F4D', '#FFFFFF', '#4291C2', '#053061'],
-        defaultLabels: ['-100', '100'],
+        defaultLabels: ['<= -100', '>= 100'],
         variables: {
             [VariableId.Precipitation]: {
                 colours: [
@@ -65,7 +65,7 @@ const cimp5Dataset: DatasetSource = {
                     '#1B4869',
                     '#133A59'
                 ],
-                labels: ['-100', '100']
+                labels: ['<= -100', '>= 100']
             },
             [VariableId.TMean]: {
                 colours: [
@@ -90,15 +90,15 @@ const cimp5Dataset: DatasetSource = {
                     '#6E0028',
                     '#6E0045'
                 ],
-                labels: ['-2.5', '13']
+                labels: ['<= -2.5', '>= 13']
             },
             [VariableId.SurfaceWind]: {
                 colours: ['#053061', '#4291C2', '#FFFFFF', '#D65F4D', '#66001F'],
-                labels: ['-30', '30']
+                labels: ['<= -30', '>= 30']
             },
             [VariableId.IceConcentration]: {
                 colours: ['#66001F', '#D65F4D', '#FFFFFF', '#4291C2', '#053061'],
-                labels: ['-40', '40']
+                labels: ['<= -40', '>= 40']
             }
         }
     },

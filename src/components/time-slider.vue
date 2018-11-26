@@ -98,6 +98,10 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 
     @Watch('timeSlice')
     onTimeSliceChange(newValue: number, oldValue: number): void {
+        if (!this.timeSliderLabels) {
+            return;
+        }
+
         // Update the selected css class on the old and new selections
         if (oldValue !== null) {
             this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove('selected');
