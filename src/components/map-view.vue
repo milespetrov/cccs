@@ -2,7 +2,7 @@
     <div class="cip-map-view">
 
         <div class="cip-strip cip-backdrop-map">
-            <map-instance :key="`instance-${reloadKey}`"></map-instance>
+            <map-instance :key="`instance-${reloadKey}`" :map-counter="`${reloadKey}`"></map-instance>
         </div>
 
     </div>
@@ -28,9 +28,9 @@ export default class MapView extends Vue {
     @StateApp('variableId') variableId: VariableId;
 
     /**
-     * The table component will be force-reloaded on the `reloadKey` change.
+     * The map component will be force-reloaded on the `reloadKey` change.
      */
-    reloadKey: string = '';
+    reloadKey: number = 0;
 
     @Watch('datasetId')
     onDatasetChange(newValue: string) {
@@ -42,7 +42,7 @@ export default class MapView extends Vue {
             'WT.ti',
             `${newValue} selected with ${this.variableId}.`
         );
-        this.reloadKey = this.datasetId;
+        this.reloadKey += 1;
     }
 }
 </script>
