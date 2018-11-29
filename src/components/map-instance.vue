@@ -1,6 +1,6 @@
 <template>
 
-    <div id="cip-map-anchor" :class="datasetId"></div>
+    <div :id="`cip-map-anchor-${mapCounter}`" :class="datasetId" class="cip-map-anchor"></div>
 
 </template>
 
@@ -60,7 +60,7 @@ const ActionApp = namespace('app', Action);
 @Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
     get anchor(): HTMLElement {
-        return document.getElementById('cip-map-anchor')!;
+        return document.getElementById(`cip-map-anchor-${this.mapCounter}`)!;
     }
 
     @StateApp('variableId')
@@ -103,6 +103,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     datasetApi: DatasetApi;
     @GetterApp
     dateSlider: any;
+
+    @Prop()
+    mapCounter: string;
 
     // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
     counter = 0;
@@ -602,7 +605,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 <style lang="scss" scoped>
 @import './../styles/variables.scss';
 
-#cip-map-anchor /deep/ {
+.cip-map-anchor /deep/ {
     /* right: 0;
     left: 0;
     width: 100%; */
@@ -618,7 +621,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 }
 
 // specific CMIP5 styles to handle grid cell highlighting
-#cip-map-anchor.cmip5 /deep/ {
+.cip-map-anchor.cmip5 /deep/ {
     .rv-map-highlight .esriMapLayers {
         > div:not(:first-child),
         > svg > g:not([id='rv_hilight_layer']) {
