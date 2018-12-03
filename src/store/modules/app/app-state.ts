@@ -12,6 +12,11 @@ export interface AppState {
     zoomLevel: string | null;
     timeSlice: number | null;
     analysisPeriod: string | null;
+    layerVisibility: {
+        cities: boolean | null;
+        labels: boolean | null;
+        provinces: boolean | null;
+    };
 
     internalRouteUpdate: boolean;
 }

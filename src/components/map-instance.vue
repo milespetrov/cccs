@@ -1,7 +1,5 @@
 <template>
-
     <div :id="`cip-map-anchor-${mapCounter}`" :class="datasetId" class="cip-map-anchor"></div>
-
 </template>
 
 <script lang="ts">
@@ -53,6 +51,7 @@ export interface IdentifySession {
 }
 
 const centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
+const deactivateLayers: Subject<boolean> = new Subject<boolean>();
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
 const ActionApp = namespace('app', Action);
@@ -84,6 +83,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     analysisPeriod: string;
     // @StateApp featurePoint: MapPoint;
 
+    @StateApp
+    layerVisibility: {
+        cities: boolean | null;
+        labels: boolean | null;
+        provinces: boolean | null;
+    }
+
     //@ActionApp setFeatureId: (value: string | null) => void;
     @ActionApp
     setCenterPoint: (value: { x: number; y: number }) => void;
@@ -92,6 +98,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     setZoomLevel: (value: number) => void;
     @ActionApp
     setTileInfo: (value: number[] | null) => void;
+    @ActionApp
+    setLayerVisibility: (args: {layerId: string, value: boolean}) => void;
 
     @GetterApp
     timeSliderLabels: string[] | undefined;
@@ -176,6 +184,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         if (this._mapi.layers.allLayers.length > 0) {
+            this.stopLayerSubscriptions();
             // .slice() to clone the array, otherwise indices will be skipped
             this._mapi.layers.allLayers.slice().forEach((layer: any) => {
                 this._mapi.layers.removeLayer(layer.id);
@@ -203,9 +212,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         });
 
         source.supportLayers.slice().forEach((layer: any, index: number) => {
+            // apply visibility to reference layers if stored
+            if (this.layerVisibility[layer.id] !== null) {
+                layer.state.visibility = this.layerVisibility[layer.id];
+            } else {
+                this.setLayerVisibility({ layerId: layer.id, value: layer.state.visibility});
+            }
+
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
+            const originalId: string = layer.id;
             layer.id += `_${this.counter}`;
-            this._mapi.layers.addLayer(layer);
+            this._mapi.layers.addLayer(layer).then((addedLayers: any) => {
+                // track the visibility of reference layers
+                addedLayers[0].visibilityChanged.pipe(takeUntil(deactivateLayers)).subscribe((value: boolean) => {
+                    this.setLayerVisibility({layerId: originalId, value});
+                })
+            });
         });
 
         // TODO: update legend settings layers and link them to actual reference layers
@@ -514,6 +536,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.deactivate.unsubscribe();
     }
 
+    stopLayerSubscriptions(): void {
+        deactivateLayers.next(true);
+    }
+
     /* removeGridHighlight(): void {
         // TODO: AHCCD must be handled differently, it does not use geometry drawing
         // remove any geometry drawn on the map
@@ -603,7 +629,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/variables.scss';
+@import "./../styles/variables.scss";
 
 .cip-map-anchor /deep/ {
     /* right: 0;
@@ -624,12 +650,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 .cip-map-anchor.cmip5 /deep/ {
     .rv-map-highlight .esriMapLayers {
         > div:not(:first-child),
-        > svg > g:not([id='rv_hilight_layer']) {
+        > svg > g:not([id="rv_hilight_layer"]) {
             // do not change opacity of data layers
             opacity: inherit !important;
         }
 
-        div[id$='cmip5_grid'] {
+        div[id$="cmip5_grid"] {
             // keep the grid layer fully transparent
             opacity: 0 !important;
         }
