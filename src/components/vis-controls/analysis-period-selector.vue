@@ -54,6 +54,7 @@ export default class AnalysisPeriodSelector extends mixins(UpdateRouteMixin) {
     }
 
     select(value: AnalysisPeriodType) {
+        $('rv-details rv-details-header .rv-close').click(); // close the details panel
         this.setAnalysisPeriod(value);
         this.updateRoute();
     }

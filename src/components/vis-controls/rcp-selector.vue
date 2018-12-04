@@ -1,14 +1,12 @@
 <template>
-
     <base-selector
         :config="config"
         :available="available"
         :currentId="rcpId"
         tPath="rcpSelector"
         itemTPath="rcpSelector"
-        @select="select">
-    </base-selector>
-
+        @select="select"
+    ></base-selector>
 </template>
 
 <script lang="ts">
@@ -54,6 +52,7 @@ export default class RcpSelector extends mixins(UpdateRouteMixin) {
     }
 
     select(value: RCPType) {
+        $('rv-details rv-details-header .rv-close').click(); // close the details panel
         this.setRcpId(value);
         this.updateRoute();
     }
