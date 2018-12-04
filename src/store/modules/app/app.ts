@@ -7,6 +7,7 @@ import { datasets, DatasetViewSource, ColourRamp } from '@/configs/datasets';
 import { defaultSelectors } from '@/configs/selectors';
 import { VisualizationControlType, DatasetId } from '@/types';
 import { DatasetApi, datasetApis } from '@/api';
+import { layer } from '@fortawesome/fontawesome-svg-core';
 
 type AppContext = ActionContext<AppState, RootState>;
 
@@ -22,6 +23,11 @@ const state: AppState = {
     zoomLevel: null,
     timeSlice: null,
     analysisPeriod: null,
+    layerVisibility: {
+        cities: null,
+        labels: null,
+        provinces: null
+    },
 
     // Does not belong
     internalRouteUpdate: false
@@ -41,7 +47,8 @@ enum Action {
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
     setZoomLevel = 'setZoomLevel',
-    setAnalysisPeriod = 'setAnalysisPeriod'
+    setAnalysisPeriod = 'setAnalysisPeriod',
+    setLayerVisibility = 'setLayerVisibility'
 }
 
 enum Mutation {
@@ -56,7 +63,8 @@ enum Mutation {
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
     SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL',
-    SET_ANALYSIS_PERIOD = 'SET_ANALYSIS_PERIOD'
+    SET_ANALYSIS_PERIOD = 'SET_ANALYSIS_PERIOD',
+    SET_LAYER_VISIBILITY = 'SET_LAYER_VISIBILITY'
 }
 
 // getters
@@ -312,6 +320,14 @@ const actions = {
         context.commit(Mutation.SET_ANALYSIS_PERIOD, value);
     },
 
+    [Action.setLayerVisibility](context: AppContext, args: { layerId: string; value: boolean }): void {
+        if (typeof state.layerVisibility === 'undefined') {
+            return;
+        }
+
+        context.commit(Mutation.SET_LAYER_VISIBILITY, args);
+    },
+
     [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
         context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
     }
@@ -361,6 +377,10 @@ const mutations = {
 
     [Mutation.SET_ANALYSIS_PERIOD](state: AppState, value: string | null): void {
         state.analysisPeriod = value;
+    },
+
+    [Mutation.SET_LAYER_VISIBILITY](state: AppState, args: { layerId: string; value: boolean }): void {
+        state.layerVisibility[args.layerId] = args.value;
     },
 
     [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {

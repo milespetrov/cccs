@@ -1,12 +1,10 @@
 <template>
     <div class="colour-ramp">
-
-        <span class="range-label range-left">{{ labels[0] }}</span>
+        <span class="range-label range-left">&le; {{ labels[0] }}</span>
 
         <div class="colours" :style="{ background: backgroundGradient }"></div>
 
-        <span class="range-label range-right">{{ labels[1] }}</span>
-
+        <span class="range-label range-right">&ge; {{ labels[1] }}</span>
     </div>
 </template>
 
@@ -15,7 +13,7 @@ import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
 @Component
 export default class MapColourRamp extends Vue {
-    @Prop({ default: ['<= -100', '>= 100'] })
+    @Prop({ default: ['-100', '100'] })
     labels: [string, string];
 
     @Prop({
