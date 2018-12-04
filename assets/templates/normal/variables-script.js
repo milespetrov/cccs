@@ -34,7 +34,7 @@ function parser(data, lang) {
             station_name: 'Nom de la station du SMC',
             climate_value: 'Valeur climatique',
             measurement_type: 'Type de mesure',
-            normal_period: 'Prmière et dernière années de la période pour les normales',
+            normal_period: 'Première et dernière années de la période pour les normales',
             period: 'Début et fin de la période',
             obs_count: "Nombre total d'observations",
             obs_percent: "Pourcentage d'observations possibles",

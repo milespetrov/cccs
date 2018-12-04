@@ -15,7 +15,7 @@ function parser(data, lang) {
                 tmin: 'minimum temperature change',
                 tmax: 'maximum temperature change',
                 precip: 'total precipitation change',
-                link: 'http://climate-scenarios.canada.ca/?page=downscaling'
+                link: 'http://climate-scenarios.canada.ca/?page=statistical-downscaling'
             }
         },
 
@@ -35,7 +35,7 @@ function parser(data, lang) {
                 tmin: 'variations de la température minimale ',
                 tmax: 'variations de la température maximale',
                 precip: 'variations des précipitations moyennes',
-                link: 'http://scenarios-climatiques.canada.ca/index.php?page=downscaling'
+                link: 'http://scenarios-climatiques.canada.ca/index.php?page=statistical-downscaling'
             }
         }
     };
