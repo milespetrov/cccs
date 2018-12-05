@@ -83,6 +83,22 @@
         "template": "assets/templates/hydro/stations-template.html",
         "parser": "assets/templates/hydro/stations-script.js"
       },
+      "table": {
+        "columns": [
+          { "data": "OBJECTID", "visible": false },
+          { "data": "rvInternalCoordX", "visible": false },
+          { "data": "rvInternalCoordY", "visible": false },
+          { "data": "CONTRIBUTOR_FR", "visible": false },
+          { "data": "STATUS_EN", "title": "Status", "visible": true },
+          { "data": "STATION_NUMBER", "title": "Station Number", "visible": true },
+          { "data": "CONTRIBUTOR_EN", "title": "Contributor", "visible": true },
+          { "data": "VERTICAL_DATUM", "title": "Vertical Datum", "visible": true },
+          { "data": "STATUS_FR", "visible": false },
+          { "data": "STATION_NAME", "title": "Station Name", "visible": true },
+          { "data": "IDENTIFIER", "visible": false },
+          { "data": "PROV_TERR_STATE_LOC", "title": "Province / Territory", "visible": true }
+        ]
+      },
       "colour": "#0cb8f0",
       "controls": ["data", "visibility", "opacity"]
     }
@@ -171,6 +187,22 @@
       "details": {
         "template": "assets/templates/hydro/stations-template.html",
         "parser": "assets/templates/hydro/stations-script.js"
+      },
+      "table": {
+        "columns": [
+          { "data": "OBJECTID", "visible": false },
+          { "data": "rvInternalCoordX", "visible": false },
+          { "data": "rvInternalCoordY", "visible": false },
+          { "data": "CONTRIBUTOR_FR", "title": "Contributeur", "visible": true },
+          { "data": "STATUS_EN", "visible": false },
+          { "data": "STATION_NUMBER", "title": "Numéro de la station", "visible": true },
+          { "data": "CONTRIBUTOR_EN", "visible": false },
+          { "data": "VERTICAL_DATUM", "title": "Plan de référence altimétrique", "visible": true },
+          { "data": "STATUS_FR", "title": "Statut", "visible": true },
+          { "data": "STATION_NAME", "title": "Nom de la station", "visible": true },
+          { "data": "IDENTIFIER", "visible": false },
+          { "data": "PROV_TERR_STATE_LOC", "title": "Province / Territoire", "visible": true }
+        ]
       },
       "colour": "#0cb8f0",
       "controls": ["data", "visibility", "opacity"]

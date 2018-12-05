@@ -82,6 +82,36 @@
                     "template": "assets/templates/normal/stations-template.html",
                     "parser": "assets/templates/normal/stations-script.js"
                 },
+                "table": {
+                    "columns": [
+                      { "data": "OBJECTID", "visible": false },
+                      { "data": "rvInternalCoordX", "visible": false },
+                      { "data": "rvInternalCoordY", "visible": false },
+                      { "data": "NORMAL_CODE", "title": "Normal code", "visible": true },
+                      { "data": "FRE_STN_OPERATOR_ACRONYM", "visible": false },
+                      { "data": "COUNTRY", "visible": false },
+                      { "data": "WMO_IDENTIFIER", "title": "WMO identifier", "visible": true },
+                      { "data": "CLIMATE_IDENTIFIER", "title": "Climate identifier", "visible": true },
+                      { "data": "HAS_MONTHLY_SUMMARY", "visible": false },
+                      { "data": "TIMEZONE", "title": "Time zone", "visible": true },
+                      { "data": "PROV_STATE_TERR_CODE", "title": "Province / Territory", "visible": true },
+                      { "data": "PUBLICATION_CODE", "visible": false },
+                      { "data": "HAS_NORMALS_DATA", "visible": false },
+                      { "data": "ENG_PROV_NAME", "visible": false },
+                      { "data": "FRE_PROV_NAME", "visible": false },
+                      { "data": "STATION_NAME", "title": "Station name", "visible": true },
+                      { "data": "STATION_TYPE", "title": "Station type", "visible": true },
+                      { "data": "ENG_STN_OPERATOR_NAME", "title": "Station operator", "visible": true },
+                      { "data": "ENG_STN_OPERATOR_ACRONYM", "visible": false },
+                      { "data": "LONGITUDE", "title": "Longitude", "visible": true },
+                      { "data": "ELEVATION", "title": "Elevation", "visible": true },
+                      { "data": "TC_IDENTIFIER", "title": "Transport Canada identifier", "visible": true },
+                      { "data": "FRE_STN_OPERATOR_NAME", "visible": false },
+                      { "data": "LATITUDE", "title": "Latitude", "visible": true },          
+                      { "data": "STN_ID", "title": "MSC station ID", "visible": true },
+                      { "data": "DISPLAY_CODE", "visible": false }
+                    ]
+                  },
                 "colour": "#0ca7f5",
                 "controls": ["data", "visibility", "opacity"]
             }
@@ -170,6 +200,36 @@
                     "template": "assets/templates/normal/stations-template.html",
                     "parser": "assets/templates/normal/stations-script.js"
                 },
+                "table": {
+                    "columns": [
+                      { "data": "OBJECTID", "visible": false },
+                      { "data": "rvInternalCoordX", "visible": false },
+                      { "data": "rvInternalCoordY", "visible": false },
+                      { "data": "NORMAL_CODE", "title": "Code de la normale", "visible": true },
+                      { "data": "FRE_STN_OPERATOR_ACRONYM", "visible": false },
+                      { "data": "COUNTRY", "visible": false },
+                      { "data": "WMO_IDENTIFIER", "title": "Identifiant de l'OMM", "visible": true },
+                      { "data": "CLIMATE_IDENTIFIER", "title": "Identifiant climatique", "visible": true },
+                      { "data": "HAS_MONTHLY_SUMMARY", "visible": false },
+                      { "data": "TIMEZONE", "title": "Fuseau horaire", "visible": true },
+                      { "data": "PROV_STATE_TERR_CODE", "title": "Province / Territoire", "visible": true },
+                      { "data": "PUBLICATION_CODE", "visible": false },
+                      { "data": "HAS_NORMALS_DATA", "visible": false },
+                      { "data": "ENG_PROV_NAME", "visible": false },
+                      { "data": "FRE_PROV_NAME", "visible": false },
+                      { "data": "STATION_NAME", "title": "Nom de la station", "visible": true },
+                      { "data": "STATION_TYPE", "title": "Type de station", "visible": true },
+                      { "data": "ENG_STN_OPERATOR_NAME", "visible": false },
+                      { "data": "ENG_STN_OPERATOR_ACRONYM", "visible": false },
+                      { "data": "LONGITUDE", "title": "Longitude", "visible": true },
+                      { "data": "ELEVATION", "title": "Altitude", "visible": true },
+                      { "data": "TC_IDENTIFIER", "title": "Identifiant de Transports Canada", "visible": true },
+                      { "data": "FRE_STN_OPERATOR_NAME", "title": "Opérateur de la station", "visible": true },
+                      { "data": "LATITUDE", "title": "Latitude", "visible": true },          
+                      { "data": "STN_ID", "title": "Numéro de la station du SMC", "visible": true },
+                      { "data": "DISPLAY_CODE", "visible": false }
+                    ]
+                  },
                 "colour": "#0ca7f5",
                 "controls": ["data", "visibility", "opacity"]
             }
