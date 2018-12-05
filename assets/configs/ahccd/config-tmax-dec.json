@@ -83,6 +83,23 @@
         "template": "assets/templates/ahccd/variables-template.html",
         "parser": "assets/templates/ahccd/variables-script.js"
       },
+      "table": {
+        "columns": [
+          { "data": "OBJECTID", "visible": false },
+          { "data": "rvInternalCoordX", "visible": false },
+          { "data": "rvInternalCoordY", "visible": false },
+          { "data": "station_id__id_station", "title": "AHCCD station ID", "visible": true },
+          { "data": "elevation__elevation", "title": "Elevation", "visible": true },
+          { "data": "identifier__identifiant", "title": "Identifier", "visible": true },
+          { "data": "station_name__nom_station", "title": "Station name", "visible": true },
+          { "data": "province__province", "title": "Province/Territory", "visible": true },
+          { "data": "year_range__annees", "title": "Year range", "visible": true },
+          { "data": "period__periode", "title": "Period", "visible": true },
+          { "data": "measurement_type__type_mesure", "title": "Measurement type", "visible": true },
+          { "data": "joined__rejoint", "title": "Joined", "visible": true },
+          { "data": "trend_value__valeur_tendance", "title": "Trend value", "visible": true }
+        ]
+      },
       "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
     }
@@ -171,6 +188,23 @@
       "details": {
         "template": "assets/templates/ahccd/variables-template.html",
         "parser": "assets/templates/ahccd/variables-script.js"
+      },
+      "table": {
+        "columns": [
+          { "data": "OBJECTID", "visible": false },
+          { "data": "rvInternalCoordX", "visible": false },
+          { "data": "rvInternalCoordY", "visible": false },
+          { "data": "station_id__id_station", "title": "Numéro de la station DCCAH", "visible": true },
+          { "data": "elevation__elevation", "title": "Altitude", "visible": true },
+          { "data": "identifier__identifiant", "title": "Identifiant", "visible": true },
+          { "data": "station_name__nom_station", "title": "Nom station", "visible": true },
+          { "data": "province__province", "title": "Province / Territoire", "visible": true },
+          { "data": "year_range__annees", "title": "Annees", "visible": true },
+          { "data": "period__periode", "title": "Periode", "visible": true },
+          { "data": "measurement_type__type_mesure", "title": "Type mesure", "visible": true },
+          { "data": "joined__rejoint", "title": "Rejoint", "visible": true },
+          { "data": "trend_value__valeur_tendance", "title": "Valeur tendance", "visible": true }
+        ]
       },
       "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]

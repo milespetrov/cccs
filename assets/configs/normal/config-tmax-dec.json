@@ -83,6 +83,39 @@
         "template": "assets/templates/normal/variables-template.html",
         "parser": "assets/templates/normal/variables-script.js"
       },
+      "table": {
+        "columns": [
+          { "data": "OBJECTID", "visible": false },
+          { "data": "rvInternalCoordX", "visible": false },
+          { "data": "rvInternalCoordY", "visible": false },
+          { "data": "NORMAL_CODE", "title": "Normal code", "visible": true },
+          { "data": "OCCURRENCE_COUNT", "visible": false },
+          { "data": "FIRST_YEAR", "visible": false },
+          { "data": "PERIOD_END", "title": "Period end", "visible": true },
+          { "data": "PERCENT_OF_POSSIBLE_OBS", "title": "Percentage of possible observations", "visible": true },
+          { "data": "PERIOD_BEGIN", "title": "Period beginning", "visible": true },
+          { "data": "LAST_YEAR_NORMAL_PERIOD", "title": "Last year of normal period", "visible": true },
+          { "data": "PROVINCE_CODE", "title": "Province / Territory", "visible": true },
+          { "data": "PUBLICATION_CODE", "visible": false },
+          { "data": "FIRST_YEAR_NORMAL_PERIOD", "title": "First year of normal period", "visible": true },
+          { "data": "MAX_DURATION_MISSING_YEARS", "visible": false },
+          { "data": "STATION_NAME", "title": "MSC station name", "visible": true },
+          { "data": "CURRENT_FLAG", "visible": false },
+          { "data": "LAST_YEAR", "visible": false },
+          { "data": "DATE_CALCULATED", "title": "Date calculated", "visible": true },
+          { "data": "FRE_PUB_NAME", "visible": false },
+          { "data": "TOTAL_OBS_COUNT", "title": "Total observations count", "visible": true },
+          { "data": "PERIOD", "visible": false },
+          { "data": "VALUE", "title": "Climate value", "visible": true },
+          { "data": "STN_ID", "visible": false },
+          { "data": "NORMAL_ID", "visible": false },
+          { "data": "ID", "visible": false },
+          { "data": "FIRST_OCCURRENCE_DATE", "visible": false },
+          { "data": "MONTH", "title": "Month", "visible": true },
+          { "data": "YEAR_COUNT_NORMAL_PERIOD", "visible": false },
+          { "data": "ENG_PUB_NAME", "title": "Measurement type", "visible": true }
+        ]
+      },
       "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
     }
@@ -171,6 +204,39 @@
       "details": {
         "template": "assets/templates/normal/variables-template.html",
         "parser": "assets/templates/normal/variables-script.js"
+      },
+      "table": {
+        "columns": [
+          { "data": "OBJECTID", "visible": false },
+          { "data": "rvInternalCoordX", "visible": false },
+          { "data": "rvInternalCoordY", "visible": false },
+          { "data": "NORMAL_CODE", "title": "Code de la normale", "visible": true },
+          { "data": "OCCURRENCE_COUNT", "visible": false },
+          { "data": "FIRST_YEAR", "visible": false },
+          { "data": "PERIOD_END", "title": "Fin de la période", "visible": true },
+          { "data": "PERCENT_OF_POSSIBLE_OBS", "title": "Pourcentage d'observations possibles", "visible": true },
+          { "data": "PERIOD_BEGIN", "title": "Début de la période", "visible": true },
+          { "data": "LAST_YEAR_NORMAL_PERIOD", "title": "Dernière année de la période pour les normales", "visible": true },
+          { "data": "PROVINCE_CODE", "title": "Province / Territoire", "visible": true },
+          { "data": "PUBLICATION_CODE", "visible": false },
+          { "data": "FIRST_YEAR_NORMAL_PERIOD", "title": "Première année de la période pour les normales", "visible": true },
+          { "data": "MAX_DURATION_MISSING_YEARS", "visible": false },
+          { "data": "STATION_NAME", "title": "Nom de la station du SMC", "visible": true },
+          { "data": "CURRENT_FLAG", "visible": false },
+          { "data": "LAST_YEAR", "visible": false },
+          { "data": "DATE_CALCULATED", "title": "Date du calcul", "visible": true },
+          { "data": "FRE_PUB_NAME", "title": "Type de mesure", "visible": true },
+          { "data": "TOTAL_OBS_COUNT", "title": "Nombre total d'observations", "visible": true },
+          { "data": "PERIOD", "visible": false },
+          { "data": "VALUE", "title": "Valeur climatique", "visible": true },
+          { "data": "STN_ID", "visible": false },
+          { "data": "NORMAL_ID", "visible": false },
+          { "data": "ID", "visible": false },
+          { "data": "FIRST_OCCURRENCE_DATE", "visible": false },
+          { "data": "MONTH", "title": "Mois", "visible": true },
+          { "data": "YEAR_COUNT_NORMAL_PERIOD", "visible": false },
+          { "data": "ENG_PUB_NAME", "visible": false }
+        ]
       },
       "colour": "#f04116",
       "controls": ["data", "visibility", "opacity"]
