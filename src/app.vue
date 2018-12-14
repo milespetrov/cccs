@@ -39,7 +39,7 @@
                         <p>{{$t(`map.${item}_desc`)}}</p>
                     </div>
 
-                    <div class="mrgn-top-lg">
+                    <div class="mrgn-tp-lg">
                         <i18n
                             v-for="(item, index) in ['normal', 'monthly', 'daily']"
                             :key="item"
