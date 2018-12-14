@@ -66,12 +66,16 @@ colourRamp.capa.rdpa6,6 hour precipitation,1,Précipitations sur 6 heures,1
 colourRamp.capa.rdpa24,24 hour precipitation,1,Précipitations sur 24 heures,1
 settings.title,Climate viewer options,1,Options du visualiseur de données climatiques,1
 variableSelector.title,Variable,1,Variable,1
+variableSelector.normal.title,Variable,1,Variable,1
 variableSelector.header,Climate data,1,Données climatiques,1
 variableSelector.stations_group,Metadata,1,Métadonnées,1
+variableSelector.normal.stations_group,Metadata,1,Métadonnées,1
 variableSelector.temperature_group,Temperature,1,Température,1
+variableSelector.normal.temperature_group,Climate normals: Temperature,1,Normales climatiques : Température,1
 variableSelector.wind_group,Wind,1,Vent,1
 variableSelector.ice_group,Sea ice,1,Glace de mer,1
 variableSelector.precipitation_group,Precipitation,1,Précipitations,1
+variableSelector.normal.precipitation_group,Climate normals: Precipitation,1,Normales climatiques : Précipitations,1
 variableSelector.snow_depth_group,Snow,1,Neige,1
 variableSelector.pressure_group,Pressure,1,Pression,1
 variableSelector.geopotential_group,Geopotential,1,Géopotentiel,1
