@@ -14,6 +14,10 @@
                 "seapress": "/580e116e-a6f1-43b7-bb5a-ba290f2c9581",
                 "stnpress": "/580e116e-a6f1-43b7-bb5a-ba290f2c9581",
                 "stations": "/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d"
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-adjusted-climate-data.html",
+                "fr": "/documentation-technique-donnees-climatiques-ajustees.html"
             }
         },
         "cangrd": {
@@ -24,6 +28,10 @@
             "metadata": {
                 "tmean": "/23563e04-467a-496f-a71c-fb0aad0171a8",
                 "precip": "/92297600-fa37-454a-b45e-a4516d4d4ee2"
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-historical-climate-data.html",
+                "fr": "/documentation-technique-donnees-climatiques-historiques.html"
             }
         },
         "capa": {
@@ -34,6 +42,10 @@
             "metadata": {
                 "rdpa6": "/fdd3446a-dc20-5bad-9755-0855e3ec9b19",
                 "rdpa24": "/fdd3446a-dc20-5bad-9755-0855e3ec9b19"
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-regional-precipitation-analysis.html",
+                "fr": "/documentation-technique-analyse-regionale-precipitations.html"
             }
         },
         "cmip5": {
@@ -48,6 +60,10 @@
                 "sic": "/78f9e3e0-3a12-4321-99dd-eed047c31e5e",
                 "sit": "/b6a68b05-58f3-4d71-89d8-25b5a5277796",
                 "snd": "/0933f0dc-3625-4583-828a-86d032e4b737"
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-coupled-model-intercomparison-phase5.html",
+                "fr": "/documentation-technique-phase5-intercomparaison-modeles-couples.html"
             }
         },
         "dcs": {
@@ -60,6 +76,10 @@
                 "tmean": "/958b8357-3690-414d-8bec-d65951041636",
                 "tmin": "/3156e7bf-6f11-46f7-b70a-51b6d4e3835b",
                 "precip": "/286dd106-b507-472a-9a26-f72dceffb475"
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-downscaled-climate-scenarios.html",
+                "fr": "/documentation-technique-scenarios-climatiques-echelle-reduite.html"
             }
         },
         "hydro": {
@@ -69,6 +89,10 @@
             },
             "metadata": {
                 "hydro": "/1ee9e14d-0814-5201-a3be-705809d8ee0e"
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-hydrometric-archive.html",
+                "fr": "/documentation-technique-archive-hydrometrique.html"
             }
         },
         "normal": {
@@ -84,6 +108,18 @@
                 "monthly": "/b24efb37-11b6-5d03-ab19-5759f83db546",
                 "daily": "/5f963c2d-d4ed-5a79-8a31-c9c582ca5098",
                 "stations": "/746f9469-ab78-5dcc-b165-4b51e8ab8652"
+            },
+            "technicalDocs": {
+                "en": {
+                    "normal": "/technical-documentation-climate-normals.html",
+                    "monthly": "/technical-documentation-monthly-climate-summaries.html",
+                    "daily": "/technical-documentation-daily-data.html"
+                },
+                "fr": {
+                    "normal": "/documentation-technique-normales-climatiques.html",
+                    "monthly": "/documentation-technique-sommaires-climatologiques-mensuels.html",
+                    "daily": "/documentation-technique-donnees-quotidiennes.html"
+                }
             }
         }
     }

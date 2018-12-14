@@ -9,11 +9,11 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
         },
         {
             id: 'historical_changes',
-            items: [DatasetId.AHCCD, DatasetId.CANGRD]
+            items: [DatasetId.AHCCD, DatasetId.CANGRD, DatasetId.CAPA]
         },
         {
             id: 'historical_other',
-            items: [DatasetId.ClimateNormal, DatasetId.Hydrometric, DatasetId.CAPA]
+            items: [DatasetId.ClimateNormal, DatasetId.Hydrometric]
         }
     ]
 };

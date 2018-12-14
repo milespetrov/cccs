@@ -1,14 +1,12 @@
 <template>
-
     <base-selector
         :config="config"
         :available="available"
         :currentId="variableId"
-        tPath="variableSelector"
+        :tPath="tPath"
         :itemTPath="datasetId"
-        @select="select">
-    </base-selector>
-
+        @select="select"
+    ></base-selector>
 </template>
 
 <script lang="ts">
@@ -54,6 +52,13 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
         return datasets[this.datasetId].variables;
     }
 
+    get tPath() {
+        if (!this.datasetId) {
+            return 'variableSelector';
+        }
+        return 'variableSelector' + (this.datasetId === 'normal' ? '.normal' : '');
+    }
+
     select(item: VariableId) {
         $('rv-details rv-details-header .rv-close').click(); // close the details panel
         this.setVariableId(item);
@@ -63,6 +68,6 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-@import './../../styles/variables.scss';
-@import './../../styles/view-controls.scss';
+@import "./../../styles/variables.scss";
+@import "./../../styles/view-controls.scss";
 </style>

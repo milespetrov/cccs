@@ -5,8 +5,13 @@
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
                 <p>{{ $t(`description`) }}</p>
                 <i18n :path="`description.help`" tag="p">
-                    <a href="" role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`description.help.helpFile`) }}</a>
-                </i18n> 
+                    <a
+                        href
+                        role="button"
+                        @click.prevent="openRampHelp"
+                        @keyup.space="openRampHelp"
+                    >{{ $t(`description.help.helpFile`) }}</a>
+                </i18n>
             </aside>
         </div>
 
@@ -15,19 +20,37 @@
         </div>
 
         <section class="main">
-
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
 
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-                <p v-if="datasetId !== 'normal'">{{$t(`map.${datasetId}_desc`)}}</p>
+                <div v-if="datasetId !== 'normal'">
+                    <p>{{$t(`map.${datasetId}_desc`)}}</p>
+
+                    <i18n :path="`map.description.technical`" tag="p">
+                        <a
+                            :href="`${technicalDocsUrl}${technicalDocsRoute}`"
+                        >{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
+                    </i18n>
+                </div>
 
                 <div v-else>
-                    <h2>{{$t(`normal.stations.fullName`)}}</h2>
-                    <p> {{$t(`map.normal_desc`)}} </p>
-                    <h2> {{$t(`normal.monthly.fullName`)}}</h2>
-                    <p> {{$t(`map.monthly_desc`)}} </p>
-                    <h2> {{$t(`normal.daily.fullName`)}} </h2>
-                    <p> {{$t(`map.daily_desc`)}} </p>
+                    <div v-for="(item) in ['normal', 'monthly', 'daily']" :key="item">
+                        <h2>{{$t(`map.${item}_desc.title`)}}</h2>
+                        <p>{{$t(`map.${item}_desc`)}}</p>
+                    </div>
+
+                    <div class="mrgn-tp-lg">
+                        <i18n
+                            v-for="(item, index) in ['normal', 'monthly', 'daily']"
+                            :key="item"
+                            :path="`map.description.technical.normal`"
+                            tag="p"
+                        >
+                            <a
+                                :href="`${technicalDocsUrl}${technicalDocsRoute[index]}`"
+                            >{{ $t(`map.${item}_desc.technicalLink`) }}</a>
+                        </i18n>
+                    </div>
                 </div>
             </aside>
 
@@ -39,32 +62,45 @@
                 <div class="panel-body">
                     <div class="section">
                         <ul class="list-unstyled">
-
-                            <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" v-for="item in infoItems" :key="`${item}`">
-                                <a :href="`${aboutUrls[item]}`" class="btn-default well text-left" style="display: block; text-decoration: none;">
-                                    <img :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`" alt="" width="30" height="30" class="mrgn-rght-md"><strong>{{ $t(`info.${item}.title`) }}</strong>: {{ $t(`info.${item}.description`) }}
+                            <li
+                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                v-for="item in infoItems"
+                                :key="`${item}`"
+                            >
+                                <a
+                                    :href="`${aboutUrls[item]}`"
+                                    class="btn-default well text-left"
+                                    style="display: block; text-decoration: none;"
+                                >
+                                    <img
+                                        :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`"
+                                        alt
+                                        width="30"
+                                        height="30"
+                                        class="mrgn-rght-md"
+                                    >
+                                    <strong>{{ $t(`info.${item}.title`) }}</strong>
+                                    : {{ $t(`info.${item}.description`) }}
                                 </a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
-
             </section>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
-                <dt>{{ $t('page.dateModified') }}: </dt>
-                <dd><time property="dateModified">{{ timestamp }}</time></dd>
-
+                    <dt>{{ $t('page.dateModified') }}:</dt>
+                    <dd>
+                        <time property="dateModified">{{ timestamp }}</time>
+                    </dd>
                 </dl>
                 <!-- <div class="row">
                     <div class="col-sm-6 col-md-5 col-lg-4">
                         <a href="https://www.canada.ca/en/report-problem.html" class="btn btn-default btn-block">Report a problem on this page</a>
                     </div>
-                </div> -->
+                </div>-->
             </div>
-
         </section>
     </main>
 </template>
@@ -115,12 +151,24 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 
     infoItems: string[] = ['library', 'basics', 'supportDesk', 'display'];
     aboutUrls: { [name: string]: string } = {};
+    technicalDocsUrl: string = '';
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes || !this.datasetId) {
             return '';
         }
         return this.urlSuffixes[this.datasetId].dataQuery[<'en' | 'fr'>i18n.locale];
+    }
+
+    get technicalDocsRoute(): string | string [] {
+        if (!this.urlSuffixes || !this.datasetId) {
+            return '';
+        }
+        if (this.datasetId === 'normal') {
+            const suffixes = this.urlSuffixes[this.datasetId].technicalDocs[<'en' | 'fr'>i18n.locale];
+            return [suffixes.normal || '', suffixes.monthly || '', suffixes.daily || ''];
+        }
+        return this.urlSuffixes[this.datasetId].technicalDocs[<'en' | 'fr'>i18n.locale];
     }
 
     async created(): Promise<void> {
@@ -133,6 +181,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             this.setBreadCrumbUrls(currentLinks.breadcrumbs);
 
             this.aboutUrls = currentLinks.aboutUrls;
+            this.technicalDocsUrl = currentLinks.technicalDocsUrl;
         });
 
         await $.getJSON('assets/configs/url-suffix-config.json', data => {
@@ -195,11 +244,11 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 
 <style lang="scss">
 // global changes on top of bootstrap default stylings
-@import './styles/vendor.scss';
+@import "./styles/vendor.scss";
 </style>
 
 <style lang="scss" scoped>
-@import './styles/variables.scss';
+@import "./styles/variables.scss";
 
 // cip-strips go across the full width page
 

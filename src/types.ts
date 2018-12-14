@@ -239,6 +239,11 @@ export interface ClimateViewerAppConfig {
      * @memberof ClimateViewerAppConfig
      */
     breadcrumbs: BreadCrumbEntity[];
+
+    /**
+     * A url to the technical docs page
+     */
+    technicalDocsUrl: string;
 }
 
 /**
