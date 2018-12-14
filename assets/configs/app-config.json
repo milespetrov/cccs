@@ -4,6 +4,7 @@
             "queryToolUrl": "http://climate-change.dev.ec.gc.ca/climate-data/#",
             "dataCatalogueUrl": "https://open.canada.ca/data/en/dataset",
             "languageToggleDomain": "",
+            "technicalDocsUrl": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/en.html", "name": "Home" },
                 {
@@ -42,6 +43,7 @@
             "queryToolUrl": "http://climate-change.dev.ec.gc.ca/donnees-climatiques/#",
             "dataCatalogueUrl": "https://ouvert.canada.ca/data/fr/dataset",
             "languageToggleDomain": "",
+            "technicalDocsUrl": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/",
             "breadcrumbs": [
                 { "url": "https://canada-preview.adobecqms.net/fr.html", "name": "Accueil" },
                 {
