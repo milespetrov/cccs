@@ -215,9 +215,9 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
 <style lang="scss" scoped>
 .cip-date-slider-container /deep/ {
-    @import './../../node_modules/nouislider/distribute/nouislider';
+    @import "./../../node_modules/nouislider/distribute/nouislider";
 
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 0.9em;
     text-align: center;
     padding-right: 0.5rem;
@@ -272,7 +272,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
     /* Offset direction
     */
     .noUi-horizontal .noUi-origin {
-        html:not([dir='rtl']) & {
+        html:not([dir="rtl"]) & {
             left: auto;
             right: 0;
         }
@@ -280,7 +280,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
     .noUi-horizontal .noUi-handle {
         right: -15px !important;
-        html:not([dir='rtl']) & {
+        html:not([dir="rtl"]) & {
             right: -15px;
             left: auto;
         }

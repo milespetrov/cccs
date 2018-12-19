@@ -179,3 +179,20 @@ rv-table-setting-cluster {
 
     */
 }
+
+#wb-srch-q {
+    box-sizing: inherit !important;
+}
+
+#wb-srch input,
+.srchbox input {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body > header > nav.gcweb-v2 > div > button {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+html, body {
+    background-color: #fff;
+}

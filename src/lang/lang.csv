@@ -204,7 +204,7 @@ downloadSelector.queryTool.access,Download source data using ,1,Télécharger le
 downloadSelector.queryTool.qualifier,,1,,1
 analysisSelector.title,Analysis period,1,Période d'analyse,1
 analysisSelector.header,,1,,1
-page.dateModified,Date modified,1,Date de modification,1
+page.dateModified,Date modified,1,Date de modification ,1
 ahccd.stations.fullName,AHCCD station metadata,1,Métadonnées sur la station DCCAH,1
 ahccd.stations.shortName,AHCCD station metadata,1,Métadonnées sur la station DCCAH,1
 ahccd.stations.qualifier,,1,,1

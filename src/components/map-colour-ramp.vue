@@ -47,7 +47,7 @@ export default class MapColourRamp extends Vue {
 .range-label {
     line-height: 1em;
     font-size: 0.8em;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .range-left,
