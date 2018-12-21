@@ -79,8 +79,7 @@
                                         height="30"
                                         class="mrgn-rght-md"
                                     >
-                                    <strong>{{ $t(`info.${item}.title`) }}</strong>
-                                    : {{ $t(`info.${item}.description`) }}
+                                    <strong>{{ $t(`info.${item}.title`) }}</strong>: {{ $t(`info.${item}.description`) }}
                                 </a>
                             </li>
                         </ul>
