@@ -34,7 +34,6 @@
     "language": "en",
     "services": {
         "corsEverywhere": true,
-        "exportMapUrl": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
         "export": {
             "title": {
                 "value": ""
