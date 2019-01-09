@@ -203,10 +203,17 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
             layer.id += `_${this.counter}`;
-            const addedLayer = this._mapi.layers.addLayer(layer);
+
+            const layerPromise = this._mapi.layers.addLayer(layer);
             this.currentLayers[index] = layer.id;
 
             if (this.dateSlider) {
+                if (this.timeSlice) {
+                    layerPromise.then((addedLayers: any[]) => {
+                        this.onTimeSliceChanged(this.timeSlice, 0);
+                    });
+                }
+
                 this.getCapabilities(layer);
             }
         });
