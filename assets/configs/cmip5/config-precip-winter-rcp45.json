@@ -8,7 +8,7 @@
     },
     {
       "infoType": "text",
-      "content": "Projected relative changes in mean precipitation are with respect to the reference period of 1986-2005 and expressed as percentage change (%)."
+      "content": "Projected relative changes in total precipitation are with respect to the reference period of 1986-2005 and expressed as percentage change (%)."
     },
     {
       "collapse": true,
@@ -214,7 +214,7 @@
     },
     {
       "infoType": "text",
-      "content": "Les changements projetés dans les précipitations moyennes sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005."
+      "content": "Les changements projetés dans les précipitations totales sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005."
     },
     {
       "collapse": true,
