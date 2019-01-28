@@ -182,9 +182,9 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 
 <style lang="scss" scoped>
 .cip-time-slider-container /deep/ {
-    @import './../../node_modules/nouislider/distribute/nouislider';
+    @import "./../../node_modules/nouislider/distribute/nouislider";
 
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 0.9em;
     padding: 0.5rem 0;
 
@@ -245,14 +245,14 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
     /* Offset direction
     */
     .noUi-horizontal .noUi-origin {
-        html:not([dir='rtl']) & {
+        html:not([dir="rtl"]) & {
             left: auto;
             right: 0;
         }
     }
 
     .noUi-horizontal .noUi-handle {
-        html:not([dir='rtl']) & {
+        html:not([dir="rtl"]) & {
             right: -17px;
             left: auto;
         }

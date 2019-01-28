@@ -2,13 +2,11 @@
     <nav role="navigation" id="wb-bc" property="breadcrumb">
         <h2>You are here:</h2>
         <div class="container">
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li v-for="bc in breadCrumbUrls" :key="bc.name">
-                        <a :href="bc.url">{{ bc.name }}</a>
-                    </li>
-                </ol>
-            </div>
+            <ol class="breadcrumb">
+                <li v-for="bc in breadCrumbUrls" :key="bc.name">
+                    <a :href="bc.url">{{ bc.name }}</a>
+                </li>
+            </ol>
         </div>
     </nav>
 </template>
