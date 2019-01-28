@@ -2,11 +2,11 @@
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
 <!-- [if gt IE 8]><! -->
 <html lang="en" dir="ltr">
-<!-- <![endif] -->
+    <!-- <![endif] -->
 
-<head>
-    <meta charset="utf-8" />
-    <!--
+    <head>
+        <meta charset="utf-8" />
+        <!--
             Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
                wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
         -->
@@ -35,35 +35,35 @@
             <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/css/noscript.min.css" />
         </noscript>
 
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Object.entries,Object.values,Array.prototype.find,Array.prototype.findIndex,Array.prototype.values,Array.prototype.includes,HTMLCanvasElement.prototype.toBlob,String.prototype.repeat,String.prototype.codePointAt,String.fromCodePoint,NodeList.prototype.@@iterator,Promise,Promise.prototype.finally"></script>
-    <script type="text/javascript">
-        var appInsights =
-            window.appInsights ||
-            (function (a) {
-                function b(a) {
-                    c[a] = function () {
-                        var b = arguments;
-                        c.queue.push(function () {
-                            c[a].apply(c, b);
-                        });
-                    };
-                }
-                var c = { config: a },
-                    d = document,
-                    e = window;
-                setTimeout(function () {
-                    var b = d.createElement('script');
-                    (b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js'),
-                        d.getElementsByTagName('script')[0].parentNode.appendChild(b);
-                });
-                try {
-                    c.cookie = d.cookie;
-                } catch (a) { }
-                c.queue = [];
-                for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length;)
-                    b('track' + f.pop());
-                if (
-                    (b('setAuthenticatedUserContext'),
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Object.entries,Object.values,Array.prototype.find,Array.prototype.findIndex,Array.prototype.values,Array.prototype.includes,HTMLCanvasElement.prototype.toBlob,String.prototype.repeat,String.prototype.codePointAt,String.fromCodePoint,NodeList.prototype.@@iterator,Promise,Promise.prototype.finally"></script>
+        <script type="text/javascript">
+            var appInsights =
+                window.appInsights ||
+                (function(a) {
+                    function b(a) {
+                        c[a] = function() {
+                            var b = arguments;
+                            c.queue.push(function() {
+                                c[a].apply(c, b);
+                            });
+                        };
+                    }
+                    var c = { config: a },
+                        d = document,
+                        e = window;
+                    setTimeout(function() {
+                        var b = d.createElement('script');
+                        (b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js'),
+                            d.getElementsByTagName('script')[0].parentNode.appendChild(b);
+                    });
+                    try {
+                        c.cookie = d.cookie;
+                    } catch (a) {}
+                    c.queue = [];
+                    for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length; )
+                        b('track' + f.pop());
+                    if (
+                        (b('setAuthenticatedUserContext'),
                         b('clearAuthenticatedUserContext'),
                         b('startTrackEvent'),
                         b('stopTrackEvent'),
@@ -71,48 +71,55 @@
                         b('stopTrackPage'),
                         b('flush'),
                         !a.disableExceptionTracking)
-                ) {
-                    (f = 'onerror'), b('_' + f);
-                    var g = e[f];
-                    e[f] = function (a, b, d, e, h) {
-                        var i = g && g(a, b, d, e, h);
-                        return !0 !== i && c['_' + f](a, b, d, e, h), i;
-                    };
-                }
-                return c;
-            })({
-                instrumentationKey: '88868d1a-f87e-4708-bea4-1c29bc6ae9cd'
-            });
+                    ) {
+                        (f = 'onerror'), b('_' + f);
+                        var g = e[f];
+                        e[f] = function(a, b, d, e, h) {
+                            var i = g && g(a, b, d, e, h);
+                            return !0 !== i && c['_' + f](a, b, d, e, h), i;
+                        };
+                    }
+                    return c;
+                })({
+                    instrumentationKey: '88868d1a-f87e-4708-bea4-1c29bc6ae9cd'
+                });
 
-        (window.appInsights = appInsights),
-            appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
-    </script>
+            (window.appInsights = appInsights),
+                appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
+        </script>
 
-    <script>
-        window.webtrendsAsyncInit = function () {
-            var dcs = new Webtrends.dcs()
-                .init({
-                    dcsid: 'dcsewwnwt00000ggjmkochl53_3d3i',
-                    domain: 'sdc.ncr.ec.gc.ca',
-                    timezone: -5,
-                    i18n: true,
-                    fpcdom: '.climate-change.canada.ca',
-                    plugins: {}
-                })
-                .track();
-        };
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.src = './assets/scripts/webtrends.min.js';
-            var s2 = document.getElementsByTagName('script')[0];
-            s2.parentNode.insertBefore(s, s2);
-        })();
-    </script>
-</head>
+        <script>
+            window.webtrendsAsyncInit = function() {
+                var dcs = new Webtrends.dcs()
+                    .init({
+                        dcsid: 'dcsewwnwt00000ggjmkochl53_3d3i',
+                        domain: 'sdc.ncr.ec.gc.ca',
+                        timezone: -5,
+                        i18n: true,
+                        fpcdom: '.climate-change.canada.ca',
+                        plugins: {}
+                    })
+                    .track();
+            };
+            (function() {
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = './assets/scripts/webtrends.min.js';
+                var s2 = document.getElementsByTagName('script')[0];
+                s2.parentNode.insertBefore(s, s2);
+            })();
+        </script>
+    </head>
 
-<body vocab="http://schema.org/" typeof="WebPage">
-    <noscript><img alt="dcsimg" id="dcsimg" width="1" height="1" src="//sdc.ncr.ec.gc.ca/dcsewwnwt00000ggjmkochl53_3d3i/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.23&amp;dcssip=www.climate-change.canada.ca" /></noscript>
+    <body vocab="http://schema.org/" typeof="WebPage">
+        <noscript
+            ><img
+                alt="dcsimg"
+                id="dcsimg"
+                width="1"
+                height="1"
+                src="//sdc.ncr.ec.gc.ca/dcsewwnwt00000ggjmkochl53_3d3i/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.23&amp;dcssip=www.climate-change.canada.ca"
+        /></noscript>
 
         <ul id="wb-tphp">
             <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
@@ -133,15 +140,21 @@
                 <div class="row">
                     <div class="brand col-xs-5 col-md-4">
                         <a href="https://www.canada.ca/en.html">
-                            <img src="https://wet-boew.github.io/themes-dist/GCWeb/assets/sig-blk-en.svg" alt=""/>
-                            <span class="wb-inv">Government of Canada /
-                                <span lang="fr">Gouvernement du Canada</span>
+                            <img src="https://wet-boew.github.io/themes-dist/GCWeb/assets/sig-blk-en.svg" alt="" />
+                            <span class="wb-inv"
+                                >Government of Canada / <span lang="fr">Gouvernement du Canada</span>
                             </span>
                         </a>
                     </div>
                     <section id="wb-srch" class="col-lg-8 text-right">
                         <h2>Search</h2>
-                        <form action="https://www.canada.ca/en/sr/srb.html" method="get" name="cse-search-box" role="search" class="form-inline">
+                        <form
+                            action="https://www.canada.ca/en/sr/srb.html"
+                            method="get"
+                            name="cse-search-box"
+                            role="search"
+                            class="form-inline"
+                        >
                             <div class="form-group">
                                 <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
                                 <input
@@ -265,10 +278,9 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-        <nav id="breadcrumbs"></nav>
-    </header>
+            </nav>
+            <nav id="breadcrumbs"></nav>
+        </header>
 
         <div id="app"></div>
 
@@ -308,7 +320,9 @@
                                 <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
                                 <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
                                 <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
-                                <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                                <li>
+                                    <a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a>
+                                </li>
                                 <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
                             </ul>
                         </nav>
@@ -316,7 +330,10 @@
                             <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
                         </div>
                         <div class="col-xs-6 col-md-3 col-lg-2 text-right">
-                            <img src="https://wet-boew.github.io/themes-dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                            <img
+                                src="https://wet-boew.github.io/themes-dist/GCWeb/assets/wmms-blk.svg"
+                                alt="Symbol of the Government of Canada"
+                            />
                         </div>
                     </div>
                 </div>
@@ -330,21 +347,19 @@
             <script src="https://wet-boew.github.io/themes-dist/GCWeb/js/ie8-wet-boew2.min.js"></script>
         <![endif]-->
 
-    <script>
-        // monkey-patch WET's escape function for jQuery selectors
-        // the original function did not escape `?` which are present in the router paths.
-        // selector.replace(/([;&,\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" )
-        wb.jqEscape = function (selector) {
-            return selector.replace(/([;&,\?\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, '\\$1');
-        };
-    </script>
+        <script>
+            // monkey-patch WET's escape function for jQuery selectors
+            // the original function did not escape `?` which are present in the router paths.
+            // selector.replace(/([;&,\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" )
+            wb.jqEscape = function(selector) {
+                return selector.replace(/([;&,\?\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, '\\$1');
+            };
+        </script>
 
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_28/js/theme.min.js"></script>
+        <script src="https://wet-boew.github.io/themes-dist/GCWeb/js/theme.min.js"></script>
 
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://wet-boew.github.io/themes-dist/GCWeb/js/theme.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <script src="./assets/scripts/rv-main.js"></script>
-</body>
-
+        <script src="./assets/scripts/rv-main.js"></script>
+    </body>
 </html>
