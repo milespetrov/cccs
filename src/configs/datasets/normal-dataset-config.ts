@@ -12,7 +12,6 @@ const normalDataset: DatasetSource = {
                 TimePeriodType.January,
                 TimePeriodType.February,
                 TimePeriodType.March,
-                TimePeriodType.April,
                 TimePeriodType.May,
                 TimePeriodType.June,
                 TimePeriodType.July,
