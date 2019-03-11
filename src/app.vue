@@ -5,12 +5,7 @@
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
                 <p>{{ $t(`description`) }}</p>
                 <i18n :path="`description.help`" tag="p">
-                    <a
-                        href
-                        role="button"
-                        @click.prevent="openRampHelp"
-                        @keyup.space="openRampHelp"
-                    >{{ $t(`description.help.helpFile`) }}</a>
+                    <a href role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`description.help.helpFile`) }}</a>
                 </i18n>
             </aside>
         </div>
@@ -20,16 +15,14 @@
         </div>
 
         <section class="main">
-            <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description"></map-view>
+            <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description cip-map-description-bottom"></map-view>
 
-            <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
+            <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description-bottom" aria-live="polite">
                 <div v-if="datasetId !== 'normal'">
                     <p>{{$t(`map.${datasetId}_desc`)}}</p>
 
                     <i18n :path="`map.description.technical`" tag="p">
-                        <a
-                            :href="`${technicalDocsUrl}${technicalDocsRoute}`"
-                        >{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
+                        <a :href="`${technicalDocsUrl}${technicalDocsRoute}`">{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
                     </i18n>
                 </div>
 
@@ -40,15 +33,8 @@
                     </div>
 
                     <div class="mrgn-tp-lg">
-                        <i18n
-                            v-for="(item, index) in ['normal', 'monthly', 'daily']"
-                            :key="item"
-                            :path="`map.description.technical.normal`"
-                            tag="p"
-                        >
-                            <a
-                                :href="`${technicalDocsUrl}${technicalDocsRoute[index]}`"
-                            >{{ $t(`map.${item}_desc.technicalLink`) }}</a>
+                        <i18n v-for="(item, index) in ['normal', 'monthly', 'daily']" :key="item" :path="`map.description.technical.normal`" tag="p">
+                            <a :href="`${technicalDocsUrl}${technicalDocsRoute[index]}`">{{ $t(`map.${item}_desc.technicalLink`) }}</a>
                         </i18n>
                     </div>
                 </div>
@@ -62,23 +48,9 @@
                 <div class="panel-body">
                     <div class="section">
                         <ul class="list-unstyled">
-                            <li
-                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                                v-for="item in infoItems"
-                                :key="`${item}`"
-                            >
-                                <a
-                                    :href="`${aboutUrls[item]}`"
-                                    class="btn-default well text-left"
-                                    style="display: block; text-decoration: none;"
-                                >
-                                    <img
-                                        :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`"
-                                        alt
-                                        width="30"
-                                        height="30"
-                                        class="mrgn-rght-md"
-                                    >
+                            <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" v-for="item in infoItems" :key="`${item}`">
+                                <a :href="`${aboutUrls[item]}`" class="btn-default well text-left" style="display: block; text-decoration: none;">
+                                    <img :src="`assets/images/portal/${ $t(`info.${item}.icon`) }`" alt width="30" height="30" class="mrgn-rght-md">
                                     <strong>{{ $t(`info.${item}.title`) }}</strong>: {{ $t(`info.${item}.description`) }}
                                 </a>
                             </li>
