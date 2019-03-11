@@ -98,6 +98,14 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
                         return new Date(value).toISOString().split('T')[0];
                     }
                 }
+            },
+            ariaFormat: {
+                to: (value: number) => {
+                    return this.formatDate(value);
+                },
+                from: (value: string) => {
+                    return 'not implemented';
+                }
             }
         });
 
@@ -153,6 +161,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         // tabindex 0 is controlled by the browser; RAMP focus manager will ignore such elements and not set focus to them;
         const sliderHandle = this.slider.querySelector('.noUi-handle') as HTMLElement;
         sliderHandle.setAttribute('tabindex', '-2');
+        sliderHandle.setAttribute('aria-labelledby', 'cip-dateSlider-label');
 
         // create event stream for the keyevents we want
         const keydownEvents: Observable<KeyboardEvent> = fromEvent(sliderHandle, 'keydown').pipe(

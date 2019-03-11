@@ -11,7 +11,6 @@
         "@types/jquery": "^3.2.17",
         "@types/mocha": "^2.2.46",
         "@types/node": "^9.3.0",
-        "@types/nouislider": "^9.0.4",
         "@types/sinon": "^4.3.0",
         "@types/sinon-chai": "^2.7.29",
         "@types/sprintf-js": "^1.1.0",

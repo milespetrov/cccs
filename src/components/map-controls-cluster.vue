@@ -1,19 +1,19 @@
 <template>
     <div class="cip-controls-cluster-container">
         <div class="cip-controls-cluster" v-if="timeSliderLabels || colourRamp || legend || dateSlider">
-
             <div class="cip-cluster-row" v-if="legend">
                 <!--div class="cip-row-label">
                     <span class="cip-label">{{ $t('map.controlsCluster.legend') }}</span>
                 </div-->
                 <div class="cip-row-content cip-row-legend">
-                    <span v-html="legend[currentVariable]"></span><span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
+                    <span v-html="legend[currentVariable]"></span>
+                    <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
                 </div>
             </div>
 
             <div class="cip-cluster-row" v-if="timeSliderLabels">
                 <div class="cip-row-label">
-                    <span class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
+                    <span id="cip-timeSlider-label" class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
                 </div>
                 <div class="cip-row-content">
                     <time-slider></time-slider>
@@ -22,7 +22,7 @@
 
             <div class="cip-cluster-row" v-if="dateSlider">
                 <div class="cip-row-label">
-                    <span class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
+                    <span id="cip-dateSlider-label" class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
                 </div>
                 <div class="cip-row-content">
                     <date-slider v-bind="wmsTime"></date-slider>
@@ -34,14 +34,11 @@
 
             <div class="cip-cluster-row" v-if="colourRamp">
                 <div class="cip-row-label">
-                     <span>{{ $t(`colourRamp.${currentDataset}.${currentVariable}`) }}</span>
-                     <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
+                    <span>{{ $t(`colourRamp.${currentDataset}.${currentVariable}`) }}</span>
+                    <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
                 </div>
                 <div class="cip-row-content">
-                    <map-colour-ramp
-                        :labels="colourRamp.labels"
-                        :colours="colourRamp.colours">
-                    </map-colour-ramp>
+                    <map-colour-ramp :labels="colourRamp.labels" :colours="colourRamp.colours"></map-colour-ramp>
                 </div>
             </div>
         </div>
@@ -74,7 +71,7 @@ export default class MapControlsCluster extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/variables.scss';
+@import "./../styles/variables.scss";
 
 .cip-controls-cluster-container {
     bottom: 4rem;
@@ -96,7 +93,8 @@ export default class MapControlsCluster extends Vue {
         background-color: #fff;
 
         // TODO: create a shared variable for the box-shadow
-        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+            0px 2px 2px 0px rgba(0, 0, 0, 0.14),
             0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 
         .cip-cluster-row {
