@@ -39,7 +39,7 @@ new Vue({
 });
 
 new Vue({
-    el: '#breadcrumbs',
+    el: '#wb-bc>.container',
     store,
     i18n,
     render: h => h('breadcrumbs'),
@@ -47,7 +47,7 @@ new Vue({
 });
 
 new Vue({
-    el: '#lng',
+    el: '#wb-lng a',
     router,
     store,
     i18n,

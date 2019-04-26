@@ -1,7 +1,5 @@
 <template>
-    
     <a :lang="targetLocale" :href="targetUrl" v-if="targetUrl !== ''">{{ $t('lang.toggle') }}</a> 
-
 </template>
 
 <script lang="ts">
