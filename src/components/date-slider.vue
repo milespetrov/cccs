@@ -50,7 +50,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
     }
     get startDate(): Date {
         const date = new Date(this.end);
-        date.setDate(date.getDate() - this.dateSlider[this.variableId].range);
+        date.setUTCDate(date.getUTCDate() - this.dateSlider[this.variableId].range);
         return date;
     }
 
