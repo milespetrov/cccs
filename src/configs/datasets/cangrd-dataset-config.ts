@@ -43,6 +43,7 @@ const canGrdDataset: DatasetSource = {
             '#6E0045'
         ],
         defaultLabels: ['-2.5', '13'],
+        defaultTicks: [['0', '16.13']],
         variables: {
             [VariableId.Precipitation]: {
                 colours: [
@@ -68,7 +69,8 @@ const canGrdDataset: DatasetSource = {
                     '#1B4869',
                     '#133A59'
                 ],
-                labels: ['-100', '100']
+                labels: ['-100', '100'],
+                ticks: [['-50', '25'],['0', '50'],['50', '75']]
             }
         }
     },

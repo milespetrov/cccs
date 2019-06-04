@@ -2,7 +2,11 @@
     <div class="colour-ramp">
         <span class="range-label range-left">&le; {{ labels[0] }}</span>
 
-        <div class="colours" :style="{ background: backgroundGradient }"></div>
+        <div class="colours" :style="{ background: backgroundGradient }">
+            <div class="tick" v-for="tick in ticks" :key="tick" :style="{left: tick[1]+'%'}">
+                <span>{{ tick[0] }}</span>
+            </div>
+        </div>
 
         <span class="range-label range-right">&ge; {{ labels[1] }}</span>
     </div>
@@ -20,6 +24,11 @@ export default class MapColourRamp extends Vue {
         default: ['#fff', '#000']
     })
     colours: string[] | string[][];
+
+    @Prop({
+        default: [['10', '10'],['20', '20'],['30', '30'],['80', '80']]
+    })
+    ticks: string[][];
 
     /**
      * Returns the value for the background of the colour ramp using the colours provided in the dataset config.
@@ -67,6 +76,7 @@ export default class MapColourRamp extends Vue {
     display: flex;
     padding: 3px 0 2px 0;
     margin: 0 6px;
+    position: relative;
 
     height: 1em;
 
@@ -82,6 +92,21 @@ export default class MapColourRamp extends Vue {
         &:nth-child(2),
         &:nth-child(3) {
             color: #000000;
+        }
+    }
+
+    .tick {
+        height: 0.4em;
+        width: 2px;
+        top: 0.7em;
+        background: black;
+        position: absolute;
+
+        span {
+            top: 5px;
+            left: -5px;
+            font-size: 0.8em;
+            position: absolute;
         }
     }
 }
