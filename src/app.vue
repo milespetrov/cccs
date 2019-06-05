@@ -6,6 +6,7 @@
                 <p>{{ $t(`description`) }}</p>
                 <i18n :path="`description.help`" tag="p">
                     <a href role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`description.help.helpFile`) }}</a>
+                    <a :href="`${aboutUrls['supportDesk']}`">{{$t('description.help.supportDesk')}}</a>
                 </i18n>
             </aside>
         </div>
@@ -18,8 +19,12 @@
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description cip-map-description-bottom"></map-view>
 
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description-bottom" aria-live="polite">
+                <h2>{{$t('map.description.header')}}</h2>
                 <div v-if="datasetId !== 'normal'">
-                    <p>{{$t(`map.${datasetId}_desc`)}}</p>
+
+                    <i18n :path="`map.${datasetId}_desc`" tag="p">
+                        <p class="mrgn-tp-sm">{{$t(`map.${datasetId}_desc.extra`)}}</p>
+                    </i18n>
 
                     <i18n :path="`map.description.technical`" tag="p">
                         <a :href="`${technicalDocsUrl}${technicalDocsRoute}`">{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
@@ -27,13 +32,10 @@
                 </div>
 
                 <div v-else>
-                    <div v-for="(item) in ['normal', 'monthly', 'daily']" :key="item">
-                        <h2>{{$t(`map.${item}_desc.title`)}}</h2>
+                    <div v-for="(item, index) in ['normal', 'monthly', 'daily']" :key="item">
+                        <h3>{{$t(`map.${item}_desc.title`)}}</h3>
                         <p>{{$t(`map.${item}_desc`)}}</p>
-                    </div>
-
-                    <div class="mrgn-tp-lg">
-                        <i18n v-for="(item, index) in ['normal', 'monthly', 'daily']" :key="item" :path="`map.description.technical.normal`" tag="p">
+                        <i18n :path="`map.description.technical.normal`" tag="p">
                             <a :href="`${technicalDocsUrl}${technicalDocsRoute[index]}`">{{ $t(`map.${item}_desc.technicalLink`) }}</a>
                         </i18n>
                     </div>
