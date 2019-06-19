@@ -12,14 +12,8 @@ function parser(data, lang) {
                 snd: 'snow depth (%)'
             },
             learnMore: {
-                default: 'Learn more about projected',
-                tmean: 'mean temperature change',
-                precip: 'mean precipitation change',
-                sic: 'sea ice concentration change',
-                sit: 'sea ice thickness change',
-                sfcwind: 'wind speed change',
-                snd: 'snow depth change',
-                link: 'http://climate-scenarios.canada.ca/?page=technical-notes'
+                default: 'Learn more about the Global climate model scenarios dataset.',
+                link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-coupled-model-intercomparison-phase5.html'
             }
         },
 
@@ -35,14 +29,8 @@ function parser(data, lang) {
                 snd: 'épaisseur de la neige (%)'
             },
             learnMore: {
-                default: 'En savoir plus sur les changements projetés',
-                tmean: 'variation de la température moyenne',
-                precip: 'variations des précipitations moyennes',
-                sic: 'variation de la concentration des glaces de mer',
-                sit: "variation de l'épaisseur de la glace de mer",
-                sfcwind: 'variation de la vitesse du vent',
-                snd: "variation de l'épaisseur de la neige",
-                link: 'http://scenarios-climatiques.canada.ca/index.php?page=technical-notes'
+                default: 'En savoir plus sur l’ensemble de données Scénarios basés sur des modèles climatiques globaux.',
+                link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-phase5-intercomparaison-modeles-couples.html'
             }
         }
     };

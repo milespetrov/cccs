@@ -40,7 +40,13 @@
                         </i18n>
                     </div>
                 </div>
+
+                <i18n :path="`map.description.moreData`" tag="p">
+                    <a :href="`${aboutUrls['supportDesk']}`">{{$t('description.help.supportDesk')}}</a>
+                </i18n>
             </aside>
+
+            
 
             <section class="panel panel-info">
                 <header class="panel-heading">
