@@ -7,9 +7,8 @@ function parser(data, lang) {
                 tmean: 'Trend of temperature change (°C) over 1948-2016'
             },
             learnMore: {
-                precip: 'Learn more about CANGRD total precipitation trend for 1948–2012',
-                tmean: 'Learn more about CANGRD mean temperature trend for 1948–2016',
-                link: 'https://open.canada.ca/data/en/dataset/3d4b68a5-13bc-48bb-ad10-801128aa6604'
+                default: 'Learn more about Canadian Gridded Temperature and Precipitation Anomalies (CANGRD) dataset.',
+                link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-historical-climate-data.html'
             }
         },
 
@@ -20,9 +19,8 @@ function parser(data, lang) {
                 tmean: 'Tendance de la variation de température (°C) de 1948 à 2016'
             },
             learnMore: {
-                precip: 'En savoir plus sur la tendance des précipitations totales CANGRD de 1948 à 2012',
-                tmean: 'En savoir plus sur la tendance de la température moyenne CANGRD de 1948 à 2016',
-                link: 'https://ouvert.canada.ca/data/fr/dataset/3d4b68a5-13bc-48bb-ad10-801128aa6604'
+                default: 'En savoir plus sur l’ensemble de données Anomalies de température et précipitation interpolées pour le Canada (CANGRD).',
+                link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-climatiques-historiques.html'
             }
         }
     };

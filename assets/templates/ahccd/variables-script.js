@@ -38,15 +38,8 @@ function parser(data, lang) {
                 Ann: 'Annual'
             },
             learnMore: {
-                default: 'Learn more about',
-                tmean: 'homogenized mean temperature',
-                tmin: 'homogenized minimum temperature',
-                tmax: 'homogenized maximum temperature',
-                precip: 'adjusted total precipitation',
-                sfcwind: 'homogenized wind speed',
-                stnpress: 'homogenized station pressure',
-                seapress: 'homogenized sea level pressure',
-                link: 'https://open.canada.ca/data/en/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d'
+                default: 'Learn more about Adjusted and Homogenized Canadian Climate Data (AHCCD) dataset.',
+                link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-adjusted-climate-data.html'
             }
         },
 
@@ -88,15 +81,8 @@ function parser(data, lang) {
                 Ann: 'Annuel'
             },
             learnMore: {
-                default: 'En savoir plus sur',
-                tmean: 'température moyenne homogénéisée',
-                tmin: 'température minimale homogénéisée',
-                tmax: 'température maximale homogénéisée',
-                precip: 'précipitations totales ajustées',
-                sfcwind: 'vitesse du vent homogénéisée',
-                stnpress: 'pression homogénéisée à la station',
-                seapress: 'pression au niveau de la mer homogénéisée ',
-                link: 'https://ouvert.canada.ca/data/fr/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d'
+                default: 'En savoir plus sur l’ensemble de données climatiques canadiennes ajustées et homogénéisées (DCCAH).',
+                link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-climatiques-ajustees.html'
             }
         }
     };

@@ -10,12 +10,8 @@ function parser(data, lang) {
                 precip: 'total precipitation (%)'
             },
             learnMore: {
-                default: 'Learn more about statistically downscaled scenarios of projected',
-                tmean: 'mean temperature change',
-                tmin: 'minimum temperature change',
-                tmax: 'maximum temperature change',
-                precip: 'total precipitation change',
-                link: 'http://climate-scenarios.canada.ca/?page=statistical-downscaling'
+                default: 'Learn more about the Statistically downscaled climate data dataset.',
+                link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-downscaled-climate-scenarios.html'
             }
         },
 
@@ -30,12 +26,8 @@ function parser(data, lang) {
             },
             learnMore: {
                 default:
-                    "En savoir plus sur les scénarios de mis à l'echelle de maniere statistique des changements projetés",
-                tmean: 'variations de la température moyenne',
-                tmin: 'variations de la température minimale ',
-                tmax: 'variations de la température maximale',
-                precip: 'variations des précipitations moyennes',
-                link: 'http://scenarios-climatiques.canada.ca/index.php?page=statistical-downscaling'
+                    "En savoir plus sur l’ensemble de données Scénarios climatiques mis à l’échelle de manière statistique.",
+                link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-scenarios-climatiques-echelle-reduite.html'
             }
         }
     };
