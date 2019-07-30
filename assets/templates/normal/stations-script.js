@@ -2,7 +2,6 @@ function parser(data, lang) {
     const TRANSLATIONS = {
         'en-CA': {
             station_name: 'Station name',
-            stn_id: 'MSC station ID',
             station_type: 'Station type',
             province: 'Province/Territory',
             latitude: 'Latitude',
@@ -17,7 +16,6 @@ function parser(data, lang) {
 
         'fr-CA': {
             station_name: 'Nom de la station',
-            stn_id: 'Numéro de la station du SMC',
             station_type: 'Type de station',
             province: 'Province / Territoire',
             latitude: 'Latitude',
