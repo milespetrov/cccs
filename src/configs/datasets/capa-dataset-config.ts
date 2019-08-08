@@ -36,7 +36,16 @@ const capaDataset: DatasetSource = {
             ['#7f0000', '75'],
             ['#000000', '100']
         ],
-        defaultLabels: ['0.1', '200']
+        defaultLabels: ['0.1', '200'],
+        defaultTicks: [
+            ['10','5'],
+            ['30', '15'],
+            ['50', '25'],
+            ['70', '35'],
+            ['90', '45'],
+            ['120', '60'],
+            ['150', '75']
+        ]
     },
 
     mapConfigPath: 'config-base.json',

@@ -2,7 +2,11 @@
     <div class="colour-ramp">
         <span class="range-label range-left">&le; {{ labels[0] }}</span>
 
-        <div class="colours" :style="{ background: backgroundGradient }"></div>
+        <div class="colours" :style="{ background: backgroundGradient }">
+            <div :class="(tick[0]==='0') ? 'zero-tick' : 'tick'" v-for="tick in ticks" :key="tick" :style="{left: tick[1]+'%'}">
+                <span :style="{left: '-'+labelPlacement(tick[0])+'px'}">{{ tick[0] }}</span>
+            </div>
+        </div>
 
         <span class="range-label range-right">&ge; {{ labels[1] }}</span>
     </div>
@@ -21,6 +25,11 @@ export default class MapColourRamp extends Vue {
     })
     colours: string[] | string[][];
 
+    @Prop({
+        default: []
+    })
+    ticks: string[][];
+
     /**
      * Returns the value for the background of the colour ramp using the colours provided in the dataset config.
      */
@@ -32,6 +41,21 @@ export default class MapColourRamp extends Vue {
             .map(value => `${value[0]} ${value[1]}%`)
             .join(',')})`;
     }
+
+    labelPlacement(label: string): number {
+        let placement: number = 0;
+
+        // '-' adds 3px needed
+        if (label.startsWith('-')) {
+            placement += 3;
+            label = label.slice(1);
+        }
+
+        // 4px per character except for first
+        placement += 4*label.length - 1;
+
+        return placement;
+    }
 }
 </script>
 
@@ -41,7 +65,8 @@ export default class MapColourRamp extends Vue {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 1rem 0 0.5rem;
+    top: 4px;
 }
 
 .range-label {
@@ -67,6 +92,7 @@ export default class MapColourRamp extends Vue {
     display: flex;
     padding: 3px 0 2px 0;
     margin: 0 6px;
+    position: relative;
 
     height: 1em;
 
@@ -83,6 +109,27 @@ export default class MapColourRamp extends Vue {
         &:nth-child(3) {
             color: #000000;
         }
+    }
+
+    .tick, .zero-tick {
+        width: 2px;
+        top: -0.2em;
+        background: black;
+        position: absolute;
+
+        span {
+            top: -15px;
+            font-size: 0.8em;
+            position: absolute;
+        }
+    }
+
+    .tick {
+        height: 0.4em;
+    }
+
+    .zero-tick {
+        height: 0.9em;
     }
 }
 </style>

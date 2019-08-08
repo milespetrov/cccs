@@ -38,7 +38,7 @@
                     <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
                 </div>
                 <div class="cip-row-content">
-                    <map-colour-ramp :labels="colourRamp.labels" :colours="colourRamp.colours"></map-colour-ramp>
+                    <map-colour-ramp :labels="colourRamp.labels" :colours="colourRamp.colours" :ticks="colourRamp.ticks"></map-colour-ramp>
                 </div>
             </div>
         </div>

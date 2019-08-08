@@ -122,6 +122,13 @@ export interface ColourRamp {
      * @memberof ColourRamp
      */
     labels?: [string, string];
+    /**
+     * A list of labels and positions (by percentage) for ticks on the colour ramp.
+     * 
+     * @type {string[][]}
+     * @memberof ColourRamp
+     */
+    ticks?: string[][];
 }
 
 /**
@@ -146,6 +153,14 @@ export interface DatasetColourRamp {
      * @memberof DatasetColourRamp
      */
     defaultLabels: [string, string];
+    /**
+     * A list of default labels and positions (by percentage) for ticks on the colour ramp. 
+     * They can be overwritten by variable-specific colour ramp configurations.
+     * 
+     * @type {string[][]}
+     * @memberof ColourRamp
+     */
+    defaultTicks?: string[][];
 
     // TODO: use enum in the index signature when Typescript supports it
     variables?: { [name: string]: ColourRamp };

@@ -143,7 +143,8 @@ const getters = {
         // get the default colour ramp
         const defaultColourRamp: ColourRamp = {
             colours: dataset.colourRamp.defaultColours,
-            labels: dataset.colourRamp.defaultLabels
+            labels: dataset.colourRamp.defaultLabels,
+            ticks: dataset.colourRamp.defaultTicks || undefined
         };
 
         // check if a colour ramp is specified for the current variable
