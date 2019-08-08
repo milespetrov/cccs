@@ -3,8 +3,8 @@
         <span class="range-label range-left">&le; {{ labels[0] }}</span>
 
         <div class="colours" :style="{ background: backgroundGradient }">
-            <div class="tick" v-for="tick in ticks" :key="tick" :style="{left: tick[1]+'%'}">
-                <span>{{ tick[0] }}</span>
+            <div :class="(tick[0]==='0') ? 'zero-tick' : 'tick'" v-for="tick in ticks" :key="tick" :style="{left: tick[1]+'%'}">
+                <span :style="{left: '-'+labelPlacement(tick[0])+'px'}">{{ tick[0] }}</span>
             </div>
         </div>
 
@@ -26,7 +26,7 @@ export default class MapColourRamp extends Vue {
     colours: string[] | string[][];
 
     @Prop({
-        default: [['10', '10'],['20', '20'],['30', '30'],['80', '80']]
+        default: []
     })
     ticks: string[][];
 
@@ -41,6 +41,21 @@ export default class MapColourRamp extends Vue {
             .map(value => `${value[0]} ${value[1]}%`)
             .join(',')})`;
     }
+
+    labelPlacement(label: string): number {
+        let placement: number = 0;
+
+        // '-' adds 3px needed
+        if (label.startsWith('-')) {
+            placement += 3;
+            label = label.slice(1);
+        }
+
+        // 4px per character except for first
+        placement += 4*label.length - 1;
+
+        return placement;
+    }
 }
 </script>
 
@@ -50,7 +65,8 @@ export default class MapColourRamp extends Vue {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 1rem 0 0.5rem;
+    top: 4px;
 }
 
 .range-label {
@@ -95,19 +111,25 @@ export default class MapColourRamp extends Vue {
         }
     }
 
-    .tick {
-        height: 0.4em;
+    .tick, .zero-tick {
         width: 2px;
-        top: 0.7em;
+        top: -0.2em;
         background: black;
         position: absolute;
 
         span {
-            top: 5px;
-            left: -5px;
+            top: -15px;
             font-size: 0.8em;
             position: absolute;
         }
+    }
+
+    .tick {
+        height: 0.4em;
+    }
+
+    .zero-tick {
+        height: 0.9em;
     }
 }
 </style>
