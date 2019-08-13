@@ -74,7 +74,7 @@
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=8&MONTH=3",
       "name": "Daily minimum temperature",
-      "nameField": "STN_ID",
+      "nameField": "CLIMATE_IDENTIFIER",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -107,7 +107,7 @@
           { "data": "TOTAL_OBS_COUNT", "title": "Total observations count", "visible": true },
           { "data": "PERIOD", "visible": false },
           { "data": "VALUE", "title": "Climate value", "visible": true },
-          { "data": "STN_ID", "visible": false },
+          { "data": "CLIMATE_IDENTIFIER", "visible": false },
           { "data": "NORMAL_ID", "visible": false },
           { "data": "ID", "visible": false },
           { "data": "FIRST_OCCURRENCE_DATE", "visible": false },
@@ -196,7 +196,7 @@
       "xyInAttribs": true,
       "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=8&MONTH=3",
       "name": "Température minimale quotidienne",
-      "nameField": "STN_ID",
+      "nameField": "CLIMATE_IDENTIFIER",
       "state": {
         "opacity": 1,
         "visibility": true
@@ -229,7 +229,7 @@
           { "data": "TOTAL_OBS_COUNT", "title": "Nombre total d'observations", "visible": true },
           { "data": "PERIOD", "visible": false },
           { "data": "VALUE", "title": "Valeur climatique", "visible": true },
-          { "data": "STN_ID", "visible": false },
+          { "data": "CLIMATE_IDENTIFIER", "visible": false },
           { "data": "NORMAL_ID", "visible": false },
           { "data": "ID", "visible": false },
           { "data": "FIRST_OCCURRENCE_DATE", "visible": false },
