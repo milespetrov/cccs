@@ -103,7 +103,7 @@
           { "data": "CURRENT_FLAG", "visible": false },
           { "data": "LAST_YEAR", "visible": false },
           { "data": "DATE_CALCULATED", "title": "Date calculated", "visible": true },
-          { "data": "FRE_PUB_NAME", "visible": false },
+          { "data": "F_NORMAL_ELEMENT_NAME", "visible": false },
           { "data": "TOTAL_OBS_COUNT", "title": "Total observations count", "visible": true },
           { "data": "PERIOD", "visible": false },
           { "data": "VALUE", "title": "Climate value", "visible": true },
@@ -113,7 +113,7 @@
           { "data": "FIRST_OCCURRENCE_DATE", "visible": false },
           { "data": "MONTH", "title": "Month", "visible": true },
           { "data": "YEAR_COUNT_NORMAL_PERIOD", "visible": false },
-          { "data": "ENG_PUB_NAME", "title": "Measurement type", "visible": true }
+          { "data": "E_NORMAL_ELEMENT_NAME", "title": "Measurement type", "visible": true }
         ]
       },
       "colour": "#f04116",
@@ -225,7 +225,7 @@
           { "data": "CURRENT_FLAG", "visible": false },
           { "data": "LAST_YEAR", "visible": false },
           { "data": "DATE_CALCULATED", "title": "Date du calcul", "visible": true },
-          { "data": "FRE_PUB_NAME", "title": "Type de mesure", "visible": true },
+          { "data": "F_NORMAL_ELEMENT_NAME", "title": "Type de mesure", "visible": true },
           { "data": "TOTAL_OBS_COUNT", "title": "Nombre total d'observations", "visible": true },
           { "data": "PERIOD", "visible": false },
           { "data": "VALUE", "title": "Valeur climatique", "visible": true },
@@ -235,7 +235,7 @@
           { "data": "FIRST_OCCURRENCE_DATE", "visible": false },
           { "data": "MONTH", "title": "Mois", "visible": true },
           { "data": "YEAR_COUNT_NORMAL_PERIOD", "visible": false },
-          { "data": "ENG_PUB_NAME", "visible": false }
+          { "data": "E_NORMAL_ELEMENT_NAME", "visible": false }
         ]
       },
       "colour": "#f04116",
