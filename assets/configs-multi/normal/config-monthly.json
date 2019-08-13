@@ -107,8 +107,7 @@
                       { "data": "ELEVATION", "title": "Elevation", "visible": true },
                       { "data": "TC_IDENTIFIER", "title": "Transport Canada identifier", "visible": true },
                       { "data": "FRE_STN_OPERATOR_NAME", "visible": false },
-                      { "data": "LATITUDE", "title": "Latitude", "visible": true },          
-                      { "data": "STN_ID", "title": "MSC station ID", "visible": true },
+                      { "data": "LATITUDE", "title": "Latitude", "visible": true },
                       { "data": "DISPLAY_CODE", "visible": false }
                     ]
                   },
@@ -225,8 +224,7 @@
                       { "data": "ELEVATION", "title": "Altitude", "visible": true },
                       { "data": "TC_IDENTIFIER", "title": "Identifiant de Transports Canada", "visible": true },
                       { "data": "FRE_STN_OPERATOR_NAME", "title": "Opérateur de la station", "visible": true },
-                      { "data": "LATITUDE", "title": "Latitude", "visible": true },          
-                      { "data": "STN_ID", "title": "Numéro de la station du SMC", "visible": true },
+                      { "data": "LATITUDE", "title": "Latitude", "visible": true },
                       { "data": "DISPLAY_CODE", "visible": false }
                     ]
                   },
