@@ -122,7 +122,7 @@ function parser(data, lang) {
         result.value = tempVal;
     }
 
-    result.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, data.features[0].geometry.coordinates);
+    result.latlong = window.RAMP.GAPI.proj.localProjectPoint(3978, 4326, data.features[0].geometry.coordinates);
 
     result.tt = TRANSLATIONS[lang];
 

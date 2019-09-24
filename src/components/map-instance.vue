@@ -1,5 +1,5 @@
 <template>
-    <div :id="`cip-map-anchor-${mapCounter}`" :class="datasetId" class="cip-map-anchor"></div>
+    <div :id="`cip-map-anchor-${mapCounter}`" :class="datasetId" class="cip-map-anchor" rv-plugins="customExport"></div>
 </template>
 
 <script lang="ts">
@@ -16,7 +16,7 @@ import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { throttleTime } from 'rxjs/internal/operators/throttleTime';
 
 import api, { DatasetApi } from './../api/';
-import { MapPoint } from '@/store/modules/app';
+import { MapPoint, XY } from '@/store/modules/app';
 import { UpdateRouteMixin } from '../globals/mixin';
 import { DatasetId, VariableId } from '@/types';
 
@@ -82,6 +82,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @StateApp
     analysisPeriod: string;
     // @StateApp featurePoint: MapPoint;
+    @StateApp 
+    lastClick: XY;
 
     @StateApp
     layerVisibility: {
@@ -100,6 +102,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     setTileInfo: (value: number[] | null) => void;
     @ActionApp
     setLayerVisibility: (args: {layerId: string, value: boolean}) => void;
+    @ActionApp 
+    setLastClick: (value: XY | null) => void;
 
     @GetterApp
     timeSliderLabels: string[] | undefined;
@@ -160,6 +164,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this._mapi.layers.identifyMode = dataset.identifyMode;
     }
 
+    refreshIdentify() {
+        if (this.lastClick !== null) {
+            this._mapi.identify(this.lastClick);
+        }
+    }
+
     getCapabilities(layerConfig: any): void {
         const getCapabilitiesUrl =
             layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.layerEntries[0].id;
@@ -207,6 +217,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             const layerPromise = this._mapi.layers.addLayer(layer);
             this.currentLayers[index] = layer.id;
 
+            // wait for the visible data layer to load, then refresh identify if needed
+            if (layer.state.visibility === true) {
+                layerPromise.then(() => {
+                    this.refreshIdentify();
+                })
+            }
+
             if (this.dateSlider) {
                 if (this.timeSlice) {
                     layerPromise.then((addedLayers: any[]) => {
@@ -241,7 +258,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // Updates the current legend based on the selected variable and its dataset.
         const legend = source.legend.slice();
         legend.forEach((legendEntry: any) => checkEntry(legendEntry, this.counter));
-        this._mapi.legendConfig = legend;
+        this._mapi.mapI.setLegendConfig({
+            root: {
+                children: legend
+            }
+        });
 
         function checkEntry(legendEntry: any, counter: number) {
             if (!legendEntry.layerId) {
@@ -274,10 +295,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             const timeString = new Date(this.timeSlice).toISOString().split('.')[0] + 'Z';
             // set the TIME param and reload
             this.currentLayers.forEach(layerId => {
-                this.getLayerById(layerId)._viewerLayer._layer.customLayerParameters.TIME = timeString;
-                this.getLayerById(layerId)._viewerLayer._layer.refresh();
+                this.getLayerById(layerId)._viewerLayer.setCustomParameter('TIME', timeString);
             });
         }
+        this.refreshIdentify();
     }
 
     getLayerById(searchId: string): any {
@@ -295,7 +316,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this._mapi.simpleLayer.removeGeometry('centerPnt'); // remove existing center point if there is no interaction with the map between result selections
         centerPntDeactivate.next(true);
 
-        const point = new api.RZ.GEO.Point(
+        const point = new api.RAMP.GEO.Point(
             'centerPnt',
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARuSURBVDiNjZVrbFRVEMd/5967e9vddbduN4WWYgXKKyVQWgIhkQBVqJIYCQZJI00UH2DiNxUUQwQNSfH1RYwghphoCIGADQk1QKqAGCKhCKTKq6GWbYHSdvve9u7ee8cP210LAjrJ+XAmM78zOf8zcxT/bROBYuDRkX03cA1ofliSeoDfBFYAz2UZemFZXsBf6De9gkvbQCJx7k7/4LAjrUAtcBBI/B/wDGBL6Zhg0cZ5E8YvKswJ+zRl4LqIOOC6xBO2fbytJ7a1oS16sSveDGwG/ngYuEJXatOnT06f9ErJuEINUYgLrosK5CDiID2d4LogLrbtyDeX7rSu/631msBHwPE0SB9dqa5Uzf4V5SWrpuXna6AQAQREyFqzGWPWAuwzR0j7Fag5EV+oPOILHGjuni5wFugYDTaB7Z8vmTFj1bSC/DQMEbRIAZ6FK9BL5qGCYVSWD4m1I4N9mZhJj3j9OR5dP3azf/LIvbtp8AulY0LPbF86c6oCBQKAt7Ia8+VN6BNKQNPA8GJMKcNTsRKUwrl6LlN9aTgreLSt37o9ZHcDjWnwpi+eLp01NdcfSAd6lq7GU7ma5C+1WF9tQC+ajnS3M7TtNZTpw1tZDeLiXGnIXEvEq+sHW3pN4IABTDR1fdyiotxwRtFIAZ4lVSRP1pI4+CW4Ltb3NSnxhgaw9n4GCOazr2KfrsNtv5FSPt8fztLV+GFHHteA4vL8kN/vNYw02CirANcl+eO3GWWlL4b0xTL7RO0OEBdj/rKMz2doRmk42wcUa0BuYcjvBVA5EczXt6aCHRtzzQeoUG7qsLlLMeZWko7LeqMGsW28i1fie2cnWngsAIU+wwtENEBERO55z/zLcT+7T3uN5IkGdLX1xZMA0tOJ9fX72KfrULqOtXsL0tsFgH3maOoNj8QN73gPpRskftpH/JO1uLHbAETjdgLo1ICmhlu9gwMJ206fajfUg9LwLHvpn+KCYVQwoy/e5esAhX26LuMbTLr2hdhQHGjSgGbLcaInWroyykjXLZLH9uBZsBzv82+isv2Yq98lq3ojKjuAWfU2nsUrsQ7twu1oy4B/vj0YsxyJAi3pW6qaOSb01qnqJ8r09HwQwXiqCu/SF0EEsZOpyg0PKEXi0C6sw7vBcUBckrYjCw83nWvsGf4Y2JdukKvtg1ZFxGcG54wNhdIt7TRdwGmoR4b60QsmgpMkWb8X67sa7PMnMi0Nws5LndE913saga2MamkHuFjf3DF/dn4oUJzj86eTJN6He+08+pRypC+G9f221JwYNU+ORHs71v0avQxsANrh7unWJXBj/6Wb08LZHr00LxjU0nNDBOfyWewLJ2E4nqnSdlzZ+eed6NpTNy4LfEhqunEvGOAvoOFoc+fkuusdw3l+0ygMmKZXUxrDccRKQQcs2z7S2tO55vj1K3uaYo3A+tFQePDX5CH1NS03dTV+dl7Q91jANAWXaH/C+r2jPz6i/g8jK3kv4EHg0VYETOHuz/Qq0PKwpL8BL8EAdKaMj7AAAAAASUVORK5CYII=',
             [this.locationPoint.x, this.locationPoint.y]
@@ -326,7 +347,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        const xyCenter = new api.RZ.GEO.XY(this.centerPoint.x, this.centerPoint.y);
+        const xyCenter = new api.RAMP.GEO.XY(this.centerPoint.x, this.centerPoint.y);
         this._mapi.setCenter(xyCenter);
     }
 
@@ -359,10 +380,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     dataSet: string = 'ahccd';
 
     async mounted(): Promise<void> {
-        const RZ = (<any>window).RZ;
+        const RAMP = (<any>window).RAMP;
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
-        if (!RZ) {
+        if (!RAMP) {
             window.setTimeout(() => this.mounted(), 500);
             return;
         }
@@ -373,9 +394,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // tslint:disable-next-line:no-unused-expression
-        new RZ.Map(this.anchor, './assets/configs/ramp.[lang].json');
+        new RAMP.Map(this.anchor, './assets/configs/ramp.[lang].json');
 
-        RZ.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
+        RAMP.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
             this.updateIdentifyMode();
@@ -403,6 +424,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
                 this.cursorPoint = new MapPoint(event.xy.x, event.xy.y);
             });
+
+            this._mapi.click.pipe(takeUntil(this.deactivate)).subscribe(this.mapClickHandler);
 
             // if the current feature is already set, draw grid
             // NOTE: reselecting the previously selected feature from a bookmar is disabled for now
@@ -482,6 +505,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.resolution = this._mapi.mapI._map.getResolution();
     }
 
+    mapClickHandler(clickEvent: any): void {
+        this.setLastClick(clickEvent.xy);
+    }
+
     /**
      * Handle the identify sesssion, but updating the routes with the feature coordinates
      *
@@ -524,8 +551,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(xy);
 
         // build the polygon
-        const RZ = (<any>window).RZ;
-        const poly = new RZ.GEO.Polygon(requestNum, coordinates);
+        const RAMP = (<any>window).RAMP;
+        const poly = new RAMP.GEO.Polygon(requestNum, coordinates);
 
         //update drawn geometry
         this._mapi.simpleLayer.removeGeometry();

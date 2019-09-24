@@ -1,6 +1,6 @@
 import { ActionContext, StoreOptions } from 'vuex';
 
-import { AppState, MapPoint } from './app-state';
+import { AppState, MapPoint, XY } from './app-state';
 import { RootState } from '@/store';
 
 import { datasets, DatasetViewSource, ColourRamp } from '@/configs/datasets';
@@ -28,6 +28,7 @@ const state: AppState = {
         labels: null,
         provinces: null
     },
+    lastClick: null,
 
     // Does not belong
     internalRouteUpdate: false
@@ -48,7 +49,8 @@ enum Action {
     setVariableId = 'setVariableId',
     setZoomLevel = 'setZoomLevel',
     setAnalysisPeriod = 'setAnalysisPeriod',
-    setLayerVisibility = 'setLayerVisibility'
+    setLayerVisibility = 'setLayerVisibility',
+    setLastClick = 'setLastClick'
 }
 
 enum Mutation {
@@ -64,7 +66,8 @@ enum Mutation {
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
     SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL',
     SET_ANALYSIS_PERIOD = 'SET_ANALYSIS_PERIOD',
-    SET_LAYER_VISIBILITY = 'SET_LAYER_VISIBILITY'
+    SET_LAYER_VISIBILITY = 'SET_LAYER_VISIBILITY',
+    SET_LAST_CLICK = 'SET_LAST_CLICK'
 }
 
 // getters
@@ -179,6 +182,7 @@ const actions = {
 
     [Action.setDatasetId](context: AppContext, value: DatasetId) {
         context.commit(Mutation.SET_RCP_TIME_SLICE, null);
+        context.commit(Mutation.SET_LAST_CLICK, null);
         context.commit(Mutation.SET_DATASET_ID, value);
 
         context.dispatch(Action.applyDatasetDefault);
@@ -329,6 +333,10 @@ const actions = {
         context.commit(Mutation.SET_LAYER_VISIBILITY, args);
     },
 
+    [Action.setLastClick](context: AppContext, value: XY | null): void {
+        context.commit(Mutation.SET_LAST_CLICK, value);
+    },
+
     [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
         context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
     }
@@ -382,6 +390,10 @@ const mutations = {
 
     [Mutation.SET_LAYER_VISIBILITY](state: AppState, args: { layerId: string; value: boolean }): void {
         state.layerVisibility[args.layerId] = args.value;
+    },
+
+    [Mutation.SET_LAST_CLICK](state: AppState, value: XY | null): void {
+        state.lastClick = value;
     },
 
     [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {

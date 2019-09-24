@@ -134,7 +134,7 @@ export default class MapViewControls extends Vue {
 
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
-        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.export(type);
+        api.RAMP.mapInstances[api.RAMP.mapInstances.length - 1].mapI.export(type);
     }
 }
 </script>
