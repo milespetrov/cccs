@@ -7,13 +7,14 @@ function parser(data, lang) {
                 annual: 'Annual',
                 spring: 'Spring',
                 summer: 'Summer',
-                fall: 'Autumn'
+                fall: 'Autumn',
+                winter: 'Winter'
             },
             variable: {
                 label: 'Variable',
                 tmean: 'Mean temperature',
-                tmin: 'Minimum temperature',
-                tmax: 'Maximum temperature',
+                tmin: 'Daily minimum temperature',
+                tmax: 'Daily maximum temperature',
                 precip: 'Total precipitation'
             },
             measurementUnit: {
@@ -59,8 +60,8 @@ function parser(data, lang) {
             variable: {
                 label: 'Variable',
                 tmean: 'Température moyenne',
-                tmin: 'Température minimale',
-                tmax: 'Température maximale',
+                tmin: 'Température minimale quotidienne',
+                tmax: 'Température maximale quotidienne',
                 precip: 'Précipitations totales'
             },
             measurementUnit: {
