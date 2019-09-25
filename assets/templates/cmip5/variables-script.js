@@ -7,7 +7,8 @@ function parser(data, lang) {
                 annual: 'Annual',
                 spring: 'Spring',
                 summer: 'Summer',
-                fall: 'Autumn'
+                fall: 'Autumn',
+                winter: 'Winter'
             },
             variable: {
                 label: 'Variable',

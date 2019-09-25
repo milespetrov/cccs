@@ -10,6 +10,7 @@ function parser(data, lang) {
             obs_percent: 'Percentage of possible observations',
             date_calculated: 'Date calculated',
             normal_code: 'Normal code',
+            climate_identifier: 'Climate identifier',
             time_of_year: {
                 title: 'Time of year',
                 times: [
@@ -40,6 +41,7 @@ function parser(data, lang) {
             obs_percent: "Pourcentage d'observations possibles",
             date_calculated: 'Date du calcul',
             normal_code: 'Code de la normale',
+            climate_identifier: 'Identifiant climatique',
             time_of_year: {
                 title: "Temps de l'année",
                 times: [
