@@ -400,7 +400,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._mapi = mapi;
 
             this.updateIdentifyMode();
-            this.injectCIPMapcomponents();
+            const controlClusterPanel = this._mapi.panels.create('cip-controls-cluster-container');
+            this.injectCIPMapcomponents(controlClusterPanel);
             this.switchLayers();
             this.mapBoundsChangeHandler();
 
@@ -589,7 +590,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
      * Adds timeline and fineprint components inside the RAMP inner-shell node so they are included into the RAMP tab order.
      * This also helps to position and align the components together with other RAMP components when the browser window is resized.
      */
-    injectCIPMapcomponents(): void {
+    injectCIPMapcomponents(controlClusterPanel: any/* panel */): void {
         // TODO: when RAMP api supports it, move them inside the ramp container
 
         // render component off DOM and inject it into the RAMP inner-shell container node
@@ -649,8 +650,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             i18n: this.$i18n
         }).$mount();
 
+        controlClusterPanel.body = controlClusterComponent.$el;
+        controlClusterPanel.open();
+
         const innerShell = this.$el.querySelector('.rv-inner-shell')!;
-        innerShell.appendChild(controlClusterComponent.$el);
         innerShell.appendChild(fineprintComponent.$el);
 
         // insert the scrollguard as the first child of the inner shell

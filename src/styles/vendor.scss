@@ -325,3 +325,13 @@ body > header > nav.gcweb-v2 > div > button {
 html, body {
     background-color: #fff;
 }
+
+#cip-controls-cluster-container.rv-content-pane {
+    bottom: 25px;
+    top: auto;
+    min-height: 110px;
+    padding: 5px;
+    pointer-events: none !important;
+    background: none !important;
+    box-shadow: none;
+}

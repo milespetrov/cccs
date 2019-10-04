@@ -74,7 +74,6 @@ export default class MapControlsCluster extends Vue {
 @import "./../styles/variables.scss";
 
 .cip-controls-cluster-container {
-    bottom: 4rem;
     position: absolute;
     left: 0;
     right: 0;
