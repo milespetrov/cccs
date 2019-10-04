@@ -417,6 +417,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._mapi.ui.tooltip.mouseOver.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOverHandler);
             this._mapi.ui.tooltip.mouseOut.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOutHandler);
 
+            this._mapi.panels.details.closing.pipe(takeUntil(this.deactivate)).subscribe(this.detailsClosingHandler);
+
             this._mapi.mouseMove.pipe(throttleTime(30)).subscribe((event: any) => {
                 // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
                 if (!event.xy) {
@@ -508,6 +510,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     mapClickHandler(clickEvent: any): void {
         this.setLastClick(clickEvent.xy);
+    }
+
+    detailsClosingHandler(closeEvent: any): void {
+        if (closeEvent.code === 'closebtn') {
+            this.setLastClick(null);
+        }
     }
 
     /**

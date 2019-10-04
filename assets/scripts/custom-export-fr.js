@@ -134,7 +134,7 @@ function () {
           offset: [(mapSize.width/2) - (data.graphic.width/2) + 50, 0]
         };
       });
-      
+
       promises.push(mapImage, pointsImage, northArrowImage, scaleBarImage, legendImage, titleImage);
 
       if (['cmip5','dcs'].indexOf(dataset) !== -1) {
@@ -246,7 +246,7 @@ function () {
         });
         promises.push(dateImage);
       }
-      
+
       return promises;
     }
   }]);
