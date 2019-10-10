@@ -258,6 +258,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('timeSlice')
     onTimeSliceChanged(newValue: number, oldValue: number) {
+        $('rv-details rv-details-header .rv-close').click();
         if (this.timeSliderLabels) {
             // turn off old layer
             if (oldValue !== null && this.currentLayers) {
