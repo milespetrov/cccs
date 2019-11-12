@@ -216,7 +216,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     }
 
     openRampHelp(): void {
-        api.RZ.mapInstances[api.RZ.mapInstances.length - 1].mapI.help();
+        api.RAMP.mapInstances[api.RAMP.mapInstances.length - 1].mapI.help();
     }
 }
 </script>

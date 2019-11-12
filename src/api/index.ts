@@ -4,7 +4,7 @@ import datasets from './datasets';
 export * from './types';
 
 const $: any = (<EnhancedWindow>window).$;
-const RZ: any = (<EnhancedWindow>window).RZ;
+const RAMP: any = (<EnhancedWindow>window).RAMP;
 const dcsMultiTrack: any =
     (<any>window).dcsMultiTrack ||
     (() => {
@@ -13,7 +13,7 @@ const dcsMultiTrack: any =
 
 export default {
     $,
-    RZ,
+    RAMP,
     dcsMultiTrack
 };
 

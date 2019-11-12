@@ -17,6 +17,7 @@ export interface AppState {
         labels: boolean | null;
         provinces: boolean | null;
     };
+    lastClick: XY | null;
 
     internalRouteUpdate: boolean;
 }
@@ -28,3 +29,5 @@ export class MapPoint {
         return `${this.x.toString()},${this.y.toString()}`;
     }
 }
+
+export class XY {}

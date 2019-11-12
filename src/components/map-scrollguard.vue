@@ -37,7 +37,7 @@ export default class MapScrollguard extends Vue {
             // I couldn't find why this is happening, or how to stop it properly
             // using this esri function seems to be the simplest solution
             // TODO: use a proper API endpoint when it's created
-            this._mapi._fgpMap._map.disableScrollWheelZoom();
+            this._mapi.fgpMapObj.esriMap.disableScrollWheelZoom();
 
             scrollGuardClassList.remove('cip-scrolling');
             scrollGuardClassList.add('cip-active');
@@ -49,7 +49,7 @@ export default class MapScrollguard extends Vue {
             scrollGuardClassList.remove('cip-active');
             scrollGuardClassList.add('cip-scrolling');
 
-            this._mapi._fgpMap._map.enableScrollWheelZoom();
+            this._mapi.fgpMapObj.esriMap.enableScrollWheelZoom();
         }
     }
 }

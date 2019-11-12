@@ -56,7 +56,7 @@ function parser(data, lang) {
         result.properties[splitResult[0]] = splitResult[1];
     }
 
-    result.properties.latlong = window.RZ.GAPI.proj.localProjectPoint(3978, 4326, [
+    result.properties.latlong = window.RAMP.GAPI.proj.localProjectPoint(3978, 4326, [
         parseFloat(result.properties.x),
         parseFloat(result.properties.y)
     ]);
