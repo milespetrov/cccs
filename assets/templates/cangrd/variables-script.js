@@ -4,7 +4,7 @@ function parser(data, lang) {
             latlong: 'Latitude, longitude',
             trendValue: {
                 precip: 'Trend of relative total precipitation change (%) over 1948-2012',
-                tmean: 'Trend of temperature change (°C) over 1948-2016'
+                tmean: 'Trend of temperature change (°C) over 1948-2018'
             },
             learnMore: {
                 default: 'Learn more about Canadian Gridded Temperature and Precipitation Anomalies (CANGRD) dataset.',
@@ -16,7 +16,7 @@ function parser(data, lang) {
             latlong: 'Latitude, longitude',
             trendValue: {
                 precip: 'Tendance de la variation relative des précipitations totales (%) de 1948 à 2012',
-                tmean: 'Tendance de la variation de température (°C) de 1948 à 2016'
+                tmean: 'Tendance de la variation de température (°C) de 1948 à 2018'
             },
             learnMore: {
                 default: 'En savoir plus sur l’ensemble de données Anomalies de température et précipitation interpolées pour le Canada (CANGRD).',
