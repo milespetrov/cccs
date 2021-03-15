@@ -95,6 +95,19 @@
                 "fr": "/documentation-technique-archive-hydrometrique.html"
             }
         },
+        "ltce": {
+            "dataQuery": {
+                "en": "",
+                "fr": ""
+            },
+            "metadata": {
+                "ltce": ""
+            },
+            "technicalDocs": {
+                "en": "/technical-documentation-daily-climate-records.html",
+                "fr": "/documentation-technique-records-extremes-quotidiens.html"
+            }
+        },
         "normal": {
             "dataQuery": {
                 "en": "/climate-normals",

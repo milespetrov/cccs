@@ -1,0 +1,330 @@
+{
+    "en": {
+      "legend": [
+        {
+          "export": false,
+          "infoType": "title",
+          "content": "Data"
+        },
+        {
+          "infoType": "text",
+          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
+        },
+        {
+          "layerId": "ltce_tempstations_en",
+          "layerName": "",
+          "description": "",
+          "coverIcon": "assets/images/red-circle.png",
+          "symbologyStack": [
+            {
+              "image": "assets/images/red-circle.png",
+              "text": "Daily Maximum/Minimum Temperature Virtual Station"
+            }
+          ],
+          "symbologyRenderStyle": "icons"
+        },
+        {
+          "infoType": "title",
+          "content": "Settings"
+        },
+        {
+          "layerId": "cities",
+          "layerName": "Cities",
+          "coverIcon": "assets/images/cities.png",
+          "symbologyStack": []
+        },
+        {
+          "layerId": "labels",
+          "layerName": "Labels",
+          "coverIcon": "assets/images/labels.png",
+          "symbologyStack": []
+        }
+      ],
+      "supportLayers": [
+        {
+          "id": "cities",
+          "layerType": "esriTile",
+          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "name": "Cities",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": false
+          }
+        },
+        {
+          "id": "labels",
+          "layerType": "esriTile",
+          "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+          "name": "Labels",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          }
+        }
+      ],
+      "dataLayers": [
+        {
+          "id": "ltce_tempstations_en",
+          "layerType": "ogcWfs",
+          "xyInAttribs": true,
+          "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
+          "name": "Virtual Climate Stations",
+          "nameField": "VIRTUAL_CLIMATE_ID",
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          },
+          "details": {
+            "template": "assets/templates/ltce/stations-template.html",
+            "parser": "assets/templates/ltce/stations-script.js"
+          },
+          "colour": "#f04116",
+          "controls": [
+            "data",
+            "visibility",
+            "opacity"
+          ],
+          "table": {
+            "columns": [
+              {
+                "data": "VIRTUAL_CLIMATE_ID",
+                "title": "Virtual Climate ID",
+                "visible": true
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_E",
+                "title": "Virtual Station Name",
+                "visible": true
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_F",
+                "visible": false
+              },
+              {
+                "data": "CLIMATE_IDENTIFIER",
+                "title": "Climate Identifier",
+                "visible": true
+              },
+              {
+                "data": "DATA_SOURCE",
+                "title": "Type",
+                "visible": true
+              },
+              {
+                "data": "ELEMENT_NAME_E",
+                "title": "Element",
+                "visible": true
+              },
+              {
+                "data": "START_DATE",
+                "title": "Start Date",
+                "visible": true
+              },
+              {
+                "data": "END_DATE",
+                "title": "End Date",
+                "visible": true
+              },
+              {
+                "data": "ENG_STN_NAME",
+                "title": "Station Name",
+                "visible": true
+              },
+              {
+                "data": "FRE_STN_NAME",
+                "visible": false
+              },
+              {
+                "data": "IDENTIFIER",
+                "visible": false
+              },
+              {
+                "data": "PROVINCE_CODE",
+                "visible": false
+              },
+              {
+                "data": "WXO_CITY_CODE",
+                "visible": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "fr": {
+      "legend": [
+        {
+          "export": false,
+          "infoType": "title",
+          "content": "Données"
+        },
+        {
+          "infoType": "text",
+          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada [fr]"
+        },
+        {
+          "layerId": "ltce_tempstations_fr",
+          "layerName": "",
+          "description": "",
+          "coverIcon": "assets/images/red-circle.png",
+          "symbologyStack": [
+            {
+              "image": "assets/images/red-circle.png",
+              "text": "Daily Maximum/Minimum Temperature Virtual Station [fr]"
+            }
+          ],
+          "symbologyRenderStyle": "icons"
+        },
+        {
+          "infoType": "title",
+          "content": "Paramètres"
+        },
+        {
+          "layerId": "cities",
+          "layerName": "Villes",
+          "coverIcon": "assets/images/cities.png",
+          "symbologyStack": []
+        },
+        {
+          "layerId": "labels",
+          "layerName": "Étiquettes",
+          "coverIcon": "assets/images/labels.png",
+          "symbologyStack": []
+        }
+      ],
+      "supportLayers": [
+        {
+          "id": "cities",
+          "layerType": "esriTile",
+          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "name": "Villes",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": false
+          }
+        },
+        {
+          "id": "labels",
+          "layerType": "esriTile",
+          "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+          "name": "Étiquettes",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          }
+        }
+      ],
+      "dataLayers": [
+        {
+          "id": "ltce_tempstations_fr",
+          "layerType": "ogcWfs",
+          "xyInAttribs": true,
+          "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
+          "name": "Virtual Climate Stations [fr]",
+          "nameField": "VIRTUAL_CLIMATE_ID",
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          },
+          "details": {
+            "template": "assets/templates/ltce/stations-template.html",
+            "parser": "assets/templates/ltce/stations-script.js"
+          },
+          "colour": "#f04116",
+          "controls": [
+            "data",
+            "visibility",
+            "opacity"
+          ],
+          "table": {
+            "columns": [
+              {
+                "data": "VIRTUAL_CLIMATE_ID",
+                "title": "Virtual Climate ID [fr]",
+                "visible": true
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_E",
+                "visible": false
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_F",
+                "title": "Virtual Station Name [fr]",
+                "visible": true
+              },
+              {
+                "data": "CLIMATE_IDENTIFIER",
+                "title": "Climate Identifier [fr]",
+                "visible": true
+              },
+              {
+                "data": "DATA_SOURCE",
+                "title": "Type [fr]",
+                "visible": true
+              },
+              {
+                "data": "ELEMENT_NAME_E",
+                "title": "Element [fr]",
+                "visible": true
+              },
+              {
+                "data": "START_DATE",
+                "title": "Start Date [fr]",
+                "visible": true
+              },
+              {
+                "data": "END_DATE",
+                "title": "End Date [fr]",
+                "visible": true
+              },
+              {
+                "data": "ENG_STN_NAME",
+                "visible": false
+              },
+              {
+                "data": "FRE_STN_NAME",
+                "title": "Station Name [fr]",
+                "visible": true
+              },
+              {
+                "data": "IDENTIFIER",
+                "visible": false
+              },
+              {
+                "data": "PROVINCE_CODE",
+                "visible": false
+              },
+              {
+                "data": "WXO_CITY_CODE",
+                "visible": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

@@ -5,7 +5,7 @@ import { RootState } from '@/store';
 
 import { datasets, DatasetViewSource, ColourRamp } from '@/configs/datasets';
 import { defaultSelectors } from '@/configs/selectors';
-import { VisualizationControlType, DatasetId } from '@/types';
+import { VisualizationControlType, DatasetId, TimePeriodType } from '@/types';
 import { DatasetApi, datasetApis } from '@/api';
 import { layer } from '@fortawesome/fontawesome-svg-core';
 
@@ -29,6 +29,8 @@ const state: AppState = {
         provinces: null
     },
     lastClick: null,
+    month: null,
+    day: null,
 
     // Does not belong
     internalRouteUpdate: false
@@ -40,9 +42,11 @@ enum Action {
     setCenterPoint = 'setCenterPoint',
     setLocationPoint = 'setLocationPoint',
     setDatasetId = 'setDatasetId',
+    setDay = 'setDay',
     setFeatureId = 'setFeatureId',
     setFeaturePoint = 'setFeaturePoint',
     setInternalRouteUpdate = 'setInternalRouteUpdate',
+    setMonth = 'setMonth',
     setRcpId = 'setRcpId',
     setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
@@ -57,9 +61,11 @@ enum Mutation {
     SET_CENTER_POINT = 'SET_CENTER_POINT',
     SET_LOCATION_POINT = 'SET_LOCATION_POINT',
     SET_DATASET_ID = 'SET_DATASET_ID',
+    SET_DAY = 'SET_DAY',
     SET_FEATURE_ID = 'SET_FEATURE_ID',
     SET_FEATURE_POINT = 'SET_FEATURE_POINT',
     SET_INTERNAL_ROUTE_UPDATE = 'SET_INTERNAL_ROUTE_UPDATE',
+    SET_MONTH = 'SET_MONTH',
     SET_RCP_ID = 'SET_RCP_ID',
     SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
@@ -85,7 +91,9 @@ const getters = {
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
             ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
-            ap: state.analysisPeriod
+            ap: state.analysisPeriod,
+            m: state.month,
+            day: state.day
         };
 
         // remove null values from the query object
@@ -222,10 +230,18 @@ const actions = {
             [VisualizationControlType.Analysis]: {
                 action: (value: string) => context.dispatch(Action.setAnalysisPeriod, value),
                 state: context.state.analysisPeriod
+            },
+            [VisualizationControlType.Month]: {
+                action: (value: string) => context.dispatch(Action.setMonth, value),
+                state: context.state.month
+            },
+            [VisualizationControlType.Day]: {
+                action: (value: string) => context.dispatch(Action.setDay, value),
+                state: context.state.day
             }
         };
 
-        [VisualizationControlType.Time, VisualizationControlType.RCP, VisualizationControlType.Analysis].forEach(
+        [VisualizationControlType.Time, VisualizationControlType.RCP, VisualizationControlType.Analysis, VisualizationControlType.Month, VisualizationControlType.Day].forEach(
             type => {
                 // if the selector is not defined for this dataset/view combination, reset the value to null
                 const selectorSource = datasetControlOptions[type];
@@ -244,6 +260,13 @@ const actions = {
                 // if the newly set value is one of the options specified on the dataset config, leave it in place
                 if (newValue && (<string[]>selectorSource.options).includes(newValue)) {
                     return;
+                }
+
+                if (type === VisualizationControlType.Month) {
+                    const months = [TimePeriodType.January, TimePeriodType.February, TimePeriodType.March, TimePeriodType.April, TimePeriodType.May, TimePeriodType.June, TimePeriodType.July, TimePeriodType.August, TimePeriodType.September, TimePeriodType.October, TimePeriodType.November, TimePeriodType.December];
+                    selectorSource.default = months[(new Date()).getUTCMonth()];
+                } else if (type === VisualizationControlType.Day) {
+                    selectorSource.default = (new Date()).getUTCDate().toString();
                 }
 
                 // set the value to the default specified in the selector source
@@ -339,6 +362,14 @@ const actions = {
 
     [Action.setInternalRouteUpdate](context: AppContext, value: boolean): void {
         context.commit(Mutation.SET_INTERNAL_ROUTE_UPDATE, value);
+    },
+
+    [Action.setMonth](context: AppContext, value: string | null): void {
+        context.commit(Mutation.SET_MONTH, value);
+    },
+
+    [Action.setDay](context: AppContext, value: string | null): void {
+        context.commit(Mutation.SET_DAY, value);
     }
 };
 
@@ -398,6 +429,14 @@ const mutations = {
 
     [Mutation.SET_INTERNAL_ROUTE_UPDATE](state: AppState, value: boolean): void {
         state.internalRouteUpdate = value;
+    },
+    
+    [Mutation.SET_MONTH](state: AppState, value: string | null): void {
+        state.month = value;
+    },
+    
+    [Mutation.SET_DAY](state: AppState, value: string | null): void {
+        state.day = value;
     }
 };
 

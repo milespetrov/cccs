@@ -18,7 +18,7 @@ import { throttleTime } from 'rxjs/internal/operators/throttleTime';
 import api, { DatasetApi } from './../api/';
 import { MapPoint, XY } from '@/store/modules/app';
 import { UpdateRouteMixin } from '../globals/mixin';
-import { DatasetId, VariableId } from '@/types';
+import { DatasetId, VariableId, TimePeriodType } from '@/types';
 
 import { datasets, ColourRamp, DatasetSource } from './../configs/datasets';
 
@@ -28,6 +28,7 @@ import MapControlsCluster from './map-controls-cluster.vue';
 import MapFineprint from './map-fineprint.vue';
 import MapScrollguard from './map-scrollguard.vue';
 import MapPanguard from './map-panguard.vue';
+import { monthSelectorConfig } from '../configs/selectors';
 
 // TODO: import proper RAMP definitions
 export interface IdentifyResult {
@@ -84,6 +85,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     // @StateApp featurePoint: MapPoint;
     @StateApp 
     lastClick: XY;
+    @StateApp
+    day: string;
+    @StateApp
+    month: string;
 
     @StateApp
     layerVisibility: {
@@ -156,6 +161,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.updateIdentifyMode();
     }
 
+    @Watch('month')
+    onMonthChanged() {
+        this.switchLayers();
+    }
+
+    @Watch('day')
+    onDayChanged() {
+        this.switchLayers();
+    }
+
     /**
      * Update the identify based on the currently selected dataset.
      */
@@ -209,6 +224,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         source.dataLayers.slice().forEach((layer: any, index: number) => {
             if (index === this.timeSlice) {
                 layer.state.visibility = true;
+            }
+
+            // LTCE non-station variables need day & month added to the query
+            // This keeps us from needing ~2000 configs
+            if (this.datasetId === DatasetId.LTCE && !this.currentVariable.includes('station')) {
+                layer.url += '?LOCAL_DAY=' + this.day + '&LOCAL_MONTH=' + (monthSelectorConfig.groups[0].items.indexOf(this.month as TimePeriodType) + 1).toString();
             }
 
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP

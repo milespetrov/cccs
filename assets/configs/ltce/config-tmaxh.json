@@ -1,0 +1,956 @@
+{
+    "en": {
+      "legend": [
+        {
+          "export": false,
+          "infoType": "title",
+          "content": "Data"
+        },
+        {
+          "infoType": "text",
+          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
+        },
+        {
+          "layerId": "ltce_tmaxh_en",
+          "layerName": "",
+          "description": "",
+          "coverIcon": "assets/images/red-circle.png",
+          "symbologyStack": [
+            {
+              "image": "assets/images/red-circle.png",
+              "text": "Record High Max"
+            }
+          ],
+          "symbologyRenderStyle": "icons"
+        },
+        {
+          "infoType": "title",
+          "content": "Settings"
+        },
+        {
+          "layerId": "cities",
+          "layerName": "Cities",
+          "coverIcon": "assets/images/cities.png",
+          "symbologyStack": []
+        },
+        {
+          "layerId": "labels",
+          "layerName": "Labels",
+          "coverIcon": "assets/images/labels.png",
+          "symbologyStack": []
+        }
+      ],
+      "supportLayers": [
+        {
+          "id": "cities",
+          "layerType": "esriTile",
+          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "name": "Cities",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": false
+          }
+        },
+        {
+          "id": "labels",
+          "layerType": "esriTile",
+          "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+          "name": "Labels",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          }
+        }
+      ],
+      "dataLayers": [
+        {
+          "id": "ltce_tmaxh_en",
+          "layerType": "ogcWfs",
+          "xyInAttribs": true,
+          "url": "https://api.weather.gc.ca/collections/ltce-temperature/items",
+          "name": "Temperature Extremes of Record, Record High Max",
+          "nameField": "VIRTUAL_CLIMATE_ID",
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          },
+          "details": {
+            "template": "assets/templates/ltce/variables-template.html",
+            "parser": "assets/templates/ltce/variables-script.js"
+          },
+          "colour": "#f04116",
+          "controls": [
+            "data",
+            "visibility",
+            "opacity"
+          ],
+          "table": {
+            "columns": [
+              {
+                "data": "VIRTUAL_CLIMATE_ID",
+                "title": "Virtual Climate ID",
+                "visible": true
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_E",
+                "title": "Virtual Station Name",
+                "visible": true
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_F",
+                "visible": false
+              },
+              {
+                "data": "LOCAL_DAY",
+                "title": "Day",
+                "visible": true
+              },
+              {
+                "data": "LOCAL_MONTH",
+                "title": "Month",
+                "visible": true
+              },
+              {
+                "data": "MAX_TEMP_RECORD_BEGIN",
+                "title": "Record Start",
+                "visible": true
+              },
+              {
+                "data": "MAX_TEMP_RECORD_END",
+                "title": "Record End",
+                "visible": true
+              },
+              {
+                "data": "MIN_TEMP_RECORD_BEGIN",
+                "visible": false
+              },
+              {
+                "data": "MIN_TEMP_RECORD_END",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MAX_TEMP",
+                "title": "Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FIRST_HIGH_MAX_TEMP_YEAR",
+                "title": "Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FIRST_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MAX_TEMP",
+                "title": "2nd Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "SECOND_HIGH_MAX_TEMP_YEAR",
+                "title": "2nd Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "SECOND_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MAX_TEMP",
+                "title": "3rd Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "THIRD_HIGH_MAX_TEMP_YEAR",
+                "title": "3rd Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "THIRD_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MAX_TEMP",
+                "title": "4th Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_HIGH_MAX_TEMP_YEAR",
+                "title": "4th Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MAX_TEMP",
+                "title": "5th Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_HIGH_MAX_TEMP_YEAR",
+                "title": "5th Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "LAST_UPDATED",
+                "title": "Last Updated",
+                "visible": true
+              },
+              {
+                "data": "PROVINCE_CODE",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "WXO_CITY_CODE",
+                "visible": false
+              },
+              {
+                "data": "IDENTIFIER",
+                "visible": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "fr": {
+      "legend": [
+        {
+          "export": false,
+          "infoType": "title",
+          "content": "Données"
+        },
+        {
+          "infoType": "text",
+          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada [fr]"
+        },
+        {
+          "layerId": "ltce_tmaxh_fr",
+          "layerName": "",
+          "description": "",
+          "coverIcon": "assets/images/red-circle.png",
+          "symbologyStack": [
+            {
+              "image": "assets/images/red-circle.png",
+              "text": "Record High Max [fr]"
+            }
+          ],
+          "symbologyRenderStyle": "icons"
+        },
+        {
+          "infoType": "title",
+          "content": "Paramètres"
+        },
+        {
+          "layerId": "cities",
+          "layerName": "Villes",
+          "coverIcon": "assets/images/cities.png",
+          "symbologyStack": []
+        },
+        {
+          "layerId": "labels",
+          "layerName": "Étiquettes",
+          "coverIcon": "assets/images/labels.png",
+          "symbologyStack": []
+        }
+      ],
+      "supportLayers": [
+        {
+          "id": "cities",
+          "layerType": "esriTile",
+          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "name": "Villes",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": false
+          }
+        },
+        {
+          "id": "labels",
+          "layerType": "esriTile",
+          "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+          "name": "Étiquettes",
+          "expectedResponseTime": 10000,
+          "controls": [
+            "visibility",
+            "opacity",
+            "settings"
+          ],
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          }
+        }
+      ],
+      "dataLayers": [
+        {
+          "id": "ltce_tmaxh_fr",
+          "layerType": "ogcWfs",
+          "xyInAttribs": true,
+          "url": "https://api.weather.gc.ca/collections/ltce-temperature/items",
+          "name": "Temperature Extremes of Record, Record High Max [fr]",
+          "nameField": "VIRTUAL_CLIMATE_ID",
+          "state": {
+            "opacity": 1,
+            "visibility": true
+          },
+          "details": {
+            "template": "assets/templates/ltce/variables-template.html",
+            "parser": "assets/templates/ltce/variables-script.js"
+          },
+          "colour": "#f04116",
+          "controls": [
+            "data",
+            "visibility",
+            "opacity"
+          ],
+          "table": {
+            "columns": [
+              {
+                "data": "VIRTUAL_CLIMATE_ID",
+                "title": "Virtual Climate ID",
+                "visible": true
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_E",
+                "visible": false
+              },
+              {
+                "data": "VIRTUAL_STATION_NAME_F",
+                "title": "Virtual Station Name",
+                "visible": true
+              },
+              {
+                "data": "LOCAL_DAY",
+                "title": "Day",
+                "visible": true
+              },
+              {
+                "data": "LOCAL_MONTH",
+                "title": "Month",
+                "visible": true
+              },
+              {
+                "data": "MAX_TEMP_RECORD_BEGIN",
+                "title": "Record Start",
+                "visible": true
+              },
+              {
+                "data": "MAX_TEMP_RECORD_END",
+                "title": "Record End",
+                "visible": true
+              },
+              {
+                "data": "MIN_TEMP_RECORD_BEGIN",
+                "visible": false
+              },
+              {
+                "data": "MIN_TEMP_RECORD_END",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MAX_TEMP",
+                "title": "Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FIRST_HIGH_MAX_TEMP_YEAR",
+                "title": "Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FIRST_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIRST_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MAX_TEMP",
+                "title": "2nd Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "SECOND_HIGH_MAX_TEMP_YEAR",
+                "title": "2nd Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "SECOND_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "SECOND_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MAX_TEMP",
+                "title": "3rd Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "THIRD_HIGH_MAX_TEMP_YEAR",
+                "title": "3rd Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "THIRD_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "THIRD_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MAX_TEMP",
+                "title": "4th Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_HIGH_MAX_TEMP_YEAR",
+                "title": "4th Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FOURTH_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MAX_TEMP",
+                "title": "5th Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_HIGH_MAX_TEMP_YEAR",
+                "title": "5th Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MAX_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MIN_TEMP_YEAR",
+                "visible": false
+              },
+              {
+                "data": "FIFTH_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "LAST_UPDATED",
+                "title": "Last Updated",
+                "visible": true
+              },
+              {
+                "data": "PROVINCE_CODE",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_HIGH_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MAX_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MAX_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MIN_TEMP",
+                "visible": false
+              },
+              {
+                "data": "RECORD_LOW_MIN_TEMP_YR",
+                "visible": false
+              },
+              {
+                "data": "WXO_CITY_CODE",
+                "visible": false
+              },
+              {
+                "data": "IDENTIFIER",
+                "visible": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

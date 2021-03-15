@@ -42,6 +42,9 @@ map.capa_desc,"The Regional Deterministic Precipitation Analysis (RDPA) produces
 map.capa_desc.technicalLink,"the technical documentation on RDPA",1,"la documentation technique relative à la ARDP",1
 map.hydro_desc,"Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.",1,"Les Données hydrométriques historiques sont des données et des informations normalisées sur les ressources en eau. Elles sont recueillies, interprétées et diffusées par Relevés hydrologiques du Canada (RHC) en partenariat avec les provinces, les territoires et d’autres organismes par l’intermédiaire du Programme national de relevés hydrométriques. Ces ensembles de données comprennent les valeurs moyennes quotidiennes et mensuelles, les valeurs moyennes quotidiennes minimales et maximales par année et les valeurs des débits et des niveaux d’eau de pointe et instantanés pour plus de 2 700 stations de surveillance hydrométrique actives et 5 080 stations fermées au Canada.",1
 map.hydro_desc.technicalLink,"the technical documentation on the Historical hydrometric data",1,"la documentation technique relative aux Données hydrométriques historiques",1
+map.ltce_desc,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",1,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area. [fr]",0
+map.ltce_desc.faq,"see FAQ",1,"see FAQ [fr]",0
+map.ltce_desc.technicalLink,"the technical documentation on Long Term Climate Extremes",0,"the technical documentation on Long Term Climate Extremes [fr]",0
 map.daily_desc,"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les Données climatiques quotidiennes sont dérivées de deux sources de données; les stations climatologiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol.",1
 map.daily_desc.title,"Daily climate data",1,"Données climatiques quotidiennes",1
 map.daily_desc.technicalLink,"technical documentation on the Daily climate data",1,"documentation technique relative aux Données climatiques quotidiennes",1
@@ -71,16 +74,21 @@ colourRamp.capa.rdpa24,24 hour precipitation,1,Précipitations sur 24 heures,1
 settings.title,Climate viewer options,1,Options du visualiseur de données climatiques,1
 variableSelector.title,Variable,1,Variable,1
 variableSelector.normal.title,Variable,1,Variable,1
+variableSelector.ltce.title,Variable,0,Variable,0
 variableSelector.header,Climate data,1,Données climatiques,1
 variableSelector.stations_group,Metadata,1,Métadonnées,1
 variableSelector.normal.stations_group,Metadata,1,Métadonnées,1
+variableSelector.ltce.stations_group,Metadata,0,Métadonnées,0
 variableSelector.temperature_group,Temperature,1,Température,1
 variableSelector.normal.temperature_group,Climate normals: Temperature,1,Normales climatiques : Température,1
+variableSelector.ltce.temperature_group,Temperature Extremes of Records,0,Temperature Extremes of Records [fr],0
 variableSelector.wind_group,Wind,1,Vent,1
 variableSelector.ice_group,Sea ice,1,Glace de mer,1
 variableSelector.precipitation_group,Precipitation,1,Précipitations,1
 variableSelector.normal.precipitation_group,Climate normals: Precipitation,1,Normales climatiques : Précipitations,1
+variableSelector.ltce.precipitation_group,Precipitation Extremes of Records,0,Precipitation Extremes of Records [fr],0
 variableSelector.snow_depth_group,Snow,1,Neige,1
+variableSelector.ltce.snow_depth_group,Snowfall Extremes of Records,1,Snowfall Extremes of Records,0
 variableSelector.pressure_group,Pressure,1,Pression,1
 variableSelector.geopotential_group,Geopotential,1,Géopotentiel,1
 variableSelector.historic,Historic,1,Historique,1
@@ -141,6 +149,138 @@ timePeriodSelector.fall.qualifier,Sep - Nov,1,Sept. à nov.,1
 timePeriodSelector.annual.fullName,Annual,1,Annuel,1
 timePeriodSelector.annual.shortName,Annual,1,Annuel,1
 timePeriodSelector.annual.qualifier,Jan - Dec,1,Jan. à déc.,1
+monthSelector.title,Month,1,Mois,0
+monthSelector.header,Month,1,Mois,0
+monthSelector.jan.fullName,January,1,Janvier,1
+monthSelector.jan.shortName,January,1,Janvier,1
+monthSelector.jan.qualifier,,1,,1
+monthSelector.feb.fullName,February,1,Février,1
+monthSelector.feb.shortName,February,1,Février,1
+monthSelector.feb.qualifier,,1,,1
+monthSelector.mar.fullName,March,1,Mars,1
+monthSelector.mar.shortName,March,1,Mars,1
+monthSelector.mar.qualifier,,1,,1
+monthSelector.apr.fullName,April,1,Avril,1
+monthSelector.apr.shortName,April,1,Avril,1
+monthSelector.apr.qualifier,,1,,1
+monthSelector.may.fullName,May,1,Mai,1
+monthSelector.may.shortName,May,1,Mai,1
+monthSelector.may.qualifier,,1,,1
+monthSelector.jun.fullName,June,1,Juin,1
+monthSelector.jun.shortName,June,1,Juin,1
+monthSelector.jun.qualifier,,1,,1
+monthSelector.jul.fullName,July,1,Juillet,1
+monthSelector.jul.shortName,July,1,Juillet,1
+monthSelector.jul.qualifier,,1,,1
+monthSelector.aug.fullName,August,1,Août,1
+monthSelector.aug.shortName,August,1,Août,1
+monthSelector.aug.qualifier,,1,,1
+monthSelector.sep.fullName,September,1,Septembre,1
+monthSelector.sep.shortName,September,1,Septembre,1
+monthSelector.sep.qualifier,,1,,1
+monthSelector.oct.fullName,October,1,Octobre,1
+monthSelector.oct.shortName,October,1,Octobre,1
+monthSelector.oct.qualifier,,1,,1
+monthSelector.nov.fullName,November,1,Novembre,1
+monthSelector.nov.shortName,November,1,Novembre,1
+monthSelector.nov.qualifier,,1,,1
+monthSelector.dec.fullName,December,1,Décembre,1
+monthSelector.dec.shortName,December,1,Décembre,1
+monthSelector.dec.qualifier,,1,,1
+daySelector.title,Day,1,Jour,0
+daySelector.1.fullName,1,1,1,1
+daySelector.1.shortName,1,1,1,1
+daySelector.1.qualifier,,1,,1
+daySelector.2.fullName,2,1,2,1
+daySelector.2.shortName,2,1,2,1
+daySelector.2.qualifier,,1,,1
+daySelector.3.fullName,3,1,3,1
+daySelector.3.shortName,3,1,3,1
+daySelector.3.qualifier,,1,,1
+daySelector.4.fullName,4,1,4,1
+daySelector.4.shortName,4,1,4,1
+daySelector.4.qualifier,,1,,1
+daySelector.5.fullName,5,1,5,1
+daySelector.5.shortName,5,1,5,1
+daySelector.5.qualifier,,1,,1
+daySelector.6.fullName,6,1,6,1
+daySelector.6.shortName,6,1,6,1
+daySelector.6.qualifier,,1,,1
+daySelector.7.fullName,7,1,7,1
+daySelector.7.shortName,7,1,7,1
+daySelector.7.qualifier,,1,,1
+daySelector.8.fullName,8,1,8,1
+daySelector.8.shortName,8,1,8,1
+daySelector.8.qualifier,,1,,1
+daySelector.9.fullName,9,1,9,1
+daySelector.9.shortName,9,1,9,1
+daySelector.9.qualifier,,1,,1
+daySelector.10.fullName,10,1,10,1
+daySelector.10.shortName,10,1,10,1
+daySelector.10.qualifier,,1,,1
+daySelector.11.fullName,11,1,11,1
+daySelector.11.shortName,11,1,11,1
+daySelector.11.qualifier,,1,,1
+daySelector.12.fullName,12,1,12,1
+daySelector.12.shortName,12,1,12,1
+daySelector.12.qualifier,,1,,1
+daySelector.13.fullName,13,1,13,1
+daySelector.13.shortName,13,1,13,1
+daySelector.13.qualifier,,1,,1
+daySelector.14.fullName,14,1,14,1
+daySelector.14.shortName,14,1,14,1
+daySelector.14.qualifier,,1,,1
+daySelector.15.fullName,15,1,15,1
+daySelector.15.shortName,15,1,15,1
+daySelector.15.qualifier,,1,,1
+daySelector.16.fullName,16,1,16,1
+daySelector.16.shortName,16,1,16,1
+daySelector.16.qualifier,,1,,1
+daySelector.17.fullName,17,1,17,1
+daySelector.17.shortName,17,1,17,1
+daySelector.17.qualifier,,1,,1
+daySelector.18.fullName,18,1,18,1
+daySelector.18.shortName,18,1,18,1
+daySelector.18.qualifier,,1,,1
+daySelector.19.fullName,19,1,19,1
+daySelector.19.shortName,19,1,19,1
+daySelector.19.qualifier,,1,,1
+daySelector.20.fullName,20,1,20,1
+daySelector.20.shortName,20,1,20,1
+daySelector.20.qualifier,,1,,1
+daySelector.21.fullName,21,1,21,1
+daySelector.21.shortName,21,1,21,1
+daySelector.21.qualifier,,1,,1
+daySelector.22.fullName,22,1,22,1
+daySelector.22.shortName,22,1,22,1
+daySelector.22.qualifier,,1,,1
+daySelector.23.fullName,23,1,23,1
+daySelector.23.shortName,23,1,23,1
+daySelector.23.qualifier,,1,,1
+daySelector.24.fullName,24,1,24,1
+daySelector.24.shortName,24,1,24,1
+daySelector.24.qualifier,,1,,1
+daySelector.25.fullName,25,1,25,1
+daySelector.25.shortName,25,1,25,1
+daySelector.25.qualifier,,1,,1
+daySelector.26.fullName,26,1,26,1
+daySelector.26.shortName,26,1,26,1
+daySelector.26.qualifier,,1,,1
+daySelector.27.fullName,27,1,27,1
+daySelector.27.shortName,27,1,27,1
+daySelector.27.qualifier,,1,,1
+daySelector.28.fullName,28,1,28,1
+daySelector.28.shortName,28,1,28,1
+daySelector.28.qualifier,,1,,1
+daySelector.29.fullName,29,1,29,1
+daySelector.29.shortName,29,1,29,1
+daySelector.29.qualifier,,1,,1
+daySelector.30.fullName,30,1,30,1
+daySelector.30.shortName,30,1,30,1
+daySelector.30.qualifier,,1,,1
+daySelector.31.fullName,31,1,31,1
+daySelector.31.shortName,31,1,31,1
+daySelector.31.qualifier,,1,,1
 rcpSelector.title,Scenarios,1,Scénarios,1
 rcpSelector.header,Global emission scenarios,1,Scénarios d'émissions mondiales,1
 rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP définissent des scénarios futurs plausibles des émissions anthropiques.",1
@@ -188,6 +328,10 @@ datasetSelector.hydro.shortName,River levels and flow,1,Niveaux et débits des r
 datasetSelector.hydro.fullName,River levels and flow,1,Niveaux et débits des rivières,1
 datasetSelector.hydro.subName,Historical hydrometric data,1,Données hydrométriques historiques,1
 datasetSelector.hydro.qualifier,,1,,1
+datasetSelector.ltce.shortName,Daily Climate Records,1,Daily Climate Records[fr],0
+datasetSelector.ltce.fullName,Daily Climate Records,1,Daily Climate Records[fr],0
+datasetSelector.ltce.subName,"Long term climate extremes (LTCE)",1,"Long term climate Extremes",0
+datasetSelector.ltce.qualifier,,0,,0
 downloadSelector.title,Download,1,Télécharger,1
 downloadSelector.header,Download,1,Télécharger,1
 downloadSelector.mapImage_group,Map image,1,Carte,1
@@ -364,6 +508,36 @@ units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres à l'heure,1
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.qualifier,,1,,1
+ltce.tmaxh.fullName,Record High Max,1,Record High Max [fr],0
+ltce.tmaxh.shortName,Record High Max,1,Record High Max [fr],0
+ltce.tmaxh.qualifier,,1,,1
+ltce.tminh.fullName,Record High Min,1,Record High Min [fr],0
+ltce.tminh.shortName,Record High Min,1,Record High Min [fr],0
+ltce.tminh.qualifier,,1,,1
+ltce.tmaxl.fullName,Record Low Max,1,Record Low Max [fr],0
+ltce.tmaxl.shortName,Record Low Max,1,Record Low Max [fr],0
+ltce.tmaxl.qualifier,,1,,1
+ltce.tminl.fullName,Record Low Min,1,Record Low Min [fr],0
+ltce.tminl.shortName,Record Low Min,1,Record Low Min [fr],0
+ltce.tminl.qualifier,,1,,1
+ltce.precip.fullName,Record Precipitation,1,Record Precipitation [fr],0
+ltce.precip.shortName,Record Precipitation,1,Record Precipitation [fr],0
+ltce.precip.qualifier,,1,,1
+ltce.snd.fullName,Record Snowfall,1,Record Snowfall [fr],0
+ltce.snd.shortName,Record Snowfall,1,Record Snowfall [fr],0
+ltce.snd.qualifier,,1,,1
+ltce.tempstations.fullName,Temperature Extremes of Records,1,Temperature Extremes of Records [fr],0
+ltce.tempstations.shortName,Temperature Extremes of Records,1,Temperature Extremes of Records [fr],0
+ltce.tempstations.qualifier,,1,,0
+ltce.tempstations.legend,Daily Maximum/Minimum Temperature Virtual Station,1,Daily Maximum/Minimum Temperature Virtual Station,0
+ltce.precipstations.fullName,Precipitation Extremes of Records,1,Precipitation Extremes of Records [fr],0
+ltce.precipstations.shortName,Precipitation Extremes of Records,1,Precipitation Extremes of Records [fr],0
+ltce.precipstations.qualifier,,1,,0
+ltce.precipstations.legend,Daily Precipitation Virtual Station,1,Daily Precipitation Virtual Station,0
+ltce.snowstations.fullName,Snowfall Extremes of Records,1,Snowfall Extremes of Records [fr],0
+ltce.snowstations.shortName,Snowfall Extremes of Records,1,Snowfall Extremes of Records [fr],0
+ltce.snowstations.qualifier,,1,,0
+ltce.snowstations.legend,Daily Snowfall Virtual Station,1,Daily Snowfall Virtual Station,0
 capa.rdpa6.shortName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.fullName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.qualifier,,1,,1
@@ -383,3 +557,5 @@ normal.tooltips.value_title,Climate value,1,Valeur climatique,1
 normal.tooltips.prov_title,Province/Territory,1,Province / Territoire,1
 normal.tooltips.wmo_title,WMO identifier,1,Identifiant OMM,1
 normal.tooltips.tc_title,TC identifier,1,Identifiant TC,1
+ltce.tooltips.station_title,Virtual Station Name,1,Virtual Station Name [fr],0
+ltce.tooltips.value_title,Extreme value,1,Extreme value [fr],0

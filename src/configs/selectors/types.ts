@@ -17,10 +17,11 @@ export interface BaseSelectorGroupConfig {
     /**
      * A list of options available in this group.
      *
-     * @type {string[]}
+     * @type {string[] | number[]}
      * @memberof BaseSelectorGroupConfig
      */
     items: string[];
+
     /**
      * Specifies if the group's header should be shown or not.
      * Default: undefined - the header is shown only if there are more than one item in the group.
@@ -68,6 +69,50 @@ export interface TimePeriodSelectorConfig extends BaseSelectorConfig {
 }
 
 ///////////
+
+// Month Selector Config
+
+/**
+ *  Configuration of the MonthGroup in the Month selector.
+ *
+ * @interface MonthSelectorGroupConfig
+ * @extends {BaseSelectorGroupConfig}
+ */
+export interface MonthSelectorGroupConfig extends BaseSelectorGroupConfig {
+    items: TimePeriodType[];
+}
+
+/**
+ * Configuration of the Month selector.
+ *
+ * @interface MonthSelectorConfig
+ */
+export interface MonthSelectorConfig extends BaseSelectorConfig {
+    groups: MonthSelectorGroupConfig[];
+}
+
+///////////
+
+// Day Selector Config
+
+/**
+ *  Configuration of the MonthGroup in the Month selector.
+ *
+ * @interface DaySelectorGroupConfig
+ * @extends {BaseSelectorGroupConfig}
+ */
+export interface DaySelectorGroupConfig extends BaseSelectorGroupConfig {
+    items: string[];
+}
+
+/**
+ * Configuration of the Month selector.
+ *
+ * @interface DaySelectorConfig
+ */
+export interface DaySelectorConfig extends BaseSelectorConfig {
+    groups: DaySelectorGroupConfig[];
+}
 
 // RCP Selector Config
 

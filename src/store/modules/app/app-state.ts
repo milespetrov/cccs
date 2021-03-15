@@ -18,6 +18,8 @@ export interface AppState {
         provinces: boolean | null;
     };
     lastClick: XY | null;
+    month: string | null;
+    day: string | null;
 
     internalRouteUpdate: boolean;
 }

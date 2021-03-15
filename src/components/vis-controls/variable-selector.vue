@@ -56,7 +56,7 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
         if (!this.datasetId) {
             return 'variableSelector';
         }
-        return 'variableSelector' + (this.datasetId === 'normal' ? '.normal' : '');
+        return 'variableSelector' + ((this.datasetId === 'normal' || this.datasetId === 'ltce') ? `.${this.datasetId}` : '');
     }
 
     select(item: VariableId) {

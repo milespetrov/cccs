@@ -12,7 +12,8 @@ export enum DatasetId {
     ClimateMonthly = 'monthly',
     ClimateDaily = 'daily',
     CAPA = 'capa',
-    Hydrometric = 'hydro'
+    Hydrometric = 'hydro',
+    LTCE = 'ltce'
 }
 
 /**
@@ -24,6 +25,10 @@ export enum VariableId {
     TMin = 'tmin',
     TMax = 'tmax',
     TMean = 'tmean',
+    TMinHigh = 'tminh',
+    TMinLow = 'tminl',
+    TMaxHigh = 'tmaxh',
+    TMaxLow = 'tmaxl',
     Precipitation = 'precip',
     SurfaceWind = 'sfcwind',
     IceThickness = 'sit',
@@ -38,6 +43,9 @@ export enum VariableId {
     RDPA6 = 'rdpa6',
     RDPA24 = 'rdpa24',
     ClimateStations = 'stations',
+    TemperatureStations = 'tempstations',
+    PrecipitationStations = 'precipstations',
+    SnowfallStations = 'snowstations',
     Monthly = 'monthly',
     Daily = 'daily',
     SurfaceTemp = 'tsurface',
@@ -56,7 +64,9 @@ export enum VisualizationControlType {
     Dataset = 'dataset-selector',
     RCP = 'rcp-selector',
     Time = 'time-period-selector',
-    Analysis = 'analysis-period-selector'
+    Analysis = 'analysis-period-selector',
+    Month = 'month-selector',
+    Day = 'day-selector'
 }
 
 /**
@@ -244,6 +254,11 @@ export interface ClimateViewerAppConfig {
      * A url to the technical docs page
      */
     technicalDocsUrl: string;
+
+    /**
+     * A URL to the FAQ page for the LTCE dataset
+     */
+    ltceFAQ: string;
 }
 
 /**

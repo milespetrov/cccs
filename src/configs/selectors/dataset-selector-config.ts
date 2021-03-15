@@ -13,7 +13,7 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
         },
         {
             id: 'historical_other',
-            items: [DatasetId.ClimateNormal, DatasetId.Hydrometric]
+            items: [DatasetId.ClimateNormal, DatasetId.LTCE, DatasetId.Hydrometric]
         }
     ]
 };

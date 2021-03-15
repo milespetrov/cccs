@@ -23,7 +23,8 @@
                 <div v-if="datasetId !== 'normal'">
 
                     <i18n :path="`map.${datasetId}_desc`" tag="p">
-                        <p class="mrgn-tp-sm">{{$t(`map.${datasetId}_desc.extra`)}}</p>
+                        <p v-if="datasetId !== 'ltce'" class="mrgn-tp-sm">{{$t(`map.${datasetId}_desc.extra`)}}</p>
+                        <a v-else :href="`${ltceFAQ}`">{{ $t(`map.ltce_desc.faq`) }}</a>
                     </i18n>
 
                     <i18n :path="`map.description.technical`" tag="p">
@@ -131,6 +132,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     infoItems: string[] = ['library', 'basics', 'supportDesk', 'display'];
     aboutUrls: { [name: string]: string } = {};
     technicalDocsUrl: string = '';
+    ltceFAQ: string = '';
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes || !this.datasetId) {
@@ -161,6 +163,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 
             this.aboutUrls = currentLinks.aboutUrls;
             this.technicalDocsUrl = currentLinks.technicalDocsUrl;
+            this.ltceFAQ = currentLinks.ltceFAQ;
         });
 
         await $.getJSON('assets/configs/url-suffix-config.json', data => {

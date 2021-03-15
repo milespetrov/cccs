@@ -7,7 +7,7 @@
                 </div-->
                 <div class="cip-row-content cip-row-legend">
                     <span v-html="legend[currentVariable]"></span>
-                    <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
+                    <span>{{ $t(currentDataset == 'ltce' && currentVariable.includes('station') ? `${currentDataset}.${currentVariable}.legend` : `${currentDataset}.${currentVariable}.shortName`) }}</span>
                 </div>
             </div>
 

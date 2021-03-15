@@ -226,6 +226,58 @@ class HydroApi extends DatasetApi {
     }
 }
 
+class LTCEApi extends DatasetApi {
+    constructor(state: AppState) {
+        super(state, DatasetId.LTCE);
+    }
+
+    tooltip = true;
+
+    /**
+     * Returns a string to be displayed on a tooltip in ramp
+     *
+     * @param data the data returned by ramp on-hover
+     * @returns {string} the tooltip string to be displayed
+     */
+    getTooltip(data: any): string {
+
+        const mappings = {
+            'tmaxh': 'HIGH_MAX_TEMP',
+            'tmaxl': 'LOW_MAX_TEMP',
+            'tminh': 'HIGH_MIN_TEMP',
+            'tminl': 'LOW_MIN_TEMP',
+            'precip': 'PRECIPITATION',
+            'snd': 'SNOWFALL'
+        }
+
+        const tooltips = {
+            variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
+                ${i18n.t('ltce.tooltips.station_title')}: ${ i18n.locale === "en" ? data.VIRTUAL_STATION_NAME_E : data.VIRTUAL_STATION_NAME_F }
+                <br />${i18n.t('ltce.tooltips.value_title')}: ${data[`FIRST_${mappings[this.state.variableId!]}`]}</span></div>`,
+
+            stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
+                'ltce.tooltips.station_title'
+            )}: ${ i18n.locale === "en" ? data.VIRTUAL_STATION_NAME_E : data.VIRTUAL_STATION_NAME_F }</span></div>`
+        };
+
+        return this.state.variableId!.includes('station') ? tooltips.stations : tooltips.variables;
+
+
+        //return `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${data.VIRTUAL_STATION_NAME_E}</span></div>`;
+    }
+
+    /**
+     * Returns a dataset config url based on the curent state.
+     *
+     * @readonly
+     * @type {string}
+     * @memberof LTCEApi
+     */
+    get fetchUrl(): string {
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}.json`;
+    }
+}
+
 class NormalApi extends DatasetApi {
     constructor(state: AppState) {
         super(state, DatasetId.ClimateNormal);
@@ -303,5 +355,6 @@ export default {
     [DatasetId.ClimateNormal]: wrap(NormalApi),
     [DatasetId.CMIP5]: wrap(CMIP5Api),
     [DatasetId.DCS]: wrap(DCSApi),
-    [DatasetId.Hydrometric]: wrap(HydroApi)
+    [DatasetId.Hydrometric]: wrap(HydroApi),
+    [DatasetId.LTCE]: wrap(LTCEApi)
 };

@@ -5,7 +5,7 @@ export const variableSelectorConfig: VariableSelectorConfig = {
     groups: [
         {
             id: 'temperature_group',
-            items: [VariableId.TMean, VariableId.TMin, VariableId.TMax, VariableId.SurfaceTemp, VariableId.WaterTemp],
+            items: [VariableId.TMean, VariableId.TMin, VariableId.TMax, VariableId.SurfaceTemp, VariableId.WaterTemp, VariableId.TMaxHigh, VariableId.TMinHigh, VariableId.TMaxLow, VariableId.TMinLow],
             showHeader: true
         },
         {
@@ -49,7 +49,7 @@ export const variableSelectorConfig: VariableSelectorConfig = {
         },
         {
             id: 'stations_group',
-            items: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily],
+            items: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily, VariableId.TemperatureStations, VariableId.PrecipitationStations, VariableId.SnowfallStations],
             showHeader: true
         }
     ]

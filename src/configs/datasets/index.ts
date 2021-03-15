@@ -6,6 +6,7 @@ import canGrd from './cangrd-dataset-config';
 import dcs from './dcs-dataset-config';
 import normal from './normal-dataset-config';
 import hydro from './hydro-dataset-config';
+import ltce from './ltce-dataset-config';
 
 import { DatasetId } from '@/types';
 
@@ -16,5 +17,6 @@ export const datasets = {
     [DatasetId.CANGRD]: canGrd,
     [DatasetId.DCS]: dcs,
     [DatasetId.ClimateNormal]: normal,
-    [DatasetId.Hydrometric]: hydro
+    [DatasetId.Hydrometric]: hydro,
+    [DatasetId.LTCE]: ltce
 };

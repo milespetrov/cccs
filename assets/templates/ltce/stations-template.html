@@ -1,0 +1,29 @@
+<div class="ltce-details">
+
+    <h4 ng-if="self.lang === 'en-CA'" class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.VIRTUAL_STATION_NAME_E }}</h4>
+    <h4 ng-if="self.lang === 'fr-CA'" class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.properties.VIRTUAL_STATION_NAME_F }}</h4>
+    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.station_name }}</span>
+
+    <md-divider class="mrgn-bttm-md"></md-divider>
+
+    <p style="font-weight: bold;" ng-if="self.lang === 'en-CA'">{{ self.layer.properties.ENG_STN_NAME }}</p>
+    <p style="font-weight: bold;" ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.FRE_STN_NAME }}</p>
+    <p>{{ self.layer.tt.climate_identifier }} <span style="font-weight: bold;">{{ self.layer.properties.CLIMATE_IDENTIFIER }}</span></p>
+    <p>{{ self.layer.tt.period }} <span style="font-weight: bold;">{{ self.layer.properties.START_DATE }} to {{ self.layer.properties.END_DATE }}</span></p>
+    <p>{{ self.layer.tt.data_source }} <span style="font-weight: bold;">{{ self.layer.properties.DATA_SOURCE }}</span></p>
+    <p>{{ self.layer.tt.element_name }} <span style="font-weight: bold;" ng-if="self.lang === 'en-CA'">{{ self.layer.properties.ELEMENT_NAME_E }}</span><span style="font-weight: bold;" ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.ELEMENT_NAME_F }}</span></p>
+</div>
+
+<style>
+    .ltce-details .sub-title {
+        display: block;
+    }
+
+    .ltce-details md-divider {
+        border-top-style: dotted;
+    }
+
+    .ltce-details p {
+        margin: 0;
+    }
+</style>
