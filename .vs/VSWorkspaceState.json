@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\configs",
+    "\\src\\configs\\selectors",
+    "\\src\\globals",
+    "\\src\\lang",
+    "\\src\\store",
+    "\\src\\styles",
+    "\\static",
+    "\\static\\pages"
+  ],
+  "SelectedNode": "\\static\\pages\\404.html",
+  "PreviewInSolutionExplorer": false
+}
