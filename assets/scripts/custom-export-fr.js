@@ -126,7 +126,8 @@ function () {
         cmip5: "Simulations du climat futur",
         dcs: "Simulations du climat futur à haute résolution",
         normal: "Données moyennes, mensuelles et quotidiennes",
-        hydro: "Niveaux et débits des rivières"
+        hydro: "Niveaux et débits des rivières",
+        ltce: "Daily Climate Records [fr]"
       };
       var titleImage = apiGenerators.htmlMarkup("<span style=\"font-size: 30px;\"><b>Visualiseur de données climatiques - ".concat(datasets[dataset], "</b></span>")).then(function (data) {
         return {
@@ -184,7 +185,7 @@ function () {
         });
         promises.push(descriptionImage, timePeriodImage, rcpImage);
       }
-      if (dataset !== 'hydro' && dataset !== 'capa') {
+      if (dataset !== 'hydro' && dataset !== 'capa' && dataset !== 'ltce') {
         var times = {
           annual: 'Annuel',
           spring: 'Printemps',

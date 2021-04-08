@@ -81,6 +81,7 @@ export default class MapControlsCluster extends Vue {
     justify-content: center;
     pointer-events: none !important;
     font-size: 1.6rem;
+    bottom: 1rem;
 
     .cip-controls-cluster {
         padding: 0.5rem 0;
@@ -138,7 +139,7 @@ export default class MapControlsCluster extends Vue {
     }
 
     @media (max-width: 768px) {
-        bottom: 24px;
+        bottom: 24px !important;
 
         .cip-controls-cluster {
             width: 100%;
@@ -167,7 +168,6 @@ export default class MapControlsCluster extends Vue {
     }
 
     @media (min-width: 769px) and (max-width: 991px) {
-        bottom: 3.4rem;
         left: 1rem;
         right: 1rem;
 

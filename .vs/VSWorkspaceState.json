@@ -1,16 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
+    "\\assets\\scripts",
     "\\src",
-    "\\src\\configs",
-    "\\src\\configs\\selectors",
-    "\\src\\globals",
-    "\\src\\lang",
-    "\\src\\store",
-    "\\src\\styles",
     "\\static",
-    "\\static\\pages"
+    "\\static\\about",
+    "\\static\\help",
+    "\\static\\pages",
+    "\\test"
   ],
-  "SelectedNode": "\\static\\pages\\404.html",
+  "SelectedNode": "\\web.config.dev",
   "PreviewInSolutionExplorer": false
 }

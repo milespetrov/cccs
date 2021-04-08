@@ -45,6 +45,7 @@ map.hydro_desc.technicalLink,"the technical documentation on the Historical hydr
 map.ltce_desc,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",1,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area. [fr]",0
 map.ltce_desc.faq,"see FAQ",1,"see FAQ [fr]",0
 map.ltce_desc.technicalLink,"the technical documentation on Long Term Climate Extremes",0,"the technical documentation on Long Term Climate Extremes [fr]",0
+map.ltce_desc.above,"Note that the database is updated twice daily with the most recent data being valid for the previous climate day. In cases where there are tied records, the earliest year of occurrence is listed before the most recent year(s) of occurrence. Note that the LTCE viewer displays current records for the Month and Day of the year selected. It does not specifically identify occurrences of new records for a selected date. This functionality may be incorporated into a future release.",1,"Note that the database is updated twice daily with the most recent data being valid for the previous climate day. In cases where there are tied records, the earliest year of occurrence is listed before the most recent year(s) of occurrence. Note that the LTCE viewer displays current records for the Month and Day of the year selected. It does not specifically identify occurrences of new records for a selected date. This functionality may be incorporated into a future release. [fr]",0
 map.daily_desc,"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les Données climatiques quotidiennes sont dérivées de deux sources de données; les stations climatologiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol.",1
 map.daily_desc.title,"Daily climate data",1,"Données climatiques quotidiennes",1
 map.daily_desc.technicalLink,"technical documentation on the Daily climate data",1,"documentation technique relative aux Données climatiques quotidiennes",1
@@ -508,17 +509,17 @@ units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres à l'heure,1
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.qualifier,,1,,1
-ltce.tmaxh.fullName,Record High Max,1,Record High Max [fr],0
-ltce.tmaxh.shortName,Record High Max,1,Record High Max [fr],0
+ltce.tmaxh.fullName,Record High Max Temp,1,Record High Max Temp [fr],0
+ltce.tmaxh.shortName,Record High Max Temp,1,Record High Max Temp [fr],0
 ltce.tmaxh.qualifier,,1,,1
-ltce.tminh.fullName,Record High Min,1,Record High Min [fr],0
-ltce.tminh.shortName,Record High Min,1,Record High Min [fr],0
+ltce.tminh.fullName,Record High Min Temp,1,Record High Min Temp [fr],0
+ltce.tminh.shortName,Record High Min Temp,1,Record High Min Temp [fr],0
 ltce.tminh.qualifier,,1,,1
-ltce.tmaxl.fullName,Record Low Max,1,Record Low Max [fr],0
-ltce.tmaxl.shortName,Record Low Max,1,Record Low Max [fr],0
+ltce.tmaxl.fullName,Record Low Max Temp,1,Record Low Max Temp [fr],0
+ltce.tmaxl.shortName,Record Low Max Temp,1,Record Low Max Temp [fr],0
 ltce.tmaxl.qualifier,,1,,1
-ltce.tminl.fullName,Record Low Min,1,Record Low Min [fr],0
-ltce.tminl.shortName,Record Low Min,1,Record Low Min [fr],0
+ltce.tminl.fullName,Record Low Min Temp,1,Record Low Min Temp [fr],0
+ltce.tminl.shortName,Record Low Min Temp,1,Record Low Min Temp [fr],0
 ltce.tminl.qualifier,,1,,1
 ltce.precip.fullName,Record Precipitation,1,Record Precipitation [fr],0
 ltce.precip.shortName,Record Precipitation,1,Record Precipitation [fr],0
@@ -538,6 +539,18 @@ ltce.snowstations.fullName,Snowfall Extremes of Records,1,Snowfall Extremes of R
 ltce.snowstations.shortName,Snowfall Extremes of Records,1,Snowfall Extremes of Records [fr],0
 ltce.snowstations.qualifier,,1,,0
 ltce.snowstations.legend,Daily Snowfall Virtual Station,1,Daily Snowfall Virtual Station,0
+units.ltce.tmaxh.shortName,°C,1,°C,1
+units.ltce.tmaxh.fullName,degrees Celsius,1,degrés Celsius,1
+units.ltce.tminh.shortName,°C,1,°C,1
+units.ltce.tminh.fullName,degrees Celsius,1,degrés Celsius,1
+units.ltce.tmaxl.shortName,°C,1,°C,1
+units.ltce.tmaxl.fullName,degrees Celsius,1,degrés Celsius,1
+units.ltce.tminl.shortName,°C,1,°C,1
+units.ltce.tminl.fullName,degrees Celsius,1,degrés Celsius,1
+units.ltce.precip.shortName,mm,1,mm,1
+units.ltce.precip.fullName,millimetres,1,millimètres,1
+units.ltce.snd.shortName,cm,1,cm,1
+units.ltce.snd.fullName,centimetres,1,centimètres,0
 capa.rdpa6.shortName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.fullName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.qualifier,,1,,1

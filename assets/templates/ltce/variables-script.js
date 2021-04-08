@@ -11,6 +11,7 @@ function parser(data, lang) {
             fifth_value: '5th Extreme Value (Year)',
             last_updated: 'Last Updated',
             time_separator: ' to ',
+            present: 'Present',
             months: [
                 'January',
                 'February',
@@ -32,6 +33,14 @@ function parser(data, lang) {
                 'tminl': 'Record Low Minimum Temperature',
                 'snd': 'Record Snowfall',
                 'precip': 'Record Precipitation'
+            },
+            units: {
+                'tmaxh': '°C',
+                'tmaxl': '°C',
+                'tminh': '°C',
+                'tminl': '°C',
+                'precip': 'mm',
+                'snd': 'cm'
             }
         },
 
@@ -46,6 +55,7 @@ function parser(data, lang) {
             fifth_value: '5th Extreme Value (Year) [fr]',
             last_updated: 'Last Updated [fr]',
             time_separator: ' à [fr]',
+            present: 'Present [fr]',
             months: [
                 'Janvier',
                 'Février',
@@ -67,6 +77,14 @@ function parser(data, lang) {
                 'tminl': 'Record Low Minimum Temperature [fr]',
                 'snd': 'Record Snowfall [fr]',
                 'precip': 'Record Precipitation [fr]'
+            },
+            units: {
+                'tmaxh': '°C',
+                'tmaxl': '°C',
+                'tminh': '°C',
+                'tminl': '°C',
+                'precip': 'mm',
+                'snd': 'cm'
             }
         }
     };
@@ -106,7 +124,7 @@ function parser(data, lang) {
     data.properties.RECORD_BEGIN = data.properties[mappings2[variable] + 'RECORD_BEGIN'].split('T')[0];
     data.properties.RECORD_END = data.properties[mappings2[variable] + 'RECORD_END'];
     if (!data.properties.RECORD_END) {
-        data.properties.RECORD_END = 'Present'; // TODO: FRENCH
+        data.properties.RECORD_END = TRANSLATIONS[lang].present; // TODO: FRENCH
     } else {
         data.properties.RECORD_END = data.properties.RECORD_END.split('T')[0];
     }
@@ -124,8 +142,6 @@ function parser(data, lang) {
     data.lang = lang;
 
     data.tt = TRANSLATIONS[lang];
-
-    console.log(data);
 
     return data;
 }

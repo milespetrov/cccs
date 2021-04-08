@@ -3,7 +3,7 @@
         <div class="cip-header-container mrgn-bttm-lg">
             <h1>{{ $t(`title`) }}</h1>
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
-                <p>{{ $t(`description`) }}</p>
+                <p>{{ $t(`description`) }}{{ datasetId === "ltce" ? ' ' + $t('map.ltce_desc.above') : '' }}</p>
                 <i18n :path="`description.help`" tag="p">
                     <a href role="button" @click.prevent="openRampHelp" @keyup.space="openRampHelp">{{ $t(`description.help.helpFile`) }}</a>
                     <a :href="`${aboutUrls['supportDesk']}`">{{$t('description.help.supportDesk')}}</a>

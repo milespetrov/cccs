@@ -253,7 +253,7 @@ class LTCEApi extends DatasetApi {
         const tooltips = {
             variables: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>
                 ${i18n.t('ltce.tooltips.station_title')}: ${ i18n.locale === "en" ? data.VIRTUAL_STATION_NAME_E : data.VIRTUAL_STATION_NAME_F }
-                <br />${i18n.t('ltce.tooltips.value_title')}: ${data[`FIRST_${mappings[this.state.variableId!]}`]}</span></div>`,
+                <br />${i18n.t('ltce.tooltips.value_title')}: ${data[`FIRST_${mappings[this.state.variableId!]}`]} ${i18n.t(`units.ltce.${this.state.variableId}.shortName`)}</span></div>`,
 
             stations: `<div class='rv-tooltip-content'><span class='rv-tooltip-text'>${i18n.t(
                 'ltce.tooltips.station_title'

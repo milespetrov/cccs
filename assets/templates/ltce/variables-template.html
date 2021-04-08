@@ -7,6 +7,11 @@
 
     <dl>
         <dt>
+            <span>{{ self.layer.tt.last_updated }}</span>
+        </dt>
+        <dd>{{ self.layer.properties.LAST_UPDATED }}</dd>
+
+        <dt>
             <span>{{ self.layer.tt.date }}</span>
         </dt>
         <dd>{{ self.layer.tt.months[self.layer.properties.LOCAL_MONTH - 1]}} {{ self.layer.properties.LOCAL_DAY }}</dd>
@@ -19,32 +24,27 @@
         <dt>
             <span>{{ self.layer.tt.first_value }}</span>
         </dt>
-        <dd>{{ self.layer.properties.FIRST_VALUE }} ({{ self.layer.properties.FIRST_YEAR }})</dd>
+        <dd>{{ self.layer.properties.FIRST_VALUE }}{{ self.layer.tt.units[self.layer.properties.variable] }} ({{ self.layer.properties.FIRST_YEAR }})</dd>
 
         <dt>
             <span>{{ self.layer.tt.second_value }}</span>
         </dt>
-        <dd>{{ self.layer.properties.SECOND_VALUE }} ({{ self.layer.properties.SECOND_YEAR }})</dd>
+        <dd>{{ self.layer.properties.SECOND_VALUE }}{{ self.layer.tt.units[self.layer.properties.variable] }} ({{ self.layer.properties.SECOND_YEAR }})</dd>
         
         <dt>
             <span>{{ self.layer.tt.third_value }}</span>
         </dt>
-        <dd>{{ self.layer.properties.THIRD_VALUE }} ({{ self.layer.properties.THIRD_YEAR }})</dd>
+        <dd>{{ self.layer.properties.THIRD_VALUE }}{{ self.layer.tt.units[self.layer.properties.variable] }} ({{ self.layer.properties.THIRD_YEAR }})</dd>
         
         <dt>
             <span>{{ self.layer.tt.fourth_value }}</span>
         </dt>
-        <dd>{{ self.layer.properties.FOURTH_VALUE }} ({{ self.layer.properties.FOURTH_YEAR }})</dd>
+        <dd>{{ self.layer.properties.FOURTH_VALUE }}{{ self.layer.tt.units[self.layer.properties.variable] }} ({{ self.layer.properties.FOURTH_YEAR }})</dd>
         
         <dt>
             <span>{{ self.layer.tt.fifth_value }}</span>
         </dt>
-        <dd>{{ self.layer.properties.FIFTH_VALUE }} ({{ self.layer.properties.FIFTH_YEAR }})</dd>
-
-        <dt>
-            <span>{{ self.layer.tt.last_updated }}</span>
-        </dt>
-        <dd>{{ self.layer.properties.LAST_UPDATED }}</dd>
+        <dd>{{ self.layer.properties.FIFTH_VALUE }}{{ self.layer.tt.units[self.layer.properties.variable] }} ({{ self.layer.properties.FIFTH_YEAR }})</dd>
     </dl>
 </div>
 

@@ -97,8 +97,8 @@
         },
         "ltce": {
             "dataQuery": {
-                "en": "",
-                "fr": ""
+                "en": "/daily-climate-records",
+                "fr": "/records-climatiques-quotidiens"
             },
             "metadata": {
                 "ltce": ""

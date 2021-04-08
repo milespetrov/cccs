@@ -6,7 +6,8 @@ function parser(data, lang) {
             data_source: 'Type:',
             element_name: 'Element:',
             period: 'Period:',
-            time_separator: ' to '
+            time_separator: ' to ',
+            present: 'Present'
         },
 
         'fr-CA': {
@@ -15,7 +16,8 @@ function parser(data, lang) {
             data_source: 'Type: [fr]',
             element_name: 'Element: [fr]',
             period: 'Period: [fr]',
-            time_separator: ' a [fr]'
+            time_separator: ' a [fr]',
+            present: 'Present [fr]'
         }
     };
 
@@ -30,7 +32,7 @@ function parser(data, lang) {
 
     data.properties.START_DATE = data.properties.START_DATE.split('T')[0];
     if (!data.properties.END_DATE) {
-        data.properties.END_DATE = 'Present'; //TODO: FRENCH
+        data.properties.END_DATE = TRANSLATIONS[lang].present;
     } else {
         data.properties.END_DATE = data.properties.END_DATE.split('T')[0];
     }
@@ -38,8 +40,6 @@ function parser(data, lang) {
     data.lang = lang;
 
     data.tt = TRANSLATIONS[lang];
-
-    console.log(data);
 
     return data;
 }

@@ -126,7 +126,8 @@ function () {
         cmip5: "Future climate simulations",
         dcs: "High resolution future climate simulations",
         normal: "Average, monthly and daily data",
-        hydro: "River levels and flow"
+        hydro: "River levels and flow",
+        ltce: "Daily Climate Records"
       };
       var titleImage = apiGenerators.htmlMarkup("<span style=\"font-size: 30px;\"><b>Climate data viewer - ".concat(datasets[dataset], "</b></span>")).then(function (data) {
         return {
@@ -184,7 +185,7 @@ function () {
         });
         promises.push(descriptionImage, timePeriodImage, rcpImage);
       }
-      if (dataset !== 'hydro' && dataset !== 'capa') {
+      if (dataset !== 'hydro' && dataset !== 'capa' && dataset !== 'ltce') {
         var times = {
           annual: 'Annual',
           spring: 'Spring',
