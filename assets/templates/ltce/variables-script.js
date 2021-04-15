@@ -45,17 +45,17 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            station_name: 'Virtual Station Name, Period of Record [fr]',
-            date: 'Date of Year [fr]',
-            record_type: 'Record Type [fr]',
-            first_value: 'Extreme Value (Year) [fr]',
-            second_value: '2nd Extreme Value (Year) [fr]',
-            third_value: '3rd Extreme Value (Year) [fr]',
-            fourth_value: '4th Extreme Value (Year) [fr]',
-            fifth_value: '5th Extreme Value (Year) [fr]',
-            last_updated: 'Last Updated [fr]',
-            time_separator: ' à [fr]',
-            present: 'Present [fr]',
+            station_name: 'Nom du Station Virtuelle, Période d’enregistrement',
+            date: 'Jour de l\'année',
+            record_type: 'type d\'enregistrement',
+            first_value: 'Extrême (Année)',
+            second_value: '2e Extrême (Année)',
+            third_value: '3e Extrême (Année)',
+            fourth_value: '4e Extrême (Année)',
+            fifth_value: '5e Extrême (Année)',
+            last_updated: 'Dernière mise à jour',
+            time_separator: ' à ',
+            present: 'Présent',
             months: [
                 'Janvier',
                 'Février',
@@ -71,12 +71,12 @@ function parser(data, lang) {
                 'Décembre'
             ],
             record_types: {
-                'tmaxh': 'Record High Maximum Temperature [fr]',
-                'tmaxl': 'Record Low Maximum Temperature [fr]',
-                'tminh': 'Record High Minimum Temperature [fr]',
-                'tminl': 'Record Low Minimum Temperature [fr]',
-                'snd': 'Record Snowfall [fr]',
-                'precip': 'Record Precipitation [fr]'
+                'tmaxh': 'Record de Température Maximale la plus élevée',
+                'tmaxl': 'Record de Température Maximale la plus basse',
+                'tminh': 'Record de Température Minimale la plus élevée',
+                'tminl': 'Record de Température Minimale la plus basse',
+                'snd': 'Records de Précipitations de Neige',
+                'precip': 'Records de Précipitations'
             },
             units: {
                 'tmaxh': '°C',

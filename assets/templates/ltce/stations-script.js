@@ -11,13 +11,13 @@ function parser(data, lang) {
         },
 
         'fr-CA': {
-            station_name: 'Virtual Station Name [fr]',
-            climate_identifier: 'Climate Identifier: [fr]',
-            data_source: 'Type: [fr]',
-            element_name: 'Element: [fr]',
-            period: 'Period: [fr]',
-            time_separator: ' a [fr]',
-            present: 'Present [fr]'
+            station_name: 'Nom du Station Virtuelle',
+            climate_identifier: 'Identifiant Climatologique',
+            data_source: 'Type:',
+            element_name: 'Élément:',
+            period: 'Période:',
+            time_separator: ' à ',
+            present: 'Présent'
         }
     };
 

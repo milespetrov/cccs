@@ -44,7 +44,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Cities",
           "expectedResponseTime": 10000,
           "controls": [
@@ -79,7 +79,7 @@
           "id": "ltce_tempstations_en",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
+          "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
           "name": "Daily Maximum/Minimum Temperature Virtual Station",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
@@ -208,7 +208,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Villes",
           "expectedResponseTime": 10000,
           "controls": [
@@ -243,7 +243,7 @@
           "id": "ltce_tempstations_fr",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
+          "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
           "name": "Station Climatologique Virtuelle - Température Maximale/Minimale",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {

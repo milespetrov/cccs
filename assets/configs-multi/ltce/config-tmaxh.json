@@ -11,14 +11,14 @@
           "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
         },
         {
-          "layerId": "ltce_tminh_en",
+          "layerId": "ltce_tmaxh_en",
           "layerName": "",
           "description": "",
           "coverIcon": "assets/images/red-circle.png",
           "symbologyStack": [
             {
               "image": "assets/images/red-circle.png",
-              "text": "Record High Min"
+              "text": "Record High Max"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -44,7 +44,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Cities",
           "expectedResponseTime": 10000,
           "controls": [
@@ -76,11 +76,11 @@
       ],
       "dataLayers": [
         {
-          "id": "ltce_tminh_en",
+          "id": "ltce_tmaxh_en",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-temperature/items",
-          "name": "Temperature Extremes of Record, Record High Min",
+          "url": "#GEOMETWFS#/collections/ltce-temperature/items",
+          "name": "Temperature Extremes of Record, Record High Max",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
@@ -124,29 +124,31 @@
               },
               {
                 "data": "MAX_TEMP_RECORD_BEGIN",
-                "visible": false
-              },
-              {
-                "data": "MAX_TEMP_RECORD_END",
-                "visible": false
-              },
-              {
-                "data": "MIN_TEMP_RECORD_BEGIN",
                 "title": "Record Start",
                 "visible": true
               },
               {
-                "data": "MIN_TEMP_RECORD_END",
+                "data": "MAX_TEMP_RECORD_END",
                 "title": "Record End",
+                "visible": true
+              },
+              {
+                "data": "MIN_TEMP_RECORD_BEGIN",
+                "visible": false
+              },
+              {
+                "data": "MIN_TEMP_RECORD_END",
                 "visible": false
               },
               {
                 "data": "FIRST_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "Extreme Value",
+                "visible": true
               },
               {
                 "data": "FIRST_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "Extreme Year",
+                "visible": true
               },
               {
                 "data": "FIRST_HIGH_MAX_TEMP_YR",
@@ -154,13 +156,11 @@
               },
               {
                 "data": "FIRST_HIGH_MIN_TEMP",
-                "title": "Extreme Value",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIRST_HIGH_MIN_TEMP_YEAR",
-                "title": "Extreme Year",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIRST_HIGH_MIN_TEMP_YR",
@@ -192,11 +192,13 @@
               },
               {
                 "data": "SECOND_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "2nd Extreme Value",
+                "visible": true
               },
               {
                 "data": "SECOND_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "2nd Extreme Year",
+                "visible": true
               },
               {
                 "data": "SECOND_HIGH_MAX_TEMP_YR",
@@ -204,13 +206,11 @@
               },
               {
                 "data": "SECOND_HIGH_MIN_TEMP",
-                "title": "2nd Extreme Value",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "SECOND_HIGH_MIN_TEMP_YEAR",
-                "title": "2nd Extreme Year",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "SECOND_HIGH_MIN_TEMP_YR",
@@ -242,11 +242,13 @@
               },
               {
                 "data": "THIRD_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "3rd Extreme Value",
+                "visible": true
               },
               {
                 "data": "THIRD_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "3rd Extreme Year",
+                "visible": true
               },
               {
                 "data": "THIRD_HIGH_MAX_TEMP_YR",
@@ -254,13 +256,11 @@
               },
               {
                 "data": "THIRD_HIGH_MIN_TEMP",
-                "title": "3rd Extreme Value",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "THIRD_HIGH_MIN_TEMP_YEAR",
-                "title": "3rd Extreme Year",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "THIRD_HIGH_MIN_TEMP_YR",
@@ -292,11 +292,13 @@
               },
               {
                 "data": "FOURTH_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "4th Extreme Value",
+                "visible": true
               },
               {
                 "data": "FOURTH_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "4th Extreme Year",
+                "visible": true
               },
               {
                 "data": "FOURTH_HIGH_MAX_TEMP_YR",
@@ -304,13 +306,11 @@
               },
               {
                 "data": "FOURTH_HIGH_MIN_TEMP",
-                "title": "4th Extreme Value",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FOURTH_HIGH_MIN_TEMP_YEAR",
-                "title": "4th Extreme Year",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FOURTH_HIGH_MIN_TEMP_YR",
@@ -342,11 +342,13 @@
               },
               {
                 "data": "FIFTH_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "5th Extreme Value",
+                "visible": true
               },
               {
                 "data": "FIFTH_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "5th Extreme Year",
+                "visible": true
               },
               {
                 "data": "FIFTH_HIGH_MAX_TEMP_YR",
@@ -354,13 +356,11 @@
               },
               {
                 "data": "FIFTH_HIGH_MIN_TEMP",
-                "title": "5th Extreme Value",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIFTH_HIGH_MIN_TEMP_YEAR",
-                "title": "5th Extreme Year",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIFTH_HIGH_MIN_TEMP_YR",
@@ -488,14 +488,14 @@
           "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
         },
         {
-          "layerId": "ltce_tminh_fr",
+          "layerId": "ltce_tmaxh_fr",
           "layerName": "",
           "description": "",
           "coverIcon": "assets/images/red-circle.png",
           "symbologyStack": [
             {
               "image": "assets/images/red-circle.png",
-              "text": "Record de Température Minimale la plus élevée"
+              "text": "Record de Température Maximale la plus élevée"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -521,7 +521,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Villes",
           "expectedResponseTime": 10000,
           "controls": [
@@ -553,11 +553,11 @@
       ],
       "dataLayers": [
         {
-          "id": "ltce_tminh_fr",
+          "id": "ltce_tmaxh_fr",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-temperature/items",
-          "name": "Records de Températures Extrêmes, Record de Température Minimale la plus élevée",
+          "url": "#GEOMETWFS#/collections/ltce-temperature/items",
+          "name": "Records de Températures Extrêmes, Records de Température Maximale la plus élevée",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
@@ -601,29 +601,31 @@
               },
               {
                 "data": "MAX_TEMP_RECORD_BEGIN",
-                "visible": false
-              },
-              {
-                "data": "MAX_TEMP_RECORD_END",
-                "visible": false
-              },
-              {
-                "data": "MIN_TEMP_RECORD_BEGIN",
                 "title": "Début des records",
                 "visible": true
               },
               {
-                "data": "MIN_TEMP_RECORD_END",
+                "data": "MAX_TEMP_RECORD_END",
                 "title": "Fin des records",
+                "visible": true
+              },
+              {
+                "data": "MIN_TEMP_RECORD_BEGIN",
+                "visible": false
+              },
+              {
+                "data": "MIN_TEMP_RECORD_END",
                 "visible": false
               },
               {
                 "data": "FIRST_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "Valeur de l'extrême",
+                "visible": true
               },
               {
                 "data": "FIRST_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "Année de l'extrême",
+                "visible": true
               },
               {
                 "data": "FIRST_HIGH_MAX_TEMP_YR",
@@ -631,13 +633,11 @@
               },
               {
                 "data": "FIRST_HIGH_MIN_TEMP",
-                "title": "Valeur de l'extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIRST_HIGH_MIN_TEMP_YEAR",
-                "title": "Année de l'extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIRST_HIGH_MIN_TEMP_YR",
@@ -669,11 +669,13 @@
               },
               {
                 "data": "SECOND_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "Valeur du 2e Extrême",
+                "visible": true
               },
               {
                 "data": "SECOND_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "Année du 2e Extrême",
+                "visible": true
               },
               {
                 "data": "SECOND_HIGH_MAX_TEMP_YR",
@@ -681,13 +683,11 @@
               },
               {
                 "data": "SECOND_HIGH_MIN_TEMP",
-                "title": "Valeur du 2e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "SECOND_HIGH_MIN_TEMP_YEAR",
-                "title": "Année du 2e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "SECOND_HIGH_MIN_TEMP_YR",
@@ -719,11 +719,13 @@
               },
               {
                 "data": "THIRD_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "Valeur du 3e Extrême",
+                "visible": true
               },
               {
                 "data": "THIRD_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "Année du 3e Extrême",
+                "visible": true
               },
               {
                 "data": "THIRD_HIGH_MAX_TEMP_YR",
@@ -731,13 +733,11 @@
               },
               {
                 "data": "THIRD_HIGH_MIN_TEMP",
-                "title": "Valeur du 3e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "THIRD_HIGH_MIN_TEMP_YEAR",
-                "title": "Année du 3e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "THIRD_HIGH_MIN_TEMP_YR",
@@ -769,11 +769,13 @@
               },
               {
                 "data": "FOURTH_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "Valeur du 4e Extrême",
+                "visible": true
               },
               {
                 "data": "FOURTH_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "Année du 4e Extrême",
+                "visible": true
               },
               {
                 "data": "FOURTH_HIGH_MAX_TEMP_YR",
@@ -781,13 +783,11 @@
               },
               {
                 "data": "FOURTH_HIGH_MIN_TEMP",
-                "title": "Valeur du 4e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FOURTH_HIGH_MIN_TEMP_YEAR",
-                "title": "Année du 4e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FOURTH_HIGH_MIN_TEMP_YR",
@@ -819,11 +819,13 @@
               },
               {
                 "data": "FIFTH_HIGH_MAX_TEMP",
-                "visible": false
+                "title": "Valeur du 5e Extrême",
+                "visible": true
               },
               {
                 "data": "FIFTH_HIGH_MAX_TEMP_YEAR",
-                "visible": false
+                "title": "Année du 5e Extrême",
+                "visible": true
               },
               {
                 "data": "FIFTH_HIGH_MAX_TEMP_YR",
@@ -831,13 +833,11 @@
               },
               {
                 "data": "FIFTH_HIGH_MIN_TEMP",
-                "title": "Valeur du 5e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIFTH_HIGH_MIN_TEMP_YEAR",
-                "title": "Année du 5e Extrême",
-                "visible": true
+                "visible": false
               },
               {
                 "data": "FIFTH_HIGH_MIN_TEMP_YR",

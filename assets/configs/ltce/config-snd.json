@@ -229,7 +229,7 @@
         },
         {
           "infoType": "text",
-          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada [fr]"
+          "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
         },
         {
           "layerId": "ltce_snow_fr",
@@ -239,7 +239,7 @@
           "symbologyStack": [
             {
               "image": "assets/images/blue-circle.png",
-              "text": "Record Snowfall [fr]"
+              "text": "Records de Précipitations de Neige"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -301,7 +301,7 @@
           "layerType": "ogcWfs",
           "xyInAttribs": true,
           "url": "https://api.weather.gc.ca/collections/ltce-snowfall/items",
-          "name": "Snowfall Extremes of Record [fr]",
+          "name": "Records de Neiges Extrêmes",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
@@ -321,7 +321,7 @@
             "columns": [
               {
                 "data": "VIRTUAL_CLIMATE_ID",
-                "title": "Virtual Climate ID",
+                "title": "Identifiant Climatologique Virtuelle",
                 "visible": true
               },
               {
@@ -330,82 +330,82 @@
               },
               {
                 "data": "VIRTUAL_STATION_NAME_F",
-                "title": "Virtual Station Name",
+                "title": "Nom du Station  Virtuelle",
                 "visible": true
               },
               {
                 "data": "LOCAL_DAY",
-                "title": "Day",
+                "title": "Jour",
                 "visible": true
               },
               {
                 "data": "LOCAL_MONTH",
-                "title": "Month",
+                "title": "Mois",
                 "visible": true
               },
               {
                 "data": "RECORD_BEGIN",
-                "title": "Record Start",
+                "title": "Début des records",
                 "visible": true
               },
               {
                 "data": "RECORD_END",
-                "title": "Record End",
+                "title": "Fin des records",
                 "visible": true
               },
               {
                 "data": "FIRST_SNOWFALL",
-                "title": "Extreme Value",
+                "title": "Valeur de l'extrême",
                 "visible": true
               },
               {
                 "data": "FIRST_SNOWFALL_YEAR",
-                "title": "Extreme Year",
+                "title": "Année de l'extrême",
                 "visible": true
               },
               {
                 "data": "SECOND_SNOWFALL",
-                "title": "2nd Extreme Value",
+                "title": "Valeur du 2e Extrême",
                 "visible": true
               },
               {
                 "data": "SECOND_SNOWFALL_YEAR",
-                "title": "2nd Extreme Year",
+                "title": "Année du 2e Extrême",
                 "visible": true
               },
               {
                 "data": "THIRD_SNOWFALL",
-                "title": "3rd Extreme Value",
+                "title": "Valeur du 3e Extrême",
                 "visible": true
               },
               {
                 "data": "THIRD_SNOWFALL_YEAR",
-                "title": "3rd Extreme Year",
+                "title": "Année du 3e Extrême",
                 "visible": true
               },
               {
                 "data": "FOURTH_SNOWFALL",
-                "title": "4th Extreme Value",
+                "title": "Valeur du 4e Extrême",
                 "visible": true
               },
               {
                 "data": "FOURTH_SNOWFALL_YEAR",
-                "title": "4th Extreme Year",
+                "title": "Année du 4e Extrême",
                 "visible": true
               },
               {
                 "data": "FIFTH_SNOWFALL",
-                "title": "5th Extreme Value",
+                "title": "Valeur du 5e Extrême",
                 "visible": true
               },
               {
                 "data": "FIFTH_SNOWFALL_YEAR",
-                "title": "5th Extreme Year",
+                "title": "Année du 5e Extrême",
                 "visible": true
               },
               {
                 "data": "LAST_UPDATED",
-                "title": "Last Updated",
+                "title": "Dernière mise à jour",
                 "visible": true
               },
               {

@@ -80,7 +80,7 @@
           "layerType": "ogcWfs",
           "xyInAttribs": true,
           "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=PRECIPITATION",
-          "name": "Virtual Climate Stations",
+          "name": "Daily Precipitation Virtual Station",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
@@ -172,7 +172,7 @@
         },
         {
           "infoType": "text",
-          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada [fr]"
+          "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
         },
         {
           "layerId": "ltce_precipstations_fr",
@@ -182,7 +182,7 @@
           "symbologyStack": [
             {
               "image": "assets/images/green-circle.png",
-              "text": "LTCE Stations [fr]"
+              "text": "Station ECLT"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -244,7 +244,7 @@
           "layerType": "ogcWfs",
           "xyInAttribs": true,
           "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=PRECIPITATION",
-          "name": "Virtual Climate Stations [fr]",
+          "name": "Station Climatologique Virtuelle - Précipitation",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
@@ -264,7 +264,7 @@
             "columns": [
               {
                 "data": "VIRTUAL_CLIMATE_ID",
-                "title": "Virtual Climate ID [fr]",
+                "title": "Identifiant Climatologique Virtuelle",
                 "visible": true
               },
               {
@@ -273,32 +273,32 @@
               },
               {
                 "data": "VIRTUAL_STATION_NAME_F",
-                "title": "Virtual Station Name [fr]",
+                "title": "Nom du Station Virtuelle",
                 "visible": true
               },
               {
                 "data": "CLIMATE_IDENTIFIER",
-                "title": "Climate Identifier [fr]",
+                "title": "Identifiant Climatologique",
                 "visible": true
               },
               {
                 "data": "DATA_SOURCE",
-                "title": "Type [fr]",
+                "title": "Type",
                 "visible": true
               },
               {
                 "data": "ELEMENT_NAME_E",
-                "title": "Element [fr]",
+                "title": "Élément",
                 "visible": true
               },
               {
                 "data": "START_DATE",
-                "title": "Start Date [fr]",
+                "title": "Début des records",
                 "visible": true
               },
               {
                 "data": "END_DATE",
-                "title": "End Date [fr]",
+                "title": "Fin des records",
                 "visible": true
               },
               {
@@ -307,7 +307,7 @@
               },
               {
                 "data": "FRE_STN_NAME",
-                "title": "Station Name [fr]",
+                "title": "Nom du Station",
                 "visible": true
               },
               {

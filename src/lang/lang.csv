@@ -42,10 +42,10 @@ map.capa_desc,"The Regional Deterministic Precipitation Analysis (RDPA) produces
 map.capa_desc.technicalLink,"the technical documentation on RDPA",1,"la documentation technique relative à la ARDP",1
 map.hydro_desc,"Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.",1,"Les Données hydrométriques historiques sont des données et des informations normalisées sur les ressources en eau. Elles sont recueillies, interprétées et diffusées par Relevés hydrologiques du Canada (RHC) en partenariat avec les provinces, les territoires et d’autres organismes par l’intermédiaire du Programme national de relevés hydrométriques. Ces ensembles de données comprennent les valeurs moyennes quotidiennes et mensuelles, les valeurs moyennes quotidiennes minimales et maximales par année et les valeurs des débits et des niveaux d’eau de pointe et instantanés pour plus de 2 700 stations de surveillance hydrométrique actives et 5 080 stations fermées au Canada.",1
 map.hydro_desc.technicalLink,"the technical documentation on the Historical hydrometric data",1,"la documentation technique relative aux Données hydrométriques historiques",1
-map.ltce_desc,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",1,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area. [fr]",0
-map.ltce_desc.faq,"see FAQ",1,"see FAQ [fr]",0
-map.ltce_desc.technicalLink,"the technical documentation on Long Term Climate Extremes",0,"the technical documentation on Long Term Climate Extremes [fr]",0
-map.ltce_desc.above,"Note that the database is updated twice daily with the most recent data being valid for the previous climate day. In cases where there are tied records, the earliest year of occurrence is listed before the most recent year(s) of occurrence. Note that the LTCE viewer displays current records for the Month and Day of the year selected. It does not specifically identify occurrences of new records for a selected date. This functionality may be incorporated into a future release.",1,"Note that the database is updated twice daily with the most recent data being valid for the previous climate day. In cases where there are tied records, the earliest year of occurrence is listed before the most recent year(s) of occurrence. Note that the LTCE viewer displays current records for the Month and Day of the year selected. It does not specifically identify occurrences of new records for a selected date. This functionality may be incorporated into a future release. [fr]",0
+map.ltce_desc,"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {0}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, 'virtual' climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area. Note that the database is updated twice daily with the most recent data being valid for the previous climate day. In cases where there are tied records, the earliest year of occurrence is listed before the most recent year(s) of occurrence. Note that the LTCE viewer displays current records for the Month and Day of the year selected. It does not specifically identify occurrences of new records for a selected date. This functionality may be incorporated into a future release.",1,"Les Records des Extrêmes Quotidiens (ECLT; {0}) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques « virtual » ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée. Notez que la base de données est mise à jour deux fois par jour, et les données les plus récentes sont valides pour la journée climatique précédente. En cas d'égalité des données, l'année d'occurrence la plus ancienne est indiquée avant la ou les années d'occurrence les plus récentes. Notez que la visualiseur de l'ECLT affiche les enregistrements actuels pour le mois et le jour de l'année sélectionnés. Il n'identifie pas spécifiquement les occurrences de nouveaux enregistrements pour une date sélectionnée. Cette fonctionnalité pourra être intégrée dans une prochaine version.",1
+map.ltce_desc.faq,"see FAQ",1,"Les Records des Extrêmes Quotidiens (ECLT; voir la FAQ) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques « virtual » ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée.",1
+map.ltce_desc.technicalLink,"the technical documentation on Long Term Climate Extremes",1,"la documentation technique relative aux ECLT",1
+map.ltce_desc.above,"Note that the database is updated twice daily with the most recent data being valid for the previous climate day. In cases where there are tied records, the earliest year of occurrence is listed before the most recent year(s) of occurrence. Note that the LTCE viewer displays current records for the Month and Day of the year selected. It does not specifically identify occurrences of new records for a selected date. This functionality may be incorporated into a future release.",1,"Notez que la base de données est mise à jour deux fois par jour, et les données les plus récentes sont valides pour la journée climatique précédente. En cas d'égalité des données, l'année d'occurrence la plus ancienne est indiquée avant la ou les années d'occurrence les plus récentes. Notez que la visualiseur de l'ECLT affiche les enregistrements actuels pour le mois et le jour de l'année sélectionnés. Il n'identifie pas spécifiquement les occurrences de nouveaux enregistrements pour une date sélectionnée. Cette fonctionnalité pourra être intégrée dans une prochaine version.",1
 map.daily_desc,"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",1,"Les Données climatiques quotidiennes sont dérivées de deux sources de données; les stations climatologiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol.",1
 map.daily_desc.title,"Daily climate data",1,"Données climatiques quotidiennes",1
 map.daily_desc.technicalLink,"technical documentation on the Daily climate data",1,"documentation technique relative aux Données climatiques quotidiennes",1
@@ -75,21 +75,21 @@ colourRamp.capa.rdpa24,24 hour precipitation,1,Précipitations sur 24 heures,1
 settings.title,Climate viewer options,1,Options du visualiseur de données climatiques,1
 variableSelector.title,Variable,1,Variable,1
 variableSelector.normal.title,Variable,1,Variable,1
-variableSelector.ltce.title,Variable,0,Variable,0
+variableSelector.ltce.title,Variable,1,Variable,1
 variableSelector.header,Climate data,1,Données climatiques,1
 variableSelector.stations_group,Metadata,1,Métadonnées,1
 variableSelector.normal.stations_group,Metadata,1,Métadonnées,1
-variableSelector.ltce.stations_group,Metadata,0,Métadonnées,0
+variableSelector.ltce.stations_group,Metadata,1,Métadonnées,1
 variableSelector.temperature_group,Temperature,1,Température,1
 variableSelector.normal.temperature_group,Climate normals: Temperature,1,Normales climatiques : Température,1
-variableSelector.ltce.temperature_group,Temperature Extremes of Records,0,Temperature Extremes of Records [fr],0
+variableSelector.ltce.temperature_group,Temperature Extremes of Records,1,Records de Températures Extrêmes,1
 variableSelector.wind_group,Wind,1,Vent,1
 variableSelector.ice_group,Sea ice,1,Glace de mer,1
 variableSelector.precipitation_group,Precipitation,1,Précipitations,1
 variableSelector.normal.precipitation_group,Climate normals: Precipitation,1,Normales climatiques : Précipitations,1
-variableSelector.ltce.precipitation_group,Precipitation Extremes of Records,0,Precipitation Extremes of Records [fr],0
+variableSelector.ltce.precipitation_group,Precipitation Extremes of Records,1,Records de Précipitations Extrêmes,1
 variableSelector.snow_depth_group,Snow,1,Neige,1
-variableSelector.ltce.snow_depth_group,Snowfall Extremes of Records,1,Snowfall Extremes of Records,0
+variableSelector.ltce.snow_depth_group,Snowfall Extremes of Records,1,Records de Neiges Extrêmes,1
 variableSelector.pressure_group,Pressure,1,Pression,1
 variableSelector.geopotential_group,Geopotential,1,Géopotentiel,1
 variableSelector.historic,Historic,1,Historique,1
@@ -150,8 +150,8 @@ timePeriodSelector.fall.qualifier,Sep - Nov,1,Sept. à nov.,1
 timePeriodSelector.annual.fullName,Annual,1,Annuel,1
 timePeriodSelector.annual.shortName,Annual,1,Annuel,1
 timePeriodSelector.annual.qualifier,Jan - Dec,1,Jan. à déc.,1
-monthSelector.title,Month,1,Mois,0
-monthSelector.header,Month,1,Mois,0
+monthSelector.title,Month,1,Mois,1
+monthSelector.header,Month,1,Mois,1
 monthSelector.jan.fullName,January,1,Janvier,1
 monthSelector.jan.shortName,January,1,Janvier,1
 monthSelector.jan.qualifier,,1,,1
@@ -188,7 +188,7 @@ monthSelector.nov.qualifier,,1,,1
 monthSelector.dec.fullName,December,1,Décembre,1
 monthSelector.dec.shortName,December,1,Décembre,1
 monthSelector.dec.qualifier,,1,,1
-daySelector.title,Day,1,Jour,0
+daySelector.title,Day,1,Jour,1
 daySelector.1.fullName,1,1,1,1
 daySelector.1.shortName,1,1,1,1
 daySelector.1.qualifier,,1,,1
@@ -329,10 +329,10 @@ datasetSelector.hydro.shortName,River levels and flow,1,Niveaux et débits des r
 datasetSelector.hydro.fullName,River levels and flow,1,Niveaux et débits des rivières,1
 datasetSelector.hydro.subName,Historical hydrometric data,1,Données hydrométriques historiques,1
 datasetSelector.hydro.qualifier,,1,,1
-datasetSelector.ltce.shortName,Daily Climate Records,1,Daily Climate Records[fr],0
-datasetSelector.ltce.fullName,Daily Climate Records,1,Daily Climate Records[fr],0
-datasetSelector.ltce.subName,"Long term climate extremes (LTCE)",1,"Long term climate Extremes",0
-datasetSelector.ltce.qualifier,,0,,0
+datasetSelector.ltce.shortName,Daily Climate Records,1,Records des extrêmes quotidiens,1
+datasetSelector.ltce.fullName,Daily Climate Records,1,Records des extrêmes quotidiens,1
+datasetSelector.ltce.subName,"Long term climate extremes (LTCE)",1,"Extrêmes climatiques à long terme (ECLT)",1
+datasetSelector.ltce.qualifier,,1,,1
 downloadSelector.title,Download,1,Télécharger,1
 downloadSelector.header,Download,1,Télécharger,1
 downloadSelector.mapImage_group,Map image,1,Carte,1
@@ -509,36 +509,36 @@ units.normal.gustspeed.fullName,kilometres per hour,1,kilomètres à l'heure,1
 hydro.hydro.fullName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.shortName,Hydrometric stations,1,Stations hydrométriques,1
 hydro.hydro.qualifier,,1,,1
-ltce.tmaxh.fullName,Record High Max Temp,1,Record High Max Temp [fr],0
-ltce.tmaxh.shortName,Record High Max Temp,1,Record High Max Temp [fr],0
+ltce.tmaxh.fullName,Record High Max Temp,1,Records de Température Maximale la plus élevée,1
+ltce.tmaxh.shortName,Record High Max Temp,1,Records de Température Maximale la plus élevée,1
 ltce.tmaxh.qualifier,,1,,1
-ltce.tminh.fullName,Record High Min Temp,1,Record High Min Temp [fr],0
-ltce.tminh.shortName,Record High Min Temp,1,Record High Min Temp [fr],0
+ltce.tminh.fullName,Record High Min Temp,1,Records de Température Minimale la plus élevée,1
+ltce.tminh.shortName,Record High Min Temp,1,Records de Température Minimale la plus élevée,1
 ltce.tminh.qualifier,,1,,1
-ltce.tmaxl.fullName,Record Low Max Temp,1,Record Low Max Temp [fr],0
-ltce.tmaxl.shortName,Record Low Max Temp,1,Record Low Max Temp [fr],0
+ltce.tmaxl.fullName,Record Low Max Temp,1,Records de Température Maximale la plus basse,1
+ltce.tmaxl.shortName,Record Low Max Temp,1,Records de Température Maximale la plus basse,1
 ltce.tmaxl.qualifier,,1,,1
-ltce.tminl.fullName,Record Low Min Temp,1,Record Low Min Temp [fr],0
-ltce.tminl.shortName,Record Low Min Temp,1,Record Low Min Temp [fr],0
+ltce.tminl.fullName,Record Low Min Temp,1,Records de Température Minimale la plus basse,1
+ltce.tminl.shortName,Record Low Min Temp,1,Records de Température Minimale la plus basse,1
 ltce.tminl.qualifier,,1,,1
-ltce.precip.fullName,Record Precipitation,1,Record Precipitation [fr],0
-ltce.precip.shortName,Record Precipitation,1,Record Precipitation [fr],0
+ltce.precip.fullName,Record Precipitation,1,Records de Précipitations,1
+ltce.precip.shortName,Record Precipitation,1,Records de Précipitations,1
 ltce.precip.qualifier,,1,,1
-ltce.snd.fullName,Record Snowfall,1,Record Snowfall [fr],0
-ltce.snd.shortName,Record Snowfall,1,Record Snowfall [fr],0
+ltce.snd.fullName,Record Snowfall,1,Records de Précipitations de Neige,1
+ltce.snd.shortName,Record Snowfall,1,Records de Précipitations de Neige,1
 ltce.snd.qualifier,,1,,1
-ltce.tempstations.fullName,Temperature Extremes of Records,1,Temperature Extremes of Records [fr],0
-ltce.tempstations.shortName,Temperature Extremes of Records,1,Temperature Extremes of Records [fr],0
-ltce.tempstations.qualifier,,1,,0
-ltce.tempstations.legend,Daily Maximum/Minimum Temperature Virtual Station,1,Daily Maximum/Minimum Temperature Virtual Station,0
-ltce.precipstations.fullName,Precipitation Extremes of Records,1,Precipitation Extremes of Records [fr],0
-ltce.precipstations.shortName,Precipitation Extremes of Records,1,Precipitation Extremes of Records [fr],0
-ltce.precipstations.qualifier,,1,,0
-ltce.precipstations.legend,Daily Precipitation Virtual Station,1,Daily Precipitation Virtual Station,0
-ltce.snowstations.fullName,Snowfall Extremes of Records,1,Snowfall Extremes of Records [fr],0
-ltce.snowstations.shortName,Snowfall Extremes of Records,1,Snowfall Extremes of Records [fr],0
-ltce.snowstations.qualifier,,1,,0
-ltce.snowstations.legend,Daily Snowfall Virtual Station,1,Daily Snowfall Virtual Station,0
+ltce.tempstations.fullName,Temperature Extremes of Records,1,Records de Températures Extrêmes,1
+ltce.tempstations.shortName,Temperature Extremes of Records,1,Records de Températures Extrêmes,1
+ltce.tempstations.qualifier,,1,,1
+ltce.tempstations.legend,Daily Maximum/Minimum Temperature Virtual Station,1,Station Climatologique Virtuelle  - Température Maximale/Minimale,1
+ltce.precipstations.fullName,Precipitation Extremes of Records,1,Records de Précipitations Extrêmes,1
+ltce.precipstations.shortName,Precipitation Extremes of Records,1,Records de Précipitations Extrêmes,1
+ltce.precipstations.qualifier,,1,,1
+ltce.precipstations.legend,Daily Precipitation Virtual Station,1,Station Climatologique Virtuelle  - Précipitation,1
+ltce.snowstations.fullName,Snowfall Extremes of Records,1,Records de Neiges Extrêmes,1
+ltce.snowstations.shortName,Snowfall Extremes of Records,1,Records de Neiges Extrêmes,1
+ltce.snowstations.qualifier,,1,,1
+ltce.snowstations.legend,Daily Snowfall Virtual Station,1,Station Climatologique Virtuelle  - Neige,1
 units.ltce.tmaxh.shortName,°C,1,°C,1
 units.ltce.tmaxh.fullName,degrees Celsius,1,degrés Celsius,1
 units.ltce.tminh.shortName,°C,1,°C,1
@@ -550,7 +550,7 @@ units.ltce.tminl.fullName,degrees Celsius,1,degrés Celsius,1
 units.ltce.precip.shortName,mm,1,mm,1
 units.ltce.precip.fullName,millimetres,1,millimètres,1
 units.ltce.snd.shortName,cm,1,cm,1
-units.ltce.snd.fullName,centimetres,1,centimètres,0
+units.ltce.snd.fullName,centimetres,1,centimètres,1
 capa.rdpa6.shortName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.fullName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.qualifier,,1,,1
@@ -570,5 +570,5 @@ normal.tooltips.value_title,Climate value,1,Valeur climatique,1
 normal.tooltips.prov_title,Province/Territory,1,Province / Territoire,1
 normal.tooltips.wmo_title,WMO identifier,1,Identifiant OMM,1
 normal.tooltips.tc_title,TC identifier,1,Identifiant TC,1
-ltce.tooltips.station_title,Virtual Station Name,1,Virtual Station Name [fr],0
-ltce.tooltips.value_title,Extreme value,1,Extreme value [fr],0
+ltce.tooltips.station_title,Virtual Station Name,1,Nom du Station Virtuelle,1
+ltce.tooltips.value_title,Extreme value,1,Valeur de l'extrême,1

@@ -11,14 +11,14 @@
           "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
         },
         {
-          "layerId": "ltce_tempstations_en",
+          "layerId": "ltce_precip_en",
           "layerName": "",
           "description": "",
-          "coverIcon": "assets/images/red-circle.png",
+          "coverIcon": "assets/images/green-circle.png",
           "symbologyStack": [
             {
-              "image": "assets/images/red-circle.png",
-              "text": "LTCE Station"
+              "image": "assets/images/green-circle.png",
+              "text": "Record Precipitation"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -44,7 +44,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Cities",
           "expectedResponseTime": 10000,
           "controls": [
@@ -76,21 +76,21 @@
       ],
       "dataLayers": [
         {
-          "id": "ltce_tempstations_en",
+          "id": "ltce_precip_en",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
-          "name": "Daily Maximum/Minimum Temperature Virtual Station",
+          "url": "#GEOMETWFS#/collections/ltce-precipitation/items",
+          "name": "Precipitation Extremes of Record",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
             "visibility": true
           },
           "details": {
-            "template": "assets/templates/ltce/stations-template.html",
-            "parser": "assets/templates/ltce/stations-script.js"
+            "template": "assets/templates/ltce/variables-template.html",
+            "parser": "assets/templates/ltce/variables-script.js"
           },
-          "colour": "#f04116",
+          "colour": "#0cf03a",
           "controls": [
             "data",
             "visibility",
@@ -113,41 +113,98 @@
                 "visible": false
               },
               {
-                "data": "CLIMATE_IDENTIFIER",
-                "title": "Climate Identifier",
+                "data": "LOCAL_DAY",
+                "title": "Day",
                 "visible": true
               },
               {
-                "data": "DATA_SOURCE",
-                "title": "Type",
+                "data": "LOCAL_MONTH",
+                "title": "Month",
                 "visible": true
               },
               {
-                "data": "ELEMENT_NAME_E",
-                "title": "Element",
+                "data": "RECORD_BEGIN",
+                "title": "Record Start",
                 "visible": true
               },
               {
-                "data": "START_DATE",
-                "title": "Start Date",
+                "data": "RECORD_END",
+                "title": "Record End",
                 "visible": true
               },
               {
-                "data": "END_DATE",
-                "title": "End Date",
+                "data": "FIRST_PRECIPITATION",
+                "title": "Extreme Value",
                 "visible": true
               },
               {
-                "data": "ENG_STN_NAME",
-                "title": "Station Name",
+                "data": "FIRST_PRECIPITATION_YEAR",
+                "title": "Extreme Year",
                 "visible": true
               },
               {
-                "data": "FRE_STN_NAME",
-                "visible": false
+                "data": "SECOND_PRECIPITATION",
+                "title": "2nd Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "SECOND_PRECIPITATION_YEAR",
+                "title": "2nd Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "THIRD_PRECIPITATION",
+                "title": "3rd Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "THIRD_PRECIPITATION_YEAR",
+                "title": "3rd Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_PRECIPITATION",
+                "title": "4th Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_PRECIPITATION_YEAR",
+                "title": "4th Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_PRECIPITATION",
+                "title": "5th Extreme Value",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_PRECIPITATION_YEAR",
+                "title": "5th Extreme Year",
+                "visible": true
+              },
+              {
+                "data": "LAST_UPDATED",
+                "title": "Last Updated",
+                "visible": true
               },
               {
                 "data": "IDENTIFIER",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_PRECIPITATION",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_PRECIPITATION_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_PRECIPITATION",
+                "visible": false
+              },
+              {
+                "data": "RECORD_PRECIPITATION_YR",
                 "visible": false
               },
               {
@@ -175,14 +232,14 @@
           "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
         },
         {
-          "layerId": "ltce_tempstations_fr",
+          "layerId": "ltce_precip_fr",
           "layerName": "",
           "description": "",
-          "coverIcon": "assets/images/red-circle.png",
+          "coverIcon": "assets/images/green-circle.png",
           "symbologyStack": [
             {
-              "image": "assets/images/red-circle.png",
-              "text": "Station ECLT"
+              "image": "assets/images/green-circle.png",
+              "text": "Records de Précipitations"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -208,7 +265,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Villes",
           "expectedResponseTime": 10000,
           "controls": [
@@ -240,21 +297,21 @@
       ],
       "dataLayers": [
         {
-          "id": "ltce_tempstations_fr",
+          "id": "ltce_precip_fr",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
-          "name": "Station Climatologique Virtuelle - Température Maximale/Minimale",
+          "url": "#GEOMETWFS#/collections/ltce-precipitation/items",
+          "name": "Records de Précipitations Extrêmes",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
             "opacity": 1,
             "visibility": true
           },
           "details": {
-            "template": "assets/templates/ltce/stations-template.html",
-            "parser": "assets/templates/ltce/stations-script.js"
+            "template": "assets/templates/ltce/variables-template.html",
+            "parser": "assets/templates/ltce/variables-script.js"
           },
-          "colour": "#f04116",
+          "colour": "#0cf03a",
           "controls": [
             "data",
             "visibility",
@@ -273,45 +330,102 @@
               },
               {
                 "data": "VIRTUAL_STATION_NAME_F",
-                "title": "Nom du Station Virtuelle",
+                "title": "Nom du Station  Virtuelle",
                 "visible": true
               },
               {
-                "data": "CLIMATE_IDENTIFIER",
-                "title": "Identifiant Climatologique",
+                "data": "LOCAL_DAY",
+                "title": "Jour",
                 "visible": true
               },
               {
-                "data": "DATA_SOURCE",
-                "title": "Type",
+                "data": "LOCAL_MONTH",
+                "title": "Mois",
                 "visible": true
               },
               {
-                "data": "ELEMENT_NAME_E",
-                "title": "Élément",
-                "visible": true
-              },
-              {
-                "data": "START_DATE",
+                "data": "RECORD_BEGIN",
                 "title": "Début des records",
                 "visible": true
               },
               {
-                "data": "END_DATE",
+                "data": "RECORD_END",
                 "title": "Fin des records",
                 "visible": true
               },
               {
-                "data": "ENG_STN_NAME",
-                "visible": false
+                "data": "FIRST_PRECIPITATION",
+                "title": "Valeur de l'extrême",
+                "visible": true
               },
               {
-                "data": "FRE_STN_NAME",
-                "title": "Nom du Station",
+                "data": "FIRST_PRECIPITATION_YEAR",
+                "title": "Année de l'extrême",
+                "visible": true
+              },
+              {
+                "data": "SECOND_PRECIPITATION",
+                "title": "Valeur du 2e Extrême",
+                "visible": true
+              },
+              {
+                "data": "SECOND_PRECIPITATION_YEAR",
+                "title": "Année du 2e Extrême",
+                "visible": true
+              },
+              {
+                "data": "THIRD_PRECIPITATION",
+                "title": "Valeur du 3e Extrême",
+                "visible": true
+              },
+              {
+                "data": "THIRD_PRECIPITATION_YEAR",
+                "title": "Année du 3e Extrême",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_PRECIPITATION",
+                "title": "Valeur du 4e Extrême",
+                "visible": true
+              },
+              {
+                "data": "FOURTH_PRECIPITATION_YEAR",
+                "title": "Année du 4e Extrême",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_PRECIPITATION",
+                "title": "Valeur du 5e Extrême",
+                "visible": true
+              },
+              {
+                "data": "FIFTH_PRECIPITATION_YEAR",
+                "title": "Année du 5e Extrême",
+                "visible": true
+              },
+              {
+                "data": "LAST_UPDATED",
+                "title": "Dernière mise à jour",
                 "visible": true
               },
               {
                 "data": "IDENTIFIER",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_PRECIPITATION",
+                "visible": false
+              },
+              {
+                "data": "PREV_RECORD_PRECIPITATION_YR",
+                "visible": false
+              },
+              {
+                "data": "RECORD_PRECIPITATION",
+                "visible": false
+              },
+              {
+                "data": "RECORD_PRECIPITATION_YR",
                 "visible": false
               },
               {

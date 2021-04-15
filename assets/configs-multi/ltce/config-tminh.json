@@ -44,7 +44,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Cities",
           "expectedResponseTime": 10000,
           "controls": [
@@ -79,7 +79,7 @@
           "id": "ltce_tminh_en",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-temperature/items",
+          "url": "#GEOMETWFS#/collections/ltce-temperature/items",
           "name": "Temperature Extremes of Record, Record High Min",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
@@ -521,7 +521,7 @@
         {
           "id": "cities",
           "layerType": "esriTile",
-          "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
           "name": "Villes",
           "expectedResponseTime": 10000,
           "controls": [
@@ -556,7 +556,7 @@
           "id": "ltce_tminh_fr",
           "layerType": "ogcWfs",
           "xyInAttribs": true,
-          "url": "https://api.weather.gc.ca/collections/ltce-temperature/items",
+          "url": "#GEOMETWFS#/collections/ltce-temperature/items",
           "name": "Records de Températures Extrêmes, Record de Température Minimale la plus élevée",
           "nameField": "VIRTUAL_CLIMATE_ID",
           "state": {
