@@ -27,6 +27,10 @@
                         <a v-else :href="`${ltceFAQ}`">{{ $t(`map.ltce_desc.faq`) }}</a>
                     </i18n>
 
+                    <p v-if="datasetId === 'ltce'">{{ $t(`map.${datasetId}_desc.note`)}}</p>
+
+                    <p v-if="datasetId === 'ltce'">{{ $t(`map.${datasetId}_desc.noteExtra`)}}</p>
+
                     <i18n :path="`map.description.technical`" tag="p">
                         <a :href="`${technicalDocsUrl}${technicalDocsRoute}`">{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
                     </i18n>
