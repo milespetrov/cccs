@@ -14,7 +14,8 @@
         <dt>
             <span>{{ self.layer.tt.date }}</span>
         </dt>
-        <dd>{{ self.layer.tt.months[self.layer.properties.LOCAL_MONTH - 1]}} {{ self.layer.properties.LOCAL_DAY }}</dd>
+        <dd ng-if="self.lang === 'en-CA'">{{ self.layer.tt.months[self.layer.properties.LOCAL_MONTH - 1]}} {{ self.layer.properties.LOCAL_DAY }}</dd>
+        <dd ng-if="self.lang === 'fr-CA'">{{ self.layer.properties.LOCAL_DAY }} {{ self.layer.tt.months[self.layer.properties.LOCAL_MONTH - 1]}}</dd>
         
         <dt>
             <span>{{ self.layer.tt.record_type }}</span>

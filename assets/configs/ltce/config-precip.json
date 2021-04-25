@@ -355,7 +355,7 @@
               },
               {
                 "data": "FIRST_PRECIPITATION",
-                "title": "Valeur de l'extrême",
+                "title": "Valeur extrême",
                 "visible": true
               },
               {

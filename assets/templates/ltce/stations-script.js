@@ -37,6 +37,20 @@ function parser(data, lang) {
         data.properties.END_DATE = data.properties.END_DATE.split('T')[0];
     }
 
+    if (data.properties.ELEMENT_NAME_E.includes('SNOW')) {
+        data.properties.ELEMENT_NAME_F = "Chute de neige totale quotidienne";
+    } else if (data.properties.ELEMENT_NAME_E.includes('PRECIP')) {
+        data.properties.ELEMENT_NAME_F = "Précipitation totale quotidienne";
+    } else if (data.properties.ELEMENT_NAME_E.includes("MAX")) {
+        data.properties.ELEMENT_NAME_F = "Température maximale quotidienne";
+    } else {
+        data.properties.ELEMENT_NAME_F = "Température minimale quotidienne";
+    }
+
+    if (!data.properties.FRE_STN_NAME || data.properties.FRE_STN_NAME === "" || data.properties.FRE_STN_NAME.toLowerCase() === 'none'){
+        data.properties.FRE_STN_NAME = data.properties.ENG_STN_NAME;
+    }
+
     data.lang = lang;
 
     data.tt = TRANSLATIONS[lang];
