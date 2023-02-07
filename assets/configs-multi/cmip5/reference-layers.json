@@ -19,7 +19,7 @@
             "name": "Labels",
             "controls": ["visibility", "opacity", "reload", "settings"],
             "layerType": "esriTile",
-            "url": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
+            "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
         }
     ]
 }

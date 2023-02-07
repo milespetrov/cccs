@@ -62,7 +62,7 @@
     {
       "id": "labels",
       "layerType": "esriTile",
-      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
       "name": "Labels",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
@@ -168,7 +168,7 @@
     {
       "id": "labels",
       "layerType": "esriTile",
-      "url": "https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
       "name": "[fr] Labels",
       "expectedResponseTime": 10000,
       "controls": ["visibility", "opacity", "settings"],
