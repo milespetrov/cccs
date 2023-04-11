@@ -83,7 +83,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @StateApp
     analysisPeriod: string;
     // @StateApp featurePoint: MapPoint;
-    @StateApp 
+    @StateApp
     lastClick: XY;
     @StateApp
     day: string;
@@ -95,7 +95,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         cities: boolean | null;
         labels: boolean | null;
         provinces: boolean | null;
-    }
+    };
 
     //@ActionApp setFeatureId: (value: string | null) => void;
     @ActionApp
@@ -106,8 +106,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @ActionApp
     setTileInfo: (value: number[] | null) => void;
     @ActionApp
-    setLayerVisibility: (args: {layerId: string, value: boolean}) => void;
-    @ActionApp 
+    setLayerVisibility: (args: { layerId: string; value: boolean }) => void;
+    @ActionApp
     setLastClick: (value: XY | null) => void;
 
     @GetterApp
@@ -228,8 +228,25 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
             // LTCE non-station variables need day & month added to the query
             // This keeps us from needing ~2000 configs
+            // They also need the value set for the custom renderer
             if (this.datasetId === DatasetId.LTCE && !this.currentVariable.includes('station')) {
-                layer.url += '?LOCAL_DAY=' + this.day + '&LOCAL_MONTH=' + (monthSelectorConfig.groups[0].items.indexOf(this.month as TimePeriodType) + 1).toString();
+                const selectedMonth = monthSelectorConfig.groups[0].items.indexOf(this.month as TimePeriodType) + 1;
+                layer.url += '?LOCAL_DAY=' + this.day + '&LOCAL_MONTH=' + selectedMonth.toString();
+
+                // Setting value for custom renderer, current year if the day has happened, last year if not
+                const currentDate = new Date();
+                if (currentDate.getUTCMonth() > selectedMonth) {
+                    layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear();
+                    // months are 0 indexed for some reason??
+                } else if (currentDate.getUTCMonth() + 1 === selectedMonth) {
+                    if (currentDate.getUTCDate() <= parseInt(this.day)) {
+                        layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear();
+                    } else {
+                        layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear() - 1;
+                    }
+                } else {
+                    layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear() - 1;
+                }
             }
 
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
@@ -242,7 +259,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             if (layer.state.visibility === true) {
                 layerPromise.then(() => {
                     this.refreshIdentify();
-                })
+                });
             }
 
             if (this.dateSlider) {
@@ -261,7 +278,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             if (this.layerVisibility[layer.id] !== null) {
                 layer.state.visibility = this.layerVisibility[layer.id];
             } else {
-                this.setLayerVisibility({ layerId: layer.id, value: layer.state.visibility});
+                this.setLayerVisibility({ layerId: layer.id, value: layer.state.visibility });
             }
 
             // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
@@ -270,8 +287,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._mapi.layers.addLayer(layer).then((addedLayers: any) => {
                 // track the visibility of reference layers
                 addedLayers[0].visibilityChanged.pipe(takeUntil(deactivateLayers)).subscribe((value: boolean) => {
-                    this.setLayerVisibility({layerId: originalId, value});
-                })
+                    this.setLayerVisibility({ layerId: originalId, value });
+                });
             });
         });
 
@@ -315,7 +332,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // having the milliseconds breaks the layers
             const timeString = new Date(this.timeSlice).toISOString().split('.')[0] + 'Z';
             // set the TIME param and reload
-            this.currentLayers.forEach(layerId => {
+            this.currentLayers.forEach((layerId) => {
                 this.getLayerById(layerId)._viewerLayer.setCustomParameter('TIME', timeString);
             });
         }

@@ -195,7 +195,7 @@ export interface DatasetSource {
     dateSlider?: any;
 
     legend?: {
-        [index: string]: string;
+        [index: string]: string | string[];
     };
 
     /**
