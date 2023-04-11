@@ -19,6 +19,10 @@
             {
               "image": "assets/images/red-circle.png",
               "text": "Record High Min"
+            },
+            {
+              "image": "assets/images/yellow-circle.svg",
+              "text": "New Record High Min"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -90,7 +94,58 @@
             "template": "assets/templates/ltce/variables-template.html",
             "parser": "assets/templates/ltce/variables-script.js"
           },
-          "colour": "#f04116",
+          "customRenderer": {
+            "type": "uniqueValue",
+            "field1": "FIRST_LOW_MAX_TEMP_YEAR",
+            "defaultSymbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                240,
+                65,
+                22,
+                255
+              ],
+              "size": 7,
+              "outline": {
+                "color": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "width": 1
+              }
+            },
+            "defaultLabel": "",
+            "uniqueValueInfos": [
+              {
+                "value": 2023,
+                "label": "Record broken on last update",
+                "description": "<description1>",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    252,
+                    236,
+                    0,
+                    255
+                  ],
+                  "size": 7,
+                  "outline": {
+                    "color": [
+                      0,
+                      0,
+                      0,
+                      255
+                    ],
+                    "width": 1
+                  }
+                }
+              }
+            ]
+          },
           "controls": [
             "data",
             "visibility",
@@ -496,6 +551,10 @@
             {
               "image": "assets/images/red-circle.png",
               "text": "Record de Température Minimale la plus élevée"
+            },
+            {
+              "image": "assets/images/yellow-circle.svg",
+              "text": "[fr] New Record Ligh Min"
             }
           ],
           "symbologyRenderStyle": "icons"
@@ -567,7 +626,58 @@
             "template": "assets/templates/ltce/variables-template.html",
             "parser": "assets/templates/ltce/variables-script.js"
           },
-          "colour": "#f04116",
+          "customRenderer": {
+            "type": "uniqueValue",
+            "field1": "FIRST_HIGH_MIN_TEMP_YEAR",
+            "defaultSymbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                240,
+                65,
+                22,
+                255
+              ],
+              "size": 7,
+              "outline": {
+                "color": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "width": 1
+              }
+            },
+            "defaultLabel": "",
+            "uniqueValueInfos": [
+              {
+                "value": 2023,
+                "label": "Record broken on last update",
+                "description": "<description1>",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    252,
+                    236,
+                    0,
+                    255
+                  ],
+                  "size": 7,
+                  "outline": {
+                    "color": [
+                      0,
+                      0,
+                      0,
+                      255
+                    ],
+                    "width": 1
+                  }
+                }
+              }
+            ]
+          },
           "controls": [
             "data",
             "visibility",

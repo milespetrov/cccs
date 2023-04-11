@@ -5,9 +5,20 @@
                 <!--div class="cip-row-label">
                     <span class="cip-label">{{ $t('map.controlsCluster.legend') }}</span>
                 </div-->
-                <div class="cip-row-content cip-row-legend">
+                
+                <div class="cip-row-content cip-row-legend" v-if="currentDataset == 'ltce' && !currentVariable.includes('station')">
+                    <div>
+                        <span v-html="legend[currentVariable][0]"></span>
+                        <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
+                    </div>
+                    <div>
+                        <span v-html="legend[currentVariable][1]"></span>
+                        <span>{{ $t(`ltce.legend.newRecord`)}}</span>
+                    </div>
+                </div>
+                <div class="cip-row-content cip-row-legend" v-else>
                     <span v-html="legend[currentVariable]"></span>
-                    <span>{{ $t(currentDataset == 'ltce' && currentVariable.includes('station') ? `${currentDataset}.${currentVariable}.legend` : `${currentDataset}.${currentVariable}.shortName`) }}</span>
+                    <span>{{ $t(currentDataset == 'ltce' ? `${currentDataset}.${currentVariable}.legend` : `${currentDataset}.${currentVariable}.shortName`) }}</span>
                 </div>
             </div>
 
