@@ -117,7 +117,7 @@
                 "width": 1
               }
             },
-            "defaultLabel": "",
+            "defaultLabel": "default",
             "uniqueValueInfos": [
               {
                 "value": 2023,
@@ -393,7 +393,7 @@
                 "width": 1
               }
             },
-            "defaultLabel": "",
+            "defaultLabel": "default",
             "uniqueValueInfos": [
               {
                 "value": 2023,

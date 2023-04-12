@@ -204,7 +204,9 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             ts: this.setTimeSlice,
             fp: this.setFeaturePoint,
             r: this.setRcpId,
-            ap: this.setAnalysisPeriod
+            ap: this.setAnalysisPeriod,
+            m: this.setMonth,
+            day: this.setDay
         };
 
         const defaultSettings: FunctionArray = {

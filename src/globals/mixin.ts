@@ -69,6 +69,12 @@ export class StoreAppMixin extends Vue {
     setAnalysisPeriod: (value: string | null) => void;
 
     @ActionApp
+    setMonth: (value: string | null) => void;
+
+    @ActionApp
+    setDay: (value: number | null) => void;
+
+    @ActionApp
     setInternalRouteUpdate: (value: boolean) => void;
 
     @StateApp
