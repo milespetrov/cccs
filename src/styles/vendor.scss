@@ -169,6 +169,10 @@ rv-table-setting-cluster {
 }
 
 .rv-details {
+    .rv-details-list div {
+        display: block;
+    }
+    
     .precip-icon:before, .rdpa6-icon:before, .rdpa24-icon:before {
         content: "";
         position: absolute;

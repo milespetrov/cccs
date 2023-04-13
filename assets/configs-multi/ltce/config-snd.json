@@ -96,7 +96,7 @@
           },
           "customRenderer": {
             "type": "uniqueValue",
-            "field1": "FIRST_LOW_MIN_TEMP_YEAR",
+            "field1": "FIRST_SNOWFALL_YEAR",
             "defaultSymbol": {
               "type": "esriSMS",
               "style": "esriSMSCircle",
@@ -372,7 +372,7 @@
           },
           "customRenderer": {
             "type": "uniqueValue",
-            "field1": "FIRST_LOW_MIN_TEMP_YEAR",
+            "field1": "FIRST_SNOWFALL_YEAR",
             "defaultSymbol": {
               "type": "esriSMS",
               "style": "esriSMSCircle",
