@@ -235,11 +235,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
                 // Setting value for custom renderer, current year if the day has happened, last year if not
                 const currentDate = new Date();
-                if (currentDate.getUTCMonth() > selectedMonth) {
+                if (currentDate.getUTCMonth() + 1 > selectedMonth) {
                     layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear();
                     // months are 0 indexed for some reason??
                 } else if (currentDate.getUTCMonth() + 1 === selectedMonth) {
-                    if (currentDate.getUTCDate() <= parseInt(this.day)) {
+                    if (currentDate.getUTCDate() >= parseInt(this.day)) {
                         layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear();
                     } else {
                         layer.customRenderer.uniqueValueInfos[0].value = currentDate.getUTCFullYear() - 1;
