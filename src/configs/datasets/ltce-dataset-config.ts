@@ -87,7 +87,7 @@ const ltceDataset: DatasetSource = {
         [VariableId.TemperatureStations]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.PrecipitationStations]: '<img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.Precipitation]: ['<img src="assets/images/green-circle.svg" style="width: 14px; height: 14px;">',
-        '<img src="assets/images/yellow-circle.svg" style="width: 14px; height: 14px;">']
+        '<img src="assets/images/pink-circle.svg" style="width: 14px; height: 14px;">']
     },
 
     mapConfigPath: 'config-base.json',

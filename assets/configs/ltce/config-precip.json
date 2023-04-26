@@ -21,7 +21,7 @@
               "text": "Record Precipitation"
             },
             {
-              "image": "assets/images/yellow-circle.svg",
+              "image": "assets/images/pink-circle.svg",
               "text": "New Record Precipitation"
             }
           ],
@@ -127,12 +127,9 @@
                   "type": "esriSMS",
                   "style": "esriSMSCircle",
                   "color": [
-                    252,
-                    236,
-                    0,
-                    255
+                    255, 87, 230, 255
                   ],
-                  "size": 7,
+                  "size": 9,
                   "outline": {
                     "color": [
                       0,
@@ -297,7 +294,7 @@
               "text": "Records de Précipitations"
             },
             {
-              "image": "assets/images/yellow-circle.svg",
+              "image": "assets/images/pink-circle.svg",
               "text": "[fr] New Record Precipitation"
             }
           ],
@@ -403,12 +400,9 @@
                   "type": "esriSMS",
                   "style": "esriSMSCircle",
                   "color": [
-                    252,
-                    236,
-                    0,
-                    255
+                    255, 87, 230, 255
                   ],
-                  "size": 7,
+                  "size": 9,
                   "outline": {
                     "color": [
                       0,
