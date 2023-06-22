@@ -554,7 +554,7 @@
             },
             {
               "image": "assets/images/yellow-circle.svg",
-              "text": "[fr] New Record High Max"
+              "text": "Nouveau Record de Température Maximale la plus élevée"
             }
           ],
           "symbologyRenderStyle": "icons"

@@ -554,7 +554,7 @@
             },
             {
               "image": "assets/images/yellow-circle.svg",
-              "text": "[fr] New Record Low Min"
+              "text": "Nouveau Record de Température Minimale la plus basse"
             }
           ],
           "symbologyRenderStyle": "icons"
