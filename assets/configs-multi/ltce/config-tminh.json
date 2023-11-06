@@ -96,7 +96,7 @@
           },
           "customRenderer": {
             "type": "uniqueValue",
-            "field1": "FIRST_LOW_MAX_TEMP_YEAR",
+            "field1": "FIRST_HIGH_MIN_TEMP_YEAR",
             "defaultSymbol": {
               "type": "esriSMS",
               "style": "esriSMSCircle",
