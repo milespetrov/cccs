@@ -7,6 +7,7 @@ import dcs from './dcs-dataset-config';
 import normal from './normal-dataset-config';
 import hydro from './hydro-dataset-config';
 import ltce from './ltce-dataset-config';
+import spei from './spei-dataset-config';
 
 import { DatasetId } from '@/types';
 
@@ -18,5 +19,6 @@ export const datasets = {
     [DatasetId.DCS]: dcs,
     [DatasetId.ClimateNormal]: normal,
     [DatasetId.Hydrometric]: hydro,
-    [DatasetId.LTCE]: ltce
+    [DatasetId.LTCE]: ltce,
+    [DatasetId.SPEI]: spei
 };

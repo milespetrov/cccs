@@ -48,8 +48,17 @@ export const variableSelectorConfig: VariableSelectorConfig = {
             showHeader: true
         },
         {
+            id: 'indices_group',
+            items: [VariableId.GrowingSeasonOverwinter, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonWarm],
+            showHeader: true
+        },
+        {
+            id: 'spei_group',
+            items: [VariableId.SPEI]
+        },
+        {
             id: 'stations_group',
-            items: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily, VariableId.TemperatureStations, VariableId.PrecipitationStations, VariableId.SnowfallStations],
+            items: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily, VariableId.Hourly, VariableId.TemperatureStations, VariableId.PrecipitationStations, VariableId.SnowfallStations],
             showHeader: true
         }
     ]

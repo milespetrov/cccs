@@ -13,7 +13,8 @@ export enum DatasetId {
     ClimateDaily = 'daily',
     CAPA = 'capa',
     Hydrometric = 'hydro',
-    LTCE = 'ltce'
+    LTCE = 'ltce',
+    SPEI = 'spei'
 }
 
 /**
@@ -48,10 +49,15 @@ export enum VariableId {
     SnowfallStations = 'snowstations',
     Monthly = 'monthly',
     Daily = 'daily',
+    Hourly = 'hourly',
     SurfaceTemp = 'tsurface',
     WaterTemp = 'twater',
     Geopotential = 'geopotential',
-    GustDirection850 = 'gustdir850'
+    GustDirection850 = 'gustdir850',
+    GrowingSeasonOverwinter = 'gso',
+    GrowingSeasonCool = 'gsc',
+    GrowingSeasonWarm = 'gsw',
+    SPEI = 'spei'
 }
 
 /**

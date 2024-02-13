@@ -108,6 +108,19 @@
                 "fr": "/documentation-technique-records-extremes-quotidiens.html"
             }
         },
+        "spei": {
+            "dataQuery": {
+                "en": "",
+                "fr": ""
+            },
+            "metadata": {
+                "ltce": ""
+            },
+            "technicalDocs": {
+                "en": "",
+                "fr": ""
+            }
+        },
         "normal": {
             "dataQuery": {
                 "en": "/climate-normals",

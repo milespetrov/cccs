@@ -1,0 +1,38 @@
+<div class="cmip5-details">
+
+    <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ self.layer.latlong[1].toFixed(6) }}, {{ self.layer.latlong[0].toFixed(6) }}</h4>
+    <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ self.layer.tt.latlong }}</span>
+
+    <md-divider class="mrgn-bttm-md"></md-divider>
+
+    <dl>
+        <dt>
+            <span>{{ self.layer.tt.trendValue[self.layer.variable] }}</span>
+        </dt>
+        <dd>{{ self.layer.value }}</dd>
+    </dl>
+
+    <!--a href='{{ self.layer.tt.learnMore.link }}' target=_blank>{{ self.layer.tt.learnMore.default }}</a-->
+</div>
+
+<style>
+    .cmip5-details .sub-title {
+        display: block;
+    }
+
+    .cmip5-details md-divider {
+        border-top-style: dotted;
+    }
+
+    .cmip5-details dl dt {
+        font-weight: normal;
+    }
+
+    .cmip5-details dl dd {
+        font-weight: bold;
+    }
+
+    .cmip5-details dl dt span {
+        display: block;
+    }
+</style>

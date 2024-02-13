@@ -8,12 +8,13 @@
             },
             {
                 "infoType": "text",
-                "content": "A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data."
+                "content": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
             },
             {
-                "layerId": "MONTHLY_station_en",
+                "layerId": "HOURLY_station_en",
                 "layerName": "",
-                "description": "These are stations reporting monthly summary data that correspond to stations used in past Normals series (1961-1990, 1971-2000, 1981-2010).",
+                "description":
+                    "These are the total stations with hourly observations compiled during any set time period.",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
@@ -44,7 +45,7 @@
             {
                 "id": "cities",
                 "layerType": "esriTile",
-                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
                 "name": "Cities",
                 "expectedResponseTime": 10000,
                 "controls": ["visibility", "opacity", "settings"],
@@ -68,11 +69,10 @@
         ],
         "dataLayers": [
             {
-                "id": "MONTHLY_station_en",
+                "id": "HOURLY_station_en",
                 "layerType": "ogcWfs",
-                "xyInAttribs": true,
-                "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
-                "name": "Monthly climate observation summaries",
+                "url": "https://api.weather.gc.ca/collections/climate-stations/items?HAS_HOURLY_DATA=Y",
+                "name": "Hourly climate observations",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
@@ -85,8 +85,6 @@
                 "table": {
                     "columns": [
                       { "data": "OBJECTID", "visible": false },
-                      { "data": "rvInternalCoordX", "visible": false },
-                      { "data": "rvInternalCoordY", "visible": false },
                       { "data": "NORMAL_CODE", "title": "Normal code", "visible": true },
                       { "data": "FRE_STN_OPERATOR_ACRONYM", "visible": false },
                       { "data": "COUNTRY", "visible": false },
@@ -126,12 +124,13 @@
             },
             {
                 "infoType": "text",
-                "content": "Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
+                "content": "Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
             },
             {
-                "layerId": "MONTHLY_station_fr",
+                "layerId": "HOURLY_station_fr",
                 "layerName": "",
-                "description": "Il s'agit des stations fournissant des résumés mensuels des données qui correspondent aux stations utilisées pour les séries passées de normales climatiques (1961 à 1990, 1971 à 2000 et 1981 à 2010).",
+                "description":
+                    "Il s'agit de toutes les stations avec des observations quotidiennes compilées au cours de n'importe quelle période donnée.",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
@@ -158,39 +157,36 @@
                 "symbologyStack": []
             }
         ],
-        "supportLayers": [
-            {
-                "id": "cities",
-                "layerType": "esriTile",
-                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-                "name": "Villes",
-                "expectedResponseTime": 10000,
-                "controls": ["visibility", "opacity", "settings"],
-                "state": {
-                    "opacity": 1,
-                    "visibility": false
-                }
-            },
-            {
-                "id": "labels",
-                "layerType": "esriTile",
-                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-                "name": "Étiquettes",
-                "expectedResponseTime": 10000,
-                "controls": ["visibility", "opacity", "settings"],
-                "state": {
-                    "opacity": 1,
-                    "visibility": true
-                }
+        "supportLayers": [{
+            "id": "cities",
+            "layerType": "esriTile",
+            "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+            "name": "Villes",
+            "expectedResponseTime": 10000,
+            "controls": ["visibility", "opacity", "settings"],
+            "state": {
+                "opacity": 1,
+                "visibility": false
             }
-        ],
+        },
+        {
+            "id": "labels",
+            "layerType": "esriTile",
+            "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+            "name": "Étiquettes",
+            "expectedResponseTime": 10000,
+            "controls": ["visibility", "opacity", "settings"],
+            "state": {
+                "opacity": 1,
+                "visibility": true
+            }
+        }],
         "dataLayers": [
             {
-                "id": "MONTHLY_station_fr",
+                "id": "HOURLY_station_fr",
                 "layerType": "ogcWfs",
-                "xyInAttribs": true,
-                "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
-                "name": "Sommaires des observations climatiques mensuelles",
+                "url": "https://api.weather.gc.ca/collections/climate-stations/items?HAS_HOURLY_DATA=Y",
+                "name": "Observations climatiques HOURLY",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
@@ -203,8 +199,6 @@
                 "table": {
                     "columns": [
                       { "data": "OBJECTID", "visible": false },
-                      { "data": "rvInternalCoordX", "visible": false },
-                      { "data": "rvInternalCoordY", "visible": false },
                       { "data": "NORMAL_CODE", "title": "Code de la normale", "visible": true },
                       { "data": "FRE_STN_OPERATOR_ACRONYM", "visible": false },
                       { "data": "COUNTRY", "visible": false },

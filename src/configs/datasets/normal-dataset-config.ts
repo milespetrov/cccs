@@ -22,7 +22,7 @@ const normalDataset: DatasetSource = {
                 TimePeriodType.November,
                 TimePeriodType.December
             ],
-            disableOn: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily]
+            disableOn: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily, VariableId.Hourly]
         }
     },
 
@@ -33,12 +33,14 @@ const normalDataset: DatasetSource = {
         VariableId.Precipitation,
         VariableId.Monthly,
         VariableId.Daily,
+        VariableId.Hourly,
         VariableId.ClimateStations
     ],
 
     legend: {
         [VariableId.Monthly]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.Daily]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
+        [VariableId.Hourly]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.ClimateStations]: '<img src="assets/images/blue-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.TMax]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',
         [VariableId.TMean]: '<img src="assets/images/red-circle.svg" style="width: 14px; height: 14px;">',

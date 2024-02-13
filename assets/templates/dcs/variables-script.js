@@ -15,13 +15,19 @@ function parser(data, lang) {
                 tmean: 'Mean temperature',
                 tmin: 'Daily minimum temperature',
                 tmax: 'Daily maximum temperature',
-                precip: 'Total precipitation'
+                precip: 'Total precipitation',
+                gso: 'Growing season overwinter',
+                gsc: 'Growing season cool',
+                gsw: 'Growing season warm'
             },
             measurementUnit: {
                 precip: '%',
                 tmean: '°C',
                 tmin: '°C',
-                tmax: '°C'
+                tmax: '°C',
+                gso: 'days',
+                gsc: 'days',
+                gsw: 'days'
             },
             timeSlider: [
                 '2021-2040',
@@ -62,13 +68,19 @@ function parser(data, lang) {
                 tmean: 'Température moyenne',
                 tmin: 'Température minimale quotidienne',
                 tmax: 'Température maximale quotidienne',
-                precip: 'Précipitations totales'
+                precip: 'Précipitations totales',
+                gso: 'Growing season overwinter [FR]',
+                gsc: 'Growing season cool [FR]',
+                gsw: 'Growing season warm [FR]'
             },
             measurementUnit: {
                 precip: '%',
                 tmean: '°C',
                 tmin: '°C',
-                tmax: '°C'
+                tmax: '°C',
+                gso: 'jours',
+                gsc: 'jours',
+                gsw: 'jours'
             },
             timeSlider: [
                 '2021-2040',

@@ -13,14 +13,15 @@ const dcsDataset: DatasetSource = {
                 TimePeriodType.Summer,
                 TimePeriodType.Winter,
                 TimePeriodType.Spring
-            ]
+            ],
+            disableOn: [VariableId.GrowingSeasonCool, VariableId.GrowingSeasonOverwinter, VariableId.GrowingSeasonWarm]
         },
         [VisualizationControlType.RCP]: {
             default: RCPType.RCP8_5
         }
     },
 
-    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
+    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation, VariableId.GrowingSeasonOverwinter, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonWarm],
 
     timeSliderLabels: ['2021-2040', '2041-2060', '2061-2080', '2081-2100'],
 

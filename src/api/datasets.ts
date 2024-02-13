@@ -189,7 +189,8 @@ class DCSApi extends DatasetApi {
      * @memberof DCSApi
      */
     get fetchUrl(): string {
-        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}-${
+        const growingSeasonVars: string[] = [VariableId.GrowingSeasonWarm, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonOverwinter]
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}${growingSeasonVars.includes(this.state.variableId!) ? '' : '-' +this.state.timePeriodId}-${
             this.state.rcpId
         }.json`;
     }
@@ -292,7 +293,7 @@ class NormalApi extends DatasetApi {
      */
     get fetchUrl(): string {
         if (
-            [VariableId.ClimateStations, VariableId.Daily, VariableId.Monthly].includes(<VariableId>(
+            [VariableId.ClimateStations, VariableId.Daily, VariableId.Monthly, VariableId.Hourly].includes(<VariableId>(
                 this.state.variableId
             ))
         ) {
@@ -327,11 +328,30 @@ class NormalApi extends DatasetApi {
             )}: ${data.TC_IDENTIFIER || '-'}</span></div>`
         };
 
-        return [VariableId.ClimateStations, VariableId.Daily, VariableId.Monthly].includes(<VariableId>(
+        return [VariableId.ClimateStations, VariableId.Daily, VariableId.Monthly, VariableId.Hourly].includes(<VariableId>(
             this.state.variableId
         ))
             ? tooltips.stations
             : tooltips.variables;
+    }
+}
+
+class SPEIApi extends DatasetApi {
+    constructor(state: AppState) {
+        super(state, DatasetId.SPEI);
+    }
+
+    /**
+     * Returns a dataset config url based on the curent state.
+     *
+     * @readonly
+     * @type {string}
+     * @memberof SPEIApi
+     */
+    get fetchUrl(): string {
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${
+            this.state.timePeriodId
+        }-${this.state.rcpId}.json`;
     }
 }
 
@@ -356,5 +376,6 @@ export default {
     [DatasetId.CMIP5]: wrap(CMIP5Api),
     [DatasetId.DCS]: wrap(DCSApi),
     [DatasetId.Hydrometric]: wrap(HydroApi),
-    [DatasetId.LTCE]: wrap(LTCEApi)
+    [DatasetId.LTCE]: wrap(LTCEApi),
+    [DatasetId.SPEI]: wrap(SPEIApi)
 };

@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="cip-cluster-row" v-if="timeSliderLabels">
+            <div class="cip-cluster-row" v-if="showTimeSlider">
                 <div class="cip-row-label">
                     <span id="cip-timeSlider-label" class="cip-label">{{ $t('map.controlsCluster.timeline') }}</span>
                 </div>
@@ -41,7 +41,7 @@
             </div>
 
             <!-- remove seprator if only one section is visible -->
-            <span class="cip-separator-vertical" v-if="colourRamp && (timeSliderLabels || dateSlider)"></span>
+            <span class="cip-separator-vertical" v-if="colourRamp && (showTimeSlider || dateSlider)"></span>
 
             <div class="cip-cluster-row" v-if="colourRamp">
                 <div class="cip-row-label">
@@ -58,6 +58,8 @@
 
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+
+import {DatasetId, VariableId} from '@/types'
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
@@ -78,6 +80,11 @@ export default class MapControlsCluster extends Vue {
     @Prop() currentDataset: any;
     @Prop() dateSlider: any;
     @Prop() wmsTime: any;
+
+
+    get showTimeSlider(): boolean {
+        return this.timeSliderLabels && (this.currentDataset !== DatasetId.DCS || ![VariableId.GrowingSeasonCool, VariableId.GrowingSeasonWarm, VariableId.GrowingSeasonOverwinter].includes(this.currentVariable))
+    }
 }
 </script>
 
