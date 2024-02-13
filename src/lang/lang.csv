@@ -56,6 +56,8 @@ map.monthly_desc.technicalLink,"technical documentation on the Monthly climate s
 map.normal_desc,"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",1,"Les Normales climatiques 1981-2010 servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010.",1
 map.normal_desc.title,"Climate Normals 1981-2010",1,"Normales climatiques 1981-2010",1
 map.normal_desc.technicalLink,"technical documentation on the Climate Normals 1981-2010",1,"documentation technique relative aux Normales climatiques 1981-2010",1
+map.spei_desc,"(CLIENT CONTENT GOES HERE)",1,(CLIENT CONTENT GOES HERE),1
+map.spei_desc.technicalLink,"the technical documentation on SPEI (CLIENT CONTENT)",1,"la documentation technique relative aux SPEI (CLIENT CONTENT)",0
 map.controlsCluster.legend,Legend,1,Légende,1
 map.controlsCluster.timeline,Time period,1,Période,1
 map.toggleScaleUnits,Toggle between imperial and metric map scale,1,Basculer entre les échelles métriques et impériales pour la carte,1
@@ -69,9 +71,9 @@ colourRamp.dcs.tmax,Daily maximum temperature change,1,Variation de température
 colourRamp.dcs.tmin,Daily minimum temperature change,1,Variation de température minimale quotidienne,1
 colourRamp.dcs.tmean,Mean temperature change,1,Variation de température moyenne,1
 colourRamp.dcs.precip,Total precipitation change,1,Variations des précipitations totales,1
-colourRamp.dcs.gso,Growing season change,1,Growing season change,0
-colourRamp.dcs.gsc,Growing season change,1,Growing season change,0
-colourRamp.dcs.gsw,Growing season change,1,Growing season change,0
+colourRamp.dcs.gso,Growing season (CLIENT CONTENT),1,Growing season (CLIENT CONTENT),0
+colourRamp.dcs.gsc,Growing season (CLIENT CONTENT),1,Growing season (CLIENT CONTENT),0
+colourRamp.dcs.gsw,Growing season (CLIENT CONTENT),1,Growing season (CLIENT CONTENT),0
 colourRamp.cangrd.tmean,Mean temperature change,1,Variation de température moyenne,1
 colourRamp.cangrd.precip,Total precipitation change,1,Variations des précipitations totales,1
 colourRamp.capa.rdpa6,6 hour precipitation,1,Précipitations sur 6 heures,1
@@ -96,7 +98,7 @@ variableSelector.snow_depth_group,Snow,1,Neige,1
 variableSelector.ltce.snow_depth_group,Snowfall Extremes of Records,1,Records de Neiges Extrêmes,1
 variableSelector.pressure_group,Pressure,1,Pression,1
 variableSelector.geopotential_group,Geopotential,1,Géopotentiel,1
-variableSelector.indices_group,Indices,1,Indices,0
+variableSelector.indices_group,Indices (CLIENT CONTENT),1,Indices (CLIENT CONTENT),0
 variableSelector.historic,Historic,1,Historique,1
 variableSelector.future,Future,1,Futur,1
 timePeriodSelector.title,Time of year,1,Temps de l'année,1
@@ -338,8 +340,8 @@ datasetSelector.ltce.shortName,Daily Climate Records,1,Records des extrêmes quo
 datasetSelector.ltce.fullName,Daily Climate Records,1,Records des extrêmes quotidiens,1
 datasetSelector.ltce.subName,"Long term climate extremes (LTCE)",1,"Extrêmes climatiques à long terme (ECLT)",1
 datasetSelector.ltce.qualifier,,1,,1
-datasetSelector.spei.shortName,Standardized Precipitation and Evapotranspiration Index,1,Standardized Precipitation and Evapotranspiration Index,0
-datasetSelector.spei.fullName,Standardized Precipitation and Evapotranspiration Index,1,Standardized Precipitation and Evapotranspiration Index,0
+datasetSelector.spei.shortName,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),1,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),0
+datasetSelector.spei.fullName,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),1,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),0
 datasetSelector.spei.subName,,1,,1
 datasetSelector.spei.qualifier,,1,,1
 downloadSelector.title,Download,1,Télécharger,1
@@ -443,15 +445,15 @@ dcs.tmax.qualifier,,1,,1
 dcs.precip.fullName,Total precipitation,1,Précipitations totales,1
 dcs.precip.shortName,Total precipitation,1,Précipitations totales,1
 dcs.precip.qualifier,,1,,1
-dcs.gso.fullName,Growing season length for overwintering crops,1,Growing season length for overwintering crops,0
-dcs.gso.shortName,Growing season overwinter,1,Growing season overwinter,0
-gcs.gso.qualifier,,1,,1
-dcs.gsc.fullName,Growing Season length for cool season crops ,1,Growing season length for cool season crops,0
-dcs.gsc.shortName,Growing season cool,1,Growing season cool,0
-gcs.gsc.qualifier,,1,,1
-dcs.gsw.fullName,Growing season length for warm season crops,1,Growing season length for warm season crops,0
-dcs.gsw.shortName,Growing season warm,1,Growing season warm,0
-gcs.gsw.qualifier,,1,,1
+dcs.gso.fullName,Growing season length for overwintering crops (CLIENT CONTENT),1,Growing season length for overwintering crops (CLIENT CONTENT),0
+dcs.gso.shortName,Growing season overwinter (CLIENT CONTENT),1,Growing season overwinter (CLIENT CONTENT),0
+dcs.gso.qualifier,,1,,1
+dcs.gsc.fullName,Growing Season length for cool season crops (CLIENT CONTENT),1,Growing season length for cool season crops (CLIENT CONTENT),0
+dcs.gsc.shortName,Growing season cool (CLIENT CONTENT),1,Growing season cool (CLIENT CONTENT),0
+dcs.gsc.qualifier,,1,,1
+dcs.gsw.fullName,Growing season length for warm season crops (CLIENT CONTENT),1,Growing season length for warm season crops (CLIENT CONTENT),0
+dcs.gsw.shortName,Growing season warm (CLIENT CONTENT),1,Growing season warm (CLIENT CONTENT),0
+dcs.gsw.qualifier,,1,,1
 units.dcs.tmean.shortName,°C,1,°C,1
 units.dcs.tmean.fullName,degrees Celsius,1,degrés Celsius,1
 units.dcs.tmax.shortName,°C,1,°C,1
@@ -460,12 +462,12 @@ units.dcs.tmin.shortName,°C,1,°C,1
 units.dcs.tmin.fullName,degrees Celsius,1,degrés Celsius,1
 units.dcs.precip.shortName,%,1,%,1
 units.dcs.precip.fullName,percent,1,pourcentage,1
-units.dcs.gso.fullName,days,1,jours,0
-units.dcs.gso.shortName,days,1,jours,0
-units.dcs.gsc.fullName,days,1,jours,0
-units.dcs.gsc.shortName,days,1,jours,0
-units.dcs.gsw.fullName,days,1,jours,0
-units.dcs.gsw.shortName,days,1,jours,0
+units.dcs.gso.fullName,days (CLIENT CONTENT),1,jours (CLIENT CONTENT),0
+units.dcs.gso.shortName,days (CLIENT CONTENT),1,jours (CLIENT CONTENT),0
+units.dcs.gsc.fullName,days (CLIENT CONTENT),1,jours (CLIENT CONTENT),0
+units.dcs.gsc.shortName,days (CLIENT CONTENT),1,jours (CLIENT CONTENT),0
+units.dcs.gsw.fullName,days (CLIENT CONTENT),1,jours (CLIENT CONTENT),0
+units.dcs.gsw.shortName,days (CLIENT CONTENT),1,jours (CLIENT CONTENT),0
 cangrd.tmean.fullName,Mean temperature,1,Température moyenne,1
 cangrd.tmean.shortName,Mean temperature,1,Température moyenne,1
 cangrd.tmean.qualifier,,1,,1
@@ -485,8 +487,8 @@ normal.monthly.qualifier,,1,,1
 normal.daily.fullName,Daily climate observations,1,Observations climatiques quotidiennes,1
 normal.daily.shortName,Daily climate observations,1,Observations climatiques quotidiennes,1
 normal.daily.qualifier,,1,,1
-normal.hourly.fullName,Hourly climate observations,1,Observations climatiques horaires,0
-normal.hourly.shortName,Hourly climate observations,1,Observations climatiques horaires,0
+normal.hourly.fullName,Hourly climate observations (CLIENT CONTENT),1,Observations climatiques horaires (CLIENT CONTENT),0
+normal.hourly.shortName,Hourly climate observations (CLIENT CONTENT),1,Observations climatiques horaires (CLIENT CONTENT),0
 normal.hourly.qualifier,,1,,1
 normal.tmean.fullName,Mean temperature,1,Température moyenne,1
 normal.tmean.shortName,Mean temperature,1,Température moyenne,1
@@ -579,8 +581,8 @@ units.ltce.precip.shortName,mm,1,mm,1
 units.ltce.precip.fullName,millimetres,1,millimètres,1
 units.ltce.snd.shortName,cm,1,cm,1
 units.ltce.snd.fullName,centimetres,1,centimètres,1
-spei.spei.fullName,Standardized Precipitation and Evapotranspiration Index,1,Standardized Precipitation and Evapotranspiration Index,0
-spei.spei.shortName,Standardized Precipitation and Evapotranspiration Index,1,Standardized Precipitation and Evapotranspiration Index,0
+spei.spei.fullName,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),1,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),0
+spei.spei.shortName,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),1,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),0
 spei.spei.qualifier,,1,,1
 capa.rdpa6.shortName,6 hour precipitation,1,Précipitations sur 6 heures,1
 capa.rdpa6.fullName,6 hour precipitation,1,Précipitations sur 6 heures,1

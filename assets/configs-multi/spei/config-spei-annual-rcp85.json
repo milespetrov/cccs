@@ -8,7 +8,7 @@
         },
         {
           "infoType": "text",
-          "content": "Standardized Precipitation and Evapotranspiration Index"
+          "content": "(CLIENT CONTENT GOES HERE)"
         },
         {
           "layerId": "SPEI_ANN_RCP85_en",
@@ -91,7 +91,7 @@
           "layerType": "ogcWms",
           "suppressGetCapabilities": true,
           "url": "#GEOMETCLIMATEWMS#?service=WMS&version=1.3.0",
-          "name": "SPEI Annual",
+          "name": "SPEI Annual (CLIENT CONTENT)",
           "state": {
             "opacity": 0.85,
             "visibility": true
@@ -115,7 +115,7 @@
         },
         {
           "infoType": "text",
-          "content": "Tendance des changements relatifs des précipitations totales (%)"
+          "content": "(CLIENT CONTENT GOES HERE)"
         },
         {
           "layerId": "SPEI_ANN_RCP85_fr",
@@ -198,7 +198,7 @@
             "layerType": "ogcWms",
             "suppressGetCapabilities": true,
             "url": "#GEOMETCLIMATEWMS#?service=WMS&version=1.3.0",
-            "name": "SPEI Annual",
+            "name": "SPEI Annual (CLIENT CONTENT)",
             "state": {
               "opacity": 0.85,
               "visibility": true

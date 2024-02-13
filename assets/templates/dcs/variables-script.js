@@ -16,18 +16,18 @@ function parser(data, lang) {
                 tmin: 'Daily minimum temperature',
                 tmax: 'Daily maximum temperature',
                 precip: 'Total precipitation',
-                gso: 'Growing season overwinter',
-                gsc: 'Growing season cool',
-                gsw: 'Growing season warm'
+                gso: 'Growing season overwinter (CLIENT CONTENT)',
+                gsc: 'Growing season cool (CLIENT CONTENT)',
+                gsw: 'Growing season warm (CLIENT CONTENT)'
             },
             measurementUnit: {
                 precip: '%',
                 tmean: '°C',
                 tmin: '°C',
                 tmax: '°C',
-                gso: 'days',
-                gsc: 'days',
-                gsw: 'days'
+                gso: 'days (CLIENT CONTENT)',
+                gsc: 'days (CLIENT CONTENT)',
+                gsw: 'days (CLIENT CONTENT)'
             },
             timeSlider: [
                 '2021-2040',
@@ -69,18 +69,18 @@ function parser(data, lang) {
                 tmin: 'Température minimale quotidienne',
                 tmax: 'Température maximale quotidienne',
                 precip: 'Précipitations totales',
-                gso: 'Growing season overwinter [FR]',
-                gsc: 'Growing season cool [FR]',
-                gsw: 'Growing season warm [FR]'
+                gso: 'Growing season overwinter (CLIENT CONTENT)',
+                gsc: 'Growing season cool (CLIENT CONTENT)',
+                gsw: 'Growing season warm (CLIENT CONTENT)'
             },
             measurementUnit: {
                 precip: '%',
                 tmean: '°C',
                 tmin: '°C',
                 tmax: '°C',
-                gso: 'jours',
-                gsc: 'jours',
-                gsw: 'jours'
+                gso: 'jours (CLIENT CONTENT)',
+                gsc: 'jours (CLIENT CONTENT)',
+                gsw: 'jours (CLIENT CONTENT)'
             },
             timeSlider: [
                 '2021-2040',

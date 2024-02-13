@@ -8,13 +8,13 @@
             },
             {
                 "infoType": "text",
-                "content": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
+                "content": "(CLIENT CONTENT GOES HERE)"
             },
             {
                 "layerId": "HOURLY_station_en",
                 "layerName": "",
                 "description":
-                    "These are the total stations with hourly observations compiled during any set time period.",
+                    "These are the total stations with hourly observations compiled during any set time period. (CLIENT CONTENT)",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
@@ -72,7 +72,7 @@
                 "id": "HOURLY_station_en",
                 "layerType": "ogcWfs",
                 "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_HOURLY_DATA=Y",
-                "name": "Hourly climate observations",
+                "name": "Hourly climate observations (CLIENT CONTENT)",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
@@ -124,13 +124,13 @@
             },
             {
                 "infoType": "text",
-                "content": "Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
+                "content": "(CLIENT CONTENT GOES HERE)"
             },
             {
                 "layerId": "HOURLY_station_fr",
                 "layerName": "",
                 "description":
-                    "Il s'agit de toutes les stations avec des observations quotidiennes compilées au cours de n'importe quelle période donnée.",
+                    "(CLIENT CONTENT GOES HERE)",
                 "coverIcon": "assets/images/cities.png",
                 "symbologyStack": [
                     {
@@ -186,7 +186,7 @@
                 "id": "HOURLY_station_fr",
                 "layerType": "ogcWfs",
                 "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_HOURLY_DATA=Y",
-                "name": "Observations climatiques HOURLY",
+                "name": "Observations climatiques (CLIENT CONTENT)",
                 "nameField": "STATION_NAME",
                 "state": {
                     "opacity": 1,
