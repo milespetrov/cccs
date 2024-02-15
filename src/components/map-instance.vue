@@ -419,6 +419,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     async mounted(): Promise<void> {
         const RAMP = (<any>window).RAMP;
+        let rInstance: any;
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RAMP) {
@@ -432,9 +433,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // tslint:disable-next-line:no-unused-expression
-        new RAMP.Map(this.anchor, './assets/configs/ramp.[lang].json');
+        //new RAMP.Map(this.anchor, './assets/configs/ramp.[lang].json');
+        let options = {
+            loadDefaultFixtures: true,
+            loadDefaultEvents: true
+        };
 
-        RAMP.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
+        fetch(`./assets/configs/ramp.${this.$i18n.locale}-CA.json`).then((data) => {
+        // parse JSON data
+            data.json().then((rampConfig: any) => {
+                console.log(rampConfig);
+                rInstance = RAMP.createInstance(this.anchor, rampConfig);
+                (window as any).debugInstance = rInstance;
+            });
+        });
+
+        /* RAMP.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
             this._mapi = mapi;
 
             this.updateIdentifyMode();
@@ -474,7 +488,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 await this.drawGrid(this.featurePoint, -1);
             } */
 
-            if (this.zoomLevel) {
+            /*if (this.zoomLevel) {
                 this.onZoomLevelChanged();
             } else {
                 this.mapZoomChangedHandler(this._mapi.zoom);
@@ -483,7 +497,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             if (this.centerPoint) {
                 this.onCenterPointChanged();
             }
-        });
+        }); */
     }
 
     isMousedOver: boolean = false;

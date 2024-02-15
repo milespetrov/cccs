@@ -1,6 +1,6 @@
 <template>
-    <main role="main" property="mainContentOfPage" id="wb-cont" class="cip-scope container">
-        <div class="cip-header-container mrgn-bttm-lg">
+    <main role="main" property="mainContentOfPage" id="wb-cont" class="container">
+        <div class="cip-header-container mrgn-bttm-lg cip-scope">
             <h1>{{ $t(`title`) }}</h1>
             <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description" aria-live="polite">
                 <p>{{ $t(`description`) }}</p>
@@ -11,14 +11,14 @@
             </aside>
         </div>
 
-        <div class="cip-strip cip-view-controls">
+        <div class="cip-strip cip-view-controls cip-scope">
             <map-view-controls></map-view-controls>
         </div>
 
         <section class="main">
             <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description cip-map-description-bottom"></map-view>
 
-            <aside class="cip-map-view mrgn-bttm-lg" id="cip-map-description-bottom" aria-live="polite">
+            <aside class="cip-scope cip-map-view mrgn-bttm-lg" id="cip-map-description-bottom" aria-live="polite">
                 <h2>{{$t('map.description.header')}}</h2>
                 <div v-if="datasetId !== 'normal'">
 
