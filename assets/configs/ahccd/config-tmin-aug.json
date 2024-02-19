@@ -1,214 +1,344 @@
 {
-"en": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Data"
-    },
-    {
-      "infoType": "text",
-      "content": "Adjusted and homogenized station data incorporate adjustments to the original station data to account for discontinuities from non-climatic factors."
-    },
-    {
-      "layerId": "AHCCD_tmin_AUG_en",
-      "layerName": "",
-      "description": "",
-      "coverIcon": "assets/images/tmin.png",
-      "symbologyStack": [
-        {
-          "image": "assets/images/red-circle.png",
-          "text": "AHCCD Station"
-        }
-      ],
-      "symbologyRenderStyle": "icons"
-    },
-    {
-      "infoType": "title",
-      "content": "Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Cities",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Labels",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Cities",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
+  "en": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Data"
+      },
+      {
+        "infoType": "text",
+        "content": "Adjusted and homogenized station data incorporate adjustments to the original station data to account for discontinuities from non-climatic factors."
+      },
+      {
+        "layerId": "AHCCD_tmin_AUG_en",
+        "description": "",
+        "coverIcon": "assets/images/tmin.png",
+        "symbologyStack": [
+          {
+            "image": "assets/images/red-circle.png",
+            "text": "AHCCD Station"
+          }
+        ],
+        "symbologyRenderStyle": "icons"
+      },
+      {
+        "infoType": "title",
+        "content": "Settings"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Cities"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Labels"
       }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "Labels",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ],
+    "supportLayers": [
+      {
+        "name": "Cities",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Labels",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
       }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "AHCCD_tmin_AUG_en",
-      "layerType": "ogcWfs",
-      "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Aug",
-      "name": "Daily minimum temperature",
-      "nameField": "station_name__nom_station",
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      },
-      "details": {
-        "template": "assets/templates/ahccd/variables-template.html",
-        "parser": "assets/templates/ahccd/variables-script.js"
-      },
-      "table": {
-        "columns": [
-          { "data": "OBJECTID", "visible": false },
-          { "data": "rvInternalCoordX", "visible": false },
-          { "data": "rvInternalCoordY", "visible": false },
-          { "data": "station_id__id_station", "title": "AHCCD station ID", "visible": true },
-          { "data": "elevation__elevation", "title": "Elevation", "visible": true },
-          { "data": "identifier__identifiant", "title": "Identifier", "visible": true },
-          { "data": "station_name__nom_station", "title": "Station name", "visible": true },
-          { "data": "province__province", "title": "Province/Territory", "visible": true },
-          { "data": "year_range__annees", "title": "Year range", "visible": true },
-          { "data": "period__periode", "title": "Period", "visible": true },
-          { "data": "measurement_type__type_mesure", "title": "Measurement type", "visible": true },
-          { "data": "joined__rejoint", "title": "Joined", "visible": true },
-          { "data": "trend_value__valeur_tendance", "title": "Trend value", "visible": true }
-        ]
-      },
-      "colour": "#f04116",
-      "controls": ["data", "visibility", "opacity"]
-    }
-  ]
-},
-"fr": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Données"
-    },
-    {
-      "infoType": "text",
-      "content": "Les données pour les stations climatiques ont été ajustées et homogénéisées pour tenir compte des discontinuités attribuables à des facteurs non climatiques."
-    },
-    {
-      "layerId": "AHCCD_tmin_AUG_fr",
-      "layerName": "",
-      "description": "",
-      "coverIcon": "assets/images/tmin.png",
-      "symbologyStack": [
-        {
-          "image": "assets/images/red-circle.png",
-          "text": "Station DCCAH"
-        }
-      ],
-      "symbologyRenderStyle": "icons"
-    },
-    {
-      "infoType": "title",
-      "content": "Paramètres"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Villes",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Étiquettes",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Villes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
+    ],
+    "dataLayers": [
+      {
+        "name": "Daily minimum temperature",
+        "nameField": "station_name__nom_station",
+        "controls": [
+          "datatable",
+          "visibility",
+          "opacity",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "fixtures": {
+          "grid": {
+            "columns": [
+              {
+                "name": "OBJECTID",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordX",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordY",
+                "visible": false
+              },
+              {
+                "name": "station_id__id_station",
+                "title": "AHCCD station ID",
+                "visible": true
+              },
+              {
+                "name": "elevation__elevation",
+                "title": "Elevation",
+                "visible": true
+              },
+              {
+                "name": "identifier__identifiant",
+                "title": "Identifier",
+                "visible": true
+              },
+              {
+                "name": "station_name__nom_station",
+                "title": "Station name",
+                "visible": true
+              },
+              {
+                "name": "province__province",
+                "title": "Province/Territory",
+                "visible": true
+              },
+              {
+                "name": "year_range__annees",
+                "title": "Year range",
+                "visible": true
+              },
+              {
+                "name": "period__periode",
+                "title": "Period",
+                "visible": true
+              },
+              {
+                "name": "measurement_type__type_mesure",
+                "title": "Measurement type",
+                "visible": true
+              },
+              {
+                "name": "joined__rejoint",
+                "title": "Joined",
+                "visible": true
+              },
+              {
+                "name": "trend_value__valeur_tendance",
+                "title": "Trend value",
+                "visible": true
+              }
+            ]
+          }
+        },
+        "id": "AHCCD_tmin_AUG_en",
+        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Aug",
+        "layerType": "ogc-wfs",
+        "colour": "#f04116",
+        "xyInAttribs": true
       }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "Étiquettes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ]
+  },
+  "fr": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Données"
+      },
+      {
+        "infoType": "text",
+        "content": "Les données pour les stations climatiques ont été ajustées et homogénéisées pour tenir compte des discontinuités attribuables à des facteurs non climatiques."
+      },
+      {
+        "layerId": "AHCCD_tmin_AUG_fr",
+        "description": "",
+        "coverIcon": "assets/images/tmin.png",
+        "symbologyStack": [
+          {
+            "image": "assets/images/red-circle.png",
+            "text": "Station DCCAH"
+          }
+        ],
+        "symbologyRenderStyle": "icons"
+      },
+      {
+        "infoType": "title",
+        "content": "Paramètres"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Villes"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Étiquettes"
       }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "AHCCD_tmin_AUG_fr",
-      "layerType": "ogcWfs",
-      "xyInAttribs": true,
-      "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Aug",
-      "name": "Température minimale quotidienne",
-      "nameField": "station_name__nom_station",
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ],
+    "supportLayers": [
+      {
+        "name": "Villes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
       },
-      "details": {
-        "template": "assets/templates/ahccd/variables-template.html",
-        "parser": "assets/templates/ahccd/variables-script.js"
-      },
-      "table": {
-        "columns": [
-          { "data": "OBJECTID", "visible": false },
-          { "data": "rvInternalCoordX", "visible": false },
-          { "data": "rvInternalCoordY", "visible": false },
-          { "data": "station_id__id_station", "title": "Numéro de la station DCCAH", "visible": true },
-          { "data": "elevation__elevation", "title": "Altitude", "visible": true },
-          { "data": "identifier__identifiant", "title": "Identifiant", "visible": true },
-          { "data": "station_name__nom_station", "title": "Nom station", "visible": true },
-          { "data": "province__province", "title": "Province / Territoire", "visible": true },
-          { "data": "year_range__annees", "title": "Annees", "visible": true },
-          { "data": "period__periode", "title": "Periode", "visible": true },
-          { "data": "measurement_type__type_mesure", "title": "Type mesure", "visible": true },
-          { "data": "joined__rejoint", "title": "Rejoint", "visible": true },
-          { "data": "trend_value__valeur_tendance", "title": "Valeur tendance", "visible": true }
-        ]
-      },
-      "colour": "#f04116",
-      "controls": ["data", "visibility", "opacity"]
-    }
-  ]
-}
+      {
+        "name": "Étiquettes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Température minimale quotidienne",
+        "nameField": "station_name__nom_station",
+        "controls": [
+          "datatable",
+          "visibility",
+          "opacity",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "fixtures": {
+          "grid": {
+            "columns": [
+              {
+                "name": "OBJECTID",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordX",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordY",
+                "visible": false
+              },
+              {
+                "name": "station_id__id_station",
+                "title": "Numéro de la station DCCAH",
+                "visible": true
+              },
+              {
+                "name": "elevation__elevation",
+                "title": "Altitude",
+                "visible": true
+              },
+              {
+                "name": "identifier__identifiant",
+                "title": "Identifiant",
+                "visible": true
+              },
+              {
+                "name": "station_name__nom_station",
+                "title": "Nom station",
+                "visible": true
+              },
+              {
+                "name": "province__province",
+                "title": "Province / Territoire",
+                "visible": true
+              },
+              {
+                "name": "year_range__annees",
+                "title": "Annees",
+                "visible": true
+              },
+              {
+                "name": "period__periode",
+                "title": "Periode",
+                "visible": true
+              },
+              {
+                "name": "measurement_type__type_mesure",
+                "title": "Type mesure",
+                "visible": true
+              },
+              {
+                "name": "joined__rejoint",
+                "title": "Rejoint",
+                "visible": true
+              },
+              {
+                "name": "trend_value__valeur_tendance",
+                "title": "Valeur tendance",
+                "visible": true
+              }
+            ]
+          }
+        },
+        "id": "AHCCD_tmin_AUG_fr",
+        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Aug",
+        "layerType": "ogc-wfs",
+        "colour": "#f04116",
+        "xyInAttribs": true
+      }
+    ]
+  }
 }
