@@ -1,216 +1,264 @@
 {
-"en": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Data"
-    },
-    {
-      "infoType": "text",
-      "content": "Trend of relative total precipitation change (%)"
-    },
-    {
-      "layerId": "CanGRID_prec_ANN_en",
-      "layerName": "",
-      "description": "",
-      "coverIcon": "assets/images/precip.png",
-      "symbologyStack": [
-        {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.PR_ANNUAL&format=image/png&STYLE=default",
-          "text": ""
-        }
-      ],
-      "symbologyRenderStyle": "images"
-    },
-    {
-      "infoType": "title",
-      "content": "Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Cities",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Labels",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Cities",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "Labels",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "CanGRID_prec_ANN_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Total precipitation",
-      "state": {
-        "opacity": 0.85,
-        "visibility": true
+  "en": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Data"
       },
-      "layerEntries": [{"id": "CANGRD.TREND.PR_ANNUAL" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/cangrd/variables-template.html",
-        "parser": "assets/templates/cangrd/variables-script.js"
+      {
+        "infoType": "text",
+        "content": "Trend of relative total precipitation change (%)"
       },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-},
-"fr": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Données"
-    },
-    {
-      "infoType": "text",
-      "content": "Tendance des changements relatifs des précipitations totales (%)"
-    },
-    {
-      "layerId": "CanGRID_prec_ANN_fr",
-      "layerName": "",
-      "description": "",
-      "coverIcon": "assets/images/precip.png",
-      "symbologyStack": [
-        {
-          "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.PR_ANNUAL&format=image/png&STYLE=default",
-          "text": ""
-        }
-      ],
-      "symbologyRenderStyle": "images"
-    },
-    {
-      "infoType": "title",
-      "content": "Paramètres"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Villes",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Étiquettes",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Villes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "Étiquettes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "CanGRID_prec_ANN_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Précipitations totales",
-      "state": {
-        "opacity": 0.85,
-        "visibility": true
+      {
+        "layerId": "CanGRID_prec_ANN_en",
+        "description": "",
+        "coverIcon": "assets/images/precip.png",
+        "symbologyStack": [
+          {
+            "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.PR_ANNUAL&format=image/png&STYLE=default",
+            "text": ""
+          }
+        ],
+        "symbologyRenderStyle": "images"
       },
-      "layerEntries": [{"id": "CANGRD.TREND.PR_ANNUAL" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/cangrd/variables-template.html",
-        "parser": "assets/templates/cangrd/variables-script.js"
+      {
+        "infoType": "title",
+        "content": "Settings"
       },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-}
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Cities"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Labels"
+      },
+      {
+        "layerId": "provinces",
+        "coverIcon": "assets/images/provinces.png",
+        "symbologyStack": [],
+        "name": "Provinces"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Cities",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Labels",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Provinces",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "provinces",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Total precipitation",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "CanGRID_prec_ANN_en",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "CANGRD.TREND.PR_ANNUAL"
+          }
+        ]
+      }
+    ]
+  },
+  "fr": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Données"
+      },
+      {
+        "infoType": "text",
+        "content": "Tendance des changements relatifs des précipitations totales (%)"
+      },
+      {
+        "layerId": "CanGRID_prec_ANN_fr",
+        "description": "",
+        "coverIcon": "assets/images/precip.png",
+        "symbologyStack": [
+          {
+            "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CANGRD.TREND.PR_ANNUAL&format=image/png&STYLE=default",
+            "text": ""
+          }
+        ],
+        "symbologyRenderStyle": "images"
+      },
+      {
+        "infoType": "title",
+        "content": "Paramètres"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Villes"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Étiquettes"
+      },
+      {
+        "layerId": "provinces",
+        "coverIcon": "assets/images/provinces.png",
+        "symbologyStack": [],
+        "name": "Provinces"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Villes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Étiquettes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Provinces",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "provinces",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Précipitations totales",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "CanGRID_prec_ANN_fr",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "CANGRD.TREND.PR_ANNUAL"
+          }
+        ]
+      }
+    ]
+  }
 }

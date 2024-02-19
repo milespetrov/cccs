@@ -1,414 +1,492 @@
 {
-"en": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Data"
-    },
-    {
-      "infoType": "text",
-      "content": "Projected relative changes in statistically downscaled total precipitation are with respect to the reference period of 1986-2005 and expressed as percentage change (%)."
-    },
-    {
-      "collapse": true,
-      "exclusiveVisibility": [
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2021_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2041_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2061_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2081_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        }
-
-      ]
-    },
-    {
-      "infoType": "title",
-      "content": "Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Cities",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Labels",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Cities",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
+  "en": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Data"
+      },
+      {
+        "infoType": "text",
+        "content": "Projected relative changes in statistically downscaled total precipitation are with respect to the reference period of 1986-2005 and expressed as percentage change (%)."
+      },
+      {
+        "name": "Visibility Set",
+        "exclusive": true,
+        "children": [
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2021_en",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2041_en",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2061_en",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2081_en",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          }
+        ]
+      },
+      {
+        "infoType": "title",
+        "content": "Settings"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Cities"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Labels"
+      },
+      {
+        "layerId": "provinces",
+        "coverIcon": "assets/images/provinces.png",
+        "symbologyStack": [],
+        "name": "Provinces"
       }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "Labels",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "DCS_prec_MAM_rcp45_2021_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Total precipitation",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2021-2040_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_prec_MAM_rcp45_2041_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Total precipitation",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2041-2060_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_prec_MAM_rcp45_2061_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Total precipitation",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2061-2080_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_prec_MAM_rcp45_2081_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Total precipitation",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2081-2100_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-},
-"fr": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Données"
-    },
-    {
-      "infoType": "text",
-      "content": "Les changements projetés dans les précipitations totales statistiquement mises à l'échelle sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005."
-    },
-    {
-      "collapse": true,
-      "exclusiveVisibility": [
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2021_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+    ],
+    "supportLayers": [
+      {
+        "name": "Cities",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2041_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+        "id": "cities",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Labels",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2061_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Provinces",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_prec_MAM_rcp45_2081_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/precip.png",
-          "symbologyStack": [
-            {
-              "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        }
-
-      ]
-    },
-    {
-      "infoType": "title",
-      "content": "Paramètres"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Villes",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Étiquettes",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-      "name": "Villes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
+        "id": "provinces",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
       }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "Étiquettes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ],
+    "dataLayers": [
+      {
+        "name": "Total precipitation",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2021_en",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2021-2040_PCTL50"
+          }
+        ]
+      },
+      {
+        "name": "Total precipitation",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2041_en",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2041-2060_PCTL50"
+          }
+        ]
+      },
+      {
+        "name": "Total precipitation",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2061_en",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2061-2080_PCTL50"
+          }
+        ]
+      },
+      {
+        "name": "Total precipitation",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2081_en",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2081-2100_PCTL50"
+          }
+        ]
       }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ]
+  },
+  "fr": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Données"
+      },
+      {
+        "infoType": "text",
+        "content": "Les changements projetés dans les précipitations totales statistiquement mises à l'échelle sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005."
+      },
+      {
+        "name": "Visibility Set",
+        "exclusive": true,
+        "children": [
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2021_fr",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2041_fr",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2061_fr",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          },
+          {
+            "layerId": "DCS_prec_MAM_rcp45_2081_fr",
+            "description": "",
+            "coverIcon": "assets/images/precip.png",
+            "symbologyStack": [
+              {
+                "image": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+                "text": ""
+              }
+            ],
+            "symbologyRenderStyle": "images"
+          }
+        ]
+      },
+      {
+        "infoType": "title",
+        "content": "Paramètres"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Villes"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Étiquettes"
+      },
+      {
+        "layerId": "provinces",
+        "coverIcon": "assets/images/provinces.png",
+        "symbologyStack": [],
+        "name": "Provinces"
       }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "DCS_prec_MAM_rcp45_2021_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Précipitations totales",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
+    ],
+    "supportLayers": [
+      {
+        "name": "Villes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
       },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2021-2040_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
+      {
+        "name": "Étiquettes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
       },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_prec_MAM_rcp45_2041_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Précipitations totales",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
+      {
+        "name": "Provinces",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "provinces",
+        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Précipitations totales",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2021_fr",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2021-2040_PCTL50"
+          }
+        ]
       },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2041-2060_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
+      {
+        "name": "Précipitations totales",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2041_fr",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2041-2060_PCTL50"
+          }
+        ]
       },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_prec_MAM_rcp45_2061_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Précipitations totales",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
+      {
+        "name": "Précipitations totales",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2061_fr",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2061-2080_PCTL50"
+          }
+        ]
       },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2061-2080_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_prec_MAM_rcp45_2081_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Précipitations totales",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.PR.RCP45.SPRING.2081-2100_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-}
+      {
+        "name": "Précipitations totales",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_prec_MAM_rcp45_2081_fr",
+        "url": "http://geomet2-nightly.cmc.ec.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.PR.RCP45.SPRING.2081-2100_PCTL50"
+          }
+        ]
+      }
+    ]
+  }
 }
