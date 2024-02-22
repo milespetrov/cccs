@@ -9,6 +9,7 @@ import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
 import sprintf from 'sprintf-js';
+import {debounce} from 'throttle-debounce';
 
 import { Subject, race } from 'rxjs';
 
@@ -405,7 +406,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.switchLayers();
 
         // zoom and center point handler
-        this._rInstance.event.on('map/extentchanged', this.mapExtentChangedHandler, 'cccs_extentchanged_handler');
+        this._rInstance.event.on('map/extentchanged', debounce(300, this.mapExtentChangedHandler), 'cccs_extentchanged_handler');
 
         // replace default maptips with fancy ones
         this._rInstance.event.off('ramp_map_graphichit_creates_maptip');
@@ -446,17 +447,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
         const newCenter = extent.center();
         // make sure the centerpoint is new
-        if (this.centerPoint && this.centerPoint.x === newCenter.x && this.centerPoint.y === newCenter.y) {
-            return;
+        if (!this.centerPoint || this.centerPoint.x !== newCenter.x || this.centerPoint.y !== newCenter.y) {
+            this.localCenterPointUpdate = true;
+            this.setCenterPoint(newCenter);
         }
-
-        this.localCenterPointUpdate = true;
-
-        this.setCenterPoint(newCenter);
 
         // update zoom if we're out of sync
         const newZoom = this._rInstance.geo.map.getZoomLevel();
-        if (newZoom !== this.zoomLevel) {
+        if (newZoom % 1 === 0 && newZoom !== this.zoomLevel) {
             this.localZoomLevelUpdate = true;
             this.setZoomLevel(newZoom);
         }
