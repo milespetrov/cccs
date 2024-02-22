@@ -51,8 +51,6 @@ export interface IdentifySession {
     requests: IdentifyRequest[];
 }
 
-const centerPntDeactivate: Subject<boolean> = new Subject<boolean>();
-const deactivateLayers: Subject<boolean> = new Subject<boolean>();
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
 const ActionApp = namespace('app', Action);
@@ -77,12 +75,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @StateApp
     centerPoint: MapPoint;
     @StateApp
-    locationPoint: MapPoint;
-    @StateApp
     zoomLevel: number;
     @StateApp
     analysisPeriod: string;
-    // @StateApp featurePoint: MapPoint;
     @StateApp
     lastClick: XY;
     @StateApp
@@ -153,7 +148,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('datasetId')
     onDatasetChanged(newValue: DatasetSource) {
-        this.updateIdentifyMode();
+        //this.updateIdentifyMode();
     }
 
     @Watch('month')
@@ -169,10 +164,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     /**
      * Update the identify based on the currently selected dataset.
      */
-    updateIdentifyMode() {
+    /* updateIdentifyMode() {
         const dataset = datasets[this.datasetId] as DatasetSource;
         this._mapi.layers.identifyMode = dataset.identifyMode;
-    }
+    } */
 
     refreshIdentify() {
         if (this.lastClick !== null) {
@@ -182,14 +177,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     getCapabilities(layerConfig: any): void {
         const getCapabilitiesUrl =
-            layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.layerEntries[0].id;
-        $.get({
-            url: getCapabilitiesUrl,
-            success: this.parseTimeParam
-        });
+            layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.sublayers[0].id;
+        console.log(getCapabilitiesUrl);
+        $.get(getCapabilitiesUrl).then((data) => { this.parseTimeParam(data) });
     }
 
     parseTimeParam(data: any): void {
+        console.log(data);
         const timeDimension = $(data).find('Dimension[name=time]')[0];
 
         this.wmsTime.default = (<any>timeDimension.attributes).default.value;
@@ -204,7 +198,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         if (this._rInstance.geo.layer.allLayers().length > 0) {
-            //this.stopLayerSubscriptions();
+            this.stopLayerSubscriptions();
             // .slice() to clone the array, otherwise indices will be skipped
             this._rInstance.geo.layer.allLayers().slice().forEach((layer: any) => {
                 this._rInstance.geo.map.removeLayer(layer.id);
@@ -262,9 +256,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                     });
                 }
 
-                this.getCapabilities(layer);
+                layerPromise.then(this.getCapabilities(layer));
             }
         });
+
+        const supportLayerIds: string[] = [];
 
         // SUPPORT LAYERS
         source.supportLayers.slice().forEach((layer: any, index: number) => {
@@ -275,18 +271,27 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this.setLayerVisibility({ layerId: layer.id, value: layer.state.visibility });
             }
 
+            supportLayerIds.push(layer.id);
+
             const layerObj = this._rInstance.geo.layer.createLayer(layer);
-            this._rInstance.geo.map.addLayer(layerObj).then((addedLayers: any) => {
-                // track the visibility of reference layers
-                addedLayers[0].visibilityChanged.pipe(takeUntil(deactivateLayers)).subscribe((value: boolean) => {
-                    this.setLayerVisibility({ layerId: layer.id, value });
-                });
-            });
+            this._rInstance.geo.map.addLayer(layerObj);
         });
+
+        this._rInstance.event.on('layer/visibilitychanged', (layer: any) => {
+            if (supportLayerIds.includes(layer.id)) {
+                this.setLayerVisibility({ layerId: layer.id, value: layer.visibility });
+            }
+        }, 'cccs_layervisibility_handler');
 
         // LEGEND
         const legend = source.legend.slice();
         const legendAPI = this._rInstance.fixture.get('legend');
+
+        legend.forEach((element: any) => {
+            if (this.timeSlice && element.layerId && this.currentLayers.includes(element.layerId)) {
+                element.layerId = this.currentLayers[this.timeSlice];
+            }
+        });
 
         // remove old legend stuff.
         // assumes no groups. If we need group support, this has to become a recursive crawler or dangerloop,
@@ -301,15 +306,25 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('timeSlice')
     onTimeSliceChanged(newValue: number, oldValue: number) {
-        $('rv-details rv-details-header .rv-close').click();
-        if (this.timeSliderLabels) {
+        const detailsPanel = this._rInstance.panel.get('details');
+        if (detailsPanel) {
+            detailsPanel.close();
+        }
+
+        if (this.timeSliderLabels && this.currentLayers) {
+            // RAMP4 does not support collapsed visibility sets;
+            // we have to swap the layer the legend item points to
+            const oldLayer = this.currentLayers[oldValue | 0];
+            const layerItem = this._rInstance.fixture.get('legend').getLayerItem(oldLayer);
+            layerItem._layerId = this.currentLayers[newValue];
+            this._rInstance.fixture.get('legend').updateLegend(this._rInstance.geo.layer.getLayer(this.currentLayers[newValue]));
             // turn off old layer
-            if (oldValue !== null && this.currentLayers) {
-                this.getLayerById(this.currentLayers[oldValue]).visibility = false;
+            if (oldValue !== null) {
+                this._rInstance.geo.layer.getLayer(this.currentLayers[oldValue]).visibility = false;
             }
             // set new layer visible
-            if (newValue !== null && this.currentLayers) {
-                this.getLayerById(this.currentLayers[newValue]).visibility = true;
+            if (newValue !== null) {
+                this._rInstance.geo.layer.getLayer(this.currentLayers[newValue]).visibility = true;
             }
         } else if (this.dateSlider) {
             // removes the '.000' milliseconds from the string and reappends the 'Z'
@@ -317,16 +332,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             const timeString = new Date(this.timeSlice).toISOString().split('.')[0] + 'Z';
             // set the TIME param and reload
             this.currentLayers.forEach((layerId) => {
-                this.getLayerById(layerId)._viewerLayer.setCustomParameter('TIME', timeString);
+                const layer = this._rInstance.geo.layer.getLayer(layerId);
+                // TODO: there is a bug in RAMP where the custom param array doesnt exist on the layer when it is assumed it does
+                //       Remove after its fixed.
+                if (!layer.esriLayer.customLayerParameters) {
+                    layer.esriLayer.customLayerParameters = [];
+                }
+                layer.setCustomParameter('TIME', timeString);
             });
         }
         this.refreshIdentify();
-    }
-
-    getLayerById(searchId: string): any {
-        return this._mapi.layers.allLayers.find((layer: any) => {
-            return layer.id === searchId;
-        });
     }
 
     @Watch('centerPoint')
@@ -358,7 +373,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     localZoomLevelUpdate: boolean = false;
 
     // _ stops vue reactivity on giant API object
-    _mapi: any;
     _rInstance: any;
 
     async mounted(): Promise<void> {
@@ -387,8 +401,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     async mapStartup(): Promise<void> {
         //this.updateIdentifyMode();
-        //const controlClusterPanel = this._mapi.panels.create('cip-controls-cluster-container');
-        //this.injectCIPMapcomponents(controlClusterPanel);
+        this.injectCIPMapcomponents();
         this.switchLayers();
 
         // zoom and center point handler
@@ -468,16 +481,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     stopLayerSubscriptions(): void {
-        deactivateLayers.next(true);
+        this._rInstance.event.off('cccs_layervisibility_handler');
     }
 
     /**
      * Adds timeline and fineprint components inside the RAMP inner-shell node so they are included into the RAMP tab order.
      * This also helps to position and align the components together with other RAMP components when the browser window is resized.
      */
-    injectCIPMapcomponents(controlClusterPanel: any/* panel */): void {
-        // TODO: when RAMP api supports it, move them inside the ramp container
-
+    injectCIPMapcomponents(): void {
         // render component off DOM and inject it into the RAMP inner-shell container node
         // it's not possible to rendre just the component and pass them binding props;
         // instead, a new Vue instance needs to be created with these components used it its template
@@ -502,10 +513,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             i18n: this.$i18n
         }).$mount();
 
-        controlClusterPanel.body = controlClusterComponent.$el;
-        controlClusterPanel.open();
-
-        const innerShell = this.$el.querySelector('.rv-inner-shell')!;
+        //const controlClusterPanel = document.createElement('div');
+        //controlClusterPanel.classList.add('cip-controls-cluster-container');
+        this._rInstance.$vApp.$el.querySelector('.inner-shell').appendChild(controlClusterComponent.$el);
+        //controlClusterPanel.appendChild(controlClusterComponent.$el);
     }
 }
 </script>

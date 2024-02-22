@@ -10,58 +10,16 @@
         "content": "Projected relative changes in total precipitation are with respect to the reference period of 1986-2005 and expressed as percentage change (%)."
       },
       {
-        "name": "Visibility Set",
-        "exclusive": true,
-        "children": [
+        "layerId": "CMIP5_prec_ANN_rcp85_2081_en",
+        "description": "",
+        "coverIcon": "assets/images/precip.png",
+        "symbologyStack": [
           {
-            "layerId": "CMIP5_prec_ANN_rcp85_2021_en",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-          {
-            "layerId": "CMIP5_prec_ANN_rcp85_2041_en",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-          {
-            "layerId": "CMIP5_prec_ANN_rcp85_2061_en",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-          {
-            "layerId": "CMIP5_prec_ANN_rcp85_2081_en",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
+            "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+            "text": ""
           }
-        ]
+        ],
+        "symbologyRenderStyle": "images"
       },
       {
         "infoType": "title",
@@ -255,58 +213,16 @@
         "content": "Les changements projetés dans les précipitations totales sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005."
       },
       {
-        "name": "Visibility Set",
-        "exclusive": true,
-        "children": [
+        "layerId": "CMIP5_prec_ANN_rcp85_2081_fr",
+        "description": "",
+        "coverIcon": "assets/images/precip.png",
+        "symbologyStack": [
           {
-            "layerId": "CMIP5_prec_ANN_rcp85_2021_fr",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-          {
-            "layerId": "CMIP5_prec_ANN_rcp85_2041_fr",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-          {
-            "layerId": "CMIP5_prec_ANN_rcp85_2061_fr",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
-          },
-          {
-            "layerId": "CMIP5_prec_ANN_rcp85_2081_fr",
-            "description": "",
-            "coverIcon": "assets/images/precip.png",
-            "symbologyStack": [
-              {
-                "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-                "text": ""
-              }
-            ],
-            "symbologyRenderStyle": "images"
+            "image": "https://geo.weather.gc.ca/geomet-climate?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP5.PR.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+            "text": ""
           }
-        ]
+        ],
+        "symbologyRenderStyle": "images"
       },
       {
         "infoType": "title",

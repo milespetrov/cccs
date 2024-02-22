@@ -18,7 +18,7 @@
                 </div>
                 <div class="cip-row-content cip-row-legend" v-else>
                     <span v-html="legend[currentVariable]"></span>
-                    <span>{{ $t(currentDataset == 'ltce' ? `${currentDataset}.${currentVariable}.legend` : `${currentDataset}.${currentVariable}.shortName`) }}</span>
+                    <span class="cip-row-legend-label">{{ $t(currentDataset == 'ltce' ? `${currentDataset}.${currentVariable}.legend` : `${currentDataset}.${currentVariable}.shortName`) }}</span>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@ export default class MapControlsCluster extends Vue {
     justify-content: center;
     pointer-events: none !important;
     font-size: 1.6rem;
-    bottom: 1rem;
+    bottom: 48px;
 
     .cip-controls-cluster {
         padding: 0.5rem 0;
@@ -134,7 +134,12 @@ export default class MapControlsCluster extends Vue {
                 }
 
                 &.cip-row-legend {
-                    text-align: center;
+                    align-items: center;
+                    display:flex;
+
+                    .cip-row-legend-label {
+                        margin: auto;
+                    }
                 }
             }
 
