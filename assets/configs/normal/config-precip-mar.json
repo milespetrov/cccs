@@ -230,7 +230,7 @@
           }
         },
         "id": "Normals_prec_MAR_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=3",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=3",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true
@@ -468,7 +468,7 @@
           }
         },
         "id": "Normals_prec_MAR_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=3",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=3",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true

@@ -209,7 +209,7 @@
           }
         },
         "id": "DAILY_station_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5"
       }
@@ -425,7 +425,7 @@
           }
         },
         "id": "DAILY_station_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5"
       }

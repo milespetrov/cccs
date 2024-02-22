@@ -217,7 +217,7 @@
           }
         },
         "id": "MONTHLY_station_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
         "xyInAttribs": true
@@ -442,7 +442,7 @@
           }
         },
         "id": "MONTHLY_station_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
         "xyInAttribs": true

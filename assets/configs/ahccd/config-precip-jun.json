@@ -163,7 +163,7 @@
           }
         },
         "id": "AHCCD_prec_JUN_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Jun",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Jun",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true
@@ -334,7 +334,7 @@
           }
         },
         "id": "AHCCD_prec_JUN_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Jun",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=total_precip&period__periode=Jun",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true

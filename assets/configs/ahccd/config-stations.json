@@ -151,7 +151,7 @@
           }
         },
         "id": "AHCCD_station_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
         "xyInAttribs": true
@@ -310,7 +310,7 @@
           }
         },
         "id": "AHCCD_station_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-stations/items",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
         "xyInAttribs": true

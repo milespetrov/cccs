@@ -163,7 +163,7 @@
           }
         },
         "id": "AHCCD_tmin_MAY_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=May",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=May",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true
@@ -334,7 +334,7 @@
           }
         },
         "id": "AHCCD_tmin_MAY_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=May",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=May",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true

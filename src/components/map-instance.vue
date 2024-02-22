@@ -124,12 +124,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @Prop()
     mapCounter: string;
 
-    // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-    counter = 0;
-
     currentLayers: any[];
-
-    configVersion: number;
 
     wmsTime: any = { start: '', end: '', step: '' };
 
@@ -181,7 +176,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     refreshIdentify() {
         if (this.lastClick !== null) {
-            this._mapi.identify(this.lastClick);
+            this._rInstance.geo.map.runIdentify(this.lastClick);
         }
     }
 
@@ -204,23 +199,23 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     async switchLayers() {
-        if (!this._mapi) {
+        if (!this._rInstance || !this._rInstance.geo.map.created) {
             return;
         }
 
-        if (this._mapi.layers.allLayers.length > 0) {
-            this.stopLayerSubscriptions();
+        if (this._rInstance.geo.layer.allLayers().length > 0) {
+            //this.stopLayerSubscriptions();
             // .slice() to clone the array, otherwise indices will be skipped
-            this._mapi.layers.allLayers.slice().forEach((layer: any) => {
-                this._mapi.layers.removeLayer(layer.id);
-            });
+            this._rInstance.geo.layer.allLayers().slice().forEach((layer: any) => {
+                this._rInstance.geo.map.removeLayer(layer.id);
+            })
         }
 
         const source = await this.datasetApi.getDatasetSource(this.$i18n.locale);
 
         this.currentLayers = [];
-        this.counter += 1;
 
+        // DATA LAYERS
         source.dataLayers.slice().forEach((layer: any, index: number) => {
             if (index === this.timeSlice) {
                 layer.state.visibility = true;
@@ -249,10 +244,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 }
             }
 
-            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            layer.id += `_${this.counter}`;
-
-            const layerPromise = this._mapi.layers.addLayer(layer);
+            const layerObj = this._rInstance.geo.layer.createLayer(layer)
+            const layerPromise = this._rInstance.geo.map.addLayer(layerObj);
             this.currentLayers[index] = layer.id;
 
             // wait for the visible data layer to load, then refresh identify if needed
@@ -273,6 +266,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             }
         });
 
+        // SUPPORT LAYERS
         source.supportLayers.slice().forEach((layer: any, index: number) => {
             // apply visibility to reference layers if stored
             if (this.layerVisibility[layer.id] !== null) {
@@ -281,38 +275,28 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this.setLayerVisibility({ layerId: layer.id, value: layer.state.visibility });
             }
 
-            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            const originalId: string = layer.id;
-            layer.id += `_${this.counter}`;
-            this._mapi.layers.addLayer(layer).then((addedLayers: any) => {
+            const layerObj = this._rInstance.geo.layer.createLayer(layer);
+            this._rInstance.geo.map.addLayer(layerObj).then((addedLayers: any) => {
                 // track the visibility of reference layers
                 addedLayers[0].visibilityChanged.pipe(takeUntil(deactivateLayers)).subscribe((value: boolean) => {
-                    this.setLayerVisibility({ layerId: originalId, value });
+                    this.setLayerVisibility({ layerId: layer.id, value });
                 });
             });
         });
 
-        // TODO: update legend settings layers and link them to actual reference layers
-        // Updates the current legend based on the selected variable and its dataset.
+        // LEGEND
         const legend = source.legend.slice();
-        legend.forEach((legendEntry: any) => checkEntry(legendEntry, this.counter));
-        this._mapi.mapI.setLegendConfig({
+        const legendAPI = this._rInstance.fixture.get('legend');
+
+        // remove old legend stuff.
+        // assumes no groups. If we need group support, this has to become a recursive crawler or dangerloop,
+        legendAPI.getLegend().forEach((item: any) => legendAPI.removeItem(item.uid));
+
+        legendAPI._parseConfig({
             root: {
                 children: legend
             }
         });
-
-        function checkEntry(legendEntry: any, counter: number) {
-            if (!legendEntry.layerId) {
-                const items = legendEntry.exclusiveVisibility || legendEntry.children || [];
-                items.forEach((legendEntry: any) => checkEntry(legendEntry, counter));
-
-                return;
-            }
-
-            // TODO (HACK): Remove counter once layer re-adding bug is fixed on RAMP
-            legendEntry.layerId += `_${counter}`;
-        }
     }
 
     @Watch('timeSlice')
@@ -345,38 +329,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         });
     }
 
-    @Watch('locationPoint')
-    onLocationPointChanged(): void {
-        if (!this._mapi || !this.locationPoint) {
-            return;
-        }
-
-        this._mapi.simpleLayer.removeGeometry('centerPnt'); // remove existing center point if there is no interaction with the map between result selections
-        centerPntDeactivate.next(true);
-
-        const point = new api.RAMP.GEO.Point(
-            'centerPnt',
-            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARuSURBVDiNjZVrbFRVEMd/5967e9vddbduN4WWYgXKKyVQWgIhkQBVqJIYCQZJI00UH2DiNxUUQwQNSfH1RYwghphoCIGADQk1QKqAGCKhCKTKq6GWbYHSdvve9u7ee8cP210LAjrJ+XAmM78zOf8zcxT/bROBYuDRkX03cA1ofliSeoDfBFYAz2UZemFZXsBf6De9gkvbQCJx7k7/4LAjrUAtcBBI/B/wDGBL6Zhg0cZ5E8YvKswJ+zRl4LqIOOC6xBO2fbytJ7a1oS16sSveDGwG/ngYuEJXatOnT06f9ErJuEINUYgLrosK5CDiID2d4LogLrbtyDeX7rSu/631msBHwPE0SB9dqa5Uzf4V5SWrpuXna6AQAQREyFqzGWPWAuwzR0j7Fag5EV+oPOILHGjuni5wFugYDTaB7Z8vmTFj1bSC/DQMEbRIAZ6FK9BL5qGCYVSWD4m1I4N9mZhJj3j9OR5dP3azf/LIvbtp8AulY0LPbF86c6oCBQKAt7Ia8+VN6BNKQNPA8GJMKcNTsRKUwrl6LlN9aTgreLSt37o9ZHcDjWnwpi+eLp01NdcfSAd6lq7GU7ma5C+1WF9tQC+ajnS3M7TtNZTpw1tZDeLiXGnIXEvEq+sHW3pN4IABTDR1fdyiotxwRtFIAZ4lVSRP1pI4+CW4Ltb3NSnxhgaw9n4GCOazr2KfrsNtv5FSPt8fztLV+GFHHteA4vL8kN/vNYw02CirANcl+eO3GWWlL4b0xTL7RO0OEBdj/rKMz2doRmk42wcUa0BuYcjvBVA5EczXt6aCHRtzzQeoUG7qsLlLMeZWko7LeqMGsW28i1fie2cnWngsAIU+wwtENEBERO55z/zLcT+7T3uN5IkGdLX1xZMA0tOJ9fX72KfrULqOtXsL0tsFgH3maOoNj8QN73gPpRskftpH/JO1uLHbAETjdgLo1ICmhlu9gwMJ206fajfUg9LwLHvpn+KCYVQwoy/e5esAhX26LuMbTLr2hdhQHGjSgGbLcaInWroyykjXLZLH9uBZsBzv82+isv2Yq98lq3ojKjuAWfU2nsUrsQ7twu1oy4B/vj0YsxyJAi3pW6qaOSb01qnqJ8r09HwQwXiqCu/SF0EEsZOpyg0PKEXi0C6sw7vBcUBckrYjCw83nWvsGf4Y2JdukKvtg1ZFxGcG54wNhdIt7TRdwGmoR4b60QsmgpMkWb8X67sa7PMnMi0Nws5LndE913saga2MamkHuFjf3DF/dn4oUJzj86eTJN6He+08+pRypC+G9f221JwYNU+ORHs71v0avQxsANrh7unWJXBj/6Wb08LZHr00LxjU0nNDBOfyWewLJ2E4nqnSdlzZ+eed6NpTNy4LfEhqunEvGOAvoOFoc+fkuusdw3l+0ygMmKZXUxrDccRKQQcs2z7S2tO55vj1K3uaYo3A+tFQePDX5CH1NS03dTV+dl7Q91jANAWXaH/C+r2jPz6i/g8jK3kv4EHg0VYETOHuz/Qq0PKwpL8BL8EAdKaMj7AAAAAASUVORK5CYII=',
-            [this.locationPoint.x, this.locationPoint.y]
-        );
-
-        this._mapi.simpleLayer.addGeometry(point);
-
-        race(
-            this._mapi.boundsChanged
-                .skip(2)
-                .takeUntil(centerPntDeactivate)
-                .take(1), // skip first two boundChange as the map pans and zooms
-            this._mapi.mouseDown.takeUntil(centerPntDeactivate).take(1)
-        ).subscribe(() => this._mapi.simpleLayer.removeGeometry('centerPnt'));
-
-        this._mapi.simpleLayer._layerProxy.zoomToGraphic('centerPnt', this._mapi._fgpMap, { x: 0, y: 0.1 });
-        this.updateRoute();
-    }
-
     @Watch('centerPoint')
     onCenterPointChanged(): void {
-        if (!this._mapi) {
+        if (!this._rInstance) {
             return;
         }
 
@@ -385,8 +340,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        const xyCenter = new api.RAMP.GEO.XY(this.centerPoint.x, this.centerPoint.y);
-        this._mapi.setCenter(xyCenter);
+        const center = new this._rInstance.geo.geom.Point('centerPoint', [this.centerPoint.x, this.centerPoint.y], 3978);
+        this._rInstance.geo.map.zoomMapTo(center, this._rInstance.geo.map.getScale());
     }
 
     @Watch('zoomLevel')
@@ -395,31 +350,19 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.localZoomLevelUpdate = false;
             return;
         }
-        this._mapi.zoom = this.zoomLevel;
+        this._rInstance.geo.map.zoomToLevel(this.zoomLevel);
     }
 
+    extentFromBasemapDone: boolean = false;
     localCenterPointUpdate: boolean = false;
     localZoomLevelUpdate: boolean = false;
 
-    // leading `_` is used to prevent Vue from poking all the propertise on this reference and making in an attempt to make it reactive
+    // _ stops vue reactivity on giant API object
     _mapi: any;
-
-    // the last coordinates of the mouse cursor
-    cursorPoint: MapPoint = new MapPoint(0, 0);
-    // current resolution of the map
-    resolution: number = 0;
-
-    deactivate: Subject<boolean> = new Subject<boolean>();
-
-    // TODO: link to a language choice; property, or stored value, or button
-    lang: string = 'en-CA';
-
-    // TODO: link once dataSet selector is finalized
-    dataSet: string = 'ahccd';
+    _rInstance: any;
 
     async mounted(): Promise<void> {
         const RAMP = (<any>window).RAMP;
-        let rInstance: any;
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
         if (!RAMP) {
@@ -432,219 +375,101 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        // tslint:disable-next-line:no-unused-expression
-        //new RAMP.Map(this.anchor, './assets/configs/ramp.[lang].json');
-        let options = {
-            loadDefaultFixtures: true,
-            loadDefaultEvents: true
-        };
-
+        // RAMP4 requires config as object, need to fetch the file ourselves
         fetch(`./assets/configs/ramp.${this.$i18n.locale}-CA.json`).then((data) => {
-        // parse JSON data
             data.json().then((rampConfig: any) => {
-                console.log(rampConfig);
-                rInstance = RAMP.createInstance(this.anchor, rampConfig);
-                (window as any).debugInstance = rInstance;
+                this._rInstance = RAMP.createInstance(this.anchor, rampConfig);
+
+                this._rInstance.event.on('map/created', this.mapStartup);
             });
         });
-
-        /* RAMP.mapAdded.pipe(takeUntil(this.deactivate)).subscribe(async (mapi: any) => {
-            this._mapi = mapi;
-
-            this.updateIdentifyMode();
-            const controlClusterPanel = this._mapi.panels.create('cip-controls-cluster-container');
-            this.injectCIPMapcomponents(controlClusterPanel);
-            this.switchLayers();
-            this.mapBoundsChangeHandler();
-
-            // subscribe to the center change stream to update the url and store with the current center point
-            this._mapi.centerChanged.subscribe(this.mapInstanceCenterChangedHandler);
-
-            this._mapi.zoomChanged.subscribe(this.mapZoomChangedHandler);
-
-            // use `boundsChanged` pipe to update resolution/scale because `zoomChanged` fires before the map has actually zoomed
-            this._mapi.boundsChanged.subscribe(this.mapBoundsChangeHandler);
-
-            // subscribe to Tooltips events
-            this._mapi.ui.tooltip.mouseOver.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOverHandler);
-            this._mapi.ui.tooltip.mouseOut.pipe(takeUntil(this.deactivate)).subscribe(this.tooltipMouseOutHandler);
-
-            this._mapi.panels.details.closing.pipe(takeUntil(this.deactivate)).subscribe(this.detailsClosingHandler);
-
-            this._mapi.mouseMove.pipe(throttleTime(30)).subscribe((event: any) => {
-                // TODO: remove when RAMP bug https://github.com/fgpv-vpgf/fgpv-vpgf/issues/2612 is fixed
-                if (!event.xy) {
-                    return;
-                }
-
-                this.cursorPoint = new MapPoint(event.xy.x, event.xy.y);
-            });
-
-            this._mapi.click.pipe(takeUntil(this.deactivate)).subscribe(this.mapClickHandler);
-
-            // if the current feature is already set, draw grid
-            // NOTE: reselecting the previously selected feature from a bookmar is disabled for now
-            /* if (this.featurePoint && this._mapi.identifyMode === 'silent') {
-                await this.drawGrid(this.featurePoint, -1);
-            } */
-
-            /*if (this.zoomLevel) {
-                this.onZoomLevelChanged();
-            } else {
-                this.mapZoomChangedHandler(this._mapi.zoom);
-            }
-
-            if (this.centerPoint) {
-                this.onCenterPointChanged();
-            }
-        }); */
     }
 
-    isMousedOver: boolean = false;
+    async mapStartup(): Promise<void> {
+        //this.updateIdentifyMode();
+        //const controlClusterPanel = this._mapi.panels.create('cip-controls-cluster-container');
+        //this.injectCIPMapcomponents(controlClusterPanel);
+        this.switchLayers();
 
-    tooltipMouseOverHandler(z: any): void {
-        let tooltip;
+        // zoom and center point handler
+        this._rInstance.event.on('map/extentchanged', this.mapExtentChangedHandler, 'cccs_extentchanged_handler');
 
-        this.isMousedOver = true;
+        // replace default maptips with fancy ones
+        this._rInstance.event.off('ramp_map_graphichit_creates_maptip');
+        this._rInstance.event.on('map/graphichit', this.tooltipHandler, 'cccs_graphichit_handler');
 
+        // track map clicks to open up details when layer changes
+        this._rInstance.event.on('map/click', this.mapClickHandler, 'cccs_mapclick_handler');
+        this._rInstance.event.on('panel/close', this.detailsClosingHandler, 'cccs_panelclose_handler');
+
+        if (this.zoomLevel) {
+            await this._rInstance.geo.map.zoomToLevel(this.zoomLevel);
+        }
+
+        if (this.centerPoint) {
+            const center = new this._rInstance.geo.geom.Point('centerPoint', [this.centerPoint.x, this.centerPoint.y], 3978);
+            await this._rInstance.geo.map.zoomMapTo(center, this._rInstance.geo.map.getScale());
+        }
+
+        this.extentFromBasemapDone = true;
+    }
+
+    tooltipHandler(info: any): void {
         if (!this.datasetApi.tooltip) {
             return;
         }
 
-        z.event.preventDefault();
-        z.attribs.then((a: any) => {
-            if (!this.isMousedOver) {
-                return;
-            }
+        const currentTemplate = this.datasetApi.getTooltip(info.attributes);
+        if (!currentTemplate) {
+            return;
+        }
 
-            const currentTemplate = this.datasetApi.getTooltip(a);
-            if (!currentTemplate) {
-                return;
-            }
-
-            tooltip = z.add(currentTemplate);
-        });
+        this._rInstance.geo.map.maptip.setContent(currentTemplate);
     }
 
-    tooltipMouseOutHandler(event: any): void {
-        this.isMousedOver = false;
-    }
-
-    mapInstanceCenterChangedHandler(event: any): void {
+    mapExtentChangedHandler(extent: any): void {
+        if (!this.extentFromBasemapDone) {
+            return;
+        }
+        const newCenter = extent.center();
         // make sure the centerpoint is new
-        if (this.centerPoint && this.centerPoint.x === event.x && this.centerPoint.y === event.y) {
+        if (this.centerPoint && this.centerPoint.x === newCenter.x && this.centerPoint.y === newCenter.y) {
             return;
         }
 
         this.localCenterPointUpdate = true;
 
-        this.setCenterPoint(event);
+        this.setCenterPoint(newCenter);
 
         // update zoom if we're out of sync
-        if (this._mapi.zoom !== this.zoomLevel) {
+        const newZoom = this._rInstance.geo.map.getZoomLevel();
+        if (newZoom !== this.zoomLevel) {
             this.localZoomLevelUpdate = true;
-            this.setZoomLevel(this._mapi.zoom);
+            this.setZoomLevel(newZoom);
         }
         this.updateRoute();
     }
 
-    mapZoomChangedHandler(event: any): void {
-        this.localZoomLevelUpdate = true;
-
-        this.setZoomLevel(event);
-        this.updateRoute();
+    mapClickHandler(mapClick: any): void {
+        this.setLastClick(mapClick);
     }
 
-    mapBoundsChangeHandler(): void {
-        // TODO: ask Miles to add resolution to the API
-        this.resolution = this._mapi.mapI._map.getResolution();
-    }
-
-    mapClickHandler(clickEvent: any): void {
-        this.setLastClick(clickEvent.xy);
-    }
-
-    detailsClosingHandler(closeEvent: any): void {
-        if (closeEvent.code === 'closebtn') {
+    detailsClosingHandler(panel: any): void {
+        if (panel.id === 'details') {
             this.setLastClick(null);
         }
     }
 
-    /**
-     * Handle the identify sesssion, but updating the routes with the feature coordinates
-     *
-     */
-    /* async pointIdentifyHandler({ requests, event }: IdentifySession) {
-        if (requests.length === 0) {
-            return;
-        }
-        requests[0].features.then((features: IdentifyResult[]) => {
-            if (features.length === 0) {
-                return;
-            }
-
-            // if multiple features are received, leave only one
-            features.splice(1);
-
-            const feature = features[0].data.find(({ key }) => key === 'AHCCD Station ID');
-            const stationId = feature ? feature.value.toString() : '';
-
-            // features.find(feature => )
-
-            this.setFeaturePoint(event.xy);
-            this.setFeatureId(stationId);
-            this.updateRoute();
-        });
-    } */
-
-    /* async gridIdentifyHandler(event: any) {
-        await this.drawGrid(event.xy, 0);
-    } */
-
-    /**
-     * Draw the geometry for the grid square containing xy
-     *
-     * @param xy the latlong point to draw the grid around
-     * @param requestNum (should probably be replaced) used as an id for the polygon
-     */
-    /* async drawGrid(xy: { x: number; y: number }, requestNum: number) {
-        // retrieve the geometry points from the api
-        // const { coordinates, gridId } = await this.datasetApi.getGeometryPoints(xy);
-
-        // build the polygon
-        const RAMP = (<any>window).RAMP;
-        const poly = new RAMP.GEO.Polygon(requestNum, coordinates);
-
-        //update drawn geometry
-        this._mapi.simpleLayer.removeGeometry();
-        this._mapi.simpleLayer.addGeometry([poly]);
-
-        // update the route
-        this.setFeaturePoint(xy);
-        this.setFeatureId(gridId);
-
-        this.updateRoute();
-    } */
-
     beforeDestroy(): void {
-        // deactivate all subscriptions when the component is being destroyed
-        this.deactivate.next(true);
-        this.deactivate.unsubscribe();
+        this._rInstance.event.off('cccs_extentchanged_handler');
+        this._rInstance.event.off('cccs_graphichit_handler');
+        this._rInstance.event.off('cccs_mapclick_handler');
+        this._rInstance.event.off('cccs_panelclose_handler');
     }
 
     stopLayerSubscriptions(): void {
         deactivateLayers.next(true);
     }
-
-    /* removeGridHighlight(): void {
-        // TODO: AHCCD must be handled differently, it does not use geometry drawing
-        // remove any geometry drawn on the map
-        this._mapi.simpleLayer.removeGeometry();
-        // clear the feature from the store + route
-        this.setFeatureId(null);
-        this.setFeaturePoint(null);
-        this.updateRoute();
-    } */
 
     /**
      * Adds timeline and fineprint components inside the RAMP inner-shell node so they are included into the RAMP tab order.
@@ -677,51 +502,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             i18n: this.$i18n
         }).$mount();
 
-        const fineprintComponent = new Vue({
-            render: h =>
-                h('map-fineprint', {
-                    props: { 'cursor-point': this.cursorPoint, resolution: this.resolution }
-                }),
-            components: {
-                'map-fineprint': MapFineprint
-            },
-            i18n: this.$i18n
-        }).$mount();
-
-        const scrollguardComponent = new Vue({
-            render: h =>
-                h('map-scrollguard', {
-                    props: { _mapi: this._mapi }
-                }),
-            components: {
-                'map-scrollguard': MapScrollguard
-            },
-            i18n: this.$i18n
-        }).$mount();
-
-        const panguardComponent = new Vue({
-            render: h =>
-                h('map-panguard', {
-                    props: { _mapi: this._mapi }
-                }),
-            components: {
-                'map-panguard': MapPanguard
-            },
-            i18n: this.$i18n
-        }).$mount();
-
         controlClusterPanel.body = controlClusterComponent.$el;
         controlClusterPanel.open();
 
         const innerShell = this.$el.querySelector('.rv-inner-shell')!;
-        innerShell.appendChild(fineprintComponent.$el);
-
-        // insert the scrollguard as the first child of the inner shell
-        // this will place the guard above the map, but below all other RAMP controls
-        // when the guard is active, it grays out the map, but not the controls
-        innerShell.insertBefore(scrollguardComponent.$el, innerShell.firstChild);
-
-        innerShell.insertBefore(panguardComponent.$el, innerShell.firstChild);
     }
 }
 </script>

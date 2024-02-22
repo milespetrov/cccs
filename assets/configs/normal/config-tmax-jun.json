@@ -230,7 +230,7 @@
           }
         },
         "id": "Normals_tmax_JUN_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=6",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=6",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true
@@ -468,7 +468,7 @@
           }
         },
         "id": "Normals_tmax_JUN_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=6",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=5&MONTH=6",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true

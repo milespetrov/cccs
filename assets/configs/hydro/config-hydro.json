@@ -155,7 +155,7 @@
           }
         },
         "id": "Hydro_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true
@@ -318,7 +318,7 @@
           }
         },
         "id": "Hydro_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true

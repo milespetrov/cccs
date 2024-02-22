@@ -163,7 +163,7 @@
           }
         },
         "id": "AHCCD_wind_DEC_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=wind_speed&period__periode=Dec",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=wind_speed&period__periode=Dec",
         "layerType": "ogc-wfs",
         "colour": "#0cf03a",
         "xyInAttribs": true
@@ -334,7 +334,7 @@
           }
         },
         "id": "AHCCD_wind_DEC_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=wind_speed&period__periode=Dec",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=wind_speed&period__periode=Dec",
         "layerType": "ogc-wfs",
         "colour": "#0cf03a",
         "xyInAttribs": true

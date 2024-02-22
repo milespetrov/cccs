@@ -163,7 +163,7 @@
           }
         },
         "id": "AHCCD_tmin_MAM_en",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Spr",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Spr",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true
@@ -334,7 +334,7 @@
           }
         },
         "id": "AHCCD_tmin_MAM_fr",
-        "url": "http://geo.wxod-dev.cmc.ec.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Spr",
+        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Spr",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true
