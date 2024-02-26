@@ -155,7 +155,8 @@
                     "logo": {
                         "enabled": false
                     }
-                }
+                },
+                "backgroundColour": "#BFE8FE"
             },
             {
                 "id": "baseSimple",
@@ -221,7 +222,8 @@
                     "logo": {
                         "enabled": false
                     }
-                }
+                },
+                "backgroundColour": "#BFE8FE"
             }
         ]
     }

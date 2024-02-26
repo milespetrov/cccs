@@ -16,7 +16,7 @@
         </div>
 
         <section class="main">
-            <map-view name="visualization" class="mrgn-bttm-lg" aria-describedby="cip-map-description cip-map-description-bottom"></map-view>
+            <map-view name="visualization" class="mrgn-bttm-lg wider-map" aria-describedby="cip-map-description cip-map-description-bottom"></map-view>
 
             <aside class="cip-scope cip-map-view mrgn-bttm-lg" id="cip-map-description-bottom" aria-live="polite">
                 <h2>{{$t('map.description.header')}}</h2>
@@ -247,6 +247,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 }
 
 .cip-strip {
+    width: 90vw;
+    margin-left: calc(45% - 41vw);
     position: relative;
 
     &.cip-top-navigation {
@@ -273,6 +275,11 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 .cip-header-container {
     z-index: 1;
     position: relative;
+}
+
+.wider-map {
+    width: 90vw;
+    margin-left: calc(45% - 41vw);
 }
 
 .main {

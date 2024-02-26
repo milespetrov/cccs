@@ -193,7 +193,8 @@
                             "logo": {
                                 "disabled": true
                             }
-                        }
+                        },
+                        "backgroundColour": "#BFE8FE"
                     },
                     {
                         "id": "baseSimple",
@@ -262,7 +263,9 @@
                             "logo": {
                                 "disabled": true
                             }
-                        }
+                        },
+                        "backgroundColour": "#BFE8FE"
+
                     }
                 ]
             },
