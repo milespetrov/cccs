@@ -167,7 +167,10 @@
                         "name": "Lambert maps",
                         "extentSetId": "EXT_NRCAN_Lambert_3978",
                         "lodSetId": "LOD_NRCAN_Lambert_3978",
-                        "thumbnailTileUrls": [],
+                        "thumbnailTileUrls": [
+                            "/tile/8/285/268",
+                            "/tile/8/285/269"
+                        ],
                         "hasNorthPole": "true"
                     }
                 ],
