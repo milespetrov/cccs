@@ -197,6 +197,16 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
     font-size: 0.9em;
     padding: 0.5rem 0;
 
+    @media (max-width: 440px) {
+        font-size: 0.75em;
+        padding: 0.2rem 0;
+    }
+
+    @media (max-width: 380px) {
+        font-size: 0.63em;
+        padding: 0.2rem 0;
+    }
+
     cursor: pointer;
 
     // hide the slider connect node

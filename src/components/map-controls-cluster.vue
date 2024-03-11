@@ -102,13 +102,17 @@ export default class MapControlsCluster extends Vue {
     bottom: 48px;
 
     .cip-controls-cluster {
-        padding: 0.5rem 0;
+        padding: 0.5rem 15px;
 
         min-width: 500px;
         width: 50%;
         pointer-events: all;
 
         background-color: #fff;
+
+        @media (max-width: 768px) {
+            padding: 0.5rem 2px;
+        }
 
         // TODO: create a shared variable for the box-shadow
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
@@ -125,6 +129,10 @@ export default class MapControlsCluster extends Vue {
                 font-size: 0.8em;
                 flex: 1;
                 color: $wet-secondary-text-colour;
+
+                @media (max-width: 524px) {
+                    font-size: 0.7em;
+                }
             }
 
             .cip-row-content {
@@ -145,7 +153,7 @@ export default class MapControlsCluster extends Vue {
 
             .cip-row-label,
             .cip-row-content {
-                padding: 0 15px;
+                padding: 0 auto;
                 display: inline-block;
                 line-height: normal;
             }
@@ -162,12 +170,13 @@ export default class MapControlsCluster extends Vue {
     }
 
     @media (max-width: 768px) {
-        bottom: 24px !important;
+        bottom: 38px !important;
+        left: 10%;
+        right: 10%;
 
         .cip-controls-cluster {
             width: 100%;
-            min-width: 300px;
-
+            min-width: fit-content;
             border-bottom: 1px solid rgba(0, 0, 0, 0.15);
         }
 
@@ -190,13 +199,9 @@ export default class MapControlsCluster extends Vue {
         }
     }
 
-    @media (min-width: 769px) and (max-width: 991px) {
-        left: 1rem;
-        right: 1rem;
-
-        .cip-controls-cluster {
-            width: 100%;
-        }
+    @media (max-width: 524px) {
+        left: 14%;
+        right: 16%;
     }
 }
 </style>

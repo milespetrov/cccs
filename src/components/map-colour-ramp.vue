@@ -73,6 +73,9 @@ export default class MapColourRamp extends Vue {
     line-height: 1em;
     font-size: 0.8em;
     font-family: "Noto Sans", sans-serif;
+    @media (max-width: 440px) {
+        font-size: 0.7em;
+    }
 }
 
 .range-left,
@@ -121,6 +124,9 @@ export default class MapColourRamp extends Vue {
             top: -15px;
             font-size: 0.8em;
             position: absolute;
+            @media (max-width: 440px) {
+                font-size: 0.7em;
+            }
         }
     }
 
