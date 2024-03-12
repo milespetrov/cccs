@@ -87,6 +87,17 @@
                 "enabled": false
             }
         },
+        "caption": {
+            "mapCoords": {
+                "disabled": false
+            },
+            "scaleBar": {
+                "disabled": false
+            },
+            "langToggle": {
+                "disabled": true
+            }
+        },
         "extentSets": [
             {
                 "id": "EXT_NRCAN_Lambert_3978",
@@ -221,10 +232,11 @@
                 "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
                 "attribution": {
                     "text": {
-                        "enabled": false
+                        "disabled": false,
+                        "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
                     },
                     "logo": {
-                        "enabled": false
+                        "disabled": true
                     }
                 },
                 "backgroundColour": "#BFE8FE"
