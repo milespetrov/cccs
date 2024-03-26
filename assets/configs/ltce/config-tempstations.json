@@ -158,6 +158,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceStationTemplate"
           }
         },
         "id": "ltce_tempstations_en",
@@ -327,6 +330,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceStationTemplate"
           }
         },
         "id": "ltce_tempstations_fr",

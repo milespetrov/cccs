@@ -475,6 +475,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceVariableTemplate"
           }
         },
         "id": "ltce_tminh_en",
@@ -1012,6 +1015,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceVariableTemplate"
           }
         },
         "id": "ltce_tminh_fr",

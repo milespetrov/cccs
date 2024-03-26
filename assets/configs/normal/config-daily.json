@@ -206,10 +206,13 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "normalStationTemplate"
           }
         },
         "id": "DAILY_station_en",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-stations/items",
+        "url": "https://api.weather.gc.ca/collections/climate-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5"
       }
@@ -422,10 +425,13 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "normalStationTemplate"
           }
         },
         "id": "DAILY_station_fr",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-stations/items",
+        "url": "https://api.weather.gc.ca/collections/climate-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5"
       }

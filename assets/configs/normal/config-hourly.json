@@ -206,6 +206,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "normalStationTemplate"
           }
         },
         "id": "HOURLY_station_en",
@@ -422,6 +425,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "normalStationTemplate"
           }
         },
         "id": "HOURLY_station_fr",

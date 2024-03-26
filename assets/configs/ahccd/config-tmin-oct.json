@@ -160,10 +160,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "ahccdVariableTemplate"
           }
         },
         "id": "AHCCD_tmin_OCT_en",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Oct",
+        "url": "https://api.weather.gc.ca/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Oct",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true
@@ -331,10 +334,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "ahccdVariableTemplate"
           }
         },
         "id": "AHCCD_tmin_OCT_fr",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Oct",
+        "url": "https://api.weather.gc.ca/collections/ahccd-trends/items?measurement_type__type_mesure=temp_min&period__periode=Oct",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
         "xyInAttribs": true

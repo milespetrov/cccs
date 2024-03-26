@@ -160,10 +160,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "ahccdVariableTemplate"
           }
         },
         "id": "AHCCD_supr_NOV_en",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Nov",
+        "url": "https://api.weather.gc.ca/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Nov",
         "layerType": "ogc-wfs",
         "colour": "#0cf03a",
         "xyInAttribs": true
@@ -331,10 +334,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "ahccdVariableTemplate"
           }
         },
         "id": "AHCCD_supr_NOV_fr",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Nov",
+        "url": "https://api.weather.gc.ca/collections/ahccd-trends/items?measurement_type__type_mesure=pressure_station&period__periode=Nov",
         "layerType": "ogc-wfs",
         "colour": "#0cf03a",
         "xyInAttribs": true

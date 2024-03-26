@@ -227,10 +227,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "normalVariableTemplate"
           }
         },
         "id": "Normals_prec_APR_en",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=4",
+        "url": "https://api.weather.gc.ca/collections/climate-normals/items?NORMAL_ID=56&MONTH=4",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true
@@ -465,10 +468,13 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "normalVariableTemplate"
           }
         },
         "id": "Normals_prec_APR_fr",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/climate-normals/items?NORMAL_ID=56&MONTH=4",
+        "url": "https://api.weather.gc.ca/collections/climate-normals/items?NORMAL_ID=56&MONTH=4",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true

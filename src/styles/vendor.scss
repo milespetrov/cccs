@@ -168,11 +168,10 @@ rv-table-setting-cluster {
     white-space: normal !important;
 }
 
-.rv-details {
-    .rv-details-list div {
-        display: block !important;
-    }
-    
+.rv-details-list div {
+    display: block !important;
+}
+.cmip5-details {
     .precip-icon:before, .rdpa6-icon:before, .rdpa24-icon:before {
         content: "";
         position: absolute;

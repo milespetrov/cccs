@@ -126,7 +126,12 @@
           {
             "id": "CANGRD.TREND.TM_ANNUAL"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cangrdVariableTemplate"
+          }
+        }
       }
     ]
   },
@@ -257,7 +262,12 @@
           {
             "id": "CANGRD.TREND.TM_ANNUAL"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cangrdVariableTemplate"
+          }
+        }
       }
     ]
   }

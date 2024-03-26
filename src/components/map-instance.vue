@@ -23,6 +23,8 @@ import { DatasetId, VariableId, TimePeriodType } from '@/types';
 
 import { datasets, ColourRamp, DatasetSource } from './../configs/datasets';
 
+import registerDetailsTemplates from '@/detailsTemplates';
+
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
 import MapControlsCluster from './map-controls-cluster.vue';
@@ -404,6 +406,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         //this.updateIdentifyMode();
         this.injectCIPMapcomponents();
         this.switchLayers();
+
+        // RAMP4 is vue3 which doesnt have truly global components
+        // so we do this every time the RAMP instance is made (only for the current dataset)
+        registerDetailsTemplates(this._rInstance, this.datasetId);
 
         // zoom and center point handler
         this._rInstance.event.on('map/extentchanged', debounce(300, this.mapExtentChangedHandler), 'cccs_extentchanged_handler');

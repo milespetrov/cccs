@@ -126,7 +126,12 @@
           {
             "id": "INDICES.GSW.RCP26_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       }
     ]
   },
@@ -257,7 +262,12 @@
           {
             "id": "INDICES.GSW.RCP26_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       }
     ]
   }

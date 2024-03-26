@@ -126,7 +126,12 @@
           {
             "id": "SPEI-12.RCP2.6.ENS_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "speiVariableTemplate"
+          }
+        }
       }
     ]
   },
@@ -257,7 +262,12 @@
           {
             "id": "SPEI-12.RCP2.6.ENS_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "speiVariableTemplate"
+          }
+        }
       }
     ]
   }

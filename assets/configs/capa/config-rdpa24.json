@@ -126,7 +126,12 @@
           {
             "id": "RDPA.24F_PR"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "capaVariableTemplate"
+          }
+        }
       }
     ]
   },
@@ -257,7 +262,12 @@
           {
             "id": "RDPA.24F_PR"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "capaVariableTemplate"
+          }
+        }
       }
     ]
   }

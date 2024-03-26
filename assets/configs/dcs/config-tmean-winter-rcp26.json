@@ -126,7 +126,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2021-2040_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
       {
         "name": "Mean temperature",
@@ -150,7 +155,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2041-2060_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
       {
         "name": "Mean temperature",
@@ -174,7 +184,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2061-2080_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
       {
         "name": "Mean temperature",
@@ -198,7 +213,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2081-2100_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       }
     ]
   },
@@ -329,7 +349,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2021-2040_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
       {
         "name": "Température moyenne",
@@ -353,7 +378,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2041-2060_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
       {
         "name": "Température moyenne",
@@ -377,7 +407,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2061-2080_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
       {
         "name": "Température moyenne",
@@ -401,7 +436,12 @@
           {
             "id": "DCS.TM.RCP26.WINTER.2081-2100_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       }
     ]
   }

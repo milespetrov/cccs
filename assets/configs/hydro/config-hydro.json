@@ -152,10 +152,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "hydroStationTemplate"
           }
         },
         "id": "Hydro_en",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
+        "url": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATUS_EN=Active",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true
@@ -315,10 +318,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "hydroStationTemplate"
           }
         },
         "id": "Hydro_fr",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/hydrometric-stations/items?STATUS_EN=Active",
+        "url": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATUS_EN=Active",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
         "xyInAttribs": true

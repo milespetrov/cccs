@@ -219,6 +219,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceVariableTemplate"
           }
         },
         "id": "ltce_snow_en",
@@ -500,6 +503,9 @@
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceVariableTemplate"
           }
         },
         "id": "ltce_snow_fr",

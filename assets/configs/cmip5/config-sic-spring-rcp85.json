@@ -126,7 +126,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2021-2040_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       },
       {
         "name": "Sea ice concentration",
@@ -150,7 +155,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2041-2060_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       },
       {
         "name": "Sea ice concentration",
@@ -174,7 +184,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2061-2080_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       },
       {
         "name": "Sea ice concentration",
@@ -198,7 +213,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2081-2100_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       }
     ]
   },
@@ -329,7 +349,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2021-2040_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       },
       {
         "name": "Concentration de la glace de mer",
@@ -353,7 +378,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2041-2060_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       },
       {
         "name": "Concentration de la glace de mer",
@@ -377,7 +407,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2061-2080_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       },
       {
         "name": "Concentration de la glace de mer",
@@ -401,7 +436,12 @@
           {
             "id": "CMIP5.SIC.RCP85.SPRING.2081-2100_PCTL50"
           }
-        ]
+        ],
+        "fixtures": {
+          "details": {
+            "template": "cmip5VariableTemplate"
+          }
+        }
       }
     ]
   }

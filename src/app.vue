@@ -233,6 +233,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 <style lang="scss">
 // global changes on top of bootstrap default stylings
 @import "./styles/vendor.scss";
+
+@import "./styles/extra.scss";
 </style>
 
 <style lang="scss" scoped>

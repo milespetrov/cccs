@@ -148,10 +148,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "ahccdStationTemplate"
           }
         },
         "id": "AHCCD_station_en",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-stations/items",
+        "url": "https://api.weather.gc.ca/collections/ahccd-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
         "xyInAttribs": true
@@ -307,10 +310,13 @@
                 "visible": true
               }
             ]
+          },
+          "details": {
+            "template": "ahccdStationTemplate"
           }
         },
         "id": "AHCCD_station_fr",
-        "url": "https://api.weather.gc.ca/geomet/features/collections/ahccd-stations/items",
+        "url": "https://api.weather.gc.ca/collections/ahccd-stations/items",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
         "xyInAttribs": true
