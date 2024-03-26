@@ -145,7 +145,10 @@
                     "/tile/8/285/268",
                     "/tile/8/285/269"
                 ],
-                "hasNorthPole": "true"
+                "hasNorthPole": "true",
+                "recoveryBasemap": {
+                    "basemapId": "baseProvinces_3978"
+                }
             }
         ],
         "layers": [],
@@ -240,6 +243,24 @@
                     }
                 },
                 "backgroundColour": "#BFE8FE"
+            },
+            {
+                "id": "baseProvinces_3978",
+                "name": "Provinces et territoires du Canada",
+                "description":
+                    "Représentation de les frontières et limites des provinces et des territoires du Canada.",
+                "altText":
+                    "La carte de base du Canada - Provinces et territoires du Canada",
+                "hideThumbnail": true,
+                "layers": [
+                    {
+                        "id": "provinces_3978",
+                        "layerType": "esri-tile",
+                        "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
+                    }
+                ],
+                "tileSchemaId":
+                    "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
             }
         ]
     }

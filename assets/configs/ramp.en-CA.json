@@ -171,7 +171,10 @@
                             "/tile/8/285/268",
                             "/tile/8/285/269"
                         ],
-                        "hasNorthPole": "true"
+                        "hasNorthPole": "true",
+                        "recoveryBasemap": {
+                            "basemapId": "baseProvinces_3978"
+                        }
                     }
                 ],
                 "basemaps": [
@@ -270,6 +273,22 @@
                         },
                         "backgroundColour": "#BFE8FE"
 
+                    },
+                    {
+                        "id": "baseProvinces_3978",
+                        "name": "Provincial Outlines",
+                        "description": "Basic Provincial outlines.",
+                        "altText": "Canada Base Map - Province Outlines",
+                        "hideThumbnail": true,
+                        "layers": [
+                            {
+                                "id": "provinces_3978",
+                                "layerType": "esri-tile",
+                                "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
+                            }
+                        ],
+                        "tileSchemaId":
+                            "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
                     }
                 ],
                 "caption": {

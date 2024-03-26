@@ -124,7 +124,7 @@ var variableTemplate = {
                     date: 'Date of Year',
                     record_type: 'Record Type',
                     first_value: 'Extreme Value (Year)',
-                    second_value: '2nd Extreme Vaue (Year)',
+                    second_value: '2nd Extreme Value (Year)',
                     third_value: '3rd Extreme Value (Year)',
                     fourth_value: '4th Extreme Value (Year)',
                     fifth_value: '5th Extreme Value (Year)',
