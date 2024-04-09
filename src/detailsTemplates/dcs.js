@@ -19,7 +19,7 @@ var variableTemplate = {
             <span class="divider mrgn-bttm-md mrgn-tp-md"></span>
             <div class="long-form">
                 <p>{{TRANSLATIONS[lang].baseline}}</p>
-                <a :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
+                <a class="learnMore-link" :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
             </div>
         </div>
     `,

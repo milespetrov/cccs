@@ -8,7 +8,7 @@ var variableTemplate = {
                 <p><span>{{TRANSLATIONS[lang].details[1]}}</span></p>
                 <p class="supporting-value">{{TRANSLATIONS[lang].timeSlider[timeSlice]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[2]}}</span></p>
-                <p class="supporting-value">{{ latlong.y.toFixed(6) }}, {{ latlong.x.toFixed(6) }}</p>
+                <p class="supporting-value">{{ latlong.y }}, {{ latlong.x }}</p>
             </div>
             <span class="divider mrgn-bttm-md"></span>
             <div class="long-form">
@@ -19,7 +19,7 @@ var variableTemplate = {
             <span class="divider mrgn-bttm-md mrgn-tp-md"></span>
             <div class="long-form">
                 <p>{{TRANSLATIONS[lang].baseline}}</p>
-                <a :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
+                <a class="learnMore-link" :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
             </div>
         </div>
     `,
@@ -49,6 +49,8 @@ var variableTemplate = {
         var point = new RAMP.geo.geom.Point(3978, this.identifyData.data.data.features[0].geometry.coordinates);
         await RAMP.geo.proj.projectGeometry(4326, point).then((data) => {
             this.latlong = data;
+            console.log('here');
+            console.log(this.latlong);
         });
     },
     data() {

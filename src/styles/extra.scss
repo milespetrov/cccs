@@ -79,6 +79,15 @@
     padding: 0px 16px;
 }
 
+.learnMore-link:link {
+    text-decoration: underline;
+    color: blue;
+}
+
+.learnMore-link:visited {
+    color: purple;
+}
+
 .dcs-details .details-row {
     display: flex;
     font-size: 1.2em;
@@ -90,6 +99,7 @@
 
 .dcs-details .details-value {
     font-weight: bold;
+    text-align: right;
 }
 
 .cmip5-details {
@@ -137,4 +147,5 @@
 
 .cmip5-details .details-value {
     font-weight: bold;
+    text-align: right;
 }

@@ -42,7 +42,7 @@ var variableTemplate = {
                 <dd>{{ identifyData.data.station_id__id_station }}</dd>
             </dl>
 
-            <a :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
+            <a class="learnMore-link" :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
         </div>
     `,
     beforeMount() {
