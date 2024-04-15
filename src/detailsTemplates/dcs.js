@@ -1,3 +1,4 @@
+import { formatLatLong } from '@/globals/utils';
 var variableTemplate = {
     props: ['identifyData'],
     template:`
@@ -8,7 +9,7 @@ var variableTemplate = {
                 <p><span>{{TRANSLATIONS[lang].details[1]}}</span></p>
                 <p class="supporting-value">{{TRANSLATIONS[lang].timeSlider[timeSlice]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[2]}}</span></p>
-                <p class="supporting-value">{{ latlong.y.toFixed(6) }}, {{ latlong.x.toFixed(6) }}</p>
+                <p class="supporting-value">{{ latlong[1].toFixed(6) }}, {{ latlong[0].toFixed(6) }}</p>
             </div>
             <span class="divider mrgn-bttm-md"></span>
             <div class="long-form">
@@ -46,10 +47,16 @@ var variableTemplate = {
         }
 
         // reproject from 3978 to 4326
-        var point = new RAMP.geo.geom.Point(3978, this.identifyData.data.data.features[0].geometry.coordinates);
-        await RAMP.geo.proj.projectGeometry(4326, point).then((data) => {
-            this.latlong = data;
-        });
+        this.latlong = await this.$iApi.geo.proj.projectGeoJson(
+            JSON.parse(
+                JSON.stringify(
+                    this.identifyData.data.data.features[0].geometry
+                )
+            ),
+            3978,
+            4326
+        );
+        this.latlong = this.latlong.coordinates;
     },
     data() {
         return {
