@@ -1,330 +1,346 @@
 {
-    "en": {
-      "legend": [
-        {
-          "export": false,
-          "infoType": "title",
-          "content": "Data"
-        },
-        {
-          "infoType": "text",
-          "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
-        },
-        {
-          "layerId": "ltce_precipstations_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/green-circle.png",
-          "symbologyStack": [
-            {
-              "image": "assets/images/green-circle.png",
-              "text": "LTCE Station"
-            }
-          ],
-          "symbologyRenderStyle": "icons"
-        },
-        {
-          "infoType": "title",
-          "content": "Settings"
-        },
-        {
-          "layerId": "cities",
-          "layerName": "Cities",
-          "coverIcon": "assets/images/cities.png",
-          "symbologyStack": []
-        },
-        {
-          "layerId": "labels",
-          "layerName": "Labels",
-          "coverIcon": "assets/images/labels.png",
-          "symbologyStack": []
-        }
-      ],
-      "supportLayers": [
-        {
-          "id": "cities",
-          "layerType": "esriTile",
-          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-          "name": "Cities",
-          "expectedResponseTime": 10000,
-          "controls": [
-            "visibility",
-            "opacity",
-            "settings"
-          ],
-          "state": {
-            "opacity": 1,
-            "visibility": false
+  "en": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Data"
+      },
+      {
+        "infoType": "text",
+        "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
+      },
+      {
+        "layerId": "ltce_precipstations_en",
+        "description": "",
+        "coverIcon": "assets/images/green-circle.png",
+        "symbologyStack": [
+          {
+            "image": "assets/images/green-circle.png",
+            "text": "LTCE Station"
           }
+        ],
+        "symbologyRenderStyle": "icons"
+      },
+      {
+        "infoType": "title",
+        "content": "Settings"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Cities"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Labels"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Cities",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "id": "labels",
-          "layerType": "esriTile",
-          "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-          "name": "Labels",
-          "expectedResponseTime": 10000,
-          "controls": [
-            "visibility",
-            "opacity",
-            "settings"
-          ],
-          "state": {
-            "opacity": 1,
-            "visibility": true
-          }
-        }
-      ],
-      "dataLayers": [
-        {
-          "id": "ltce_precipstations_en",
-          "layerType": "ogcWfs",
-          "xyInAttribs": true,
-          "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=PRECIPITATION",
-          "name": "Daily Precipitation Virtual Station",
-          "nameField": "VIRTUAL_CLIMATE_ID",
-          "state": {
-            "opacity": 1,
-            "visibility": true
-          },
-          "details": {
-            "template": "assets/templates/ltce/stations-template.html",
-            "parser": "assets/templates/ltce/stations-script.js"
-          },
-          "colour": "#0cf03a",
-          "controls": [
-            "data",
-            "visibility",
-            "opacity"
-          ],
-          "table": {
+        "id": "cities",
+        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Labels",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Daily Precipitation Virtual Station",
+        "nameField": "VIRTUAL_CLIMATE_ID",
+        "controls": [
+          "datatable",
+          "visibility",
+          "opacity",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "fixtures": {
+          "grid": {
             "columns": [
               {
-                "data": "VIRTUAL_CLIMATE_ID",
+                "name": "VIRTUAL_CLIMATE_ID",
                 "title": "Virtual Climate ID",
                 "visible": true
               },
               {
-                "data": "VIRTUAL_STATION_NAME_E",
+                "name": "VIRTUAL_STATION_NAME_E",
                 "title": "Virtual Station Name",
                 "visible": true
               },
               {
-                "data": "VIRTUAL_STATION_NAME_F",
+                "name": "VIRTUAL_STATION_NAME_F",
                 "visible": false
               },
               {
-                "data": "CLIMATE_IDENTIFIER",
+                "name": "CLIMATE_IDENTIFIER",
                 "title": "Climate Identifier",
                 "visible": true
               },
               {
-                "data": "DATA_SOURCE",
+                "name": "DATA_SOURCE",
                 "title": "Type",
                 "visible": true
               },
               {
-                "data": "ELEMENT_NAME_E",
+                "name": "ELEMENT_NAME_E",
                 "title": "Element",
                 "visible": true
               },
               {
-                "data": "START_DATE",
+                "name": "START_DATE",
                 "title": "Start Date",
                 "visible": true
               },
               {
-                "data": "END_DATE",
+                "name": "END_DATE",
                 "title": "End Date",
                 "visible": true
               },
               {
-                "data": "ENG_STN_NAME",
+                "name": "ENG_STN_NAME",
                 "title": "Station Name",
                 "visible": true
               },
               {
-                "data": "FRE_STN_NAME",
+                "name": "FRE_STN_NAME",
                 "visible": false
               },
               {
-                "data": "IDENTIFIER",
+                "name": "IDENTIFIER",
                 "visible": false
               },
               {
-                "data": "PROVINCE_CODE",
+                "name": "PROVINCE_CODE",
                 "visible": false
               },
               {
-                "data": "WXO_CITY_CODE",
+                "name": "WXO_CITY_CODE",
                 "visible": false
               }
             ]
-          }
-        }
-      ]
-    },
-    "fr": {
-      "legend": [
-        {
-          "export": false,
-          "infoType": "title",
-          "content": "Données"
-        },
-        {
-          "infoType": "text",
-          "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
-        },
-        {
-          "layerId": "ltce_precipstations_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/green-circle.png",
-          "symbologyStack": [
-            {
-              "image": "assets/images/green-circle.png",
-              "text": "Station ECLT"
-            }
-          ],
-          "symbologyRenderStyle": "icons"
-        },
-        {
-          "infoType": "title",
-          "content": "Paramètres"
-        },
-        {
-          "layerId": "cities",
-          "layerName": "Villes",
-          "coverIcon": "assets/images/cities.png",
-          "symbologyStack": []
-        },
-        {
-          "layerId": "labels",
-          "layerName": "Étiquettes",
-          "coverIcon": "assets/images/labels.png",
-          "symbologyStack": []
-        }
-      ],
-      "supportLayers": [
-        {
-          "id": "cities",
-          "layerType": "esriTile",
-          "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-          "name": "Villes",
-          "expectedResponseTime": 10000,
-          "controls": [
-            "visibility",
-            "opacity",
-            "settings"
-          ],
-          "state": {
-            "opacity": 1,
-            "visibility": false
-          }
-        },
-        {
-          "id": "labels",
-          "layerType": "esriTile",
-          "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-          "name": "Étiquettes",
-          "expectedResponseTime": 10000,
-          "controls": [
-            "visibility",
-            "opacity",
-            "settings"
-          ],
-          "state": {
-            "opacity": 1,
-            "visibility": true
-          }
-        }
-      ],
-      "dataLayers": [
-        {
-          "id": "ltce_precipstations_fr",
-          "layerType": "ogcWfs",
-          "xyInAttribs": true,
-          "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=PRECIPITATION",
-          "name": "Station Climatologique Virtuelle - Précipitation",
-          "nameField": "VIRTUAL_CLIMATE_ID",
-          "state": {
-            "opacity": 1,
-            "visibility": true
           },
           "details": {
-            "template": "assets/templates/ltce/stations-template.html",
-            "parser": "assets/templates/ltce/stations-script.js"
-          },
-          "colour": "#0cf03a",
-          "controls": [
-            "data",
-            "visibility",
-            "opacity"
-          ],
-          "table": {
+            "template": "ltceStationTemplate"
+          }
+        },
+        "id": "ltce_precipstations_en",
+        "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=PRECIPITATION",
+        "layerType": "ogc-wfs",
+        "colour": "#0cf03a",
+        "xyInAttribs": true
+      }
+    ]
+  },
+  "fr": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Données"
+      },
+      {
+        "infoType": "text",
+        "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
+      },
+      {
+        "layerId": "ltce_precipstations_fr",
+        "description": "",
+        "coverIcon": "assets/images/green-circle.png",
+        "symbologyStack": [
+          {
+            "image": "assets/images/green-circle.png",
+            "text": "Station ECLT"
+          }
+        ],
+        "symbologyRenderStyle": "icons"
+      },
+      {
+        "infoType": "title",
+        "content": "Paramètres"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Villes"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Étiquettes"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Villes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Étiquettes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Station Climatologique Virtuelle - Précipitation",
+        "nameField": "VIRTUAL_CLIMATE_ID",
+        "controls": [
+          "datatable",
+          "visibility",
+          "opacity",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "fixtures": {
+          "grid": {
             "columns": [
               {
-                "data": "VIRTUAL_CLIMATE_ID",
+                "name": "VIRTUAL_CLIMATE_ID",
                 "title": "Identifiant Climatologique Virtuelle",
                 "visible": true
               },
               {
-                "data": "VIRTUAL_STATION_NAME_E",
+                "name": "VIRTUAL_STATION_NAME_E",
                 "visible": false
               },
               {
-                "data": "VIRTUAL_STATION_NAME_F",
+                "name": "VIRTUAL_STATION_NAME_F",
                 "title": "Nom du Station Virtuelle",
                 "visible": true
               },
               {
-                "data": "CLIMATE_IDENTIFIER",
+                "name": "CLIMATE_IDENTIFIER",
                 "title": "Identifiant Climatologique",
                 "visible": true
               },
               {
-                "data": "DATA_SOURCE",
+                "name": "DATA_SOURCE",
                 "title": "Type",
                 "visible": true
               },
               {
-                "data": "ELEMENT_NAME_E",
+                "name": "ELEMENT_NAME_E",
                 "title": "Élément",
                 "visible": true
               },
               {
-                "data": "START_DATE",
+                "name": "START_DATE",
                 "title": "Début des records",
                 "visible": true
               },
               {
-                "data": "END_DATE",
+                "name": "END_DATE",
                 "title": "Fin des records",
                 "visible": true
               },
               {
-                "data": "ENG_STN_NAME",
+                "name": "ENG_STN_NAME",
                 "visible": false
               },
               {
-                "data": "FRE_STN_NAME",
+                "name": "FRE_STN_NAME",
                 "title": "Nom du Station",
                 "visible": true
               },
               {
-                "data": "IDENTIFIER",
+                "name": "IDENTIFIER",
                 "visible": false
               },
               {
-                "data": "PROVINCE_CODE",
+                "name": "PROVINCE_CODE",
                 "visible": false
               },
               {
-                "data": "WXO_CITY_CODE",
+                "name": "WXO_CITY_CODE",
                 "visible": false
               }
             ]
+          },
+          "details": {
+            "template": "ltceStationTemplate"
           }
-        }
-      ]
-    }
+        },
+        "id": "ltce_precipstations_fr",
+        "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=PRECIPITATION",
+        "layerType": "ogc-wfs",
+        "colour": "#0cf03a",
+        "xyInAttribs": true
+      }
+    ]
   }
+}

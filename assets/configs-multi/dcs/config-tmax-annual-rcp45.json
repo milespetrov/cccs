@@ -1,414 +1,448 @@
 {
-"en": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Data"
-    },
-    {
-      "infoType": "text",
-      "content": "Projected changes in statistically downscaled maximum temperature (°C) are with respect to the reference period of 1986-2005."
-    },
-    {
-      "collapse": true,
-      "exclusiveVisibility": [
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2021_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+  "en": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Data"
+      },
+      {
+        "infoType": "text",
+        "content": "Projected changes in statistically downscaled maximum temperature (°C) are with respect to the reference period of 1986-2005."
+      },
+      {
+        "layerId": "DCS_tmax_ANN_rcp45_2081_en",
+        "description": "",
+        "coverIcon": "assets/images/tmax.png",
+        "symbologyStack": [
+          {
+            "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+            "text": ""
+          }
+        ],
+        "symbologyRenderStyle": "images"
+      },
+      {
+        "infoType": "title",
+        "content": "Settings"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Cities"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Labels"
+      },
+      {
+        "layerId": "provinces",
+        "coverIcon": "assets/images/provinces.png",
+        "symbologyStack": [],
+        "name": "Provinces"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Cities",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2041_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+        "id": "cities",
+        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Labels",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2061_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Provinces",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2081_en",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+        "id": "provinces",
+        "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Daily maximum temperature",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2021_en",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2021-2040_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
         }
-
-      ]
-    },
-    {
-      "infoType": "title",
-      "content": "Settings"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Cities",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Labels",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-      "name": "Cities",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
-      }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-      "name": "Labels",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
-      }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "DCS_tmax_ANN_rcp45_2021_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Daily maximum temperature",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
       },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2021-2040_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_tmax_ANN_rcp45_2041_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Daily maximum temperature",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2041-2060_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_tmax_ANN_rcp45_2061_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Daily maximum temperature",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2061-2080_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_tmax_ANN_rcp45_2081_en",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Daily maximum temperature",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2081-2100_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-},
-"fr": {
-  "legend": [
-    {
-      "export": false,
-      "infoType": "title",
-      "content": "Données"
-    },
-    {
-      "infoType": "text",
-      "content": "Les changements projetés dans la température maximale (°C) statistiquement mise à l'échelle sont calculés par rapport à la période de référence 1986-2005."
-    },
-    {
-      "collapse": true,
-      "exclusiveVisibility": [
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2021_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+      {
+        "name": "Daily maximum temperature",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
         },
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2041_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2061_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
-        },
-        {
-          "layerId": "DCS_tmax_ANN_rcp45_2081_fr",
-          "layerName": "",
-          "description": "",
-          "coverIcon": "assets/images/tmax.png",
-          "symbologyStack": [
-            {
-              "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
-              "text": ""
-            }
-          ],
-          "symbologyRenderStyle": "images"
+        "id": "DCS_tmax_ANN_rcp45_2041_en",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2041-2060_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
         }
-
-      ]
-    },
-    {
-      "infoType": "title",
-      "content": "Paramètres"
-    },
-    {
-      "layerId": "cities",
-      "layerName": "Villes",
-      "coverIcon": "assets/images/cities.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "labels",
-      "layerName": "Étiquettes",
-      "coverIcon": "assets/images/labels.png",
-      "symbologyStack": []
-    },
-    {
-      "layerId": "provinces",
-      "layerName": "Provinces",
-      "coverIcon": "assets/images/provinces.png",
-      "symbologyStack": []
-    }
-
-  ],
-  "supportLayers": [
-    {
-      "id": "cities",
-      "layerType": "esriTile",
-      "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-      "name": "Villes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": false
+      },
+      {
+        "name": "Daily maximum temperature",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2061_en",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2061-2080_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
+      },
+      {
+        "name": "Daily maximum temperature",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2081_en",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2081-2100_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       }
-    },
-    {
-      "id": "labels",
-      "layerType": "esriTile",
-      "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-      "name": "Étiquettes",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ]
+  },
+  "fr": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Données"
+      },
+      {
+        "infoType": "text",
+        "content": "Les changements projetés dans la température maximale (°C) statistiquement mise à l'échelle sont calculés par rapport à la période de référence 1986-2005."
+      },
+      {
+        "layerId": "DCS_tmax_ANN_rcp45_2081_fr",
+        "description": "",
+        "coverIcon": "assets/images/tmax.png",
+        "symbologyStack": [
+          {
+            "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=DCS.TX.RCP85.FALL.2021-2040_PCTL50&format=image/png&STYLE=default",
+            "text": ""
+          }
+        ],
+        "symbologyRenderStyle": "images"
+      },
+      {
+        "infoType": "title",
+        "content": "Paramètres"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Villes"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Étiquettes"
+      },
+      {
+        "layerId": "provinces",
+        "coverIcon": "assets/images/provinces.png",
+        "symbologyStack": [],
+        "name": "Provinces"
       }
-    },
-    {
-      "id": "provinces",
-      "layerType": "esriTile",
-      "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-      "name": "Provinces",
-      "expectedResponseTime": 10000,
-      "controls": ["visibility", "opacity", "settings"],
-      "state": {
-        "opacity": 1,
-        "visibility": true
+    ],
+    "supportLayers": [
+      {
+        "name": "Villes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Étiquettes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Provinces",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "provinces",
+        "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
       }
-    }
-  ],
-  "dataLayers": [
-    {
-      "id": "DCS_tmax_ANN_rcp45_2021_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Température maximale quotidienne",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
+    ],
+    "dataLayers": [
+      {
+        "name": "Température maximale quotidienne",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2021_fr",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2021-2040_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2021-2040_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
+      {
+        "name": "Température maximale quotidienne",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2041_fr",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2041-2060_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_tmax_ANN_rcp45_2041_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Température maximale quotidienne",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
+      {
+        "name": "Température maximale quotidienne",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2061_fr",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2061-2080_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
       },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2041-2060_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_tmax_ANN_rcp45_2061_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Température maximale quotidienne",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2061-2080_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    },
-    {
-      "id": "DCS_tmax_ANN_rcp45_2081_fr",
-      "layerType": "ogcWms",
-      "suppressGetCapabilities": true,
-      "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-      "name": "Température maximale quotidienne",
-      "state": {
-        "opacity": 0.85,
-        "visibility": false
-      },
-      "layerEntries": [{"id": "DCS.TX.RCP45.YEAR.2081-2100_PCTL50" }],
-      "featureInfoMimeType": "application/json",
-      "details": {
-        "template": "assets/templates/dcs/variables-template.html",
-        "parser": "assets/templates/dcs/variables-script.js"
-      },
-      "controls": ["visibility", "opacity", "settings"]
-    }
-  ]
-}
+      {
+        "name": "Température maximale quotidienne",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 0.85,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "DCS_tmax_ANN_rcp45_2081_fr",
+        "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+        "layerType": "ogc-wms",
+        "featureInfoMimeType": "application/json",
+        "sublayers": [
+          {
+            "id": "DCS.TX.RCP45.YEAR.2081-2100_PCTL50"
+          }
+        ],
+        "fixtures": {
+          "details": {
+            "template": "dcsVariableTemplate"
+          }
+        }
+      }
+    ]
+  }
 }

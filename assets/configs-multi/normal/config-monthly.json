@@ -1,238 +1,458 @@
 {
-    "en": {
-        "legend": [
-            {
-                "export": false,
-                "infoType": "title",
-                "content": "Data"
-            },
-            {
-                "infoType": "text",
-                "content": "A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data."
-            },
-            {
-                "layerId": "MONTHLY_station_en",
-                "layerName": "",
-                "description": "These are stations reporting monthly summary data that correspond to stations used in past Normals series (1961-1990, 1971-2000, 1981-2010).",
-                "coverIcon": "assets/images/cities.png",
-                "symbologyStack": [
-                    {
-                        "image": "assets/images/blue-circle.png",
-                        "text": "Station"
-                    }
-                ],
-                "symbologyRenderStyle": "icons"
-            },
-            {
-                "infoType": "title",
-                "content": "Settings"
-            },
-            {
-                "layerId": "cities",
-                "layerName": "Cities",
-                "coverIcon": "assets/images/cities.png",
-                "symbologyStack": []
-            },
-            {
-                "layerId": "labels",
-                "layerName": "Labels",
-                "coverIcon": "assets/images/labels.png",
-                "symbologyStack": []
-            }
+  "en": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Data"
+      },
+      {
+        "infoType": "text",
+        "content": "A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data."
+      },
+      {
+        "layerId": "MONTHLY_station_en",
+        "description": "These are stations reporting monthly summary data that correspond to stations used in past Normals series (1961-1990, 1971-2000, 1981-2010).",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [
+          {
+            "image": "assets/images/blue-circle.png",
+            "text": "Station"
+          }
         ],
-        "supportLayers": [
-            {
-                "id": "cities",
-                "layerType": "esriTile",
-                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-                "name": "Cities",
-                "expectedResponseTime": 10000,
-                "controls": ["visibility", "opacity", "settings"],
-                "state": {
-                    "opacity": 1,
-                    "visibility": false
-                }
-            },
-            {
-                "id": "labels",
-                "layerType": "esriTile",
-                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-                "name": "Labels",
-                "expectedResponseTime": 10000,
-                "controls": ["visibility", "opacity", "settings"],
-                "state": {
-                    "opacity": 1,
-                    "visibility": true
-                }
-            }
+        "symbologyRenderStyle": "icons"
+      },
+      {
+        "infoType": "title",
+        "content": "Settings"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Cities"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Labels"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Cities",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
         ],
-        "dataLayers": [
-            {
-                "id": "MONTHLY_station_en",
-                "layerType": "ogcWfs",
-                "xyInAttribs": true,
-                "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
-                "name": "Monthly climate observation summaries",
-                "nameField": "STATION_NAME",
-                "state": {
-                    "opacity": 1,
-                    "visibility": true
-                },
-                "details": {
-                    "template": "assets/templates/normal/stations-template.html",
-                    "parser": "assets/templates/normal/stations-script.js"
-                },
-                "table": {
-                    "columns": [
-                      { "data": "OBJECTID", "visible": false },
-                      { "data": "rvInternalCoordX", "visible": false },
-                      { "data": "rvInternalCoordY", "visible": false },
-                      { "data": "NORMAL_CODE", "title": "Normal code", "visible": true },
-                      { "data": "FRE_STN_OPERATOR_ACRONYM", "visible": false },
-                      { "data": "COUNTRY", "visible": false },
-                      { "data": "WMO_IDENTIFIER", "title": "WMO identifier", "visible": true },
-                      { "data": "CLIMATE_IDENTIFIER", "title": "Climate identifier", "visible": true },
-                      { "data": "HAS_MONTHLY_SUMMARY", "visible": false },
-                      { "data": "HAS_HOURLY_DATA", "visible": false },
-                      { "data": "TIMEZONE", "title": "Time zone", "visible": true },
-                      { "data": "PROV_STATE_TERR_CODE", "title": "Province / Territory", "visible": true },
-                      { "data": "PUBLICATION_CODE", "visible": false },
-                      { "data": "HAS_NORMALS_DATA", "visible": false },
-                      { "data": "ENG_PROV_NAME", "visible": false },
-                      { "data": "FRE_PROV_NAME", "visible": false },
-                      { "data": "STATION_NAME", "title": "Station name", "visible": true },
-                      { "data": "STATION_TYPE", "title": "Station type", "visible": true },
-                      { "data": "ENG_STN_OPERATOR_NAME", "title": "Station operator", "visible": true },
-                      { "data": "ENG_STN_OPERATOR_ACRONYM", "visible": false },
-                      { "data": "LONGITUDE", "title": "Longitude", "visible": true },
-                      { "data": "ELEVATION", "title": "Elevation", "visible": true },
-                      { "data": "TC_IDENTIFIER", "title": "Transport Canada identifier", "visible": true },
-                      { "data": "FRE_STN_OPERATOR_NAME", "visible": false },
-                      { "data": "LATITUDE", "title": "Latitude", "visible": true },
-                      { "data": "DISPLAY_CODE", "visible": false }
-                    ]
-                  },
-                "colour": "#0ca7f5",
-                "controls": ["data", "visibility", "opacity"]
-            }
-        ]
-    },
-    "fr": {
-        "legend": [
-            {
-                "export": false,
-                "infoType": "title",
-                "content": "Données"
-            },
-            {
-                "infoType": "text",
-                "content": "Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
-            },
-            {
-                "layerId": "MONTHLY_station_fr",
-                "layerName": "",
-                "description": "Il s'agit des stations fournissant des résumés mensuels des données qui correspondent aux stations utilisées pour les séries passées de normales climatiques (1961 à 1990, 1971 à 2000 et 1981 à 2010).",
-                "coverIcon": "assets/images/cities.png",
-                "symbologyStack": [
-                    {
-                        "image": "assets/images/blue-circle.png",
-                        "text": "Station"
-                    }
-                ],
-                "symbologyRenderStyle": "icons"
-            },
-            {
-                "infoType": "title",
-                "content": "Paramètres"
-            },
-            {
-                "layerId": "cities",
-                "layerName": "Villes",
-                "coverIcon": "assets/images/cities.png",
-                "symbologyStack": []
-            },
-            {
-                "layerId": "labels",
-                "layerName": "Étiquettes",
-                "coverIcon": "assets/images/labels.png",
-                "symbologyStack": []
-            }
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Labels",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
         ],
-        "supportLayers": [
-            {
-                "id": "cities",
-                "layerType": "esriTile",
-                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-                "name": "Villes",
-                "expectedResponseTime": 10000,
-                "controls": ["visibility", "opacity", "settings"],
-                "state": {
-                    "opacity": 1,
-                    "visibility": false
-                }
-            },
-            {
-                "id": "labels",
-                "layerType": "esriTile",
-                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-                "name": "Étiquettes",
-                "expectedResponseTime": 10000,
-                "controls": ["visibility", "opacity", "settings"],
-                "state": {
-                    "opacity": 1,
-                    "visibility": true
-                }
-            }
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Monthly climate observation summaries",
+        "nameField": "STATION_NAME",
+        "controls": [
+          "datatable",
+          "visibility",
+          "opacity",
+          "symbology"
         ],
-        "dataLayers": [
-            {
-                "id": "MONTHLY_station_fr",
-                "layerType": "ogcWfs",
-                "xyInAttribs": true,
-                "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
-                "name": "Sommaires des observations climatiques mensuelles",
-                "nameField": "STATION_NAME",
-                "state": {
-                    "opacity": 1,
-                    "visibility": true
-                },
-                "details": {
-                    "template": "assets/templates/normal/stations-template.html",
-                    "parser": "assets/templates/normal/stations-script.js"
-                },
-                "table": {
-                    "columns": [
-                      { "data": "OBJECTID", "visible": false },
-                      { "data": "rvInternalCoordX", "visible": false },
-                      { "data": "rvInternalCoordY", "visible": false },
-                      { "data": "NORMAL_CODE", "title": "Code de la normale", "visible": true },
-                      { "data": "FRE_STN_OPERATOR_ACRONYM", "visible": false },
-                      { "data": "COUNTRY", "visible": false },
-                      { "data": "WMO_IDENTIFIER", "title": "Identifiant de l'OMM", "visible": true },
-                      { "data": "CLIMATE_IDENTIFIER", "title": "Identifiant climatique", "visible": true },
-                      { "data": "HAS_MONTHLY_SUMMARY", "visible": false },
-                      { "data": "HAS_HOURLY_DATA", "visible": false },
-                      { "data": "TIMEZONE", "title": "Fuseau horaire", "visible": true },
-                      { "data": "PROV_STATE_TERR_CODE", "title": "Province / Territoire", "visible": true },
-                      { "data": "PUBLICATION_CODE", "visible": false },
-                      { "data": "HAS_NORMALS_DATA", "visible": false },
-                      { "data": "ENG_PROV_NAME", "visible": false },
-                      { "data": "FRE_PROV_NAME", "visible": false },
-                      { "data": "STATION_NAME", "title": "Nom de la station", "visible": true },
-                      { "data": "STATION_TYPE", "title": "Type de station", "visible": true },
-                      { "data": "ENG_STN_OPERATOR_NAME", "visible": false },
-                      { "data": "ENG_STN_OPERATOR_ACRONYM", "visible": false },
-                      { "data": "LONGITUDE", "title": "Longitude", "visible": true },
-                      { "data": "ELEVATION", "title": "Altitude", "visible": true },
-                      { "data": "TC_IDENTIFIER", "title": "Identifiant de Transports Canada", "visible": true },
-                      { "data": "FRE_STN_OPERATOR_NAME", "title": "Opérateur de la station", "visible": true },
-                      { "data": "LATITUDE", "title": "Latitude", "visible": true },
-                      { "data": "DISPLAY_CODE", "visible": false }
-                    ]
-                  },
-                "colour": "#0ca7f5",
-                "controls": ["data", "visibility", "opacity"]
-            }
-        ]
-    }
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "fixtures": {
+          "grid": {
+            "columns": [
+              {
+                "name": "OBJECTID",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordX",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordY",
+                "visible": false
+              },
+              {
+                "name": "NORMAL_CODE",
+                "title": "Normal code",
+                "visible": true
+              },
+              {
+                "name": "FRE_STN_OPERATOR_ACRONYM",
+                "visible": false
+              },
+              {
+                "name": "COUNTRY",
+                "visible": false
+              },
+              {
+                "name": "WMO_IDENTIFIER",
+                "title": "WMO identifier",
+                "visible": true
+              },
+              {
+                "name": "CLIMATE_IDENTIFIER",
+                "title": "Climate identifier",
+                "visible": true
+              },
+              {
+                "name": "HAS_MONTHLY_SUMMARY",
+                "visible": false
+              },
+              {
+                "name": "HAS_HOURLY_DATA",
+                "visible": false
+              },
+              {
+                "name": "TIMEZONE",
+                "title": "Time zone",
+                "visible": true
+              },
+              {
+                "name": "PROV_STATE_TERR_CODE",
+                "title": "Province / Territory",
+                "visible": true
+              },
+              {
+                "name": "PUBLICATION_CODE",
+                "visible": false
+              },
+              {
+                "name": "HAS_NORMALS_DATA",
+                "visible": false
+              },
+              {
+                "name": "ENG_PROV_NAME",
+                "visible": false
+              },
+              {
+                "name": "FRE_PROV_NAME",
+                "visible": false
+              },
+              {
+                "name": "STATION_NAME",
+                "title": "Station name",
+                "visible": true
+              },
+              {
+                "name": "STATION_TYPE",
+                "title": "Station type",
+                "visible": true
+              },
+              {
+                "name": "ENG_STN_OPERATOR_NAME",
+                "title": "Station operator",
+                "visible": true
+              },
+              {
+                "name": "ENG_STN_OPERATOR_ACRONYM",
+                "visible": false
+              },
+              {
+                "name": "LONGITUDE",
+                "title": "Longitude",
+                "visible": true
+              },
+              {
+                "name": "ELEVATION",
+                "title": "Elevation",
+                "visible": true
+              },
+              {
+                "name": "TC_IDENTIFIER",
+                "title": "Transport Canada identifier",
+                "visible": true
+              },
+              {
+                "name": "FRE_STN_OPERATOR_NAME",
+                "visible": false
+              },
+              {
+                "name": "LATITUDE",
+                "title": "Latitude",
+                "visible": true
+              },
+              {
+                "name": "DISPLAY_CODE",
+                "visible": false
+              }
+            ]
+          },
+          "details": {
+            "template": "normalStationTemplate"
+          }
+        },
+        "id": "MONTHLY_station_en",
+        "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
+        "layerType": "ogc-wfs",
+        "colour": "#0ca7f5",
+        "xyInAttribs": true
+      }
+    ]
+  },
+  "fr": {
+    "legend": [
+      {
+        "infoType": "title",
+        "content": "Données"
+      },
+      {
+        "infoType": "text",
+        "content": "Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
+      },
+      {
+        "layerId": "MONTHLY_station_fr",
+        "description": "Il s'agit des stations fournissant des résumés mensuels des données qui correspondent aux stations utilisées pour les séries passées de normales climatiques (1961 à 1990, 1971 à 2000 et 1981 à 2010).",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [
+          {
+            "image": "assets/images/blue-circle.png",
+            "text": "Station"
+          }
+        ],
+        "symbologyRenderStyle": "icons"
+      },
+      {
+        "infoType": "title",
+        "content": "Paramètres"
+      },
+      {
+        "layerId": "cities",
+        "coverIcon": "assets/images/cities.png",
+        "symbologyStack": [],
+        "name": "Villes"
+      },
+      {
+        "layerId": "labels",
+        "coverIcon": "assets/images/labels.png",
+        "symbologyStack": [],
+        "name": "Étiquettes"
+      }
+    ],
+    "supportLayers": [
+      {
+        "name": "Villes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": false,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "cities",
+        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      },
+      {
+        "name": "Étiquettes",
+        "controls": [
+          "visibility",
+          "opacity",
+          "settings",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "id": "labels",
+        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+        "expectedLoadTime": 10000,
+        "layerType": "esri-tile"
+      }
+    ],
+    "dataLayers": [
+      {
+        "name": "Sommaires des observations climatiques mensuelles",
+        "nameField": "STATION_NAME",
+        "controls": [
+          "datatable",
+          "visibility",
+          "opacity",
+          "symbology"
+        ],
+        "state": {
+          "opacity": 1,
+          "visibility": true,
+          "identify": true,
+          "hovertips": true
+        },
+        "fixtures": {
+          "grid": {
+            "columns": [
+              {
+                "name": "OBJECTID",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordX",
+                "visible": false
+              },
+              {
+                "name": "rvInternalCoordY",
+                "visible": false
+              },
+              {
+                "name": "NORMAL_CODE",
+                "title": "Code de la normale",
+                "visible": true
+              },
+              {
+                "name": "FRE_STN_OPERATOR_ACRONYM",
+                "visible": false
+              },
+              {
+                "name": "COUNTRY",
+                "visible": false
+              },
+              {
+                "name": "WMO_IDENTIFIER",
+                "title": "Identifiant de l'OMM",
+                "visible": true
+              },
+              {
+                "name": "CLIMATE_IDENTIFIER",
+                "title": "Identifiant climatique",
+                "visible": true
+              },
+              {
+                "name": "HAS_MONTHLY_SUMMARY",
+                "visible": false
+              },
+              {
+                "name": "HAS_HOURLY_DATA",
+                "visible": false
+              },
+              {
+                "name": "TIMEZONE",
+                "title": "Fuseau horaire",
+                "visible": true
+              },
+              {
+                "name": "PROV_STATE_TERR_CODE",
+                "title": "Province / Territoire",
+                "visible": true
+              },
+              {
+                "name": "PUBLICATION_CODE",
+                "visible": false
+              },
+              {
+                "name": "HAS_NORMALS_DATA",
+                "visible": false
+              },
+              {
+                "name": "ENG_PROV_NAME",
+                "visible": false
+              },
+              {
+                "name": "FRE_PROV_NAME",
+                "visible": false
+              },
+              {
+                "name": "STATION_NAME",
+                "title": "Nom de la station",
+                "visible": true
+              },
+              {
+                "name": "STATION_TYPE",
+                "title": "Type de station",
+                "visible": true
+              },
+              {
+                "name": "ENG_STN_OPERATOR_NAME",
+                "visible": false
+              },
+              {
+                "name": "ENG_STN_OPERATOR_ACRONYM",
+                "visible": false
+              },
+              {
+                "name": "LONGITUDE",
+                "title": "Longitude",
+                "visible": true
+              },
+              {
+                "name": "ELEVATION",
+                "title": "Altitude",
+                "visible": true
+              },
+              {
+                "name": "TC_IDENTIFIER",
+                "title": "Identifiant de Transports Canada",
+                "visible": true
+              },
+              {
+                "name": "FRE_STN_OPERATOR_NAME",
+                "title": "Opérateur de la station",
+                "visible": true
+              },
+              {
+                "name": "LATITUDE",
+                "title": "Latitude",
+                "visible": true
+              },
+              {
+                "name": "DISPLAY_CODE",
+                "visible": false
+              }
+            ]
+          },
+          "details": {
+            "template": "normalStationTemplate"
+          }
+        },
+        "id": "MONTHLY_station_fr",
+        "url": "#GEOMETWFS#/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
+        "layerType": "ogc-wfs",
+        "colour": "#0ca7f5",
+        "xyInAttribs": true
+      }
+    ]
+  }
 }
