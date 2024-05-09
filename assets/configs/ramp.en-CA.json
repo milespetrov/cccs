@@ -66,30 +66,18 @@
                         "name": "root",
                         "children": []
                     },
-                    "headerControls": [
-                        "groupToggle",
-                        "visibilityToggle"
-                    ]
+                    "headerControls": ["groupToggle", "visibilityToggle"]
                 },
                 "mapnav": {
                     "zoomOption": "buttons",
-                    "items": [
-                        "home",
-                        "help",
-                        "fullscreen"
-                    ]
+                    "items": ["home", "help", "fullscreen"]
                 },
                 "help": {
-                    "location": "./cccs",
+                    "location": "./help/cccs",
                     "panelWidth": 350
                 },
                 "appbar": {
-                    "items": [
-                        "legend",
-                        "geosearch",
-                        "basemap",
-                        "help"
-                    ]
+                    "items": ["legend", "geosearch", "basemap", "help"]
                 }
             },
             "layers": [],
@@ -167,10 +155,7 @@
                         "name": "Lambert maps",
                         "extentSetId": "EXT_NRCAN_Lambert_3978",
                         "lodSetId": "LOD_NRCAN_Lambert_3978",
-                        "thumbnailTileUrls": [
-                            "/tile/8/285/268",
-                            "/tile/8/285/269"
-                        ],
+                        "thumbnailTileUrls": ["/tile/8/285/268", "/tile/8/285/269"],
                         "hasNorthPole": "true",
                         "recoveryBasemap": {
                             "basemapId": "baseProvinces_3978"
@@ -272,7 +257,6 @@
                             }
                         },
                         "backgroundColour": "#BFE8FE"
-
                     },
                     {
                         "id": "baseProvinces_3978",
@@ -287,8 +271,7 @@
                                 "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
                             }
                         ],
-                        "tileSchemaId":
-                            "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+                        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
                     }
                 ],
                 "caption": {
