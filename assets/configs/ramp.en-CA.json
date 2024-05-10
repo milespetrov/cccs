@@ -192,9 +192,6 @@
                         "attribution": {
                             "text": {
                                 "disabled": true
-                            },
-                            "logo": {
-                                "disabled": true
                             }
                         },
                         "backgroundColour": "#BFE8FE"
@@ -216,9 +213,6 @@
                         "attribution": {
                             "text": {
                                 "disabled": true
-                            },
-                            "logo": {
-                                "disabled": true
                             }
                         }
                     },
@@ -238,9 +232,6 @@
                         ],
                         "attribution": {
                             "text": {
-                                "disabled": true
-                            },
-                            "logo": {
                                 "disabled": true
                             }
                         }
@@ -263,19 +254,16 @@
                             "text": {
                                 "disabled": false,
                                 "value": "© His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada"
-                            },
-                            "logo": {
-                                "disabled": true
                             }
                         },
                         "backgroundColour": "#BFE8FE"
                     },
                     {
                         "id": "baseProvinces_3978",
-                        "name": "Provincial Outlines",
-                        "description": "Basic Provincial outlines.",
-                        "altText": "Canada Base Map - Province Outlines",
-                        "hideThumbnail": true,
+                        "name": "Provincial and Territorial Boundaries",
+                        "description": "A basic outline of Canada's provincial and territorial boundaries.",
+                        "altText": "Canada Base Map - Provincial and Territorial outlines",
+                        "thumbnailUrl": "assets/images/outline.png",
                         "layers": [
                             {
                                 "id": "provinces_3978",
