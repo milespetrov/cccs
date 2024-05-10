@@ -396,7 +396,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         fetch(`./assets/configs/ramp.${this.$i18n.locale}-CA.json`).then((data) => {
             data.json().then((rampConfig: any) => {
                 this._rInstance = RAMP.createInstance(this.anchor, rampConfig);
-
+                (window as any).debugInstance = this._rInstance;
                 this._rInstance.event.on('map/created', this.mapStartup);
             });
         });
