@@ -1,267 +1,315 @@
 {
-    "ui": {
-        "title": "Visualiseur de données climatiques",
-        "appBar": {
-            "sideMenu": true,
-            "basemap": false,
-            "layers": true,
-            "geoSearch": true
-        },
-        "navBar": {
-            "zoom": "buttons",
-            "extra": ["home", "help", "fullscreen"]
-        },
-        "sideMenu": {
-            "logo": true,
-            "items": [["basemap", "layers"], ["touch", "help", "about"]]
-        },
-        "help": {
-            "folderName": "cccs"
-        },
-        "about": {
-            "folderName": "cccs"
-        },
-        "legend": {
-            "allowImport": false,
-            "isOpen": {
-                "large": false,
-                "medium": false,
-                "small": false
-            }
-        }
-    },
-    "version": "2.0",
-    "language": "fr",
-    "services": {
-        "corsEverywhere": true,
-        "export": {
-            "title": {
-                "value": ""
-            },
-            "map": {},
-            "mapElements": {},
-            "legend": {
-                "showInfoSymbology": true,
-                "columnWidth": 2000
-            },
-            "footnote": {
-                "value": "Produit par le Visualiseur de données climatiques du Centre canadien des services climatiques, https://visualiseur-climatique.canada.ca/cartes-climatiques.html"
-            },
-            "timeout": 60000
-        },
-        "search": {
-            "serviceUrls": {
-                "geoNames": "https://geogratis.gc.ca/services/geoname/en/geonames.json",
-                "geoLocation": "https://geogratis.gc.ca/services/geolocation/en/locate?q=",
-                "geoSuggest": "https://geogratis.gc.ca/services/geolocation/en/suggest?q=",
-                "provinces": "https://geogratis.gc.ca/services/geoname/en/codes/province.json",
-                "types": "https://geogratis.gc.ca/services/geoname/en/codes/concise.json"
-            }
-        }
-    },
-    "map": {
-        "initialBasemapId": "baseCBMT_CBCT_GEOM_3978",
-        "components": {
-            "geoSearch": {
-                "enabled": true,
-                "showGraphic": true,
-                "showInfo": true
-            },
-            "mouseInfo": {
-                "enabled": false,
-                "spatialReference": {
-                    "wkid": 4326
-                }
-            },
-            "northArrow": {
-                "enabled": true
-            },
-            "basemap": {
-                "enabled": true
-            },
-            "overviewMap": {
-                "enabled": true,
-                "layerType": "imagery"
-            },
-            "scaleBar": {
-                "enabled": false
-            }
-        },
-        "caption": {
-            "mapCoords": {
-                "disabled": false
-            },
-            "scaleBar": {
-                "disabled": false
-            },
-            "langToggle": {
-                "disabled": true
-            }
-        },
-        "extentSets": [
-            {
-                "id": "EXT_NRCAN_Lambert_3978",
-                "default": {
-                    "xmax": 4480496.94713038,
-                    "xmin": -4568271.150405815,
-                    "ymax": 3875960.2989751343,
-                    "ymin": -1537425.52779652
-                },
-                "spatialReference": {
-                    "wkid": 3978
-                }
-            }
-        ],
-        "lodSets": [
-            {
-                "id": "LOD_NRCAN_Lambert_3978",
-                "lods": [
-                    { "level": 0, "resolution": 38364.660062653464, "scale": 145000000 },
-                    { "level": 1, "resolution": 22489.62831258996, "scale": 85000000 },
-                    { "level": 2, "resolution": 13229.193125052918, "scale": 50000000 },
-                    { "level": 3, "resolution": 7937.5158750317505, "scale": 30000000 },
-                    { "level": 4, "resolution": 4630.2175937685215, "scale": 17500000 },
-                    { "level": 5, "resolution": 2645.8386250105837, "scale": 10000000 },
-                    { "level": 6, "resolution": 1587.5031750063501, "scale": 6000000 },
-                    { "level": 7, "resolution": 926.0435187537042, "scale": 3500000 },
-                    { "level": 8, "resolution": 529.1677250021168, "scale": 2000000 }
-                ]
-            }
-        ],
-        "legend": {
-            "type": "structured",
-            "root": {
-                "name": "root",
-                "children": []
-            }
-        },
-        "tileSchemas": [
-            {
-                "id": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
-                "name": "Cartes Lambert",
-                "extentSetId": "EXT_NRCAN_Lambert_3978",
-                "lodSetId": "LOD_NRCAN_Lambert_3978",
-                "thumbnailTileUrls": [
-                    "/tile/8/285/268",
-                    "/tile/8/285/269"
-                ],
-                "hasNorthPole": "true",
-                "recoveryBasemap": {
-                    "basemapId": "baseProvinces_3978"
-                }
-            }
-        ],
-        "layers": [],
-        "baseMaps": [
-            {
-                "id": "baseNrCan",
-                "name": "Carte de base du Canada – transport (CBCT) avec étiquettes",
-                "description": "La carte de base du Canada – transport (CBCT) du Secteur des sciences de la Terre de Ressources naturelles Canada est un service Internet qui s'adresse principalement aux utilisateurs et développeurs d'applications cartographiques en ligne.",
-                "altText": "La carte de base du Canada – transport (CBCT)",
-                "layers": [
-                    {
-                        "id": "CBCT",
-                        "layerType": "esriFeature",
-                        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT3978/MapServer"
-                    }
-                ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
-                "attribution": {
-                    "text": {
-                        "enabled": false
-                    },
-                    "logo": {
-                        "enabled": false
+    "startingFixtures": [
+        "appbar",
+        "basemap",
+        "crosshairs",
+        "details",
+        "export",
+        "extentguard",
+        "geosearch",
+        "grid",
+        "help",
+        "layer-reorder",
+        "legend",
+        "mapnav",
+        "northarrow",
+        "overviewmap",
+        "panguard",
+        "scrollguard",
+        "wizard"
+    ],
+    "configs": {
+        "fr": {
+            "version": "4.0",
+            "fixtures": {
+                "geosearch": {
+                    "serviceUrls": {
+                        "geoNames": "https://geogratis.gc.ca/services/geoname/fr/geonames.json",
+                        "geoLocation": "https://geogratis.gc.ca/services/geolocation/fr/locate?q=",
+                        "geoProvince": "https://geogratis.gc.ca/services/geoname/fr/codes/province.json",
+                        "geoTypes": "https://geogratis.gc.ca/services/geoname/fr/codes/concise.json"
                     }
                 },
-                "backgroundColour": "#BFE8FE"
-            },
-            {
-                "id": "baseSimple",
-                "name": "Carte de base du Canada - simple",
-                "description": "La carte de base du Canada - simple",
-                "altText": "La carte de base du Canada - simple",
-                "layers": [
-                    {
-                        "id": "SMR",
-                        "layerType": "esriFeature",
-                        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/Simple/MapServer"
-                    }
-                ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
-                "attribution": {
-                    "text": {
-                        "enabled": false
+                "export": {
+                    "title": {
+                        "selected": true,
+                        "selectable": true,
+                        "value": ""
                     },
-                    "logo": {
-                        "enabled": false
+                    "map": {
+                        "selected": true,
+                        "selectable": true
+                    },
+                    "mapElements": {
+                        "selected": true,
+                        "selectable": true
+                    },
+                    "legend": {
+                        "selected": true,
+                        "selectable": true,
+                        "columnWidth": 2000
+                    },
+                    "footnote": {
+                        "selected": true,
+                        "selectable": true,
+                        "value": "Produit par le Visualiseur de données climatiques du Centre canadien des services climatiques, https://visualiseur-climatique.canada.ca/cartes-climatiques.html"
                     }
+                },
+                "extentguard": {
+                    "extentSetIds": ["EXT_NRCAN_Lambert_3978"]
+                },
+                "overviewmap": {
+                    "basemaps": {},
+                    "startMinimized": true,
+                    "expandFactor": 1.5
+                },
+                "northarrow": {},
+                "legend": {
+                    "root": {
+                        "name": "root",
+                        "children": []
+                    },
+                    "headerControls": ["groupToggle", "visibilityToggle"]
+                },
+                "mapnav": {
+                    "zoomOption": "buttons",
+                    "items": ["home", "help", "fullscreen"]
+                },
+                "help": {
+                    "location": "./help/cccs",
+                    "panelWidth": 350
+                },
+                "appbar": {
+                    "items": ["legend", "geosearch", "basemap", "help"]
                 }
             },
-            {
-                "id": "baseCBME_CBCE_HS_RO_3978",
-                "name": "Carte de base du Canada - élevation (CBCE)",
-                "description": "La carte de base du Canada - élevation (CBCE) du Secteur des sciences de la Terre de Ressources naturelles Canada est un service Internet qui s'adresse principalement aux utilisateurs et développeurs d'applications cartographiques en ligne.",
-                "altText": "La carte de base du Canada - élevation (CBCE)",
-                "layers": [
+            "layers": [],
+            "map": {
+                "initialBasemapId": "baseCBMT_CBCT_GEOM_3978",
+                "extentSets": [
                     {
-                        "id": "CBME_CBCE_HS_RO_3978",
-                        "layerType": "esriFeature",
-                        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer"
+                        "id": "EXT_NRCAN_Lambert_3978",
+                        "default": {
+                            "xmin": -4568271.1,
+                            "xmax": 4480496.9,
+                            "ymin": -1537425.5,
+                            "ymax": 3875960.2,
+                            "spatialReference": {
+                                "wkid": 3978
+                            }
+                        },
+                        "maximum": {
+                            "xmin": -2556116,
+                            "xmax": 3754208,
+                            "ymin": -1131913,
+                            "ymax": 4821223,
+                            "spatialReference": {
+                                "wkid": 3978
+                            }
+                        }
                     }
                 ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
-                "attribution": {
-                    "text": {
-                        "enabled": false
-                    },
-                    "logo": {
-                        "enabled": false
-                    }
-                }
-            },
-            {
-                "id": "baseCBMT_CBCT_GEOM_3978",
-                "name": "Carte de base du Canada - transport (CBCT)",
-                "description": "La carte de base du Canada - transport (CBCT) du Secteur des sciences de la Terre de Ressources naturelles Canada est un service Internet qui s'adresse principalement aux utilisateurs et développeurs d'applications cartographiques en ligne.",
-                "altText": "La carte de base du Canada - transport (CBCT)",
-                "layers": [
+                "lodSets": [
                     {
-                        "id": "CBMT_CBCT_GEOM_3978",
-                        "layerType": "esriFeature",
-                        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer"
+                        "id": "LOD_NRCAN_Lambert_3978",
+                        "lods": [
+                            {
+                                "level": 0,
+                                "resolution": 38364.660062653464,
+                                "scale": 145000000
+                            },
+                            {
+                                "level": 1,
+                                "resolution": 22489.62831258996,
+                                "scale": 85000000
+                            },
+                            {
+                                "level": 2,
+                                "resolution": 13229.193125052918,
+                                "scale": 50000000
+                            },
+                            {
+                                "level": 3,
+                                "resolution": 7937.5158750317505,
+                                "scale": 30000000
+                            },
+                            {
+                                "level": 4,
+                                "resolution": 4630.2175937685215,
+                                "scale": 17500000
+                            },
+                            {
+                                "level": 5,
+                                "resolution": 2645.8386250105837,
+                                "scale": 10000000
+                            },
+                            {
+                                "level": 6,
+                                "resolution": 1587.5031750063501,
+                                "scale": 6000000
+                            },
+                            {
+                                "level": 7,
+                                "resolution": 926.0435187537042,
+                                "scale": 3500000
+                            },
+                            {
+                                "level": 8,
+                                "resolution": 529.1677250021168,
+                                "scale": 2000000
+                            }
+                        ]
                     }
                 ],
-                "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
-                "attribution": {
-                    "text": {
-                        "disabled": false,
-                        "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
+                "tileSchemas": [
+                    {
+                        "id": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                        "name": "Lambert cartes",
+                        "extentSetId": "EXT_NRCAN_Lambert_3978",
+                        "lodSetId": "LOD_NRCAN_Lambert_3978",
+                        "thumbnailTileUrls": ["/tile/8/285/268", "/tile/8/285/269"],
+                        "hasNorthPole": "true",
+                        "recoveryBasemap": {
+                            "basemapId": "baseProvinces_3978"
+                        }
+                    }
+                ],
+                "basemaps": [
+                    {
+                        "id": "baseNrCan",
+                        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                        "name": "Carte de base du Canada - transport (CBCT) avec étiquettes",
+                        "description": "La carte de base du Canada - transport (CBCT) du Secteur des sciences de la Terre de Ressources naturelles Canada est un service Internet qui s'adresse principalement aux utilisateurs et développeurs d'applications cartographiques en ligne.",
+                        "altText": "La carte de base du Canada - transport (CBCT)",
+                        "layers": [
+                            {
+                                "id": "CBCT",
+                                "layerType": "esri-tile",
+                                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT3978/MapServer",
+                                "opacity": 1
+                            }
+                        ],
+                        "attribution": {
+                            "text": {
+                                "disabled": true
+                            },
+                            "logo": {
+                                "disabled": false
+                            }
+                        },
+                        "backgroundColour": "#BFE8FE"
                     },
-                    "logo": {
+                    {
+                        "id": "baseSimple",
+                        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                        "name": "Carte de base du Canada - simple",
+                        "description": "La carte de base du Canada - simple",
+                        "altText": "La carte de base du Canada - simple",
+                        "layers": [
+                            {
+                                "id": "SMR",
+                                "layerType": "esri-tile",
+                                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/Simple/MapServer",
+                                "opacity": 1
+                            },
+                            {
+                              "id": "SMW",
+                              "layerType": "esri-tile",
+                              "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
+                            }
+                        ],
+                        "attribution": {
+                            "text": {
+                                "disabled": true
+                            },
+                            "logo": {
+                                "disabled": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "baseCBME_CBCE_HS_RO_3978",
+                        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                        "name": "Carte de base du Canada - élevation (CBCE)",
+                        "description": "La carte de base du Canada - élevation (CBCE) du Secteur des sciences de la Terre de Ressources naturelles Canada est un service Internet qui s'adresse principalement aux utilisateurs et développeurs d'applications cartographiques en ligne.",
+                        "altText": "La carte de base du Canada - élevation (CBCE)",
+                        "layers": [
+                            {
+                                "id": "CBME_CBCE_HS_RO_3978",
+                                "layerType": "esri-tile",
+                                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBME_CBCE_HS_RO_3978/MapServer",
+                                "opacity": 1
+                            }
+                        ],
+                        "attribution": {
+                            "text": {
+                                "disabled": true
+                            },
+                            "logo": {
+                                "disabled": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "baseCBMT_CBCT_GEOM_3978",
+                        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978",
+                        "name": "Carte de base du Canada - transport (CBCT)",
+                        "description": "La carte de base du Canada - transport (CBCT) du Secteur des sciences de la Terre de Ressources naturelles Canada est un service Internet qui s'adresse principalement aux utilisateurs et développeurs d'applications cartographiques en ligne.",
+                        "altText": "La carte de base du Canada - transport (CBCT)",
+                        "layers": [
+                            {
+                                "id": "CBMT_CBCT_GEOM_3978",
+                                "layerType": "esri-tile",
+                                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer",
+                                "opacity": 1
+                            }
+                        ],
+                        "attribution": {
+                            "text": {
+                                "disabled": false,
+                                "value": "© His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada"
+                            },
+                            "logo": {
+                                "disabled": false
+                            }
+                        },
+                        "backgroundColour": "#BFE8FE"
+                    },
+                    {
+                        "id": "baseProvinces_3978",
+                        "name": "Provinces et territoires du Canada",
+                        "description": "Représentation de les frontières et limites des provinces et des territoires du Canada.",
+                        "altText": "La carte de base du Canada - Provinces et territoires du Canada",
+                        "thumbnailUrl": "assets/images/outline.png",
+                        "layers": [
+                            {
+                                "id": "provinces_3978",
+                                "layerType": "esri-tile",
+                                "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
+                            }
+                        ],
+                        "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+                    }
+                ],
+                "caption": {
+                    "mapCoords": {
+                        "disabled": false
+                    },
+                    "scaleBar": {
+                        "disabled": false
+                    },
+                    "langToggle": {
                         "disabled": true
                     }
-                },
-                "backgroundColour": "#BFE8FE"
+                }
             },
-            {
-                "id": "baseProvinces_3978",
-                "name": "Provinces et territoires du Canada",
-                "description":
-                    "Représentation de les frontières et limites des provinces et des territoires du Canada.",
-                "altText":
-                    "La carte de base du Canada - Provinces et territoires du Canada",
-                "hideThumbnail": true,
-                "layers": [
-                    {
-                        "id": "provinces_3978",
-                        "layerType": "esri-tile",
-                        "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
-                    }
-                ],
-                "tileSchemaId":
-                    "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
+            "panels": {
+                "open": []
+            },
+            "system": {
+                "animate": true,
+                "exposeOid": false
             }
-        ]
+        }
     }
 }

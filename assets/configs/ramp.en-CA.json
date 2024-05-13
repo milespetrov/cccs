@@ -192,6 +192,9 @@
                         "attribution": {
                             "text": {
                                 "disabled": true
+                            },
+                            "logo": {
+                                "disabled": false
                             }
                         },
                         "backgroundColour": "#BFE8FE"
@@ -213,6 +216,9 @@
                         "attribution": {
                             "text": {
                                 "disabled": true
+                            },
+                            "logo": {
+                                "disabled": false
                             }
                         }
                     },
@@ -233,6 +239,9 @@
                         "attribution": {
                             "text": {
                                 "disabled": true
+                            },
+                            "logo": {
+                                "disabled": false
                             }
                         }
                     },
@@ -254,6 +263,9 @@
                             "text": {
                                 "disabled": false,
                                 "value": "© His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada"
+                            },
+                            "logo": {
+                                "disabled": false
                             }
                         },
                         "backgroundColour": "#BFE8FE"
