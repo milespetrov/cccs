@@ -204,8 +204,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.stopLayerSubscriptions();
             // .slice() to clone the array, otherwise indices will be skipped
             this._rInstance.geo.layer.allLayers().slice().forEach((layer: any) => {
-                this._rInstance.geo.map.removeLayer(layer.id);
-            })
+
+                // we can just let the two system layers lurk. Since new layers are added without
+                // an index parameter, the insertion algo will make sure they are under these
+                // cosmetic layers.
+                // Since identify fixture listens for layers changing & panel closing,
+                // will ensure any active hilights get cleared when layers switch.
+                if (!(layer.id === 'Ramp-Hilight' || layer.id === 'RampPoleMarker')) {
+                    this._rInstance.geo.map.removeLayer(layer.id);
+                }
+            });
         }
 
         const source = await this.datasetApi.getDatasetSource(this.$i18n.locale);
