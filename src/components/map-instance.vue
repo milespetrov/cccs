@@ -74,6 +74,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @StateApp('rcpId')
     currentRcp: string;
     @StateApp
+    sspId: string;
+    @StateApp
     timeSlice: number;
     @StateApp
     centerPoint: MapPoint;
@@ -141,6 +143,11 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('currentRcp')
     onRcpChanged(newValue: string, oldValue: string) {
+        this.switchLayers();
+    }
+
+    @Watch('sspId')
+    onSspChanged(newValue: string, oldValue: string) {
         this.switchLayers();
     }
 

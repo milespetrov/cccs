@@ -282,7 +282,7 @@ $max-layers: 4;
 
 // Spacing for different amounts of layers
 // This is based on the amount of layers in the selector
-@for $i from 4 through $max-layers {
+@for $i from 3 through $max-layers {
     .cip-time-slider-container.layers-#{$i} /deep/ {
         margin: 0 calc(100% / #{$i} / 2);
 

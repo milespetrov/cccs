@@ -7,6 +7,7 @@ export interface AppState {
     featureId: string | null;
     featurePoint: MapPoint | null;
     rcpId: string | null;
+    sspId: string | null;
     centerPoint: MapPoint | null;
     locationPoint: MapPoint | null;
     zoomLevel: string | null;

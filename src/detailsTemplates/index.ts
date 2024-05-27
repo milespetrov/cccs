@@ -16,6 +16,7 @@ const registerFunctions = {
     [DatasetId.CAPA]: registerCAPA,
     [DatasetId.CMIP5]: registerCMIP5,
     [DatasetId.DCS]: registerDCS,
+    [DatasetId.DCSu6]: () => {},
     [DatasetId.Hydrometric]: registerHydro,
     [DatasetId.LTCE]: registerLTCE,
     [DatasetId.ClimateNormal]: registerNormal,
@@ -23,5 +24,8 @@ const registerFunctions = {
 }
 
 export default function registerDetailsTemplates(rampInstance: any, datasetId: DatasetId): void {
+    if (datasetId === "cmip6") {
+        return;
+    }
     registerFunctions[datasetId](rampInstance);
 }

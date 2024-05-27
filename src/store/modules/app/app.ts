@@ -18,6 +18,7 @@ const state: AppState = {
     featureId: null,
     featurePoint: null,
     rcpId: null,
+    sspId: null,
     centerPoint: null,
     locationPoint: null,
     zoomLevel: null,
@@ -48,6 +49,7 @@ enum Action {
     setInternalRouteUpdate = 'setInternalRouteUpdate',
     setMonth = 'setMonth',
     setRcpId = 'setRcpId',
+    setSspId = 'setSspId',
     setTimeSlice = 'setTimeSlice',
     setTimePeriodId = 'setTimePeriodId',
     setVariableId = 'setVariableId',
@@ -67,6 +69,7 @@ enum Mutation {
     SET_INTERNAL_ROUTE_UPDATE = 'SET_INTERNAL_ROUTE_UPDATE',
     SET_MONTH = 'SET_MONTH',
     SET_RCP_ID = 'SET_RCP_ID',
+    SET_SSP_ID = 'SET_SSP_ID',
     SET_RCP_TIME_SLICE = 'SET_RCP_TIME_SLICE',
     SET_TIME_PERIOD_ID = 'SET_TIME_PERIOD_ID',
     SET_VARIABLE_ID = 'SET_VARIABLE_ID',
@@ -88,6 +91,7 @@ const getters = {
             // f: state.featureId,
             // fp: state.featurePoint ? state.featurePoint.safeString : null,
             r: state.rcpId,
+            s: state.sspId,
             cp: state.centerPoint ? state.centerPoint.safeString : null,
             z: state.zoomLevel,
             ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
@@ -227,6 +231,10 @@ const actions = {
                 action: (value: string) => context.dispatch(Action.setRcpId, value),
                 state: context.state.rcpId
             },
+            [VisualizationControlType.SSP]: {
+                action: (value: string) => context.dispatch(Action.setSspId, value),
+                state: context.state.sspId
+            },
             [VisualizationControlType.Analysis]: {
                 action: (value: string) => context.dispatch(Action.setAnalysisPeriod, value),
                 state: context.state.analysisPeriod
@@ -241,7 +249,7 @@ const actions = {
             }
         };
 
-        [VisualizationControlType.Time, VisualizationControlType.RCP, VisualizationControlType.Analysis, VisualizationControlType.Month, VisualizationControlType.Day].forEach(
+        [VisualizationControlType.Time, VisualizationControlType.RCP, VisualizationControlType.SSP, VisualizationControlType.Analysis, VisualizationControlType.Month, VisualizationControlType.Day].forEach(
             type => {
                 // if the selector is not defined for this dataset/view combination, reset the value to null
                 const selectorSource = datasetControlOptions[type];
@@ -296,6 +304,10 @@ const actions = {
 
     [Action.setRcpId](context: AppContext, value: string | null) {
         context.commit(Mutation.SET_RCP_ID, value);
+    },
+
+    [Action.setSspId](context: AppContext, value: string | null) {
+        context.commit(Mutation.SET_SSP_ID, value);
     },
 
     [Action.setTimeSlice](context: AppContext, value: number | string | null) {
@@ -397,6 +409,10 @@ const mutations = {
 
     [Mutation.SET_RCP_ID](state: AppState, value: string): void {
         state.rcpId = value;
+    },
+
+    [Mutation.SET_SSP_ID](state: AppState, value: string): void {
+        state.sspId = value;
     },
 
     [Mutation.SET_RCP_TIME_SLICE](state: AppState, value: number | null): void {

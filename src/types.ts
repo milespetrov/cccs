@@ -6,8 +6,10 @@
 export enum DatasetId {
     AHCCD = 'ahccd',
     CMIP5 = 'cmip5',
+    CMIP6 = 'cmip6',
     CANGRD = 'cangrd',
     DCS = 'dcs',
+    DCSu6 = 'dcs_u6',
     ClimateNormal = 'normal',
     ClimateMonthly = 'monthly',
     ClimateDaily = 'daily',
@@ -69,6 +71,7 @@ export enum VisualizationControlType {
     Variable = 'variable-selector',
     Dataset = 'dataset-selector',
     RCP = 'rcp-selector',
+    SSP = 'ssp-selector',
     Time = 'time-period-selector',
     Analysis = 'analysis-period-selector',
     Month = 'month-selector',
@@ -85,6 +88,18 @@ export enum RCPType {
     RCP4_5 = 'rcp45',
     RCP8_5 = 'rcp85'
 }
+
+/**
+ * All available SSP model ids.
+ *
+ * @enum {string}
+ */
+ export enum SSPType {
+     SSP126 = 'ssp126',
+     SSP245 = 'ssp245',
+     SSP370 = 'ssp370',
+     SSP585 = 'ssp585'
+ }
 
 /**
  * All available TimePeriod ids.

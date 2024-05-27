@@ -118,6 +118,25 @@ class CMIP5Api extends DatasetApi {
     }
 }
 
+class CMIP6Api extends DatasetApi {
+    constructor(state: AppState) {
+        super(state, DatasetId.CMIP6);
+    }
+
+    /**
+     * Returns a dataset config url based on the curent state.
+     *
+     * @readonly
+     * @type {string}
+     * @memberof CMIP6Api
+     */
+    get fetchUrl(): string {
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}-${this.state.timePeriodId}-${
+            this.state.sspId
+        }.json`;
+    }
+}
+
 class DailyApi extends DatasetApi {
     constructor(state: AppState) {
         super(state, DatasetId.ClimateDaily);
@@ -192,6 +211,26 @@ class DCSApi extends DatasetApi {
         const growingSeasonVars: string[] = [VariableId.GrowingSeasonWarm, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonOverwinter]
         return `${this.baseUrl}/${this.id}/config-${this.state.variableId}${growingSeasonVars.includes(this.state.variableId!) ? '' : '-' +this.state.timePeriodId}-${
             this.state.rcpId
+        }.json`;
+    }
+}
+
+class DCSu6Api extends DatasetApi {
+    constructor(state: AppState) {
+        super(state, DatasetId.DCSu6);
+    }
+
+    /**
+     * Returns a dataset config url based on the curent state.
+     *
+     * @readonly
+     * @type {string}
+     * @memberof DCS6Api
+     */
+    get fetchUrl(): string {
+        const growingSeasonVars: string[] = [VariableId.GrowingSeasonWarm, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonOverwinter]
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}${growingSeasonVars.includes(this.state.variableId!) ? '' : '-' +this.state.timePeriodId}-${
+            this.state.sspId
         }.json`;
     }
 }
@@ -374,7 +413,9 @@ export default {
     [DatasetId.ClimateMonthly]: wrap(MonthlyApi),
     [DatasetId.ClimateNormal]: wrap(NormalApi),
     [DatasetId.CMIP5]: wrap(CMIP5Api),
+    [DatasetId.CMIP6]: wrap(CMIP6Api),
     [DatasetId.DCS]: wrap(DCSApi),
+    [DatasetId.DCSu6]: wrap(DCSu6Api),
     [DatasetId.Hydrometric]: wrap(HydroApi),
     [DatasetId.LTCE]: wrap(LTCEApi),
     [DatasetId.SPEI]: wrap(SPEIApi)

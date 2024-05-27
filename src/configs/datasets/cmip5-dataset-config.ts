@@ -1,7 +1,7 @@
 import { DatasetSource } from './types';
 import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, IdentifyMode } from '@/types';
 
-const cimp5Dataset: DatasetSource = {
+const cmip5Dataset: DatasetSource = {
     id: DatasetId.CMIP5,
 
     controls: {
@@ -173,4 +173,4 @@ const cimp5Dataset: DatasetSource = {
     identifyMode: [IdentifyMode.Query, IdentifyMode.Marker, IdentifyMode.Details]
 };
 
-export default cimp5Dataset;
+export default cmip5Dataset;

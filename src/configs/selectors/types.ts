@@ -136,6 +136,29 @@ export interface RCPSelectorConfig extends BaseSelectorConfig {
     groups: RCPSelectorGroupConfig[];
 }
 
+// SSP Selector Config
+
+/**
+ * Configuration of the SSPGroup in the SSP selector.
+ *
+ * @interface SSPSelectorGroupConfig
+ * @extends {BaseSelectorGroupConfig}
+ */
+export interface SSPSelectorGroupConfig extends BaseSelectorGroupConfig {
+    items: string[];
+}
+
+/**
+ * Configuration of the SSP selector.
+ *
+ * @interface SSPSelectorConfig
+ * @extends {BaseSelectorConfig}
+ */
+export interface SSPSelectorConfig extends BaseSelectorConfig {
+    groups: SSPSelectorGroupConfig[];
+}
+
+
 // example
 
 ////////
