@@ -1,0 +1,390 @@
+{
+    "en": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Data"
+            },
+            {
+                "infoType": "text",
+                "content": "Projected changes in statistically downscaled mean temperature (°C) are with respect to the reference period of 1986-2005."
+            },
+            {
+                "layerId": "DCSu6_tmean_MAM_ssp585_2071_en",
+                "description": "",
+                "coverIcon": "assets/images/tmean.png",
+                "symbologyStack": [
+                    {
+                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CanDCSU6-SSP585_AirTempAnomaly-Pct50_2071-2100_P0Y-MAM&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "images"
+            },
+            {
+                "infoType": "title",
+                "content": "Settings"
+            },
+            {
+                "layerId": "cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": [],
+                "name": "Cities"
+            },
+            {
+                "layerId": "labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": [],
+                "name": "Labels"
+            },
+            {
+                "layerId": "provinces",
+                "coverIcon": "assets/images/provinces.png",
+                "symbologyStack": [],
+                "name": "Provinces"
+            }
+        ],
+        "supportLayers": [
+            {
+                "name": "Cities",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 1,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "cities",
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+                "expectedLoadTime": 10000,
+                "layerType": "esri-tile"
+            },
+            {
+                "name": "Labels",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "labels",
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
+                "expectedLoadTime": 10000,
+                "layerType": "esri-tile"
+            },
+            {
+                "name": "Provinces",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "provinces",
+                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
+                "expectedLoadTime": 10000,
+                "layerType": "esri-tile"
+            }
+        ],
+        "dataLayers": [
+            {
+                "name": "Mean temperature",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "DCSu6_tmean_MAM_ssp585_2021_en",
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+                "layerType": "ogc-wms",
+                "featureInfoMimeType": "application/json",
+                "sublayers": [
+                    {
+                        "id": "CanDCSU6-SSP585_AirTempAnomaly-Pct50_2021-2050_P0Y-MAM"
+                    }
+                ],
+                "fixtures": {
+                    "details": {
+                        "template": "dcsVariableTemplate"
+                    }
+                }
+            },
+            {
+                "name": "Mean temperature",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "DCSu6_tmean_MAM_ssp585_2041_en",
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+                "layerType": "ogc-wms",
+                "featureInfoMimeType": "application/json",
+                "sublayers": [
+                    {
+                        "id": "CanDCSU6-SSP585_AirTempAnomaly-Pct50_2041-2070_P0Y-MAM"
+                    }
+                ],
+                "fixtures": {
+                    "details": {
+                        "template": "dcsVariableTemplate"
+                    }
+                }
+            },
+            {
+                "name": "Mean temperature",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "DCSu6_tmean_MAM_ssp585_2071_en",
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+                "layerType": "ogc-wms",
+                "featureInfoMimeType": "application/json",
+                "sublayers": [
+                    {
+                        "id": "CanDCSU6-SSP585_AirTempAnomaly-Pct50_2071-2100_P0Y-MAM"
+                    }
+                ],
+                "fixtures": {
+                    "details": {
+                        "template": "dcsVariableTemplate"
+                    }
+                }
+            }
+        ]
+    },
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title",
+                "content": "Données"
+            },
+            {
+                "infoType": "text",
+                "content": "Les changements projetés dans la température moyenne (°C) statistiquement mise à l'échelle sont calculés par rapport à la période de référence 1986-2005."
+            },
+            {
+                "layerId": "DCSu6_tmean_MAM_ssp585_2071_fr",
+                "description": "",
+                "coverIcon": "assets/images/tmean.png",
+                "symbologyStack": [
+                    {
+                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CanDCSU6-SSP585_AirTempAnomaly-Pct50_2071-2100_P0Y-MAM&format=image/png&STYLE=default",
+                        "text": ""
+                    }
+                ],
+                "symbologyRenderStyle": "images"
+            },
+            {
+                "infoType": "title",
+                "content": "Paramètres"
+            },
+            {
+                "layerId": "cities",
+                "coverIcon": "assets/images/cities.png",
+                "symbologyStack": [],
+                "name": "Villes"
+            },
+            {
+                "layerId": "labels",
+                "coverIcon": "assets/images/labels.png",
+                "symbologyStack": [],
+                "name": "Étiquettes"
+            },
+            {
+                "layerId": "provinces",
+                "coverIcon": "assets/images/provinces.png",
+                "symbologyStack": [],
+                "name": "Provinces"
+            }
+        ],
+        "supportLayers": [
+            {
+                "name": "Villes",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 1,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "cities",
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
+                "expectedLoadTime": 10000,
+                "layerType": "esri-tile"
+            },
+            {
+                "name": "Étiquettes",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "labels",
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
+                "expectedLoadTime": 10000,
+                "layerType": "esri-tile"
+            },
+            {
+                "name": "Provinces",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 1,
+                    "visibility": true,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "provinces",
+                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
+                "expectedLoadTime": 10000,
+                "layerType": "esri-tile"
+            }
+        ],
+        "dataLayers": [
+            {
+                "name": "Température moyenne",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "DCSu6_tmean_MAM_ssp585_2021_fr",
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+                "layerType": "ogc-wms",
+                "featureInfoMimeType": "application/json",
+                "sublayers": [
+                    {
+                        "id": "CanDCSU6-SSP585_AirTempAnomaly-Pct50_2021-2050_P0Y-MAM"
+                    }
+                ],
+                "fixtures": {
+                    "details": {
+                        "template": "dcsVariableTemplate"
+                    }
+                }
+            },
+            {
+                "name": "Température moyenne",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "DCSu6_tmean_MAM_ssp585_2041_fr",
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+                "layerType": "ogc-wms",
+                "featureInfoMimeType": "application/json",
+                "sublayers": [
+                    {
+                        "id": "CanDCSU6-SSP585_AirTempAnomaly-Pct50_2041-2070_P0Y-MAM"
+                    }
+                ],
+                "fixtures": {
+                    "details": {
+                        "template": "dcsVariableTemplate"
+                    }
+                }
+            },
+            {
+                "name": "Température moyenne",
+                "controls": [
+                    "visibility",
+                    "opacity",
+                    "settings",
+                    "symbology"
+                ],
+                "state": {
+                    "opacity": 0.85,
+                    "visibility": false,
+                    "identify": true,
+                    "hovertips": true
+                },
+                "id": "DCSu6_tmean_MAM_ssp585_2071_fr",
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
+                "layerType": "ogc-wms",
+                "featureInfoMimeType": "application/json",
+                "sublayers": [
+                    {
+                        "id": "CanDCSU6-SSP585_AirTempAnomaly-Pct50_2071-2100_P0Y-MAM"
+                    }
+                ],
+                "fixtures": {
+                    "details": {
+                        "template": "dcsVariableTemplate"
+                    }
+                }
+            }
+        ]
+    }
+}
