@@ -2,10 +2,11 @@ import { formatLatLong } from '@/globals/utils';
 var variableTemplate = {
     props: ['identifyData'],
     template:`
-        <div class="dcs-details">
+        <div class="cmip5-details">
             <div class="short-form" :class="variable + '-icon'">
                 <p><span>{{TRANSLATIONS[lang].details[0]}}</span></p>
                 <p class="data-value">{{ value }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
+                <p class="supporting-value">{{ minRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}} - {{ maxRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[1]}}</span></p>
                 <p class="supporting-value">{{TRANSLATIONS[lang].timeSlider[timeSlice]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[2]}}</span></p>
@@ -15,7 +16,7 @@ var variableTemplate = {
             <div class="long-form">
                 <p class="details-row"><span class="details-label">{{TRANSLATIONS[lang].timePeriod.label}}:</span><span class="details-value">{{TRANSLATIONS[lang].timePeriod[timePeriod]}}</span></p>
                 <p class="details-row"><span class="details-label">{{TRANSLATIONS[lang].variable.label}}:</span><span class="details-value">{{TRANSLATIONS[lang].variable[variable]}}</span></p>
-                <p class="details-row"><span class="details-label">{{TRANSLATIONS[lang].rcp.label}}:</span><span class="details-value">{{TRANSLATIONS[lang].rcp[rcp]}}</span></p>
+                <p class="details-row"><span class="details-label">{{TRANSLATIONS[lang].ssp.label}}:</span><span class="details-value">{{TRANSLATIONS[lang].ssp[ssp]}}</span></p>
             </div>
             <span class="divider mrgn-bttm-md mrgn-tp-md"></span>
             <div class="long-form">
@@ -36,7 +37,7 @@ var variableTemplate = {
         this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
         this.timeSlice = new RegExp('[?&]ts=([0-9])').exec(window.location.href)[1];
         this.timePeriod = new RegExp('[?&]t=([^&]*)').exec(window.location.href)[1];
-        this.rcp = new RegExp('[?&]r=(rcp[^&]*)').exec(window.location.href)[1];
+        this.ssp = new RegExp('[?&]s=(ssp[^&]*)').exec(window.location.href)[1];
 
         var tempVal = this.identifyData.data.data.features[0].properties.value;
         var parsedVal = parseFloat(tempVal).toFixed(1); // seems to not error if gargabe is passed in
@@ -58,14 +59,54 @@ var variableTemplate = {
         );
         this.latlong = this.latlong.coordinates;
     },
+    mounted(){
+
+        var params = new URLSearchParams(this.identifyData.data.requestOptions.query);
+
+        var origLayer = params.get('LAYERS');
+
+        params.set('LAYERS', origLayer.replace('Pct50', 'Pct5'));
+        params.set('QUERY_LAYERS', origLayer.replace('Pct50', 'Pct5'));
+
+        try {
+            fetch(this.identifyData.data.url + '?' + params.toString()).then(response => {
+                if (response.ok) {
+                    response.json().then(data => {
+                        var parsedVal = parseFloat(data.features[0].properties.value).toFixed(1);
+                        this.minRangeValue = ((parsedVal >= 0) ? '+' : '') + parsedVal;
+                    });
+                }
+            });
+        } catch (error) {
+
+        }
+
+        params.set('LAYERS', origLayer.replace('Pct50', 'Pct95'));
+        params.set('QUERY_LAYERS', origLayer.replace('Pct50', 'Pct95'));
+
+        try {
+            fetch(this.identifyData.data.url + '?' + params.toString()).then(response => {
+                if (response.ok) {
+                    response.json().then(data => {
+                        var parsedVal = parseFloat(data.features[0].properties.value).toFixed(1);
+                        this.maxRangeValue = ((parsedVal >= 0) ? '+' : '') + parsedVal;
+                    });
+                }
+            });
+        } catch (error) {
+
+        }
+    },
     data() {
         return {
             latlong: {},
             value: '',
+            minRangeValue: '',
+            maxRangeValue: '',
             variable: '',
             timeSlice: '',
             timePeriod: '',
-            rcp: '',
+            ssp: '',
             TRANSLATIONS: {
                 'en': {
                     latlong: 'Latitude, longitude',
@@ -80,21 +121,19 @@ var variableTemplate = {
                     variable: {
                         label: 'Variable',
                         tmean: 'Mean temperature',
-                        tmin: 'Daily minimum temperature',
-                        tmax: 'Daily maximum temperature',
+                        sic: 'Sea ice concentration',
+                        sit: 'Sea ice thickness',
                         precip: 'Total precipitation',
-                        gso: 'Growing season overwinter (CLIENT CONTENT)',
-                        gsc: 'Growing season cool (CLIENT CONTENT)',
-                        gsw: 'Growing season warm (CLIENT CONTENT)'
+                        sfcwind: 'Surface wind speed',
+                        snd: 'Snow depth'
                     },
                     measurementUnit: {
                         precip: '%',
                         tmean: '°C',
-                        tmin: '°C',
-                        tmax: '°C',
-                        gso: 'days (CLIENT CONTENT)',
-                        gsc: 'days (CLIENT CONTENT)',
-                        gsw: 'days (CLIENT CONTENT)'
+                        sfcwind: '%',
+                        sic: '%',
+                        sit: '%',
+                        snd: '%'
                     },
                     timeSlider: [
                         '2021-2040',
@@ -102,15 +141,16 @@ var variableTemplate = {
                         '2061-2080',
                         '2081-2100'
                     ],
-                    rcp: {
+                    ssp: {
                         label: 'Emission scenario',
-                        rcp85: 'High',
-                        rcp45: 'Moderate',
-                        rcp26: 'Low'
+                        ssp585: 'High',
+                        ssp370: 'Moderate-High',
+                        ssp245: 'Moderate',
+                        ssp126: 'Low'
                     },
                     learnMore: {
-                        default: 'Learn more about the Statistically downscaled climate data dataset.',
-                        link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-downscaled-climate-scenarios.html'
+                        default: 'Learn more about the Global climate model scenarios dataset.',
+                        link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-coupled-model-intercomparison-phase5.html'
                     },
                     details: [
                         'Projected change of',
@@ -132,21 +172,19 @@ var variableTemplate = {
                     variable: {
                         label: 'Variable',
                         tmean: 'Température moyenne',
-                        tmin: 'Température minimale quotidienne',
-                        tmax: 'Température maximale quotidienne',
+                        sic: 'Concentration de la glace de mer',
+                        sit: 'Épaisseur de la glace de mer',
                         precip: 'Précipitations totales',
-                        gso: 'Growing season overwinter (CLIENT CONTENT)',
-                        gsc: 'Growing season cool (CLIENT CONTENT)',
-                        gsw: 'Growing season warm (CLIENT CONTENT)'
+                        sfcwind: 'Vitesse du vent',
+                        snd: 'Épaisseur de la neige'
                     },
                     measurementUnit: {
                         precip: '%',
                         tmean: '°C',
-                        tmin: '°C',
-                        tmax: '°C',
-                        gso: 'jours (CLIENT CONTENT)',
-                        gsc: 'jours (CLIENT CONTENT)',
-                        gsw: 'jours (CLIENT CONTENT)'
+                        sfcwind: '%',
+                        sic: '%',
+                        sit: '%',
+                        snd: '%'
                     },
                     timeSlider: [
                         '2021-2040',
@@ -154,16 +192,16 @@ var variableTemplate = {
                         '2061-2080',
                         '2081-2100'
                     ],
-                    rcp: {
+                    ssp: {
                         label: "Scénarios d'émissions",
-                        rcp85: 'Élevées',
-                        rcp45: 'Modérées',
-                        rcp26: 'Faibles'
+                        ssp585: 'Élevées',
+                        ssp370: 'Élevées',
+                        ssp245: 'Modérées',
+                        ssp126: 'Faibles'
                     },
                     learnMore: {
-                        default:
-                            "En savoir plus sur l’ensemble de données Scénarios climatiques mis à l’échelle de manière statistique.",
-                        link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-scenarios-climatiques-echelle-reduite.html'
+                        default: 'En savoir plus sur l’ensemble de données Scénarios basés sur des modèles climatiques globaux.',
+                        link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-phase5-intercomparaison-modeles-couples.html'
                     },
                     details: [
                         'Changement projeté de',
@@ -179,5 +217,5 @@ var variableTemplate = {
 };
 
 export default function register(rampInstance) {
-    rampInstance.$element.component('dcsVariableTemplate', variableTemplate);
+    rampInstance.$element.component('cmip6VariableTemplate', variableTemplate);
 }

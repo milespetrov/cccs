@@ -129,7 +129,7 @@
                 ],
                 "fixtures": {
                     "details": {
-                        "template": "dcsVariableTemplate"
+                        "template": "dcsu6VariableTemplate"
                     }
                 }
             },
@@ -158,7 +158,7 @@
                 ],
                 "fixtures": {
                     "details": {
-                        "template": "dcsVariableTemplate"
+                        "template": "dcsu6VariableTemplate"
                     }
                 }
             },
@@ -187,7 +187,7 @@
                 ],
                 "fixtures": {
                     "details": {
-                        "template": "dcsVariableTemplate"
+                        "template": "dcsu6VariableTemplate"
                     }
                 }
             }
@@ -323,7 +323,7 @@
                 ],
                 "fixtures": {
                     "details": {
-                        "template": "dcsVariableTemplate"
+                        "template": "dcsu6VariableTemplate"
                     }
                 }
             },
@@ -352,7 +352,7 @@
                 ],
                 "fixtures": {
                     "details": {
-                        "template": "dcsVariableTemplate"
+                        "template": "dcsu6VariableTemplate"
                     }
                 }
             },
@@ -381,7 +381,7 @@
                 ],
                 "fixtures": {
                     "details": {
-                        "template": "dcsVariableTemplate"
+                        "template": "dcsu6VariableTemplate"
                     }
                 }
             }

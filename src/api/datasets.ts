@@ -229,7 +229,7 @@ class DCSu6Api extends DatasetApi {
      */
     get fetchUrl(): string {
         const growingSeasonVars: string[] = [VariableId.GrowingSeasonWarm, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonOverwinter]
-        return `${this.baseUrl}/${this.id}/config-${this.state.variableId}${growingSeasonVars.includes(this.state.variableId!) ? '' : '-' +this.state.timePeriodId}-${
+        return `${this.baseUrl}/${this.id}/config-${this.state.variableId + '-' + this.state.timePeriodId}-${
             this.state.sspId
         }.json`;
     }

@@ -171,7 +171,7 @@ rv-table-setting-cluster {
 .rv-details-list div {
     display: block !important;
 }
-.cmip5-details {
+.cmip5-details, .dcs-details {
     .precip-icon:before, .rdpa6-icon:before, .rdpa24-icon:before {
         content: "";
         position: absolute;
