@@ -421,6 +421,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         //this.updateIdentifyMode();
         this.injectCIPMapcomponents();
         this.switchLayers();
+        this.updateRoute();
 
         // RAMP4 is vue3 which doesnt have truly global components
         // so we do this every time the RAMP instance is made (only for the current dataset)
