@@ -73,6 +73,9 @@ export default class MapViewControls extends Vue {
         if (!this.urlSuffixes || !this.datasetId) {
             return '';
         }
+        if ([DatasetID.CMIP6, DatasetID.DCSu6].includes(this.datasetId)) {
+            return this.urlSuffixes[this.datasetId].metadata[<'en' | 'fr'>i18n.locale];
+        }
         return this.urlSuffixes[this.datasetId].metadata[this.variableId];
     }
 

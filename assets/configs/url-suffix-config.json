@@ -72,16 +72,12 @@
                 "fr": "/simulations-cmip5"
             },
             "metadata": {
-                "tmean": "/1e86f4f7-da88-403e-bd44-92065c0fd568",
-                "precip": "/eddd6eaf-34d7-4452-a994-3d928115a68b",
-                "sfcwind": "/e0c71149-db7a-4700-acfd-1c8f9d778354",
-                "sic": "/78f9e3e0-3a12-4321-99dd-eed047c31e5e",
-                "sit": "/b6a68b05-58f3-4d71-89d8-25b5a5277796",
-                "snd": "/0933f0dc-3625-4583-828a-86d032e4b737"
+                "en": "https://catalogue.ec.gc.ca/geonetwork/srv/eng/catalog.search#/metadata/7e7337b7-d36c-4486-a8df-16609a6b99bd",
+                "fr": "https://catalogue.ec.gc.ca/geonetwork/srv/fre/catalog.search#/metadata/7e7337b7-d36c-4486-a8df-16609a6b99bd"
             },
             "technicalDocs": {
-                "en": "/technical-documentation-coupled-model-intercomparison-phase5.html",
-                "fr": "/documentation-technique-phase5-intercomparaison-modeles-couples.html"
+                "en": "https://collaboration.cmc.ec.gc.ca/cmc/cmos/public_doc/msc-data/climate_cmip6/CMIP6_Technical_Documentation_en.pdf",
+                "fr": "https://collaboration.cmc.ec.gc.ca/cmc/cmos/public_doc/msc-data/climate_cmip6/CMIP6_Technical_Documentation_fr.pdf"
             }
         },
         "dcs": {
@@ -93,7 +89,10 @@
                 "tmax": "/57fee0af-40ec-4aad-89da-6c0d39a6424d",
                 "tmean": "/958b8357-3690-414d-8bec-d65951041636",
                 "tmin": "/3156e7bf-6f11-46f7-b70a-51b6d4e3835b",
-                "precip": "/286dd106-b507-472a-9a26-f72dceffb475"
+                "precip": "/286dd106-b507-472a-9a26-f72dceffb475",
+                "gsw": "",
+                "gso": "",
+                "gsc": ""
             },
             "technicalDocs": {
                 "en": "/technical-documentation-downscaled-climate-scenarios.html",
@@ -106,14 +105,12 @@
                 "fr": "/donnees-echelle-reduite"
             },
             "metadata": {
-                "tmax": "/57fee0af-40ec-4aad-89da-6c0d39a6424d",
-                "tmean": "/958b8357-3690-414d-8bec-d65951041636",
-                "tmin": "/3156e7bf-6f11-46f7-b70a-51b6d4e3835b",
-                "precip": "/286dd106-b507-472a-9a26-f72dceffb475"
+                "en": "https://catalogue.ec.gc.ca/geonetwork/srv/eng/catalog.search#/metadata/764720d5-8c0a-4e1e-93fc-d9e3eb0ab6b3",
+                "fr": "https://catalogue.ec.gc.ca/geonetwork/srv/fre/catalog.search#/metadata/764720d5-8c0a-4e1e-93fc-d9e3eb0ab6b3"
             },
             "technicalDocs": {
-                "en": "/technical-documentation-downscaled-climate-scenarios.html",
-                "fr": "/documentation-technique-scenarios-climatiques-echelle-reduite.html"
+                "en": "https://collaboration.cmc.ec.gc.ca/cmc/cmos/public_doc/msc-data/climate_candcsu6/CanDCS-U6_Technical_Documentation_en.pdf",
+                "fr": "https://collaboration.cmc.ec.gc.ca/cmc/cmos/public_doc/msc-data/climate_candcsu6/CanDCS-U6_Technical_Documentation_fr.pdf"
             }
         },
         "hydro": {
@@ -173,12 +170,14 @@
                 "en": {
                     "normal": "/technical-documentation-climate-normals.html",
                     "monthly": "/technical-documentation-monthly-climate-summaries.html",
-                    "daily": "/technical-documentation-daily-data.html"
+                    "daily": "/technical-documentation-daily-data.html",
+                    "hourly": "/technical-documentation-hourly-data.html"
                 },
                 "fr": {
                     "normal": "/documentation-technique-normales-climatiques.html",
                     "monthly": "/documentation-technique-sommaires-climatologiques-mensuels.html",
-                    "daily": "/documentation-technique-donnees-quotidiennes.html"
+                    "daily": "/documentation-technique-donnees-quotidiennes.html",
+                    "hourly": "documentation-technique-donnees-horaires.html"
                 }
             }
         }

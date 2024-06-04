@@ -32,12 +32,13 @@
                     <p v-if="datasetId === 'ltce'">{{ $t(`map.${datasetId}_desc.noteExtra`)}}</p>
 
                     <i18n :path="`map.description.technical`" tag="p">
-                        <a :href="`${technicalDocsUrl}${technicalDocsRoute}`">{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
+                        <a v-if="datasetId !== 'cmip6' && datasetId !== 'dcs_u6'" :href="`${technicalDocsUrl}${technicalDocsRoute}`">{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
+                        <a v-else :href="`${technicalDocsRoute}`">{{$t(`map.${datasetId}_desc.technicalLink`) }}</a>
                     </i18n>
                 </div>
 
                 <div v-else>
-                    <div v-for="(item, index) in ['normal', 'monthly', 'daily']" :key="item">
+                    <div v-for="(item, index) in ['normal', 'monthly', 'daily', 'hourly']" :key="item">
                         <h3>{{$t(`map.${item}_desc.title`)}}</h3>
                         <p>{{$t(`map.${item}_desc`)}}</p>
                         <i18n :path="`map.description.technical.normal`" tag="p">
