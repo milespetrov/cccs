@@ -306,18 +306,22 @@ daySelector.30.qualifier,,1,,1
 daySelector.31.fullName,31,1,31,1
 daySelector.31.shortName,31,1,31,1
 daySelector.31.qualifier,,1,,1
+export.emissionScenario,Emission scenario,1,Scénarios d'émissions,1
 rcpSelector.title,Scenarios,1,Scénarios,1
 rcpSelector.header,Global emission scenarios,1,Scénarios d'émissions mondiales,1
 rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP définissent des scénarios futurs plausibles des émissions anthropiques.",1
 rcpSelector.all_rcp_models,,1,,1
 rcpSelector.rcp26.shortName,Low emission,1,Émissions faibles,1
 rcpSelector.rcp26.fullName,Low emission scenario (RCP 2.6),1,"Scénario d'émissions faibles (RCP 2.6)",1
+rcpSelector.rcp26.veryShortName,Low,1,Faibles,0
 rcpSelector.rcp26.qualifier,,1,,1
 rcpSelector.rcp45.shortName,Moderate emission,1,Émissions modérées,1
 rcpSelector.rcp45.fullName,Moderate emission scenario (RCP 4.5),1,"Scénario d'émissions modérées (RCP 4.5)",1
+rcpSelector.rcp45.veryShortName,Moderate,1,Modérées,0
 rcpSelector.rcp45.qualifier,,1,,1
 rcpSelector.rcp85.shortName,High emission,1,Émissions élevées,1
 rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Scénario d'émissions élevées (RCP 8.5)",1
+rcpSelector.rcp85.veryShortName,High,1,élevées,0
 rcpSelector.rcp85.qualifier,,1,,1
 sspSelector.title,Scenarios,0,Scénarios,0
 sspSelector.header,Global emission scenarios,0,Scénarios d'émissions mondiales,0
@@ -504,6 +508,7 @@ units.cmip6.sic.shortName,%,0,%,0
 units.cmip6.sic.fullName,percent,0,pourcentage,0
 units.cmip6.snd.shortName,%,0,%,0
 units.cmip6.snd.fullName,percent,0,pourcentage,0
+dcs.projected.footnote,The projected change is relative to the 1986-2005 average,1,[FR] The projected change is relative to the 1986-2005 average,0
 dcs.tmean.fullName,Mean temperature,1,Température moyenne,1
 dcs.tmean.shortName,Mean temperature,1,Température moyenne,1
 dcs.tmean.qualifier,,1,,1

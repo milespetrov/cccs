@@ -81,7 +81,13 @@
                     "panelWidth": 350
                 },
                 "appbar": {
-                    "items": ["legend", "geosearch", "basemap", "help"]
+                    "items": [
+                        "legend",
+                        "geosearch",
+                        "basemap",
+                        "export",
+                        "help"
+                    ]
                 }
             },
             "layers": [],

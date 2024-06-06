@@ -32,6 +32,7 @@ import MapFineprint from './map-fineprint.vue';
 import MapScrollguard from './map-scrollguard.vue';
 import MapPanguard from './map-panguard.vue';
 import { monthSelectorConfig } from '../configs/selectors';
+import { customRendererStartup } from '@/../assets/scripts/customExport';
 
 // TODO: import proper RAMP definitions
 export interface IdentifyResult {
@@ -418,6 +419,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     async mapStartup(): Promise<void> {
+        customRendererStartup(this._rInstance, this.$store.state.app, this.$i18n);
         //this.updateIdentifyMode();
         this.injectCIPMapcomponents();
         this.switchLayers();
