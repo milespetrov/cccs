@@ -29,6 +29,7 @@ const state: AppState = {
         labels: null,
         provinces: null
     },
+    supplementalIds: [],
     lastClick: null,
     month: null,
     day: null,
@@ -56,6 +57,7 @@ enum Action {
     setZoomLevel = 'setZoomLevel',
     setAnalysisPeriod = 'setAnalysisPeriod',
     setLayerVisibility = 'setLayerVisibility',
+    setSupplementalIds = 'setSupplementalIds',
     setLastClick = 'setLastClick'
 }
 
@@ -76,6 +78,7 @@ enum Mutation {
     SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL',
     SET_ANALYSIS_PERIOD = 'SET_ANALYSIS_PERIOD',
     SET_LAYER_VISIBILITY = 'SET_LAYER_VISIBILITY',
+    SET_SUPPLEMENTAL_IDS = 'SET_SUPPLEMENTAL_IDS',
     SET_LAST_CLICK = 'SET_LAST_CLICK'
 }
 
@@ -97,7 +100,8 @@ const getters = {
             ts: state.timeSlice !== null ? state.timeSlice.toString() : null,
             ap: state.analysisPeriod,
             m: state.month,
-            day: state.day
+            day: state.day,
+            sl: state.supplementalIds.length ? state.supplementalIds.join(',') : null
         };
 
         // remove null values from the query object
@@ -368,6 +372,10 @@ const actions = {
         context.commit(Mutation.SET_LAYER_VISIBILITY, args);
     },
 
+    [Action.setSupplementalIds](context: AppContext, value: string[]): void {
+        context.commit(Mutation.SET_SUPPLEMENTAL_IDS, value);
+    },
+
     [Action.setLastClick](context: AppContext, value: XY | null): void {
         context.commit(Mutation.SET_LAST_CLICK, value);
     },
@@ -437,6 +445,10 @@ const mutations = {
 
     [Mutation.SET_LAYER_VISIBILITY](state: AppState, args: { layerId: string; value: boolean }): void {
         state.layerVisibility[args.layerId] = args.value;
+    },
+
+    [Mutation.SET_SUPPLEMENTAL_IDS](state: AppState, value: string[]): void {
+        state.supplementalIds = value;
     },
 
     [Mutation.SET_LAST_CLICK](state: AppState, value: XY | null): void {

@@ -206,7 +206,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             r: this.setRcpId,
             ap: this.setAnalysisPeriod,
             m: this.setMonth,
-            day: this.setDay
+            day: this.setDay,
+            sl: this.setSupplementalIds
         };
 
         const defaultSettings: FunctionArray = {
@@ -220,7 +221,8 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
                 return;
             }
 
-            storeFns[parameter](value);
+            // convert supplemental layers param to array
+            parameter === 'sl' ? storeFns[parameter](value.split(',')) : storeFns[parameter](value);
         });
     }
 

@@ -75,6 +75,9 @@ export class StoreAppMixin extends Vue {
     setDay: (value: number | null) => void;
 
     @ActionApp
+    setSupplementalIds: (value: string[]) => void;
+
+    @ActionApp
     setInternalRouteUpdate: (value: boolean) => void;
 
     @StateApp

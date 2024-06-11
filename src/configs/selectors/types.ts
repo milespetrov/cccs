@@ -1,4 +1,4 @@
-import { TimePeriodType, DatasetId, VariableId } from '@/types';
+import { TimePeriodType, DatasetId, SupplementalId, VariableId } from '@/types';
 
 /**
  * Selector group base interface.
@@ -195,4 +195,32 @@ export interface VariableSelectorGroupConfig extends BaseSelectorGroupConfig {
 
 export interface VariableSelectorConfig extends BaseSelectorConfig {
     groups: VariableSelectorGroupConfig[];
+}
+
+
+export interface SupplementalSelectorConfig extends BaseSelectorGroupConfig {
+    items: SupplementalId[];
+}
+
+export interface SupplementalLayers {
+    [key: string]: {
+        id: string;
+        name: string;
+        nameField?: string;
+        layerType: string;
+        url: string;
+        catalogueUrl?: string;
+        state?: {
+            visibility: boolean;
+            opacity: number;
+        },
+        sublayers?: {
+            index?: number;
+            id?: string;
+            state?: {
+                visibility: boolean;
+                opacity: number;
+            }
+        }[]
+    }
 }

@@ -12,8 +12,13 @@
 
         <b-collapse class="cip-controls-wrapper" v-model="showCollapse" id="cip-view-controls-collapse">
             <div class="cip-controls">
+                
                 <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
                     <component :is="controlRef"></component>
+                </div>
+
+                <div class="menu-option">
+                    <supplemental-selector />
                 </div>
             </div>
         </b-collapse>
@@ -21,14 +26,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { State, Getter, Action, namespace } from 'vuex-class';
 
-import BaseSelectorV from 'src/components/vis-controls/base-selector.vue';
 import selectors from './vis-controls/selectors';
 
 import api from './../api/';
-import { datasets } from '@/configs/datasets';
 import { DatasetId, VariableId } from '@/types';
 import { i18n } from '@/lang';
 

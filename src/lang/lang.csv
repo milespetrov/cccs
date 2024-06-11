@@ -339,6 +339,19 @@ sspSelector.ssp370.qualifier,,1,,1
 sspSelector.ssp585.shortName,High emission,0,Émissions élevées,0
 sspSelector.ssp585.fullName,High emission scenario (SSP585),0,"Scénario d'émissions élevées (SSP585)",0
 sspSelector.ssp585.qualifier,,1,,1
+supplementalSelector.title,Supplemental dataset,1,Ensemble de données supplémentaires,1
+supplementalSelector.np.shortName,National Parks,1,Parc national,1
+supplementalSelector.np.fullName,National Parks,1,Parc national,1
+supplementalSelector.np.subName,,1,,1
+supplementalSelector.ntsn.shortName,National transportation systems network,1,Réseau national de systèmes de transport,0
+supplementalSelector.ntsn.fullName,National transportation systems network,1,Réseau national de systèmes de transport,0
+supplementalSelector.ntsn.subName,"This includes the National Airport System, the National Highway System, Canada Port Authorities and the National Railway Network.",1,"Cela comprend le réseau aéroportuaire national, le réseau routier national, les administrations portuaires canadiennes et le réseau ferroviaire national.",0
+supplementalSelector.cdd.shortName,Canadian Disaster Database,1,Base de Données Canadienne sur les Catastrophes,1
+supplementalSelector.cdd.fullName,Canadian Disaster Database "Meteorological Hydrological" Events types,1,Base de Données Canadienne sur les Catastrophes Types d'événements "météorologiques - hydrologiques",0
+supplementalSelector.cdd.subName,,1,,1
+supplementalSelector.atris.fullName,Indigenous communities (ATRIS),1,Collectivités autochtones (ATRIS),1
+supplementalSelector.atris.shortName,Indigenous communities (ATRIS),1,Collectivités autochtones (ATRIS),1
+supplementalSelector.atris.subName,,1,,1
 datasetSelector.title,Dataset,1,Ensemble de données,1
 datasetSelector.header,Datasets,1,Ensembles des données,1
 datasetSelector.all_datasets,,1,,1

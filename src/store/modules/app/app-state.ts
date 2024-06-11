@@ -13,6 +13,7 @@ export interface AppState {
     zoomLevel: string | null;
     timeSlice: number | null;
     analysisPeriod: string | null;
+    supplementalIds: string[];
     layerVisibility: {
         cities: boolean | null;
         labels: boolean | null;

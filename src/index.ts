@@ -9,11 +9,11 @@ import { createStore, RootState } from './store';
 import { i18n } from './lang';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTimes, faSlidersH, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faSlidersH, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faTimes, faSlidersH, faExternalLinkAlt);
+library.add(faCheck, faTimes, faSlidersH, faExternalLinkAlt);
 
 Vue.use(VueRouter);
 Vue.use(Vuex);

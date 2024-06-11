@@ -20,6 +20,18 @@ export enum DatasetId {
 }
 
 /**
+ * All available supplemental dataset ids.
+ *
+ * @enum {string}
+ */
+export enum SupplementalId {
+    NP = 'np',
+    NTSN = 'ntsn',
+    CDD = 'cdd',
+    ATRIS = 'atris'
+}
+
+/**
  * All available Variable across all Datasets ids.
  *
  * @enum {string}
@@ -75,7 +87,8 @@ export enum VisualizationControlType {
     Time = 'time-period-selector',
     Analysis = 'analysis-period-selector',
     Month = 'month-selector',
-    Day = 'day-selector'
+    Day = 'day-selector',
+    Supplemental = 'supplemental-selector'
 }
 
 /**
