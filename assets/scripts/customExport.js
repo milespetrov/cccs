@@ -36,6 +36,12 @@ export function customRendererStartup(ramp, store, i18n) {
     ramp.fixture.get('export').customRenderer(customExportRenderer);
 
     async function customExportRenderer(canvas, { map, scaleBar, northArrow }, { margin }) {
+        
+        // Set the canvas width to always be 1240, css will scale it as needed to fit the panel
+        canvas.setDimensions({
+            width: 1240
+        });
+
         margin = {
             TOP: margin.TOP / 2,
             RIGHT: margin.RIGHT / 2,
@@ -75,7 +81,7 @@ export function customRendererStartup(ramp, store, i18n) {
 
 
         // ----- The north arrow -----
-        northArrow.scaleToWidth(map.getScaledWidth() * 0.05, false);
+        northArrow.scaleToWidth(map.getScaledWidth() * 0.035, false);
         northArrow.set({
             top: runningHeight + (margin.TOP * 1.5) + (northArrow.getScaledHeight() / 2),
             left: margin.LEFT * 2 + (northArrow.getScaledWidth() / 2)
@@ -84,9 +90,9 @@ export function customRendererStartup(ramp, store, i18n) {
 
 
          // ----- The scale bar -----
-        scaleBar.scaleToWidth(map.getScaledWidth() * 0.15, false);
+        scaleBar.scaleToWidth(map.getScaledWidth() * 0.10, false);
         scaleBar.set({
-            top: runningHeight + map.getScaledHeight() - (scaleBar.getScaledHeight() / 2) - margin.BOTTOM / 2,
+            top: runningHeight + map.getScaledHeight() - (scaleBar.getScaledHeight() / 1.5) - margin.BOTTOM / 2,
             left: map.getScaledWidth() - (scaleBar.getScaledWidth() / 2) - margin.LEFT * 2
         });
         canvas.add(scaleBar);
@@ -150,12 +156,12 @@ export function customRendererStartup(ramp, store, i18n) {
                 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
             fill: '#000',
             fontWeight: 'bold',
-            fontSize: 60 });
+            fontSize: 14 });
 
             let text2 = new fabric.Text(secondaryText, { left: text.getScaledWidth(), top: detailsGroupHeight, fontFamily:
                 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
             fill: '#000',
-            fontSize: 60 });
+            fontSize: 14 });
 
             detailsGroupHeight += text2.getScaledHeight() + (margin.TOP / 2);
             detailsGroup.addWithUpdate(text);
@@ -191,16 +197,31 @@ export function customRendererStartup(ramp, store, i18n) {
         let allGroupsHeight = margin.TOP + symbologyGroup.getScaledHeight() + 10 + legendTitle.getScaledHeight();
         if (detailsGroup.getObjects().length > 0) {
             detailsGroup.set({
-                left: margin.LEFT + 10 + map.getScaledWidth(),
-                top: runningHeight + (margin.TOP * 2) + symbologyGroup.getScaledHeight() + 10 + legendTitle.getScaledHeight(),
+                left: margin.LEFT + 10 + map.getScaledWidth()
             });
-            detailsGroup.scaleToWidth((canvas.width * 0.25) - (margin.LEFT * 2), false);
+
+            const detailsGroupWidth = (canvas.width * 0.25) - (margin.LEFT * 2);
+            if (detailsGroup.getScaledWidth() > detailsGroupWidth) {
+                detailsGroup.scaleToWidth(detailsGroupWidth, false);
+            }
+
             canvas.add(detailsGroup);
             allGroupsHeight += detailsGroup.getScaledHeight();
         }
-        
+
+        // If the new allGroupsHeight is bigger than the map height, scale the symbologyGroup and detailsGroup proportionally so they both equal the map height
+        if (allGroupsHeight > map.getScaledHeight()) {
+            let scale = map.getScaledHeight() / allGroupsHeight;
+            symbologyGroup.scale(scale);
+            allGroupsHeight = margin.TOP + symbologyGroup.getScaledHeight() + 10 + legendTitle.getScaledHeight() + detailsGroup.getScaledHeight();
+        }
+
+        detailsGroup.set({
+            top: runningHeight + (margin.TOP * 2) + symbologyGroup.getScaledHeight() + 10 + legendTitle.getScaledHeight()
+        });
+
         // The new height is the bigger of the map height and the legend height
-        runningHeight += Math.max(map.getScaledHeight() + margin.TOP, allGroupsHeight);
+        runningHeight += Math.max(map.getScaledHeight(), allGroupsHeight) + margin.TOP;
 
 
         // ----- The footnote -----
@@ -225,5 +246,3 @@ export function customRendererStartup(ramp, store, i18n) {
         });
     }
 }
-
-
