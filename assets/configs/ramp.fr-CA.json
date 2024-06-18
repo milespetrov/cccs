@@ -81,12 +81,26 @@
                     "panelWidth": 350
                 },
                 "items": [
-                        "legend",
-                        "geosearch",
-                        "basemap",
-                        "export",
-                        "help"
-                    ]
+                    ["legend",
+                    "geosearch",
+                    "basemap",
+                    "export",
+                    "help"],
+                    [{
+                        "id": "appbar-link-1",
+                        "componentId": "appbar-link-1",
+                        "options": {
+                            "url": "https://ouvert.canada.ca/data/fr/dataset/57fee0af-40ec-4aad-89da-6c0d39a6424d"
+                        }
+                    },
+                    {
+                        "id": "appbar-link-2",
+                        "componentId": "appbar-link-2",
+                        "options": {
+                            "url": "https://changements-climatiques.canada.ca/donnees-climatiques/#/donnees-echelle-reduite"
+                        }
+                    }]
+                ]
             },
             "layers": [],
             "map": {

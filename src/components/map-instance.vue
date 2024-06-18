@@ -33,6 +33,7 @@ import MapScrollguard from './map-scrollguard.vue';
 import MapPanguard from './map-panguard.vue';
 import { monthSelectorConfig } from '../configs/selectors';
 import { customRendererStartup } from '@/../assets/scripts/customExport';
+import { registerCustomAppbarLink } from '@/../assets/scripts/customAppbarLink';
 
 // TODO: import proper RAMP definitions
 export interface IdentifyResult {
@@ -414,6 +415,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 this._rInstance = RAMP.createInstance(this.anchor, rampConfig);
                 (window as any).debugInstance = this._rInstance;
                 this._rInstance.event.on('map/created', this.mapStartup);
+                registerCustomAppbarLink(this._rInstance, this.$i18n.t('downloadSelector.dataCatalogue.fullName'), 1);
+                registerCustomAppbarLink(this._rInstance, this.$i18n.t('downloadSelector.queryTool.fullName'), 2);
             });
         });
     }
