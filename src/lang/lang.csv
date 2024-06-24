@@ -420,6 +420,10 @@ downloadSelector.queryTool.shortName,,1,,1
 downloadSelector.queryTool.fullName,Climate data extraction tool,1,Outil d'extraction de données climatiques,1
 downloadSelector.queryTool.access,Download source data using ,1,Télécharger les données sources au moyen de ,1
 downloadSelector.queryTool.qualifier,,1,,1
+export.dcs.footnote,The projected change is relative to the 1986-2005 average,1,Les changements projetés sont relatives à la moyenne de 1986-2005,1
+export.cmip5.footnote,The projected change is relative to the 1986-2005 average,1,Les changements projetés sont relatives à la moyenne de 1986-2005,1
+export.cmip6.footnote,Projected changes are with respect to the reference period of 1995-2014,1,Les changements projetés sont relatives à la moyenne de 1995-2014,1
+export.dcs_u6.footnote,Projected changes are with respect to the reference period of 1971-2000,1,Les changements projetés sont relatives à la moyenne de 1971-2000,1
 analysisSelector.title,Analysis period,1,Période d'analyse,1
 analysisSelector.header,,1,,1
 page.dateModified,Date modified,1,Date de modification ,1
@@ -491,7 +495,6 @@ units.cmip5.sic.shortName,%,1,%,1
 units.cmip5.sic.fullName,percent,1,pourcentage,1
 units.cmip5.snd.shortName,%,1,%,1
 units.cmip5.snd.fullName,percent,1,pourcentage,1
-dcs.projected.footnote,The projected change is relative to the 1986-2005 average,1,[FR] The projected change is relative to the 1986-2005 average,0
 cmip6.tmean.fullName,Mean temperature,1,Température moyenne,1
 cmip6.tmean.shortName,Mean temperature,1,Température moyenne,1
 cmip6.tmean.qualifier,,1,,1

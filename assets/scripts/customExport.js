@@ -225,8 +225,8 @@ export function customRendererStartup(ramp, store, i18n) {
 
 
         // ----- The footnote -----
-        if (['cmip5','dcs'].indexOf(store.datasetId) !== -1) {
-            let footnote = new fabric.Text(i18n.t('dcs.projected.footnote') + '.', {
+        if (['cmip5','dcs', 'cmip6', 'dcs_u6'].includes(store.datasetId)) {
+            let footnote = new fabric.Text(i18n.t(`export.${store.datasetId}.footnote`) + '.', {
                 left: margin.LEFT,
                 top: runningHeight + margin.TOP,
                 fontFamily: 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
