@@ -7,7 +7,7 @@
             },
             {
                 "infoType": "text",
-                "content": "Projected changes in statistically downscaled minimum temperature (°C) are with respect to the reference period of 1986-2005."
+                "content": "Projected changes are with respect to the reference period of 1971-2000."
             },
             {
                 "layerId": "DCSu6_tmin_ANN_ssp585_2071_en",
@@ -105,7 +105,7 @@
         ],
         "dataLayers": [
             {
-                "name": "Daily minimum temperature",
+                "name": "Minimum temperature",
                 "controls": [
                     "visibility",
                     "opacity",
@@ -134,7 +134,7 @@
                 }
             },
             {
-                "name": "Daily minimum temperature",
+                "name": "Minimum temperature",
                 "controls": [
                     "visibility",
                     "opacity",
@@ -163,7 +163,7 @@
                 }
             },
             {
-                "name": "Daily minimum temperature",
+                "name": "Minimum temperature",
                 "controls": [
                     "visibility",
                     "opacity",
@@ -201,7 +201,7 @@
             },
             {
                 "infoType": "text",
-                "content": "Les changements projetés dans la température minimale (°C) statistiquement mise à l'échelle sont calculés par rapport à la période de référence 1986-2005."
+                "content": "Les changements projetés sont relatives à la moyenne de 1971-2000."
             },
             {
                 "layerId": "DCSu6_tmin_ANN_ssp585_2071_fr",
@@ -299,7 +299,7 @@
         ],
         "dataLayers": [
             {
-                "name": "Température minimale quotidienne",
+                "name": "Température minimale",
                 "controls": [
                     "visibility",
                     "opacity",
@@ -328,7 +328,7 @@
                 }
             },
             {
-                "name": "Température minimale quotidienne",
+                "name": "Température minimale",
                 "controls": [
                     "visibility",
                     "opacity",
@@ -357,7 +357,7 @@
                 }
             },
             {
-                "name": "Température minimale quotidienne",
+                "name": "Température minimale",
                 "controls": [
                     "visibility",
                     "opacity",

@@ -190,12 +190,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     getCapabilities(layerConfig: any): void {
         const getCapabilitiesUrl =
             layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.sublayers[0].id;
-        console.log(getCapabilitiesUrl);
         $.get(getCapabilitiesUrl).then((data) => { this.parseTimeParam(data) });
     }
 
     parseTimeParam(data: any): void {
-        console.log(data);
         const timeDimension = $(data).find('Dimension[name=time]')[0];
 
         this.wmsTime.default = (<any>timeDimension.attributes).default.value;

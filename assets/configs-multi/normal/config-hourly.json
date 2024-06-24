@@ -7,11 +7,11 @@
       },
       {
         "infoType": "text",
-        "content": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
+        "content": "Canadian hourly climate data are from surface weather stations that produce hourly meteorological observations. Only a subset of the total stations are shown due to size limitations."
       },
       {
         "layerId": "HOURLY_station_en",
-        "description": "These are the total stations with hourly observations compiled during any set time period.",
+        "description": "",
         "coverIcon": "assets/images/cities.png",
         "symbologyStack": [
           {
@@ -226,11 +226,11 @@
       },
       {
         "infoType": "text",
-        "content": "Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
+        "content": "Les données climatiques horaires canadiennes proviennent de stations météorologiques de surface qui produisent des observations météorologiques toutes les heures. Seul un sous-ensemble du nombre total de stations est présenté en raison des limitations de taille."
       },
       {
         "layerId": "HOURLY_station_fr",
-        "description": "Il s'agit de toutes les stations avec des observations quotidiennes compilées au cours de n'importe quelle période donnée.",
+        "description": "",
         "coverIcon": "assets/images/cities.png",
         "symbologyStack": [
           {
@@ -299,7 +299,7 @@
     ],
     "dataLayers": [
       {
-        "name": "Observations climatiques HOURLY",
+        "name": "Observations climatiques horaires",
         "nameField": "STATION_NAME",
         "controls": [
           "datatable",

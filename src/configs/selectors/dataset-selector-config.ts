@@ -5,7 +5,7 @@ export const datasetSelectorConfig: DatasetSelectorConfig = {
     groups: [
         {
             id: 'future_projections',
-            items: [DatasetId.CMIP5, DatasetId.CMIP6, DatasetId.DCS, DatasetId.DCSu6, DatasetId.SPEI]
+            items: [DatasetId.CMIP5, DatasetId.CMIP6, DatasetId.DCS, DatasetId.DCSu6] // , DatasetId.SPEI
         },
         {
             id: 'historical_changes',

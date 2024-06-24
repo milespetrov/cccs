@@ -7,7 +7,7 @@
       },
       {
         "infoType": "text",
-        "content": "Projected changes in sea ice concentration are with respect to the reference period of 1986-2005 and expressed as percentage change (%). Sea ice concentration is represented as the percentage (%) of grid cell area."
+        "content": "Projected changes are with respect to the reference period of 1995-2014."
       },
       {
         "layerId": "CMIP6_sic_SON_ssp126_2081_en",
@@ -230,7 +230,7 @@
       },
       {
         "infoType": "text",
-        "content": "Les changements projetés dans la concentration de la glace de mer sont exprimés en pourcentage (%) et calculés par rapport à la période de référence 1986-2005. La concentration de la glace de mer est exprimée en pourcentage (%) de la surface."
+        "content": "Les changements projetés sont relatives à la moyenne de 1995-2014."
       },
       {
         "layerId": "CMIP6_sic_SON_ssp126_2081_fr",

@@ -21,14 +21,12 @@ var variableTemplate = {
             <span class="divider mrgn-bttm-md mrgn-tp-md"></span>
             <div class="long-form">
                 <p>{{TRANSLATIONS[lang].baseline}}</p>
-                <a class="learnMore-link" :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
             </div>
         </div>
     `,
     methods: {
     },
     async beforeMount(){
-        console.log('AAAA');
         this.lang = document.documentElement.lang;
 
         if (typeof this.identifyData.data === 'undefined') {
@@ -61,9 +59,6 @@ var variableTemplate = {
         this.latlong = this.latlong.coordinates;
     },
     mounted(){
-
-        console.log("WHAT");
-
         var params = new URLSearchParams(this.identifyData.data.requestOptions.query);
 
         var origLayer = params.get('LAYERS');
@@ -84,8 +79,6 @@ var variableTemplate = {
 
         }
 
-        console.log('A');
-
         params.set('LAYERS', origLayer.replace('Pct50', 'Pct90'));
         params.set('QUERY_LAYERS', origLayer.replace('Pct50', 'Pct90'));
 
@@ -101,7 +94,6 @@ var variableTemplate = {
         } catch (error) {
 
         }
-        console.log('b');
     },
     data() {
         return {
@@ -135,10 +127,7 @@ var variableTemplate = {
                         precip: '%',
                         tmean: '°C',
                         tmin: '°C',
-                        tmax: '°C',
-                        gso: 'days (CLIENT CONTENT)',
-                        gsc: 'days (CLIENT CONTENT)',
-                        gsw: 'days (CLIENT CONTENT)'
+                        tmax: '°C'
                     },
                     timeSlider: [
                         '2021-2040',
@@ -148,20 +137,16 @@ var variableTemplate = {
                     ],
                     ssp: {
                         label: 'Emission scenario',
-                        ssp585: 'High',
-                        ssp245: 'Moderate',
-                        ssp126: 'Low'
-                    },
-                    learnMore: {
-                        default: 'Learn more about the Statistically downscaled climate data dataset.',
-                        link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-downscaled-climate-scenarios.html'
+                        ssp585: 'SSP 585',
+                        ssp245: 'SSP 245',
+                        ssp126: 'SSP 126'
                     },
                     details: [
                         'Projected change of',
                         'by',
                         'at'
                     ],
-                    baseline: 'The projected change is relative to the 1986-2005 average.'
+                    baseline: 'Projected changes are with respect to the reference period of 1971-2000.'
                 },
                 'fr': {
                     latlong: 'Latitude, longitude',
@@ -187,10 +172,7 @@ var variableTemplate = {
                         precip: '%',
                         tmean: '°C',
                         tmin: '°C',
-                        tmax: '°C',
-                        gso: 'jours (CLIENT CONTENT)',
-                        gsc: 'jours (CLIENT CONTENT)',
-                        gsw: 'jours (CLIENT CONTENT)'
+                        tmax: '°C'
                     },
                     timeSlider: [
                         '2021-2040',
@@ -200,21 +182,16 @@ var variableTemplate = {
                     ],
                     ssp: {
                         label: "Scénarios d'émissions",
-                        ssp585: 'Élevées',
-                        ssp245: 'Modérées',
-                        ssp126: 'Faibles'
-                    },
-                    learnMore: {
-                        default:
-                            "En savoir plus sur l’ensemble de données Scénarios climatiques mis à l’échelle de manière statistique.",
-                        link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-scenarios-climatiques-echelle-reduite.html'
+                        ssp585: 'SSP 585',
+                        ssp245: 'SSP 245',
+                        ssp126: 'SSP 126'
                     },
                     details: [
                         'Changement projeté de',
                         'par',
                         'à'
                     ],
-                    baseline: 'Les changements projetés sont relatives à la moyenne de 1986-2005.'
+                    baseline: 'Les changements projetés sont relatives à la moyenne de 1971-2000.'
                 }
             },
             lang: 'en'

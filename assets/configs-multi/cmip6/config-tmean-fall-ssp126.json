@@ -7,7 +7,7 @@
       },
       {
         "infoType": "text",
-        "content": "Projected changes in mean temperature (°C) are with respect to the reference period of 1986-2005."
+        "content": "Projected changes are with respect to the reference period of 1995-2014."
       },
       {
         "layerId": "CMIP6_tmean_SON_ssp126_2081_en",
@@ -230,7 +230,7 @@
       },
       {
         "infoType": "text",
-        "content": "Les changements projetés dans la température moyenne (°C) sont calculés par rapport à la période de référence 1986-2005."
+        "content": "Les changements projetés sont relatives à la moyenne de 1995-2014."
       },
       {
         "layerId": "CMIP6_tmean_SON_ssp126_2081_fr",

@@ -21,7 +21,6 @@ var variableTemplate = {
             <span class="divider mrgn-bttm-md mrgn-tp-md"></span>
             <div class="long-form">
                 <p>{{TRANSLATIONS[lang].baseline}}</p>
-                <a class="learnMore-link" :href='TRANSLATIONS[lang].learnMore.link' target=_blank>{{ TRANSLATIONS[lang].learnMore.default }}</a>
             </div>
         </div>
     `,
@@ -143,21 +142,17 @@ var variableTemplate = {
                     ],
                     ssp: {
                         label: 'Emission scenario',
-                        ssp585: 'High',
-                        ssp370: 'Moderate-High',
-                        ssp245: 'Moderate',
-                        ssp126: 'Low'
-                    },
-                    learnMore: {
-                        default: 'Learn more about the Global climate model scenarios dataset.',
-                        link: 'https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-coupled-model-intercomparison-phase5.html'
+                        ssp585: 'SSP 585',
+                        ssp370: 'SSP 3-70',
+                        ssp245: 'SSP 245',
+                        ssp126: 'SSP 126'
                     },
                     details: [
                         'Projected change of',
                         'by',
                         'at'
                     ],
-                    baseline: 'The projected change is relative to the 1986-2005 average.'
+                    baseline: 'Projected changes are with respect to the reference period of 1995-2014.'
                 },
                 'fr': {
                     latlong: 'Latitude, longitude',
@@ -194,21 +189,17 @@ var variableTemplate = {
                     ],
                     ssp: {
                         label: "Scénarios d'émissions",
-                        ssp585: 'Élevées',
-                        ssp370: 'Élevées',
-                        ssp245: 'Modérées',
-                        ssp126: 'Faibles'
-                    },
-                    learnMore: {
-                        default: 'En savoir plus sur l’ensemble de données Scénarios basés sur des modèles climatiques globaux.',
-                        link: 'https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-phase5-intercomparaison-modeles-couples.html'
+                        ssp585: 'SSP 585',
+                        ssp370: 'SSP 3-70',
+                        ssp245: 'SSP 245',
+                        ssp126: 'SSP 126'
                     },
                     details: [
                         'Changement projeté de',
                         'par',
                         'à'
                     ],
-                    baseline: 'Les changements projetés sont relatives à la moyenne de 1986-2005.'
+                    baseline: 'Les changements projetés sont relatives à la moyenne de 1995-2014.'
                 }
             },
             lang: 'en'

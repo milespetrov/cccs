@@ -184,9 +184,9 @@ var stationTemplate = {
     beforeMount() {
         this.lang = document.documentElement.lang;
 
-        this.identifyData.data.forEach(function(el) {
-            if (typeof el.value === 'string') {
-                el.value = el.value.trim();
+        Object.keys(this.identifyData.data).forEach((key) => {
+            if (typeof this.identifyData.data[key] === 'string') {
+                this.identifyData.data[key] = this.identifyData.data[key].trim();
             }
         });
     },

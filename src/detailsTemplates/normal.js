@@ -211,14 +211,14 @@ var stationTemplate = {
     beforeMount() {
         this.lang = document.documentElement.lang;
 
-        this.identifyData.data.forEach(function(el) {
-            if (typeof el.value === 'string') {
-                el.value = el.value.trim();
+        Object.keys(this.identifyData.data).forEach((key) => {
+            if (typeof this.identifyData.data[key] === 'string') {
+                this.identifyData.data[key] = this.identifyData.data[key].trim();
             }
         });
 
-        this.long = data.properties.LONGITUDE / 10000000;
-        this.lat = data.properties.LATITUDE / 10000000;
+        this.long = this.identifyData.data.LONGITUDE / 10000000;
+        this.lat = this.identifyData.data.LATITUDE / 10000000;
     },
     data() {
         return {
