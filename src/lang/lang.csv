@@ -339,7 +339,7 @@ sspSelector.ssp370.qualifier,,1,,1
 sspSelector.ssp585.shortName,High emission,0,Émissions élevées,0
 sspSelector.ssp585.fullName,High emission scenario (SSP585),0,"Scénario d'émissions élevées (SSP585)",0
 sspSelector.ssp585.qualifier,,1,,1
-supplementalSelector.title,Supplemental dataset,1,Ensemble de données supplémentaires,1
+supplementalSelector.title,Supplemental datasets,1,Ensemble de données supplémentaires,1
 supplementalSelector.np.shortName,National Parks,1,Parc national,1
 supplementalSelector.np.fullName,National Parks,1,Parc national,1
 supplementalSelector.np.subName,,1,,1
