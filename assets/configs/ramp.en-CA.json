@@ -88,13 +88,6 @@
                         "export",
                         "help"],
                         [{
-                            "id": "appbar-link-1",
-                            "componentId": "appbar-link-1",
-                            "options": {
-                                "url": "https://open.canada.ca/data/en/dataset/57fee0af-40ec-4aad-89da-6c0d39a6424d"
-                            }
-                        },
-                        {
                             "id": "appbar-link-2",
                             "componentId": "appbar-link-2",
                             "options": {

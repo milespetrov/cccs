@@ -31,6 +31,11 @@
 
                     <p v-if="datasetId === 'ltce'">{{ $t(`map.${datasetId}_desc.noteExtra`)}}</p>
 
+                    <i18n :path="`map.description.metadata`" tag="p">
+                        <a v-if="datasetId !== 'cmip6' && datasetId !== 'dcs_u6'" :href="`${metadataUrl}${metadataRoute}`">{{ $t(`map.description.metadataLink`) }}</a>
+                        <a v-else :href="`${metadataRoute}`">{{$t(`map.description.metadataLink`) }}</a>
+                    </i18n>
+
                     <i18n :path="`map.description.technical`" tag="p">
                         <a v-if="datasetId !== 'cmip6' && datasetId !== 'dcs_u6'" :href="`${technicalDocsUrl}${technicalDocsRoute}`">{{ $t(`map.${datasetId}_desc.technicalLink`) }}</a>
                         <a v-else :href="`${technicalDocsRoute}`">{{$t(`map.${datasetId}_desc.technicalLink`) }}</a>
@@ -41,10 +46,19 @@
                     <div v-for="(item, index) in ['normal', 'monthly', 'daily', 'hourly']" :key="item">
                         <h3>{{$t(`map.${item}_desc.title`)}}</h3>
                         <p>{{$t(`map.${item}_desc`)}}</p>
+                        <div v-if="item === 'hourly'" class="mrgn-bttm-lg">
+                            <li v-for="i in [1,2,3]">
+                                {{  $t(`map.hourly_desc.point${i}`) }}
+                            </li>
+                        </div>
                         <i18n :path="`map.description.technical.normal`" tag="p">
                             <a :href="`${technicalDocsUrl}${technicalDocsRoute[index]}`">{{ $t(`map.${item}_desc.technicalLink`) }}</a>
                         </i18n>
                     </div>
+
+                    <i18n :path="`map.description.metadata`" tag="p">
+                        <a :href="`${metadataUrl}${metadataRoute}`">{{ $t(`map.description.metadataLink`) }}</a>
+                    </i18n>
                 </div>
 
                 <i18n :path="`map.description.moreData`" tag="p">
@@ -91,9 +105,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Watch, Component, Prop, Inject } from 'vue-property-decorator';
-import { Getter, Action, State, namespace } from 'vuex-class';
-import { Dictionary } from 'vue-router/types/router';
+import { Vue, Watch, Component } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 
 import Dropdown from 'bootstrap-vue/es/components/dropdown';
@@ -102,14 +114,12 @@ import Collapse from 'bootstrap-vue/es/components/collapse';
 Vue.use(Dropdown);
 Vue.use(Collapse);
 
-import { MapPoint } from './store/modules/app/app-state';
 import api from './api/';
 import { UpdateRouteMixin, StoreAppMixin, StoreDataMixin } from './globals/mixin';
 
-import { ViewType, DatasetId, AppConfig, BreadCrumbEntity } from '@/types';
+import { AppConfig,} from '@/types';
 import MapView from './components/map-view.vue';
 import MapViewControls from './components/map-view-controls.vue';
-import { datasets } from '@/configs/datasets';
 import { i18n } from './lang';
 
 @Component({
@@ -137,6 +147,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     infoItems: string[] = ['library', 'basics', 'supportDesk', 'display'];
     aboutUrls: { [name: string]: string } = {};
     technicalDocsUrl: string = '';
+    metadataUrl: string = '';
     ltceFAQ: string = '';
 
     get queryToolRoute(): string {
@@ -157,6 +168,16 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
         return this.urlSuffixes[this.datasetId].technicalDocs[<'en' | 'fr'>i18n.locale];
     }
 
+    get metadataRoute(): string {
+        if (!this.urlSuffixes || !this.datasetId) {
+            return '';
+        }
+        if (['cmip6', 'dcs_u6'].includes(this.datasetId)){
+            return this.urlSuffixes[this.datasetId].metadata[<'en' | 'fr'>i18n.locale];
+        }
+        return this.urlSuffixes[this.datasetId].metadata[this.variableId];
+    }
+
     async created(): Promise<void> {
         await $.getJSON('assets/configs/app-config.json', ({ climateviewerapp }: AppConfig) => {
             const currentLinks = climateviewerapp[<'en' | 'fr'>i18n.locale];
@@ -168,6 +189,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
 
             this.aboutUrls = currentLinks.aboutUrls;
             this.technicalDocsUrl = currentLinks.technicalDocsUrl;
+            this.metadataUrl = currentLinks.dataCatalogueUrl;
             this.ltceFAQ = currentLinks.ltceFAQ;
         });
 

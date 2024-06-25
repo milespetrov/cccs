@@ -1,7 +1,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { Getter, Action, State, namespace } from 'vuex-class';
 import { Dictionary } from 'vue-router/types/router';
-import { DatasetId, BreadCrumbEntity } from '@/types';
+import { DatasetId, VariableId, BreadCrumbEntity } from '@/types';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -85,6 +85,9 @@ export class StoreAppMixin extends Vue {
 
     @StateApp
     datasetId: DatasetId;
+
+    @StateApp
+    variableId: VariableId;
 }
 
 const StateData = namespace('data', State);
