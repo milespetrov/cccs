@@ -353,7 +353,7 @@ supplementalSelector.ntsn.fullName,National transportation systems network,1,Ré
 supplementalSelector.ntsn.subName,"This includes the National Airport System, the National Highway System, Canada Port Authorities and the National Railway Network.",1,"Cela comprend le réseau aéroportuaire national, le réseau routier national, les administrations portuaires canadiennes et le réseau ferroviaire national.",0
 supplementalSelector.cdd.shortName,Canadian Disaster Database,1,Base de Données Canadienne sur les Catastrophes,1
 supplementalSelector.cdd.fullName,Canadian Disaster Database "Meteorological Hydrological" Events types,1,Base de Données Canadienne sur les Catastrophes Types d'événements "météorologiques - hydrologiques",0
-supplementalSelector.cdd.subName,,1,,1
+supplementalSelector.cdd.subName,2021/2022 data are preliminary figures and may still be subject to change before they are published to the Canadian Disaster Database,1,[fr] 2021/2022 data are preliminary figures and may still be subject to change before they are published to the Canadian Disaster Database,1
 supplementalSelector.atris.fullName,Indigenous communities (ATRIS),1,Collectivités autochtones (ATRIS),1
 supplementalSelector.atris.shortName,Indigenous communities (ATRIS),1,Collectivités autochtones (ATRIS),1
 supplementalSelector.atris.subName,,1,,1
