@@ -545,7 +545,7 @@ dcs.precip.qualifier,,1,,1
 dcs.gso.fullName,Growing season length for overwintering crops (CLIENT CONTENT),1,Growing season length for overwintering crops (CLIENT CONTENT),0
 dcs.gso.shortName,Growing season overwinter (CLIENT CONTENT),1,Growing season overwinter (CLIENT CONTENT),0
 dcs.gso.qualifier,,1,,1
-dcs.gsc.fullName,Growing Season length for cool season crops (CLIENT CONTENT),1,Growing season length for cool season crops (CLIENT CONTENT),0
+dcs.gsc.fullName,Growing season length for cool season crops (CLIENT CONTENT),1,Growing season length for cool season crops (CLIENT CONTENT),0
 dcs.gsc.shortName,Growing season cool (CLIENT CONTENT),1,Growing season cool (CLIENT CONTENT),0
 dcs.gsc.qualifier,,1,,1
 dcs.gsw.fullName,Growing season length for warm season crops (CLIENT CONTENT),1,Growing season length for warm season crops (CLIENT CONTENT),0
