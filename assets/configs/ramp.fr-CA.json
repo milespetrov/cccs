@@ -313,6 +313,9 @@
                     "langToggle": {
                         "disabled": true
                     }
+                },
+                "labelsDefault": {
+                    "visible": false
                 }
             },
             "panels": {
