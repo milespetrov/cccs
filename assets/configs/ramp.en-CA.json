@@ -316,6 +316,10 @@
                 },
                 "labelsDefault": {
                     "visible": false
+                },
+                "layerTimeDefault": {
+                    "expectedLoadTime": 13000,
+                    "expectedDrawTime": 13000
                 }
             },
             "panels": {

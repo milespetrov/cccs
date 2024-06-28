@@ -55,7 +55,7 @@
         },
         "id": "cities",
         "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        "expectedLoadTime": 10000,
+        
         "layerType": "esri-tile"
       },
       {
@@ -74,7 +74,7 @@
         },
         "id": "labels",
         "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        "expectedLoadTime": 10000,
+        
         "layerType": "esri-tile"
       }
     ],
@@ -229,7 +229,7 @@
         },
         "id": "cities",
         "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        "expectedLoadTime": 10000,
+        
         "layerType": "esri-tile"
       },
       {
@@ -248,7 +248,7 @@
         },
         "id": "labels",
         "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        "expectedLoadTime": 10000,
+        
         "layerType": "esri-tile"
       }
     ],
