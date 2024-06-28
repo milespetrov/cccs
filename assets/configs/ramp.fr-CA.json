@@ -80,20 +80,25 @@
                     "location": "./help/cccs",
                     "panelWidth": 350
                 },
-                "items": [
-                    ["legend",
-                    "geosearch",
-                    "basemap",
-                    "export",
-                    "help"],
-                    [{
-                        "id": "appbar-link-2",
-                        "componentId": "appbar-link-2",
-                        "options": {
-                            "url": "https://changements-climatiques.canada.ca/donnees-climatiques/#/donnees-echelle-reduite"
-                        }
-                    }]
-                ]
+                "appbar": {
+                    "items": [
+                        ["legend",
+                        "geosearch",
+                        "basemap",
+                        "export",
+                        "help"],
+                        [{
+                            "id": "appbar-link-2",
+                            "componentId": "appbar-link-2",
+                            "options": {
+                                "url": "https://changements-climatiques.canada.ca/donnees-climatiques/#/donnees-echelle-reduite"
+                            }
+                        }]
+                    ]
+                },
+                "hilight": {
+                    "mode": "fog"
+                }
             },
             "layers": [],
             "map": {
