@@ -20,6 +20,7 @@ export const supplementalLayersEn: SupplementalLayers = {
         layerType: 'ogc-wms',
         url: 'https://maps.geogratis.gc.ca/wms/canvec_en?request=getcapabilities&service=wms&layers=transport&version=1.3.0&legend_format=image/png&feature_info_type=text/html',
         catalogueUrl: 'https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895',
+        featureInfoMimeType: 'text/html',
         sublayers: [
             {
                 id: 'transport'
@@ -72,6 +73,7 @@ export const supplementalLayersFr: SupplementalLayers = {
         layerType: 'ogc-wms',
         url: 'https://cartes.geogratis.gc.ca/wms/canvec_fr?request=getcapabilities&service=wms&layers=transport&version=1.3.0&legend_format=image/png&feature_info_type=text/html',
         catalogueUrl: 'https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895',
+        featureInfoMimeType: 'text/html',
         sublayers: [
             {
                 id: 'transport'

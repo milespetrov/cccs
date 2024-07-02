@@ -214,6 +214,7 @@ export interface SupplementalLayers {
             visibility: boolean;
             opacity: number;
         },
+        featureInfoMimeType?: string;
         sublayers?: {
             index?: number;
             id?: string;
