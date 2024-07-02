@@ -221,6 +221,14 @@ export interface SupplementalLayers {
             state?: {
                 visibility: boolean;
                 opacity: number;
+            },
+            fieldMetadata?: {
+                fieldInfo?:{
+                        name?: string;
+                        alias?: string;
+                    }[],                
+                exclusiveFields?: boolean,
+                enforceOrder?: boolean
             }
         }[]
     }

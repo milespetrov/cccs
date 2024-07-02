@@ -44,15 +44,89 @@ export const supplementalLayersEn: SupplementalLayers = {
     },
     "ATRIS": {
         id: 'ATRIS',
-        name: 'GEO_ATRIS_LAYERS_E-206a',
+        name: 'Indigenous communities (ATRIS)',
         layerType: 'esri-map-image',
         url: 'https://services.sac-isc.gc.ca/geomatics/rest/services/ATRIS_PRD/GEO_ATRIS_E/MapServer',
         sublayers: [
             {
-                index: 0,
+                index: 1,
                 state: {
                     visibility: true,
                     opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "BAND_NAME" },
+                        { name: "RPN" },
+                        { name: "BAND_NUMBER" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_EN" },
+                        { name: "CATEGORY_EN" },
+                        { name: "NUM_RESERVES" }
+                    ],
+                    exclusiveFields: true
+                }
+            },
+            {
+                index: 2,
+                state: {
+                    visibility: true,
+                    opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "NAME" },
+                        { name: "COMMUNITY_GUID" },
+                        { name: "GEOMATIC_ID" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_EN" },
+                        { name: "CATEGORY_EN" },
+                        { name: "NUM_RESERVES" }
+                    ],
+                    exclusiveFields: true
+                }
+            },
+            {
+                index: 3,
+                state: {
+                    visibility: true,
+                    opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "NAME" },
+                        { name: "COMMUNITY_GUID" },
+                        { name: "GEOMATIC_ID" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_EN" },
+                        { name: "CATEGORY_EN" },
+                        { name: "NUM_RESERVES" },
+                        { name: "PROVINCE_CODE" }
+                    ],
+                    exclusiveFields: true
+                }
+            },
+            {
+                index: 4,
+                state: {
+                    visibility: true,
+                    opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "NAME" },
+                        { name: "COMMUNITY_GUID" },
+                        { name: "GEOMATIC_ID" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_EN" },
+                        { name: "CATEGORY_EN" },
+                        { name: "NUM_RESERVES" }
+                    ],
+                    exclusiveFields: true
                 }
             }
         ]
@@ -97,15 +171,89 @@ export const supplementalLayersFr: SupplementalLayers = {
     },
     "ATRIS": {
         id: 'ATRIS',
-        name: 'GEO_ATRIS_LAYERS_E-206a  ',
+        name: 'Collectivités autochtones (SIDAIT)',
         layerType: 'esri-map-image',
         url: 'https://services.sac-isc.gc.ca/geomatics/rest/services/ATRIS_PRD/GEO_ATRIS_F/MapServer',
         sublayers: [
             {
-                index: 0,
+                index: 1,
                 state: {
                     visibility: true,
                     opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "BAND_NAME" },
+                        { name: "RPN" },
+                        { name: "BAND_NUMBER" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_FR" },
+                        { name: "CATEGORY_FR" },
+                        { name: "NUM_RESERVES" }
+                    ],
+                    exclusiveFields: true
+                }
+            },
+            {
+                index: 2,
+                state: {
+                    visibility: true,
+                    opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "NAME" },
+                        { name: "COMMUNITY_GUID" },
+                        { name: "GEOMATIC_ID" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_FR" },
+                        { name: "CATEGORY_FR" },
+                        { name: "NUM_RESERVES" }
+                    ],
+                    exclusiveFields: true
+                }
+            },
+            {
+                index: 3,
+                state: {
+                    visibility: true,
+                    opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "NAME" },
+                        { name: "COMMUNITY_GUID" },
+                        { name: "GEOMATIC_ID" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_FR" },
+                        { name: "CATEGORY_FR" },
+                        { name: "NUM_RESERVES" },
+                        { name: "PROVINCE_CODE" }
+                    ],
+                    exclusiveFields: true
+                }
+            },
+            {
+                index: 4,
+                state: {
+                    visibility: true,
+                    opacity: 1
+                },
+                fieldMetadata: {
+                    fieldInfo: [
+                        { name: "NAME" },
+                        { name: "COMMUNITY_GUID" },
+                        { name: "GEOMATIC_ID" },
+                        { name: "COMMUNITY_NAME" },
+                        { name: "COMMUNITY_ID" },
+                        { name: "RESULT_LIST_FR" },
+                        { name: "CATEGORY_FR" },
+                        { name: "NUM_RESERVES" }
+                    ],
+                    exclusiveFields: true
                 }
             }
         ]
