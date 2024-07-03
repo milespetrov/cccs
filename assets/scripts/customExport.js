@@ -86,6 +86,7 @@ export function customRendererStartup(ramp, store, i18n) {
             top: runningHeight + (margin.TOP * 1.5) + (northArrow.getScaledHeight() / 2),
             left: margin.LEFT * 2 + (northArrow.getScaledWidth() / 2)
         });
+        northArrow.rotate(0);
         canvas.add(northArrow);
 
 
