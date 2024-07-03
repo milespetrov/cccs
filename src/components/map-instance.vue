@@ -31,7 +31,7 @@ import MapControlsCluster from './map-controls-cluster.vue';
 import MapFineprint from './map-fineprint.vue';
 import MapScrollguard from './map-scrollguard.vue';
 import MapPanguard from './map-panguard.vue';
-import { monthSelectorConfig } from '../configs/selectors';
+import { monthSelectorConfig, supplementalLayersEn, supplementalLayersFr, SupplementalLayers, } from '../configs/selectors';
 import { customRendererStartup } from '@/../assets/scripts/customExport';
 import { registerCustomAppbarLink } from '@/../assets/scripts/customAppbarLink';
 
@@ -91,6 +91,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     day: string;
     @StateApp
     month: string;
+    @StateApp
+    supplementalIds: string[];
 
     @StateApp
     layerVisibility: {
@@ -127,6 +129,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     mapCounter: string;
 
     currentLayers: any[];
+    supplementalLayersEn: SupplementalLayers = supplementalLayersEn;
+    supplementalLayersFr: SupplementalLayers = supplementalLayersFr;
 
     wmsTime: any = { start: '', end: '', step: '' };
 
@@ -320,6 +324,18 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 children: legend
             }
         });
+
+        // preserve toggled supplemental layers
+        this.supplementalIds.forEach((layerId) => {
+            this.addSupplementalLayer(layerId);
+        })
+    }
+
+    addSupplementalLayer(layerId: string) {
+        const layerConfig = this.$i18n.locale === 'en' ? this.supplementalLayersEn[layerId] : this.supplementalLayersFr[layerId];
+        const layerToAdd = this._rInstance.geo.layer.createLayer(layerConfig);
+        this._rInstance.geo.map.addLayer(layerToAdd); 
+        this._rInstance.fixture.get('legend').addLayerItem(layerToAdd);
     }
 
     @Watch('timeSlice')

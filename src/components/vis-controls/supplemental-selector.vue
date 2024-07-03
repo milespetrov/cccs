@@ -12,7 +12,6 @@
                 <b-dropdown-item-button
                     v-for="layerId in config.items"
                     class="cip-nowrap"
-                    :class="{ 'cip-selected': layerId === currentSupplementalId }"
                     @click="select(layerId)"
                     :key="`item-${ layerId }`">
                         <span class="cip-name">
@@ -61,8 +60,6 @@ export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
     layersEn: SupplementalLayers = supplementalLayersEn;
     layersFr: SupplementalLayers = supplementalLayersFr;
 
-    initialLoad: boolean = true;
-    currentSupplementalId: string = '';
     selected = {
         np: false,
         ntsn: false,
@@ -70,36 +67,30 @@ export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
         atris: false
     };
 
-    // serves purpose to watch if bookmarked ids exist on initial load
+    // serves to toggle on any previously selected ids on map reload or initial app load
     @Watch('supplementalIds')
-    async onSupplementalChange(newVals: string[], oldVals: string[]) {
-        if (this.initialLoad) {
-            // wait for map instance to be initialized
-            // better solution than timeout would probably involve changing the initial app loadup sequence
-            // to guarantee map instance is initialized before any bookmarking decoding process is done
-            setTimeout(() => {
-                newVals.forEach((layerId: string) => {
-                    this.selected[layerId] = true;
-                    this.addLayer(layerId.toUpperCase());
-                });
-                
-                this.initialLoad = false;
-            }, 500);
-        }
+    onSupplementalChange(newVals: string[], oldVals: string[]) {
+        newVals.forEach((layerId: string) => {
+            this.selected[layerId.toLowerCase()] = true;
+        });
     }
 
     select(layerId: SupplementalId) {
-        this.initialLoad = false;
         this.selected[layerId] = !this.selected[layerId]
         this.selected[layerId] ? this.addLayer(layerId.toUpperCase()) : this.removeLayer(layerId.toUpperCase());
 
         // update state/bookmark for supplemental IDs
-        const selectedIds = Object.keys(this.selected).filter(key => this.selected[key] === true);
+        const selectedIds = (Object.keys(this.selected).filter(key => this.selected[key] === true)).map((id: string) =>
+            id.toUpperCase()
+        );
         this.setSupplementalIds(selectedIds);
         this.updateRoute();
     }
 
     addLayer(layerId: string): void {
+        // NOTE: option to move this layer-related code to map-instance to avoid relying on debugInstance
+        // however, should not impact any functionality as having it here just simplifies the code instead
+        // of having to rely on a watcher or multiple watchers
         const rInstance = (<any>window).debugInstance;
         if (rInstance) {
             // construct layer object and add to map/legend
