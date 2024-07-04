@@ -250,7 +250,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     }
 
     openRampHelp(): void {
-        api.RAMP.mapInstances[api.RAMP.mapInstances.length - 1].mapI.help();
+        (window as any).debugInstance.panel.open('help');
     }
 }
 </script>
