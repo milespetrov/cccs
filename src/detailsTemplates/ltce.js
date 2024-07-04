@@ -33,7 +33,7 @@ var variableTemplate = {
                 <dt>
                     <span>{{ TRANSLATIONS[lang].second_value }}</span>
                 </dt>
-                <dd>{{ second_value }}{{ TRANSLATIONS[lang].units[variable] }} ({{ SECOND_YEAR }})</dd>
+                <dd>{{ second_value }}{{ TRANSLATIONS[lang].units[variable] }} ({{ second_year }})</dd>
                 
                 <dt>
                     <span>{{ TRANSLATIONS[lang].third_value }}</span>
@@ -57,14 +57,13 @@ var variableTemplate = {
 
         this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
 
-        foreach(function(el) {
-            if (typeof el.value === 'string') {
-                el.value = el.value.trim();
+        Object.keys(this.identifyData.data).forEach((key) => {
+            if (typeof this.identifyData.data[key] === 'string') {
+                this.identifyData.data[key] = this.identifyData.data[key].trim();
             } 
-            if (el.key === 'LAST_UPDATED') {
-                el.value = el.value.split('T')[0];
-            }
         });
+
+        this.identifyData.data['LAST_UPDATED'] = this.identifyData.data['LAST_UPDATED'].split('T')[0];
 
         const mappings = {
             'tmaxh': 'HIGH_MAX_TEMP',
@@ -83,23 +82,23 @@ var variableTemplate = {
             'snd': '',
         }
 
-        this.record_begin = identifyData.data[mappings2[variable] + 'RECORD_BEGIN'].split('T')[0];
-        this.record_end = identifyData.data[mappings2[variable] + 'RECORD_END'];
+        this.record_begin = this.identifyData.data[mappings2[this.variable] + 'RECORD_BEGIN'].split('T')[0];
+        this.record_end = this.identifyData.data[mappings2[this.variable] + 'RECORD_END'];
         if (!this.record_end) {
-            this.record_end = TRANSLATIONS[lang].present;
+            this.record_end = this.TRANSLATIONS[this.lang].present;
         } else {
             this.record_end = this.record_end.split('T')[0];
         }
-        this.first_value = this.identifyData.data['FIRST_' + mappings[variable]];
-        this.second_value = this.identifyData.data['SECOND_' + mappings[variable]];
-        this.third_value = this.identifyData.data['THIRD_' + mappings[variable]];
-        this.fourth_value = this.identifyData.data['FOURTH_' + mappings[variable]];
-        this.fifth_value = this.identifyData.data['FIFTH_' + mappings[variable]];
-        this.first_year = this.identifyData.data['FIRST_' + mappings[variable] + '_YEAR'];
-        this.second_year = this.identifyData.data['SECOND_' + mappings[variable] + '_YEAR'];
-        this.third_year = this.identifyData.data['THIRD_' + mappings[variable] + '_YEAR'];
-        this.fourth_year = this.identifyData.data['FOURTH_' + mappings[variable] + '_YEAR'];
-        this.fifth_year = this.identifyData.data['FIFTH_' + mappings[variable] + '_YEAR'];
+        this.first_value = this.identifyData.data['FIRST_' + mappings[this.variable]];
+        this.second_value = this.identifyData.data['SECOND_' + mappings[this.variable]];
+        this.third_value = this.identifyData.data['THIRD_' + mappings[this.variable]];
+        this.fourth_value = this.identifyData.data['FOURTH_' + mappings[this.variable]];
+        this.fifth_value = this.identifyData.data['FIFTH_' + mappings[this.variable]];
+        this.first_year = this.identifyData.data['FIRST_' + mappings[this.variable] + '_YEAR'];
+        this.second_year = this.identifyData.data['SECOND_' + mappings[this.variable] + '_YEAR'];
+        this.third_year = this.identifyData.data['THIRD_' + mappings[this.variable] + '_YEAR'];
+        this.fourth_year = this.identifyData.data['FOURTH_' + mappings[this.variable] + '_YEAR'];
+        this.fifth_year = this.identifyData.data['FIFTH_' + mappings[this.variable] + '_YEAR'];
     },
     methods: {
     },
@@ -236,15 +235,15 @@ var stationTemplate = {
     beforeMount() {
         this.lang = document.documentElement.lang;
 
-        this.identifyData.data.forEach(function(el) {
-            if (typeof el.value === 'string') {
-                el.value = el.value.trim();
-            }
+        Object.keys(this.identifyData.data).forEach((key) => {
+            if (typeof this.identifyData.data[key] === 'string') {
+                this.identifyData.data[key] = this.identifyData.data[key].trim();
+            } 
         });
 
         this.identifyData.data.START_DATE = this.identifyData.data.START_DATE.split('T')[0];
         if (!this.identifyData.data.END_DATE) {
-            this.identifyData.data.END_DATE = TRANSLATIONS[lang].present;
+            this.identifyData.data.END_DATE = this.TRANSLATIONS[this.lang].present;
         } else {
             this.identifyData.data.END_DATE = this.identifyData.data.END_DATE.split('T')[0];
         }
