@@ -5,20 +5,24 @@
                 <!--div class="cip-row-label">
                     <span class="cip-label">{{ $t('map.controlsCluster.legend') }}</span>
                 </div-->
-                
-                <div class="cip-row-content cip-row-legend" v-if="currentDataset == 'ltce' && !currentVariable.includes('station')">
-                    <div>
-                        <span v-html="legend[currentVariable][0]"></span>
-                        <span>{{ $t(`${currentDataset}.${currentVariable}.shortName`) }}</span>
+
+                <div class="cip-row-content cip-row-legend flex-col"
+                    v-if="currentDataset == 'ltce' && !currentVariable.includes('station')">
+                    <div class="cip-row-legend">
+                        <span class="cip-row-legend-icon" v-html="legend[currentVariable][0]"></span>
+                        <span class="cip-row-legend-label">{{ $t(`${currentDataset}.${currentVariable}.shortName`)
+                            }}</span>
                     </div>
-                    <div>
-                        <span v-html="legend[currentVariable][1]"></span>
-                        <span>{{ $t(`ltce.legend.newRecord`)}}</span>
+                    <div class="cip-row-legend">
+                        <span class="cip-row-legend-icon" v-html="legend[currentVariable][1]"></span>
+                        <span class="cip-row-legend-label">{{ $t(`ltce.legend.newRecord`) }}</span>
                     </div>
                 </div>
                 <div class="cip-row-content cip-row-legend" v-else>
-                    <span v-html="legend[currentVariable]"></span>
-                    <span class="cip-row-legend-label">{{ $t(currentDataset == 'ltce' ? `${currentDataset}.${currentVariable}.legend` : `${currentDataset}.${currentVariable}.shortName`) }}</span>
+                    <span class="cip-row-legend-icon" v-html="legend[currentVariable]"></span>
+                    <span class="cip-row-legend-label">{{ $t(currentDataset == 'ltce' ?
+                        `${currentDataset}.${currentVariable}.legend` :
+                        `${currentDataset}.${currentVariable}.shortName`) }}</span>
                 </div>
             </div>
 
@@ -46,10 +50,11 @@
             <div class="cip-cluster-row" v-if="colourRamp">
                 <div class="cip-row-label">
                     <span>{{ $t(`colourRamp.${currentDataset}.${currentVariable}`) }}</span>
-                    <span>({{$t(`units.${currentDataset}.${currentVariable}.shortName`)}})</span>
+                    <span>({{ $t(`units.${currentDataset}.${currentVariable}.shortName`) }})</span>
                 </div>
                 <div class="cip-row-content">
-                    <map-colour-ramp :labels="colourRamp.labels" :colours="colourRamp.colours" :ticks="colourRamp.ticks"></map-colour-ramp>
+                    <map-colour-ramp :labels="colourRamp.labels" :colours="colourRamp.colours"
+                        :ticks="colourRamp.ticks"></map-colour-ramp>
                 </div>
             </div>
         </div>
@@ -59,7 +64,7 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 
-import {DatasetId, VariableId} from '@/types'
+import { DatasetId, VariableId } from '@/types'
 
 import TimeSlider from './time-slider.vue';
 import MapColourRamp from './map-colour-ramp.vue';
@@ -116,8 +121,8 @@ export default class MapControlsCluster extends Vue {
 
         // TODO: create a shared variable for the box-shadow
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-            0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-            0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 
         .cip-cluster-row {
             margin: 3px 0;
@@ -137,17 +142,22 @@ export default class MapControlsCluster extends Vue {
 
             .cip-row-content {
                 flex: 2.9;
+
                 span {
                     margin: 3px;
                 }
+            }
 
-                &.cip-row-legend {
-                    align-items: center;
-                    display:flex;
+            .cip-row-legend {
+                align-items: center;
+                display: flex !important;
 
-                    .cip-row-legend-label {
-                        margin: auto;
-                    }
+                .cip-row-legend-icon {
+                    margin-left: auto;
+                }
+
+                .cip-row-legend-label {
+                    margin-right: auto;
                 }
             }
 
