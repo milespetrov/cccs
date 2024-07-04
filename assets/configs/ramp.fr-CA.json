@@ -208,7 +208,8 @@
                         ],
                         "attribution": {
                             "text": {
-                                "disabled": true
+                                "disabled": false,
+                                "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
                             },
                             "logo": {
                                 "disabled": false
@@ -237,7 +238,8 @@
                         ],
                         "attribution": {
                             "text": {
-                                "disabled": true
+                                "disabled": false,
+                                "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
                             },
                             "logo": {
                                 "disabled": false
@@ -260,7 +262,8 @@
                         ],
                         "attribution": {
                             "text": {
-                                "disabled": true
+                                "disabled": false,
+                                "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
                             },
                             "logo": {
                                 "disabled": false
@@ -284,7 +287,7 @@
                         "attribution": {
                             "text": {
                                 "disabled": false,
-                                "value": "© His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada"
+                                "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
                             },
                             "logo": {
                                 "disabled": false
@@ -305,6 +308,15 @@
                                 "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
                             }
                         ],
+                        "attribution": {
+                            "text": {
+                                "disabled": false,
+                                "value": "© Sa Majesté le Roi du chef du Canada, représenté par le ministre de Ressources naturelles Canada"
+                            },
+                            "logo": {
+                                "disabled": false
+                            }
+                        },
                         "tileSchemaId": "EXT_NRCAN_Lambert_3978#LOD_NRCAN_Lambert_3978"
                     }
                 ],
