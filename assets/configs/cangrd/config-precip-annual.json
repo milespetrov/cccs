@@ -55,8 +55,8 @@
         "state": {
           "opacity": 1,
           "visibility": false,
-          "identify": true,
-          "hovertips": true
+          "identify": false,
+          "hovertips": false
         },
         "id": "cities",
         "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
@@ -73,7 +73,7 @@
         "state": {
           "opacity": 1,
           "visibility": true,
-          "identify": true,
+         
           "hovertips": true
         },
         "id": "labels",
@@ -188,8 +188,8 @@
         "state": {
           "opacity": 1,
           "visibility": false,
-          "identify": true,
-          "hovertips": true
+          "identify": false,
+          "hovertips": false
         },
         "id": "cities",
         "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",

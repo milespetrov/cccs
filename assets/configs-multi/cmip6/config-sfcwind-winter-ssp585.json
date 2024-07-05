@@ -55,8 +55,8 @@
                 "state": {
                     "opacity": 1,
                     "visibility": false,
-                    "identify": true,
-                    "hovertips": true
+                    "identify": false,
+                    "hovertips": false
                 },
                 "id": "cities",
                 "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
@@ -275,8 +275,8 @@
                 "state": {
                     "opacity": 1,
                     "visibility": false,
-                    "identify": true,
-                    "hovertips": true
+                    "identify": false,
+                    "hovertips": false
                 },
                 "id": "cities",
                 "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
