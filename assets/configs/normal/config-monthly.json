@@ -67,8 +67,8 @@
         "state": {
           "opacity": 1,
           "visibility": true,
-          "identify": true,
-          "hovertips": true
+          "identify": false,
+          "hovertips": false
         },
         "id": "labels",
         "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
@@ -293,8 +293,8 @@
         "state": {
           "opacity": 1,
           "visibility": true,
-          "identify": true,
-          "hovertips": true
+          "identify": false,
+          "hovertips": false
         },
         "id": "labels",
         "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
