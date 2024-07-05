@@ -44,8 +44,7 @@
         "controls": [
           "visibility",
           "opacity",
-          "settings",
-          "symbology"
+          "settings"
         ],
         "state": {
           "opacity": 1,
@@ -218,8 +217,7 @@
         "controls": [
           "visibility",
           "opacity",
-          "settings",
-          "symbology"
+          "settings"
         ],
         "state": {
           "opacity": 1,

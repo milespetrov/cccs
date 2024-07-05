@@ -15,7 +15,8 @@
         "northarrow",
         "overviewmap",
         "panguard",
-        "scrollguard"       
+        "scrollguard",
+        "settings"
     ],
     "configs": {
         "en": {
