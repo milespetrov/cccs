@@ -10,14 +10,12 @@
         "grid",
         "help",
         "hilight",
-        "layer-reorder",
         "legend",
         "mapnav",
         "northarrow",
         "overviewmap",
         "panguard",
-        "scrollguard",
-        "wizard"
+        "scrollguard"       
     ],
     "configs": {
         "en": {
