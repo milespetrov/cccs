@@ -115,8 +115,8 @@
                             }
                         },
                         "maximum": {
-                            "xmin": -2556116,
-                            "xmax": 3754208,
+                            "xmin": -4304224,
+                            "xmax": 4524147,
                             "ymin": -1131913,
                             "ymax": 4821223,
                             "spatialReference": {
