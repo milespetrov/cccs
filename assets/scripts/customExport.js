@@ -36,10 +36,10 @@ export function customRendererStartup(ramp, store, i18n) {
     ramp.fixture.get('export').customRenderer(customExportRenderer);
 
     async function customExportRenderer(canvas, { map, scaleBar, northArrow }, { margin }) {
-        
+
         // Set the canvas width to always be 1240, css will scale it as needed to fit the panel
         canvas.setDimensions({
-            width: 1240
+            width: 2048
         });
 
         margin = {
@@ -56,7 +56,7 @@ export function customRendererStartup(ramp, store, i18n) {
         const titleObj = new fabric.Text(`${i18n.t('title')} - ${i18n.t(`datasetSelector.${store.datasetId}.shortName`)}`, {
             fontFamily: 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
             fill: '#000',
-            fontSize: 24,
+            fontSize: 48,
             top: margin.TOP,
             left: margin.LEFT,
             fontWeight: 'bold'
@@ -81,7 +81,7 @@ export function customRendererStartup(ramp, store, i18n) {
 
 
         // ----- The north arrow -----
-        northArrow.scaleToWidth(map.getScaledWidth() * 0.035, false);
+        northArrow.scaleToWidth(map.getScaledWidth() * 0.03, false);
         northArrow.set({
             top: runningHeight + (margin.TOP * 1.5) + (northArrow.getScaledHeight() / 2),
             left: margin.LEFT * 2 + (northArrow.getScaledWidth() / 2)
@@ -94,7 +94,7 @@ export function customRendererStartup(ramp, store, i18n) {
         scaleBar.scaleToWidth(map.getScaledWidth() * 0.10, false);
         scaleBar.set({
             top: runningHeight + map.getScaledHeight() - (scaleBar.getScaledHeight() / 1.5) - margin.BOTTOM / 2,
-            left: map.getScaledWidth() - (scaleBar.getScaledWidth() / 2) - margin.LEFT * 2
+            left: map.getScaledWidth() - (scaleBar.getScaledWidth() / 2) - margin.LEFT * 4
         });
         canvas.add(scaleBar);
 
@@ -105,7 +105,7 @@ export function customRendererStartup(ramp, store, i18n) {
             top: runningHeight + margin.TOP,
             fontFamily: 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
             fill: '#000',
-            fontSize: 16,
+            fontSize: 32,
             width: (canvas.width * 0.25) - (margin.LEFT * 2),
         });
         canvas.add(legendTitle);
@@ -131,7 +131,7 @@ export function customRendererStartup(ramp, store, i18n) {
                         top: symbologyGroupHeight + 2,
                         fontFamily: 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
                         fill: '#000',
-                        fontSize: 16
+                        fontSize: 32
                     });
                     symbologyGroup.addWithUpdate(symbolText);
                 }
@@ -157,12 +157,12 @@ export function customRendererStartup(ramp, store, i18n) {
                 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
             fill: '#000',
             fontWeight: 'bold',
-            fontSize: 14 });
+            fontSize: 28 });
 
             let text2 = new fabric.Text(secondaryText, { left: text.getScaledWidth(), top: detailsGroupHeight, fontFamily:
                 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
             fill: '#000',
-            fontSize: 14 });
+            fontSize: 28 });
 
             detailsGroupHeight += text2.getScaledHeight() + (margin.TOP / 2);
             detailsGroup.addWithUpdate(text);
@@ -232,7 +232,7 @@ export function customRendererStartup(ramp, store, i18n) {
                 top: runningHeight + margin.TOP,
                 fontFamily: 'Montserrat, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif',
                 fill: '#000',
-                fontSize: 14
+                fontSize: 28
             });
 
             if (footnote.width > canvas.width) {
