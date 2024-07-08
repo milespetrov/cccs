@@ -593,4 +593,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
     }
 }
+
+.cip-map-anchor /deep/ {
+    .detailsContentSection {
+        > div {
+            margin-left: 0;
+        }
+    }
+}
 </style>
