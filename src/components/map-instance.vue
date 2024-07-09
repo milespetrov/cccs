@@ -487,6 +487,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
         const newCenter = extent.center();
+        // round to make bookmark smaller.
+        // NOTE if we ever support a basemap schema-set in lat-long coord system,
+        //      this will be need to change to allow around 4 decimal points for
+        //      that schema.
+        newCenter.x = Math.round(newCenter.x);
+        newCenter.y = Math.round(newCenter.y);
+
         // make sure the centerpoint is new
         if (!this.centerPoint || this.centerPoint.x !== newCenter.x || this.centerPoint.y !== newCenter.y) {
             this.localCenterPointUpdate = true;
