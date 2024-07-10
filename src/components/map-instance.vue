@@ -287,7 +287,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             }
 
             if (this.dateSlider) {
-                if (this.timeSlice) {
+                if (this.timeSlice !== null) {
                     layerPromise.then((addedLayers: any[]) => {
                         this.onTimeSliceChanged(this.timeSlice, 0);
                     });
@@ -325,7 +325,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         const legendAPI = this._rInstance.fixture.get('legend');
 
         legend.forEach((element: any) => {
-            if (this.timeSlice && element.layerId && this.currentLayers.includes(element.layerId)) {
+            if (this.timeSlice !== null && element.layerId && !supportLayerIds.includes(element.layerId)) {
                 element.layerId = this.currentLayers[this.timeSlice];
             }
         });
