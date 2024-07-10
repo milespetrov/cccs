@@ -100,116 +100,116 @@
           "grid": {
             "columns": [
               {
-                "name": "VIRTUAL_CLIMATE_ID",
+                "field": "VIRTUAL_CLIMATE_ID",
                 "title": "Virtual Climate ID",
                 "visible": true
               },
               {
-                "name": "VIRTUAL_STATION_NAME_E",
+                "field": "VIRTUAL_STATION_NAME_E",
                 "title": "Virtual Station Name",
                 "visible": true
               },
               {
-                "name": "VIRTUAL_STATION_NAME_F",
+                "field": "VIRTUAL_STATION_NAME_F",
                 "visible": false
               },
               {
-                "name": "LOCAL_DAY",
+                "field": "LOCAL_DAY",
                 "title": "Day",
                 "visible": true
               },
               {
-                "name": "LOCAL_MONTH",
+                "field": "LOCAL_MONTH",
                 "title": "Month",
                 "visible": true
               },
               {
-                "name": "RECORD_BEGIN",
+                "field": "RECORD_BEGIN",
                 "title": "Record Start",
                 "visible": true
               },
               {
-                "name": "RECORD_END",
+                "field": "RECORD_END",
                 "title": "Record End",
                 "visible": true
               },
               {
-                "name": "FIRST_PRECIPITATION",
+                "field": "FIRST_PRECIPITATION",
                 "title": "Extreme Value",
                 "visible": true
               },
               {
-                "name": "FIRST_PRECIPITATION_YEAR",
+                "field": "FIRST_PRECIPITATION_YEAR",
                 "title": "Extreme Year",
                 "visible": true
               },
               {
-                "name": "SECOND_PRECIPITATION",
+                "field": "SECOND_PRECIPITATION",
                 "title": "2nd Extreme Value",
                 "visible": true
               },
               {
-                "name": "SECOND_PRECIPITATION_YEAR",
+                "field": "SECOND_PRECIPITATION_YEAR",
                 "title": "2nd Extreme Year",
                 "visible": true
               },
               {
-                "name": "THIRD_PRECIPITATION",
+                "field": "THIRD_PRECIPITATION",
                 "title": "3rd Extreme Value",
                 "visible": true
               },
               {
-                "name": "THIRD_PRECIPITATION_YEAR",
+                "field": "THIRD_PRECIPITATION_YEAR",
                 "title": "3rd Extreme Year",
                 "visible": true
               },
               {
-                "name": "FOURTH_PRECIPITATION",
+                "field": "FOURTH_PRECIPITATION",
                 "title": "4th Extreme Value",
                 "visible": true
               },
               {
-                "name": "FOURTH_PRECIPITATION_YEAR",
+                "field": "FOURTH_PRECIPITATION_YEAR",
                 "title": "4th Extreme Year",
                 "visible": true
               },
               {
-                "name": "FIFTH_PRECIPITATION",
+                "field": "FIFTH_PRECIPITATION",
                 "title": "5th Extreme Value",
                 "visible": true
               },
               {
-                "name": "FIFTH_PRECIPITATION_YEAR",
+                "field": "FIFTH_PRECIPITATION_YEAR",
                 "title": "5th Extreme Year",
                 "visible": true
               },
               {
-                "name": "LAST_UPDATED",
+                "field": "LAST_UPDATED",
                 "title": "Last Updated",
                 "visible": true
               },
               {
-                "name": "IDENTIFIER",
+                "field": "IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "PREV_RECORD_PRECIPITATION",
+                "field": "PREV_RECORD_PRECIPITATION",
                 "visible": false
               },
               {
-                "name": "PREV_RECORD_PRECIPITATION_YR",
+                "field": "PREV_RECORD_PRECIPITATION_YR",
                 "visible": false
               },
               {
-                "name": "RECORD_PRECIPITATION",
+                "field": "RECORD_PRECIPITATION",
                 "visible": false
               },
               {
-                "name": "RECORD_PRECIPITATION_YR",
+                "field": "RECORD_PRECIPITATION_YR",
                 "visible": false
               },
               {
-                "name": "PROVINCE_CODE",
+                "field": "PROVINCE_CODE",
                 "visible": false
               },
               {
@@ -277,7 +277,7 @@
           ]
         },
         "layerType": "ogc-wfs",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   },
@@ -382,120 +382,120 @@
           "grid": {
             "columns": [
               {
-                "name": "VIRTUAL_CLIMATE_ID",
+                "field": "VIRTUAL_CLIMATE_ID",
                 "title": "Identifiant Climatologique Virtuelle",
                 "visible": true
               },
               {
-                "name": "VIRTUAL_STATION_NAME_E",
+                "field": "VIRTUAL_STATION_NAME_E",
                 "visible": false
               },
               {
-                "name": "VIRTUAL_STATION_NAME_F",
+                "field": "VIRTUAL_STATION_NAME_F",
                 "title": "Nom du Station  Virtuelle",
                 "visible": true
               },
               {
-                "name": "LOCAL_DAY",
+                "field": "LOCAL_DAY",
                 "title": "Jour",
                 "visible": true
               },
               {
-                "name": "LOCAL_MONTH",
+                "field": "LOCAL_MONTH",
                 "title": "Mois",
                 "visible": true
               },
               {
-                "name": "RECORD_BEGIN",
+                "field": "RECORD_BEGIN",
                 "title": "Début des records",
                 "visible": true
               },
               {
-                "name": "RECORD_END",
+                "field": "RECORD_END",
                 "title": "Fin des records",
                 "visible": true
               },
               {
-                "name": "FIRST_PRECIPITATION",
+                "field": "FIRST_PRECIPITATION",
                 "title": "Valeur extrême",
                 "visible": true
               },
               {
-                "name": "FIRST_PRECIPITATION_YEAR",
+                "field": "FIRST_PRECIPITATION_YEAR",
                 "title": "Année de l'extrême",
                 "visible": true
               },
               {
-                "name": "SECOND_PRECIPITATION",
+                "field": "SECOND_PRECIPITATION",
                 "title": "Valeur du 2e Extrême",
                 "visible": true
               },
               {
-                "name": "SECOND_PRECIPITATION_YEAR",
+                "field": "SECOND_PRECIPITATION_YEAR",
                 "title": "Année du 2e Extrême",
                 "visible": true
               },
               {
-                "name": "THIRD_PRECIPITATION",
+                "field": "THIRD_PRECIPITATION",
                 "title": "Valeur du 3e Extrême",
                 "visible": true
               },
               {
-                "name": "THIRD_PRECIPITATION_YEAR",
+                "field": "THIRD_PRECIPITATION_YEAR",
                 "title": "Année du 3e Extrême",
                 "visible": true
               },
               {
-                "name": "FOURTH_PRECIPITATION",
+                "field": "FOURTH_PRECIPITATION",
                 "title": "Valeur du 4e Extrême",
                 "visible": true
               },
               {
-                "name": "FOURTH_PRECIPITATION_YEAR",
+                "field": "FOURTH_PRECIPITATION_YEAR",
                 "title": "Année du 4e Extrême",
                 "visible": true
               },
               {
-                "name": "FIFTH_PRECIPITATION",
+                "field": "FIFTH_PRECIPITATION",
                 "title": "Valeur du 5e Extrême",
                 "visible": true
               },
               {
-                "name": "FIFTH_PRECIPITATION_YEAR",
+                "field": "FIFTH_PRECIPITATION_YEAR",
                 "title": "Année du 5e Extrême",
                 "visible": true
               },
               {
-                "name": "LAST_UPDATED",
+                "field": "LAST_UPDATED",
                 "title": "Dernière mise à jour",
                 "visible": true
               },
               {
-                "name": "IDENTIFIER",
+                "field": "IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "PREV_RECORD_PRECIPITATION",
+                "field": "PREV_RECORD_PRECIPITATION",
                 "visible": false
               },
               {
-                "name": "PREV_RECORD_PRECIPITATION_YR",
+                "field": "PREV_RECORD_PRECIPITATION_YR",
                 "visible": false
               },
               {
-                "name": "RECORD_PRECIPITATION",
+                "field": "RECORD_PRECIPITATION",
                 "visible": false
               },
               {
-                "name": "RECORD_PRECIPITATION_YR",
+                "field": "RECORD_PRECIPITATION_YR",
                 "visible": false
               },
               {
-                "name": "PROVINCE_CODE",
+                "field": "PROVINCE_CODE",
                 "visible": false
               },
               {
-                "name": "WXO_CITY_CODE",
+                "field": "WXO_CITY_CODE",
                 "visible": false
               }
             ]
@@ -559,7 +559,7 @@
           ]
         },
         "layerType": "ogc-wfs",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   }

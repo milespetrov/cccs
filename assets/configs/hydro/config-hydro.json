@@ -96,56 +96,56 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "CONTRIBUTOR_FR",
+                "field": "CONTRIBUTOR_FR",
                 "visible": false
               },
               {
-                "name": "STATUS_EN",
+                "field": "STATUS_EN",
                 "title": "Status",
                 "visible": true
               },
               {
-                "name": "STATION_NUMBER",
+                "field": "STATION_NUMBER",
                 "title": "Station Number",
                 "visible": true
               },
               {
-                "name": "CONTRIBUTOR_EN",
+                "field": "CONTRIBUTOR_EN",
                 "title": "Contributor",
                 "visible": true
               },
               {
-                "name": "VERTICAL_DATUM",
+                "field": "VERTICAL_DATUM",
                 "title": "Vertical Datum",
                 "visible": true
               },
               {
-                "name": "STATUS_FR",
+                "field": "STATUS_FR",
                 "visible": false
               },
               {
-                "name": "STATION_NAME",
+                "field": "STATION_NAME",
                 "title": "Station Name",
                 "visible": true
               },
               {
-                "name": "IDENTIFIER",
+                "field": "IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "PROV_TERR_STATE_LOC",
+                "field": "PROV_TERR_STATE_LOC",
                 "title": "Province / Territory",
                 "visible": true
               }
@@ -159,7 +159,7 @@
         "url": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATUS_EN=Active",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   },
@@ -260,56 +260,56 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "CONTRIBUTOR_FR",
+                "field": "CONTRIBUTOR_FR",
                 "title": "Contributeur",
                 "visible": true
               },
               {
-                "name": "STATUS_EN",
+                "field": "STATUS_EN",
                 "visible": false
               },
               {
-                "name": "STATION_NUMBER",
+                "field": "STATION_NUMBER",
                 "title": "Numéro de la station",
                 "visible": true
               },
               {
-                "name": "CONTRIBUTOR_EN",
+                "field": "CONTRIBUTOR_EN",
                 "visible": false
               },
               {
-                "name": "VERTICAL_DATUM",
+                "field": "VERTICAL_DATUM",
                 "title": "Plan de référence altimétrique",
                 "visible": true
               },
               {
-                "name": "STATUS_FR",
+                "field": "STATUS_FR",
                 "title": "Statut",
                 "visible": true
               },
               {
-                "name": "STATION_NAME",
+                "field": "STATION_NAME",
                 "title": "Nom de la station",
                 "visible": true
               },
               {
-                "name": "IDENTIFIER",
+                "field": "IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "PROV_TERR_STATE_LOC",
+                "field": "PROV_TERR_STATE_LOC",
                 "title": "Province / Territoire",
                 "visible": true
               }
@@ -323,7 +323,7 @@
         "url": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATUS_EN=Active",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   }

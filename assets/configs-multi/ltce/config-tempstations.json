@@ -96,59 +96,59 @@
           "grid": {
             "columns": [
               {
-                "name": "VIRTUAL_CLIMATE_ID",
+                "field": "VIRTUAL_CLIMATE_ID",
                 "title": "Virtual Climate ID",
                 "visible": true
               },
               {
-                "name": "VIRTUAL_STATION_NAME_E",
+                "field": "VIRTUAL_STATION_NAME_E",
                 "title": "Virtual Station Name",
                 "visible": true
               },
               {
-                "name": "VIRTUAL_STATION_NAME_F",
+                "field": "VIRTUAL_STATION_NAME_F",
                 "visible": false
               },
               {
-                "name": "CLIMATE_IDENTIFIER",
+                "field": "CLIMATE_IDENTIFIER",
                 "title": "Climate Identifier",
                 "visible": true
               },
               {
-                "name": "DATA_SOURCE",
+                "field": "DATA_SOURCE",
                 "title": "Type",
                 "visible": true
               },
               {
-                "name": "ELEMENT_NAME_E",
+                "field": "ELEMENT_NAME_E",
                 "title": "Element",
                 "visible": true
               },
               {
-                "name": "START_DATE",
+                "field": "START_DATE",
                 "title": "Start Date",
                 "visible": true
               },
               {
-                "name": "END_DATE",
+                "field": "END_DATE",
                 "title": "End Date",
                 "visible": true
               },
               {
-                "name": "ENG_STN_NAME",
+                "field": "ENG_STN_NAME",
                 "title": "Station Name",
                 "visible": true
               },
               {
-                "name": "FRE_STN_NAME",
+                "field": "FRE_STN_NAME",
                 "visible": false
               },
               {
-                "name": "IDENTIFIER",
+                "field": "IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "PROVINCE_CODE",
+                "field": "PROVINCE_CODE",
                 "visible": false
               },
               {
@@ -165,7 +165,7 @@
         "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   },
@@ -266,63 +266,63 @@
           "grid": {
             "columns": [
               {
-                "name": "VIRTUAL_CLIMATE_ID",
+                "field": "VIRTUAL_CLIMATE_ID",
                 "title": "Identifiant Climatologique Virtuelle",
                 "visible": true
               },
               {
-                "name": "VIRTUAL_STATION_NAME_E",
+                "field": "VIRTUAL_STATION_NAME_E",
                 "visible": false
               },
               {
-                "name": "VIRTUAL_STATION_NAME_F",
+                "field": "VIRTUAL_STATION_NAME_F",
                 "title": "Nom du Station Virtuelle",
                 "visible": true
               },
               {
-                "name": "CLIMATE_IDENTIFIER",
+                "field": "CLIMATE_IDENTIFIER",
                 "title": "Identifiant Climatologique",
                 "visible": true
               },
               {
-                "name": "DATA_SOURCE",
+                "field": "DATA_SOURCE",
                 "title": "Type",
                 "visible": true
               },
               {
-                "name": "ELEMENT_NAME_E",
+                "field": "ELEMENT_NAME_E",
                 "title": "Élément",
                 "visible": true
               },
               {
-                "name": "START_DATE",
+                "field": "START_DATE",
                 "title": "Début des records",
                 "visible": true
               },
               {
-                "name": "END_DATE",
+                "field": "END_DATE",
                 "title": "Fin des records",
                 "visible": true
               },
               {
-                "name": "ENG_STN_NAME",
+                "field": "ENG_STN_NAME",
                 "visible": false
               },
               {
-                "name": "FRE_STN_NAME",
+                "field": "FRE_STN_NAME",
                 "title": "Nom du Station",
                 "visible": true
               },
               {
-                "name": "IDENTIFIER",
+                "field": "IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "PROVINCE_CODE",
+                "field": "PROVINCE_CODE",
                 "visible": false
               },
               {
-                "name": "WXO_CITY_CODE",
+                "field": "WXO_CITY_CODE",
                 "visible": false
               }
             ]
@@ -335,7 +335,7 @@
         "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=TEMPERATURE",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   }

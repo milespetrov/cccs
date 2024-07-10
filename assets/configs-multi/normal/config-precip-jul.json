@@ -96,131 +96,131 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "NORMAL_CODE",
+                "field": "NORMAL_CODE",
                 "title": "Normal code",
                 "visible": true
               },
               {
-                "name": "OCCURRENCE_COUNT",
+                "field": "OCCURRENCE_COUNT",
                 "visible": false
               },
               {
-                "name": "FIRST_YEAR",
+                "field": "FIRST_YEAR",
                 "visible": false
               },
               {
-                "name": "PERIOD_END",
+                "field": "PERIOD_END",
                 "title": "Period end",
                 "visible": true
               },
               {
-                "name": "PERCENT_OF_POSSIBLE_OBS",
+                "field": "PERCENT_OF_POSSIBLE_OBS",
                 "title": "Percentage of possible observations",
                 "visible": true
               },
               {
-                "name": "PERIOD_BEGIN",
+                "field": "PERIOD_BEGIN",
                 "title": "Period beginning",
                 "visible": true
               },
               {
-                "name": "LAST_YEAR_NORMAL_PERIOD",
+                "field": "LAST_YEAR_NORMAL_PERIOD",
                 "title": "Last year of normal period",
                 "visible": true
               },
               {
-                "name": "PROVINCE_CODE",
+                "field": "PROVINCE_CODE",
                 "title": "Province / Territory",
                 "visible": true
               },
               {
-                "name": "PUBLICATION_CODE",
+                "field": "PUBLICATION_CODE",
                 "visible": false
               },
               {
-                "name": "FIRST_YEAR_NORMAL_PERIOD",
+                "field": "FIRST_YEAR_NORMAL_PERIOD",
                 "title": "First year of normal period",
                 "visible": true
               },
               {
-                "name": "MAX_DURATION_MISSING_YEARS",
+                "field": "MAX_DURATION_MISSING_YEARS",
                 "visible": false
               },
               {
-                "name": "STATION_NAME",
+                "field": "STATION_NAME",
                 "title": "MSC station name",
                 "visible": true
               },
               {
-                "name": "CURRENT_FLAG",
+                "field": "CURRENT_FLAG",
                 "visible": false
               },
               {
-                "name": "LAST_YEAR",
+                "field": "LAST_YEAR",
                 "visible": false
               },
               {
-                "name": "DATE_CALCULATED",
+                "field": "DATE_CALCULATED",
                 "title": "Date calculated",
                 "visible": true
               },
               {
-                "name": "F_NORMAL_ELEMENT_NAME",
+                "field": "F_NORMAL_ELEMENT_NAME",
                 "visible": false
               },
               {
-                "name": "TOTAL_OBS_COUNT",
+                "field": "TOTAL_OBS_COUNT",
                 "title": "Total observations count",
                 "visible": true
               },
               {
-                "name": "PERIOD",
+                "field": "PERIOD",
                 "visible": false
               },
               {
-                "name": "VALUE",
+                "field": "VALUE",
                 "title": "Climate value",
                 "visible": true
               },
               {
-                "name": "CLIMATE_IDENTIFIER",
+                "field": "CLIMATE_IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "NORMAL_ID",
+                "field": "NORMAL_ID",
                 "visible": false
               },
               {
-                "name": "ID",
+                "field": "ID",
                 "visible": false
               },
               {
-                "name": "FIRST_OCCURRENCE_DATE",
+                "field": "FIRST_OCCURRENCE_DATE",
                 "visible": false
               },
               {
-                "name": "MONTH",
+                "field": "MONTH",
                 "title": "Month",
                 "visible": true
               },
               {
-                "name": "YEAR_COUNT_NORMAL_PERIOD",
+                "field": "YEAR_COUNT_NORMAL_PERIOD",
                 "visible": false
               },
               {
-                "name": "E_NORMAL_ELEMENT_NAME",
+                "field": "E_NORMAL_ELEMENT_NAME",
                 "title": "Measurement type",
                 "visible": true
               }
@@ -234,7 +234,7 @@
         "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=56&MONTH=7",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   },
@@ -335,132 +335,132 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "NORMAL_CODE",
+                "field": "NORMAL_CODE",
                 "title": "Code de la normale",
                 "visible": true
               },
               {
-                "name": "OCCURRENCE_COUNT",
+                "field": "OCCURRENCE_COUNT",
                 "visible": false
               },
               {
-                "name": "FIRST_YEAR",
+                "field": "FIRST_YEAR",
                 "visible": false
               },
               {
-                "name": "PERIOD_END",
+                "field": "PERIOD_END",
                 "title": "Fin de la période",
                 "visible": true
               },
               {
-                "name": "PERCENT_OF_POSSIBLE_OBS",
+                "field": "PERCENT_OF_POSSIBLE_OBS",
                 "title": "Pourcentage d'observations possibles",
                 "visible": true
               },
               {
-                "name": "PERIOD_BEGIN",
+                "field": "PERIOD_BEGIN",
                 "title": "Début de la période",
                 "visible": true
               },
               {
-                "name": "LAST_YEAR_NORMAL_PERIOD",
+                "field": "LAST_YEAR_NORMAL_PERIOD",
                 "title": "Dernière année de la période pour les normales",
                 "visible": true
               },
               {
-                "name": "PROVINCE_CODE",
+                "field": "PROVINCE_CODE",
                 "title": "Province / Territoire",
                 "visible": true
               },
               {
-                "name": "PUBLICATION_CODE",
+                "field": "PUBLICATION_CODE",
                 "visible": false
               },
               {
-                "name": "FIRST_YEAR_NORMAL_PERIOD",
+                "field": "FIRST_YEAR_NORMAL_PERIOD",
                 "title": "Première année de la période pour les normales",
                 "visible": true
               },
               {
-                "name": "MAX_DURATION_MISSING_YEARS",
+                "field": "MAX_DURATION_MISSING_YEARS",
                 "visible": false
               },
               {
-                "name": "STATION_NAME",
+                "field": "STATION_NAME",
                 "title": "Nom de la station du SMC",
                 "visible": true
               },
               {
-                "name": "CURRENT_FLAG",
+                "field": "CURRENT_FLAG",
                 "visible": false
               },
               {
-                "name": "LAST_YEAR",
+                "field": "LAST_YEAR",
                 "visible": false
               },
               {
-                "name": "DATE_CALCULATED",
+                "field": "DATE_CALCULATED",
                 "title": "Date du calcul",
                 "visible": true
               },
               {
-                "name": "F_NORMAL_ELEMENT_NAME",
+                "field": "F_NORMAL_ELEMENT_NAME",
                 "title": "Type de mesure",
                 "visible": true
               },
               {
-                "name": "TOTAL_OBS_COUNT",
+                "field": "TOTAL_OBS_COUNT",
                 "title": "Nombre total d'observations",
                 "visible": true
               },
               {
-                "name": "PERIOD",
+                "field": "PERIOD",
                 "visible": false
               },
               {
-                "name": "VALUE",
+                "field": "VALUE",
                 "title": "Valeur climatique",
                 "visible": true
               },
               {
-                "name": "CLIMATE_IDENTIFIER",
+                "field": "CLIMATE_IDENTIFIER",
                 "visible": false
               },
               {
-                "name": "NORMAL_ID",
+                "field": "NORMAL_ID",
                 "visible": false
               },
               {
-                "name": "ID",
+                "field": "ID",
                 "visible": false
               },
               {
-                "name": "FIRST_OCCURRENCE_DATE",
+                "field": "FIRST_OCCURRENCE_DATE",
                 "visible": false
               },
               {
-                "name": "MONTH",
+                "field": "MONTH",
                 "title": "Mois",
                 "visible": true
               },
               {
-                "name": "YEAR_COUNT_NORMAL_PERIOD",
+                "field": "YEAR_COUNT_NORMAL_PERIOD",
                 "visible": false
               },
               {
-                "name": "E_NORMAL_ELEMENT_NAME",
+                "field": "E_NORMAL_ELEMENT_NAME",
                 "visible": false
               }
             ]
@@ -473,7 +473,7 @@
         "url": "#GEOMETWFS#/collections/climate-normals/items?NORMAL_ID=56&MONTH=7",
         "layerType": "ogc-wfs",
         "colour": "#0cb8f0",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   }

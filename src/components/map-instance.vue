@@ -268,12 +268,25 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 }
             }
 
+            if (layer.fixtures && layer.fixtures.grid && !layer.fieldMetadata) {
+                layer.fieldMetadata = {};
+                layer.fieldMetadata.fieldInfo = Object.values(layer.fixtures.grid.columns).filter((column: any) => {
+                    return column.visible;
+                }).map((column: any) => {
+                    return {
+                        name: column.field
+                    }
+                });
+                layer.fieldMetadata.exclusiveFields = true;
+                layer.fieldMetadata.enforceOrder = true;
+            }
+
             const layerObj = this._rInstance.geo.layer.createLayer(layer)
             const layerPromise = this._rInstance.geo.map.addLayer(layerObj);
             this.currentLayers[index] = layer.id;
 
             // wait for the visible data layer to load, then refresh identify if needed
-            if (layer.state.visibility === true && tempLastClick !== null) {
+            if (layer.state.visibility === true && tempLastClick !== null && layer.layerType !== 'ogc-wfs') {
                 // layer promise does not actually wait for layer to be loaded, only registered
                 // use a callback on layer state change to look for 'loaded' state on the visible layer
                 const refreshIdentifyOnLayerLoad = (event: {state: string, layer: any}) => {

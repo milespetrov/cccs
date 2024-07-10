@@ -96,64 +96,64 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "station_id__id_station",
+                "field": "station_id__id_station",
                 "title": "AHCCD station ID",
                 "visible": true
               },
               {
-                "name": "elevation__elevation",
+                "field": "elevation__elevation",
                 "title": "Elevation",
                 "visible": true
               },
               {
-                "name": "identifier__identifiant",
+                "field": "identifier__identifiant",
                 "title": "Identifier",
                 "visible": true
               },
               {
-                "name": "station_name__nom_station",
+                "field": "station_name__nom_station",
                 "title": "Station name",
                 "visible": true
               },
               {
-                "name": "province__province",
+                "field": "province__province",
                 "title": "Province/Territory",
                 "visible": true
               },
               {
-                "name": "year_range__annees",
+                "field": "year_range__annees",
                 "title": "Year range",
                 "visible": true
               },
               {
-                "name": "period__periode",
+                "field": "period__periode",
                 "title": "Period",
                 "visible": true
               },
               {
-                "name": "measurement_type__type_mesure",
+                "field": "measurement_type__type_mesure",
                 "title": "Measurement type",
                 "visible": true
               },
               {
-                "name": "joined__rejoint",
+                "field": "joined__rejoint",
                 "title": "Joined",
                 "visible": true
               },
               {
-                "name": "trend_value__valeur_tendance",
+                "field": "trend_value__valeur_tendance",
                 "title": "Trend value",
                 "visible": true
               }
@@ -167,7 +167,7 @@
         "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=May",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   },
@@ -268,64 +268,64 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "station_id__id_station",
+                "field": "station_id__id_station",
                 "title": "Numéro de la station DCCAH",
                 "visible": true
               },
               {
-                "name": "elevation__elevation",
+                "field": "elevation__elevation",
                 "title": "Altitude",
                 "visible": true
               },
               {
-                "name": "identifier__identifiant",
+                "field": "identifier__identifiant",
                 "title": "Identifiant",
                 "visible": true
               },
               {
-                "name": "station_name__nom_station",
+                "field": "station_name__nom_station",
                 "title": "Nom station",
                 "visible": true
               },
               {
-                "name": "province__province",
+                "field": "province__province",
                 "title": "Province / Territoire",
                 "visible": true
               },
               {
-                "name": "year_range__annees",
+                "field": "year_range__annees",
                 "title": "Annees",
                 "visible": true
               },
               {
-                "name": "period__periode",
+                "field": "period__periode",
                 "title": "Periode",
                 "visible": true
               },
               {
-                "name": "measurement_type__type_mesure",
+                "field": "measurement_type__type_mesure",
                 "title": "Type mesure",
                 "visible": true
               },
               {
-                "name": "joined__rejoint",
+                "field": "joined__rejoint",
                 "title": "Rejoint",
                 "visible": true
               },
               {
-                "name": "trend_value__valeur_tendance",
+                "field": "trend_value__valeur_tendance",
                 "title": "Valeur tendance",
                 "visible": true
               }
@@ -339,7 +339,7 @@
         "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=May",
         "layerType": "ogc-wfs",
         "colour": "#f04116",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   }

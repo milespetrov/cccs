@@ -96,119 +96,119 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "NORMAL_CODE",
+                "field": "NORMAL_CODE",
                 "title": "Normal code",
                 "visible": true
               },
               {
-                "name": "FRE_STN_OPERATOR_ACRONYM",
+                "field": "FRE_STN_OPERATOR_ACRONYM",
                 "visible": false
               },
               {
-                "name": "COUNTRY",
+                "field": "COUNTRY",
                 "visible": false
               },
               {
-                "name": "WMO_IDENTIFIER",
+                "field": "WMO_IDENTIFIER",
                 "title": "WMO identifier",
                 "visible": true
               },
               {
-                "name": "CLIMATE_IDENTIFIER",
+                "field": "CLIMATE_IDENTIFIER",
                 "title": "Climate identifier",
                 "visible": true
               },
               {
-                "name": "HAS_MONTHLY_SUMMARY",
+                "field": "HAS_MONTHLY_SUMMARY",
                 "visible": false
               },
               {
-                "name": "HAS_HOURLY_DATA",
+                "field": "HAS_HOURLY_DATA",
                 "visible": false
               },
               {
-                "name": "TIMEZONE",
+                "field": "TIMEZONE",
                 "title": "Time zone",
                 "visible": true
               },
               {
-                "name": "PROV_STATE_TERR_CODE",
+                "field": "PROV_STATE_TERR_CODE",
                 "title": "Province / Territory",
                 "visible": true
               },
               {
-                "name": "PUBLICATION_CODE",
+                "field": "PUBLICATION_CODE",
                 "visible": false
               },
               {
-                "name": "HAS_NORMALS_DATA",
+                "field": "HAS_NORMALS_DATA",
                 "visible": false
               },
               {
-                "name": "ENG_PROV_NAME",
+                "field": "ENG_PROV_NAME",
                 "visible": false
               },
               {
-                "name": "FRE_PROV_NAME",
+                "field": "FRE_PROV_NAME",
                 "visible": false
               },
               {
-                "name": "STATION_NAME",
+                "field": "STATION_NAME",
                 "title": "Station name",
                 "visible": true
               },
               {
-                "name": "STATION_TYPE",
+                "field": "STATION_TYPE",
                 "title": "Station type",
                 "visible": true
               },
               {
-                "name": "ENG_STN_OPERATOR_NAME",
+                "field": "ENG_STN_OPERATOR_NAME",
                 "title": "Station operator",
                 "visible": true
               },
               {
-                "name": "ENG_STN_OPERATOR_ACRONYM",
+                "field": "ENG_STN_OPERATOR_ACRONYM",
                 "visible": false
               },
               {
-                "name": "LONGITUDE",
+                "field": "LONGITUDE",
                 "title": "Longitude",
                 "visible": true
               },
               {
-                "name": "ELEVATION",
+                "field": "ELEVATION",
                 "title": "Elevation",
                 "visible": true
               },
               {
-                "name": "TC_IDENTIFIER",
+                "field": "TC_IDENTIFIER",
                 "title": "Transport Canada identifier",
                 "visible": true
               },
               {
-                "name": "FRE_STN_OPERATOR_NAME",
+                "field": "FRE_STN_OPERATOR_NAME",
                 "visible": false
               },
               {
-                "name": "LATITUDE",
+                "field": "LATITUDE",
                 "title": "Latitude",
                 "visible": true
               },
               {
-                "name": "DISPLAY_CODE",
+                "field": "DISPLAY_CODE",
                 "visible": false
               }
             ]
@@ -221,7 +221,7 @@
         "url": "https://api.weather.gc.ca/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   },
@@ -322,119 +322,119 @@
           "grid": {
             "columns": [
               {
-                "name": "OBJECTID",
+                "field": "OBJECTID",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordX",
+                "field": "rvInternalCoordX",
                 "visible": false
               },
               {
-                "name": "rvInternalCoordY",
+                "field": "rvInternalCoordY",
                 "visible": false
               },
               {
-                "name": "NORMAL_CODE",
+                "field": "NORMAL_CODE",
                 "title": "Code de la normale",
                 "visible": true
               },
               {
-                "name": "FRE_STN_OPERATOR_ACRONYM",
+                "field": "FRE_STN_OPERATOR_ACRONYM",
                 "visible": false
               },
               {
-                "name": "COUNTRY",
+                "field": "COUNTRY",
                 "visible": false
               },
               {
-                "name": "WMO_IDENTIFIER",
+                "field": "WMO_IDENTIFIER",
                 "title": "Identifiant de l'OMM",
                 "visible": true
               },
               {
-                "name": "CLIMATE_IDENTIFIER",
+                "field": "CLIMATE_IDENTIFIER",
                 "title": "Identifiant climatique",
                 "visible": true
               },
               {
-                "name": "HAS_MONTHLY_SUMMARY",
+                "field": "HAS_MONTHLY_SUMMARY",
                 "visible": false
               },
               {
-                "name": "HAS_HOURLY_DATA",
+                "field": "HAS_HOURLY_DATA",
                 "visible": false
               },
               {
-                "name": "TIMEZONE",
+                "field": "TIMEZONE",
                 "title": "Fuseau horaire",
                 "visible": true
               },
               {
-                "name": "PROV_STATE_TERR_CODE",
+                "field": "PROV_STATE_TERR_CODE",
                 "title": "Province / Territoire",
                 "visible": true
               },
               {
-                "name": "PUBLICATION_CODE",
+                "field": "PUBLICATION_CODE",
                 "visible": false
               },
               {
-                "name": "HAS_NORMALS_DATA",
+                "field": "HAS_NORMALS_DATA",
                 "visible": false
               },
               {
-                "name": "ENG_PROV_NAME",
+                "field": "ENG_PROV_NAME",
                 "visible": false
               },
               {
-                "name": "FRE_PROV_NAME",
+                "field": "FRE_PROV_NAME",
                 "visible": false
               },
               {
-                "name": "STATION_NAME",
+                "field": "STATION_NAME",
                 "title": "Nom de la station",
                 "visible": true
               },
               {
-                "name": "STATION_TYPE",
+                "field": "STATION_TYPE",
                 "title": "Type de station",
                 "visible": true
               },
               {
-                "name": "ENG_STN_OPERATOR_NAME",
+                "field": "ENG_STN_OPERATOR_NAME",
                 "visible": false
               },
               {
-                "name": "ENG_STN_OPERATOR_ACRONYM",
+                "field": "ENG_STN_OPERATOR_ACRONYM",
                 "visible": false
               },
               {
-                "name": "LONGITUDE",
+                "field": "LONGITUDE",
                 "title": "Longitude",
                 "visible": true
               },
               {
-                "name": "ELEVATION",
+                "field": "ELEVATION",
                 "title": "Altitude",
                 "visible": true
               },
               {
-                "name": "TC_IDENTIFIER",
+                "field": "TC_IDENTIFIER",
                 "title": "Identifiant de Transports Canada",
                 "visible": true
               },
               {
-                "name": "FRE_STN_OPERATOR_NAME",
+                "field": "FRE_STN_OPERATOR_NAME",
                 "title": "Opérateur de la station",
                 "visible": true
               },
               {
-                "name": "LATITUDE",
+                "field": "LATITUDE",
                 "title": "Latitude",
                 "visible": true
               },
               {
-                "name": "DISPLAY_CODE",
+                "field": "DISPLAY_CODE",
                 "visible": false
               }
             ]
@@ -447,7 +447,7 @@
         "url": "https://api.weather.gc.ca/collections/climate-stations/items?HAS_MONTHLY_SUMMARY=Y",
         "layerType": "ogc-wfs",
         "colour": "#0ca7f5",
-        "xyInAttribs": true
+        "xyInAttribs": false
       }
     ]
   }
