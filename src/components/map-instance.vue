@@ -148,12 +148,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     @Watch('currentRcp')
-    onRcpChanged(newValue: string, oldValue: string) {
+    onRcpChanged() {
         this.switchLayers();
     }
 
     @Watch('sspId')
-    onSspChanged(newValue: string, oldValue: string) {
+    onSspChanged() {
         this.switchLayers();
     }
 
@@ -163,7 +163,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     @Watch('datasetId')
-    onDatasetChanged(newValue: DatasetSource) {
+    onDatasetChanged() {
         //this.updateIdentifyMode();
     }
 
@@ -207,8 +207,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     async switchLayers() {
+        this._rInstance.event.off('cccs_refreshIdentifyOnLayerLoad');
         if (!this._rInstance || !this._rInstance.geo.map.created) {
             return;
+        }
+
+        let tempLastClick: XY | null = null;
+
+        // store lastclick before changing layers closes the details panel and loses it
+        if (this.lastClick !== null) {
+            tempLastClick = this.lastClick;
         }
 
         if (this._rInstance.geo.layer.allLayers().length > 0) {
@@ -265,10 +273,17 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this.currentLayers[index] = layer.id;
 
             // wait for the visible data layer to load, then refresh identify if needed
-            if (layer.state.visibility === true) {
-                layerPromise.then(() => {
-                    this.refreshIdentify();
-                });
+            if (layer.state.visibility === true && tempLastClick !== null) {
+                // layer promise does not actually wait for layer to be loaded, only registered
+                // use a callback on layer state change to look for 'loaded' state on the visible layer
+                const refreshIdentifyOnLayerLoad = (event: {state: string, layer: any}) => {
+                    if (event.layer.id === layer.id && event.state === 'loaded') {
+                        this._rInstance.event.off('cccs_refreshIdentifyOnLayerLoad');
+                        this.setLastClick(tempLastClick);
+                        this.refreshIdentify();
+                    }
+                };
+                this._rInstance.event.on('layer/layerstatechange', refreshIdentifyOnLayerLoad, 'cccs_refreshIdentifyOnLayerLoad');
             }
 
             if (this.dateSlider) {
@@ -340,11 +355,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     @Watch('timeSlice')
     onTimeSliceChanged(newValue: number, oldValue: number) {
-        const detailsPanel = this._rInstance.panel.get('details');
-        if (detailsPanel) {
-            detailsPanel.close();
-        }
-
         if (this.timeSliderLabels && this.currentLayers) {
             // RAMP4 does not support collapsed visibility sets;
             // we have to swap the layer the legend item points to
@@ -419,7 +429,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         if (this.currentVariable === null || this.datasetId === null) {
-            console.log('cannot create the map - either variable or dataset is not set');
             return;
         }
 
@@ -455,7 +464,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
         // track map clicks to open up details when layer changes
         this._rInstance.event.on('map/click', this.mapClickHandler, 'cccs_mapclick_handler');
-        this._rInstance.event.on('panel/close', this.detailsClosingHandler, 'cccs_panelclose_handler');
+        this._rInstance.event.on('panel/closed', this.detailsClosingHandler, 'cccs_panelclose_handler');
 
         if (this.zoomLevel) {
             await this._rInstance.geo.map.zoomToLevel(this.zoomLevel);
@@ -514,7 +523,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     detailsClosingHandler(panel: any): void {
-        if (panel.id === 'details') {
+        if (panel.id === 'details-panel') {
             this.setLastClick(null);
         }
     }
