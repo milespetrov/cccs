@@ -9,10 +9,10 @@ var variableTemplate = {
             <span class="divider mrgn-bttm-md"></span>
 
             <dl>
-                <dt>
+                <dt v-if="variable !== 'precip' && variable !== 'snd'">
                     <span>{{ TRANSLATIONS[lang].last_updated }}</span>
                 </dt>
-                <dd>{{ identifyData.data.LAST_UPDATED }}</dd>
+                <dd v-if="variable !== 'precip' && variable !== 'snd'">{{ identifyData.data.LAST_UPDATED }}</dd>
 
                 <dt>
                     <span>{{ TRANSLATIONS[lang].date }}</span>
@@ -63,7 +63,9 @@ var variableTemplate = {
             } 
         });
 
-        this.identifyData.data['LAST_UPDATED'] = this.identifyData.data['LAST_UPDATED'].split('T')[0];
+        if (this.identifyData.data['LAST_UPDATED']) {
+            this.identifyData.data['LAST_UPDATED'] = this.identifyData.data['LAST_UPDATED'].split('T')[0];
+        }
 
         const mappings = {
             'tmaxh': 'HIGH_MAX_TEMP',
