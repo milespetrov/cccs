@@ -542,6 +542,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     beforeDestroy(): void {
+        if (!this._rInstance) {
+            return;
+        }
         this._rInstance.event.off('cccs_extentchanged_handler');
         this._rInstance.event.off('cccs_graphichit_handler');
         this._rInstance.event.off('cccs_mapclick_handler');
