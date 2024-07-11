@@ -1,5 +1,5 @@
 <template>
-
+    <!-- Everything b-dropdown-* is from Bootstrap Vue. You will never find it with sane search. -->
     <b-dropdown variant="light" class="cip-selector" :disabled="hasSingleOption()" no-flip>
 
         <template slot="button-content">
