@@ -1,6 +1,6 @@
 var variableTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
 
             <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ identifyData.data.STATION_NAME }}</h4>
@@ -65,11 +65,17 @@ var variableTemplate = {
         </div>
     `,
     beforeMount() {
-        this.lang = document.documentElement.lang;
-
-        this.value = parseFloat(this.identifyData.data.VALUE).toFixed(1);
+        this.parseData();
+    },
+    beforeUpdate() {
+        this.parseData();
     },
     methods: {
+        parseData() {
+            this.lang = document.documentElement.lang;
+
+            this.value = parseFloat(this.identifyData.data.VALUE).toFixed(1);
+        }
     },
     data() {
         return {
@@ -143,7 +149,7 @@ var variableTemplate = {
 
 var stationTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
 
             <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ identifyData.data.STATION_NAME }}</h4>
@@ -207,18 +213,24 @@ var stationTemplate = {
         </div>
     `,
     methods: {
+        parseData() {
+            this.lang = document.documentElement.lang;
+
+            Object.keys(this.identifyData.data).forEach((key) => {
+                if (typeof this.identifyData.data[key] === 'string') {
+                    this.identifyData.data[key] = this.identifyData.data[key].trim();
+                }
+            });
+
+            this.long = this.identifyData.data.LONGITUDE / 10000000;
+            this.lat = this.identifyData.data.LATITUDE / 10000000;
+        }
     },
     beforeMount() {
-        this.lang = document.documentElement.lang;
-
-        Object.keys(this.identifyData.data).forEach((key) => {
-            if (typeof this.identifyData.data[key] === 'string') {
-                this.identifyData.data[key] = this.identifyData.data[key].trim();
-            }
-        });
-
-        this.long = this.identifyData.data.LONGITUDE / 10000000;
-        this.lat = this.identifyData.data.LATITUDE / 10000000;
+        this.parseData()
+    },
+    beforeUpdate() {
+        this.parseData()
     },
     data() {
         return {

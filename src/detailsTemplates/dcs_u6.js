@@ -1,7 +1,7 @@
 import { formatLatLong } from '@/globals/utils';
 var variableTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="dcs-details">
             <div class="short-form" :class="variable + '-icon'">
                 <p><span>{{TRANSLATIONS[lang].details[0]}}</span></p>
@@ -25,40 +25,47 @@ var variableTemplate = {
         </div>
     `,
     methods: {
-    },
-    async beforeMount(){
-        this.lang = document.documentElement.lang;
+        async parseData() {
+            this.lang = document.documentElement.lang;
 
-        if (typeof this.identifyData.data === 'undefined') {
-            return null;
+            if (typeof this.identifyData.data === 'undefined') {
+                return null;
+            }
+
+            this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
+            this.timeSlice = new RegExp('[?&]ts=([0-9])').exec(window.location.href)[1];
+            this.timePeriod = new RegExp('[?&]t=([^&]*)').exec(window.location.href)[1];
+            this.ssp = new RegExp('[?&]s=(ssp[^&]*)').exec(window.location.href)[1];
+
+            var tempVal = this.identifyData.data.data.features[0].properties.value;
+            var parsedVal = parseFloat(tempVal).toFixed(1); // seems to not error if gargabe is passed in
+            if (!isNaN(parsedVal)) {
+                this.value = ((parsedVal >= 0) ? '+' : '') + parsedVal;
+            } else {
+                this.value = tempVal;
+            }
+
+            // reproject from 3978 to 4326
+            this.latlong = await this.$iApi.geo.proj.projectGeoJson(
+                JSON.parse(
+                    JSON.stringify(
+                        this.identifyData.data.data.features[0].geometry
+                    )
+                ),
+                3978,
+                4326
+            );
+            this.latlong = this.latlong.coordinates;
+
         }
-
-        this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
-        this.timeSlice = new RegExp('[?&]ts=([0-9])').exec(window.location.href)[1];
-        this.timePeriod = new RegExp('[?&]t=([^&]*)').exec(window.location.href)[1];
-        this.ssp = new RegExp('[?&]s=(ssp[^&]*)').exec(window.location.href)[1];
-
-        var tempVal = this.identifyData.data.data.features[0].properties.value;
-        var parsedVal = parseFloat(tempVal).toFixed(1); // seems to not error if gargabe is passed in
-        if (!isNaN(parsedVal)){
-            this.value = ((parsedVal >= 0) ? '+' : '') + parsedVal;
-        } else {
-            this.value = tempVal;
-        }
-
-        // reproject from 3978 to 4326
-        this.latlong = await this.$iApi.geo.proj.projectGeoJson(
-            JSON.parse(
-                JSON.stringify(
-                    this.identifyData.data.data.features[0].geometry
-                )
-            ),
-            3978,
-            4326
-        );
-        this.latlong = this.latlong.coordinates;
     },
-    mounted(){
+    async beforeMount() {
+        await this.parseData();
+    },
+    async beforeUpdate() {
+        await this.parseData();
+    },
+    mounted() {
         var params = new URLSearchParams(this.identifyData.data.requestOptions.query);
 
         var origLayer = params.get('LAYERS');

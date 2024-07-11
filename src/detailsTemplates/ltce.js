@@ -1,6 +1,6 @@
 var variableTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
 
             <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ identifyData.data.VIRTUAL_STATION_NAME_E }}, {{ record_begin }}{{ TRANSLATIONS[lang].time_separator }}{{ record_end }}</h4>
@@ -53,56 +53,63 @@ var variableTemplate = {
         </div>
     `,
     beforeMount() {
-        this.lang = document.documentElement.lang;
-
-        this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
-
-        Object.keys(this.identifyData.data).forEach((key) => {
-            if (typeof this.identifyData.data[key] === 'string') {
-                this.identifyData.data[key] = this.identifyData.data[key].trim();
-            } 
-        });
-
-        if (this.identifyData.data['LAST_UPDATED']) {
-            this.identifyData.data['LAST_UPDATED'] = this.identifyData.data['LAST_UPDATED'].split('T')[0];
-        }
-
-        const mappings = {
-            'tmaxh': 'HIGH_MAX_TEMP',
-            'tmaxl': 'LOW_MAX_TEMP',
-            'tminh': 'HIGH_MIN_TEMP',
-            'tminl': 'LOW_MIN_TEMP',
-            'precip': 'PRECIPITATION',
-            'snd': 'SNOWFALL'
-        }
-        const mappings2 = {
-            'tmaxh': 'MAX_TEMP_',
-            'tmaxl': 'MAX_TEMP_',
-            'tminh': 'MIN_TEMP_',
-            'tminl': 'MIN_TEMP_',
-            'precip': '',
-            'snd': '',
-        }
-
-        this.record_begin = this.identifyData.data[mappings2[this.variable] + 'RECORD_BEGIN'].split('T')[0];
-        this.record_end = this.identifyData.data[mappings2[this.variable] + 'RECORD_END'];
-        if (!this.record_end) {
-            this.record_end = this.TRANSLATIONS[this.lang].present;
-        } else {
-            this.record_end = this.record_end.split('T')[0];
-        }
-        this.first_value = this.identifyData.data['FIRST_' + mappings[this.variable]];
-        this.second_value = this.identifyData.data['SECOND_' + mappings[this.variable]];
-        this.third_value = this.identifyData.data['THIRD_' + mappings[this.variable]];
-        this.fourth_value = this.identifyData.data['FOURTH_' + mappings[this.variable]];
-        this.fifth_value = this.identifyData.data['FIFTH_' + mappings[this.variable]];
-        this.first_year = this.identifyData.data['FIRST_' + mappings[this.variable] + '_YEAR'];
-        this.second_year = this.identifyData.data['SECOND_' + mappings[this.variable] + '_YEAR'];
-        this.third_year = this.identifyData.data['THIRD_' + mappings[this.variable] + '_YEAR'];
-        this.fourth_year = this.identifyData.data['FOURTH_' + mappings[this.variable] + '_YEAR'];
-        this.fifth_year = this.identifyData.data['FIFTH_' + mappings[this.variable] + '_YEAR'];
+        this.parseData();
+    },
+    beforeUpdate() {
+        this.parseData();
     },
     methods: {
+        parseData() {
+            this.lang = document.documentElement.lang;
+
+            this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
+
+            Object.keys(this.identifyData.data).forEach((key) => {
+                if (typeof this.identifyData.data[key] === 'string') {
+                    this.identifyData.data[key] = this.identifyData.data[key].trim();
+                }
+            });
+
+            if (this.identifyData.data['LAST_UPDATED']) {
+                this.identifyData.data['LAST_UPDATED'] = this.identifyData.data['LAST_UPDATED'].split('T')[0];
+            }
+
+            const mappings = {
+                'tmaxh': 'HIGH_MAX_TEMP',
+                'tmaxl': 'LOW_MAX_TEMP',
+                'tminh': 'HIGH_MIN_TEMP',
+                'tminl': 'LOW_MIN_TEMP',
+                'precip': 'PRECIPITATION',
+                'snd': 'SNOWFALL'
+            }
+            const mappings2 = {
+                'tmaxh': 'MAX_TEMP_',
+                'tmaxl': 'MAX_TEMP_',
+                'tminh': 'MIN_TEMP_',
+                'tminl': 'MIN_TEMP_',
+                'precip': '',
+                'snd': '',
+            }
+
+            this.record_begin = this.identifyData.data[mappings2[this.variable] + 'RECORD_BEGIN'].split('T')[0];
+            this.record_end = this.identifyData.data[mappings2[this.variable] + 'RECORD_END'];
+            if (!this.record_end) {
+                this.record_end = this.TRANSLATIONS[this.lang].present;
+            } else {
+                this.record_end = this.record_end.split('T')[0];
+            }
+            this.first_value = this.identifyData.data['FIRST_' + mappings[this.variable]];
+            this.second_value = this.identifyData.data['SECOND_' + mappings[this.variable]];
+            this.third_value = this.identifyData.data['THIRD_' + mappings[this.variable]];
+            this.fourth_value = this.identifyData.data['FOURTH_' + mappings[this.variable]];
+            this.fifth_value = this.identifyData.data['FIFTH_' + mappings[this.variable]];
+            this.first_year = this.identifyData.data['FIRST_' + mappings[this.variable] + '_YEAR'];
+            this.second_year = this.identifyData.data['SECOND_' + mappings[this.variable] + '_YEAR'];
+            this.third_year = this.identifyData.data['THIRD_' + mappings[this.variable] + '_YEAR'];
+            this.fourth_year = this.identifyData.data['FOURTH_' + mappings[this.variable] + '_YEAR'];
+            this.fifth_year = this.identifyData.data['FIFTH_' + mappings[this.variable] + '_YEAR'];
+        }
+
     },
     data() {
         return {
@@ -215,7 +222,7 @@ var variableTemplate = {
 
 var stationTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
 
             <h4 v-if="lang === 'en'" class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ identifyData.data.VIRTUAL_STATION_NAME_E }}</h4>
@@ -233,36 +240,42 @@ var stationTemplate = {
         </div>
     `,
     methods: {
+        parseData() {
+            this.lang = document.documentElement.lang;
+
+            Object.keys(this.identifyData.data).forEach((key) => {
+                if (typeof this.identifyData.data[key] === 'string') {
+                    this.identifyData.data[key] = this.identifyData.data[key].trim();
+                }
+            });
+
+            this.identifyData.data.START_DATE = this.identifyData.data.START_DATE.split('T')[0];
+            if (!this.identifyData.data.END_DATE) {
+                this.identifyData.data.END_DATE = this.TRANSLATIONS[this.lang].present;
+            } else {
+                this.identifyData.data.END_DATE = this.identifyData.data.END_DATE.split('T')[0];
+            }
+
+            if (this.identifyData.data.ELEMENT_NAME_E.includes('SNOW')) {
+                this.ELEMENT_NAME_F = "Chute de neige totale quotidienne";
+            } else if (this.identifyData.data.ELEMENT_NAME_E.includes('PRECIP')) {
+                this.ELEMENT_NAME_F = "Précipitation totale quotidienne";
+            } else if (this.identifyData.data.ELEMENT_NAME_E.includes("MAX")) {
+                this.ELEMENT_NAME_F = "Température maximale quotidienne";
+            } else {
+                this.ELEMENT_NAME_F = "Température minimale quotidienne";
+            }
+
+            if (!this.identifyData.data.FRE_STN_NAME || this.identifyData.data.FRE_STN_NAME === "" || this.identifyData.data.FRE_STN_NAME.toLowerCase() === 'none') {
+                this.identifyData.data.FRE_STN_NAME = this.identifyData.data.ENG_STN_NAME;
+            }
+        }
     },
-    beforeMount() {
-        this.lang = document.documentElement.lang;
-
-        Object.keys(this.identifyData.data).forEach((key) => {
-            if (typeof this.identifyData.data[key] === 'string') {
-                this.identifyData.data[key] = this.identifyData.data[key].trim();
-            } 
-        });
-
-        this.identifyData.data.START_DATE = this.identifyData.data.START_DATE.split('T')[0];
-        if (!this.identifyData.data.END_DATE) {
-            this.identifyData.data.END_DATE = this.TRANSLATIONS[this.lang].present;
-        } else {
-            this.identifyData.data.END_DATE = this.identifyData.data.END_DATE.split('T')[0];
-        }
-
-        if (this.identifyData.data.ELEMENT_NAME_E.includes('SNOW')) {
-            this.ELEMENT_NAME_F = "Chute de neige totale quotidienne";
-        } else if (this.identifyData.data.ELEMENT_NAME_E.includes('PRECIP')) {
-            this.ELEMENT_NAME_F = "Précipitation totale quotidienne";
-        } else if (this.identifyData.data.ELEMENT_NAME_E.includes("MAX")) {
-            this.ELEMENT_NAME_F = "Température maximale quotidienne";
-        } else {
-            this.ELEMENT_NAME_F = "Température minimale quotidienne";
-        }
-
-        if (!this.identifyData.data.FRE_STN_NAME || this.identifyData.data.FRE_STN_NAME === "" || this.identifyData.data.FRE_STN_NAME.toLowerCase() === 'none'){
-            this.identifyData.data.FRE_STN_NAME = this.identifyData.data.ENG_STN_NAME;
-        }
+    async beforeMount() {
+        this.parseData();
+    },
+    async beforeUpdate() {
+        this.parseData();
     },
     data() {
         return {

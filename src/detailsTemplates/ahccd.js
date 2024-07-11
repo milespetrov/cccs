@@ -1,6 +1,6 @@
 var variableTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
             <dl>
                 <dt>
@@ -46,21 +46,27 @@ var variableTemplate = {
         </div>
     `,
     beforeMount() {
-        this.lang = document.documentElement.lang;
-
-        var parsedVal = parseFloat(this.identifyData.data['trend_value__valeur_tendance']).toFixed(1);
-
-        if (!isNaN(parsedVal)) {
-            this.trendVal = parsedVal;
-        } else {
-            this.trendVal = this.identifyData.data['trend_value__valeur_tendance'];
-        }
-
-        if (parseFloat(this.identifyData.data['trend_value__valeur_tendance']) > 0) {
-            this.trendPrefix = '+';
-        }
+        this.parseData();
+    },
+    beforeUpdate() {
+        this.parseData();
     },
     methods: {
+        parseData() {
+            this.lang = document.documentElement.lang;
+
+            var parsedVal = parseFloat(this.identifyData.data['trend_value__valeur_tendance']).toFixed(1);
+
+            if (!isNaN(parsedVal)) {
+                this.trendVal = parsedVal;
+            } else {
+                this.trendVal = this.identifyData.data['trend_value__valeur_tendance'];
+            }
+
+            if (parseFloat(this.identifyData.data['trend_value__valeur_tendance']) > 0) {
+                this.trendPrefix = '+';
+            }
+        }
     },
     data() {
         return {
@@ -159,7 +165,7 @@ var variableTemplate = {
 
 var stationTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
             <dl>
                 <dt>
@@ -180,15 +186,21 @@ var stationTemplate = {
         </div>
     `,
     methods: {
+        parseData() {
+            this.lang = document.documentElement.lang;
+
+            Object.keys(this.identifyData.data).forEach((key) => {
+                if (typeof this.identifyData.data[key] === 'string') {
+                    this.identifyData.data[key] = this.identifyData.data[key].trim();
+                }
+            });
+        }
     },
     beforeMount() {
-        this.lang = document.documentElement.lang;
-
-        Object.keys(this.identifyData.data).forEach((key) => {
-            if (typeof this.identifyData.data[key] === 'string') {
-                this.identifyData.data[key] = this.identifyData.data[key].trim();
-            }
-        });
+        this.parseData();
+    },
+    beforeUpdate() {
+        this.parseData();
     },
     data() {
         return {

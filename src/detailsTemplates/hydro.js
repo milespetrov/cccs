@@ -1,6 +1,6 @@
 var stationTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
 
             <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ identifyData.data.STATION_NAME }}</h4>
@@ -39,15 +39,21 @@ var stationTemplate = {
         </div>
     `,
     methods: {
-    },
-    beforeMount(){
-        this.lang = document.documentElement.lang;
+        parseData() {
+            this.lang = document.documentElement.lang;
 
-        this.identifyData.data.forEach(function(el) {
-        if (typeof el.value === 'string') {
-            el.value = el.value.trim();
+            this.identifyData.data.forEach(function (el) {
+                if (typeof el.value === 'string') {
+                    el.value = el.value.trim();
+                }
+            });
         }
-    });
+    },
+    beforeMount() {
+        this.parseData()
+    },
+    beforeUpdate() {
+        this.parseData()
     },
     data() {
         return {

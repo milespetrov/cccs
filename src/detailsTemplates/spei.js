@@ -1,7 +1,7 @@
 import { formatLatLong } from '@/globals/utils';
 var variableTemplate = {
     props: ['identifyData'],
-    template:`
+    template: `
         <div class="cdv-details">
 
             <h3> CLIENT CONTENT GOES HERE below is a simple example</h3>
@@ -22,25 +22,31 @@ var variableTemplate = {
         </div>
     `,
     methods: {
+        async parseData() {
+            this.lang = document.documentElement.lang;
+
+            this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
+
+            this.value = parseFloat(this.identifyData.data.data.features[0].properties.value).toFixed(1);
+
+            // reproject from 3978 to 4326
+            this.latlong = await this.$iApi.geo.proj.projectGeoJson(
+                JSON.parse(
+                    JSON.stringify(
+                        this.identifyData.data.data.features[0].geometry
+                    )
+                ),
+                3978,
+                4326
+            );
+            this.latlong = this.latlong.coordinates;
+        }
     },
-    async beforeMount(){
-        this.lang = document.documentElement.lang;
-
-        this.variable = new RegExp('[?&]v=([^&]*)').exec(window.location.href)[1];
-
-        this.value = parseFloat(this.identifyData.data.data.features[0].properties.value).toFixed(1);
-
-        // reproject from 3978 to 4326
-        this.latlong = await this.$iApi.geo.proj.projectGeoJson(
-            JSON.parse(
-                JSON.stringify(
-                    this.identifyData.data.data.features[0].geometry
-                )
-            ),
-            3978,
-            4326
-        );
-        this.latlong = this.latlong.coordinates;
+    async beforeMount() {
+        await this.parseData();
+    },
+    async beforeUpdate() {
+        await this.parseData();
     },
     data() {
         return {
