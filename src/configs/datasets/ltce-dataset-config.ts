@@ -61,15 +61,15 @@ const ltceDataset: DatasetSource = {
     }},
 
     variables: [
-        VariableId.TemperatureStations,
-        VariableId.PrecipitationStations,
-        VariableId.SnowfallStations,
-        VariableId.Precipitation,
-        VariableId.SnowDepth,
         VariableId.TMaxHigh,
         VariableId.TMaxLow,
         VariableId.TMinHigh,
-        VariableId.TMinLow
+        VariableId.TMinLow,
+        VariableId.Precipitation,
+        VariableId.SnowDepth,
+        VariableId.TemperatureStations,
+        VariableId.PrecipitationStations,
+        VariableId.SnowfallStations,
     ],
 
     legend: {
