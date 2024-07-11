@@ -115,10 +115,13 @@ export default class MapColourRamp extends Vue {
     }
 
     .tick, .zero-tick {
-        width: 2px;
+        width: 4px;
         top: -0.2em;
         background: black;
         position: absolute;
+        border: white;
+        border-style: solid;
+        border-width: 1.5px;
 
         span {
             top: -15px;
@@ -127,6 +130,7 @@ export default class MapColourRamp extends Vue {
             @media (max-width: 440px) {
                 font-size: 0.7em;
             }
+            background-color: white;
         }
     }
 
