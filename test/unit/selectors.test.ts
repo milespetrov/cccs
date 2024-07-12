@@ -8,7 +8,7 @@ import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
 import Vuex, { Store } from 'vuex';
 
-import Dropdown from 'bootstrap-vue/es/components/dropdown';
+import Dropdown from "../../assets/scripts/bootstrap-vue/components/dropdown";
 
 // Import the module we're testing
 import baseSelectorV from 'src/components/vis-controls/base-selector.vue';

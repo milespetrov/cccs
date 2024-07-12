@@ -108,8 +108,8 @@
 import { Vue, Watch, Component } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 
-import Dropdown from 'bootstrap-vue/es/components/dropdown';
-import Collapse from 'bootstrap-vue/es/components/collapse';
+import Dropdown from "../assets/scripts/bootstrap-vue/components/dropdown";
+import Collapse from "../assets/scripts/bootstrap-vue/components/collapse";
 
 Vue.use(Dropdown);
 Vue.use(Collapse);
