@@ -62,9 +62,6 @@ var variableTemplate = {
     async beforeMount() {
         await this.parseData();
     },
-    async beforeUpdate() {
-        await this.parseData();
-    },
     mounted() {
         var params = new URLSearchParams(this.identifyData.data.requestOptions.query);
 

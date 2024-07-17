@@ -55,9 +55,6 @@ var variableTemplate = {
     async beforeMount() {
         await this.parseData();
     },
-    async beforeUpdate() {
-        await this.parseData();
-    },
     data() {
         return {
             properties: {},
