@@ -32,6 +32,7 @@ export const supplementalLayersEn: SupplementalLayers = {
         name: 'Canadian Disaster Database',
         layerType: 'esri-map-image',
         url: 'https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CDD_BDC/MapServer',
+        catalogueUrl: 'https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895',        
         sublayers: [
             {
                 index: 3,
@@ -159,6 +160,7 @@ export const supplementalLayersFr: SupplementalLayers = {
         name: 'Base de Données Canadienne sur les Catastrophes',
         layerType: 'esri-map-image',
         url: 'https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CDD_BDC/MapServer',
+        catalogueUrl: 'https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895',
         sublayers: [
             {
                 index: 0,
@@ -174,6 +176,7 @@ export const supplementalLayersFr: SupplementalLayers = {
         name: 'Collectivités autochtones (SIDAIT)',
         layerType: 'esri-map-image',
         url: 'https://services.sac-isc.gc.ca/geomatics/rest/services/ATRIS_PRD/GEO_ATRIS_F/MapServer',
+        
         sublayers: [
             {
                 index: 1,
