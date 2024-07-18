@@ -330,7 +330,7 @@ rcpSelector.rcp85.veryShortName,High,1,élevées,0
 rcpSelector.rcp85.qualifier,,1,,1
 sspSelector.title,Scenarios,0,Scénarios,0
 sspSelector.header,Global emissions scenarios,0,Scénarios d'émissions mondiales,0
-sspSelector.description,"A set of scenarios.",0,"Un ensemble de scénarios.",0
+sspSelector.description,"A set of scenarios referred to as Shared Socioeconomic Pathways (SSPs) are in common use to study future climate change. SSPs are designed to provide plausible future scenarios of human emissions patterns.",0,"Un ensemble de scénarios appelés "Shared Socioeconomic Pathways" (SSP) est couramment utilisé pour étudier le changement climatique futur. Les SSP sont conçus pour fournir des scénarios futurs plausibles de schémas d'émissions humaines.",0
 sspSelector.all_ssp_models,,1,,1
 sspSelector.ssp126.shortName,Low emissions,0,Émissions faibles,0
 sspSelector.ssp126.fullName,Low emissions scenario (SSP1-2.6),0,"Scénario d'émissions faibles (SSP1-2.6)",0
