@@ -106,7 +106,7 @@ var variableTemplate = {
                         '2081-2100'
                     ],
                     rcp: {
-                        label: 'Emission scenario',
+                        label: 'Emissions scenario',
                         rcp85: 'High',
                         rcp45: 'Moderate',
                         rcp26: 'Low'

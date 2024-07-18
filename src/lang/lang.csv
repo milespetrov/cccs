@@ -329,20 +329,20 @@ rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Scénario d'émis
 rcpSelector.rcp85.veryShortName,High,1,élevées,0
 rcpSelector.rcp85.qualifier,,1,,1
 sspSelector.title,Scenarios,0,Scénarios,0
-sspSelector.header,Global emission scenarios,0,Scénarios d'émissions mondiales,0
+sspSelector.header,Global emissions scenarios,0,Scénarios d'émissions mondiales,0
 sspSelector.description,"A set of scenarios.",0,"Un ensemble de scénarios.",0
 sspSelector.all_ssp_models,,1,,1
-sspSelector.ssp126.shortName,Low emission,0,Émissions faibles,0
-sspSelector.ssp126.fullName,Low emission scenario (SSP126),0,"Scénario d'émissions faibles (SSP126)",0
+sspSelector.ssp126.shortName,Low emissions,0,Émissions faibles,0
+sspSelector.ssp126.fullName,Low emissions scenario (SSP1-2.6),0,"Scénario d'émissions faibles (SSP1-2.6)",0
 sspSelector.ssp126.qualifier,,1,,1
-sspSelector.ssp245.shortName,Moderate emission,0,Émissions modérées,0
-sspSelector.ssp245.fullName,Moderate emission scenario (SSP245),0,"Scénario d'émissions modérées (SSP245)",0
+sspSelector.ssp245.shortName,Moderate emissions,0,Émissions modérées,0
+sspSelector.ssp245.fullName,Moderate emissions scenario (SSP2-4.5),0,"Scénario d'émissions modérées (SSP2-4.5)",0
 sspSelector.ssp245.qualifier,,1,,1
-sspSelector.ssp370.shortName,Moderate-high emission,0,,0
-sspSelector.ssp370.fullName,Moderate-high emission scenario (SSP3-70),0,Moderate-high emission (SSP3-70),0
+sspSelector.ssp370.shortName,Moderate-high emissions,0,,0
+sspSelector.ssp370.fullName,Moderate-high emissions scenario (SSP3-7.0),0,Moderate-high emission (SSP3-7.0),0
 sspSelector.ssp370.qualifier,,1,,1
-sspSelector.ssp585.shortName,High emission,0,Émissions élevées,0
-sspSelector.ssp585.fullName,High emission scenario (SSP585),0,"Scénario d'émissions élevées (SSP585)",0
+sspSelector.ssp585.shortName,High emissions,0,Émissions élevées,0
+sspSelector.ssp585.fullName,High emissions scenario (SSP5-8.5),0,"Scénario d'émissions élevées (SSP5-8.5)",0
 sspSelector.ssp585.qualifier,,1,,1
 supplementalSelector.title,Supplemental datasets,1,Ensemble de données supplémentaires,1
 supplementalSelector.np.shortName,National Parks,1,Parc national,1

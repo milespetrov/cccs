@@ -140,10 +140,10 @@ var variableTemplate = {
                         '2081-2100'
                     ],
                     ssp: {
-                        label: 'Emission scenario',
-                        ssp585: 'SSP 585',
-                        ssp245: 'SSP 245',
-                        ssp126: 'SSP 126'
+                        label: 'Emissions scenario',
+                        ssp585: 'SSP5-8.5',
+                        ssp245: 'SSP2-4.5',
+                        ssp126: 'SSP1-2.6'
                     },
                     details: [
                         'Projected change of',
@@ -186,9 +186,9 @@ var variableTemplate = {
                     ],
                     ssp: {
                         label: "Scénarios d'émissions",
-                        ssp585: 'SSP 585',
-                        ssp245: 'SSP 245',
-                        ssp126: 'SSP 126'
+                        ssp585: 'SSP5-8.5',
+                        ssp245: 'SSP2-4.5',
+                        ssp126: 'SSP1-2.6'
                     },
                     details: [
                         'Changement projeté de',
