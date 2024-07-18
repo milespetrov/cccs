@@ -372,7 +372,7 @@ datasetSelector.cmip5.fullName,CMIP5 Future climate simulations (gridded data),1
 datasetSelector.cmip5.subName,CMIP5 Global climate model scenarios,1,Scénarios basés sur des modèles climatiques globaux de CMIP5,1
 datasetSelector.cmip5.qualifier,,1,,1
 datasetSelector.cmip6.shortName,CMIP6 Future climate simulations,1,Simulations du climat future de CMIP6,1
-datasetSelector.cmip6.fullName,CMIP6 Future climate simulations,1,Simulations du climat future de CMIP6,1
+datasetSelector.cmip6.fullName,CMIP6 Future climate simulations (gridded data),1,Simulations du climat future de CMIP6 (données sur maille),1
 datasetSelector.cmip6.subName,CMIP6 Global climate model scenarios,1,Scénarios basés sur des modèles climatiques globaux de CMIP6,1
 datasetSelector.cmip6.qualifier,,1,,1
 datasetSelector.cangrd.shortName,Changes in temperature and precipitation,1,Variations de température et de précipitations,1
@@ -384,7 +384,7 @@ datasetSelector.dcs.fullName,CMIP5 High resolution future climate simulations (g
 datasetSelector.dcs.subName,CMIP5 Downscaled climate scenarios (CanDCS-U5),1,Scénarios climatiques mis a l’échelle de manière statistique du CMIP5 (CanDCS-U5),1
 datasetSelector.dcs.qualifier,,1,,1
 datasetSelector.dcs_u6.shortName,CMIP6 High resolution future climate simulations,1,Simulations du climat futur à haute résolution de CMIP6,1
-datasetSelector.dcs_u6.fullName,CMIP6 High resolution future climate simulations,1,Simulations du climat futur à haute résolution de CMIP6,1
+datasetSelector.dcs_u6.fullName,CMIP6 High resolution future climate simulations (gridded data),1,Simulations du climat futur à haute résolution de CMIP6 (données sur maille),1
 datasetSelector.dcs_u6.subName,CMIP6 Downscaled climate scenarios (CanDCS-U6),1,Scénarios climatiques mis à l’échelle de manière statistique de CMIP6 (CanDCS-U6),1
 datasetSelector.dcs_u6.qualifier,,1,,1
 datasetSelector.capa.shortName,Precipitation estimates,1,Estimations de précipitations,1
