@@ -149,7 +149,7 @@
                 "visible": false
               },
               {
-                "field": "ENG_PROV_field",
+                "field": "ENG_PROV_NAME",
                 "visible": false
               },
               {
@@ -366,7 +366,7 @@
                 "visible": false
               },
               {
-                "field": "ENG_PROV_field",
+                "field": "ENG_PROV_NAME",
                 "visible": false
               },
               {

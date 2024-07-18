@@ -268,10 +268,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 }
             }
 
+            // this trick generates a layer.fieldMetadata object from grid column metadata
             if (layer.fixtures && layer.fixtures.grid && !layer.fieldMetadata) {
                 layer.fieldMetadata = {};
                 layer.fieldMetadata.fieldInfo = Object.values(layer.fixtures.grid.columns).filter((column: any) => {
-                    return column.visible;
+                    // the prov name fields are due to them being hidden in the grid, but needed for tooltips & details.
+                    // cannot be excluded / exclusive.
+                    return column.visible || column.field === 'ENG_PROV_NAME' || column.field==='FRE_PROV_NAME';
                 }).map((column: any) => {
                     return {
                         name: column.field
