@@ -356,7 +356,7 @@ supplementalSelector.cdd.fullName,Canadian Disaster Database "Meteorological Hyd
 supplementalSelector.cdd.subName,The data for 2021/2022 are preliminary figures and may change before they are published to the Canadian Disaster Database.,1,Les données pour 2021/2022 sont des chiffres préliminaires et elles pourraient être modifiées avant d'être publiées dans la Base de données canadienne sur les catastrophes.,1
 supplementalSelector.atris.fullName,Indigenous communities (ATRIS),1,Collectivités autochtones (SIDAIT),1
 supplementalSelector.atris.shortName,Indigenous communities (ATRIS),1,Collectivités autochtones (SIDAIT),1
-supplementalSelector.atris.subName,,1,,1
+supplementalSelector.atris.subName,Aboriginal and Treaty Rights Information System,1,Système d'information sur les droits ancestraux et issus de traités,1
 datasetSelector.title,Dataset,1,Ensemble de données,1
 datasetSelector.header,Datasets,1,Ensembles des données,1
 datasetSelector.all_datasets,,1,,1
