@@ -37,7 +37,7 @@
         "sinon-chai": "^2.14.0",
         "sprintf-js": "^1.1.1",
         "tslint": "^5.9.1",
-        "typescript": "^2.7.1",
+        "typescript": "2.7.2",
         "vue": "^2.5.13",
         "vue-class-component": "^6.2.0",
         "vue-functional-data-merge": "2.0.5",
