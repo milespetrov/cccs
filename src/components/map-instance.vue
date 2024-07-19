@@ -455,7 +455,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 (window as any).debugInstance = this._rInstance;
                 this._rInstance.event.on('map/created', this.mapStartup);
                 registerCustomAppbarLink(this._rInstance, this.$i18n.t('downloadSelector.dataCatalogue.fullName'), 1);
-                registerCustomAppbarLink(this._rInstance, this.$i18n.t('downloadSelector.queryTool.fullName'), 2);
             });
         });
     }

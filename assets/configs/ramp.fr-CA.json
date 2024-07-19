@@ -87,10 +87,10 @@
                         "export",
                         "help"],
                         [{
-                            "id": "appbar-link-2",
-                            "componentId": "appbar-link-2",
+                            "id": "appbar-link-1",
+                            "componentId": "appbar-link-1",
                             "options": {
-                                "url": "https://changements-climatiques.canada.ca/donnees-climatiques/#/donnees-echelle-reduite"
+                                "url": "https://changements-climatiques.canada.ca/donnees-climatiques/#/"
                             }
                         }]
                     ]

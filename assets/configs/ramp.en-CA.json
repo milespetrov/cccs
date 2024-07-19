@@ -87,10 +87,10 @@
                         "export",
                         "help"],
                         [{
-                            "id": "appbar-link-2",
-                            "componentId": "appbar-link-2",
+                            "id": "appbar-link-1",
+                            "componentId": "appbar-link-1",
                             "options": {
-                                "url": "https://climate-change.canada.ca/climate-data/#/downscaled-data"
+                                "url": "https://climate-change.canada.ca/climate-data/#/"
                             }
                         }]
                     ]

@@ -84,9 +84,9 @@ export function customRendererStartup(ramp, store, i18n) {
         northArrow.scaleToWidth(map.getScaledWidth() * 0.03, false);
         northArrow.set({
             top: runningHeight + (margin.TOP * 1.5) + (northArrow.getScaledHeight() / 2),
-            left: margin.LEFT * 2 + (northArrow.getScaledWidth() / 2)
+            left: margin.LEFT * 2 + northArrow.getScaledWidth()
         });
-        northArrow.rotate(0);
+        northArrow.rotate(northArrow.getAngleFromPosition(5));
         canvas.add(northArrow);
 
 
