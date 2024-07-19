@@ -234,7 +234,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
         };
 
         const defaultSettings: FunctionArray = {
-            d: 'dcs'
+            d: 'dcs_u6'
         };
 
         // update the store

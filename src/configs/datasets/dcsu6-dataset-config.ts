@@ -16,7 +16,7 @@ const dcsu6Dataset: DatasetSource = {
             ],
         },
         [VisualizationControlType.SSP]: {
-            default: SSPType.SSP585,
+            default: SSPType.SSP245,
             options: [
                 SSPType.SSP126,
                 SSPType.SSP245,
@@ -25,7 +25,7 @@ const dcsu6Dataset: DatasetSource = {
         }
     },
 
-    variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],
+    variables: [VariableId.TMean, VariableId.TMax, VariableId.TMin, VariableId.Precipitation],
 
     timeSliderLabels: ['2021-2050', '2041-2070', '2071-2100'],
 
