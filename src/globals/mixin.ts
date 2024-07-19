@@ -99,6 +99,9 @@ export class StoreDataMixin extends Vue {
     setUrlSuffixes: (value: object) => void;
 
     @ActionData
+    setSupplementalLayers: (value: object) => void;
+
+    @ActionData
     setDataCatalogueUrl: (value: string) => void;
 
     @ActionData

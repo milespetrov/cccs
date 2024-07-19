@@ -31,7 +31,7 @@ import MapControlsCluster from './map-controls-cluster.vue';
 import MapFineprint from './map-fineprint.vue';
 import MapScrollguard from './map-scrollguard.vue';
 import MapPanguard from './map-panguard.vue';
-import { monthSelectorConfig, supplementalLayersEn, supplementalLayersFr, SupplementalLayers, } from '../configs/selectors';
+import { monthSelectorConfig, SupplementalLayers } from '../configs/selectors';
 import { customRendererStartup } from '@/../assets/scripts/customExport';
 import { registerCustomAppbarLink } from '@/../assets/scripts/customAppbarLink';
 
@@ -59,6 +59,8 @@ export interface IdentifySession {
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
 const ActionApp = namespace('app', Action);
+
+const StateData = namespace('data', State);
 
 @Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
@@ -93,6 +95,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     month: string;
     @StateApp
     supplementalIds: string[];
+
+    @StateData('supplementalLayers')
+    supplementalLayerConfigs: {[key:string]: SupplementalLayers};
 
     @StateApp
     layerVisibility: {
@@ -129,8 +134,6 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     mapCounter: string;
 
     currentLayers: any[];
-    supplementalLayersEn: SupplementalLayers = supplementalLayersEn;
-    supplementalLayersFr: SupplementalLayers = supplementalLayersFr;
 
     wmsTime: any = { start: '', end: '', step: '' };
 
@@ -363,7 +366,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     addSupplementalLayer(layerId: string) {
-        const layerConfig = this.$i18n.locale === 'en' ? this.supplementalLayersEn[layerId] : this.supplementalLayersFr[layerId];
+        const layerConfig = this.supplementalLayerConfigs[this.$i18n.locale][layerId];
         const layerToAdd = this._rInstance.geo.layer.createLayer(layerConfig);
         this._rInstance.geo.map.addLayer(layerToAdd); 
         this._rInstance.fixture.get('legend').addLayerItem(layerToAdd);

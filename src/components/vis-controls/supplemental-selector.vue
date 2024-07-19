@@ -37,8 +37,6 @@ import { UpdateRouteMixin } from './../../globals/mixin';
 
 import { SupplementalId } from '@/types';
 import {
-    supplementalLayersEn,
-    supplementalLayersFr,
     SupplementalLayers,
     supplementalSelectorConfig,
     SupplementalSelectorConfig
@@ -46,6 +44,8 @@ import {
 
 const StateApp = namespace('app', State);
 const ActionApp = namespace('app', Action);
+
+const StateData = namespace('data', State);
 
 @Component({
     components: {
@@ -55,10 +55,9 @@ const ActionApp = namespace('app', Action);
 export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
     @ActionApp setSupplementalIds: (value: string[]) => void;
     @StateApp supplementalIds: string[];
+    @StateData supplementalLayers: {[key:string]: SupplementalLayers};
 
     config: SupplementalSelectorConfig = supplementalSelectorConfig;
-    layersEn: SupplementalLayers = supplementalLayersEn;
-    layersFr: SupplementalLayers = supplementalLayersFr;
 
     selected = {
         np: false,
@@ -94,7 +93,7 @@ export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
         const rInstance = (<any>window).debugInstance;
         if (rInstance) {
             // construct layer object and add to map/legend
-            const layerConfig = this.$i18n.locale === 'en' ? this.layersEn[layerId] : this.layersFr[layerId];
+            const layerConfig = this.supplementalLayers[this.$i18n.locale][layerId];
             const layerToAdd = rInstance.geo.layer.createLayer(layerConfig);
             rInstance.geo.map.addLayer(layerToAdd); 
             rInstance.fixture.get('legend').addLayerItem(layerToAdd);
@@ -105,7 +104,7 @@ export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
         const rInstance = (<any>window).debugInstance;
         if (rInstance) {
             // remove layer from map/legend
-            const layerConfig = this.$i18n.locale === 'en' ? this.layersEn[layerId] : this.layersFr[layerId];
+            const layerConfig = this.supplementalLayers[this.$i18n.locale][layerId];
             rInstance.geo.map.removeLayer(layerConfig.id);
             rInstance.fixture.get('legend').removeLayerItem(layerConfig.id)
         }

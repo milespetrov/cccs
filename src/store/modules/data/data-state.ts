@@ -2,6 +2,7 @@ import { BreadCrumbEntity } from '@/types';
 
 export interface DataState {
     urlSuffixes: object | null;
+    supplementalLayers: object | null;
     dataQueryUrl: string | null;
     dataCatalogueUrl: string | null;
     languageToggleDomain: string | null;

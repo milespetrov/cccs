@@ -8,6 +8,7 @@ type DataContext = ActionContext<DataState, RootState>;
 
 const state: DataState = {
     urlSuffixes: null,
+    supplementalLayers: null,
     dataCatalogueUrl: null,
     dataQueryUrl: null,
     languageToggleDomain: null,
@@ -16,6 +17,7 @@ const state: DataState = {
 
 enum Action {
     setUrlSuffixes = 'setUrlSuffixes',
+    setSupplementalLayers = 'setSupplementalLayers',
     setDataCatalogueUrl = 'setDataCatalogueUrl',
     setDataQueryUrl = 'setDataQueryUrl',
     setLanguageToggleDomain = 'setLanguageToggleDomain',
@@ -24,6 +26,7 @@ enum Action {
 
 enum Mutation {
     SET_URL_SUFFIXES = 'SET_URL_SUFFIXES',
+    SET_SUPPLEMENTAL_LAYERS = 'SET_SUPPLEMENTAL_LAYERS',
     SET_DATA_CATALOGUE_URL = 'SET_DATA_CATALOGUE_URL',
     SET_DATA_QUERY_URL = 'SET_DATA_QUERY_URL',
     SET_LANGUAGE_TOGGLE_DOMAIN = 'SET_VIEWER_DOMAIN_NAME',
@@ -37,6 +40,9 @@ const getters = {};
 const actions = {
     [Action.setUrlSuffixes](context: DataContext, value: object): void {
         context.commit(Mutation.SET_URL_SUFFIXES, value);
+    },
+    [Action.setSupplementalLayers](context: DataContext, value: object): void {
+        context.commit(Mutation.SET_SUPPLEMENTAL_LAYERS, value);
     },
     [Action.setDataCatalogueUrl](context: DataContext, value: string): void {
         context.commit(Mutation.SET_DATA_CATALOGUE_URL, value);
@@ -56,6 +62,9 @@ const actions = {
 const mutations = {
     [Mutation.SET_URL_SUFFIXES](state: DataState, value: object): void {
         state.urlSuffixes = value;
+    },
+    [Mutation.SET_SUPPLEMENTAL_LAYERS](state: DataState, value: object): void {
+        state.supplementalLayers = value;
     },
     [Mutation.SET_DATA_CATALOGUE_URL](state: DataState, value: string): void {
         state.dataCatalogueUrl = value;

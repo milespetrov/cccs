@@ -1,0 +1,257 @@
+{
+    "en": {
+        "NP": {
+            "id": "NP",
+            "name": "National Parks and National Park_Reserves of Canada Legislative Boundaries",
+            "layerType": "esri-feature",
+            "url": "https://proxyinternet.nrcan-rncan.gc.ca/arcgis/rest/services/CLSS-SATC/CLSS_Administrative_Boundaries/MapServer/1",
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd"
+        },
+        "NTSN": {
+            "id": "NTSN",
+            "name": "National Transportation Systems Network",
+            "layerType": "ogc-wms",
+            "url": "https://maps.geogratis.gc.ca/wms/canvec_en?request=getcapabilities&service=wms&layers=transport&version=1.3.0&legend_format=image/png&feature_info_type=text/html",
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",
+            "featureInfoMimeType": "text/html",
+            "sublayers": [
+                {
+                    "id": "transport"
+                }
+            ]
+        },
+        "CDD": {
+            "id": "CDD",
+            "name": "Canadian Disaster Database",
+            "layerType": "esri-map-image",
+            "url": "#ECCCARCGIS#/CCDS/CDD_BDC/MapServer",
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",        
+            "sublayers": [
+                {
+                    "index": 3,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    }
+                }
+            ]
+        },
+        "ATRIS": {
+            "id": "ATRIS",
+            "name": "Indigenous communities (ATRIS)",
+            "layerType": "esri-map-image",
+            "url": "https://services.sac-isc.gc.ca/geomatics/rest/services/ATRIS_PRD/GEO_ATRIS_E/MapServer",
+            "sublayers": [
+                {
+                    "index": 1,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "BAND_NAME" },
+                            { "name": "RPN" },
+                            { "name": "BAND_NUMBER" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_EN" },
+                            { "name": "CATEGORY_EN" },
+                            { "name": "NUM_RESERVES" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                },
+                {
+                    "index": 2,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "NAME" },
+                            { "name": "COMMUNITY_GUID" },
+                            { "name": "GEOMATIC_ID" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_EN" },
+                            { "name": "CATEGORY_EN" },
+                            { "name": "NUM_RESERVES" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                },
+                {
+                    "index": 3,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "NAME" },
+                            { "name": "COMMUNITY_GUID" },
+                            { "name": "GEOMATIC_ID" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_EN" },
+                            { "name": "CATEGORY_EN" },
+                            { "name": "NUM_RESERVES" },
+                            { "name": "PROVINCE_CODE" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                },
+                {
+                    "index": 4,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "NAME" },
+                            { "name": "COMMUNITY_GUID" },
+                            { "name": "GEOMATIC_ID" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_EN" },
+                            { "name": "CATEGORY_EN" },
+                            { "name": "NUM_RESERVES" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                }
+            ]
+        }
+    },
+    "fr": {
+        "NP": {
+            "id": "NP",
+            "name": "Limites legislatives des parcs nationaux et des reserves a vocation de parc national du Canada",
+            "layerType": "esri-feature",
+            "url": "https://proxyinternet.nrcan-rncan.gc.ca/arcgis/rest/services/CLSS-SATC/SATC_Limites_administratives/MapServer/1",
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd"
+        },
+        "NTSN": {
+            "id": "NTSN",
+            "name": "Réseau national de systèmes de transport",
+            "layerType": "ogc-wms",
+            "url": "https://cartes.geogratis.gc.ca/wms/canvec_fr?request=getcapabilities&service=wms&layers=transport&version=1.3.0&legend_format=image/png&feature_info_type=text/html",
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",
+            "featureInfoMimeType": "text/html",
+            "sublayers": [
+                {
+                    "id": "transport"
+                }
+            ]
+        },
+        "CDD": {
+            "id": "CDD",
+            "name": "Base de Données Canadienne sur les Catastrophes",
+            "layerType": "esri-map-image",
+            "url": "#ECCCARCGIS#/CCDS/CDD_BDC/MapServer",
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",
+            "sublayers": [
+                {
+                    "index": 0,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    }
+                }
+            ]
+        },
+        "ATRIS": {
+            "id": "ATRIS",
+            "name": "Collectivités autochtones (SIDAIT)",
+            "layerType": "esri-map-image",
+            "url": "https://services.sac-isc.gc.ca/geomatics/rest/services/ATRIS_PRD/GEO_ATRIS_F/MapServer",
+            
+            "sublayers": [
+                {
+                    "index": 1,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "BAND_NAME" },
+                            { "name": "RPN" },
+                            { "name": "BAND_NUMBER" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_FR" },
+                            { "name": "CATEGORY_FR" },
+                            { "name": "NUM_RESERVES" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                },
+                {
+                    "index": 2,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "NAME" },
+                            { "name": "COMMUNITY_GUID" },
+                            { "name": "GEOMATIC_ID" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_FR" },
+                            { "name": "CATEGORY_FR" },
+                            { "name": "NUM_RESERVES" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                },
+                {
+                    "index": 3,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "NAME" },
+                            { "name": "COMMUNITY_GUID" },
+                            { "name": "GEOMATIC_ID" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_FR" },
+                            { "name": "CATEGORY_FR" },
+                            { "name": "NUM_RESERVES" },
+                            { "name": "PROVINCE_CODE" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                },
+                {
+                    "index": 4,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fieldMetadata": {
+                        "fieldInfo": [
+                            { "name": "NAME" },
+                            { "name": "COMMUNITY_GUID" },
+                            { "name": "GEOMATIC_ID" },
+                            { "name": "COMMUNITY_NAME" },
+                            { "name": "COMMUNITY_ID" },
+                            { "name": "RESULT_LIST_FR" },
+                            { "name": "CATEGORY_FR" },
+                            { "name": "NUM_RESERVES" }
+                        ],
+                        "exclusiveFields": true
+                    }
+                }
+            ]
+        }
+    }
+}

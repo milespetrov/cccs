@@ -197,6 +197,10 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             this.setUrlSuffixes(data.urlSuffixes);
         });
 
+        await $.getJSON('assets/configs/supplemental-layers.json', data => {
+            this.setSupplementalLayers(data);
+        })
+
         // This is to allow the back/forward browser functions to update the store
         // We flag internal updates with `internalRouteUpdate` in the store so that
         // we don't double up on internal state commits
