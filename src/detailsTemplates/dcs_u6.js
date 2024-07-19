@@ -6,7 +6,7 @@ var variableTemplate = {
             <div class="short-form" :class="variable + '-icon'">
                 <p><span>{{TRANSLATIONS[lang].details[0]}}</span></p>
                 <p class="data-value">{{ value }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
-                <p class="supporting-value">{{ minRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}} - {{ maxRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
+                <p class="supporting-value">{{TRANSLATIONS[lang].range}} {{ minRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}} - {{ maxRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[1]}}</span></p>
                 <p class="supporting-value">{{TRANSLATIONS[lang].timeSlider[timeSlice]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[2]}}</span></p>
@@ -134,10 +134,9 @@ var variableTemplate = {
                         tmax: '°C'
                     },
                     timeSlider: [
-                        '2021-2040',
-                        '2041-2060',
-                        '2061-2080',
-                        '2081-2100'
+                        '2021-2050',
+                        '2041-2070',
+                        '2071-2100'
                     ],
                     ssp: {
                         label: 'Emissions scenario',
@@ -150,6 +149,7 @@ var variableTemplate = {
                         'by',
                         'at'
                     ],
+                    range: 'Range',
                     baseline: 'Projected changes are with respect to the reference period of 1971-2000.'
                 },
                 'fr': {
@@ -179,10 +179,9 @@ var variableTemplate = {
                         tmax: '°C'
                     },
                     timeSlider: [
-                        '2021-2040',
-                        '2041-2060',
-                        '2061-2080',
-                        '2081-2100'
+                        '2021-2050',
+                        '2041-2070',
+                        '2071-2100'
                     ],
                     ssp: {
                         label: "Scénarios d'émissions",
@@ -195,6 +194,7 @@ var variableTemplate = {
                         'par',
                         'à'
                     ],
+                    range: 'Portée',
                     baseline: 'Les changements projetés sont relatives à la moyenne de 1971-2000.'
                 }
             },
