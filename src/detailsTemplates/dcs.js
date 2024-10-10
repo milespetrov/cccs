@@ -9,7 +9,7 @@ var variableTemplate = {
                 <p><span>{{TRANSLATIONS[lang].details[1]}}</span></p>
                 <p class="supporting-value">{{TRANSLATIONS[lang].timeSlider[timeSlice]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[2]}}</span></p>
-                <p class="supporting-value">{{ latlong[1].toFixed(6) }}, {{ latlong[0].toFixed(6) }}</p>
+                <p class="supporting-value">{{ latlong[1]?.toFixed(6) }}, {{ latlong[0]?.toFixed(6) }}</p>
             </div>
             <span class="divider mrgn-bttm-md"></span>
             <div class="long-form">

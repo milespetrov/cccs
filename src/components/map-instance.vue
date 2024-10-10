@@ -210,9 +210,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     async switchLayers() {
-        this._rInstance.event.off('cccs_refreshIdentifyOnLayerLoad');
         if (!this._rInstance || !this._rInstance.geo.map.created) {
             return;
+        }
+
+        if (this._rInstance.event.eventNames().includes('cccs_refreshIdentifyOnLayerLoad')){
+            this._rInstance.event.off('cccs_refreshIdentifyOnLayerLoad');
         }
 
         let tempLastClick: XY | null = null;

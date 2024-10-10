@@ -2,7 +2,7 @@ var variableTemplate = {
     props: ['identifyData'],
     template: `
         <div class="cdv-details">
-            <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ latlong[1].toFixed(6) }}, {{ latlong[0].toFixed(6) }}</h4>
+            <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ latlong.y?.toFixed(6) }}, {{ latlong.x?.toFixed(6) }}</h4>
             <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ TRANSLATIONS[lang].latlong }}</span>
             <span class="divider mrgn-bttm-md"></span>
             <dl>
@@ -24,7 +24,7 @@ var variableTemplate = {
 
             this.lang = document.documentElement.lang;
 
-            var resultData = this.identifyData.data.split('Feature 0:')[1].split('\n');
+            var resultData = this.identifyData.data.data.split('Feature 0:')[1].split('\n');
 
             for (var i = 1; i < resultData.length; i++) {
                 var splitResult = resultData[i]
@@ -39,17 +39,7 @@ var variableTemplate = {
             this.properties.value_0 = parseFloat(this.properties.value_0).toFixed(1);
 
             // reproject from 3978 to 4326
-            this.latlong = await this.$iApi.geo.proj.projectGeoJson(
-                JSON.parse(
-                    JSON.stringify(
-                        this.identifyData.data.data.features[0].geometry
-                    )
-                ),
-                3978,
-                4326
-            );
-            this.latlong = this.latlong.coordinates;
-
+            this.latlong = await this.$iApi.geo.proj.projectGeometry(4326, new this.$iApi.geo.geom.Point('point', {x: this.properties.x, y: this.properties.y}, 3978 ));
         }
     },
     async beforeMount() {
@@ -58,6 +48,7 @@ var variableTemplate = {
     data() {
         return {
             properties: {},
+            latlong: {},
             TRANSLATIONS: {
                 'en': {
                     latlong: 'Latitude, longitude',

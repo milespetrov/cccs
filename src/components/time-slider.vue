@@ -111,7 +111,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         }
 
         // Update the selected css class on the old and new selections
-        if (oldValue !== null) {
+        if (oldValue !== null && oldValue <= this.timeSliderLabels.length) {
             this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove('selected');
         }
         if (newValue !== null) {

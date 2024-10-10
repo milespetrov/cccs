@@ -3,7 +3,7 @@ var variableTemplate = {
     template: `
         <div class="cdv-details">
 
-            <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ latlong[1].toFixed(6) }}, {{ latlong[0].toFixed(6) }}</h4>
+            <h4 class="h5 mrgn-tp-sm mrgn-bttm-sm">{{ latlong[1]?.toFixed(6) }}, {{ latlong[0]?.toFixed(6) }}</h4>
             <span class="sub-title mrgn-tp-sm mrgn-bttm-md">{{ TRANSLATIONS[lang].latlong }}</span>
 
             <span class="divider mrgn-bttm-md"></span>
