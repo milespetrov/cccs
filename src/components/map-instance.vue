@@ -62,6 +62,8 @@ const ActionApp = namespace('app', Action);
 
 const StateData = namespace('data', State);
 
+const SCALE_THRESHOLD = 6000000;
+
 @Component
 export default class MapInstance extends mixins(UpdateRouteMixin) {
     get anchor(): HTMLElement {
@@ -134,6 +136,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     mapCounter: string;
 
     currentLayers: any[];
+
+    showMapLabels: boolean = false;
+    // TODO: add layers that requires labels as needed
+    labelledLayerIds = ['ATRIS'];
 
     wmsTime: any = { start: '', end: '', step: '' };
 
@@ -479,6 +485,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // zoom and center point handler
         this._rInstance.event.on('map/extentchanged', debounce(300, this.mapExtentChangedHandler), 'cccs_extentchanged_handler');
 
+        // map scale handler
+        this._rInstance.event.on('map/scalechanged', this.mapScaleHandler, 'cccs_scalechanged_handler');
+
         // replace default maptips with fancy ones
         this._rInstance.event.off('ramp_map_graphichit_creates_maptip');
         this._rInstance.event.on('map/graphichit', this.tooltipHandler, 'cccs_graphichit_handler');
@@ -488,15 +497,39 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this._rInstance.event.on('panel/closed', this.detailsClosingHandler, 'cccs_panelclose_handler');
 
         if (this.zoomLevel) {
+            const loadedLabelledLayers = new Set();
+            // add handler to watch for when all layers with map labels have been loaded
+            const labelledLayerLoaded = ((event: {state: string, layer: any}) => {
+                if (this.labelledLayerIds.includes(event.layer.id) && event.state === 'loaded') {
+                    this.mapScaleHandler(this._rInstance.geo.map.getScale(), true);
+                    loadedLabelledLayers.add(event.layer.id);
+
+                    // remove the event listener when all required layers are loaded
+                    if (this.labelledLayerIds.length === loadedLabelledLayers.size) {
+                        this._rInstance.event.off('cccs_labelledLayersLoaded');
+                    }
+                }
+            });
+            this._rInstance.event.on('layer/layerstatechange', labelledLayerLoaded, 'cccs_labelledLayersLoaded');
             await this._rInstance.geo.map.zoomToLevel(this.zoomLevel);
         }
-
         if (this.centerPoint) {
             const center = new this._rInstance.geo.geom.Point('centerPoint', [this.centerPoint.x, this.centerPoint.y], 3978);
             await this._rInstance.geo.map.zoomMapTo(center, this._rInstance.geo.map.getScale());
         }
-
+        
         this.extentFromBasemapDone = true;
+    }
+
+    mapScaleHandler(scale: number, newLayerLoaded: boolean = false) {
+        const showLabels = scale < SCALE_THRESHOLD;
+        // toggle on/off map labels based on threshold
+        if (this.showMapLabels !== showLabels || newLayerLoaded) {
+            this.showMapLabels = showLabels;
+            this._rInstance.geo.layer.allActiveLayers()
+                .filter((layer: any) => this.labelledLayerIds.includes(layer.id))
+                .forEach((l: any) => l.sublayers.forEach((sublayer: any) => sublayer.labelVisibility = this.showMapLabels));
+        }
     }
 
     tooltipHandler(info: any): void {
@@ -553,6 +586,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         if (!this._rInstance) {
             return;
         }
+        this._rInstance.event.off('cccs_scalechanged_handler')
         this._rInstance.event.off('cccs_extentchanged_handler');
         this._rInstance.event.off('cccs_graphichit_handler');
         this._rInstance.event.off('cccs_mapclick_handler');

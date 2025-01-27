@@ -25,7 +25,7 @@
                 "geosearch": {
                     "serviceUrls": {
                         "geoNames": "https://geogratis.gc.ca/services/geoname/en/geonames.json",
-                        "geoLocation": "https://geogratis.gc.ca/services/geolocation/en/locate?q=",
+                        "geoLocation": "https://geogratis.gc.ca/services/geolocation/en/locate",
                         "geoProvince": "https://geogratis.gc.ca/services/geoname/en/codes/province.json",
                         "geoTypes": "https://geogratis.gc.ca/services/geoname/en/codes/concise.json"
                     }
