@@ -496,21 +496,20 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this._rInstance.event.on('map/click', this.mapClickHandler, 'cccs_mapclick_handler');
         this._rInstance.event.on('panel/closed', this.detailsClosingHandler, 'cccs_panelclose_handler');
 
-        if (this.zoomLevel) {
-            const loadedLabelledLayers = new Set();
+        // add generic watcher for when any labelled layers are loaded
+        if (this.labelledLayerIds && this.labelledLayerIds.length) {
             // add handler to watch for when all layers with map labels have been loaded
             const labelledLayerLoaded = ((event: {state: string, layer: any}) => {
                 if (this.labelledLayerIds.includes(event.layer.id) && event.state === 'loaded') {
-                    this.mapScaleHandler(this._rInstance.geo.map.getScale(), true);
-                    loadedLabelledLayers.add(event.layer.id);
-
-                    // remove the event listener when all required layers are loaded
-                    if (this.labelledLayerIds.length === loadedLabelledLayers.size) {
-                        this._rInstance.event.off('cccs_labelledLayersLoaded');
-                    }
+                    // toggle labels for loaded layer based on current scale
+                    const showLabels = this._rInstance.geo.map.getScale() < SCALE_THRESHOLD;
+                    event.layer.sublayers.forEach((sublayer: any) => sublayer.labelVisibility = showLabels);
                 }
             });
             this._rInstance.event.on('layer/layerstatechange', labelledLayerLoaded, 'cccs_labelledLayersLoaded');
+        }
+
+        if (this.zoomLevel) {
             await this._rInstance.geo.map.zoomToLevel(this.zoomLevel);
         }
         if (this.centerPoint) {
@@ -521,10 +520,10 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         this.extentFromBasemapDone = true;
     }
 
-    mapScaleHandler(scale: number, newLayerLoaded: boolean = false) {
+    mapScaleHandler(scale: number) {
         const showLabels = scale < SCALE_THRESHOLD;
         // toggle on/off map labels based on threshold
-        if (this.showMapLabels !== showLabels || newLayerLoaded) {
+        if (this.showMapLabels !== showLabels) {
             this.showMapLabels = showLabels;
             this._rInstance.geo.layer.allActiveLayers()
                 .filter((layer: any) => this.labelledLayerIds.includes(layer.id))
@@ -586,6 +585,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         if (!this._rInstance) {
             return;
         }
+        this._rInstance.event.off('cccs_labelledLayersLoaded');
         this._rInstance.event.off('cccs_scalechanged_handler')
         this._rInstance.event.off('cccs_extentchanged_handler');
         this._rInstance.event.off('cccs_graphichit_handler');
