@@ -38,6 +38,7 @@
                 "supportDesk": "https://climate-change.canada.ca/support-desk",
                 "display": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download.html"
             },
+            "climateData": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/climate-data.html",
             "ltceFAQ": "https://www.canada.ca/en/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/frequently-asked-questions-long-term-climate-extremes.html"
         },
         "fr": {
@@ -78,6 +79,7 @@
                 "supportDesk": "https://changements-climatiques.canada.ca/centre-aide",
                 "display": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger.html"
             },
+            "climateData": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/donnees-climatiques.html",
             "ltceFAQ": "https://www.canada.ca/fr/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/foire-questions-extremes-climatiques-long-terme.html"
         }
     }

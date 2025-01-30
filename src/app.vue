@@ -64,6 +64,8 @@
                 <i18n :path="`map.description.moreData`" tag="p">
                     <a :href="`${aboutUrls['supportDesk']}`">{{$t('description.help.supportDesk')}}</a>
                 </i18n>
+
+                <a :href="`${climateDataUrl}`">{{$t('map.description.climateData')}}</a>
             </aside>
 
             
@@ -148,6 +150,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
     aboutUrls: { [name: string]: string } = {};
     technicalDocsUrl: string = '';
     metadataUrl: string = '';
+    climateDataUrl: string = '';
     ltceFAQ: string = '';
 
     get queryToolRoute(): string {
@@ -190,6 +193,7 @@ export default class App extends mixins(UpdateRouteMixin, StoreAppMixin, StoreDa
             this.aboutUrls = currentLinks.aboutUrls;
             this.technicalDocsUrl = currentLinks.technicalDocsUrl;
             this.metadataUrl = currentLinks.dataCatalogueUrl;
+            this.climateDataUrl = currentLinks.climateData;
             this.ltceFAQ = currentLinks.ltceFAQ;
         });
 

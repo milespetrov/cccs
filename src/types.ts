@@ -290,6 +290,11 @@ export interface ClimateViewerAppConfig {
     technicalDocsUrl: string;
 
     /**
+     * Url to the ECCC climate data page
+     */
+    climateData: string;
+
+    /**
      * A URL to the FAQ page for the LTCE dataset
      */
     ltceFAQ: string;
