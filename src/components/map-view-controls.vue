@@ -15,8 +15,13 @@
                 <b-dropdown ref="discovery-menu" variant="light" class="cip-selector desktop-menu" no-flip>
                     <template slot="button-content">
                         <div class="cip-content-wrap">
-                            <span class="cip-value-label">CDV Discovery Menu</span>
-                            <span class="cip-selected-value">Subtitle</span>
+                            <span class="cip-selected-value">{{$t(`datasetSelector.${datasetId}.shortName`)}}</span>
+                            <div class="cip-value-label-wrapper">
+                                <template v-for="(controlRef, index) in getControls.slice(1)">
+                                    <span class="cip-value-divider" v-if="index !== 0" :key="`${controlRef}-divider`" />
+                                    <span class="cip-value-label" :key="`${controlRef}`">{{$t(`${buttonTPath(controlRef)}.shortName`)}}</span>
+                                </template>
+                            </div>
                         </div>
                     </template>
 
@@ -79,6 +84,18 @@ export default class MapViewControls extends Vue {
     datasetId: DatasetId;
     @StateApp
     variableId: VariableId;
+    @StateApp
+    timePeriodId: string | null;
+    @StateApp
+    rcpId: string | null;
+    @StateApp
+    sspId: string | null;
+    @StateApp
+    month: string | null;
+    @StateApp
+    day: string | null;
+    @StateApp
+    analysisPeriod: string | null;
 
     @StateData
     urlSuffixes: object | null;
@@ -118,6 +135,23 @@ export default class MapViewControls extends Vue {
         })
     }
 
+    buttonTPath(controlName: string): string {
+        const mapping = {
+            'analysis-period-selector': this.analysisPeriod,
+            'day-selector': this.day,
+            'month-selector': this.month,
+            'rcp-selector': this.rcpId,
+            'ssp-selector': this.sspId,
+            'time-period-selector': this.timePeriodId
+        }
+
+        if (controlName === 'variable-selector') {
+            return this.datasetId + '.' + this.variableId;
+        }
+
+        return this.headerTPath(controlName) + '.' + mapping[controlName];
+    }
+
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RAMP.mapInstances[api.RAMP.mapInstances.length - 1].mapI.export(type);
@@ -127,6 +161,15 @@ export default class MapViewControls extends Vue {
 
 <style lang="scss" scoped>
 .desktop-menu {
+    .cip-value-label-wrapper {
+        display: flex;
+    }
+    .cip-value-label,.cip-value-divider {
+        margin-right: 5px;
+    }
+    .cip-value-divider {
+        border-right: 1px solid;
+    }
     .menu-header-row {
         margin-right: 10px;
         margin-left: 10px;
