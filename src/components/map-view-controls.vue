@@ -22,6 +22,12 @@
 
                     <div class="menu-wrapper">
                         <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
+                            <div class="menu-header-row">
+                                <span class="menu-header-text">{{$t(`${headerTPath(controlRef)}.title`)}}</span>
+                                <div v-if="controlRef === 'dataset-selector'">
+                                    <!-- dataset filter dropdown here -->
+                                </div>
+                            </div>
                             <component :is="controlRef" :bodyOnly="true"/>
                         </div>
                     </div>
@@ -102,6 +108,16 @@ export default class MapViewControls extends Vue {
         return (this.urlSuffixes as any)[this.datasetId].metadata[this.variableId];
     }
 
+    /**
+     *  Get translation path for the given control
+     */ 
+    headerTPath(controlName: string): string {
+        // turns 'dataset-selector' into 'datasetSelector'
+        return controlName.replace(/-[a-z]/g, (match) => {
+            return match.slice(1).toUpperCase()
+        })
+    }
+
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RAMP.mapInstances[api.RAMP.mapInstances.length - 1].mapI.export(type);
@@ -111,6 +127,16 @@ export default class MapViewControls extends Vue {
 
 <style lang="scss" scoped>
 .desktop-menu {
+    .menu-header-row {
+        margin-right: 10px;
+        margin-left: 10px;
+
+        .menu-header-text {
+            margin-left: 15px;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+    }
     .close-button {
         position: absolute;
         right: 5px;
@@ -142,9 +168,9 @@ export default class MapViewControls extends Vue {
         }
 
         // big divider between Dataset and options
-        .menu-option:nth-child(n + 2)>div:before {
+        .menu-option:nth-child(n + 2)>div:nth-child(2):before {
             position: absolute;
-            margin-top: 10px;
+            margin-top: 25px;
             margin-bottom: 10px;
             top: 0;
             bottom: 0;
@@ -154,7 +180,7 @@ export default class MapViewControls extends Vue {
         }
 
         // small divider between options
-        .menu-option:nth-child(n + 3)>div:before {
+        .menu-option:nth-child(n + 3)>div:nth-child(2):before {
             width: 1px;
         }
     }
