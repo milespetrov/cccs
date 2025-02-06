@@ -723,3 +723,4 @@ normal.tooltips.wmo_title,WMO identifier,1,Identifiant OMM,1
 normal.tooltips.tc_title,TC identifier,1,Identifiant TC,1
 ltce.tooltips.station_title,Virtual Station Name,1,Nom du Station Virtuelle,1
 ltce.tooltips.value_title,Extreme value,1,Valeur extrême,1
+controls.close,Close,1,Fermer,1

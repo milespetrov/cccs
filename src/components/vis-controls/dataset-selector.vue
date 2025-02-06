@@ -1,13 +1,10 @@
 <template>
-
-    <base-selector
+    <component :is='bodyOnly ? "selector-body" : "base-selector"'
         :config="config"
         :currentId="datasetId"
         tPath="datasetSelector"
         itemTPath="datasetSelector"
-        @select="select">
-    </base-selector>
-    
+        @select="select"/>
 </template>
 
 <script lang="ts">
@@ -16,6 +13,7 @@ import { State, Getter, Action, namespace } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
 import BaseSelectorV from './base-selector.vue';
+import SelectorBodyV from './selector-body.vue';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
 import { DatasetId } from '@/types';
@@ -27,13 +25,17 @@ const ActionApp = namespace('app', Action);
 
 @Component({
     components: {
-        'base-selector': BaseSelectorV
+        'base-selector': BaseSelectorV,
+        'selector-body': SelectorBodyV
     }
 })
 export default class DatasetSelector extends mixins(UpdateRouteMixin) {
     @ActionApp setDatasetId: (value: string) => void;
     @StateApp variableId: string;
     @StateApp datasetId: string;
+
+    @Prop()
+    bodyOnly: boolean;
 
     config: DatasetSelectorConfig = datasetSelectorConfig;
 

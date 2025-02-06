@@ -1,36 +1,45 @@
 <template>
-    <!-- Everything b-dropdown-* is from Bootstrap Vue. You will never find it with sane search. -->
-    <b-dropdown ref="dropdown" variant="light" class="cip-selector" :disabled="hasSingleOption()" no-flip>
+    <div>
+        <div class="cip-dropdown-info" v-if="hasTranslation(`${tPath}.description`)">
+            <span class="dropdown-header">{{ $t(`${tPath}.header`) }}</span>
+            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
+        </div>
 
-        <template slot="button-content">
-            <div class="cip-content-wrap">
-                <span class="cip-value-label">{{ $t(`${tPath}.title`) }}</span>
-                <span class="cip-selected-value">{{ $t(`${itemTPath}.${currentId}.shortName`) }}</span>
-            </div>
-        </template>
+        <b-dropdown-divider v-if="hasTranslation(`${tPath}.description`)"></b-dropdown-divider>
 
-        <selector-body 
-            :available="available"
-            :config="config"
-            :currentId="currentId"
-            :tPath="tPath"
-            :itemTPath="itemTPath"
-            @select="passSelect" />
-    </b-dropdown>
+        <div class="cip-dropdown-content">
+            <template v-for="(group, index) in filteredGroups">
+                <b-dropdown-divider :key="`divider-${group.id}`" v-if="index !== 0"></b-dropdown-divider>
+
+                <div role="group" :key="`group-${group.id}`">
+                    <b-dropdown-header :id="group.id" v-if="group.showHeader">{{ $t(`${tPath}.${group.id}`)
+                        }}</b-dropdown-header>
+
+                    <b-dropdown-item-button v-for="item in group.items" :disabled="item === currentId"
+                        :class="{ 'cip-selected': item === currentId }" @click.capture.stop="select(item)"
+                        :key="`item-${item}`">
+                        <span class="cip-name">
+                            <span class="cip-first">{{ $t(`${itemTPath}.${item}.fullName`) }}</span>
+                            <span class="cip-second" v-if="hasTranslation(`${itemTPath}.${item}.subName`)">{{
+                                $t(`${itemTPath}.${item}.subName`) }}</span>
+                        </span>
+
+                        <span class="cip-qualifier">{{ $t(`${itemTPath}.${item}.qualifier`) }} </span>
+                    </b-dropdown-item-button>
+                </div>
+
+            </template>
+        </div>
+    </div>  
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 
 import { BaseSelectorConfig, BaseSelectorGroupConfig } from './../../configs/selectors';
-import SelectorBodyV from './selector-body.vue';
 
-@Component({
-    components: {
-        'selector-body': SelectorBodyV
-    }
-})
-export default class BaseSelectorV extends Vue {
+@Component
+export default class SelectorBodyV extends Vue {
     @Emit()
     select(value: string) { }
 
@@ -45,13 +54,6 @@ export default class BaseSelectorV extends Vue {
     tPath: string;
     @Prop()
     itemTPath: string; // the translation path for the subitems in the selector (variable names, dataset names, etc.) Needed to allow different var names per dataset
-
-    passSelect(value: string) {
-        this.select(value);
-
-        // force close the dropdown on selection (this is on mobile only)
-        (this.$refs['dropdown'] as any).hide();
-    }
 
     /**
      * Returns a filtered set of selector groups.
@@ -92,10 +94,6 @@ export default class BaseSelectorV extends Vue {
         } else {
             return group.showHeader;
         }
-    }
-
-    hasSingleOption(): boolean {
-        return this.filteredGroups.reduce((map: string[], group) => map.concat(group.items), []).length === 1;
     }
 
     hasTranslation(key: string): boolean {

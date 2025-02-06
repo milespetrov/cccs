@@ -2,19 +2,42 @@
     <div class="cip-view-controls">
         <button @click="showCollapse = !showCollapse" class="cip-controls-toggle btn btn-primary hidden-md hidden-lg">
             <span v-show="showCollapse">
-                <font-awesome-icon icon="times" fixed-width/>
+                <font-awesome-icon icon="times" fixed-width />
             </span>
             <span v-show="!showCollapse">
-                <font-awesome-icon icon="sliders-h" fixed-width/>
+                <font-awesome-icon icon="sliders-h" fixed-width />
             </span>
             <span class="cip-label">{{ $t('settings.title') }}</span>
         </button>
 
-        <b-collapse class="cip-controls-wrapper" v-model="showCollapse" id="cip-view-controls-collapse">
+        <b-collapse class="cip-controls-wrapper" id="cip-view-controls-collapse" v-model="showCollapse">
             <div class="cip-controls">
-                
-                <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
-                    <component :is="controlRef"></component>
+                <b-dropdown ref="discovery-menu" variant="light" class="cip-selector desktop-menu" no-flip>
+                    <template slot="button-content">
+                        <div class="cip-content-wrap">
+                            <span class="cip-value-label">CDV Discovery Menu</span>
+                            <span class="cip-selected-value">Subtitle</span>
+                        </div>
+                    </template>
+
+                    <div class="menu-wrapper">
+                        <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
+                            <component :is="controlRef" :bodyOnly="true"/>
+                        </div>
+                    </div>
+
+                    <button data-v-2942f9ed="" class="close-button" @click="$refs['discovery-menu'].hide()" :aria-label="$t('controls.close')">
+                        <svg data-v-2942f9ed="" xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill="rgb(51, 51, 51)">
+                            <path data-v-2942f9ed=""
+                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z">
+                            </path>
+                        </svg>
+                    </button>
+                </b-dropdown>
+
+                <div class="menu-option mobile-menu" v-for="controlRef in getControls" :key="`${controlRef}`">
+                        <component :is="controlRef"  :bodyOnly="false"/>
                 </div>
 
                 <div class="menu-option">
@@ -66,7 +89,7 @@ export default class MapViewControls extends Vue {
         if (!this.urlSuffixes || !this.datasetId) {
             return '';
         }
-        return this.urlSuffixes[this.datasetId].dataQuery[<'en' | 'fr'>i18n.locale];
+        return (this.urlSuffixes as any)[this.datasetId].dataQuery[<'en' | 'fr'>i18n.locale];
     }
 
     get metadataUUID(): string {
@@ -74,9 +97,9 @@ export default class MapViewControls extends Vue {
             return '';
         }
         if ([DatasetId.CMIP6, DatasetId.DCSu6].includes(this.datasetId)) {
-            return this.urlSuffixes[this.datasetId].metadata[<'en' | 'fr'>i18n.locale];
+            return (this.urlSuffixes as any)[this.datasetId].metadata[<'en' | 'fr'>i18n.locale];
         }
-        return this.urlSuffixes[this.datasetId].metadata[this.variableId];
+        return (this.urlSuffixes as any)[this.datasetId].metadata[this.variableId];
     }
 
     downloadImage(type: string): void {
@@ -87,6 +110,56 @@ export default class MapViewControls extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.desktop-menu {
+    .close-button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        border: none;
+        background: none;
+        height: 24px;
+        width: 24px;
+        margin: 0;
+        padding: 0;
+    }
+    .menu-wrapper {
+        display: flex;
+        max-width: calc(90vw - 2px);
+        width: max-content;
+        font-size: 0.9em;
+
+        .menu-option {
+            min-width: 200px;
+        }
+
+        // Dataset selector
+        .menu-option:first-child {
+            flex-shrink: 1;
+        }
+
+        .menu-option:nth-child(n + 2) {
+            flex-shrink: 2;
+        }
+
+        // big divider between Dataset and options
+        .menu-option:nth-child(n + 2)>div:before {
+            position: absolute;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            content: '';
+            background-color: #878686;
+        }
+
+        // small divider between options
+        .menu-option:nth-child(n + 3)>div:before {
+            width: 1px;
+        }
+    }
+}
+
 @import "./../styles/variables.scss";
 @import "./../styles/view-controls.scss";
 </style>

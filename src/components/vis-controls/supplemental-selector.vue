@@ -8,10 +8,9 @@
             </div>
         </template>
  
-            <div role="group" aria-lableledby="supplemental-data" :key="`sup-group`">
+            <div class="cip-supplemental-content" role="group" aria-lableledby="supplemental-data" :key="`sup-group`">
                 <b-dropdown-item-button
                     v-for="layerId in config.items"
-                    class="cip-nowrap"
                     @click="select(layerId)"
                     :key="`item-${ layerId }`">
                         <span class="cip-name">
@@ -32,7 +31,6 @@ import { Component, Watch } from 'vue-property-decorator';
 import { State, Action, namespace } from 'vuex-class';
 import { mixins } from 'vue-class-component';
 
-import BaseSelectorV from './base-selector.vue';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
 import { SupplementalId } from '@/types';
@@ -47,11 +45,7 @@ const ActionApp = namespace('app', Action);
 
 const StateData = namespace('data', State);
 
-@Component({
-    components: {
-        'base-selector': BaseSelectorV
-    }
-})
+@Component
 export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
     @ActionApp setSupplementalIds: (value: string[]) => void;
     @StateApp supplementalIds: string[];
@@ -118,5 +112,11 @@ export default class SupplementalSelector extends mixins(UpdateRouteMixin) {
 
 .cip-subname {
     white-space: normal;
+}
+
+.cip-supplemental-content {
+    min-width: 400px;
+    max-width: 700px;
+    width: max-content;
 }
 </style>

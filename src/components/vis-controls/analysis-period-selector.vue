@@ -1,13 +1,12 @@
 <template>
 
-    <base-selector
+    <component :is='bodyOnly ? "selector-body" : "base-selector"'
         :config="config"
         :available="available"
         :currentId="analysisPeriod"
         tPath="analysisSelector"
         itemTPath="analysisSelector"
-        @select="select">
-    </base-selector>
+        @select="select" />
 
 </template>
 
@@ -24,6 +23,7 @@ import { RCPSelectorConfig, analysisperiodSelectorConfig } from './../../configs
 
 import { DatasetViewSource } from './../../configs/datasets';
 import { VisualizationControlType, AnalysisPeriodType } from '@/types';
+import SelectorBodyV from './selector-body.vue';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -31,13 +31,17 @@ const ActionApp = namespace('app', Action);
 
 @Component({
     components: {
-        'base-selector': BaseSelectorV
+        'base-selector': BaseSelectorV,
+        'selector-body': SelectorBodyV
     }
 })
 export default class AnalysisPeriodSelector extends mixins(UpdateRouteMixin) {
     @StateApp analysisPeriod: string;
     @GetterApp datasetControlOptions: DatasetViewSource;
     @ActionApp setAnalysisPeriod: (value: AnalysisPeriodType) => void;
+
+    @Prop()
+    bodyOnly: boolean;
 
     config: RCPSelectorConfig = analysisperiodSelectorConfig;
 

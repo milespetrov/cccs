@@ -1,13 +1,13 @@
 <template>
 
-    <base-selector class="cip-horizontal"
+    <component :is='bodyOnly ? "selector-body" : "base-selector"'
+        class="cip-horizontal"
         :config="config"
         :available="available"
         :currentId="timePeriodId"
         tPath="timePeriodSelector"
         itemTPath="timePeriodSelector"
-        @select="select">
-    </base-selector>
+        @select="select" />
 
 </template>
 
@@ -22,6 +22,7 @@ import { TimePeriodSelectorConfig, timePeriodSelectorConfig } from '../../config
 
 import { DatasetViewSource } from './../../configs/datasets';
 import { TimePeriodType, VisualizationControlType } from '@/types';
+import SelectorBodyV from './selector-body.vue';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -29,7 +30,8 @@ const ActionApp = namespace('app', Action);
 
 @Component({
     components: {
-        'base-selector': BaseSelectorV
+        'base-selector': BaseSelectorV,
+        'selector-body': SelectorBodyV
     }
 })
 export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
@@ -37,6 +39,9 @@ export default class TimePeriodSelector extends mixins(UpdateRouteMixin) {
     @StateApp datasetId: string;
     @GetterApp datasetControlOptions: DatasetViewSource;
     @ActionApp setTimePeriodId: (value: string) => void;
+
+    @Prop()
+    bodyOnly: boolean;
 
     config: TimePeriodSelectorConfig = timePeriodSelectorConfig;
 

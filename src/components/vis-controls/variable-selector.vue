@@ -1,12 +1,11 @@
 <template>
-    <base-selector
+    <component :is='bodyOnly ? "selector-body" : "base-selector"'
         :config="config"
         :available="available"
         :currentId="variableId"
         :tPath="tPath"
         :itemTPath="datasetId"
-        @select="select"
-    ></base-selector>
+        @select="select"/>
 </template>
 
 <script lang="ts">
@@ -20,6 +19,7 @@ import { UpdateRouteMixin } from '@/globals/mixin';
 import { variableSelectorConfig, VariableSelectorConfig } from './../../configs/selectors';
 import { DatasetId, VariableId } from '@/types';
 import { datasets } from '@/configs/datasets';
+import SelectorBodyV from './selector-body.vue';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -27,7 +27,8 @@ const ActionApp = namespace('app', Action);
 
 @Component({
     components: {
-        'base-selector': BaseSelectorV
+        'base-selector': BaseSelectorV,
+        'selector-body': SelectorBodyV
     }
 })
 export default class VariableSelector extends mixins(UpdateRouteMixin) {
@@ -37,6 +38,9 @@ export default class VariableSelector extends mixins(UpdateRouteMixin) {
 
     @StateApp variableId: VariableId;
     @StateApp datasetId: DatasetId;
+
+    @Prop()
+    bodyOnly: boolean;
 
     @Watch('datasetId')
     onDatasetChange() {

@@ -64,14 +64,27 @@
                 }
             }
 
+            &.desktop-menu{
+                .dropdown-menu{
+                    opacity: 0.95;
+
+                    &.show {
+                        display: flex !important;
+                    }
+                }
+            }
+
+            &.mobile-menu {
+                .dropdown-menu {
+                    min-width: 400px;
+                    max-width: 900px;
+                }
+            }
             .dropdown-menu {
                 margin-top: -1px;
 
                 border: 1px solid $border-colour-one;
                 box-shadow: none;
-
-                min-width: 400px;
-                max-width: 900px;
 
                 font-size: 0.8em;
                 font-family: "Roboto","Helvetica Neue",sans-serif;
@@ -88,6 +101,7 @@
             }
 
             .dropdown-item {
+                white-space: unset;
                 padding: 0.45em 1.5em;
             }
         }
@@ -101,9 +115,6 @@
 
         &.cip-dropdown-right.show /deep/ {
             .dropdown-menu {
-                // for some reason the right-aligned menu is offset to the left by one extra pixel
-                margin-right: -1px;
-
                 &:before {
                     right: -1px;
                     left: auto;
@@ -271,6 +282,9 @@
 
     // force-show view controls in medium and large layouts
     @media (min-width: 990px) {
+        .mobile-menu {
+            display: none;
+        }
         .cip-controls-wrapper {
             display: block !important;
         }
@@ -344,7 +358,7 @@
             }
         }
 
-        .cip-selector {
+        .mobile-menu {
             height: auto;
             display: flex !important;
             flex-direction: column;
@@ -365,6 +379,10 @@
                 }
             }
         }
+
+        .desktop-menu {
+            display: none !important;
+        }
     }
 
     @media (min-width: 991px) {
@@ -372,6 +390,10 @@
             .menu-option {
                 -ms-flex-preferred-size: 100%;
             }
+        }
+
+        .mobile-menu {
+            display: none;
         }
     }
 

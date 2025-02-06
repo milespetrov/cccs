@@ -1,13 +1,13 @@
 <template>
 
-    <base-selector class="cip-horizontal"
+    <component :is='bodyOnly ? "selector-body" : "base-selector"'
+        class="cip-horizontal"
         :config="config"
         :available="available"
         :currentId="day"
         tPath="daySelector"
         itemTPath="daySelector"
-        @select="select">
-    </base-selector>
+        @select="select" />
 
 </template>
 
@@ -22,6 +22,7 @@ import { DaySelectorConfig, daySelectorConfig } from '../../configs/selectors';
 
 import { DatasetViewSource } from './../../configs/datasets';
 import { TimePeriodType, VisualizationControlType } from '@/types';
+import SelectorBodyV from './selector-body.vue';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -29,7 +30,8 @@ const ActionApp = namespace('app', Action);
 
 @Component({
     components: {
-        'base-selector': BaseSelectorV
+        'base-selector': BaseSelectorV,
+        'selector-body': SelectorBodyV
     }
 })
 export default class DaySelector extends mixins(UpdateRouteMixin) {
@@ -38,6 +40,9 @@ export default class DaySelector extends mixins(UpdateRouteMixin) {
     @StateApp datasetId: string;
     @GetterApp datasetControlOptions: DatasetViewSource;
     @ActionApp setDay: (value: string) => void;
+    
+    @Prop()
+    bodyOnly: boolean;
 
     config: DaySelectorConfig = daySelectorConfig;
 
