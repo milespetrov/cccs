@@ -290,6 +290,11 @@
         </script>
 
         <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-        <script src="./assets/scripts/ramp.js"></script>
+        <script type="module">
+            import { createInstance } from './assets/scripts/ramp/ramp.js';
+            window.RAMP = {
+                createInstance
+            };
+        </script>
     </body>
 </html>

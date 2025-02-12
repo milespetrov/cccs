@@ -448,13 +448,19 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     _rInstance: any;
 
     async mounted(): Promise<void> {
-        const RAMP = (<any>window).RAMP;
+        let RAMP: any;
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
-        if (!RAMP) {
-            window.setTimeout(() => this.mounted(), 500);
-            return;
-        }
+        await new Promise<void>(resolve => {
+            const busywait = setInterval(() => {
+                const tempRAMP = (<any>window).RAMP;
+                if (tempRAMP) {
+                    RAMP = tempRAMP;
+                    clearInterval(busywait);
+                    resolve();
+                }
+            }, 100);
+        });
 
         if (this.currentVariable === null || this.datasetId === null) {
             return;
