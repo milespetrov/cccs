@@ -5,7 +5,12 @@
             "name": "National Parks and National Park_Reserves of Canada Legislative Boundaries",
             "layerType": "esri-feature",
             "url": "https://proxyinternet.nrcan-rncan.gc.ca/arcgis/rest/services/CLSS-SATC/CLSS_Administrative_Boundaries/MapServer/1",
-            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd"
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd",
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "NTSN": {
             "id": "NTSN",
@@ -18,7 +23,12 @@
                 {
                     "id": "transport"
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "CDD": {
             "id": "CDD",
@@ -34,7 +44,12 @@
                         "opacity": 1
                     }
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "ATRIS": {
             "id": "ATRIS",
@@ -123,7 +138,12 @@
                         "exclusiveFields": true
                     }
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         }
     },
     "fr": {
@@ -132,7 +152,12 @@
             "name": "Limites legislatives des parcs nationaux et des reserves a vocation de parc national du Canada",
             "layerType": "esri-feature",
             "url": "https://proxyinternet.nrcan-rncan.gc.ca/arcgis/rest/services/CLSS-SATC/SATC_Limites_administratives/MapServer/1",
-            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd"
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd",
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "NTSN": {
             "id": "NTSN",
@@ -145,7 +170,12 @@
                 {
                     "id": "transport"
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "CDD": {
             "id": "CDD",
@@ -161,7 +191,12 @@
                         "opacity": 1
                     }
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "ATRIS": {
             "id": "ATRIS",
@@ -251,7 +286,12 @@
                         "exclusiveFields": true
                     }
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         }
     }
 }
