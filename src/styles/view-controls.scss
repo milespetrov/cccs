@@ -270,14 +270,16 @@
             font-weight: 500;
         }
 
-        &.cip-horizontal {
-            .cip-dropdown-content {
-                display: flex;
+        .day-selector{
+            .cip-horizontal {
+                .cip-dropdown-content {
+                    display: flex;
 
-                > [role='group'] {
-                    flex-grow: 1;
-                    flex-shrink: 1;
-                    flex-basis: auto;
+                    > [role='group'] {
+                        flex-grow: 1;
+                        flex-shrink: 1;
+                        flex-basis: auto;
+                    }
                 }
             }
         }

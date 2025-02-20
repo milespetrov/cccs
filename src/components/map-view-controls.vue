@@ -27,7 +27,7 @@
 
                     <div class="menu-wrapper">
                         <template v-for="controlRef in getControls">
-                            <div class="menu-option" :key="`${controlRef}`" v-if="controlRef === 'dataset-selector' || showSubFilters">
+                            <div class="menu-option" :key="`${controlRef}`" :class="controlRef" v-if="controlRef === 'dataset-selector' || showSubFilters">
                                 <div class="menu-header-row">
                                     <span class="menu-header-text">{{$t(`${headerTPath(controlRef)}.title`)}}</span>
                                     <div v-if="controlRef === 'dataset-selector'" class="dataset-filter" :class="showSubFilters ? '' : 'no-sub-filters'">
