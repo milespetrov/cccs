@@ -19,7 +19,7 @@
                             <div class="cip-value-label-wrapper">
                                 <template v-for="(controlRef, index) in getControls.slice(1)">
                                     <span class="cip-value-divider" v-if="index !== 0" :key="`${controlRef}-divider`" />
-                                    <span class="cip-value-label" :key="`${controlRef}`">{{$t(`${buttonTPath(controlRef)}.shortName`)}}</span>
+                                    <span class="cip-value-label" :key="`${controlRef}`"><img class="cip-value-icon" :src="`assets/images/icons/${labelIcon(controlRef)}`" />{{$t(`${buttonTPath(controlRef)}.shortName`)}}</span>
                                 </template>
                             </div>
                         </div>
@@ -177,6 +177,55 @@ export default class MapViewControls extends Vue {
         return this.headerTPath(controlName) + '.' + mapping[controlName];
     }
 
+    labelIcon(controlName: string): string {
+        const mapping = {
+            'analysis-period-selector': 'calendar.svg',
+            'day-selector': 'calendar.svg',
+            'month-selector': 'calendar.svg',
+            'rcp-selector': 'description.svg',
+            'ssp-selector': 'description.svg',
+            'time-period-selector': 'calendar.svg'
+        }
+
+        const variableMapping = {
+            [VariableId.TMax]: 'temp.svg',
+            [VariableId.TMaxHigh]: 'temp.svg',
+            [VariableId.TMaxLow]: 'temp.svg',
+            [VariableId.TMin]: 'temp.svg',
+            [VariableId.TMinHigh]: 'temp.svg',
+            [VariableId.TMinLow]: 'temp.svg',
+            [VariableId.TMean]: 'temp.svg',
+            [VariableId.WaterTemp]: 'temp.svg',
+            [VariableId.SurfaceTemp]: 'temp.svg',
+            [VariableId.Precipitation]: 'rain.svg',
+            [VariableId.RDPA24]: 'rain.svg',
+            [VariableId.RDPA6]: 'rain.svg',
+            [VariableId.ClimateStations]: 'station.svg',
+            [VariableId.SnowfallStations]: 'station.svg',
+            [VariableId.TemperatureStations]: 'station.svg',
+            [VariableId.PrecipitationStations]: 'station.svg',
+            [VariableId.Daily]: 'station.svg',
+            [VariableId.Hourly]: 'station.svg',
+            [VariableId.Monthly]: 'station.svg',
+            [VariableId.Hydrometric]: 'station.svg',
+            [VariableId.SnowDepth]: 'snow.svg',
+            [VariableId.IceConcentration]: 'ice.svg',
+            [VariableId.IceThickness]: 'ice.svg',
+            [VariableId.SurfaceWind]: 'wind.svg',
+            [VariableId.GustSpeed]: 'wind.svg',
+            [VariableId.GustDirection]: 'wind.svg',
+            [VariableId.GustDirection850]: 'wind.svg',
+            [VariableId.StationPressure]: 'pressure.svg',
+            [VariableId.SeaLevelPressure]: 'pressure.svg'
+        }
+
+        if (controlName === 'variable-selector') {
+            return variableMapping[this.variableId];
+        }
+
+        return mapping[controlName];
+    }
+
     downloadImage(type: string): void {
         // TODO: is this reliable? Should we store a refernece to the map API in the store instead?
         api.RAMP.mapInstances[api.RAMP.mapInstances.length - 1].mapI.export(type);
@@ -190,6 +239,11 @@ export default class MapViewControls extends Vue {
         display: flex;
     }
     .cip-value-label,.cip-value-divider {
+        margin-right: 5px;
+    }
+    .cip-value-icon {
+        width: 16px;
+        height: 16px;
         margin-right: 5px;
     }
     .cip-value-divider {
