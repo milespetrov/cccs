@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const cmip5Dataset: DatasetSource = {
     id: DatasetId.CMIP5,
@@ -19,6 +19,14 @@ const cmip5Dataset: DatasetSource = {
             default: RCPType.RCP8_5
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation,
+        DatasetFilter.WindSpeed,
+        DatasetFilter.Ice,
+        DatasetFilter.Snow
+    ],
 
     variables: [
         VariableId.TMean,

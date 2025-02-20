@@ -5,32 +5,21 @@
 <script lang="ts">
 import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
 import { State, Getter, Action, namespace } from 'vuex-class';
-import { Dictionary } from 'vue-router/types/router';
 import { mixins } from 'vue-class-component';
 
-import sprintf from 'sprintf-js';
 import {debounce} from 'throttle-debounce';
-
-import { Subject, race } from 'rxjs';
-
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
-import { throttleTime } from 'rxjs/internal/operators/throttleTime';
 
 import api, { DatasetApi } from './../api/';
 import { MapPoint, XY } from '@/store/modules/app';
 import { UpdateRouteMixin } from '../globals/mixin';
 import { DatasetId, VariableId, TimePeriodType } from '@/types';
 
-import { datasets, ColourRamp, DatasetSource } from './../configs/datasets';
+import { ColourRamp } from './../configs/datasets';
 
 import registerDetailsTemplates from '@/detailsTemplates';
 
-import TimeSlider from './time-slider.vue';
-import MapColourRamp from './map-colour-ramp.vue';
 import MapControlsCluster from './map-controls-cluster.vue';
-import MapFineprint from './map-fineprint.vue';
-import MapScrollguard from './map-scrollguard.vue';
-import MapPanguard from './map-panguard.vue';
+
 import { monthSelectorConfig, SupplementalLayers } from '../configs/selectors';
 import { customRendererStartup } from '@/../assets/scripts/customExport';
 import { registerCustomAppbarLink } from '@/../assets/scripts/customAppbarLink';

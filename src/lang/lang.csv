@@ -408,6 +408,15 @@ datasetSelector.spei.shortName,Standardized Precipitation and Evapotranspiration
 datasetSelector.spei.fullName,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),1,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),0
 datasetSelector.spei.subName,,1,,1
 datasetSelector.spei.qualifier,,1,,1
+datasetFilter.label,Filter:,0,Filter:,0
+datasetFilter.all,All datasets,1,Tout des ensembles de données,0
+datasetFilter.temperature,Temperature,1,Température,1
+datasetFilter.precip,Precipitation,1,Précipitations,1
+datasetFilter.snow,Snow,1,Neige,1
+datasetFilter.ice,Ice,1,Glace,1
+datasetFilter.pressure,Pressure,1,Pression,1
+datasetFilter.stations,Stations,1,Stations,1
+datasetFilter.wind,Wind,1,Vent,1
 downloadSelector.title,Download,1,Télécharger,1
 downloadSelector.header,Download,1,Télécharger,1
 downloadSelector.mapImage_group,Map image,1,Carte,1

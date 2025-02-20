@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, RCPType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const dcsDataset: DatasetSource = {
     id: DatasetId.DCS,
@@ -20,6 +20,11 @@ const dcsDataset: DatasetSource = {
             default: RCPType.RCP8_5
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation
+    ],
 
     variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],// VariableId.GrowingSeasonOverwinter, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonWarm],
 

@@ -63,7 +63,7 @@ export default class BaseSelectorV extends Vue {
                 ? group.items.filter(item => this.available.includes(item))
                 : group.items;
 
-            // filter out groups with not items in them
+            // filter out groups with no items in them
             if (filteredItems.length === 0) {
                 return map;
             }
@@ -73,7 +73,6 @@ export default class BaseSelectorV extends Vue {
                 items: filteredItems,
                 showHeader: group.showHeader
             };
-            filteredGroup.showHeader = this.isHeaderVisible(filteredGroup);
 
             map.push(filteredGroup);
 
@@ -81,17 +80,6 @@ export default class BaseSelectorV extends Vue {
         }, []);
 
         return result;
-    }
-
-    /**
-     * Specifies if the group header should be shown or not.
-     */
-    isHeaderVisible(group: BaseSelectorGroupConfig): boolean {
-        if (group.showHeader === undefined) {
-            return group.items.length > 1;
-        } else {
-            return group.showHeader;
-        }
     }
 
     hasSingleOption(): boolean {

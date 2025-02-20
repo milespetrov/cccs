@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, SSPType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, SSPType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const cmip6Dataset: DatasetSource = {
     id: DatasetId.CMIP6,
@@ -19,6 +19,15 @@ const cmip6Dataset: DatasetSource = {
             default: SSPType.SSP585
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation,
+        DatasetFilter.Pressure,
+        DatasetFilter.WindSpeed,
+        DatasetFilter.Ice,
+        DatasetFilter.Snow
+    ],
 
     variables: [
         VariableId.TMean,

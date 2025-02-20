@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, SSPType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, SSPType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const dcsu6Dataset: DatasetSource = {
     id: DatasetId.DCSu6,
@@ -24,6 +24,11 @@ const dcsu6Dataset: DatasetSource = {
             ]
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation
+    ],
 
     variables: [VariableId.TMean, VariableId.TMax, VariableId.TMin, VariableId.Precipitation],
 

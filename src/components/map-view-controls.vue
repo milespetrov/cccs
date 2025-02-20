@@ -26,15 +26,20 @@
                     </template>
 
                     <div class="menu-wrapper">
-                        <div class="menu-option" v-for="controlRef in getControls" :key="`${controlRef}`">
-                            <div class="menu-header-row">
-                                <span class="menu-header-text">{{$t(`${headerTPath(controlRef)}.title`)}}</span>
-                                <div v-if="controlRef === 'dataset-selector'">
-                                    <!-- dataset filter dropdown here -->
+                        <template v-for="controlRef in getControls">
+                            <div class="menu-option" :key="`${controlRef}`" v-if="controlRef === 'dataset-selector' || showSubFilters">
+                                <div class="menu-header-row">
+                                    <span class="menu-header-text">{{$t(`${headerTPath(controlRef)}.title`)}}</span>
+                                    <div v-if="controlRef === 'dataset-selector'" class="dataset-filter" :class="showSubFilters ? '' : 'no-sub-filters'">
+                                        <label>
+                                            {{$t('datasetFilter.label')}}
+                                            <dataset-filter  />
+                                        </label>
+                                    </div>
                                 </div>
+                                <component :is="controlRef" :bodyOnly="true"/>
                             </div>
-                            <component :is="controlRef" :bodyOnly="true"/>
-                        </div>
+                        </template>
                     </div>
 
                     <button data-v-2942f9ed="" class="close-button" @click="$refs['discovery-menu'].hide()" :aria-label="$t('controls.close')">
@@ -48,7 +53,7 @@
                 </b-dropdown>
 
                 <div class="menu-option mobile-menu" v-for="controlRef in getControls" :key="`${controlRef}`">
-                        <component :is="controlRef"  :bodyOnly="false"/>
+                    <component :is="controlRef" :bodyOnly="false"/>
                 </div>
 
                 <div class="menu-option">
@@ -60,14 +65,16 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 import { State, Getter, Action, namespace } from 'vuex-class';
 
 import selectors from './vis-controls/selectors';
 
 import api from './../api/';
-import { DatasetId, VariableId } from '@/types';
+import { AnalysisPeriodType, DatasetFilter, DatasetId, RCPType, SSPType, TimePeriodType, VariableId } from '@/types';
 import { i18n } from '@/lang';
+import DatasetFilterV from './vis-controls/dataset-filter.vue';
+import { datasets } from '@/configs/datasets';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -75,7 +82,7 @@ const ActionApp = namespace('app', Action);
 const StateData = namespace('data', State);
 
 @Component({
-    components: selectors
+    components: {...selectors, 'dataset-filter': DatasetFilterV}
 })
 export default class MapViewControls extends Vue {
     @GetterApp
@@ -85,17 +92,19 @@ export default class MapViewControls extends Vue {
     @StateApp
     variableId: VariableId;
     @StateApp
-    timePeriodId: string | null;
+    timePeriodId: TimePeriodType | null;
     @StateApp
-    rcpId: string | null;
+    rcpId: RCPType | null;
     @StateApp
-    sspId: string | null;
+    sspId: SSPType | null;
     @StateApp
     month: string | null;
     @StateApp
     day: string | null;
     @StateApp
-    analysisPeriod: string | null;
+    analysisPeriod: AnalysisPeriodType | null;
+
+    @StateApp datasetFilter: DatasetFilter | null;
 
     @StateData
     urlSuffixes: object | null;
@@ -104,9 +113,25 @@ export default class MapViewControls extends Vue {
     @StateData
     dataCatalogueUrl: string | null;
 
+    showSubFilters: boolean = false;
+
     showCollapse: boolean = false;
 
     tDSPath: string = 'downloadSelector';
+
+    @Watch('datasetFilter')
+    onFilterChange(newValue: DatasetFilter | null): void {
+        if (newValue) {
+            this.showSubFilters = datasets[this.datasetId].filters.includes(newValue);
+        } else {
+            this.showSubFilters = true;
+        }
+    }
+
+    @Watch('datasetId')
+    onDatasetChange(): void {
+        this.showSubFilters = true;
+    }
 
     get queryToolRoute(): string {
         if (!this.urlSuffixes || !this.datasetId) {
@@ -173,6 +198,15 @@ export default class MapViewControls extends Vue {
     .menu-header-row {
         margin-right: 10px;
         margin-left: 10px;
+        display: flex;
+
+        .dataset-filter {
+            margin-left: auto;
+        }
+
+        .dataset-filter.no-sub-filters {
+            margin-right: 24px;
+        }
 
         .menu-header-text {
             margin-left: 15px;

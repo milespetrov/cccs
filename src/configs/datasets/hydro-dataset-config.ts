@@ -1,10 +1,14 @@
 import { DatasetSource } from './types';
-import { VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const hydroDataset: DatasetSource = {
     id: DatasetId.Hydrometric,
 
     controls: {},
+
+    filters: [
+        DatasetFilter.Stations
+    ],
 
     variables: [VariableId.Hydrometric],
 

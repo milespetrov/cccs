@@ -1,6 +1,6 @@
 <template>
 
-    <b-dropdown variant="light" right class="cip-dropdown-right cip-selector" no-flip>
+    <b-dropdown variant="light" class="cip-dropdown cip-selector" no-flip>
 
         <template slot="button-content">
             <div class="cip-content-wrap">

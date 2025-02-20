@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const normalDataset: DatasetSource = {
     id: DatasetId.ClimateNormal,
@@ -25,6 +25,12 @@ const normalDataset: DatasetSource = {
             disableOn: [VariableId.ClimateStations, VariableId.Monthly, VariableId.Daily, VariableId.Hourly]
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation,
+        DatasetFilter.Stations
+    ],
 
     variables: [
         VariableId.TMax,

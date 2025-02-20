@@ -2,7 +2,7 @@
     <div>
         <div class="cip-dropdown-info" v-if="hasTranslation(`${tPath}.description`)">
             <span class="dropdown-header">{{ $t(`${tPath}.header`) }}</span>
-            <div class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</div>
+            <span class="cip-dropdown-description">{{ $t(`${tPath}.description`) }}</span>
         </div>
 
         <b-dropdown-divider v-if="hasTranslation(`${tPath}.description`)"></b-dropdown-divider>
@@ -65,7 +65,7 @@ export default class SelectorBodyV extends Vue {
                 ? group.items.filter(item => this.available.includes(item))
                 : group.items;
 
-            // filter out groups with not items in them
+            // filter out groups with no items in them
             if (filteredItems.length === 0) {
                 return map;
             }

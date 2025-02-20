@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const canGrdDataset: DatasetSource = {
     id: DatasetId.CANGRD,
@@ -16,6 +16,11 @@ const canGrdDataset: DatasetSource = {
             ]
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation
+    ],
 
     variables: [VariableId.TMean, VariableId.Precipitation],
 

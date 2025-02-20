@@ -5,7 +5,7 @@ import { RootState } from '@/store';
 
 import { datasets, DatasetViewSource, ColourRamp } from '@/configs/datasets';
 import { defaultSelectors } from '@/configs/selectors';
-import { VisualizationControlType, DatasetId, TimePeriodType } from '@/types';
+import { VisualizationControlType, DatasetId, TimePeriodType, DatasetFilter } from '@/types';
 import { DatasetApi, datasetApis } from '@/api';
 import { layer } from '@fortawesome/fontawesome-svg-core';
 
@@ -15,6 +15,7 @@ const state: AppState = {
     timePeriodId: null,
     variableId: null,
     datasetId: null,
+    datasetFilter: null,
     featureId: null,
     featurePoint: null,
     rcpId: null,
@@ -44,6 +45,7 @@ enum Action {
     setCenterPoint = 'setCenterPoint',
     setLocationPoint = 'setLocationPoint',
     setDatasetId = 'setDatasetId',
+    setDatasetFilter = 'setDatasetFilter',
     setDay = 'setDay',
     setFeatureId = 'setFeatureId',
     setFeaturePoint = 'setFeaturePoint',
@@ -65,6 +67,7 @@ enum Mutation {
     SET_CENTER_POINT = 'SET_CENTER_POINT',
     SET_LOCATION_POINT = 'SET_LOCATION_POINT',
     SET_DATASET_ID = 'SET_DATASET_ID',
+    SET_DATASET_FILTER = 'SET_DATASET_FILTER',
     SET_DAY = 'SET_DAY',
     SET_FEATURE_ID = 'SET_FEATURE_ID',
     SET_FEATURE_POINT = 'SET_FEATURE_POINT',
@@ -202,6 +205,10 @@ const actions = {
         context.commit(Mutation.SET_DATASET_ID, value);
 
         context.dispatch(Action.applyDatasetDefault);
+    },
+
+    [Action.setDatasetFilter](context: AppContext, value: DatasetFilter | null) {
+        context.commit(Mutation.SET_DATASET_FILTER, value);
     },
 
     /**
@@ -405,6 +412,10 @@ const mutations = {
 
     [Mutation.SET_DATASET_ID](state: AppState, value: DatasetId): void {
         state.datasetId = value;
+    },
+
+    [Mutation.SET_DATASET_FILTER](state: AppState, value: DatasetFilter | null): void {
+        state.datasetFilter = value;
     },
 
     [Mutation.SET_FEATURE_ID](state: AppState, value: string): void {

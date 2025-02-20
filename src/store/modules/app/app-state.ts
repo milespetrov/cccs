@@ -1,9 +1,10 @@
-import { DatasetId } from '@/types';
+import { DatasetFilter, DatasetId } from '@/types';
 
 export interface AppState {
     timePeriodId: string | null;
     variableId: string | null;
     datasetId: DatasetId | null;
+    datasetFilter: DatasetFilter | null;
     featureId: string | null;
     featurePoint: MapPoint | null;
     rcpId: string | null;

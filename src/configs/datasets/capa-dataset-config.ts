@@ -1,10 +1,14 @@
 import { DatasetSource } from './types';
-import { VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const capaDataset: DatasetSource = {
     id: DatasetId.CAPA,
 
     controls: {},
+
+    filters: [
+        DatasetFilter.Precipitation
+    ],
 
     variables: [VariableId.RDPA6, VariableId.RDPA24],
 

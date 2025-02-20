@@ -1,4 +1,4 @@
-import { VariableId, TimePeriodType, RCPType, VisualizationControlType, IdentifyMode } from '@/types';
+import { VariableId, TimePeriodType, RCPType, VisualizationControlType, IdentifyMode, DatasetFilter } from '@/types';
 
 export interface BaseDatasetSelectorSource {
     /**
@@ -187,6 +187,8 @@ export interface DatasetSource {
      */
 
     controls: DatasetViewSource;
+
+    filters: DatasetFilter[];
 
     variables: VariableId[];
 

@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, VariableId, DatasetId, IdentifyMode, DatasetFilter } from '@/types';
 
 const ltceDataset: DatasetSource = {
     id: DatasetId.LTCE,
@@ -59,6 +59,13 @@ const ltceDataset: DatasetSource = {
             ],
             disableOn: [VariableId.TemperatureStations, VariableId.PrecipitationStations, VariableId.SnowfallStations]
     }},
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation,
+        DatasetFilter.Snow,
+        DatasetFilter.Stations
+    ],
 
     variables: [
         VariableId.TMaxHigh,

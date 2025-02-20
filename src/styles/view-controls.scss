@@ -231,12 +231,15 @@
         .cip-dropdown-description {
             padding: 0.25rem * 1.6 1.5rem * 1.6;
             font-size: 0.8em;
+            max-width: 400px;
+            display: inline-block;
+            line-height: 1.5em;
         }
     }
 
     .cip-selector {
         height: 100%;
-        width: 100%;
+        max-width: fit-content;
 
         .dropdown-item {
             display: flex;
@@ -310,6 +313,15 @@
     // flatten view controls and display them as stacked on small and extra small layouts
     @media (max-width: 991px) {
         border: none;
+
+        .cip-selector {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .cip-dropdown-description {
+            max-width: unset !important;
+        }
 
         // "settings" button which shows/collapses selectors on the small layouts
         .cip-controls-toggle {

@@ -16,6 +16,8 @@ const speiDataset: DatasetSource = {
         }
     },
 
+    filters: [],
+
     variables: [VariableId.SPEI],
 
     mapConfigPath: 'config-base.json',

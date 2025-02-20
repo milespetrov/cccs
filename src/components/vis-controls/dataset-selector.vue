@@ -1,5 +1,6 @@
 <template>
     <component :is='bodyOnly ? "selector-body" : "base-selector"'
+        :available="available"
         :config="config"
         :currentId="datasetId"
         tPath="datasetSelector"
@@ -16,8 +17,9 @@ import BaseSelectorV from './base-selector.vue';
 import SelectorBodyV from './selector-body.vue';
 import { UpdateRouteMixin } from './../../globals/mixin';
 
-import { DatasetId } from '@/types';
+import { DatasetFilter, DatasetId } from '@/types';
 import { datasetSelectorConfig, DatasetSelectorConfig } from './../../configs/selectors';
+import { datasets } from '@/configs/datasets';
 
 const StateApp = namespace('app', State);
 const GetterApp = namespace('app', Getter);
@@ -33,11 +35,29 @@ export default class DatasetSelector extends mixins(UpdateRouteMixin) {
     @ActionApp setDatasetId: (value: string) => void;
     @StateApp variableId: string;
     @StateApp datasetId: string;
+    @StateApp datasetFilter: DatasetFilter | null;
 
     @Prop()
     bodyOnly: boolean;
 
     config: DatasetSelectorConfig = datasetSelectorConfig;
+
+    get available() {
+        if (this.datasetFilter) {
+            let filtered: DatasetId[] = [];
+            this.config.groups.forEach(group => {
+                filtered = filtered.concat(
+                        group.items.filter(datasetId => {
+                            return datasets[datasetId].filters.includes(this.datasetFilter)
+                        })
+                    );
+            });
+
+            return filtered;
+        }
+
+        return undefined;
+    }
 
     select(value: DatasetId) {
         this.setDatasetId(value);

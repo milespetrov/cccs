@@ -1,5 +1,5 @@
 import { DatasetSource } from './types';
-import { VisualizationControlType, TimePeriodType, DatasetId, VariableId, IdentifyMode } from '@/types';
+import { VisualizationControlType, TimePeriodType, DatasetId, VariableId, IdentifyMode, DatasetFilter } from '@/types';
 
 const ahccdDataset: DatasetSource = {
     id: DatasetId.AHCCD,
@@ -9,6 +9,14 @@ const ahccdDataset: DatasetSource = {
             disableOn: [VariableId.ClimateStations]
         }
     },
+
+    filters: [
+        DatasetFilter.Temperature,
+        DatasetFilter.Precipitation,
+        DatasetFilter.Pressure,
+        DatasetFilter.WindSpeed,
+        DatasetFilter.Stations
+    ],
 
     variables: [
         VariableId.TMax,

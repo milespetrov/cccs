@@ -74,6 +74,16 @@ export enum VariableId {
     SPEI = 'spei'
 }
 
+export enum DatasetFilter {
+    Temperature = 'temperature',
+    Precipitation = 'precip',
+    WindSpeed = 'wind',
+    Pressure = 'pressure',
+    Ice = 'ice',
+    Snow = 'snow',
+    Stations = 'stations'
+}
+
 /**
  * All available Visualization controls which can be added to the visualization view.
  *
