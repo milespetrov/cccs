@@ -408,7 +408,7 @@ datasetSelector.spei.shortName,Standardized Precipitation and Evapotranspiration
 datasetSelector.spei.fullName,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),1,Standardized Precipitation and Evapotranspiration Index (CLIENT CONTENT),0
 datasetSelector.spei.subName,,1,,1
 datasetSelector.spei.qualifier,,1,,1
-datasetFilter.label,Filter:,0,Filter:,0
+datasetFilter.label,Filter by,1,Filter by,0
 datasetFilter.all,All datasets,1,Tout des ensembles de données,0
 datasetFilter.temperature,Temperature,1,Température,1
 datasetFilter.precip,Precipitation,1,Précipitations,1
