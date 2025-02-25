@@ -15,7 +15,7 @@
                 "coverIcon": "assets/images/tmean.png",
                 "symbologyStack": [
                     {
-                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP3-70_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA&format=image/png&STYLE=default",
+                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP370_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA&format=image/png&STYLE=default",
                         "text": ""
                     }
                 ],
@@ -121,7 +121,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -150,7 +150,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2041-2060_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2041-2060_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -179,7 +179,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2061-2080_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2061-2080_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -208,7 +208,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2081-2100_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2081-2100_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -235,7 +235,7 @@
                 "coverIcon": "assets/images/tmean.png",
                 "symbologyStack": [
                     {
-                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP3-70_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA&format=image/png&STYLE=default",
+                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP370_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA&format=image/png&STYLE=default",
                         "text": ""
                     }
                 ],
@@ -341,7 +341,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2021-2040_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -370,7 +370,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2041-2060_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2041-2060_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -399,7 +399,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2061-2080_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2061-2080_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
@@ -428,7 +428,7 @@
                 "featureInfoMimeType": "application/json",
                 "sublayers": [
                     {
-                        "id": "CMIP6-SSP3-70_AirTempAnomaly-Pct50_2081-2100_P0Y-JJA"
+                        "id": "CMIP6-SSP370_AirTempAnomaly-Pct50_2081-2100_P0Y-JJA"
                     }
                 ],
                 "fixtures": {
