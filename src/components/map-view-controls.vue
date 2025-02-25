@@ -19,7 +19,7 @@
                             <div class="cip-value-label-wrapper">
                                 <template v-for="(controlRef, index) in getControls.slice(1)">
                                     <span class="cip-value-divider" v-if="index !== 0" :key="`${controlRef}-divider`" />
-                                    <span class="cip-value-label" :key="`${controlRef}`"><img class="cip-value-icon" :src="`assets/images/icons/${labelIcon(controlRef)}`" />{{$t(`${buttonTPath(controlRef)}.shortName`)}}</span>
+                                    <span class="cip-value-label" :key="`${controlRef}`"><img class="cip-value-icon" :src="`assets/images/icons/${labelIcon(controlRef)}`" :alt="$t(`${buttonTPath(controlRef)}.shortName`)" />{{$t(`${buttonTPath(controlRef)}.shortName`)}}</span>
                                 </template>
                             </div>
                         </div>

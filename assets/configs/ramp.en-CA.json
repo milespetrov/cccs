@@ -73,7 +73,7 @@
                 },
                 "mapnav": {
                     "zoomOption": "buttons",
-                    "items": ["home", "help", "fullscreen"]
+                    "items": ["home", "help", "geolocator", "fullscreen"]
                 },
                 "help": {
                     "location": "./help/cccs",
