@@ -29,7 +29,8 @@ const normalDataset: DatasetSource = {
     filters: [
         DatasetFilter.Temperature,
         DatasetFilter.Precipitation,
-        DatasetFilter.Stations
+        DatasetFilter.Stations,
+        DatasetFilter.Historical
     ],
 
     variables: [

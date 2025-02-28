@@ -27,7 +27,9 @@ const dcsu6Dataset: DatasetSource = {
 
     filters: [
         DatasetFilter.Temperature,
-        DatasetFilter.Precipitation
+        DatasetFilter.Precipitation,
+        DatasetFilter.Future,
+        DatasetFilter.Gridded
     ],
 
     variables: [VariableId.TMean, VariableId.TMax, VariableId.TMin, VariableId.Precipitation],

@@ -29,7 +29,10 @@ export default class DatasetFilterV extends Vue {
         DatasetFilter.Ice,
         DatasetFilter.WindSpeed,
         DatasetFilter.Pressure,
-        DatasetFilter.Stations
+        DatasetFilter.Stations,
+        DatasetFilter.Future,
+        DatasetFilter.Historical,
+        DatasetFilter.Gridded
     ]
 
     updateDatasetFilter(event: any): void {

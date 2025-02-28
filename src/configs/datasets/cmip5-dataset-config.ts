@@ -25,7 +25,9 @@ const cmip5Dataset: DatasetSource = {
         DatasetFilter.Precipitation,
         DatasetFilter.WindSpeed,
         DatasetFilter.Ice,
-        DatasetFilter.Snow
+        DatasetFilter.Snow,
+        DatasetFilter.Future,
+        DatasetFilter.Gridded
     ],
 
     variables: [

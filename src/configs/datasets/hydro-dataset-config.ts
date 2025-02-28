@@ -7,7 +7,8 @@ const hydroDataset: DatasetSource = {
     controls: {},
 
     filters: [
-        DatasetFilter.Stations
+        DatasetFilter.Stations,
+        DatasetFilter.Historical
     ],
 
     variables: [VariableId.Hydrometric],

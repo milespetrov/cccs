@@ -7,7 +7,8 @@ const capaDataset: DatasetSource = {
     controls: {},
 
     filters: [
-        DatasetFilter.Precipitation
+        DatasetFilter.Precipitation,
+        DatasetFilter.Historical
     ],
 
     variables: [VariableId.RDPA6, VariableId.RDPA24],

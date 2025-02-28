@@ -15,7 +15,8 @@ const ahccdDataset: DatasetSource = {
         DatasetFilter.Precipitation,
         DatasetFilter.Pressure,
         DatasetFilter.WindSpeed,
-        DatasetFilter.Stations
+        DatasetFilter.Stations,
+        DatasetFilter.Historical
     ],
 
     variables: [

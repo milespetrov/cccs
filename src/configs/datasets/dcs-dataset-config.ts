@@ -23,7 +23,9 @@ const dcsDataset: DatasetSource = {
 
     filters: [
         DatasetFilter.Temperature,
-        DatasetFilter.Precipitation
+        DatasetFilter.Precipitation,
+        DatasetFilter.Future,
+        DatasetFilter.Gridded
     ],
 
     variables: [VariableId.TMax, VariableId.TMean, VariableId.TMin, VariableId.Precipitation],// VariableId.GrowingSeasonOverwinter, VariableId.GrowingSeasonCool, VariableId.GrowingSeasonWarm],

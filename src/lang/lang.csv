@@ -314,8 +314,8 @@ daySelector.31.shortName,31,1,31,1
 daySelector.31.qualifier,,1,,1
 export.emissionScenario,Emission scenario,1,Scénarios d'émissions,1
 rcpSelector.title,Scenarios,1,Scénarios,1
-rcpSelector.header,Global emission scenarios,1,Scénarios d'émissions mondiales,1
-rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCP définissent des scénarios futurs plausibles des émissions anthropiques.",1
+rcpSelector.header,Global emissions scenarios,1,Scénarios d'émissions mondiales,1
+rcpSelector.description,"A set of scenarios referred to as Representative Concentration Pathways (RCPs) are in common use to study future climate change. RCPs are designed to provide plausible future scenarios of human emissions patterns.",1," Un ensemble de scénarios désignés profils représentatifs d’évolution de concentration (RCP : Representative Concentration Pathways) sont couramment utilisés pour étudier les changements climatiques futurs. Les RCPs sont conçus pour fournir des scénarios futurs plausibles concernant les tendances des émissions humaines.",1
 rcpSelector.all_rcp_models,,1,,1
 rcpSelector.rcp26.shortName,Low emission,1,Émissions faibles,1
 rcpSelector.rcp26.fullName,Low emission scenario (RCP 2.6),1,"Scénario d'émissions faibles (RCP 2.6)",1
@@ -330,20 +330,20 @@ rcpSelector.rcp85.fullName,High emission scenario (RCP 8.5),1,"Scénario d'émis
 rcpSelector.rcp85.veryShortName,High,1,élevées,0
 rcpSelector.rcp85.qualifier,,1,,1
 sspSelector.title,Scenarios,0,Scénarios,0
-sspSelector.header,Global emissions scenarios,0,Scénarios d'émissions mondiales,0
-sspSelector.description,"A set of scenarios referred to as Shared Socioeconomic Pathways (SSPs) are in common use to study future climate change. SSPs are designed to provide plausible future scenarios of human emissions patterns.",0,"Un ensemble de scénarios appelés "Shared Socioeconomic Pathways" (SSP) est couramment utilisé pour étudier le changement climatique futur. Les SSP sont conçus pour fournir des scénarios futurs plausibles de schémas d'émissions humaines.",0
+sspSelector.header,Global emissions scenarios,1,Scénarios d'émissions mondiales,1
+sspSelector.description,"A set of scenarios referred to as Shared Socioeconomic Pathways (SSPs) are in common use to study future climate change. SSPs are designed to provide plausible future scenarios of human emissions patterns.",1,"Un ensemble de scénarios désignés Voies socio-économiques partagées (SSP) sont couramment utilisés pour étudier les changements climatiques futurs. Les SSP sont conçus pour fournir des scénarios futurs plausibles concernant les tendances des émissions humaines.",1
 sspSelector.all_ssp_models,,1,,1
-sspSelector.ssp126.shortName,Low emissions,0,Émissions faibles,0
-sspSelector.ssp126.fullName,Low emissions scenario (SSP1-2.6),0,"Scénario d'émissions faibles (SSP1-2.6)",0
+sspSelector.ssp126.shortName,SSP1-2.6,1,SSP1-2.6,1
+sspSelector.ssp126.fullName,SSP1-2.6,1,SSP1-2.6,1
 sspSelector.ssp126.qualifier,,1,,1
-sspSelector.ssp245.shortName,Moderate emissions,0,Émissions modérées,0
-sspSelector.ssp245.fullName,Moderate emissions scenario (SSP2-4.5),0,"Scénario d'émissions modérées (SSP2-4.5)",0
+sspSelector.ssp245.shortName,SSP2-4.5,1,SSP2-4.5,1
+sspSelector.ssp245.fullName,SSP2-4.5,1,SSP2-4.5,1
 sspSelector.ssp245.qualifier,,1,,1
-sspSelector.ssp370.shortName,Moderate-high emissions,0,,0
-sspSelector.ssp370.fullName,Moderate-high emissions scenario (SSP3-7.0),0,Moderate-high emission (SSP3-7.0),0
+sspSelector.ssp370.shortName,SSP3-7.0,1,SSP3-7.0,1
+sspSelector.ssp370.fullName,SSP3-7.0,1,SSP3-7.0,1
 sspSelector.ssp370.qualifier,,1,,1
-sspSelector.ssp585.shortName,High emissions,0,Émissions élevées,0
-sspSelector.ssp585.fullName,High emissions scenario (SSP5-8.5),0,"Scénario d'émissions élevées (SSP5-8.5)",0
+sspSelector.ssp585.shortName,SSP5-8.5,1,SSP5-8.5,1
+sspSelector.ssp585.fullName,SSP5-8.5,1,SSP5-8.5,1
 sspSelector.ssp585.qualifier,,1,,1
 supplementalSelector.title,Supplemental datasets,1,Ensemble de données supplémentaires,1
 supplementalSelector.np.shortName,National Parks,1,Parc national,1
@@ -417,6 +417,9 @@ datasetFilter.ice,Ice,1,Glace,1
 datasetFilter.pressure,Pressure,1,Pression,1
 datasetFilter.stations,Stations,1,Stations,1
 datasetFilter.wind,Wind,1,Vent,1
+datasetFilter.future,Future,1,Futur,1
+datasetFilter.historical,Historical,1,Historique,0
+datasetFilter.gridded,Gridded,1,Sur maille,0
 downloadSelector.title,Download,1,Télécharger,1
 downloadSelector.header,Download,1,Télécharger,1
 downloadSelector.mapImage_group,Map image,1,Carte,1

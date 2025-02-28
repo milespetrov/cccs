@@ -64,7 +64,8 @@ const ltceDataset: DatasetSource = {
         DatasetFilter.Temperature,
         DatasetFilter.Precipitation,
         DatasetFilter.Snow,
-        DatasetFilter.Stations
+        DatasetFilter.Stations,
+        DatasetFilter.Historical
     ],
 
     variables: [

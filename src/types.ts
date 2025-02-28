@@ -81,7 +81,10 @@ export enum DatasetFilter {
     Pressure = 'pressure',
     Ice = 'ice',
     Snow = 'snow',
-    Stations = 'stations'
+    Stations = 'stations',
+    Future = 'future',
+    Historical = 'historical',
+    Gridded = 'gridded'
 }
 
 /**

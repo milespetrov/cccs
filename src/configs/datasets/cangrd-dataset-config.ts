@@ -19,7 +19,9 @@ const canGrdDataset: DatasetSource = {
 
     filters: [
         DatasetFilter.Temperature,
-        DatasetFilter.Precipitation
+        DatasetFilter.Precipitation,
+        DatasetFilter.Historical,
+        DatasetFilter.Gridded
     ],
 
     variables: [VariableId.TMean, VariableId.Precipitation],
