@@ -6,7 +6,7 @@ var variableTemplate = {
             <div class="short-form" :class="variable + '-icon'">
                 <p><span>{{TRANSLATIONS[lang].details[0]}}</span></p>
                 <p class="data-value">{{ value }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
-                <p class="supporting-value">{{TRANSLATIONS[lang].range}} {{ minRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}} - {{ maxRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
+                <p class="supporting-value">{{TRANSLATIONS[lang].range}} {{ minRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}} {{TRANSLATIONS[lang].to}} {{ maxRangeValue }}{{TRANSLATIONS[lang].measurementUnit[variable]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[1]}}</span></p>
                 <p class="supporting-value">{{TRANSLATIONS[lang].timeSlider[timeSlice]}}</p>
                 <p><span>{{TRANSLATIONS[lang].details[2]}}</span></p>
@@ -158,7 +158,8 @@ var variableTemplate = {
                         'at'
                     ],
                     range: 'Range',
-                    baseline: 'Projected changes are with respect to the reference period of 1995-2014.'
+                    baseline: 'Projected changes are with respect to the reference period of 1995-2014.',
+                    to: 'to'
                 },
                 'fr': {
                     latlong: 'Latitude, longitude',
@@ -206,7 +207,8 @@ var variableTemplate = {
                         'à'
                     ],
                     range: 'Portée',
-                    baseline: 'Les changements projetés sont relatives à la moyenne de 1995-2014.'
+                    baseline: 'Les changements projetés sont relatives à la moyenne de 1995-2014.',
+                    to: 'à'
                 }
             },
             lang: 'en'

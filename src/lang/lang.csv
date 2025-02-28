@@ -346,14 +346,14 @@ sspSelector.ssp585.shortName,SSP5-8.5,1,SSP5-8.5,1
 sspSelector.ssp585.fullName,SSP5-8.5,1,SSP5-8.5,1
 sspSelector.ssp585.qualifier,,1,,1
 supplementalSelector.title,Supplemental datasets,1,Ensemble de données supplémentaires,1
-supplementalSelector.np.shortName,National Parks,1,Parc national,1
-supplementalSelector.np.fullName,National Parks,1,Parc national,1
+supplementalSelector.np.shortName,National Parks,1,Parcs nationaux,1
+supplementalSelector.np.fullName,National Parks,1,Parcs nationaux,1
 supplementalSelector.np.subName,,1,,1
 supplementalSelector.ntsn.shortName,National transportation systems network,1,Réseau national de systèmes de transport,0
 supplementalSelector.ntsn.fullName,National transportation systems network,1,Réseau national de systèmes de transport,0
 supplementalSelector.ntsn.subName,"This includes the National Airport System, the National Highway System, Canada Port Authorities and the National Railway Network.",1,"Cela comprend le réseau aéroportuaire national, le réseau routier national, les administrations portuaires canadiennes et le réseau ferroviaire national.",0
-supplementalSelector.cdd.shortName,Canadian Disaster Database,1,Base de Données Canadienne sur les Catastrophes,1
-supplementalSelector.cdd.fullName,Canadian Disaster Database "Meteorological Hydrological" Events types,1,Base de Données Canadienne sur les Catastrophes Types d'événements "météorologiques - hydrologiques",0
+supplementalSelector.cdd.shortName,Canadian disaster database,1,Base de données canadienne sur les catastrophes,1
+supplementalSelector.cdd.fullName,Canadian disaster database "Meteorological Hydrological" events types,1,"Base de données canadienne sur les catastrophes - Type d'évènements «météorologique - hydrologique»",0
 supplementalSelector.cdd.subName,The data for 2021/2022 are preliminary figures and may change before they are published to the Canadian Disaster Database.,1,Les données pour 2021/2022 sont des chiffres préliminaires et elles pourraient être modifiées avant d'être publiées dans la Base de données canadienne sur les catastrophes.,1
 supplementalSelector.atris.fullName,Indigenous communities (ATRIS),1,Collectivités autochtones (SIDAIT),1
 supplementalSelector.atris.shortName,Indigenous communities (ATRIS),1,Collectivités autochtones (SIDAIT),1
@@ -361,7 +361,7 @@ supplementalSelector.atris.subName,Aboriginal and Treaty Rights Information Syst
 datasetSelector.title,Dataset,1,Ensemble de données,1
 datasetSelector.header,Datasets,1,Ensembles des données,1
 datasetSelector.all_datasets,,1,,1
-datasetSelector.future_projections,Climate Simulations,1,Simulations climatiques,1
+datasetSelector.future_projections,Climate simulations,1,Simulations climatiques,1
 datasetSelector.historical_changes,Value-added historical climate data products,1,Produits à valeur ajoutée dérivés de données climatiques historiques,1
 datasetSelector.historical_other,Historical climate and river data,1,Données historiques météorologiques et fluviales,1
 datasetSelector.ahccd.shortName,Adjusted historical climate data,1,Données climatiques historiques ajustées,1
@@ -409,11 +409,11 @@ datasetSelector.spei.fullName,Standardized Precipitation and Evapotranspiration 
 datasetSelector.spei.subName,,1,,1
 datasetSelector.spei.qualifier,,1,,1
 datasetFilter.label,Filter by,1,Filter by,0
-datasetFilter.all,All datasets,1,Tout des ensembles de données,0
+datasetFilter.all,All datasets,1,Tous les ensembles de données,1
 datasetFilter.temperature,Temperature,1,Température,1
 datasetFilter.precip,Precipitation,1,Précipitations,1
 datasetFilter.snow,Snow,1,Neige,1
-datasetFilter.ice,Ice,1,Glace,1
+datasetFilter.ice,Sea ice,1,Glaces de mer,1
 datasetFilter.pressure,Pressure,1,Pression,1
 datasetFilter.stations,Stations,1,Stations,1
 datasetFilter.wind,Wind,1,Vent,1
