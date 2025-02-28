@@ -1,1078 +1,1076 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
-      },
-      {
-        "layerId": "ltce_tmaxh_en",
-        "description": "",
-        "coverIcon": "assets/images/red-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/red-circle.png",
-            "text": "Record High Max"
-          },
-          {
-            "image": "assets/images/yellow-circle.svg",
-            "text": "New Record High Max"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Temperature Extremes of Record, Record High Max",
-        "nameField": "VIRTUAL_CLIMATE_ID",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "VIRTUAL_CLIMATE_ID",
-                "title": "Virtual Climate ID",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_E",
-                "title": "Virtual Station Name",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_F",
-                "visible": false
-              },
-              {
-                "field": "LOCAL_DAY",
-                "title": "Day",
-                "visible": true
-              },
-              {
-                "field": "LOCAL_MONTH",
-                "title": "Month",
-                "visible": true
-              },
-              {
-                "field": "MAX_TEMP_RECORD_BEGIN",
-                "title": "Record Start",
-                "visible": true
-              },
-              {
-                "field": "MAX_TEMP_RECORD_END",
-                "title": "Record End",
-                "visible": true
-              },
-              {
-                "field": "MIN_TEMP_RECORD_BEGIN",
-                "visible": false
-              },
-              {
-                "field": "MIN_TEMP_RECORD_END",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MAX_TEMP",
-                "title": "Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "FIRST_HIGH_MAX_TEMP_YEAR",
-                "title": "Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "FIRST_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MAX_TEMP",
-                "title": "2nd Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "SECOND_HIGH_MAX_TEMP_YEAR",
-                "title": "2nd Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "SECOND_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MAX_TEMP",
-                "title": "3rd Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "THIRD_HIGH_MAX_TEMP_YEAR",
-                "title": "3rd Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "THIRD_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MAX_TEMP",
-                "title": "4th Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_HIGH_MAX_TEMP_YEAR",
-                "title": "4th Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MAX_TEMP",
-                "title": "5th Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_HIGH_MAX_TEMP_YEAR",
-                "title": "5th Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "LAST_UPDATED",
-                "title": "Last Updated",
-                "visible": true
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "WXO_CITY_CODE",
-                "visible": false
-              },
-              {
-                "name": "IDENTIFIER",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "ltceVariableTemplate"
-          }
-        },
-        "id": "ltce_tmaxh_en",
-        "url": "#GEOMETWFS#/collections/ltce-temperature/items",
-        "customRenderer": {
-          "type": "uniqueValue",
-          "field1": "FIRST_HIGH_MAX_TEMP_YEAR",
-          "defaultSymbol": {
-            "type": "esriSMS",
-            "style": "esriSMSCircle",
-            "color": [
-              240,
-              65,
-              22,
-              255
-            ],
-            "size": 7,
-            "outline": {
-              "color": [
-                0,
-                0,
-                0,
-                255
-              ],
-              "width": 1
-            }
-          },
-          "defaultLabel": "default",
-          "uniqueValueInfos": [
+    "en": {
+        "legend": [
             {
-              "value": 2023,
-              "label": "Record broken on last update",
-              "description": "<description1>",
-              "symbol": {
-                "type": "esriSMS",
-                "style": "esriSMSCircle",
-                "color": [
-                  252,
-                  236,
-                  0,
-                  255
-                ],
-                "size": 9,
-                "outline": {
-                  "color": [
-                    0,
-                    0,
-                    0,
-                    255
-                  ],
-                  "width": 1
-                }
-              }
-            }
-          ]
-        },
-        "layerType": "ogc-wfs",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
-      },
-      {
-        "layerId": "ltce_tmaxh_fr",
-        "description": "",
-        "coverIcon": "assets/images/red-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/red-circle.png",
-            "text": "Record de Température Maximale la plus élevée"
-          },
-          {
-            "image": "assets/images/yellow-circle.svg",
-            "text": "Nouveau Record de Température Maximale la plus élevée"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Records de Températures Extrêmes, Records de Température Maximale la plus élevée",
-        "nameField": "VIRTUAL_CLIMATE_ID",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "VIRTUAL_CLIMATE_ID",
-                "title": "Identifiant Climatologique Virtuelle",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_E",
-                "visible": false
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_F",
-                "title": "Nom du Station  Virtuelle",
-                "visible": true
-              },
-              {
-                "field": "LOCAL_DAY",
-                "title": "Jour",
-                "visible": true
-              },
-              {
-                "field": "LOCAL_MONTH",
-                "title": "Mois",
-                "visible": true
-              },
-              {
-                "field": "MAX_TEMP_RECORD_BEGIN",
-                "title": "Début des records",
-                "visible": true
-              },
-              {
-                "field": "MAX_TEMP_RECORD_END",
-                "title": "Fin des records",
-                "visible": true
-              },
-              {
-                "field": "MIN_TEMP_RECORD_BEGIN",
-                "visible": false
-              },
-              {
-                "field": "MIN_TEMP_RECORD_END",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MAX_TEMP",
-                "title": "Valeur extrême",
-                "visible": true
-              },
-              {
-                "field": "FIRST_HIGH_MAX_TEMP_YEAR",
-                "title": "Année de l'extrême",
-                "visible": true
-              },
-              {
-                "field": "FIRST_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIRST_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MAX_TEMP",
-                "title": "Valeur du 2e Extrême",
-                "visible": true
-              },
-              {
-                "field": "SECOND_HIGH_MAX_TEMP_YEAR",
-                "title": "Année du 2e Extrême",
-                "visible": true
-              },
-              {
-                "field": "SECOND_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "SECOND_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MAX_TEMP",
-                "title": "Valeur du 3e Extrême",
-                "visible": true
-              },
-              {
-                "field": "THIRD_HIGH_MAX_TEMP_YEAR",
-                "title": "Année du 3e Extrême",
-                "visible": true
-              },
-              {
-                "field": "THIRD_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "THIRD_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MAX_TEMP",
-                "title": "Valeur du 4e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_HIGH_MAX_TEMP_YEAR",
-                "title": "Année du 4e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FOURTH_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MAX_TEMP",
-                "title": "Valeur du 5e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_HIGH_MAX_TEMP_YEAR",
-                "title": "Année du 5e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MAX_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MIN_TEMP_YEAR",
-                "visible": false
-              },
-              {
-                "field": "FIFTH_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "LAST_UPDATED",
-                "title": "Dernière mise à jour",
-                "visible": true
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_HIGH_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MAX_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MAX_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MIN_TEMP",
-                "visible": false
-              },
-              {
-                "field": "RECORD_LOW_MIN_TEMP_YR",
-                "visible": false
-              },
-              {
-                "field": "WXO_CITY_CODE",
-                "visible": false
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "ltceVariableTemplate"
-          }
-        },
-        "id": "ltce_tmaxh_fr",
-        "url": "#GEOMETWFS#/collections/ltce-temperature/items",
-        "customRenderer": {
-          "type": "uniqueValue",
-          "field1": "FIRST_HIGH_MAX_TEMP_YEAR",
-          "defaultSymbol": {
-            "type": "esriSMS",
-            "style": "esriSMSCircle",
-            "color": [
-              240,
-              65,
-              22,
-              255
-            ],
-            "size": 7,
-            "outline": {
-              "color": [
-                0,
-                0,
-                0,
-                255
-              ],
-              "width": 1
-            }
-          },
-          "defaultLabel": "default",
-          "uniqueValueInfos": [
+                "infoType": "title", 
+                "content": "Data"
+            }, 
             {
-              "value": 2023,
-              "label": "Record broken on last update",
-              "description": "<description1>",
-              "symbol": {
-                "type": "esriSMS",
-                "style": "esriSMSCircle",
-                "color": [
-                  252,
-                  236,
-                  0,
-                  255
-                ],
-                "size": 9,
-                "outline": {
-                  "color": [
-                    0,
-                    0,
-                    0,
-                    255
-                  ],
-                  "width": 1
-                }
-              }
+                "infoType": "text", 
+                "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
+            }, 
+            {
+                "layerId": "ltce_tmaxh_en", 
+                "description": "", 
+                "coverIcon": "assets/images/red-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/red-circle.png", 
+                        "text": "Record High Max"
+                    }, 
+                    {
+                        "image": "assets/images/yellow-circle.svg", 
+                        "text": "New Record High Max"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
             }
-          ]
-        },
-        "layerType": "ogc-wfs",
-        "xyInAttribs": false
-      }
-    ]
-  }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Temperature Extremes of Record, Record High Max", 
+                "nameField": "VIRTUAL_CLIMATE_ID", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "VIRTUAL_CLIMATE_ID", 
+                                "title": "Virtual Climate ID", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_E", 
+                                "title": "Virtual Station Name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_F", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LOCAL_DAY", 
+                                "title": "Day", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LOCAL_MONTH", 
+                                "title": "Month", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MAX_TEMP_RECORD_BEGIN", 
+                                "title": "Record Start", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MAX_TEMP_RECORD_END", 
+                                "title": "Record End", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MIN_TEMP_RECORD_BEGIN", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "MIN_TEMP_RECORD_END", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MAX_TEMP", 
+                                "title": "Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MAX_TEMP_YEAR", 
+                                "title": "Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MAX_TEMP", 
+                                "title": "2nd Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MAX_TEMP_YEAR", 
+                                "title": "2nd Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MAX_TEMP", 
+                                "title": "3rd Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MAX_TEMP_YEAR", 
+                                "title": "3rd Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MAX_TEMP", 
+                                "title": "4th Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MAX_TEMP_YEAR", 
+                                "title": "4th Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MAX_TEMP", 
+                                "title": "5th Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MAX_TEMP_YEAR", 
+                                "title": "5th Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LAST_UPDATED", 
+                                "title": "Last Updated", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "WXO_CITY_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "name": "IDENTIFIER", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ltceVariableTemplate"
+                    }
+                }, 
+                "id": "ltce_tmaxh_en", 
+                "url": "#GEOMETWFS#/collections/ltce-temperature/items", 
+                "customRenderer": {
+                    "type": "uniqueValue", 
+                    "field1": "FIRST_HIGH_MAX_TEMP_YEAR", 
+                    "defaultSymbol": {
+                        "type": "esriSMS", 
+                        "style": "esriSMSCircle", 
+                        "color": [
+                            240, 
+                            65, 
+                            22, 
+                            255
+                        ], 
+                        "size": 7, 
+                        "outline": {
+                            "color": [
+                                0, 
+                                0, 
+                                0, 
+                                255
+                            ], 
+                            "width": 1
+                        }
+                    }, 
+                    "defaultLabel": "default", 
+                    "uniqueValueInfos": [
+                        {
+                            "value": 2023, 
+                            "label": "Record broken on last update", 
+                            "description": "<description1>", 
+                            "symbol": {
+                                "type": "esriSMS", 
+                                "style": "esriSMSCircle", 
+                                "color": [
+                                    252, 
+                                    236, 
+                                    0, 
+                                    255
+                                ], 
+                                "size": 9, 
+                                "outline": {
+                                    "color": [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        255
+                                    ], 
+                                    "width": 1
+                                }
+                            }
+                        }
+                    ]
+                }, 
+                "layerType": "ogc-wfs", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
+            }, 
+            {
+                "layerId": "ltce_tmaxh_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/red-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/red-circle.png", 
+                        "text": "Record de Température Maximale la plus élevée"
+                    }, 
+                    {
+                        "image": "assets/images/yellow-circle.svg", 
+                        "text": "Nouveau Record de Température Maximale la plus élevée"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Records de Températures Extrêmes, Records de Température Maximale la plus élevée", 
+                "nameField": "VIRTUAL_CLIMATE_ID", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "VIRTUAL_CLIMATE_ID", 
+                                "title": "Identifiant Climatologique Virtuelle", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_E", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_F", 
+                                "title": "Nom du Station  Virtuelle", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LOCAL_DAY", 
+                                "title": "Jour", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LOCAL_MONTH", 
+                                "title": "Mois", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MAX_TEMP_RECORD_BEGIN", 
+                                "title": "Début des records", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MAX_TEMP_RECORD_END", 
+                                "title": "Fin des records", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MIN_TEMP_RECORD_BEGIN", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "MIN_TEMP_RECORD_END", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MAX_TEMP", 
+                                "title": "Valeur extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MAX_TEMP_YEAR", 
+                                "title": "Année de l'extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MAX_TEMP", 
+                                "title": "Valeur du 2e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MAX_TEMP_YEAR", 
+                                "title": "Année du 2e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "SECOND_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MAX_TEMP", 
+                                "title": "Valeur du 3e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MAX_TEMP_YEAR", 
+                                "title": "Année du 3e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "THIRD_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MAX_TEMP", 
+                                "title": "Valeur du 4e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MAX_TEMP_YEAR", 
+                                "title": "Année du 4e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FOURTH_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MAX_TEMP", 
+                                "title": "Valeur du 5e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MAX_TEMP_YEAR", 
+                                "title": "Année du 5e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MAX_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MIN_TEMP_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIFTH_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LAST_UPDATED", 
+                                "title": "Dernière mise à jour", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_HIGH_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MAX_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MAX_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MIN_TEMP", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_LOW_MIN_TEMP_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "WXO_CITY_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ltceVariableTemplate"
+                    }
+                }, 
+                "id": "ltce_tmaxh_fr", 
+                "url": "#GEOMETWFS#/collections/ltce-temperature/items", 
+                "customRenderer": {
+                    "type": "uniqueValue", 
+                    "field1": "FIRST_HIGH_MAX_TEMP_YEAR", 
+                    "defaultSymbol": {
+                        "type": "esriSMS", 
+                        "style": "esriSMSCircle", 
+                        "color": [
+                            240, 
+                            65, 
+                            22, 
+                            255
+                        ], 
+                        "size": 7, 
+                        "outline": {
+                            "color": [
+                                0, 
+                                0, 
+                                0, 
+                                255
+                            ], 
+                            "width": 1
+                        }
+                    }, 
+                    "defaultLabel": "default", 
+                    "uniqueValueInfos": [
+                        {
+                            "value": 2023, 
+                            "label": "Record broken on last update", 
+                            "description": "<description1>", 
+                            "symbol": {
+                                "type": "esriSMS", 
+                                "style": "esriSMSCircle", 
+                                "color": [
+                                    252, 
+                                    236, 
+                                    0, 
+                                    255
+                                ], 
+                                "size": 9, 
+                                "outline": {
+                                    "color": [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        255
+                                    ], 
+                                    "width": 1
+                                }
+                            }
+                        }
+                    ]
+                }, 
+                "layerType": "ogc-wfs", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

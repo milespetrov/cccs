@@ -5,7 +5,15 @@
             "name": "National Parks and National Park_Reserves of Canada Legislative Boundaries",
             "layerType": "esri-feature",
             "url": "https://proxyinternet.nrcan-rncan.gc.ca/arcgis/rest/services/CLSS-SATC/CLSS_Administrative_Boundaries/MapServer/1",
-            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd"
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd",
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                },
+                "grid": {
+                    "applyToMap": true
+                }
+            }
         },
         "NTSN": {
             "id": "NTSN",
@@ -18,20 +26,48 @@
                 {
                     "id": "transport"
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "CDD": {
             "id": "CDD",
             "name": "Canadian Disaster Database",
             "layerType": "esri-map-image",
-            "url": "#ECCCARCGIS#/CCDS/CDD_BDC/MapServer",
+            "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CDD_BDC/MapServer",
             "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",        
             "sublayers": [
                 {
-                    "index": 3,
+                    "index": 4,
                     "state": {
                         "visibility": true,
                         "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
+                    }
+                },
+                {
+                    "index": 5,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
             ]
@@ -60,6 +96,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -80,6 +124,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -101,6 +153,14 @@
                             { "name": "PROVINCE_CODE" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -121,6 +181,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
             ]
@@ -132,7 +200,15 @@
             "name": "Limites legislatives des parcs nationaux et des reserves a vocation de parc national du Canada",
             "layerType": "esri-feature",
             "url": "https://proxyinternet.nrcan-rncan.gc.ca/arcgis/rest/services/CLSS-SATC/SATC_Limites_administratives/MapServer/1",
-            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd"
+            "catalogueUrl": "https://open.canada.ca/data/en/dataset/9e1507cd-f25c-4c64-995b-6563bf9d65bd",
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                },
+                "grid": {
+                    "applyToMap": true
+                }
+            }
         },
         "NTSN": {
             "id": "NTSN",
@@ -145,20 +221,48 @@
                 {
                     "id": "transport"
                 }
-            ]
+            ],
+            "fixtures": {
+                "details": {
+                    "priority": 100
+                }
+            }
         },
         "CDD": {
             "id": "CDD",
             "name": "Base de Données Canadienne sur les Catastrophes",
             "layerType": "esri-map-image",
-            "url": "#ECCCARCGIS#/CCDS/CDD_BDC/MapServer",
+            "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/CCDS/CDD_BDC/MapServer",
             "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",
             "sublayers": [
                 {
-                    "index": 0,
+                    "index": 1,
                     "state": {
                         "visibility": true,
                         "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
+                    }
+                },
+                {
+                    "index": 2,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
             ]
@@ -188,6 +292,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -208,6 +320,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -229,6 +349,14 @@
                             { "name": "PROVINCE_CODE" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -249,6 +377,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
             ]

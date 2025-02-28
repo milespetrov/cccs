@@ -1,566 +1,564 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
-      },
-      {
-        "layerId": "ltce_precip_en",
-        "description": "",
-        "coverIcon": "assets/images/green-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/green-circle.png",
-            "text": "Record Precipitation"
-          },
-          {
-            "image": "assets/images/pink-circle.svg",
-            "text": "New Record Precipitation"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Precipitation Extremes of Record",
-        "nameField": "VIRTUAL_CLIMATE_ID",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "VIRTUAL_CLIMATE_ID",
-                "title": "Virtual Climate ID",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_E",
-                "title": "Virtual Station Name",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_F",
-                "visible": false
-              },
-              {
-                "field": "LOCAL_DAY",
-                "title": "Day",
-                "visible": true
-              },
-              {
-                "field": "LOCAL_MONTH",
-                "title": "Month",
-                "visible": true
-              },
-              {
-                "field": "RECORD_BEGIN",
-                "title": "Record Start",
-                "visible": true
-              },
-              {
-                "field": "RECORD_END",
-                "title": "Record End",
-                "visible": true
-              },
-              {
-                "field": "FIRST_PRECIPITATION",
-                "title": "Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "FIRST_PRECIPITATION_YEAR",
-                "title": "Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "SECOND_PRECIPITATION",
-                "title": "2nd Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "SECOND_PRECIPITATION_YEAR",
-                "title": "2nd Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "THIRD_PRECIPITATION",
-                "title": "3rd Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "THIRD_PRECIPITATION_YEAR",
-                "title": "3rd Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_PRECIPITATION",
-                "title": "4th Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_PRECIPITATION_YEAR",
-                "title": "4th Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_PRECIPITATION",
-                "title": "5th Extreme Value",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_PRECIPITATION_YEAR",
-                "title": "5th Extreme Year",
-                "visible": true
-              },
-              {
-                "field": "LAST_UPDATED",
-                "title": "Last Updated",
-                "visible": true
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_PRECIPITATION",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_PRECIPITATION_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_PRECIPITATION",
-                "visible": false
-              },
-              {
-                "field": "RECORD_PRECIPITATION_YR",
-                "visible": false
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "visible": false
-              },
-              {
-                "name": "WXO_CITY_CODE",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "ltceVariableTemplate"
-          }
-        },
-        "id": "ltce_precip_en",
-        "url": "https://api.weather.gc.ca/collections/ltce-precipitation/items",
-        "customRenderer": {
-          "type": "uniqueValue",
-          "field1": "FIRST_PRECIPITATION_YEAR",
-          "defaultSymbol": {
-            "type": "esriSMS",
-            "style": "esriSMSCircle",
-            "color": [
-              12,
-              240,
-              58,
-              255
-            ],
-            "size": 7,
-            "outline": {
-              "color": [
-                0,
-                0,
-                0,
-                255
-              ],
-              "width": 1
-            }
-          },
-          "defaultLabel": "default",
-          "uniqueValueInfos": [
+    "en": {
+        "legend": [
             {
-              "value": 2023,
-              "label": "Record broken on last update",
-              "description": "<description1>",
-              "symbol": {
-                "type": "esriSMS",
-                "style": "esriSMSCircle",
-                "color": [
-                  255,
-                  87,
-                  230,
-                  255
-                ],
-                "size": 9,
-                "outline": {
-                  "color": [
-                    0,
-                    0,
-                    0,
-                    255
-                  ],
-                  "width": 1
-                }
-              }
-            }
-          ]
-        },
-        "layerType": "ogc-wfs",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
-      },
-      {
-        "layerId": "ltce_precip_fr",
-        "description": "",
-        "coverIcon": "assets/images/green-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/green-circle.png",
-            "text": "Records de Précipitations"
-          },
-          {
-            "image": "assets/images/pink-circle.svg",
-            "text": "Nouveau Records de Précipitations"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Records de Précipitations Extrêmes",
-        "nameField": "VIRTUAL_CLIMATE_ID",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "VIRTUAL_CLIMATE_ID",
-                "title": "Identifiant Climatologique Virtuelle",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_E",
-                "visible": false
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_F",
-                "title": "Nom du Station  Virtuelle",
-                "visible": true
-              },
-              {
-                "field": "LOCAL_DAY",
-                "title": "Jour",
-                "visible": true
-              },
-              {
-                "field": "LOCAL_MONTH",
-                "title": "Mois",
-                "visible": true
-              },
-              {
-                "field": "RECORD_BEGIN",
-                "title": "Début des records",
-                "visible": true
-              },
-              {
-                "field": "RECORD_END",
-                "title": "Fin des records",
-                "visible": true
-              },
-              {
-                "field": "FIRST_PRECIPITATION",
-                "title": "Valeur extrême",
-                "visible": true
-              },
-              {
-                "field": "FIRST_PRECIPITATION_YEAR",
-                "title": "Année de l'extrême",
-                "visible": true
-              },
-              {
-                "field": "SECOND_PRECIPITATION",
-                "title": "Valeur du 2e Extrême",
-                "visible": true
-              },
-              {
-                "field": "SECOND_PRECIPITATION_YEAR",
-                "title": "Année du 2e Extrême",
-                "visible": true
-              },
-              {
-                "field": "THIRD_PRECIPITATION",
-                "title": "Valeur du 3e Extrême",
-                "visible": true
-              },
-              {
-                "field": "THIRD_PRECIPITATION_YEAR",
-                "title": "Année du 3e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_PRECIPITATION",
-                "title": "Valeur du 4e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FOURTH_PRECIPITATION_YEAR",
-                "title": "Année du 4e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_PRECIPITATION",
-                "title": "Valeur du 5e Extrême",
-                "visible": true
-              },
-              {
-                "field": "FIFTH_PRECIPITATION_YEAR",
-                "title": "Année du 5e Extrême",
-                "visible": true
-              },
-              {
-                "field": "LAST_UPDATED",
-                "title": "Dernière mise à jour",
-                "visible": true
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_PRECIPITATION",
-                "visible": false
-              },
-              {
-                "field": "PREV_RECORD_PRECIPITATION_YR",
-                "visible": false
-              },
-              {
-                "field": "RECORD_PRECIPITATION",
-                "visible": false
-              },
-              {
-                "field": "RECORD_PRECIPITATION_YR",
-                "visible": false
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "visible": false
-              },
-              {
-                "field": "WXO_CITY_CODE",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "ltceVariableTemplate"
-          }
-        },
-        "id": "ltce_precip_fr",
-        "url": "https://api.weather.gc.ca/collections/ltce-precipitation/items",
-        "customRenderer": {
-          "type": "uniqueValue",
-          "field1": "FIRST_PRECIPITATION_YEAR",
-          "defaultSymbol": {
-            "type": "esriSMS",
-            "style": "esriSMSCircle",
-            "color": [
-              12,
-              240,
-              58,
-              255
-            ],
-            "size": 7,
-            "outline": {
-              "color": [
-                0,
-                0,
-                0,
-                255
-              ],
-              "width": 1
-            }
-          },
-          "defaultLabel": "default",
-          "uniqueValueInfos": [
+                "infoType": "title", 
+                "content": "Data"
+            }, 
             {
-              "value": 2023,
-              "label": "Record broken on last update",
-              "description": "<description1>",
-              "symbol": {
-                "type": "esriSMS",
-                "style": "esriSMSCircle",
-                "color": [
-                  255,
-                  87,
-                  230,
-                  255
-                ],
-                "size": 9,
-                "outline": {
-                  "color": [
-                    0,
-                    0,
-                    0,
-                    255
-                  ],
-                  "width": 1
-                }
-              }
+                "infoType": "text", 
+                "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
+            }, 
+            {
+                "layerId": "ltce_precip_en", 
+                "description": "", 
+                "coverIcon": "assets/images/green-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/green-circle.png", 
+                        "text": "Record Precipitation"
+                    }, 
+                    {
+                        "image": "assets/images/pink-circle.svg", 
+                        "text": "New Record Precipitation"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
             }
-          ]
-        },
-        "layerType": "ogc-wfs",
-        "xyInAttribs": false
-      }
-    ]
-  }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Precipitation Extremes of Record", 
+                "nameField": "VIRTUAL_CLIMATE_ID", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "VIRTUAL_CLIMATE_ID", 
+                                "title": "Virtual Climate ID", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_E", 
+                                "title": "Virtual Station Name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_F", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LOCAL_DAY", 
+                                "title": "Day", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LOCAL_MONTH", 
+                                "title": "Month", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "RECORD_BEGIN", 
+                                "title": "Record Start", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "RECORD_END", 
+                                "title": "Record End", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_PRECIPITATION", 
+                                "title": "Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_PRECIPITATION_YEAR", 
+                                "title": "Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_PRECIPITATION", 
+                                "title": "2nd Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_PRECIPITATION_YEAR", 
+                                "title": "2nd Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_PRECIPITATION", 
+                                "title": "3rd Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_PRECIPITATION_YEAR", 
+                                "title": "3rd Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_PRECIPITATION", 
+                                "title": "4th Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_PRECIPITATION_YEAR", 
+                                "title": "4th Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_PRECIPITATION", 
+                                "title": "5th Extreme Value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_PRECIPITATION_YEAR", 
+                                "title": "5th Extreme Year", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LAST_UPDATED", 
+                                "title": "Last Updated", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_PRECIPITATION", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_PRECIPITATION_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_PRECIPITATION", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_PRECIPITATION_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "name": "WXO_CITY_CODE", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ltceVariableTemplate"
+                    }
+                }, 
+                "id": "ltce_precip_en", 
+                "url": "https://api.weather.gc.ca/collections/ltce-precipitation/items", 
+                "customRenderer": {
+                    "type": "uniqueValue", 
+                    "field1": "FIRST_PRECIPITATION_YEAR", 
+                    "defaultSymbol": {
+                        "type": "esriSMS", 
+                        "style": "esriSMSCircle", 
+                        "color": [
+                            12, 
+                            240, 
+                            58, 
+                            255
+                        ], 
+                        "size": 7, 
+                        "outline": {
+                            "color": [
+                                0, 
+                                0, 
+                                0, 
+                                255
+                            ], 
+                            "width": 1
+                        }
+                    }, 
+                    "defaultLabel": "default", 
+                    "uniqueValueInfos": [
+                        {
+                            "value": 2023, 
+                            "label": "Record broken on last update", 
+                            "description": "<description1>", 
+                            "symbol": {
+                                "type": "esriSMS", 
+                                "style": "esriSMSCircle", 
+                                "color": [
+                                    255, 
+                                    87, 
+                                    230, 
+                                    255
+                                ], 
+                                "size": 9, 
+                                "outline": {
+                                    "color": [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        255
+                                    ], 
+                                    "width": 1
+                                }
+                            }
+                        }
+                    ]
+                }, 
+                "layerType": "ogc-wfs", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
+            }, 
+            {
+                "layerId": "ltce_precip_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/green-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/green-circle.png", 
+                        "text": "Records de Précipitations"
+                    }, 
+                    {
+                        "image": "assets/images/pink-circle.svg", 
+                        "text": "Nouveau Records de Précipitations"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Records de Précipitations Extrêmes", 
+                "nameField": "VIRTUAL_CLIMATE_ID", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "VIRTUAL_CLIMATE_ID", 
+                                "title": "Identifiant Climatologique Virtuelle", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_E", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_F", 
+                                "title": "Nom du Station  Virtuelle", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LOCAL_DAY", 
+                                "title": "Jour", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LOCAL_MONTH", 
+                                "title": "Mois", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "RECORD_BEGIN", 
+                                "title": "Début des records", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "RECORD_END", 
+                                "title": "Fin des records", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_PRECIPITATION", 
+                                "title": "Valeur extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIRST_PRECIPITATION_YEAR", 
+                                "title": "Année de l'extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_PRECIPITATION", 
+                                "title": "Valeur du 2e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "SECOND_PRECIPITATION_YEAR", 
+                                "title": "Année du 2e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_PRECIPITATION", 
+                                "title": "Valeur du 3e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "THIRD_PRECIPITATION_YEAR", 
+                                "title": "Année du 3e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_PRECIPITATION", 
+                                "title": "Valeur du 4e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FOURTH_PRECIPITATION_YEAR", 
+                                "title": "Année du 4e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_PRECIPITATION", 
+                                "title": "Valeur du 5e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FIFTH_PRECIPITATION_YEAR", 
+                                "title": "Année du 5e Extrême", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LAST_UPDATED", 
+                                "title": "Dernière mise à jour", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_PRECIPITATION", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PREV_RECORD_PRECIPITATION_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_PRECIPITATION", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "RECORD_PRECIPITATION_YR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "WXO_CITY_CODE", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ltceVariableTemplate"
+                    }
+                }, 
+                "id": "ltce_precip_fr", 
+                "url": "https://api.weather.gc.ca/collections/ltce-precipitation/items", 
+                "customRenderer": {
+                    "type": "uniqueValue", 
+                    "field1": "FIRST_PRECIPITATION_YEAR", 
+                    "defaultSymbol": {
+                        "type": "esriSMS", 
+                        "style": "esriSMSCircle", 
+                        "color": [
+                            12, 
+                            240, 
+                            58, 
+                            255
+                        ], 
+                        "size": 7, 
+                        "outline": {
+                            "color": [
+                                0, 
+                                0, 
+                                0, 
+                                255
+                            ], 
+                            "width": 1
+                        }
+                    }, 
+                    "defaultLabel": "default", 
+                    "uniqueValueInfos": [
+                        {
+                            "value": 2023, 
+                            "label": "Record broken on last update", 
+                            "description": "<description1>", 
+                            "symbol": {
+                                "type": "esriSMS", 
+                                "style": "esriSMSCircle", 
+                                "color": [
+                                    255, 
+                                    87, 
+                                    230, 
+                                    255
+                                ], 
+                                "size": 9, 
+                                "outline": {
+                                    "color": [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        255
+                                    ], 
+                                    "width": 1
+                                }
+                            }
+                        }
+                    ]
+                }, 
+                "layerType": "ogc-wfs", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

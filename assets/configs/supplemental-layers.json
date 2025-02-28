@@ -9,6 +9,9 @@
             "fixtures": {
                 "details": {
                     "priority": 100
+                },
+                "grid": {
+                    "applyToMap": true
                 }
             }
         },
@@ -38,18 +41,36 @@
             "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",        
             "sublayers": [
                 {
-                    "index": 3,
+                    "index": 4,
                     "state": {
                         "visibility": true,
                         "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
+                    }
+                },
+                {
+                    "index": 5,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
-            ],
-            "fixtures": {
-                "details": {
-                    "priority": 100
-                }
-            }
+            ]
         },
         "ATRIS": {
             "id": "ATRIS",
@@ -75,6 +96,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -95,6 +124,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -116,6 +153,14 @@
                             { "name": "PROVINCE_CODE" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -136,14 +181,17 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
-            ],
-            "fixtures": {
-                "details": {
-                    "priority": 100
-                }
-            }
+            ]
         }
     },
     "fr": {
@@ -156,6 +204,9 @@
             "fixtures": {
                 "details": {
                     "priority": 100
+                },
+                "grid": {
+                    "applyToMap": true
                 }
             }
         },
@@ -185,18 +236,36 @@
             "catalogueUrl": "https://open.canada.ca/data/en/dataset/2dac78ba-8543-48a6-8f07-faeef56f9895",
             "sublayers": [
                 {
-                    "index": 0,
+                    "index": 1,
                     "state": {
                         "visibility": true,
                         "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
+                    }
+                },
+                {
+                    "index": 2,
+                    "state": {
+                        "visibility": true,
+                        "opacity": 1
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
-            ],
-            "fixtures": {
-                "details": {
-                    "priority": 100
-                }
-            }
+            ]
         },
         "ATRIS": {
             "id": "ATRIS",
@@ -223,6 +292,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -243,6 +320,14 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -264,6 +349,14 @@
                             { "name": "PROVINCE_CODE" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 },
                 {
@@ -284,14 +377,17 @@
                             { "name": "NUM_RESERVES" }
                         ],
                         "exclusiveFields": true
+                    },
+                    "fixtures": {
+                        "details": {
+                            "priority": 100
+                        },
+                        "grid": {
+                            "applyToMap": true
+                        }
                     }
                 }
-            ],
-            "fixtures": {
-                "details": {
-                    "priority": 100
-                }
-            }
+            ]
         }
     }
 }

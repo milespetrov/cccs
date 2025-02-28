@@ -1,24 +1,39 @@
 {
     "layers": [
         {
-            "id": "grid",
-            "name": "Grid",
-            "controls": ["visibility", "opacity", "reload", "settings"],
-            "layerType": "esriTile",
+            "id": "grid", 
+            "name": "Grid", 
+            "controls": [
+                "visibility", 
+                "opacity", 
+                "reload", 
+                "settings"
+            ], 
+            "layerType": "esriTile", 
             "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/CMIP5_Grid/MapServer"
-        },
+        }, 
         {
-            "id": "provinces",
-            "name": "Provinces",
-            "controls": ["visibility", "opacity", "reload", "settings"],
-            "layerType": "esriTile",
+            "id": "provinces", 
+            "name": "Provinces", 
+            "controls": [
+                "visibility", 
+                "opacity", 
+                "reload", 
+                "settings"
+            ], 
+            "layerType": "esriTile", 
             "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Provinces/MapServer"
-        },
+        }, 
         {
-            "id": "labels",
-            "name": "Labels",
-            "controls": ["visibility", "opacity", "reload", "settings"],
-            "layerType": "esriTile",
+            "id": "labels", 
+            "name": "Labels", 
+            "controls": [
+                "visibility", 
+                "opacity", 
+                "reload", 
+                "settings"
+            ], 
+            "layerType": "esriTile", 
             "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer"
         }
     ]

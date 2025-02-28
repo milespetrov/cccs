@@ -1,342 +1,340 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
-      },
-      {
-        "layerId": "ltce_snowstations_en",
-        "description": "",
-        "coverIcon": "assets/images/blue-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "LTCE Station"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Daily Snowfall Virtual Station",
-        "nameField": "VIRTUAL_CLIMATE_ID",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "VIRTUAL_CLIMATE_ID",
-                "title": "Virtual Climate ID",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_E",
-                "title": "Virtual Station Name",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_F",
-                "visible": false
-              },
-              {
-                "field": "CLIMATE_IDENTIFIER",
-                "title": "Climate Identifier",
-                "visible": true
-              },
-              {
-                "field": "DATA_SOURCE",
-                "title": "Type",
-                "visible": true
-              },
-              {
-                "field": "ELEMENT_NAME_E",
-                "title": "Element",
-                "visible": true
-              },
-              {
-                "field": "START_DATE",
-                "title": "Start Date",
-                "visible": true
-              },
-              {
-                "field": "END_DATE",
-                "title": "End Date",
-                "visible": true
-              },
-              {
-                "field": "ENG_STN_NAME",
-                "title": "Station Name",
-                "visible": true
-              },
-              {
-                "field": "FRE_STN_NAME",
-                "visible": false
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "visible": false
-              },
-              {
-                "name": "WXO_CITY_CODE",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "ltceStationTemplate"
-          }
-        },
-        "id": "ltce_snowstations_en",
-        "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=SNOWFALL",
-        "layerType": "ogc-wfs",
-        "colour": "#0cb8f0",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
-      },
-      {
-        "layerId": "ltce_snowstations_fr",
-        "description": "",
-        "coverIcon": "assets/images/blue-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "Station ECLT"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Station Climatologique Virtuelle - Neige",
-        "nameField": "VIRTUAL_CLIMATE_ID",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "VIRTUAL_CLIMATE_ID",
-                "title": "Identifiant Climatologique Virtuelle",
-                "visible": true
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_E",
-                "visible": false
-              },
-              {
-                "field": "VIRTUAL_STATION_NAME_F",
-                "title": "Nom du Station Virtuelle",
-                "visible": true
-              },
-              {
-                "field": "CLIMATE_IDENTIFIER",
-                "title": "Identifiant Climatologique",
-                "visible": true
-              },
-              {
-                "field": "DATA_SOURCE",
-                "title": "Type",
-                "visible": true
-              },
-              {
-                "field": "ELEMENT_NAME_E",
-                "title": "Élément",
-                "visible": true
-              },
-              {
-                "field": "START_DATE",
-                "title": "Début des records",
-                "visible": true
-              },
-              {
-                "field": "END_DATE",
-                "title": "Fin des records",
-                "visible": true
-              },
-              {
-                "field": "ENG_STN_NAME",
-                "visible": false
-              },
-              {
-                "field": "FRE_STN_NAME",
-                "title": "Nom du Station",
-                "visible": true
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "visible": false
-              },
-              {
-                "field": "WXO_CITY_CODE",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "ltceStationTemplate"
-          }
-        },
-        "id": "ltce_snowstations_fr",
-        "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=SNOWFALL",
-        "layerType": "ogc-wfs",
-        "colour": "#0cb8f0",
-        "xyInAttribs": false
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada"
+            }, 
+            {
+                "layerId": "ltce_snowstations_en", 
+                "description": "", 
+                "coverIcon": "assets/images/blue-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "LTCE Station"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Daily Snowfall Virtual Station", 
+                "nameField": "VIRTUAL_CLIMATE_ID", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "VIRTUAL_CLIMATE_ID", 
+                                "title": "Virtual Climate ID", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_E", 
+                                "title": "Virtual Station Name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_F", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "CLIMATE_IDENTIFIER", 
+                                "title": "Climate Identifier", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "DATA_SOURCE", 
+                                "title": "Type", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ELEMENT_NAME_E", 
+                                "title": "Element", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "START_DATE", 
+                                "title": "Start Date", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "END_DATE", 
+                                "title": "End Date", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ENG_STN_NAME", 
+                                "title": "Station Name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FRE_STN_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "name": "WXO_CITY_CODE", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ltceStationTemplate"
+                    }
+                }, 
+                "id": "ltce_snowstations_en", 
+                "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=SNOWFALL", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0cb8f0", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Afin de recenser et de calculer les extrêmes quotidiens des températures, des précipitations et des chutes de neige, le Service météorologique du Canada a réuni les données de stations étroitement liées pour compiler une longue série de données pour environ 750 régions urbaines au Canada."
+            }, 
+            {
+                "layerId": "ltce_snowstations_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/blue-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "Station ECLT"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Station Climatologique Virtuelle - Neige", 
+                "nameField": "VIRTUAL_CLIMATE_ID", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "VIRTUAL_CLIMATE_ID", 
+                                "title": "Identifiant Climatologique Virtuelle", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_E", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "VIRTUAL_STATION_NAME_F", 
+                                "title": "Nom du Station Virtuelle", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CLIMATE_IDENTIFIER", 
+                                "title": "Identifiant Climatologique", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "DATA_SOURCE", 
+                                "title": "Type", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ELEMENT_NAME_E", 
+                                "title": "Élément", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "START_DATE", 
+                                "title": "Début des records", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "END_DATE", 
+                                "title": "Fin des records", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ENG_STN_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FRE_STN_NAME", 
+                                "title": "Nom du Station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "WXO_CITY_CODE", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ltceStationTemplate"
+                    }
+                }, 
+                "id": "ltce_snowstations_fr", 
+                "url": "#GEOMETWFS#/collections/ltce-stations/items?ELEMENT_NAME_E=SNOWFALL", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0cb8f0", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

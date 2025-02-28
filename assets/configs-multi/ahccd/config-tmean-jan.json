@@ -1,346 +1,344 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "Adjusted and homogenized station data incorporate adjustments to the original station data to account for discontinuities from non-climatic factors."
-      },
-      {
-        "layerId": "AHCCD_tmean_JAN_en",
-        "description": "",
-        "coverIcon": "assets/images/tmean.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/red-circle.png",
-            "text": "AHCCD Station"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Mean temperature",
-        "nameField": "station_name__nom_station",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "station_id__id_station",
-                "title": "AHCCD station ID",
-                "visible": true
-              },
-              {
-                "field": "elevation__elevation",
-                "title": "Elevation",
-                "visible": true
-              },
-              {
-                "field": "identifier__identifiant",
-                "title": "Identifier",
-                "visible": true
-              },
-              {
-                "field": "station_name__nom_station",
-                "title": "Station name",
-                "visible": true
-              },
-              {
-                "field": "province__province",
-                "title": "Province/Territory",
-                "visible": true
-              },
-              {
-                "field": "year_range__annees",
-                "title": "Year range",
-                "visible": true
-              },
-              {
-                "field": "period__periode",
-                "title": "Period",
-                "visible": true
-              },
-              {
-                "field": "measurement_type__type_mesure",
-                "title": "Measurement type",
-                "visible": true
-              },
-              {
-                "field": "joined__rejoint",
-                "title": "Joined",
-                "visible": true
-              },
-              {
-                "field": "trend_value__valeur_tendance",
-                "title": "Trend value",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "ahccdVariableTemplate"
-          }
-        },
-        "id": "AHCCD_tmean_JAN_en",
-        "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Jan",
-        "layerType": "ogc-wfs",
-        "colour": "#f04116",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Les données pour les stations climatiques ont été ajustées et homogénéisées pour tenir compte des discontinuités attribuables à des facteurs non climatiques."
-      },
-      {
-        "layerId": "AHCCD_tmean_JAN_fr",
-        "description": "",
-        "coverIcon": "assets/images/tmean.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/red-circle.png",
-            "text": "Station DCCAH"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Température moyenne",
-        "nameField": "station_name__nom_station",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "station_id__id_station",
-                "title": "Numéro de la station DCCAH",
-                "visible": true
-              },
-              {
-                "field": "elevation__elevation",
-                "title": "Altitude",
-                "visible": true
-              },
-              {
-                "field": "identifier__identifiant",
-                "title": "Identifiant",
-                "visible": true
-              },
-              {
-                "field": "station_name__nom_station",
-                "title": "Nom station",
-                "visible": true
-              },
-              {
-                "field": "province__province",
-                "title": "Province / Territoire",
-                "visible": true
-              },
-              {
-                "field": "year_range__annees",
-                "title": "Annees",
-                "visible": true
-              },
-              {
-                "field": "period__periode",
-                "title": "Periode",
-                "visible": true
-              },
-              {
-                "field": "measurement_type__type_mesure",
-                "title": "Type mesure",
-                "visible": true
-              },
-              {
-                "field": "joined__rejoint",
-                "title": "Rejoint",
-                "visible": true
-              },
-              {
-                "field": "trend_value__valeur_tendance",
-                "title": "Valeur tendance",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "ahccdVariableTemplate"
-          }
-        },
-        "id": "AHCCD_tmean_JAN_fr",
-        "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Jan",
-        "layerType": "ogc-wfs",
-        "colour": "#f04116",
-        "xyInAttribs": false
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Adjusted and homogenized station data incorporate adjustments to the original station data to account for discontinuities from non-climatic factors."
+            }, 
+            {
+                "layerId": "AHCCD_tmean_JAN_en", 
+                "description": "", 
+                "coverIcon": "assets/images/tmean.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/red-circle.png", 
+                        "text": "AHCCD Station"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Mean temperature", 
+                "nameField": "station_name__nom_station", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "station_id__id_station", 
+                                "title": "AHCCD station ID", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "elevation__elevation", 
+                                "title": "Elevation", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "identifier__identifiant", 
+                                "title": "Identifier", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "station_name__nom_station", 
+                                "title": "Station name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "province__province", 
+                                "title": "Province/Territory", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "year_range__annees", 
+                                "title": "Year range", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "period__periode", 
+                                "title": "Period", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "measurement_type__type_mesure", 
+                                "title": "Measurement type", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "joined__rejoint", 
+                                "title": "Joined", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "trend_value__valeur_tendance", 
+                                "title": "Trend value", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ahccdVariableTemplate"
+                    }
+                }, 
+                "id": "AHCCD_tmean_JAN_en", 
+                "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Jan", 
+                "layerType": "ogc-wfs", 
+                "colour": "#f04116", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Les données pour les stations climatiques ont été ajustées et homogénéisées pour tenir compte des discontinuités attribuables à des facteurs non climatiques."
+            }, 
+            {
+                "layerId": "AHCCD_tmean_JAN_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/tmean.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/red-circle.png", 
+                        "text": "Station DCCAH"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Température moyenne", 
+                "nameField": "station_name__nom_station", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "station_id__id_station", 
+                                "title": "Numéro de la station DCCAH", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "elevation__elevation", 
+                                "title": "Altitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "identifier__identifiant", 
+                                "title": "Identifiant", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "station_name__nom_station", 
+                                "title": "Nom station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "province__province", 
+                                "title": "Province / Territoire", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "year_range__annees", 
+                                "title": "Annees", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "period__periode", 
+                                "title": "Periode", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "measurement_type__type_mesure", 
+                                "title": "Type mesure", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "joined__rejoint", 
+                                "title": "Rejoint", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "trend_value__valeur_tendance", 
+                                "title": "Valeur tendance", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ahccdVariableTemplate"
+                    }
+                }, 
+                "id": "AHCCD_tmean_JAN_fr", 
+                "url": "#GEOMETWFS#/collections/ahccd-trends/items?measurement_type__type_mesure=temp_mean&period__periode=Jan", 
+                "layerType": "ogc-wfs", 
+                "colour": "#f04116", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

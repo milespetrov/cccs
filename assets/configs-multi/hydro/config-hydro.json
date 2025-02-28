@@ -1,330 +1,328 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "This map provides the location of over 1800 hydrometric (water quantity) stations on rivers, streams, and lakes across Canada."
-      },
-      {
-        "layerId": "Hydro_en",
-        "description": "",
-        "coverIcon": "assets/images/blue-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "Hydrometric Station"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Hydrometric stations",
-        "nameField": "STATION_NAME",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "CONTRIBUTOR_FR",
-                "visible": false
-              },
-              {
-                "field": "STATUS_EN",
-                "title": "Status",
-                "visible": true
-              },
-              {
-                "field": "STATION_NUMBER",
-                "title": "Station Number",
-                "visible": true
-              },
-              {
-                "field": "CONTRIBUTOR_EN",
-                "title": "Contributor",
-                "visible": true
-              },
-              {
-                "field": "VERTICAL_DATUM",
-                "title": "Vertical Datum",
-                "visible": true
-              },
-              {
-                "field": "STATUS_FR",
-                "visible": false
-              },
-              {
-                "field": "STATION_NAME",
-                "title": "Station Name",
-                "visible": true
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "PROV_TERR_STATE_LOC",
-                "title": "Province / Territory",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "hydroStationTemplate"
-          }
-        },
-        "id": "Hydro_en",
-        "url": "#GEOMETWFS#/collections/hydrometric-stations/items?STATUS_EN=Active",
-        "layerType": "ogc-wfs",
-        "colour": "#0cb8f0",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Cette carte indique l'emplacement de plus de 1800 stations hydrométriques (mesure de quantité d'eau) sur des cours d'eau et des lacs partout au Canada."
-      },
-      {
-        "layerId": "Hydro_fr",
-        "description": "",
-        "coverIcon": "assets/images/blue-circle.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "Stations hydrométriques"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Stations hydrométriques",
-        "nameField": "STATION_NAME",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "CONTRIBUTOR_FR",
-                "title": "Contributeur",
-                "visible": true
-              },
-              {
-                "field": "STATUS_EN",
-                "visible": false
-              },
-              {
-                "field": "STATION_NUMBER",
-                "title": "Numéro de la station",
-                "visible": true
-              },
-              {
-                "field": "CONTRIBUTOR_EN",
-                "visible": false
-              },
-              {
-                "field": "VERTICAL_DATUM",
-                "title": "Plan de référence altimétrique",
-                "visible": true
-              },
-              {
-                "field": "STATUS_FR",
-                "title": "Statut",
-                "visible": true
-              },
-              {
-                "field": "STATION_NAME",
-                "title": "Nom de la station",
-                "visible": true
-              },
-              {
-                "field": "IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "PROV_TERR_STATE_LOC",
-                "title": "Province / Territoire",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "hydroStationTemplate"
-          }
-        },
-        "id": "Hydro_fr",
-        "url": "#GEOMETWFS#/collections/hydrometric-stations/items?STATUS_EN=Active",
-        "layerType": "ogc-wfs",
-        "colour": "#0cb8f0",
-        "xyInAttribs": false
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "This map provides the location of over 1800 hydrometric (water quantity) stations on rivers, streams, and lakes across Canada."
+            }, 
+            {
+                "layerId": "Hydro_en", 
+                "description": "", 
+                "coverIcon": "assets/images/blue-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "Hydrometric Station"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Hydrometric stations", 
+                "nameField": "STATION_NAME", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "CONTRIBUTOR_FR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATUS_EN", 
+                                "title": "Status", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATION_NUMBER", 
+                                "title": "Station Number", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CONTRIBUTOR_EN", 
+                                "title": "Contributor", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "VERTICAL_DATUM", 
+                                "title": "Vertical Datum", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATUS_FR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATION_NAME", 
+                                "title": "Station Name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PROV_TERR_STATE_LOC", 
+                                "title": "Province / Territory", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "hydroStationTemplate"
+                    }
+                }, 
+                "id": "Hydro_en", 
+                "url": "#GEOMETWFS#/collections/hydrometric-stations/items?STATUS_EN=Active", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0cb8f0", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Cette carte indique l'emplacement de plus de 1800 stations hydrométriques (mesure de quantité d'eau) sur des cours d'eau et des lacs partout au Canada."
+            }, 
+            {
+                "layerId": "Hydro_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/blue-circle.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "Stations hydrométriques"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Stations hydrométriques", 
+                "nameField": "STATION_NAME", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "CONTRIBUTOR_FR", 
+                                "title": "Contributeur", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATUS_EN", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATION_NUMBER", 
+                                "title": "Numéro de la station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CONTRIBUTOR_EN", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "VERTICAL_DATUM", 
+                                "title": "Plan de référence altimétrique", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATUS_FR", 
+                                "title": "Statut", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATION_NAME", 
+                                "title": "Nom de la station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PROV_TERR_STATE_LOC", 
+                                "title": "Province / Territoire", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "hydroStationTemplate"
+                    }
+                }, 
+                "id": "Hydro_fr", 
+                "url": "#GEOMETWFS#/collections/hydrometric-stations/items?STATUS_EN=Active", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0cb8f0", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

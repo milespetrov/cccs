@@ -53,4 +53,10 @@ export default class MapView extends Vue {
 .cip-map-view {
     border-bottom: 3px solid $border-colour-two;
 }
+
+.cip-map-view /deep/ {
+    div[data-cy='grid'] {
+        opacity: 0.9 !important;
+    }
+}
 </style>

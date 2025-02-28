@@ -1,436 +1,434 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
-      },
-      {
-        "layerId": "DAILY_station_en",
-        "description": "These are the total stations with daily observations compiled during any set time period.",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "Station"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Daily climate observations",
-        "nameField": "STATION_NAME",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "NORMAL_CODE",
-                "title": "Normal code",
-                "visible": true
-              },
-              {
-                "field": "FRE_STN_OPERATOR_ACRONYM",
-                "visible": false
-              },
-              {
-                "field": "COUNTRY",
-                "visible": false
-              },
-              {
-                "field": "WMO_IDENTIFIER",
-                "title": "WMO identifier",
-                "visible": true
-              },
-              {
-                "field": "CLIMATE_IDENTIFIER",
-                "title": "Climate identifier",
-                "visible": true
-              },
-              {
-                "field": "HAS_MONTHLY_SUMMARY",
-                "visible": false
-              },
-              {
-                "field": "HAS_HOURLY_DATA",
-                "visible": false
-              },
-              {
-                "field": "TIMEZONE",
-                "title": "Time zone",
-                "visible": true
-              },
-              {
-                "field": "PROV_STATE_TERR_CODE",
-                "title": "Province / Territory",
-                "visible": true
-              },
-              {
-                "field": "PUBLICATION_CODE",
-                "visible": false
-              },
-              {
-                "field": "HAS_NORMALS_DATA",
-                "visible": false
-              },
-              {
-                "field": "ENG_PROV_NAME",
-                "visible": false
-              },
-              {
-                "field": "FRE_PROV_NAME",
-                "visible": false
-              },
-              {
-                "field": "STATION_NAME",
-                "title": "Station name",
-                "visible": true
-              },
-              {
-                "field": "STATION_TYPE",
-                "title": "Station type",
-                "visible": true
-              },
-              {
-                "field": "ENG_STN_OPERATOR_NAME",
-                "title": "Station operator",
-                "visible": true
-              },
-              {
-                "field": "ENG_STN_OPERATOR_ACRONYM",
-                "visible": false
-              },
-              {
-                "field": "LONGITUDE",
-                "title": "Longitude",
-                "visible": true
-              },
-              {
-                "field": "ELEVATION",
-                "title": "Elevation",
-                "visible": true
-              },
-              {
-                "field": "TC_IDENTIFIER",
-                "title": "Transport Canada identifier",
-                "visible": true
-              },
-              {
-                "field": "FRE_STN_OPERATOR_NAME",
-                "visible": false
-              },
-              {
-                "field": "LATITUDE",
-                "title": "Latitude",
-                "visible": true
-              },
-              {
-                "field": "DISPLAY_CODE",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "normalStationTemplate"
-          }
-        },
-        "id": "DAILY_station_en",
-        "url": "#GEOMETWFS#/collections/climate-stations/items",
-        "layerType": "ogc-wfs",
-        "colour": "#0ca7f5"
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
-      },
-      {
-        "layerId": "DAILY_station_fr",
-        "description": "Il s'agit de toutes les stations avec des observations quotidiennes compilées au cours de n'importe quelle période donnée.",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "Station"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Observations climatiques quotidiennes",
-        "nameField": "STATION_NAME",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "NORMAL_CODE",
-                "title": "Code de la normale",
-                "visible": true
-              },
-              {
-                "field": "FRE_STN_OPERATOR_ACRONYM",
-                "visible": false
-              },
-              {
-                "field": "COUNTRY",
-                "visible": false
-              },
-              {
-                "field": "WMO_IDENTIFIER",
-                "title": "Identifiant de l'OMM",
-                "visible": true
-              },
-              {
-                "field": "CLIMATE_IDENTIFIER",
-                "title": "Identifiant climatique",
-                "visible": true
-              },
-              {
-                "field": "HAS_MONTHLY_SUMMARY",
-                "visible": false
-              },
-              {
-                "field": "HAS_HOURLY_DATA",
-                "visible": false
-              },
-              {
-                "field": "TIMEZONE",
-                "title": "Fuseau horaire",
-                "visible": true
-              },
-              {
-                "field": "PROV_STATE_TERR_CODE",
-                "title": "Province / Territoire",
-                "visible": true
-              },
-              {
-                "field": "PUBLICATION_CODE",
-                "visible": false
-              },
-              {
-                "field": "HAS_NORMALS_DATA",
-                "visible": false
-              },
-              {
-                "field": "ENG_PROV_NAME",
-                "visible": false
-              },
-              {
-                "field": "FRE_PROV_NAME",
-                "visible": false
-              },
-              {
-                "field": "STATION_NAME",
-                "title": "Nom de la station",
-                "visible": true
-              },
-              {
-                "field": "STATION_TYPE",
-                "title": "Type de station",
-                "visible": true
-              },
-              {
-                "field": "ENG_STN_OPERATOR_NAME",
-                "visible": false
-              },
-              {
-                "field": "ENG_STN_OPERATOR_ACRONYM",
-                "visible": false
-              },
-              {
-                "field": "LONGITUDE",
-                "title": "Longitude",
-                "visible": true
-              },
-              {
-                "field": "ELEVATION",
-                "title": "Altitude",
-                "visible": true
-              },
-              {
-                "field": "TC_IDENTIFIER",
-                "title": "Identifiant de Transports Canada",
-                "visible": true
-              },
-              {
-                "field": "FRE_STN_OPERATOR_NAME",
-                "title": "Opérateur de la station",
-                "visible": true
-              },
-              {
-                "field": "LATITUDE",
-                "title": "Latitude",
-                "visible": true
-              },
-              {
-                "field": "DISPLAY_CODE",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "normalStationTemplate"
-          }
-        },
-        "id": "DAILY_station_fr",
-        "url": "#GEOMETWFS#/collections/climate-stations/items",
-        "layerType": "ogc-wfs",
-        "colour": "#0ca7f5"
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
+            }, 
+            {
+                "layerId": "DAILY_station_en", 
+                "description": "These are the total stations with daily observations compiled during any set time period.", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "Station"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Daily climate observations", 
+                "nameField": "STATION_NAME", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "NORMAL_CODE", 
+                                "title": "Normal code", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FRE_STN_OPERATOR_ACRONYM", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "COUNTRY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "WMO_IDENTIFIER", 
+                                "title": "WMO identifier", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CLIMATE_IDENTIFIER", 
+                                "title": "Climate identifier", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "HAS_MONTHLY_SUMMARY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "HAS_HOURLY_DATA", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "TIMEZONE", 
+                                "title": "Time zone", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PROV_STATE_TERR_CODE", 
+                                "title": "Province / Territory", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PUBLICATION_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "HAS_NORMALS_DATA", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "ENG_PROV_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FRE_PROV_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATION_NAME", 
+                                "title": "Station name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATION_TYPE", 
+                                "title": "Station type", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ENG_STN_OPERATOR_NAME", 
+                                "title": "Station operator", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ENG_STN_OPERATOR_ACRONYM", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LONGITUDE", 
+                                "title": "Longitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ELEVATION", 
+                                "title": "Elevation", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "TC_IDENTIFIER", 
+                                "title": "Transport Canada identifier", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FRE_STN_OPERATOR_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LATITUDE", 
+                                "title": "Latitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "DISPLAY_CODE", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "normalStationTemplate"
+                    }
+                }, 
+                "id": "DAILY_station_en", 
+                "url": "#GEOMETWFS#/collections/climate-stations/items", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0ca7f5"
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Les données quotidiennes sont dérivées de deux sources de données; les stations climatiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les ensembles de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
+            }, 
+            {
+                "layerId": "DAILY_station_fr", 
+                "description": "Il s'agit de toutes les stations avec des observations quotidiennes compilées au cours de n'importe quelle période donnée.", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "Station"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Observations climatiques quotidiennes", 
+                "nameField": "STATION_NAME", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "NORMAL_CODE", 
+                                "title": "Code de la normale", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FRE_STN_OPERATOR_ACRONYM", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "COUNTRY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "WMO_IDENTIFIER", 
+                                "title": "Identifiant de l'OMM", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CLIMATE_IDENTIFIER", 
+                                "title": "Identifiant climatique", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "HAS_MONTHLY_SUMMARY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "HAS_HOURLY_DATA", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "TIMEZONE", 
+                                "title": "Fuseau horaire", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PROV_STATE_TERR_CODE", 
+                                "title": "Province / Territoire", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PUBLICATION_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "HAS_NORMALS_DATA", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "ENG_PROV_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FRE_PROV_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATION_NAME", 
+                                "title": "Nom de la station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "STATION_TYPE", 
+                                "title": "Type de station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ENG_STN_OPERATOR_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "ENG_STN_OPERATOR_ACRONYM", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LONGITUDE", 
+                                "title": "Longitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "ELEVATION", 
+                                "title": "Altitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "TC_IDENTIFIER", 
+                                "title": "Identifiant de Transports Canada", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "FRE_STN_OPERATOR_NAME", 
+                                "title": "Opérateur de la station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LATITUDE", 
+                                "title": "Latitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "DISPLAY_CODE", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "normalStationTemplate"
+                    }
+                }, 
+                "id": "DAILY_station_fr", 
+                "url": "#GEOMETWFS#/collections/climate-stations/items", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0ca7f5"
+            }
+        ]
+    }
 }

@@ -1,480 +1,478 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location.\n\nAt the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
-      },
-      {
-        "layerId": "Normals_tmax_OCT_en",
-        "description": "The average of the maximum temperature in degrees Celsius (°C) observed at the location for that month.",
-        "coverIcon": "assets/images/tmax.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/red-circle.png",
-            "text": ""
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Daily maximum temperature",
-        "nameField": "CLIMATE_IDENTIFIER",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "NORMAL_CODE",
-                "title": "Normal code",
-                "visible": true
-              },
-              {
-                "field": "OCCURRENCE_COUNT",
-                "visible": false
-              },
-              {
-                "field": "FIRST_YEAR",
-                "visible": false
-              },
-              {
-                "field": "PERIOD_END",
-                "title": "Period end",
-                "visible": true
-              },
-              {
-                "field": "PERCENT_OF_POSSIBLE_OBS",
-                "title": "Percentage of possible observations",
-                "visible": true
-              },
-              {
-                "field": "PERIOD_BEGIN",
-                "title": "Period beginning",
-                "visible": true
-              },
-              {
-                "field": "LAST_YEAR_NORMAL_PERIOD",
-                "title": "Last year of normal period",
-                "visible": true
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "title": "Province / Territory",
-                "visible": true
-              },
-              {
-                "field": "PUBLICATION_CODE",
-                "visible": false
-              },
-              {
-                "field": "FIRST_YEAR_NORMAL_PERIOD",
-                "title": "First year of normal period",
-                "visible": true
-              },
-              {
-                "field": "MAX_DURATION_MISSING_YEARS",
-                "visible": false
-              },
-              {
-                "field": "STATION_NAME",
-                "title": "MSC station name",
-                "visible": true
-              },
-              {
-                "field": "CURRENT_FLAG",
-                "visible": false
-              },
-              {
-                "field": "LAST_YEAR",
-                "visible": false
-              },
-              {
-                "field": "DATE_CALCULATED",
-                "title": "Date calculated",
-                "visible": true
-              },
-              {
-                "field": "F_NORMAL_ELEMENT_NAME",
-                "visible": false
-              },
-              {
-                "field": "TOTAL_OBS_COUNT",
-                "title": "Total observations count",
-                "visible": true
-              },
-              {
-                "field": "PERIOD",
-                "visible": false
-              },
-              {
-                "field": "VALUE",
-                "title": "Climate value",
-                "visible": true
-              },
-              {
-                "field": "CLIMATE_IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "NORMAL_ID",
-                "visible": false
-              },
-              {
-                "field": "ID",
-                "visible": false
-              },
-              {
-                "field": "FIRST_OCCURRENCE_DATE",
-                "visible": false
-              },
-              {
-                "field": "MONTH",
-                "title": "Month",
-                "visible": true
-              },
-              {
-                "field": "YEAR_COUNT_NORMAL_PERIOD",
-                "visible": false
-              },
-              {
-                "field": "E_NORMAL_ELEMENT_NAME",
-                "title": "Measurement type",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "normalVariableTemplate"
-          }
-        },
-        "id": "Normals_tmax_OCT_en",
-        "url": "https://api.weather.gc.ca/collections/climate-normals/items?NORMAL_ID=5&MONTH=10",
-        "layerType": "ogc-wfs",
-        "colour": "#f04116",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Les normales et moyennes climatiques sont utilisées pour résumer ou décrire les conditions climatiques moyennes d'un endroit donné.\n\nÀ la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour autant d'endroits et autant de caractéristiques climatiques que possible. Les  normales, moyennes et extrêmes climatiques présentées ici sont fondées sur les données des stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 et 2010."
-      },
-      {
-        "layerId": "Normals_tmax_OCT_fr",
-        "description": "La moyenne des températures maximales en degrés Celsius (°C) observées à un endroit durant ce mois.",
-        "coverIcon": "assets/images/tmax.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/red-circle.png",
-            "text": ""
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Température maximale quotidienne",
-        "nameField": "CLIMATE_IDENTIFIER",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "NORMAL_CODE",
-                "title": "Code de la normale",
-                "visible": true
-              },
-              {
-                "field": "OCCURRENCE_COUNT",
-                "visible": false
-              },
-              {
-                "field": "FIRST_YEAR",
-                "visible": false
-              },
-              {
-                "field": "PERIOD_END",
-                "title": "Fin de la période",
-                "visible": true
-              },
-              {
-                "field": "PERCENT_OF_POSSIBLE_OBS",
-                "title": "Pourcentage d'observations possibles",
-                "visible": true
-              },
-              {
-                "field": "PERIOD_BEGIN",
-                "title": "Début de la période",
-                "visible": true
-              },
-              {
-                "field": "LAST_YEAR_NORMAL_PERIOD",
-                "title": "Dernière année de la période pour les normales",
-                "visible": true
-              },
-              {
-                "field": "PROVINCE_CODE",
-                "title": "Province / Territoire",
-                "visible": true
-              },
-              {
-                "field": "PUBLICATION_CODE",
-                "visible": false
-              },
-              {
-                "field": "FIRST_YEAR_NORMAL_PERIOD",
-                "title": "Première année de la période pour les normales",
-                "visible": true
-              },
-              {
-                "field": "MAX_DURATION_MISSING_YEARS",
-                "visible": false
-              },
-              {
-                "field": "STATION_NAME",
-                "title": "Nom de la station du SMC",
-                "visible": true
-              },
-              {
-                "field": "CURRENT_FLAG",
-                "visible": false
-              },
-              {
-                "field": "LAST_YEAR",
-                "visible": false
-              },
-              {
-                "field": "DATE_CALCULATED",
-                "title": "Date du calcul",
-                "visible": true
-              },
-              {
-                "field": "F_NORMAL_ELEMENT_NAME",
-                "title": "Type de mesure",
-                "visible": true
-              },
-              {
-                "field": "TOTAL_OBS_COUNT",
-                "title": "Nombre total d'observations",
-                "visible": true
-              },
-              {
-                "field": "PERIOD",
-                "visible": false
-              },
-              {
-                "field": "VALUE",
-                "title": "Valeur climatique",
-                "visible": true
-              },
-              {
-                "field": "CLIMATE_IDENTIFIER",
-                "visible": false
-              },
-              {
-                "field": "NORMAL_ID",
-                "visible": false
-              },
-              {
-                "field": "ID",
-                "visible": false
-              },
-              {
-                "field": "FIRST_OCCURRENCE_DATE",
-                "visible": false
-              },
-              {
-                "field": "MONTH",
-                "title": "Mois",
-                "visible": true
-              },
-              {
-                "field": "YEAR_COUNT_NORMAL_PERIOD",
-                "visible": false
-              },
-              {
-                "field": "E_NORMAL_ELEMENT_NAME",
-                "visible": false
-              }
-            ]
-          },
-          "details": {
-            "template": "normalVariableTemplate"
-          }
-        },
-        "id": "Normals_tmax_OCT_fr",
-        "url": "https://api.weather.gc.ca/collections/climate-normals/items?NORMAL_ID=5&MONTH=10",
-        "layerType": "ogc-wfs",
-        "colour": "#f04116",
-        "xyInAttribs": false
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location.\n\nAt the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
+            }, 
+            {
+                "layerId": "Normals_tmax_OCT_en", 
+                "description": "The average of the maximum temperature in degrees Celsius (°C) observed at the location for that month.", 
+                "coverIcon": "assets/images/tmax.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/red-circle.png", 
+                        "text": ""
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Daily maximum temperature", 
+                "nameField": "CLIMATE_IDENTIFIER", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "NORMAL_CODE", 
+                                "title": "Normal code", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "OCCURRENCE_COUNT", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PERIOD_END", 
+                                "title": "Period end", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PERCENT_OF_POSSIBLE_OBS", 
+                                "title": "Percentage of possible observations", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PERIOD_BEGIN", 
+                                "title": "Period beginning", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LAST_YEAR_NORMAL_PERIOD", 
+                                "title": "Last year of normal period", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "title": "Province / Territory", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PUBLICATION_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_YEAR_NORMAL_PERIOD", 
+                                "title": "First year of normal period", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MAX_DURATION_MISSING_YEARS", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATION_NAME", 
+                                "title": "MSC station name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CURRENT_FLAG", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LAST_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "DATE_CALCULATED", 
+                                "title": "Date calculated", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "F_NORMAL_ELEMENT_NAME", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "TOTAL_OBS_COUNT", 
+                                "title": "Total observations count", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PERIOD", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "VALUE", 
+                                "title": "Climate value", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CLIMATE_IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "NORMAL_ID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "ID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_OCCURRENCE_DATE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "MONTH", 
+                                "title": "Month", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "YEAR_COUNT_NORMAL_PERIOD", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "E_NORMAL_ELEMENT_NAME", 
+                                "title": "Measurement type", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "normalVariableTemplate"
+                    }
+                }, 
+                "id": "Normals_tmax_OCT_en", 
+                "url": "https://api.weather.gc.ca/collections/climate-normals/items?NORMAL_ID=5&MONTH=10", 
+                "layerType": "ogc-wfs", 
+                "colour": "#f04116", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Les normales et moyennes climatiques sont utilisées pour résumer ou décrire les conditions climatiques moyennes d'un endroit donné.\n\nÀ la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour autant d'endroits et autant de caractéristiques climatiques que possible. Les  normales, moyennes et extrêmes climatiques présentées ici sont fondées sur les données des stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 et 2010."
+            }, 
+            {
+                "layerId": "Normals_tmax_OCT_fr", 
+                "description": "La moyenne des températures maximales en degrés Celsius (°C) observées à un endroit durant ce mois.", 
+                "coverIcon": "assets/images/tmax.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/red-circle.png", 
+                        "text": ""
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "https://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Température maximale quotidienne", 
+                "nameField": "CLIMATE_IDENTIFIER", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "NORMAL_CODE", 
+                                "title": "Code de la normale", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "OCCURRENCE_COUNT", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "PERIOD_END", 
+                                "title": "Fin de la période", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PERCENT_OF_POSSIBLE_OBS", 
+                                "title": "Pourcentage d'observations possibles", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PERIOD_BEGIN", 
+                                "title": "Début de la période", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "LAST_YEAR_NORMAL_PERIOD", 
+                                "title": "Dernière année de la période pour les normales", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PROVINCE_CODE", 
+                                "title": "Province / Territoire", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PUBLICATION_CODE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_YEAR_NORMAL_PERIOD", 
+                                "title": "Première année de la période pour les normales", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "MAX_DURATION_MISSING_YEARS", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "STATION_NAME", 
+                                "title": "Nom de la station du SMC", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CURRENT_FLAG", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "LAST_YEAR", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "DATE_CALCULATED", 
+                                "title": "Date du calcul", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "F_NORMAL_ELEMENT_NAME", 
+                                "title": "Type de mesure", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "TOTAL_OBS_COUNT", 
+                                "title": "Nombre total d'observations", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "PERIOD", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "VALUE", 
+                                "title": "Valeur climatique", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "CLIMATE_IDENTIFIER", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "NORMAL_ID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "ID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "FIRST_OCCURRENCE_DATE", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "MONTH", 
+                                "title": "Mois", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "YEAR_COUNT_NORMAL_PERIOD", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "E_NORMAL_ELEMENT_NAME", 
+                                "visible": false
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "normalVariableTemplate"
+                    }
+                }, 
+                "id": "Normals_tmax_OCT_fr", 
+                "url": "https://api.weather.gc.ca/collections/climate-normals/items?NORMAL_ID=5&MONTH=10", 
+                "layerType": "ogc-wfs", 
+                "colour": "#f04116", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

@@ -2,215 +2,212 @@
     "en": {
         "legend": [
             {
-                "infoType": "title",
+                "infoType": "title", 
                 "content": "Data"
-            },
+            }, 
             {
-                "infoType": "text",
+                "infoType": "text", 
                 "content": "Projected changes are with respect to the reference period of 1995-2014."
-            },
+            }, 
             {
-                "layerId": "CMIP6_snd_MAM_ssp126_2081_en",
-                "description": "",
-                "coverIcon": "assets/images/snd.png",
+                "layerId": "CMIP6_snd_MAM_ssp126_2081_en", 
+                "description": "", 
+                "coverIcon": "assets/images/snd.png", 
                 "symbologyStack": [
                     {
-                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP126_SnowDepthAnomaly-Pct50_2021-2040_P0Y-MAM&format=image/png&STYLE=default",
+                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP126_SnowDepthAnomaly-Pct50_2021-2040_P0Y-MAM&format=image/png&STYLE=default", 
                         "text": ""
                     }
-                ],
+                ], 
                 "symbologyRenderStyle": "images"
-            },
+            }, 
             {
-                "infoType": "title",
+                "infoType": "title", 
                 "content": "Settings"
-            },
+            }, 
             {
-                "layerId": "cities",
-                "coverIcon": "assets/images/cities.png",
-                "symbologyStack": [],
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
                 "name": "Cities"
-            },
+            }, 
             {
-                "layerId": "labels",
-                "coverIcon": "assets/images/labels.png",
-                "symbologyStack": [],
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
                 "name": "Labels"
-            },
+            }, 
             {
-                "layerId": "provinces",
-                "coverIcon": "assets/images/provinces.png",
-                "symbologyStack": [],
+                "layerId": "provinces", 
+                "coverIcon": "assets/images/provinces.png", 
+                "symbologyStack": [], 
                 "name": "Provinces"
             }
-        ],
+        ], 
         "supportLayers": [
             {
-                "name": "Cities",
+                "name": "Cities", 
                 "controls": [
-                    "visibility",
-                    "opacity",
+                    "visibility", 
+                    "opacity", 
                     "settings"
-                ],
+                ], 
                 "state": {
-                    "opacity": 1,
-                    "visibility": false,
-                    "identify": false,
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
                     "hovertips": false
-                },
-                "id": "cities",
-                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-                
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
                 "layerType": "esri-tile"
-            },
+            }, 
             {
-                "name": "Labels",
+                "name": "Labels", 
                 "controls": [
-                    "visibility",
-                    "opacity",
+                    "visibility", 
+                    "opacity", 
                     "settings"
-                ],
+                ], 
                 "state": {
-                    "opacity": 1,
-                    "visibility": true,
-                    "identify": false,
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
                     "hovertips": false
-                },
-                "id": "labels",
-                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-                
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
                 "layerType": "esri-tile"
-            },
+            }, 
             {
-                "name": "Provinces",
+                "name": "Provinces", 
                 "controls": [
-                    "visibility",
-                    "opacity",
+                    "visibility", 
+                    "opacity", 
                     "settings"
-                ],
+                ], 
                 "state": {
-                    "opacity": 1,
-                    "visibility": true,
-                    "identify": false,
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
                     "hovertips": false
-                },
-                "id": "provinces",
-                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-                
+                }, 
+                "id": "provinces", 
+                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer", 
                 "layerType": "esri-tile"
             }
-        ],
+        ], 
         "dataLayers": [
             {
-                "name": "Snow depth",
+                "name": "Snow depth", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2021_en",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2021_en", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2021-2040_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
                     }
                 }
-            },
+            }, 
             {
-                "name": "Snow depth",
+                "name": "Snow depth", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2041_en",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2041_en", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2041-2060_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
                     }
                 }
-            },
+            }, 
             {
-                "name": "Snow depth",
+                "name": "Snow depth", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2061_en",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2061_en", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2061-2080_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
                     }
                 }
-            },
+            }, 
             {
-                "name": "Snow depth",
+                "name": "Snow depth", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2081_en",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2081_en", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2081-2100_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
@@ -218,219 +215,216 @@
                 }
             }
         ]
-    },
+    }, 
     "fr": {
         "legend": [
             {
-                "infoType": "title",
+                "infoType": "title", 
                 "content": "Données"
-            },
+            }, 
             {
-                "infoType": "text",
+                "infoType": "text", 
                 "content": "Les changements projetés sont relatives à la moyenne de 1995-2014."
-            },
+            }, 
             {
-                "layerId": "CMIP6_snd_MAM_ssp126_2081_fr",
-                "description": "",
-                "coverIcon": "assets/images/snd.png",
+                "layerId": "CMIP6_snd_MAM_ssp126_2081_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/snd.png", 
                 "symbologyStack": [
                     {
-                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP126_SnowDepthAnomaly-Pct50_2021-2040_P0Y-MAM&format=image/png&STYLE=default",
+                        "image": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=CMIP6-SSP126_SnowDepthAnomaly-Pct50_2021-2040_P0Y-MAM&format=image/png&STYLE=default", 
                         "text": ""
                     }
-                ],
+                ], 
                 "symbologyRenderStyle": "images"
-            },
+            }, 
             {
-                "infoType": "title",
+                "infoType": "title", 
                 "content": "Paramètres"
-            },
+            }, 
             {
-                "layerId": "cities",
-                "coverIcon": "assets/images/cities.png",
-                "symbologyStack": [],
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
                 "name": "Villes"
-            },
+            }, 
             {
-                "layerId": "labels",
-                "coverIcon": "assets/images/labels.png",
-                "symbologyStack": [],
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
                 "name": "Étiquettes"
-            },
+            }, 
             {
-                "layerId": "provinces",
-                "coverIcon": "assets/images/provinces.png",
-                "symbologyStack": [],
+                "layerId": "provinces", 
+                "coverIcon": "assets/images/provinces.png", 
+                "symbologyStack": [], 
                 "name": "Provinces"
             }
-        ],
+        ], 
         "supportLayers": [
             {
-                "name": "Villes",
+                "name": "Villes", 
                 "controls": [
-                    "visibility",
-                    "opacity",
+                    "visibility", 
+                    "opacity", 
                     "settings"
-                ],
+                ], 
                 "state": {
-                    "opacity": 1,
-                    "visibility": false,
-                    "identify": false,
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
                     "hovertips": false
-                },
-                "id": "cities",
-                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-                
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
                 "layerType": "esri-tile"
-            },
+            }, 
             {
-                "name": "Étiquettes",
+                "name": "Étiquettes", 
                 "controls": [
-                    "visibility",
-                    "opacity",
+                    "visibility", 
+                    "opacity", 
                     "settings"
-                ],
+                ], 
                 "state": {
-                    "opacity": 1,
-                    "visibility": true,
-                    "identify": false,
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
                     "hovertips": false
-                },
-                "id": "labels",
-                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-                
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
                 "layerType": "esri-tile"
-            },
+            }, 
             {
-                "name": "Provinces",
+                "name": "Provinces", 
                 "controls": [
-                    "visibility",
-                    "opacity",
+                    "visibility", 
+                    "opacity", 
                     "settings"
-                ],
+                ], 
                 "state": {
-                    "opacity": 1,
-                    "visibility": true,
-                    "identify": false,
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
                     "hovertips": false
-                },
-                "id": "provinces",
-                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-                
+                }, 
+                "id": "provinces", 
+                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer", 
                 "layerType": "esri-tile"
             }
-        ],
+        ], 
         "dataLayers": [
             {
-                "name": "Épaisseur de la neige",
+                "name": "Épaisseur de la neige", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2021_fr",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2021_fr", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2021-2040_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
                     }
                 }
-            },
+            }, 
             {
-                "name": "Épaisseur de la neige",
+                "name": "Épaisseur de la neige", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2041_fr",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2041_fr", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2041-2060_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
                     }
                 }
-            },
+            }, 
             {
-                "name": "Épaisseur de la neige",
+                "name": "Épaisseur de la neige", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2061_fr",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2061_fr", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2061-2080_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"
                     }
                 }
-            },
+            }, 
             {
-                "name": "Épaisseur de la neige",
+                "name": "Épaisseur de la neige", 
                 "controls": [
-                    "visibility",
-                    "opacity",
-                    "settings",
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
                     "symbology"
-                ],
+                ], 
                 "state": {
-                    "opacity": 0.85,
-                    "visibility": false,
-                    "identify": true,
+                    "opacity": 0.85, 
+                    "visibility": false, 
+                    "identify": true, 
                     "hovertips": true
-                },
-                "id": "CMIP6_snd_MAM_ssp126_2081_fr",
-                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0",
-                "layerType": "ogc-wms",
-                "featureInfoMimeType": "application/json",
+                }, 
+                "id": "CMIP6_snd_MAM_ssp126_2081_fr", 
+                "url": "#GEOMETCLIMATEWMS#?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "application/json", 
                 "sublayers": [
                     {
                         "id": "CMIP6-SSP126_SnowDepthAnomaly-Pct50_2081-2100_P0Y-MAM"
                     }
-                ],
+                ], 
                 "fixtures": {
                     "details": {
                         "template": "cmip6VariableTemplate"

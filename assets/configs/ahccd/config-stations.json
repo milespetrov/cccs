@@ -1,326 +1,324 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "Climate IDs are digit numbers assigned by the Meteorological Service of Canada (MSC) to a site where official weather observations are taken, and serves as a permanent, unique identifier. For AHCCD records for non-joined stations, the MSC’s climate ID is used as the AHCCD ID. For AHCCD records with joined stations, the last joined MSC’s Climate ID is used as the AHCCD ID. This allows users to compare the raw data with the adjusted and homogenized data."
-      },
-      {
-        "layerId": "AHCCD_station_en",
-        "description": "",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "AHCCD Station"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "AHCCD station metadata",
-        "nameField": "station_name__nom_station",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "station_id__id_station",
-                "title": "AHCCD station ID",
-                "visible": true
-              },
-              {
-                "field": "elevation__elevation",
-                "title": "Elevation",
-                "visible": true
-              },
-              {
-                "field": "identifier__identifiant",
-                "title": "Identifier",
-                "visible": true
-              },
-              {
-                "field": "station_name__nom_station",
-                "title": "Station name",
-                "visible": true
-              },
-              {
-                "field": "province__province",
-                "title": "Province/Territory",
-                "visible": true
-              },
-              {
-                "field": "year_range__annees",
-                "title": "Year range",
-                "visible": true
-              },
-              {
-                "field": "period__periode",
-                "title": "Period",
-                "visible": true
-              },
-              {
-                "field": "measurement_type__type_mesure",
-                "title": "Measurement type",
-                "visible": true
-              },
-              {
-                "field": "joined__rejoint",
-                "title": "Joined",
-                "visible": true
-              },
-              {
-                "field": "trend_value__valeur_tendance",
-                "title": "Trend value",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "ahccdStationTemplate"
-          }
-        },
-        "id": "AHCCD_station_en",
-        "url": "https://api.weather.gc.ca/collections/ahccd-stations/items",
-        "layerType": "ogc-wfs",
-        "colour": "#0ca7f5",
-        "xyInAttribs": false
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "Les ID climatique sont les numéros attribués par le Service météorologique du Canada (SMC) à un site où des observations météorologiques officielles sont effectuées et servent à titre d'identifiant permanent et unique. Pour les enregistrements DCCAH pour les stations non jointes, le ID climatique du SMC est utilisé comme ID pour DCCAH. Pour les enregistrements DCCAH pour les stations jointes, le ID climatique du SMC pour la dernière station jointe est utilisé comme ID pour DCCAH. Cela permet aux utilisateurs de comparer les données brutes avec les données ajustées et homogénéisées."
-      },
-      {
-        "layerId": "AHCCD_station_fr",
-        "description": "",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [
-          {
-            "image": "assets/images/blue-circle.png",
-            "text": "Station DCCAH"
-          }
-        ],
-        "symbologyRenderStyle": "icons"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Métadonnées sur la station DCCAH",
-        "nameField": "station_name__nom_station",
-        "controls": [
-          "datatable",
-          "visibility",
-          "opacity",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "fixtures": {
-          "grid": {
-            "columns": [
-              {
-                "field": "OBJECTID",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordX",
-                "visible": false
-              },
-              {
-                "field": "rvInternalCoordY",
-                "visible": false
-              },
-              {
-                "field": "station_id__id_station",
-                "title": "Numéro de la station DCCAH",
-                "visible": true
-              },
-              {
-                "field": "elevation__elevation",
-                "title": "Altitude",
-                "visible": true
-              },
-              {
-                "field": "identifier__identifiant",
-                "title": "Identifiant",
-                "visible": true
-              },
-              {
-                "field": "station_name__nom_station",
-                "title": "Nom station",
-                "visible": true
-              },
-              {
-                "field": "province__province",
-                "title": "Province / Territoire",
-                "visible": true
-              },
-              {
-                "field": "year_range__annees",
-                "title": "Annees",
-                "visible": true
-              },
-              {
-                "field": "period__periode",
-                "title": "Periode",
-                "visible": true
-              },
-              {
-                "field": "measurement_type__type_mesure",
-                "title": "Type mesure",
-                "visible": true
-              },
-              {
-                "field": "joined__rejoint",
-                "title": "Rejoint",
-                "visible": true
-              },
-              {
-                "field": "trend_value__valeur_tendance",
-                "title": "Valeur tendance",
-                "visible": true
-              }
-            ]
-          },
-          "details": {
-            "template": "ahccdStationTemplate"
-          }
-        },
-        "id": "AHCCD_station_fr",
-        "url": "https://api.weather.gc.ca/collections/ahccd-stations/items",
-        "layerType": "ogc-wfs",
-        "colour": "#0ca7f5",
-        "xyInAttribs": false
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Climate IDs are digit numbers assigned by the Meteorological Service of Canada (MSC) to a site where official weather observations are taken, and serves as a permanent, unique identifier. For AHCCD records for non-joined stations, the MSC’s climate ID is used as the AHCCD ID. For AHCCD records with joined stations, the last joined MSC’s Climate ID is used as the AHCCD ID. This allows users to compare the raw data with the adjusted and homogenized data."
+            }, 
+            {
+                "layerId": "AHCCD_station_en", 
+                "description": "", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "AHCCD Station"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "AHCCD station metadata", 
+                "nameField": "station_name__nom_station", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "station_id__id_station", 
+                                "title": "AHCCD station ID", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "elevation__elevation", 
+                                "title": "Elevation", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "identifier__identifiant", 
+                                "title": "Identifier", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "station_name__nom_station", 
+                                "title": "Station name", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "province__province", 
+                                "title": "Province/Territory", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "year_range__annees", 
+                                "title": "Year range", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "period__periode", 
+                                "title": "Period", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "measurement_type__type_mesure", 
+                                "title": "Measurement type", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "joined__rejoint", 
+                                "title": "Joined", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "trend_value__valeur_tendance", 
+                                "title": "Trend value", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ahccdStationTemplate"
+                    }
+                }, 
+                "id": "AHCCD_station_en", 
+                "url": "https://api.weather.gc.ca/collections/ahccd-stations/items", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0ca7f5", 
+                "xyInAttribs": false
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "Les ID climatique sont les numéros attribués par le Service météorologique du Canada (SMC) à un site où des observations météorologiques officielles sont effectuées et servent à titre d'identifiant permanent et unique. Pour les enregistrements DCCAH pour les stations non jointes, le ID climatique du SMC est utilisé comme ID pour DCCAH. Pour les enregistrements DCCAH pour les stations jointes, le ID climatique du SMC pour la dernière station jointe est utilisé comme ID pour DCCAH. Cela permet aux utilisateurs de comparer les données brutes avec les données ajustées et homogénéisées."
+            }, 
+            {
+                "layerId": "AHCCD_station_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [
+                    {
+                        "image": "assets/images/blue-circle.png", 
+                        "text": "Station DCCAH"
+                    }
+                ], 
+                "symbologyRenderStyle": "icons"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "http://maps-cartes.dev.ec.gc.ca/arcgis/rest/services/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Métadonnées sur la station DCCAH", 
+                "nameField": "station_name__nom_station", 
+                "controls": [
+                    "datatable", 
+                    "visibility", 
+                    "opacity", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "fixtures": {
+                    "grid": {
+                        "columns": [
+                            {
+                                "field": "OBJECTID", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordX", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "rvInternalCoordY", 
+                                "visible": false
+                            }, 
+                            {
+                                "field": "station_id__id_station", 
+                                "title": "Numéro de la station DCCAH", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "elevation__elevation", 
+                                "title": "Altitude", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "identifier__identifiant", 
+                                "title": "Identifiant", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "station_name__nom_station", 
+                                "title": "Nom station", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "province__province", 
+                                "title": "Province / Territoire", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "year_range__annees", 
+                                "title": "Annees", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "period__periode", 
+                                "title": "Periode", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "measurement_type__type_mesure", 
+                                "title": "Type mesure", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "joined__rejoint", 
+                                "title": "Rejoint", 
+                                "visible": true
+                            }, 
+                            {
+                                "field": "trend_value__valeur_tendance", 
+                                "title": "Valeur tendance", 
+                                "visible": true
+                            }
+                        ], 
+                        "applyToMap": true
+                    }, 
+                    "details": {
+                        "template": "ahccdStationTemplate"
+                    }
+                }, 
+                "id": "AHCCD_station_fr", 
+                "url": "https://api.weather.gc.ca/collections/ahccd-stations/items", 
+                "layerType": "ogc-wfs", 
+                "colour": "#0ca7f5", 
+                "xyInAttribs": false
+            }
+        ]
+    }
 }

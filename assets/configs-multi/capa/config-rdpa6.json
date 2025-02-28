@@ -1,268 +1,262 @@
 {
-  "en": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Data"
-      },
-      {
-        "infoType": "text",
-        "content": "The regional deterministic precipitation analysis (RDPA) produces a best estimate of precipitation amounts that occurred over a period of 6 and 24 hours."
-      },
-      {
-        "layerId": "CAPA_qp10_6_en",
-        "description": "",
-        "coverIcon": "assets/images/06h.png",
-        "symbologyStack": [
-          {
-            "image": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=RDPA.6F_PR&format=image/png&STYLE=default",
-            "text": ""
-          }
-        ],
-        "symbologyRenderStyle": "images"
-      },
-      {
-        "infoType": "title",
-        "content": "Settings"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Cities"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Labels"
-      },
-      {
-        "layerId": "provinces",
-        "coverIcon": "assets/images/provinces.png",
-        "symbologyStack": [],
-        "name": "Provinces"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Cities",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Labels",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Provinces",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "provinces",
-        "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "6 hour precipitation",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 0.85,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "id": "CAPA_qp10_6_en",
-        "url": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
-        "layerType": "ogc-wms",
-        "featureInfoMimeType": "text/plain",
-        "sublayers": [
-          {
-            "id": "RDPA.6F_PR"
-          }
-        ],
-        "fixtures": {
-          "details": {
-            "template": "capaVariableTemplate"
-          }
-        }
-      }
-    ]
-  },
-  "fr": {
-    "legend": [
-      {
-        "infoType": "title",
-        "content": "Données"
-      },
-      {
-        "infoType": "text",
-        "content": "L'Analyse régionale déterministe de précipitations (ARPD) produit une estimation optimale de la quantité de précipitations qui est survenue au cours de périodes passées récentes de 6h ou 24h."
-      },
-      {
-        "layerId": "CAPA_qp10_6_fr",
-        "description": "",
-        "coverIcon": "assets/images/06h.png",
-        "symbologyStack": [
-          {
-            "image": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=RDPA.6F_PR&format=image/png&STYLE=default",
-            "text": ""
-          }
-        ],
-        "symbologyRenderStyle": "images"
-      },
-      {
-        "infoType": "title",
-        "content": "Paramètres"
-      },
-      {
-        "layerId": "cities",
-        "coverIcon": "assets/images/cities.png",
-        "symbologyStack": [],
-        "name": "Villes"
-      },
-      {
-        "layerId": "labels",
-        "coverIcon": "assets/images/labels.png",
-        "symbologyStack": [],
-        "name": "Étiquettes"
-      },
-      {
-        "layerId": "provinces",
-        "coverIcon": "assets/images/provinces.png",
-        "symbologyStack": [],
-        "name": "Provinces"
-      }
-    ],
-    "supportLayers": [
-      {
-        "name": "Villes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": false,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "cities",
-        "url": "#ECCCARCGIS#/Overlays/Cities/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Étiquettes",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "labels",
-        "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer",
-        
-        "layerType": "esri-tile"
-      },
-      {
-        "name": "Provinces",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings"
-        ],
-        "state": {
-          "opacity": 1,
-          "visibility": true,
-          "identify": false,
-          "hovertips": false
-        },
-        "id": "provinces",
-        "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer",
-        
-        "layerType": "esri-tile"
-      }
-    ],
-    "dataLayers": [
-      {
-        "name": "Précipitations sur 6 heures",
-        "controls": [
-          "visibility",
-          "opacity",
-          "settings",
-          "symbology"
-        ],
-        "state": {
-          "opacity": 0.85,
-          "visibility": true,
-          "identify": true,
-          "hovertips": true
-        },
-        "id": "CAPA_qp10_6_fr",
-        "url": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0",
-        "layerType": "ogc-wms",
-        "featureInfoMimeType": "text/plain",
-        "sublayers": [
-          {
-            "id": "RDPA.6F_PR"
-          }
-        ],
-        "fixtures": {
-          "details": {
-            "template": "capaVariableTemplate"
-          }
-        }
-      }
-    ]
-  }
+    "en": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Data"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "The regional deterministic precipitation analysis (RDPA) produces a best estimate of precipitation amounts that occurred over a period of 6 and 24 hours."
+            }, 
+            {
+                "layerId": "CAPA_qp10_6_en", 
+                "description": "", 
+                "coverIcon": "assets/images/06h.png", 
+                "symbologyStack": [
+                    {
+                        "image": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=RDPA.6F_PR&format=image/png&STYLE=default", 
+                        "text": ""
+                    }
+                ], 
+                "symbologyRenderStyle": "images"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Settings"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Cities"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Labels"
+            }, 
+            {
+                "layerId": "provinces", 
+                "coverIcon": "assets/images/provinces.png", 
+                "symbologyStack": [], 
+                "name": "Provinces"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Cities", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Labels", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBMT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Provinces", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "provinces", 
+                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "6 hour precipitation", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 0.85, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "id": "CAPA_qp10_6_en", 
+                "url": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "text/plain", 
+                "sublayers": [
+                    {
+                        "id": "RDPA.6F_PR"
+                    }
+                ], 
+                "fixtures": {
+                    "details": {
+                        "template": "capaVariableTemplate"
+                    }
+                }
+            }
+        ]
+    }, 
+    "fr": {
+        "legend": [
+            {
+                "infoType": "title", 
+                "content": "Données"
+            }, 
+            {
+                "infoType": "text", 
+                "content": "L'Analyse régionale déterministe de précipitations (ARPD) produit une estimation optimale de la quantité de précipitations qui est survenue au cours de périodes passées récentes de 6h ou 24h."
+            }, 
+            {
+                "layerId": "CAPA_qp10_6_fr", 
+                "description": "", 
+                "coverIcon": "assets/images/06h.png", 
+                "symbologyStack": [
+                    {
+                        "image": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=RDPA.6F_PR&format=image/png&STYLE=default", 
+                        "text": ""
+                    }
+                ], 
+                "symbologyRenderStyle": "images"
+            }, 
+            {
+                "infoType": "title", 
+                "content": "Paramètres"
+            }, 
+            {
+                "layerId": "cities", 
+                "coverIcon": "assets/images/cities.png", 
+                "symbologyStack": [], 
+                "name": "Villes"
+            }, 
+            {
+                "layerId": "labels", 
+                "coverIcon": "assets/images/labels.png", 
+                "symbologyStack": [], 
+                "name": "Étiquettes"
+            }, 
+            {
+                "layerId": "provinces", 
+                "coverIcon": "assets/images/provinces.png", 
+                "symbologyStack": [], 
+                "name": "Provinces"
+            }
+        ], 
+        "supportLayers": [
+            {
+                "name": "Villes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": false, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "cities", 
+                "url": "#ECCCARCGIS#/Overlays/Cities/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Étiquettes", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "labels", 
+                "url": "https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/BaseMaps/CBCT_TXT_3978/MapServer", 
+                "layerType": "esri-tile"
+            }, 
+            {
+                "name": "Provinces", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings"
+                ], 
+                "state": {
+                    "opacity": 1, 
+                    "visibility": true, 
+                    "identify": false, 
+                    "hovertips": false
+                }, 
+                "id": "provinces", 
+                "url": "#ECCCARCGIS#/Overlays/Provinces/MapServer", 
+                "layerType": "esri-tile"
+            }
+        ], 
+        "dataLayers": [
+            {
+                "name": "Précipitations sur 6 heures", 
+                "controls": [
+                    "visibility", 
+                    "opacity", 
+                    "settings", 
+                    "symbology"
+                ], 
+                "state": {
+                    "opacity": 0.85, 
+                    "visibility": true, 
+                    "identify": true, 
+                    "hovertips": true
+                }, 
+                "id": "CAPA_qp10_6_fr", 
+                "url": "https://geo.weather.gc.ca/geomet?SERVICE=WMS&VERSION=1.3.0", 
+                "layerType": "ogc-wms", 
+                "featureInfoMimeType": "text/plain", 
+                "sublayers": [
+                    {
+                        "id": "RDPA.6F_PR"
+                    }
+                ], 
+                "fixtures": {
+                    "details": {
+                        "template": "capaVariableTemplate"
+                    }
+                }
+            }
+        ]
+    }
 }
