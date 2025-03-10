@@ -1,56 +1,56 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Vuex, { Store } from 'vuex';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Vuex, { Store } from "vuex";
 
-import app from './app.vue';
-import breadcrumbs from './breadcrumbs.vue';
-import languageToggle from './language-toggle.vue';
-import { createStore, RootState } from './store';
-import { i18n } from './lang';
+import app from "./app.vue";
+import breadcrumbs from "./breadcrumbs.vue";
+import languageToggle from "./language-toggle.vue";
+import { createStore, RootState } from "./store";
+import { i18n } from "./lang";
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faTimes, faSlidersH, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCheck, faTimes, faSlidersH, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(faCheck, faTimes, faSlidersH, faExternalLinkAlt);
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-const router = new VueRouter();
+const router = new VueRouter({ mode: "history" });
 
 // initialize a new app-wide store
 const store: Store<RootState> = createStore();
 
-Vue.config.ignoredElements = ['rv-map'];
+Vue.config.ignoredElements = ["rv-map"];
 //TODO: re-enable and fix vue wanting to bind to everything in ramp again
 Vue.config.silent = true;
 
 new Vue({
-    el: '#app',
+    el: "#app",
     router,
     store,
     i18n,
-    render: h => h('app'),
+    render: (h) => h("app"),
     components: { app }
 });
 
 new Vue({
-    el: '#wb-bc>.container',
+    el: "#wb-bc>.container",
     store,
     i18n,
-    render: h => h('breadcrumbs'),
+    render: (h) => h("breadcrumbs"),
     components: { breadcrumbs }
 });
 
 new Vue({
-    el: '#wb-lng a',
+    el: "#wb-lng a",
     router,
     store,
     i18n,
-    render: h => h('languageToggle'),
+    render: (h) => h("languageToggle"),
     components: { languageToggle }
 });

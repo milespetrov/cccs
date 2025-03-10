@@ -3,26 +3,26 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch, Prop, Inject } from 'vue-property-decorator';
-import { State, Getter, Action, namespace } from 'vuex-class';
-import { mixins } from 'vue-class-component';
+import { Vue, Component, Watch, Prop, Inject } from "vue-property-decorator";
+import { State, Getter, Action, namespace } from "vuex-class";
+import { mixins } from "vue-class-component";
 
-import {debounce} from 'throttle-debounce';
+import { debounce } from "throttle-debounce";
 
-import api, { DatasetApi } from './../api/';
-import { MapPoint, XY } from '@/store/modules/app';
-import { UpdateRouteMixin } from '../globals/mixin';
-import { DatasetId, VariableId, TimePeriodType } from '@/types';
+import api, { DatasetApi } from "./../api/";
+import { MapPoint, XY } from "@/store/modules/app";
+import { UpdateRouteMixin } from "../globals/mixin";
+import { DatasetId, VariableId, TimePeriodType } from "@/types";
 
-import { ColourRamp } from './../configs/datasets';
+import { ColourRamp } from "./../configs/datasets";
+import { i18n } from "@/lang";
+import registerDetailsTemplates from "@/detailsTemplates";
 
-import registerDetailsTemplates from '@/detailsTemplates';
+import MapControlsCluster from "./map-controls-cluster.vue";
 
-import MapControlsCluster from './map-controls-cluster.vue';
-
-import { monthSelectorConfig, SupplementalLayers } from '../configs/selectors';
-import { customRendererStartup } from '@/../assets/scripts/customExport';
-import { registerCustomAppbarLink } from '@/../assets/scripts/customAppbarLink';
+import { monthSelectorConfig, SupplementalLayers } from "../configs/selectors";
+import { customRendererStartup } from "@/../assets/scripts/customExport";
+import { registerCustomAppbarLink } from "@/../assets/scripts/customAppbarLink";
 
 // TODO: import proper RAMP definitions
 export interface IdentifyResult {
@@ -45,11 +45,11 @@ export interface IdentifySession {
     requests: IdentifyRequest[];
 }
 
-const StateApp = namespace('app', State);
-const GetterApp = namespace('app', Getter);
-const ActionApp = namespace('app', Action);
+const StateApp = namespace("app", State);
+const GetterApp = namespace("app", Getter);
+const ActionApp = namespace("app", Action);
 
-const StateData = namespace('data', State);
+const StateData = namespace("data", State);
 
 const SCALE_THRESHOLD = 6000000;
 
@@ -59,14 +59,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         return document.getElementById(`cip-map-anchor-${this.mapCounter}`)!;
     }
 
-    @StateApp('variableId')
+    @StateApp("variableId")
     currentVariable: VariableId;
     @StateApp
     datasetId: DatasetId;
-    @StateApp('timePeriodId')
+    @StateApp("timePeriodId")
     currentTimePeriod: string;
     //@StateApp('featureId') currentFeature: string;
-    @StateApp('rcpId')
+    @StateApp("rcpId")
     currentRcp: string;
     @StateApp
     sspId: string;
@@ -87,8 +87,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     @StateApp
     supplementalIds: string[];
 
-    @StateData('supplementalLayers')
-    supplementalLayerConfigs: {[key:string]: SupplementalLayers};
+    @StateData("supplementalLayers")
+    supplementalLayerConfigs: { [key: string]: SupplementalLayers };
 
     @StateApp
     layerVisibility: {
@@ -128,49 +128,49 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 
     showMapLabels: boolean = false;
     // TODO: add layers that requires labels as needed
-    labelledLayerIds = ['ATRIS'];
+    labelledLayerIds = ["ATRIS"];
 
-    wmsTime: any = { start: '', end: '', step: '' };
+    wmsTime: any = { start: "", end: "", step: "" };
 
-    @Watch('currentVariable')
+    @Watch("currentVariable")
     onVarChanged(newValue: string, oldValue: string) {
         api.dcsMultiTrack(
-            'DCSext.cccs_variable_selected',
+            "DCSext.cccs_variable_selected",
             newValue,
-            'DCSext.cccs_datavar_set',
+            "DCSext.cccs_datavar_set",
             `${this.datasetId}-${newValue}`,
-            'WT.ti',
+            "WT.ti",
             `${newValue} selected on ${this.datasetId}.`
         );
         this.switchLayers();
     }
 
-    @Watch('currentRcp')
+    @Watch("currentRcp")
     onRcpChanged() {
         this.switchLayers();
     }
 
-    @Watch('sspId')
+    @Watch("sspId")
     onSspChanged() {
         this.switchLayers();
     }
 
-    @Watch('currentTimePeriod')
+    @Watch("currentTimePeriod")
     onTimePeriodChange() {
         this.switchLayers();
     }
 
-    @Watch('datasetId')
+    @Watch("datasetId")
     onDatasetChanged() {
         //this.updateIdentifyMode();
     }
 
-    @Watch('month')
+    @Watch("month")
     onMonthChanged() {
         this.switchLayers();
     }
 
-    @Watch('day')
+    @Watch("day")
     onDayChanged() {
         this.switchLayers();
     }
@@ -190,13 +190,14 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     getCapabilities(layerConfig: any): void {
-        const getCapabilitiesUrl =
-            layerConfig.url + '&REQUEST=GetCapabilities&LAYERS=' + layerConfig.sublayers[0].id;
-        $.get(getCapabilitiesUrl).then((data) => { this.parseTimeParam(data) });
+        const getCapabilitiesUrl = layerConfig.url + "&REQUEST=GetCapabilities&LAYERS=" + layerConfig.sublayers[0].id;
+        $.get(getCapabilitiesUrl).then((data) => {
+            this.parseTimeParam(data);
+        });
     }
 
     parseTimeParam(data: any): void {
-        const timeDimension = $(data).find('Dimension[name=time]')[0];
+        const timeDimension = $(data).find("Dimension[name=time]")[0];
 
         this.wmsTime.default = (<any>timeDimension.attributes).default.value;
         [, this.wmsTime.start, this.wmsTime.end, this.wmsTime.step] = /(.*Z)\/(.*Z)\/PT(\d\d?)H/.exec(
@@ -209,8 +210,8 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        if (this._rInstance.event.eventNames().includes('cccs_refreshIdentifyOnLayerLoad')){
-            this._rInstance.event.off('cccs_refreshIdentifyOnLayerLoad');
+        if (this._rInstance.event.eventNames().includes("cccs_refreshIdentifyOnLayerLoad")) {
+            this._rInstance.event.off("cccs_refreshIdentifyOnLayerLoad");
         }
 
         let tempLastClick: XY | null = null;
@@ -223,20 +224,22 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         if (this._rInstance.geo.layer.allLayers().length > 0) {
             this.stopLayerSubscriptions();
             // .slice() to clone the array, otherwise indices will be skipped
-            this._rInstance.geo.layer.allLayers().slice().forEach((layer: any) => {
-
-                // we can just let the two system layers lurk. Since new layers are added without
-                // an index parameter, the insertion algo will make sure they are under these
-                // cosmetic layers.
-                // Since identify fixture listens for layers changing & panel closing,
-                // will ensure any active hilights get cleared when layers switch.
-                if (!(layer.id === 'Ramp-Hilight' || layer.id === 'RampPoleMarker')) {
-                    this._rInstance.geo.map.removeLayer(layer.id);
-                }
-            });
+            this._rInstance.geo.layer
+                .allLayers()
+                .slice()
+                .forEach((layer: any) => {
+                    // we can just let the two system layers lurk. Since new layers are added without
+                    // an index parameter, the insertion algo will make sure they are under these
+                    // cosmetic layers.
+                    // Since identify fixture listens for layers changing & panel closing,
+                    // will ensure any active hilights get cleared when layers switch.
+                    if (!(layer.id === "Ramp-Hilight" || layer.id === "RampPoleMarker")) {
+                        this._rInstance.geo.map.removeLayer(layer.id);
+                    }
+                });
         }
 
-        const source = await this.datasetApi.getDatasetSource(this.$i18n.locale);
+        const source = await this.datasetApi.getDatasetSource(i18n.locale);
 
         this.currentLayers = [];
 
@@ -249,9 +252,9 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // LTCE non-station variables need day & month added to the query
             // This keeps us from needing ~2000 configs
             // They also need the value set for the custom renderer
-            if (this.datasetId === DatasetId.LTCE && !this.currentVariable.includes('station')) {
+            if (this.datasetId === DatasetId.LTCE && !this.currentVariable.includes("station")) {
                 const selectedMonth = monthSelectorConfig.groups[0].items.indexOf(this.month as TimePeriodType) + 1;
-                layer.url += '?LOCAL_DAY=' + this.day + '&LOCAL_MONTH=' + selectedMonth.toString();
+                layer.url += "?LOCAL_DAY=" + this.day + "&LOCAL_MONTH=" + selectedMonth.toString();
 
                 // Setting value for custom renderer, current year if the day has happened, last year if not
                 const currentDate = new Date();
@@ -272,35 +275,41 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             // this trick generates a layer.fieldMetadata object from grid column metadata
             if (layer.fixtures && layer.fixtures.grid && !layer.fieldMetadata) {
                 layer.fieldMetadata = {};
-                layer.fieldMetadata.fieldInfo = Object.values(layer.fixtures.grid.columns).filter((column: any) => {
-                    // the prov name fields are due to them being hidden in the grid, but needed for tooltips & details.
-                    // cannot be excluded / exclusive.
-                    return column.visible || column.field === 'ENG_PROV_NAME' || column.field==='FRE_PROV_NAME';
-                }).map((column: any) => {
-                    return {
-                        name: column.field
-                    }
-                });
+                layer.fieldMetadata.fieldInfo = Object.values(layer.fixtures.grid.columns)
+                    .filter((column: any) => {
+                        // the prov name fields are due to them being hidden in the grid, but needed for tooltips & details.
+                        // cannot be excluded / exclusive.
+                        return column.visible || column.field === "ENG_PROV_NAME" || column.field === "FRE_PROV_NAME";
+                    })
+                    .map((column: any) => {
+                        return {
+                            name: column.field
+                        };
+                    });
                 layer.fieldMetadata.exclusiveFields = true;
                 layer.fieldMetadata.enforceOrder = true;
             }
 
-            const layerObj = this._rInstance.geo.layer.createLayer(layer)
+            const layerObj = this._rInstance.geo.layer.createLayer(layer);
             const layerPromise = this._rInstance.geo.map.addLayer(layerObj);
             this.currentLayers[index] = layer.id;
 
             // wait for the visible data layer to load, then refresh identify if needed
-            if (layer.state.visibility === true && tempLastClick !== null && layer.layerType !== 'ogc-wfs') {
+            if (layer.state.visibility === true && tempLastClick !== null && layer.layerType !== "ogc-wfs") {
                 // layer promise does not actually wait for layer to be loaded, only registered
                 // use a callback on layer state change to look for 'loaded' state on the visible layer
-                const refreshIdentifyOnLayerLoad = (event: {state: string, layer: any}) => {
-                    if (event.layer.id === layer.id && event.state === 'loaded') {
-                        this._rInstance.event.off('cccs_refreshIdentifyOnLayerLoad');
+                const refreshIdentifyOnLayerLoad = (event: { state: string; layer: any }) => {
+                    if (event.layer.id === layer.id && event.state === "loaded") {
+                        this._rInstance.event.off("cccs_refreshIdentifyOnLayerLoad");
                         this.setLastClick(tempLastClick);
                         this.refreshIdentify();
                     }
                 };
-                this._rInstance.event.on('layer/layerstatechange', refreshIdentifyOnLayerLoad, 'cccs_refreshIdentifyOnLayerLoad');
+                this._rInstance.event.on(
+                    "layer/layerstatechange",
+                    refreshIdentifyOnLayerLoad,
+                    "cccs_refreshIdentifyOnLayerLoad"
+                );
             }
 
             if (this.dateSlider) {
@@ -331,15 +340,19 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             this._rInstance.geo.map.addLayer(layerObj);
         });
 
-        this._rInstance.event.on('layer/visibilitychanged', (layer: any) => {
-            if (supportLayerIds.includes(layer.id)) {
-                this.setLayerVisibility({ layerId: layer.id, value: layer.visibility });
-            }
-        }, 'cccs_layervisibility_handler');
+        this._rInstance.event.on(
+            "layer/visibilitychanged",
+            (layer: any) => {
+                if (supportLayerIds.includes(layer.id)) {
+                    this.setLayerVisibility({ layerId: layer.id, value: layer.visibility });
+                }
+            },
+            "cccs_layervisibility_handler"
+        );
 
         // LEGEND
         const legend = source.legend.slice();
-        const legendAPI = this._rInstance.fixture.get('legend');
+        const legendAPI = this._rInstance.fixture.get("legend");
 
         legend.forEach((element: any) => {
             if (this.timeSlice !== null && element.layerId && !supportLayerIds.includes(element.layerId)) {
@@ -360,25 +373,27 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // preserve toggled supplemental layers
         this.supplementalIds.forEach((layerId) => {
             this.addSupplementalLayer(layerId);
-        })
+        });
     }
 
     addSupplementalLayer(layerId: string) {
-        const layerConfig = this.supplementalLayerConfigs[this.$i18n.locale][layerId];
+        const layerConfig = this.supplementalLayerConfigs[i18n.locale][layerId];
         const layerToAdd = this._rInstance.geo.layer.createLayer(layerConfig);
-        this._rInstance.geo.map.addLayer(layerToAdd); 
-        this._rInstance.fixture.get('legend').addLayerItem(layerToAdd);
+        this._rInstance.geo.map.addLayer(layerToAdd);
+        this._rInstance.fixture.get("legend").addLayerItem(layerToAdd);
     }
 
-    @Watch('timeSlice')
+    @Watch("timeSlice")
     onTimeSliceChanged(newValue: number, oldValue: number) {
         if (this.timeSliderLabels && this.currentLayers) {
             // RAMP4 does not support collapsed visibility sets;
             // we have to swap the layer the legend item points to
             const oldLayer = this.currentLayers[oldValue | 0];
-            const layerItem = this._rInstance.fixture.get('legend').getLayerItem(oldLayer);
+            const layerItem = this._rInstance.fixture.get("legend").getLayerItem(oldLayer);
             layerItem._layerId = this.currentLayers[newValue];
-            this._rInstance.fixture.get('legend').updateLegend(this._rInstance.geo.layer.getLayer(this.currentLayers[newValue]));
+            this._rInstance.fixture
+                .get("legend")
+                .updateLegend(this._rInstance.geo.layer.getLayer(this.currentLayers[newValue]));
             // turn off old layer
             if (oldValue !== null) {
                 this._rInstance.geo.layer.getLayer(this.currentLayers[oldValue]).visibility = false;
@@ -390,7 +405,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         } else if (this.dateSlider) {
             // removes the '.000' milliseconds from the string and reappends the 'Z'
             // having the milliseconds breaks the layers
-            const timeString = new Date(this.timeSlice).toISOString().split('.')[0] + 'Z';
+            const timeString = new Date(this.timeSlice).toISOString().split(".")[0] + "Z";
             // set the TIME param and reload
             this.currentLayers.forEach((layerId) => {
                 const layer = this._rInstance.geo.layer.getLayer(layerId);
@@ -399,13 +414,13 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
                 if (!layer.esriLayer.customLayerParameters) {
                     layer.esriLayer.customLayerParameters = [];
                 }
-                layer.setCustomParameter('TIME', timeString);
+                layer.setCustomParameter("TIME", timeString);
             });
         }
         this.refreshIdentify();
     }
 
-    @Watch('centerPoint')
+    @Watch("centerPoint")
     onCenterPointChanged(): void {
         if (!this._rInstance) {
             return;
@@ -416,11 +431,15 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
             return;
         }
 
-        const center = new this._rInstance.geo.geom.Point('centerPoint', [this.centerPoint.x, this.centerPoint.y], 3978);
+        const center = new this._rInstance.geo.geom.Point(
+            "centerPoint",
+            [this.centerPoint.x, this.centerPoint.y],
+            3978
+        );
         this._rInstance.geo.map.zoomMapTo(center, this._rInstance.geo.map.getScale());
     }
 
-    @Watch('zoomLevel')
+    @Watch("zoomLevel")
     onZoomLevelChanged(): void {
         if (this.localZoomLevelUpdate) {
             this.localZoomLevelUpdate = false;
@@ -440,7 +459,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         let RAMP: any;
 
         // if RAMP API is not ready yet, loop-wait until it's loaded
-        await new Promise<void>(resolve => {
+        await new Promise<void>((resolve) => {
             const busywait = setInterval(() => {
                 const tempRAMP = (<any>window).RAMP;
                 if (tempRAMP) {
@@ -456,18 +475,20 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         }
 
         // RAMP4 requires config as object, need to fetch the file ourselves
-        fetch(`./assets/configs/ramp.${this.$i18n.locale}-CA.json`).then((data) => {
+        fetch(`./assets/configs/ramp.${i18n.locale}-CA.json`).then((data) => {
             data.json().then((rampConfig: any) => {
+                if (!this.anchor) {
+                    return;
+                }
                 this._rInstance = RAMP.createInstance(this.anchor, rampConfig);
-                (window as any).debugInstance = this._rInstance;
-                this._rInstance.event.on('map/created', this.mapStartup);
-                registerCustomAppbarLink(this._rInstance, this.$i18n.t('downloadSelector.dataCatalogue.fullName'), 1);
+                this._rInstance.event.on("map/created", this.mapStartup);
+                registerCustomAppbarLink(this._rInstance, i18n.t("downloadSelector.dataCatalogue.fullName"), 1);
             });
         });
     }
 
     async mapStartup(): Promise<void> {
-        customRendererStartup(this._rInstance, this.$store.state.app, this.$i18n);
+        customRendererStartup(this._rInstance, this.$store.state.app, i18n);
         //this.updateIdentifyMode();
         this.injectCIPMapcomponents();
         this.switchLayers();
@@ -478,40 +499,48 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         registerDetailsTemplates(this._rInstance, this.datasetId);
 
         // zoom and center point handler
-        this._rInstance.event.on('map/extentchanged', debounce(300, this.mapExtentChangedHandler), 'cccs_extentchanged_handler');
+        this._rInstance.event.on(
+            "map/extentchanged",
+            debounce(300, this.mapExtentChangedHandler),
+            "cccs_extentchanged_handler"
+        );
 
         // map scale handler
-        this._rInstance.event.on('map/scalechanged', this.mapScaleHandler, 'cccs_scalechanged_handler');
+        this._rInstance.event.on("map/scalechanged", this.mapScaleHandler, "cccs_scalechanged_handler");
 
         // replace default maptips with fancy ones
-        this._rInstance.event.off('ramp_map_graphichit_creates_maptip');
-        this._rInstance.event.on('map/graphichit', this.tooltipHandler, 'cccs_graphichit_handler');
+        this._rInstance.event.off("ramp_map_graphichit_creates_maptip");
+        this._rInstance.event.on("map/graphichit", this.tooltipHandler, "cccs_graphichit_handler");
 
         // track map clicks to open up details when layer changes
-        this._rInstance.event.on('map/click', this.mapClickHandler, 'cccs_mapclick_handler');
-        this._rInstance.event.on('panel/closed', this.detailsClosingHandler, 'cccs_panelclose_handler');
+        this._rInstance.event.on("map/click", this.mapClickHandler, "cccs_mapclick_handler");
+        this._rInstance.event.on("panel/closed", this.detailsClosingHandler, "cccs_panelclose_handler");
 
         // add generic watcher for when any labelled layers are loaded
         if (this.labelledLayerIds && this.labelledLayerIds.length) {
             // add handler to watch for when all layers with map labels have been loaded
-            const labelledLayerLoaded = ((event: {state: string, layer: any}) => {
-                if (this.labelledLayerIds.includes(event.layer.id) && event.state === 'loaded') {
+            const labelledLayerLoaded = (event: { state: string; layer: any }) => {
+                if (this.labelledLayerIds.includes(event.layer.id) && event.state === "loaded") {
                     // toggle labels for loaded layer based on current scale
                     const showLabels = this._rInstance.geo.map.getScale() < SCALE_THRESHOLD;
-                    event.layer.sublayers.forEach((sublayer: any) => sublayer.labelVisibility = showLabels);
+                    event.layer.sublayers.forEach((sublayer: any) => (sublayer.labelVisibility = showLabels));
                 }
-            });
-            this._rInstance.event.on('layer/layerstatechange', labelledLayerLoaded, 'cccs_labelledLayersLoaded');
+            };
+            this._rInstance.event.on("layer/layerstatechange", labelledLayerLoaded, "cccs_labelledLayersLoaded");
         }
 
         if (this.zoomLevel) {
             await this._rInstance.geo.map.zoomToLevel(this.zoomLevel);
         }
         if (this.centerPoint) {
-            const center = new this._rInstance.geo.geom.Point('centerPoint', [this.centerPoint.x, this.centerPoint.y], 3978);
+            const center = new this._rInstance.geo.geom.Point(
+                "centerPoint",
+                [this.centerPoint.x, this.centerPoint.y],
+                3978
+            );
             await this._rInstance.geo.map.zoomMapTo(center, this._rInstance.geo.map.getScale());
         }
-        
+
         this.extentFromBasemapDone = true;
     }
 
@@ -520,9 +549,12 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // toggle on/off map labels based on threshold
         if (this.showMapLabels !== showLabels) {
             this.showMapLabels = showLabels;
-            this._rInstance.geo.layer.allActiveLayers()
+            this._rInstance.geo.layer
+                .allActiveLayers()
                 .filter((layer: any) => this.labelledLayerIds.includes(layer.id))
-                .forEach((l: any) => l.sublayers.forEach((sublayer: any) => sublayer.labelVisibility = this.showMapLabels));
+                .forEach((l: any) =>
+                    l.sublayers.forEach((sublayer: any) => (sublayer.labelVisibility = this.showMapLabels))
+                );
         }
     }
 
@@ -571,7 +603,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 
     detailsClosingHandler(panel: any): void {
-        if (panel.id === 'details-panel') {
+        if (panel.id === "details-panel") {
             this.setLastClick(null);
         }
     }
@@ -580,16 +612,16 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         if (!this._rInstance) {
             return;
         }
-        this._rInstance.event.off('cccs_labelledLayersLoaded');
-        this._rInstance.event.off('cccs_scalechanged_handler')
-        this._rInstance.event.off('cccs_extentchanged_handler');
-        this._rInstance.event.off('cccs_graphichit_handler');
-        this._rInstance.event.off('cccs_mapclick_handler');
-        this._rInstance.event.off('cccs_panelclose_handler');
+        this._rInstance.event.off("cccs_labelledLayersLoaded");
+        this._rInstance.event.off("cccs_scalechanged_handler");
+        this._rInstance.event.off("cccs_extentchanged_handler");
+        this._rInstance.event.off("cccs_graphichit_handler");
+        this._rInstance.event.off("cccs_mapclick_handler");
+        this._rInstance.event.off("cccs_panelclose_handler");
     }
 
     stopLayerSubscriptions(): void {
-        this._rInstance.event.off('cccs_layervisibility_handler');
+        this._rInstance.event.off("cccs_layervisibility_handler");
     }
 
     /**
@@ -601,29 +633,29 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
         // it's not possible to rendre just the component and pass them binding props;
         // instead, a new Vue instance needs to be created with these components used it its template
         const controlClusterComponent = new Vue({
-            render: h =>
-                h('map-controls-cluster', {
+            render: (h) =>
+                h("map-controls-cluster", {
                     props: {
-                        'time-slider-labels': this.timeSliderLabels,
-                        'colour-ramp': this.colourRamp,
+                        "time-slider-labels": this.timeSliderLabels,
+                        "colour-ramp": this.colourRamp,
                         legend: this.legend,
-                        'current-variable': this.currentVariable,
-                        'current-dataset': this.datasetId,
-                        'date-slider': this.dateSlider,
+                        "current-variable": this.currentVariable,
+                        "current-dataset": this.datasetId,
+                        "date-slider": this.dateSlider,
                         wmsTime: this.wmsTime
                     }
                 }),
             components: {
-                'map-controls-cluster': MapControlsCluster
+                "map-controls-cluster": MapControlsCluster
             },
             router: this.$router,
             store: this.$store,
-            i18n: this.$i18n
+            i18n: i18n
         }).$mount();
 
         //const controlClusterPanel = document.createElement('div');
         //controlClusterPanel.classList.add('cip-controls-cluster-container');
-        this._rInstance.$vApp.$el.querySelector('.inner-shell').appendChild(controlClusterComponent.$el);
+        this._rInstance.$vApp.$el.querySelector(".inner-shell").appendChild(controlClusterComponent.$el);
         //controlClusterPanel.appendChild(controlClusterComponent.$el);
     }
 }
@@ -632,7 +664,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 <style lang="scss" scoped>
 @import "./../styles/variables.scss";
 
-.cip-map-anchor /deep/ {
+.cip-map-anchor::v-deep {
     /* right: 0;
     left: 0;
     width: 100%; */
@@ -648,7 +680,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
 }
 
 // specific CMIP5 styles to handle grid cell highlighting
-.cip-map-anchor.cmip5 /deep/ {
+.cip-map-anchor.cmip5::v-deep {
     .rv-map-highlight .esriMapLayers {
         > div:not(:first-child),
         > svg > g:not([id="rv_hilight_layer"]) {
@@ -663,7 +695,7 @@ export default class MapInstance extends mixins(UpdateRouteMixin) {
     }
 }
 
-.cip-map-anchor /deep/ {
+.cip-map-anchor::v-deep {
     .detailsContentSection {
         > div {
             margin-left: 0;

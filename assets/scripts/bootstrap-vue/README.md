@@ -9,8 +9,5 @@ Orig sauce: [NPM](https://www.npmjs.com/package/bootstrap-vue/v/1.5.1), [GitHub]
 To ensure the dependencies of the package are available, the following libs need to be in our `package.json`:
 
 ```text
-"lodash.startcase": "4.4.0"
-"opencollective": "1.0.3"
-"popper.js": "1.12.9"
 "vue-functional-data-merge": "2.0.5"
 ```

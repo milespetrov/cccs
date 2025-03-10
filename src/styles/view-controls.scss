@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 %dropdown-toggle-highlight {
     background-color: #fff !important;
@@ -13,7 +13,7 @@
         width: 6px;
         height: 100%;
 
-        content: '';
+        content: "";
         background-color: $wet-primary-colour;
     }
 }
@@ -38,7 +38,7 @@
     }
 
     .b-dropdown {
-        /deep/ {
+        ::v-deep {
             .dropdown-toggle {
                 display: flex;
                 align-items: center;
@@ -64,9 +64,9 @@
                 }
             }
 
-            &.desktop-menu{
-                .dropdown-menu{
-                    opacity: 0.90;
+            &.desktop-menu {
+                .dropdown-menu {
+                    opacity: 0.9;
 
                     &.show {
                         display: flex !important;
@@ -87,7 +87,7 @@
                 box-shadow: none;
 
                 font-size: 0.8em;
-                font-family: "Roboto","Helvetica Neue",sans-serif;
+                font-family: "Roboto", "Helvetica Neue", sans-serif;
 
                 @extend %dropdown-menu-highlight;
             }
@@ -106,14 +106,14 @@
             }
         }
 
-        &.show /deep/ {
+        ::v-deep &.show {
             .dropdown-toggle {
                 @extend %dropdown-toggle-highlight;
                 @extend %dropdown-menu-highlight;
             }
         }
 
-        &.cip-dropdown-right.show /deep/ {
+        ::v-deep &.cip-dropdown-right.show {
             .dropdown-menu {
                 &:before {
                     right: -1px;
@@ -158,7 +158,7 @@
             flex-direction: column;
             align-items: flex-start;
             font-size: 16px;
-            font-family: Roboto, 'Helvetica Neue', sans-serif;
+            font-family: Roboto, "Helvetica Neue", sans-serif;
         }
 
         .cip-value-label {
@@ -270,12 +270,12 @@
             font-weight: 500;
         }
 
-        .day-selector{
+        .day-selector {
             .cip-horizontal {
                 .cip-dropdown-content {
                     display: flex;
 
-                    > [role='group'] {
+                    > [role="group"] {
                         flex-grow: 1;
                         flex-shrink: 1;
                         flex-basis: auto;
@@ -352,7 +352,7 @@
                 margin: 0rem 0;
             }
 
-            .b-dropdown /deep/ {
+            ::v-deep .b-dropdown {
                 width: 100%;
 
                 .cip-content-wrap {
@@ -387,7 +387,7 @@
                 .cip-dropdown-content {
                     flex-direction: column;
 
-                    > [role='group'] {
+                    > [role="group"] {
                         flex: none;
                     }
                 }
