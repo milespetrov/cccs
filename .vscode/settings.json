@@ -3,5 +3,6 @@
     "prettier.printWidth": 120,
     "prettier.semi": true,
     "prettier.trailingComma": "none",
-    "i18n-ally.localesPaths": ["src/lang"]
+    "i18n-ally.localesPaths": ["src/lang"],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

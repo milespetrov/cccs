@@ -1,11 +1,11 @@
-import { Vue, Component } from 'vue-property-decorator';
-import { Getter, Action, State, namespace } from 'vuex-class';
-import { Dictionary } from 'vue-router/types/router';
-import { DatasetId, VariableId, BreadCrumbEntity } from '@/types';
+import { Vue, Component } from "vue-property-decorator";
+import { Getter, Action, State, namespace } from "vuex-class";
+import { Dictionary } from "vue-router/types/router";
+import { DatasetId, VariableId, BreadCrumbEntity } from "@/types";
 
-const StateApp = namespace('app', State);
-const GetterApp = namespace('app', Getter);
-const ActionApp = namespace('app', Action);
+const StateApp = namespace("app", State);
+const GetterApp = namespace("app", Getter);
+const ActionApp = namespace("app", Action);
 
 /**
  * to use:
@@ -23,16 +23,36 @@ export class UpdateRouteMixin extends Vue {
     // Updates the router using the in-store view and query variables
     updateRoute(): void {
         this.setInternalRouteUpdate(true);
-        this.$router.push({
-            query: this.getQuery
-        });
+
+        // Handle NavigationDuplicated error
+        this.$router
+            .push({
+                query: this.getQuery
+            })
+            .catch((err) => {
+                // Only throw if it's not a navigation duplicate
+                if (err.name !== "NavigationDuplicated") {
+                    throw err;
+                }
+                // Otherwise silently handle the error
+            });
     }
 
     replaceRoute(): void {
         this.setInternalRouteUpdate(true);
-        this.$router.replace({
-            query: this.getQuery
-        });
+
+        // Handle NavigationDuplicated error
+        this.$router
+            .replace({
+                query: this.getQuery
+            })
+            .catch((err) => {
+                // Only throw if it's not a navigation duplicate
+                if (err.name !== "NavigationDuplicated") {
+                    throw err;
+                }
+                // Otherwise silently handle the error
+            });
     }
 }
 
@@ -90,8 +110,8 @@ export class StoreAppMixin extends Vue {
     variableId: VariableId;
 }
 
-const StateData = namespace('data', State);
-const ActionData = namespace('data', Action);
+const StateData = namespace("data", State);
+const ActionData = namespace("data", Action);
 
 @Component
 export class StoreDataMixin extends Vue {

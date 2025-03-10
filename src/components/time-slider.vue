@@ -6,21 +6,16 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import noUiSlider from 'nouislider';
-import { Action, State, namespace } from 'vuex-class';
-import { mixins } from 'vue-class-component/lib/util';
-import { UpdateRouteMixin } from './../globals/mixin';
-import { Getter } from 'vuex-class/lib/bindings';
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import noUiSlider from "nouislider";
+import { Action, State, namespace } from "vuex-class";
+import { mixins } from "vue-class-component/lib/util";
+import { UpdateRouteMixin } from "./../globals/mixin";
+import { Getter } from "vuex-class/lib/bindings";
 
-import { Observable, fromEvent } from 'rxjs';
-
-import { filter } from 'rxjs/internal/operators/filter';
-import { sampleTime } from 'rxjs/internal/operators/sampleTime';
-
-const StateApp = namespace('app', State);
-const GetterApp = namespace('app', Getter);
-const ActionApp = namespace('app', Action);
+const StateApp = namespace("app", State);
+const GetterApp = namespace("app", Getter);
+const ActionApp = namespace("app", Action);
 
 @Component
 export default class TimeSlider extends mixins(UpdateRouteMixin) {
@@ -41,7 +36,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         if (!this.timeSlice) {
             this.setTimeSlice(3);
         }
-        this.slider = this.$el.querySelector('.noUi-target');
+        this.slider = this.$el.querySelector(".noUi-target");
         noUiSlider.create(this.slider, {
             start: this.timeSlice,
             step: 1,
@@ -50,7 +45,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
                 max: this.timeSliderLabels.length - 1
             },
             pips: {
-                mode: 'steps',
+                mode: "steps",
                 density: 100,
                 format: {
                     to: (val: number) => {
@@ -75,9 +70,9 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         });
 
         // add a click handler to each 'pip' (the labels)
-        const pips = this.slider.querySelectorAll('.noUi-value');
+        const pips = this.slider.querySelectorAll(".noUi-value");
         pips.forEach((pip: any) => {
-            pip.addEventListener('click', this.clickOnPip);
+            pip.addEventListener("click", this.clickOnPip);
         });
 
         /**
@@ -87,9 +82,9 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
          *  - slider is moved by tapping position
          *  - this event gets bound
          */
-        this.slider.noUiSlider.on('update', () => {
+        this.slider.noUiSlider.on("update", () => {
             // get the new value and make sure something changed
-            const newValue = Number(this.slider.noUiSlider.get().split('.')[0]);
+            const newValue = Number(this.slider.noUiSlider.get().split(".")[0]);
             if (this.timeSlice === newValue) {
                 return;
             }
@@ -101,10 +96,10 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
         });
 
         this.keyboardSupport();
-        this.$el.querySelector(this.pipSelector + `${this.timeSlice}"]`)!.classList.add('selected');
+        this.$el.querySelector(this.pipSelector + `${this.timeSlice}"]`)!.classList.add("selected");
     }
 
-    @Watch('timeSlice')
+    @Watch("timeSlice")
     onTimeSliceChange(newValue: number, oldValue: number): void {
         if (!this.timeSliderLabels) {
             return;
@@ -112,10 +107,10 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 
         // Update the selected css class on the old and new selections
         if (oldValue !== null && oldValue <= this.timeSliderLabels.length) {
-            this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove('selected');
+            this.$el.querySelector(this.pipSelector + `${oldValue}"]`)!.classList.remove("selected");
         }
         if (newValue !== null) {
-            this.$el.querySelector(this.pipSelector + `${newValue}"]`)!.classList.add('selected');
+            this.$el.querySelector(this.pipSelector + `${newValue}"]`)!.classList.add("selected");
         }
 
         if (this.internalTimeSliceChange) {
@@ -131,7 +126,7 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
     clickOnPip(event: any): void {
         // set the slider value to the clicked pip's value
         // will move the slider to that pip
-        const value = parseInt(event.target.getAttribute('data-value'));
+        const value = parseInt(event.target.getAttribute("data-value"));
         this.slider.noUiSlider.set(value);
         //this.slider.noUiSlider.set(value);
     }
@@ -147,26 +142,29 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 
         // to have an element focusable inside the RAMP container, its tabindex must not be 0;
         // tabindex 0 is controlled by the browser; RAMP focus manager will ignore such elements and not set focus to them;
-        const sliderHandle = this.slider.querySelector('.noUi-handle') as HTMLElement;
-        sliderHandle.setAttribute('tabindex', '-2');
-        sliderHandle.setAttribute('aria-labelledby', 'cip-timeSlider-label');
+        const sliderHandle = this.slider.querySelector(".noUi-handle") as HTMLElement;
+        sliderHandle.setAttribute("tabindex", "-2");
+        sliderHandle.setAttribute("aria-labelledby", "cip-timeSlider-label");
 
-        // create event stream for the keyevents we want
-        const keydownEvents: Observable<KeyboardEvent> = fromEvent(sliderHandle, 'keydown').pipe(
-            filter((event: KeyboardEvent) => {
-                return Object.values(KEYCODES).indexOf(event.keyCode) !== -1;
-            })
-        ) as Observable<KeyboardEvent>;
+        let lastKeyEventTime = 0;
+        const throttleTimeMs = 30; // Same as sampleTime(30) in original code
 
-        // stop the default handlers for the events
-        // (i.e. don't let end go to the bottom of the page when the handle is selected)
-        keydownEvents.subscribe((event: KeyboardEvent) => {
+        sliderHandle.addEventListener("keydown", (event: KeyboardEvent) => {
+            if (Object.values(KEYCODES).indexOf(event.keyCode) === -1) {
+                return;
+            }
+
+            // Prevent default handlers (e.g., prevent END from scrolling page)
             event.preventDefault();
             event.stopPropagation();
-        });
 
-        // throttle the stream very slightly
-        keydownEvents.pipe(sampleTime(30)).subscribe((event: KeyboardEvent) => {
+            const now = Date.now();
+            if (now - lastKeyEventTime < throttleTimeMs) {
+                return;
+            }
+            lastKeyEventTime = now;
+
+            // Handle key events (same as original)
             if (event.keyCode === KEYCODES.RIGHT_ARROW) {
                 // Move one selection right (if not at the end)
                 if (this.timeSlice! < this.timeSliderLabels.length - 1) {
@@ -190,9 +188,8 @@ export default class TimeSlider extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-.cip-time-slider-container /deep/ {
-    @import "./../../node_modules/nouislider/distribute/nouislider";
-
+@import "./../../node_modules/nouislider/distribute/nouislider.css";
+.cip-time-slider-container::v-deep {
     font-family: "Noto Sans", sans-serif;
     font-size: 0.9em;
     padding: 0.5rem 0;
@@ -283,11 +280,11 @@ $max-layers: 4;
 // Spacing for different amounts of layers
 // This is based on the amount of layers in the selector
 @for $i from 3 through $max-layers {
-    .cip-time-slider-container.layers-#{$i} /deep/ {
+    .cip-time-slider-container.layers-#{$i}::v-deep {
         margin: 0 calc(100% / #{$i} / 2);
 
         // make handle a tiny bit wider than a label, so the bottom border of the handle protrudes beyond the label boundaries
-        $handle-width: 100% / #{$i} + 1rem;
+        $handle-width: 100% / #{$i} + 1;
 
         // set the width of the handle (and move it correctly over the labels)
         .noUi-origin .noUi-handle {

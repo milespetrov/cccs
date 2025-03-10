@@ -1,29 +1,24 @@
 <template>
     <div class="cip-date-slider-container">
-        <span>{{this.selectedTime}}</span>
+        <span>{{ this.selectedTime }}</span>
         <div class="cip-date-slider-backdrop"></div>
         <div class="noUi-target noUiSlider"></div>
     </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import noUiSlider from 'nouislider';
-import { Action, State, namespace } from 'vuex-class';
-import { mixins } from 'vue-class-component/lib/util';
-import { UpdateRouteMixin } from './../globals/mixin';
-import { Getter } from 'vuex-class/lib/bindings';
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import noUiSlider from "nouislider";
+import { Action, State, namespace } from "vuex-class";
+import { mixins } from "vue-class-component/lib/util";
+import { UpdateRouteMixin } from "./../globals/mixin";
+import { Getter } from "vuex-class/lib/bindings";
+import { i18n } from "@/lang";
+import { TimePeriodType } from "@/types";
 
-import { Observable, fromEvent } from 'rxjs';
-
-import { filter } from 'rxjs/internal/operators/filter';
-import { sampleTime } from 'rxjs/internal/operators/sampleTime';
-import { i18n } from '@/lang';
-import { TimePeriodType } from '@/types';
-
-const StateApp = namespace('app', State);
-const GetterApp = namespace('app', Getter);
-const ActionApp = namespace('app', Action);
+const StateApp = namespace("app", State);
+const GetterApp = namespace("app", Getter);
+const ActionApp = namespace("app", Action);
 
 @Component
 export default class DateSlider extends mixins(UpdateRouteMixin) {
@@ -58,7 +53,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
     selectedTime = this.formatDate(this.timeSlice);
 
-    @Watch('stepAmount')
+    @Watch("stepAmount")
     async analysisPeriodChange(): Promise<void> {
         if (!this.slider.noUiSlider) {
             this.createSlider();
@@ -73,7 +68,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
     }
 
     mounted(): void {
-        this.slider = this.$el.querySelector('.noUi-target');
+        this.slider = this.$el.querySelector(".noUi-target");
     }
 
     createSlider(): void {
@@ -91,11 +86,11 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
                 max: endDate.getTime()
             },
             pips: {
-                mode: 'range',
+                mode: "range",
                 density: 3,
                 format: {
                     to: (value: number) => {
-                        return new Date(value).toISOString().split('T')[0];
+                        return new Date(value).toISOString().split("T")[0];
                     }
                 }
             },
@@ -104,7 +99,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
                     return this.formatDate(value);
                 },
                 from: (value: string) => {
-                    return 'not implemented';
+                    return "not implemented";
                 }
             }
         });
@@ -116,9 +111,9 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
          *  - slider is moved by tapping position
          *  - this event gets bound
          */
-        this.slider.noUiSlider.on('update', () => {
+        this.slider.noUiSlider.on("update", () => {
             // get the new value and make sure something changed
-            const newValue = Number(this.slider.noUiSlider.get().split('.')[0]);
+            const newValue = Number(this.slider.noUiSlider.get().split(".")[0]);
             this.selectedTime = this.formatDate(newValue);
 
             if (this.timeSlice === newValue) {
@@ -134,7 +129,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         this.keyboardSupport();
     }
 
-    @Watch('timeSlice')
+    @Watch("timeSlice")
     onTimeSliceChange(newValue: number, oldValue: number): void {
         if (this.internalTimeSliceChange) {
             // Flag set in 'on update' subscription, skip setting the slider again
@@ -149,6 +144,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
     }
 
     // based on a subset of our DQV keyboard support
+    // Replace the keyboardSupport method
     keyboardSupport(): void {
         const KEYCODES = {
             RIGHT_ARROW: 39,
@@ -159,26 +155,32 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
         // to have an element focusable inside the RAMP container, its tabindex must not be 0;
         // tabindex 0 is controlled by the browser; RAMP focus manager will ignore such elements and not set focus to them;
-        const sliderHandle = this.slider.querySelector('.noUi-handle') as HTMLElement;
-        sliderHandle.setAttribute('tabindex', '-2');
-        sliderHandle.setAttribute('aria-labelledby', 'cip-dateSlider-label');
+        const sliderHandle = this.slider.querySelector(".noUi-handle") as HTMLElement;
+        sliderHandle.setAttribute("tabindex", "-2");
+        sliderHandle.setAttribute("aria-labelledby", "cip-dateSlider-label");
 
-        // create event stream for the keyevents we want
-        const keydownEvents: Observable<KeyboardEvent> = fromEvent(sliderHandle, 'keydown').pipe(
-            filter((event: KeyboardEvent) => {
-                return Object.values(KEYCODES).indexOf(event.keyCode) !== -1;
-            })
-        ) as Observable<KeyboardEvent>;
+        // Track last key event time for throttling
+        let lastKeyEventTime = 0;
+        const throttleTimeMs = 30; // Same as sampleTime(30) in original code
 
-        // stop the default handlers for the events
-        // (i.e. don't let end go to the bottom of the page when the handle is selected)
-        keydownEvents.subscribe((event: KeyboardEvent) => {
+        sliderHandle.addEventListener("keydown", (event: KeyboardEvent) => {
+            // Only process the key codes we care about (filter replacement)
+            if (Object.values(KEYCODES).indexOf(event.keyCode) === -1) {
+                return;
+            }
+
+            // Prevent default handlers (e.g., prevent END from scrolling page)
             event.preventDefault();
             event.stopPropagation();
-        });
 
-        // throttle the stream very slightly
-        keydownEvents.pipe(sampleTime(30)).subscribe((event: KeyboardEvent) => {
+            // Simple throttling logic
+            const now = Date.now();
+            if (now - lastKeyEventTime < throttleTimeMs) {
+                return;
+            }
+            lastKeyEventTime = now;
+
+            // Handle key events (same as original)
             if (event.keyCode === KEYCODES.RIGHT_ARROW) {
                 // Move one selection right
                 this.slider.noUiSlider.set(this.timeSlice! + this.stepAmount);
@@ -197,7 +199,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 
     formatDate(datetime: number | undefined): string {
         if (!datetime) {
-            return '';
+            return "";
         }
         const months = [
             TimePeriodType.January,
@@ -215,7 +217,7 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
         ];
         const date = new Date(datetime);
 
-        const month = this.$i18n.t(`timePeriodSelector.${months[date.getUTCMonth()]}.fullName`);
+        const month = i18n.t(`timePeriodSelector.${months[date.getUTCMonth()]}.fullName`);
 
         return `${month} ${date.getUTCDate()}, ${date.getUTCFullYear()}, ${date.getUTCHours()}:00 UTC`;
     }
@@ -223,8 +225,8 @@ export default class DateSlider extends mixins(UpdateRouteMixin) {
 </script>
 
 <style lang="scss" scoped>
-.cip-date-slider-container /deep/ {
-    @import "./../../node_modules/nouislider/distribute/nouislider";
+.cip-date-slider-container::v-deep {
+    @import "./../../node_modules/nouislider/distribute/nouislider.css";
 
     font-family: "Noto Sans", sans-serif;
     font-size: 0.9em;

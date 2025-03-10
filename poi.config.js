@@ -1,99 +1,112 @@
-const pkg = require('./package.json');
+const VersionPlugin = require("./assets/webpack/version_plugin.js");
+const jsonminify = require("jsonminify");
+const htmlminify = require("html-minifier").minify;
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
+const { exec } = require("child_process");
 
-const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const VersionPlugin = require('./assets/webpack/version_plugin.js');
-const jsonminify = require('jsonminify');
-const htmlminify = require('html-minifier').minify;
-
-module.exports = options => ({
-    vendor: false,
-    html: [
-        {
-            title: pkg.productName || pkg.name,
-            description: pkg.description,
-            filename: 'climate-maps.html', // the name of the output file
-            template: 'src/index.en.ejs'
+module.exports = {
+    output: {
+        dir: "dist",
+        fileNames: {
+            js: ".min.js",
+            css: "[name].min.css"
         },
-        {
-            title: pkg.productName || pkg.name,
-            description: pkg.description,
-            filename: 'cartes-climatiques.html', // the name of the output file
-            template: 'src/index.fr.ejs'
-        }
-    ],
-    filename: {
-        js: `cccs-sandbox.min.js`,
-        css: `cccs-sandbox.min.css`
+        publicUrl: "./"
     },
-    homepage: './',
-    devServer: {
-        historyApiFallback: {
-            disableDotRule: true
-        },
-        historyApiFallback: {
-            rewrites: [{ from: /./, to: '/pages/404.html' }]
-        }
-    },
-    sourceMap: false,
-    copy: [
-        {
-            from: path.resolve(__dirname, 'assets'),
-            to: path.resolve(__dirname, 'dist/assets'),
-            transform(content, path) {
-                // minify files only for a production build
-                if (options.mode !== 'production') {
-                    return content;
+    css: {
+        extract: true,
+        loaderOptions: {
+            sass: {
+                implementation: require("sass"),
+                sassOptions: {
+                    includePaths: [path.resolve(__dirname, "src/styles")],
+                    outputStyle: process.env.NODE_ENV === "production" ? "compressed" : "expanded"
                 }
-
-                // minify .json files
-                if (/\.json$/gi.test(path)) {
-                    return jsonminify(content.toString());
-                }
-
-                // minify .html files
-                if (/\.html$/gi.test(path)) {
-                    return htmlminify(content.toString(), { collapseWhitespace: true, minifyCSS: true });
-                }
-
-                return content;
             }
         }
-    ],
-    // open the explore data page on localhost:3001 by default when running `npm run dev`
-    /*  devServer: {
-        index: 'explore-data-fr.html'
-    }, */
-    presets: [
-        // there is problem with using babel-minify if you want to have source maps as well: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
-        // TODO: cannot uglify with babel without the EI hack in vuex store
-        // see IE11 issue here for details https://github.com/istrib/vuex-typescript/issues/13
-        // require('poi-preset-babel-minify')({}, { comments: false }),
-        require('poi-preset-typescript')(),
-        require('poi-preset-karma')({
-            port: 5001, // default
-            files: ['test/unit/*.ts'] // default,
-        })
-    ],
-    extendWebpack(config) {
-        // enable to see the bundle structure
-        // config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin);
-
-        config.plugin('versionPlugin').use(VersionPlugin);
-
-        // add a loader for csv translation files
-        config.module
-            .rule('lint')
-            .test(/\.csv$/)
-            .use('eslint')
-            .loader('dsv-loader');
     },
-    karma: {
-        mime: {
-            'text/x-typescript': ['ts']
+    devServer: {
+        port: 3001,
+        open: false,
+        before(app, server) {
+            exec("start http://localhost:3001/climate-maps.html");
         },
-        preprocessors: {
-            'test/unit/*.ts': ['webpack', 'sourcemap']
+        historyApiFallback: {
+            index: "/climate-maps.html", // Serve this as the default page
+            disableDotRule: true,
+            rewrites: [{ from: /./, to: "/pages/404.html" }]
         }
-    }
-});
+    },
+    chainWebpack(config) {
+        config.plugin("versionPlugin").use(VersionPlugin);
+
+        config.module
+            .rule("csv")
+            .test(/\.csv$/)
+            .use("dsv-loader")
+            .loader("dsv-loader")
+            .end();
+
+        config.optimization.splitChunks(false);
+        config.optimization.runtimeChunk(false);
+        config.optimization.concatenateModules(true);
+
+        config.output.filename("[name].min.js").end();
+
+        config.plugin("copy-assets").use(CopyPlugin, [
+            {
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, "static"),
+                        to: path.resolve(__dirname, "dist")
+                    },
+                    {
+                        from: path.resolve(__dirname, "assets"),
+                        to: path.resolve(__dirname, "dist/assets"),
+                        transform(content, path) {
+                            // minify files only for a production build
+                            if (process.env.NODE_ENV !== "production") {
+                                return content;
+                            }
+
+                            // minify .json files
+                            if (/\.json$/gi.test(path)) {
+                                return jsonminify(content.toString());
+                            }
+
+                            // minify .html files
+                            if (/\.html$/gi.test(path)) {
+                                return htmlminify(content.toString(), { collapseWhitespace: true, minifyCSS: true });
+                            }
+
+                            return content;
+                        }
+                    }
+                ]
+            }
+        ]);
+
+        // Disable TypeScript type checking to save memory
+        if (config.plugins.has("fork-ts-checker")) {
+            config.plugins.delete("fork-ts-checker");
+        }
+    },
+    pages: {
+        "climate-maps": {
+            entry: "src/index.ts",
+            template: "src/index.en.ejs",
+            filename: "climate-maps.html"
+        },
+        "cartes-climatiques": {
+            entry: "src/index.ts",
+            template: "src/index.fr.ejs",
+            filename: "cartes-climatiques.html"
+        }
+    },
+    plugins: [
+        {
+            resolve: "@poi/plugin-typescript"
+        }
+    ]
+};
